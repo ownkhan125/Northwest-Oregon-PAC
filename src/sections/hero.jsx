@@ -1,79 +1,81 @@
-"use client";
+'use client'
 
-import { useRef } from "react";
-import Image from "next/image";
-import { useGSAP } from "@gsap/react";
-import { m, useScroll, useTransform } from "motion/react";
-import { gsap } from "@/animations/gsap";
-import SplitText from "@/components/ui/SplitText";
-import Button from "@/components/ui/Button";
+import { useRef } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useGSAP } from '@gsap/react'
+import { m, useScroll, useTransform } from 'motion/react'
+import { gsap } from '@/animations/gsap'
+import SplitText from '@/components/ui/split-text'
+import Button from '@/components/ui/button'
+import Counter from '@/components/ui/counter'
 
 export default function Hero() {
-  const root = useRef(null);
+  const root = useRef(null)
   const { scrollYProgress } = useScroll({
     target: root,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 140]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+    offset: ['start start', 'end start'],
+  })
+  const y = useTransform(scrollYProgress, [0, 1], [0, 140])
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   useGSAP(
     () => {
       const reduced =
-        typeof window !== "undefined" &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduced) return;
+        typeof window !== 'undefined' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      if (reduced) return
 
       gsap.fromTo(
-        ".hero-orb",
+        '.hero-orb',
         { yPercent: 0 },
         {
           yPercent: -25,
-          ease: "none",
+          ease: 'none',
           scrollTrigger: {
             trigger: root.current,
-            start: "top top",
-            end: "bottom top",
+            start: 'top top',
+            end: 'bottom top',
             scrub: true,
           },
         },
-      );
+      )
 
       gsap.fromTo(
-        ".hero-glow",
+        '.hero-glow',
         { scale: 0.9, opacity: 0.6 },
         {
           scale: 1.15,
           opacity: 1,
           duration: 6,
-          ease: "sine.inOut",
+          ease: 'sine.inOut',
           repeat: -1,
           yoyo: true,
         },
-      );
+      )
     },
     { scope: root },
-  );
+  )
 
   return (
     <section
       ref={root}
       id="top"
-      className="relative isolate flex min-h-screen w-full items-center overflow-hidden pt-28 sm:pt-32"
+      className="relative isolate flex min-h-screen w-full items-center overflow-x-clip pt-28 pb-16 sm:pt-32 sm:pb-24"
     >
       {/* Background orbs */}
       <div aria-hidden className="grid-overlay opacity-40" />
       <div
         aria-hidden
-        className="hero-orb pointer-events-none absolute -left-32 top-1/3 -z-10 h-[60vmin] w-[60vmin] rounded-full bg-cyan/20 blur-3xl"
+        className="hero-orb bg-cyan/20 pointer-events-none absolute top-1/3 -left-32 -z-10 h-[60vmin] w-[60vmin] rounded-full blur-3xl"
       />
       <div
         aria-hidden
-        className="hero-orb pointer-events-none absolute -right-20 top-10 -z-10 h-[55vmin] w-[55vmin] rounded-full bg-mint/15 blur-3xl"
+        className="hero-orb bg-mint/15 pointer-events-none absolute top-10 -right-20 -z-10 h-[55vmin] w-[55vmin] rounded-full blur-3xl"
       />
       <div
         aria-hidden
-        className="hero-glow pointer-events-none absolute left-1/2 top-2/3 -z-10 h-[40vmin] w-[40vmin] -translate-x-1/2 rounded-full bg-steel/30 blur-3xl"
+        className="hero-glow bg-steel/30 pointer-events-none absolute top-2/3 left-1/2 -z-10 h-[40vmin] w-[40vmin] -translate-x-1/2 rounded-full blur-3xl"
       />
 
       <m.div
@@ -85,23 +87,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="mb-7 inline-flex items-center gap-3 rounded-full border border-cyan/30 bg-cyan/[0.06] px-4 py-1.5 text-[11px] uppercase tracking-[0.28em] text-cyan backdrop-blur"
+            className="border-cyan/30 bg-cyan/[0.06] text-cyan mb-7 inline-flex items-center gap-3 rounded-full border px-4 py-1.5 text-[11px] tracking-[0.28em] uppercase backdrop-blur"
           >
             <span className="relative grid h-2 w-2 place-items-center">
-              <span className="absolute inset-0 rounded-full bg-mint" />
-              <span className="pulse-ring absolute inset-0 rounded-full bg-mint" />
+              <span className="bg-mint absolute inset-0 rounded-full" />
+              <span className="pulse-ring bg-mint absolute inset-0 rounded-full" />
             </span>
             Campaign 2026 · CA-14
           </m.div>
 
-          <div className="font-display text-[14vw] font-medium leading-[0.92] tracking-tight text-foreground sm:text-7xl md:text-[88px] lg:text-[104px]">
-            <SplitText
-              as="span"
-              text="Morgan"
-              className="block"
-              delay={0.2}
-              inView={false}
-            />
+          <div className="font-display text-foreground text-[14vw] leading-[0.92] font-medium tracking-tight sm:text-7xl md:text-[88px] lg:text-[104px]">
+            <SplitText as="span" text="Morgan" className="block" delay={0.2} inView={false} />
             <SplitText
               as="span"
               text="Hale."
@@ -116,11 +112,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.7 }}
-            className="mt-8 max-w-xl text-base text-foreground/75 sm:text-lg"
+            className="text-foreground/75 mt-8 max-w-xl text-base sm:text-lg"
           >
-            A new generation of leadership for California's 14th. Building a
-            fair economy, defending democracy, and putting working families
-            first — not the loudest lobbyists.
+            A new generation of leadership for California's 14th. Building a fair economy, defending
+            democracy, and putting working families first — not the loudest lobbyists.
           </m.p>
 
           <m.div
@@ -129,7 +124,7 @@ export default function Hero() {
             transition={{ delay: 1.3, duration: 0.6 }}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
-            <Button as="a" href="#donate" size="lg">
+            <Button href="/donate" size="lg">
               Chip in $14
               <svg
                 width="16"
@@ -144,43 +139,44 @@ export default function Hero() {
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </Button>
-            <Button as="a" href="#priorities" variant="secondary" size="lg">
-              See Priorities
+            <Button href="/about" variant="secondary" size="lg">
+              Meet Morgan
             </Button>
-            <a
-              href="#events"
-              className="group inline-flex items-center gap-3 text-sm text-foreground/70 hover:text-mint"
+            <Link
+              href="/events"
+              className="group text-foreground/70 hover:text-mint inline-flex cursor-pointer items-center gap-3 text-sm transition-colors"
             >
-              <span className="grid h-9 w-9 place-items-center rounded-full border border-cyan/30 transition-colors group-hover:border-mint">
+              <span className="border-cyan/30 group-hover:border-mint grid h-9 w-9 place-items-center rounded-full border transition-colors">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M8 5v14l11-7z"
-                    fill="currentColor"
-                    className="text-mint"
-                  />
+                  <path d="M8 5v14l11-7z" fill="currentColor" className="text-mint" />
                 </svg>
               </span>
-              Watch the message
-            </a>
+              Upcoming events
+            </Link>
           </m.div>
 
           <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.6, duration: 0.8 }}
-            className="mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-line pt-6"
+            className="border-line mt-14 grid max-w-md grid-cols-3 gap-6 border-t pt-6"
           >
             {[
-              ["12K+", "Volunteers"],
-              ["3.2M", "Doors knocked"],
-              ["94%", "Grassroots funded"],
-            ].map(([num, label]) => (
-              <div key={label}>
-                <div className="font-display text-2xl font-medium text-mint sm:text-3xl">
-                  {num}
-                </div>
-                <div className="mt-1 text-[11px] uppercase tracking-widest text-foreground/55">
-                  {label}
+              { value: 12, suffix: 'K+', label: 'Volunteers', decimals: 0 },
+              { value: 3.2, suffix: 'M', label: 'Doors knocked', decimals: 1 },
+              { value: 94, suffix: '%', label: 'Grassroots funded', decimals: 0 },
+            ].map((stat, i) => (
+              <div key={stat.label}>
+                <Counter
+                  value={stat.value}
+                  suffix={stat.suffix}
+                  decimals={stat.decimals}
+                  delay={1.6 + i * 0.15}
+                  duration={1.6}
+                  className="font-display text-mint text-2xl font-medium sm:text-3xl"
+                />
+                <div className="text-foreground/55 mt-1 text-[11px] tracking-widest uppercase">
+                  {stat.label}
                 </div>
               </div>
             ))}
@@ -197,10 +193,10 @@ export default function Hero() {
             {/* Decorative spinning ring */}
             <div
               aria-hidden
-              className="spin-slow absolute -inset-4 rounded-[2rem] border border-dashed border-cyan/30"
+              className="spin-slow border-cyan/30 absolute -inset-4 rounded-[2rem] border border-dashed"
             />
             {/* Image frame */}
-            <div className="relative h-full w-full overflow-hidden rounded-[2rem] border border-cyan/20 bg-navy">
+            <div className="border-cyan/20 bg-navy relative h-full w-full overflow-hidden rounded-[2rem] border">
               <Image
                 src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=900&q=80"
                 alt="Morgan Hale, candidate for Congress"
@@ -209,22 +205,22 @@ export default function Hero() {
                 sizes="(max-width: 1024px) 70vw, 400px"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-transparent to-transparent" />
+              <div className="from-navy-deep/80 absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
 
               {/* Floating signature card */}
               <m.div
                 animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-6 left-6 right-6 rounded-2xl border border-cyan/25 bg-navy-deep/80 p-4 backdrop-blur"
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                className="border-cyan/25 bg-navy-deep/80 absolute right-6 bottom-6 left-6 rounded-2xl border p-4 backdrop-blur"
               >
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <div className="font-display text-lg leading-none">Morgan Hale</div>
-                    <div className="mt-1 text-[11px] uppercase tracking-widest text-cyan">
+                    <div className="text-cyan mt-1 text-[11px] tracking-widest uppercase">
                       Democrat · CA-14
                     </div>
                   </div>
-                  <svg viewBox="0 0 80 24" className="h-7 w-20 text-mint">
+                  <svg viewBox="0 0 80 24" className="text-mint h-7 w-20">
                     <path
                       d="M2 18 C 10 4, 18 24, 26 12 C 34 0, 42 22, 50 10 C 58 -2, 66 20, 78 8"
                       fill="none"
@@ -240,33 +236,14 @@ export default function Hero() {
             {/* Floating accent tag */}
             <m.div
               animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -left-6 top-10 hidden rotate-[-6deg] rounded-2xl border border-mint/40 bg-mint/10 px-4 py-2 text-xs font-medium uppercase tracking-widest text-mint backdrop-blur sm:block"
+              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+              className="border-mint/40 bg-mint/10 text-mint absolute top-10 -left-6 hidden rotate-[-6deg] rounded-2xl border px-4 py-2 text-xs font-medium tracking-widest uppercase backdrop-blur sm:block"
             >
               For the People
             </m.div>
           </m.div>
         </div>
       </m.div>
-
-      {/* Scroll indicator */}
-      <m.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex"
-      >
-        <span className="text-[10px] uppercase tracking-[0.4em] text-foreground/50">
-          Scroll
-        </span>
-        <div className="relative h-12 w-px overflow-hidden bg-cyan/20">
-          <m.div
-            animate={{ y: ["-100%", "100%"] }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-x-0 h-1/2 bg-gradient-to-b from-transparent via-mint to-transparent"
-          />
-        </div>
-      </m.div>
     </section>
-  );
+  )
 }

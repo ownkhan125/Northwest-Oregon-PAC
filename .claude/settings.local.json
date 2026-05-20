@@ -11,7 +11,30 @@
       "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-politco.js\")",
       "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-sections.js\")",
       "Bash(kill %1)",
-      "Bash(pkill -f \"next dev\")"
+      "Bash(pkill -f \"next dev\")",
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-footer.js\")",
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-responsive-audit.js\")",
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-hero-audit.js\")",
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-analyze-ref.js\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-routes.js\")",
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-counters.js\")",
+      "Bash(rm -f src/utils/cn.js)",
+      "Bash(rmdir src/utils)",
+      "Bash(grep -E \"/[A-Z][a-zA-Z0-9]*\\\\.\\(jsx|js\\)$\")",
+      "Bash(mv src/components/ui/Counter.jsx src/components/ui/_counter.jsx)",
+      "Bash(mv src/components/ui/_counter.jsx src/components/ui/counter.jsx)",
+      "Bash(mv src/components/ui/FormField.jsx src/components/ui/_form-field.jsx)",
+      "Bash(mv src/components/ui/_form-field.jsx src/components/ui/form-field.jsx)",
+      "Bash(mv src/components/ui/LegalPage.jsx src/components/ui/_legal-page.jsx)",
+      "Bash(xargs -0 sed -i -e 's|@/components/MotionProvider|@/components/motion-provider|g' -e 's|@/components/ui/AnimatedHeading|@/components/ui/animated-heading|g' -e 's|@/components/ui/Button|@/components/ui/button|g' -e 's|@/components/ui/Card|@/components/ui/card|g' -e 's|@/components/ui/Counter|@/components/ui/counter|g' -e 's|@/components/ui/FormField|@/components/ui/form-field|g' -e 's|@/components/ui/LegalPage|@/components/ui/legal-page|g' -e 's|@/components/ui/Logo|@/components/ui/logo|g' -e 's|@/components/ui/Marquee|@/components/ui/marquee|g' -e 's|@/components/ui/PageHeader|@/components/ui/page-header|g' -e 's|@/components/ui/SectionFrame|@/components/ui/section-frame|g' -e 's|@/components/ui/SplitText|@/components/ui/split-text|g' -e 's|@/sections/About|@/sections/about|g' -e 's|@/sections/Donate|@/sections/donate|g' -e 's|@/sections/Endorsements|@/sections/endorsements|g' -e 's|@/sections/Events|@/sections/events|g' -e 's|@/sections/Footer|@/sections/footer|g' -e 's|@/sections/Hero|@/sections/hero|g' -e 's|@/sections/Navbar|@/sections/navbar|g' -e 's|@/sections/News|@/sections/news|g' -e 's|@/sections/Priorities|@/sections/priorities|g' -e 's|@/sections/Vision|@/sections/vision|g' -e 's|@/sections/pages/AboutPage|@/sections/pages/about-page|g' -e 's|@/sections/pages/ContactPage|@/sections/pages/contact-page|g' -e 's|@/sections/pages/DonatePage|@/sections/pages/donate-page|g' -e 's|@/sections/pages/EventDetailPage|@/sections/pages/event-detail-page|g' -e 's|@/sections/pages/EventsPage|@/sections/pages/events-page|g' -e 's|@/sections/pages/VolunteerPage|@/sections/pages/volunteer-page|g')",
+      "Bash(sed -i 's|import { Input, Textarea, Select, Checkbox } from \"@/components/ui/form-field\";|import Input from \"@/components/ui/input\";\\\\nimport Textarea from \"@/components/ui/textarea\";\\\\nimport Select from \"@/components/ui/select\";\\\\nimport Checkbox from \"@/components/ui/checkbox\";|g' sections/pages/volunteer-page.jsx)",
+      "Bash(sed -i 's|import { Input, Select, Checkbox } from \"@/components/ui/form-field\";|import Input from \"@/components/ui/input\";\\\\nimport Select from \"@/components/ui/select\";\\\\nimport Checkbox from \"@/components/ui/checkbox\";|g' sections/pages/event-detail-page.jsx sections/pages/donate-page.jsx)",
+      "Bash(sed -i 's|import { Input, Textarea, Checkbox } from \"@/components/ui/form-field\";|import Input from \"@/components/ui/input\";\\\\nimport Textarea from \"@/components/ui/textarea\";\\\\nimport Checkbox from \"@/components/ui/checkbox\";|g' sections/pages/contact-page.jsx)",
+      "Bash(npx prettier *)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(/c/Windows/System32/taskkill.exe /F /IM node.exe)",
+      "Bash(cmd.exe //c \"taskkill /F /IM node.exe\")"
     ]
   }
 }

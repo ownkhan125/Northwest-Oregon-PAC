@@ -1,26 +1,27 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import { m } from "motion/react";
-import SectionFrame from "@/components/ui/SectionFrame";
-import SplitText from "@/components/ui/SplitText";
-import Button from "@/components/ui/Button";
-import { fadeUp, fadeRight, stagger, lineBuild } from "@/animations/variants";
+import Image from 'next/image'
+import { m } from 'motion/react'
+import SectionFrame from '@/components/ui/section-frame'
+import SplitText from '@/components/ui/split-text'
+import Button from '@/components/ui/button'
+import Counter from '@/components/ui/counter'
+import { fadeUp, fadeRight, stagger, lineBuild } from '@/animations/variants'
 
 const bullets = [
   {
-    label: "Civil rights attorney",
-    detail: "12 years defending workers, families, and small businesses.",
+    label: 'Civil rights attorney',
+    detail: '12 years defending workers, families, and small businesses.',
   },
   {
-    label: "City council, 2018–2022",
+    label: 'City council, 2018–2022',
     detail: "Passed the district's first affordable housing reform package.",
   },
   {
-    label: "Born and raised in CA-14",
-    detail: "Public school grad; first in her family to attend college.",
+    label: 'Born and raised in CA-14',
+    detail: 'Public school grad; first in her family to attend college.',
   },
-];
+]
 
 export default function About() {
   return (
@@ -32,27 +33,25 @@ export default function About() {
             by="word"
             staggerChildren={0.06}
             text="A leader who shows up, listens, and gets the work done."
-            className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-6xl"
+            className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
           />
 
           <m.div
             variants={stagger}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-15% 0px" }}
-            className="mt-8 max-w-xl space-y-5 text-foreground/75"
+            viewport={{ once: true, margin: '-15% 0px' }}
+            className="text-foreground/75 mt-8 max-w-xl space-y-5"
           >
             <m.p variants={fadeUp} className="text-base sm:text-lg">
-              Morgan grew up in a working-class family in the 14th — the
-              daughter of a nurse and a union electrician. She turned that
-              start into a career fighting for the people too often left out of
-              the conversation in Washington.
+              Morgan grew up in a working-class family in the 14th — the daughter of a nurse and a
+              union electrician. She turned that start into a career fighting for the people too
+              often left out of the conversation in Washington.
             </m.p>
             <m.p variants={fadeUp} className="text-base sm:text-lg">
-              Now she's running for Congress with a simple promise: a
-              government that actually delivers. Lower costs. Better schools.
-              Safer communities. And a democracy that answers to you, not to
-              corporate donors.
+              Now she's running for Congress with a simple promise: a government that actually
+              delivers. Lower costs. Better schools. Safer communities. And a democracy that answers
+              to you, not to corporate donors.
             </m.p>
           </m.div>
 
@@ -60,28 +59,26 @@ export default function About() {
             variants={stagger}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-15% 0px" }}
+            viewport={{ once: true, margin: '-15% 0px' }}
             className="mt-10 space-y-4"
           >
             {bullets.map((b, i) => (
               <m.li
                 key={b.label}
                 variants={fadeUp}
-                className="group flex items-start gap-5 border-t border-line py-4"
+                className="group border-line flex items-start gap-5 border-t py-4"
               >
-                <span className="mt-1 font-mono text-xs text-cyan">
-                  {String(i + 1).padStart(2, "0")}
+                <span className="text-cyan mt-1 font-mono text-xs">
+                  {String(i + 1).padStart(2, '0')}
                 </span>
                 <div className="flex-1">
-                  <div className="font-display text-xl font-medium text-foreground sm:text-2xl">
+                  <div className="font-display text-foreground text-xl font-medium sm:text-2xl">
                     {b.label}
                   </div>
-                  <div className="mt-1 text-sm text-foreground/65 sm:text-base">
-                    {b.detail}
-                  </div>
+                  <div className="text-foreground/65 mt-1 text-sm sm:text-base">{b.detail}</div>
                 </div>
                 <svg
-                  className="mt-2 h-4 w-4 text-cyan transition-transform group-hover:translate-x-1"
+                  className="text-cyan mt-2 h-4 w-4 transition-transform group-hover:translate-x-1"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -94,10 +91,10 @@ export default function About() {
           </m.ul>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button as="a" href="#priorities" variant="primary" size="lg">
+            <Button href="/about" variant="primary" size="lg">
               Read the platform
             </Button>
-            <Button as="a" href="#events" variant="ghost" size="lg">
+            <Button href="/events" variant="ghost" size="lg">
               Meet Morgan in person
             </Button>
           </div>
@@ -106,16 +103,16 @@ export default function About() {
         <m.div
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-15% 0px" }}
+          viewport={{ once: true, margin: '-15% 0px' }}
           variants={fadeRight}
           className="lg:col-span-5"
         >
           <div className="relative">
             <m.div
               variants={lineBuild}
-              className="absolute -left-3 top-4 h-px w-12 origin-left bg-cyan"
+              className="bg-cyan absolute top-4 -left-3 h-px w-12 origin-left"
             />
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-cyan/20">
+            <div className="border-cyan/20 relative aspect-[4/5] w-full overflow-hidden rounded-3xl border">
               <Image
                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80"
                 alt="Morgan Hale at a town hall meeting"
@@ -123,14 +120,14 @@ export default function About() {
                 sizes="(max-width: 1024px) 90vw, 480px"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/10 to-transparent" />
+              <div className="from-navy-deep via-navy-deep/10 absolute inset-0 bg-gradient-to-t to-transparent" />
             </div>
 
-            <div className="absolute -bottom-6 -left-6 hidden w-[280px] rounded-2xl border border-cyan/20 bg-navy/80 p-5 backdrop-blur sm:block">
-              <div className="font-display text-sm text-cyan">
+            <div className="border-cyan/20 bg-navy/80 absolute -bottom-6 -left-6 hidden w-[280px] rounded-2xl border p-5 backdrop-blur sm:block">
+              <div className="font-display text-cyan text-sm">
                 "Politics shouldn't be a game for insiders."
               </div>
-              <div className="mt-3 text-[11px] uppercase tracking-widest text-foreground/55">
+              <div className="text-foreground/55 mt-3 text-[11px] tracking-widest uppercase">
                 — Morgan, Town Hall · Oakland
               </div>
             </div>
@@ -138,14 +135,23 @@ export default function About() {
 
           <div className="mt-8 grid grid-cols-2 gap-6 lg:mt-12">
             <div>
-              <div className="font-display text-3xl font-medium text-mint">2018</div>
-              <div className="mt-1 text-xs uppercase tracking-widest text-foreground/55">
+              <Counter
+                value={2018}
+                useGrouping={false}
+                duration={2}
+                className="font-display text-mint text-3xl font-medium"
+              />
+              <div className="text-foreground/55 mt-1 text-xs tracking-widest uppercase">
                 Elected City Council
               </div>
             </div>
             <div>
-              <div className="font-display text-3xl font-medium text-mint">$0</div>
-              <div className="mt-1 text-xs uppercase tracking-widest text-foreground/55">
+              <Counter
+                value={0}
+                prefix="$"
+                className="font-display text-mint text-3xl font-medium"
+              />
+              <div className="text-foreground/55 mt-1 text-xs tracking-widest uppercase">
                 Corporate PAC money
               </div>
             </div>
@@ -153,5 +159,5 @@ export default function About() {
         </m.div>
       </div>
     </SectionFrame>
-  );
+  )
 }

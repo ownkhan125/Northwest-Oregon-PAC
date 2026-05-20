@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --navy: #093c5d;
@@ -85,10 +85,15 @@ body {
 }
 
 .btn-shine::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, transparent 25%, rgba(255, 255, 255, 0.18) 50%, transparent 75%);
+  background: linear-gradient(
+    120deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 75%
+  );
   transform: translateX(-110%);
   transition: transform 0.7s ease;
 }
@@ -116,7 +121,8 @@ body {
 }
 
 @keyframes float-soft {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate3d(0, 0, 0);
   }
   50% {

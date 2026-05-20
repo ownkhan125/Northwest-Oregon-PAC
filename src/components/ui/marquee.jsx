@@ -1,22 +1,20 @@
-"use client";
+'use client'
 
-import { cn } from "@/utils/cn";
+import PropTypes from 'prop-types'
+import { cn } from '@/lib/cn'
 
-export default function Marquee({ items, className, separator = "—" }) {
-  const doubled = [...items, ...items];
+const Marquee = ({ items, className, separator = '—' }) => {
+  const doubled = [...items, ...items]
   return (
     <div
-      className={cn(
-        "relative w-full overflow-hidden border-y border-line",
-        className,
-      )}
+      className={cn('border-line relative w-full overflow-hidden border-y', className)}
       aria-hidden
     >
-      <div className="marquee-track flex w-max gap-10 whitespace-nowrap py-5">
+      <div className="marquee-track flex w-max gap-10 py-5 whitespace-nowrap">
         {doubled.map((item, i) => (
           <span
             key={i}
-            className="flex items-center gap-10 font-display text-3xl font-medium text-foreground/85 sm:text-4xl"
+            className="font-display text-foreground/85 flex items-center gap-10 text-3xl font-medium sm:text-4xl"
           >
             <span>{item}</span>
             <span className="text-mint">{separator}</span>
@@ -24,5 +22,13 @@ export default function Marquee({ items, className, separator = "—" }) {
         ))}
       </div>
     </div>
-  );
+  )
 }
+
+Marquee.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  className: PropTypes.string,
+  separator: PropTypes.node,
+}
+
+export default Marquee
