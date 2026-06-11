@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Campaign — Social Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --navy:#093c5d; --navy-deep:#051f33; --cyan:#6fd1d7; --mint:#5df8d8; --fg:#eaf6f8; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background: #07121a; color: var(--fg); font-family: 'Inter', sans-serif;}
+  body {
+    min-height: 100vh; padding: 64px 56px;
+    background:
+      radial-gradient(900px 700px at 80% 0%, rgba(93,248,216,0.08), transparent 60%),
+      radial-gradient(800px 700px at 0% 100%, rgba(111,209,215,0.07), transparent 60%),
+      #07121a;
+  }
+  header { max-width: 1400px; margin: 0 auto 56px; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px;}
+  h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 64px; letter-spacing: -0.03em; margin: 0;}
+  h1 em { font-style: italic; font-weight: 300; background: linear-gradient(90deg, var(--cyan), var(--mint)); -webkit-background-clip: text; background-clip: text; color: transparent;}
+  .sub { font-family:'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mint);}
+  h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 32px; letter-spacing: -0.02em; margin: 56px auto 24px; max-width: 1400px;}
+  h2 em { font-style: italic; color: var(--mint);}
+  .grid-feed { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;}
+  .grid-story { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px;}
+  .card {
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(111,209,215,0.18);
+    background: var(--navy-deep);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.55);
+    text-decoration: none; color: inherit;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 40px 70px -20px rgba(93,248,216,0.18);}
+  .card .frame { position: relative; overflow: hidden; background: var(--navy-deep);}
+  .card.feed .frame { aspect-ratio: 1 / 1;}
+  .card.story .frame { aspect-ratio: 9 / 16;}
+  .card iframe { position: absolute; inset: 0; width: 1080px; height: 1080px; border: 0; transform-origin: top left; }
+  .card.story iframe { width: 1080px; height: 1920px;}
+  .card .meta { padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;}
+  .card .meta b { color: var(--mint); font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; font-size: 18px; letter-spacing: -0.01em; text-transform: none;}
+</style>
+</head>
+<body>
+  <header>
+    <h1>Lorem <em>Ipsum</em> — Campaign Pack</h1>
+    <div class="sub">20 designs · 10 feed · 10 stories</div>
+  </header>
+
+  <h2>Instagram <em>feed</em> — 1080 × 1080</h2>
+  <div class="grid-feed" id="feed"></div>
+
+  <h2>Instagram <em>stories</em> — 1080 × 1920</h2>
+  <div class="grid-story" id="story"></div>
+
+<script>
+  const feed = [
+    ['feed-01-editorial-cover.html', '01 · Editorial Cover'],
+    ['feed-02-manifesto.html', '02 · Manifesto'],
+    ['feed-03-stats.html', '03 · Stats'],
+    ['feed-04-pullquote.html', '04 · Pull Quote'],
+    ['feed-05-save-the-date.html', '05 · Save the Date'],
+    ['feed-06-priorities-grid.html', '06 · Priorities'],
+    ['feed-07-endorsement.html', '07 · Endorsement'],
+    ['feed-08-rosette.html', '08 · Rosette'],
+    ['feed-09-movement.html', '09 · Movement'],
+    ['feed-10-donate.html', '10 · Donate'],
+  ];
+  const story = [
+    ['story-01-hero.html', '01 · Hero'],
+    ['story-02-quote.html', '02 · Quote'],
+    ['story-03-stats.html', '03 · Stats'],
+    ['story-04-event.html', '04 · Event'],
+    ['story-05-manifesto.html', '05 · Manifesto'],
+    ['story-06-volunteer.html', '06 · Volunteer'],
+    ['story-07-issue.html', '07 · Issue'],
+    ['story-08-endorsement.html', '08 · Endorsement'],
+    ['story-09-trail.html', '09 · On the Trail'],
+    ['story-10-donate.html', '10 · Donate'],
+  ];
+
+  function build(arr, mountId, kind) {
+    const root = document.getElementById(mountId);
+    root.innerHTML = arr.map(([href, title]) => `
+      <a class="card ${kind}" href="${href}">
+        <div class="frame"><iframe src="${href}" scrolling="no" loading="lazy"></iframe></div>
+        <div class="meta"><b>${title.split('·')[1].trim()}</b><span>${title.split('·')[0].trim()}</span></div>
+      </a>
+    `).join('');
+    // Scale iframes to fit the card frame
+    requestAnimationFrame(() => {
+      root.querySelectorAll('.card').forEach(card => {
+        const frame = card.querySelector('.frame');
+        const iframe = card.querySelector('iframe');
+        const scale = frame.clientWidth / 1080;
+        iframe.style.transform = `scale(${scale})`;
+      });
+    });
+  }
+
+  build(feed, 'feed', 'feed');
+  build(story, 'story', 'story');
+
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.card').forEach(card => {
+      const frame = card.querySelector('.frame');
+      const iframe = card.querySelector('iframe');
+      const scale = frame.clientWidth / 1080;
+      iframe.style.transform = `scale(${scale})`;
+    });
+  });
+</script>
+</body>
+</html>

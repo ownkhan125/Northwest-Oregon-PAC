@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 01 — Editorial Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #093c5d;
+    --navy-deep: #051f33;
+    --steel: #3b7597;
+    --cyan: #6fd1d7;
+    --mint: #5df8d8;
+    --fg: #eaf6f8;
+    --muted: #9bb6c4;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(800px 600px at 30% 20%, #0a2a3d 0%, transparent 70%),
+      #0a0e12;
+    display: grid;
+    place-items: center;
+    padding: 32px;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  .canvas {
+    position: relative;
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    border-radius: 8px;
+    color: var(--fg);
+    isolation: isolate;
+    background:
+      radial-gradient(1200px 900px at 78% -8%, rgba(93,248,216,0.18), transparent 60%),
+      radial-gradient(1000px 800px at -12% 28%, rgba(111,209,215,0.14), transparent 60%),
+      radial-gradient(900px 700px at 50% 120%, rgba(59,117,151,0.32), transparent 60%),
+      linear-gradient(180deg, #051f33 0%, #03141f 100%);
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,0.9), 0 0 0 1px rgba(111,209,215,0.08);
+  }
+  .grid-overlay {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(111, 209, 215, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(111, 209, 215, 0.07) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(circle at 60% 50%, black 0%, transparent 75%);
+  }
+  .grain {
+    position: absolute; inset: 0; pointer-events: none;
+    opacity: 0.09; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .orb {
+    position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
+  }
+  .orb-1 { width: 620px; height: 620px; background: rgba(111,209,215,0.28); top: -180px; left: -180px; }
+  .orb-2 { width: 520px; height: 520px; background: rgba(93,248,216,0.18); bottom: -160px; right: -120px; }
+  .orb-3 { width: 360px; height: 360px; background: rgba(59,117,151,0.45); top: 40%; right: 18%; }
+
+  /* Top masthead bar */
+  .masthead {
+    position: absolute; top: 56px; left: 64px; right: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    z-index: 5; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase;
+  }
+  .masthead .logo { color: var(--mint); display: flex; align-items: center; gap: 12px; }
+  .masthead .logo::before { content: ''; width: 32px; height: 1px; background: var(--mint); display:inline-block; }
+  .masthead .iss { color: var(--muted); }
+
+  /* Hero portrait frame */
+  .portrait-stage {
+    position: absolute;
+    top: 130px;
+    right: 60px;
+    width: 580px;
+    height: 760px;
+    z-index: 3;
+    perspective: 1400px;
+  }
+  .portrait-frame {
+    position: absolute; inset: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(111,209,215,0.25);
+    background: var(--navy);
+    transform: rotateY(-6deg) rotateX(2deg);
+    transform-origin: center center;
+    box-shadow:
+      0 80px 140px -30px rgba(0,0,0,0.7),
+      0 0 80px -10px rgba(93,248,216,0.25),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .portrait-frame::before {
+    content: ''; position: absolute; inset: 0; z-index: 3;
+    background:
+      linear-gradient(180deg, rgba(5,31,51,0) 40%, rgba(5,31,51,0.92) 95%),
+      linear-gradient(120deg, rgba(93,248,216,0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .portrait-frame img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 22%;
+    filter: contrast(1.05) saturate(1.08);
+  }
+  .portrait-ring {
+    position: absolute; inset: -22px; border-radius: 36px;
+    border: 1px dashed rgba(111,209,215,0.35);
+    transform: rotateY(-6deg) rotateX(2deg);
+    pointer-events: none;
+  }
+  /* Floating side card with signature */
+  .sig-card {
+    position: absolute;
+    left: -60px; bottom: 60px;
+    width: 280px; padding: 20px 22px;
+    border-radius: 18px;
+    background: rgba(5,31,51,0.78);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(111,209,215,0.28);
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
+    transform: rotate(-3deg);
+    z-index: 5;
+  }
+  .sig-card .label { font-family:'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--cyan); text-transform: uppercase; margin-bottom: 8px;}
+  .sig-card .name { font-family: 'Fraunces', serif; font-size: 28px; line-height: 1; letter-spacing: -0.02em; color: var(--fg); font-weight: 500;}
+  .sig-card svg { margin-top: 10px; color: var(--mint); }
+
+  /* Big editorial type — left column */
+  .editorial {
+    position: absolute;
+    left: 64px; bottom: 110px;
+    max-width: 540px;
+    z-index: 4;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(111,209,215,0.4);
+    background: rgba(111,209,215,0.08);
+    color: var(--cyan);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    margin-bottom: 22px;
+  }
+  .eyebrow .dot {
+    position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--mint);
+    box-shadow: 0 0 0 4px rgba(93,248,216,0.18), 0 0 14px rgba(93,248,216,0.7);
+  }
+  .display-type {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 112px;
+    line-height: 0.88;
+    letter-spacing: -0.035em;
+    color: var(--fg);
+    margin: 0;
+  }
+  .display-type em {
+    font-style: italic;
+    font-weight: 300;
+    background: linear-gradient(90deg, var(--cyan), var(--mint), var(--cyan));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lede {
+    margin-top: 22px;
+    color: rgba(234,246,248,0.65);
+    font-size: 14px; line-height: 1.6;
+    max-width: 380px;
+  }
+  /* Bottom footer rail */
+  .foot {
+    position: absolute; left: 64px; right: 64px; bottom: 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(155,182,196,0.7);
+    z-index: 4;
+  }
+  .foot .rule { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(111,209,215,0.4), transparent); margin: 0 20px; }
+
+  /* Floating accent tag */
+  .accent-tag {
+    position: absolute; top: 170px; left: 60px;
+    transform: rotate(-8deg);
+    padding: 10px 18px;
+    border: 1px solid rgba(93,248,216,0.45);
+    background: rgba(93,248,216,0.1);
+    color: var(--mint);
+    border-radius: 14px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px -10px rgba(93,248,216,0.3);
+    z-index: 5;
+  }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-overlay"></div>
+
+    <header class="masthead">
+      <div class="logo">Lorem · MMXXVI</div>
+      <div class="iss">Vol. 01 / Ed. 014</div>
+    </header>
+
+    <div class="accent-tag">Lorem Ipsum Dolor</div>
+
+    <div class="portrait-stage">
+      <div class="portrait-frame">
+        <img src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=1200&q=85" alt="Portrait" />
+      </div>
+      <div class="portrait-ring"></div>
+      <div class="sig-card">
+        <div class="label">Lorem · Ipsum 14</div>
+        <div class="name">Lorem Hale</div>
+        <svg viewBox="0 0 120 28" width="120" height="28">
+          <path d="M2 20 C 12 4, 22 26, 32 14 C 42 2, 52 24, 62 12 C 72 0, 82 22, 96 10 C 106 4, 112 14, 118 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="editorial">
+      <div class="eyebrow"><span class="dot"></span>Lorem Ipsum · Dolor Sit</div>
+      <h1 class="display-type">Lorem<br/><em>ipsum.</em></h1>
+      <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ad minim.</p>
+    </div>
+
+    <div class="foot">
+      <span>Lorem / Ipsum</span>
+      <div class="rule"></div>
+      <span>№ 001 / 010</span>
+    </div>
+
+    <div class="grain"></div>
+  </div>
+</body>
+</html>

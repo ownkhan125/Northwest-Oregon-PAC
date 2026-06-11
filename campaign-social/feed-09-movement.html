@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 09 — Movement</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --navy:#093c5d; --navy-deep:#051f33; --cyan:#6fd1d7; --mint:#5df8d8; --fg:#eaf6f8; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body { min-height:100vh; background:#0a0e12; display:grid; place-items:center; padding:32px; font-family:'Inter',sans-serif; }
+  .canvas {
+    position: relative; width: 1080px; height: 1080px; overflow:hidden; color: var(--fg); border-radius:8px;
+    background:
+      radial-gradient(900px 700px at 90% 10%, rgba(93,248,216,0.16), transparent 60%),
+      radial-gradient(800px 700px at 5% 80%, rgba(111,209,215,0.18), transparent 60%),
+      linear-gradient(160deg, #03141f 0%, #051f33 50%, #06283f 100%);
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,0.9);
+    perspective: 1800px;
+  }
+  .grid-bg {
+    position: absolute; inset: 0; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(111,209,215,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(111,209,215,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+  }
+
+  .top { position: absolute; top: 64px; left: 70px; right: 70px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+  }
+  .top .l { color: var(--mint); display: flex; align-items: center; gap: 14px;}
+  .top .l::before { content: ''; width: 40px; height: 1px; background: var(--mint);}
+  .top .r { color: rgba(155,182,196,0.75);}
+
+  /* Polaroid scatter */
+  .polaroid {
+    position: absolute;
+    width: 320px;
+    background: #f5efe4;
+    padding: 14px 14px 56px;
+    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.8);
+    transform-style: preserve-3d;
+  }
+  .polaroid::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.16 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply; opacity: 0.4;
+  }
+  .polaroid img { width: 100%; height: 280px; object-fit: cover; display: block; filter: contrast(1.04) saturate(1.05);}
+  .polaroid .cap { position: absolute; bottom: 12px; left: 14px; right: 14px;
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 16px; color: #2d2218; text-align: center; letter-spacing: -0.01em;
+  }
+  .polaroid .pin {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    width: 18px; height: 18px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ff7a52, #b8442a);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  }
+
+  .p1 { top: 310px; left: 80px; transform: rotate(-7deg) rotateY(8deg); z-index: 3;}
+  .p2 { top: 350px; left: 380px; transform: rotate(4deg) rotateY(-4deg); z-index: 4;}
+  .p3 { top: 290px; left: 680px; transform: rotate(-2deg) rotateY(-10deg); z-index: 2;}
+  .p4 { top: 640px; left: 220px; transform: rotate(6deg) rotateY(6deg); z-index: 5; width: 280px;}
+  .p4 img { height: 230px; }
+  .p5 { top: 650px; left: 560px; transform: rotate(-5deg) rotateY(-2deg); z-index: 4; width: 300px;}
+  .p5 img { height: 240px; }
+
+  /* Sticky note */
+  .sticky {
+    position: absolute; top: 530px; right: 80px;
+    width: 220px; padding: 22px;
+    background: linear-gradient(160deg, #5df8d8, #6fd1d7);
+    transform: rotate(8deg);
+    box-shadow: 0 30px 50px -15px rgba(93,248,216,0.4);
+    z-index: 6;
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 22px; line-height: 1.2; color: #051f33;
+  }
+  .sticky b { display: block; font-family: 'JetBrains Mono', monospace; font-style: normal; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: #093c5d; margin-bottom: 8px; font-weight: 500;}
+
+  /* Bottom marquee with title */
+  .bottom-strip {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 100px;
+    background: linear-gradient(180deg, transparent, rgba(5,31,51,0.95));
+    display: flex; align-items: center; padding: 0 70px;
+    border-top: 1px solid rgba(111,209,215,0.18);
+  }
+  .marquee {
+    display: flex; align-items: center; gap: 30px;
+    width: 100%;
+    font-family: 'Fraunces', serif; font-weight: 400; font-style: italic; font-size: 52px; letter-spacing: -0.025em;
+    color: var(--fg);
+    white-space: nowrap;
+  }
+  .marquee .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 16px var(--mint); flex: 0 0 auto;}
+  .marquee em { font-style: normal; font-weight: 500; background: linear-gradient(90deg, var(--cyan), var(--mint)); -webkit-background-clip: text; background-clip: text; color: transparent;}
+
+  /* Headline overlay */
+  .head-overlay {
+    position: absolute; top: 140px; left: 70px; right: 70px;
+    font-family: 'Fraunces', serif; font-weight: 500; font-style: italic;
+    font-size: 64px; line-height: 0.95; letter-spacing: -0.025em;
+    color: rgba(234,246,248,0.96);
+    max-width: 560px;
+    text-shadow: 0 4px 24px rgba(5,31,51,0.6);
+    z-index: 7;
+  }
+  .head-overlay b { font-weight: 400; font-style: normal; color: var(--mint);}
+
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.08; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="grid-bg"></div>
+
+    <div class="top">
+      <div class="l">Lorem · Movement</div>
+      <div class="r">№ 09 / Grassroots</div>
+    </div>
+
+    <div class="polaroid p1">
+      <div class="pin"></div>
+      <img src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=600&q=80"/>
+      <div class="cap">Lorem ipsum dolor.</div>
+    </div>
+    <div class="polaroid p2">
+      <div class="pin"></div>
+      <img src="https://images.unsplash.com/photo-1485579149621-3123dd979885?auto=format&fit=crop&w=600&q=80"/>
+      <div class="cap">Sit amet consectetur.</div>
+    </div>
+    <div class="polaroid p3">
+      <div class="pin"></div>
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80"/>
+      <div class="cap">Eiusmod tempor.</div>
+    </div>
+    <div class="polaroid p4">
+      <div class="pin"></div>
+      <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=600&q=80"/>
+      <div class="cap">Incididunt ut.</div>
+    </div>
+    <div class="polaroid p5">
+      <div class="pin"></div>
+      <img src="https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?auto=format&fit=crop&w=600&q=80"/>
+      <div class="cap">Magna aliqua.</div>
+    </div>
+
+    <div class="sticky">
+      <b>Lorem · 14K+</b>
+      Lorem ipsum dolor sit amet consectetur.
+    </div>
+
+    <div class="head-overlay">Lorem ipsum, <b>est movement.</b></div>
+
+    <div class="bottom-strip">
+      <div class="marquee">
+        <span>Lorem ipsum</span><span class="dot"></span>
+        <em>dolor sit</em><span class="dot"></span>
+        <span>amet consectetur</span><span class="dot"></span>
+      </div>
+    </div>
+
+    <div class="grain"></div>
+  </div>
+</body>
+</html>

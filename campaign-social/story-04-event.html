@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Story 04 — Event</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --navy:#093c5d; --navy-deep:#051f33; --cyan:#6fd1d7; --mint:#5df8d8; --fg:#eaf6f8; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body { min-height:100vh; background:#0a0e12; display:grid; place-items:center; padding:32px; font-family:'Inter',sans-serif; }
+  .canvas {
+    position: relative; width: 1080px; height: 1920px; overflow:hidden; color: var(--fg); border-radius:8px;
+    background:
+      radial-gradient(700px 700px at 80% 80%, rgba(93,248,216,0.18), transparent 60%),
+      radial-gradient(600px 600px at 20% 10%, rgba(111,209,215,0.14), transparent 60%),
+      linear-gradient(180deg, #03141f, #051f33, #05283f);
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,0.9);
+    perspective: 1800px;
+  }
+  .scan { position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(60deg, transparent 0 32px, rgba(111,209,215,0.025) 32px 33px);
+    pointer-events:none;
+  }
+
+  .top { position: absolute; top: 80px; left: 70px; right: 70px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family:'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase;
+  }
+  .top .l { color: var(--mint); display: flex; align-items: center; gap: 14px;}
+  .top .l::before { content: ''; width: 50px; height: 1px; background: var(--mint);}
+
+  .kicker {
+    position: absolute; top: 180px; left: 70px; right: 70px;
+    font-family:'JetBrains Mono', monospace; font-size: 14px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--cyan);
+    display: flex; align-items: center; gap: 18px;
+  }
+  .kicker .bar { width: 60px; height: 1px; background: var(--cyan);}
+
+  .display {
+    position: absolute; top: 230px; left: 70px; right: 70px;
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 150px; line-height: 0.88; letter-spacing: -0.04em;
+  }
+  .display em { font-style: italic; font-weight: 300; background: linear-gradient(90deg, var(--cyan), var(--mint), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent;}
+
+  /* Vertical ticket */
+  .ticket {
+    position: absolute; top: 700px; left: 100px; right: 100px;
+    height: 980px;
+    border-radius: 36px;
+    overflow: hidden;
+    background: linear-gradient(160deg, rgba(9,60,93,0.6), rgba(5,31,51,0.95));
+    backdrop-filter: blur(22px) saturate(160%);
+    border: 1px solid rgba(111,209,215,0.3);
+    box-shadow: 0 60px 100px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.06);
+    transform: rotate(-1.5deg);
+    display: flex; flex-direction: column;
+  }
+  .ticket .photo {
+    position: relative; height: 420px; overflow: hidden;
+  }
+  .ticket .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: contrast(1.05) saturate(1.1) brightness(0.95);}
+  .ticket .photo::after { content:''; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(5,31,51,0.2) 0%, transparent 30%, rgba(5,31,51,0.85) 100%);
+  }
+  .ticket .photo .ph-tag {
+    position: absolute; top: 28px; left: 28px;
+    padding: 8px 18px; border-radius: 999px;
+    background: rgba(93,248,216,0.18); border: 1px solid rgba(93,248,216,0.5);
+    backdrop-filter: blur(10px);
+    color: var(--mint); font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+  }
+  .ticket .photo .date-big {
+    position: absolute; bottom: 28px; left: 28px;
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 110px; line-height: 0.85; letter-spacing: -0.04em;
+    color: var(--fg);
+    text-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  }
+  .ticket .photo .date-big i { font-style: italic; font-weight: 300; color: var(--mint); display: block; font-size: 38px; letter-spacing: 0; margin-top: 8px;}
+
+  /* Perforation strip */
+  .perf {
+    position: relative;
+    height: 32px;
+    border-top: 2px dashed rgba(111,209,215,0.35);
+    border-bottom: 2px dashed rgba(111,209,215,0.35);
+    margin: 0 50px;
+  }
+  .perf::before, .perf::after {
+    content:''; position: absolute; top: 50%; transform: translateY(-50%);
+    width: 32px; height: 32px; border-radius: 50%; background: #051f33; border: 1px solid rgba(111,209,215,0.2);
+  }
+  .perf::before { left: -64px; } .perf::after { right: -64px; }
+
+  .ticket .info { padding: 40px; flex: 1; display: flex; flex-direction: column; justify-content: space-between;}
+  .ticket .info .row { display: flex; gap: 50px;}
+  .ticket .info .field .l { font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--cyan); margin-bottom: 8px;}
+  .ticket .info .field .v { font-family: 'Fraunces', serif; font-weight: 500; font-size: 30px; letter-spacing: -0.015em; color: var(--fg);}
+  .ticket .info .field .v i { font-style: italic; font-weight: 400; color: var(--mint);}
+
+  .ticket .qr {
+    width: 80px; height: 80px; border-radius: 10px;
+    background:
+      conic-gradient(from 0deg, #051f33 25%, var(--mint) 0 50%, #051f33 0 75%, var(--mint) 0),
+      #051f33;
+    background-blend-mode: difference;
+    padding: 4px;
+  }
+  .ticket .qr-inner {
+    width: 100%; height: 100%; border-radius: 6px;
+    background-image:
+      linear-gradient(90deg, #051f33 50%, transparent 50%),
+      linear-gradient(0deg, #051f33 50%, transparent 50%);
+    background-size: 8px 8px;
+    background-color: var(--mint);
+  }
+
+  /* Floating star */
+  .star {
+    position: absolute; top: 660px; right: 50px;
+    width: 110px; height: 110px;
+    color: var(--mint);
+    filter: drop-shadow(0 14px 30px rgba(93,248,216,0.5));
+    transform: rotate(14deg);
+    z-index: 5;
+  }
+
+  .foot { position: absolute; bottom: 50px; left: 70px; right: 70px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(155,182,196,0.6);
+  }
+
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.07; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="scan"></div>
+
+    <div class="top">
+      <div class="l">Lorem · Ipsum</div>
+      <div>№ 04</div>
+    </div>
+
+    <div class="kicker"><span class="bar"></span>Lorem · Save · Ipsum</div>
+    <h1 class="display">Lorem<br/><em>ipsum.</em></h1>
+
+    <svg class="star" viewBox="0 0 100 100" fill="currentColor">
+      <path d="M50 4 L60 38 L96 40 L67 60 L78 96 L50 74 L22 96 L33 60 L4 40 L40 38 Z"/>
+    </svg>
+
+    <div class="ticket">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80"/>
+        <div class="ph-tag">Lorem · Ipsum</div>
+        <div class="date-big">14<i>Ipsum · MMXXVI</i></div>
+      </div>
+      <div class="perf"></div>
+      <div class="info">
+        <div class="row">
+          <div class="field">
+            <div class="l">Lorem</div>
+            <div class="v">Lorem ipsum<i> dolor sit.</i></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <div class="l">Sit Amet</div>
+            <div class="v">Consectetur Ave.</div>
+          </div>
+          <div class="field">
+            <div class="l">Hora</div>
+            <div class="v">07:00 PM</div>
+          </div>
+        </div>
+        <div class="row" style="align-items: flex-end; justify-content: space-between;">
+          <div class="field">
+            <div class="l">Sectio · No.</div>
+            <div class="v" style="font-size: 56px;">14</div>
+          </div>
+          <div class="qr"><div class="qr-inner"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span>Lorem / Ipsum</span>
+      <span>Dolor · MMXXVI</span>
+    </div>
+
+    <div class="grain"></div>
+  </div>
+</body>
+</html>

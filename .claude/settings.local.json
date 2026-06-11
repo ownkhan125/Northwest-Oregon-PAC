@@ -35,7 +35,9 @@
       "Bash(taskkill /F /IM node.exe)",
       "Bash(/c/Windows/System32/taskkill.exe /F /IM node.exe)",
       "Bash(cmd.exe //c \"taskkill /F /IM node.exe\")",
-      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-select.js\")"
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-select.js\")",
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-campaign-verify.js\")",
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-campaign-reverify.js\")"
     ]
   }
 }
