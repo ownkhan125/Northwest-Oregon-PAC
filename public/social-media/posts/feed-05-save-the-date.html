@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 05 — Save the Date</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --navy:#093c5d; --navy-deep:#051f33; --cyan:#6fd1d7; --mint:#5df8d8; --fg:#eaf6f8; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body { min-height:100vh; background:#0a0e12; display:grid; place-items:center; padding:32px; font-family:'Inter',sans-serif; }
+  .canvas {
+    position: relative; width: 1080px; height: 1080px; overflow:hidden; color: var(--fg); border-radius:8px;
+    background:
+      radial-gradient(900px 700px at 70% 0%, rgba(93,248,216,0.16), transparent 60%),
+      radial-gradient(800px 600px at 10% 100%, rgba(111,209,215,0.18), transparent 60%),
+      linear-gradient(150deg, #03141f 0%, #051f33 60%, #06283f 100%);
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,0.9);
+    perspective: 1800px;
+  }
+  /* Diagonal scanline */
+  .scan { position: absolute; inset: 0;
+    background-image: repeating-linear-gradient( 45deg, transparent 0 28px, rgba(111,209,215,0.03) 28px 29px);
+    pointer-events:none; }
+  .top-rail {
+    position: absolute; top: 70px; left: 70px; right: 70px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(155,182,196,0.85);
+  }
+  .top-rail .b { color: var(--mint); }
+  /* Vertical "SAVE THE DATE" rotated label */
+  .vlabel {
+    position: absolute; left: 60px; top: 50%; transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left center;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.6em; text-transform: uppercase;
+    color: rgba(111,209,215,0.7); white-space: nowrap;
+  }
+  /* Massive 3D date numerals */
+  .date-stage {
+    position: absolute; top: 200px; left: 130px; right: 130px;
+    transform-style: preserve-3d;
+  }
+  .date-num {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 380px; line-height: 0.82; letter-spacing: -0.05em;
+    color: var(--fg);
+    position: relative;
+  }
+  .date-num .shade {
+    position: absolute; left: 6px; top: 6px;
+    color: rgba(93,248,216,0.18); z-index: -1;
+  }
+  .date-num .stroke {
+    position: absolute; left: 12px; top: 12px;
+    color: transparent; -webkit-text-stroke: 1px rgba(111,209,215,0.35); z-index: -2;
+  }
+  .month-row {
+    display: flex; align-items: flex-end; gap: 28px; margin-top: 8px;
+    font-family: 'Fraunces', serif; font-weight: 400; font-style: italic; font-size: 88px; letter-spacing: -0.02em;
+    background: linear-gradient(90deg, var(--cyan), var(--mint));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .month-row .year {
+    font-family: 'JetBrains Mono', monospace; font-style: normal;
+    font-size: 22px; letter-spacing: 0.4em;
+    color: var(--mint);
+    padding-bottom: 18px;
+    -webkit-text-fill-color: var(--mint);
+  }
+  /* Ticket strip with image */
+  .ticket {
+    position: absolute; bottom: 70px; left: 130px; right: 130px;
+    height: 230px;
+    border-radius: 24px;
+    border: 1px solid rgba(111,209,215,0.28);
+    overflow: hidden;
+    box-shadow: 0 50px 100px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.06);
+    display: grid; grid-template-columns: 280px 1fr 200px;
+    background: rgba(5,31,51,0.6);
+    backdrop-filter: blur(20px);
+    transform: rotate(-1.4deg);
+  }
+  .ticket .img { position: relative; overflow: hidden; }
+  .ticket .img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .ticket .img::after { content:''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(5,31,51,0.6));}
+  .ticket .info { padding: 26px 30px; display: flex; flex-direction: column; justify-content: space-between; border-left: 1px dashed rgba(111,209,215,0.4); border-right: 1px dashed rgba(111,209,215,0.4);}
+  .ticket .info .label { font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--cyan); }
+  .ticket .info .h { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.05; color: var(--fg); margin-top:8px;}
+  .ticket .info .meta { display: flex; gap: 30px; font-family: 'Inter', sans-serif; font-size: 12px; color: rgba(234,246,248,0.7);}
+  .ticket .info .meta span b { color: var(--mint); font-weight: 500; display: block; font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; }
+  .ticket .stub { display: grid; place-items: center; padding: 26px; gap: 12px;}
+  .ticket .stub .seat { font-family: 'Fraunces', serif; font-size: 56px; line-height: 1; color: var(--mint); font-weight: 500; letter-spacing: -0.02em;}
+  .ticket .stub .seat-l { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(155,182,196,0.7); text-align: center;}
+  .ticket .punch { position: absolute; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; background: #0a0e12; }
+  .ticket .p-l { left: 268px; }
+  .ticket .p-r { right: 188px; }
+
+  /* Floating star */
+  .star {
+    position: absolute; top: 120px; right: 100px;
+    width: 90px; height: 90px;
+    color: var(--mint);
+    filter: drop-shadow(0 12px 30px rgba(93,248,216,0.5));
+    transform: rotate(14deg);
+  }
+  .ring {
+    position: absolute; top: 200px; right: 70px; width: 220px; height: 220px;
+    border: 1px dashed rgba(111,209,215,0.35); border-radius: 50%;
+    pointer-events: none;
+  }
+  .ring::after { content:''; position: absolute; inset: 30px;
+    border: 1px solid rgba(111,209,215,0.18); border-radius: 50%; }
+
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.08; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="scan"></div>
+    <div class="ring"></div>
+    <svg class="star" viewBox="0 0 100 100" fill="currentColor">
+      <path d="M50 4 L60 38 L96 40 L67 60 L78 96 L50 74 L22 96 L33 60 L4 40 L40 38 Z"/>
+    </svg>
+
+    <div class="top-rail">
+      <div>Lorem · Ipsum</div>
+      <div class="b">№ 05 / Event</div>
+    </div>
+
+    <div class="vlabel">— Lorem · Ipsum · Dolor —</div>
+
+    <div class="date-stage">
+      <div class="date-num">
+        14
+        <span class="shade">14</span>
+        <span class="stroke">14</span>
+      </div>
+      <div class="month-row">
+        <span>ipsum</span>
+        <span class="year">/ MMXXVI</span>
+      </div>
+    </div>
+
+    <div class="ticket">
+      <div class="img"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80"/></div>
+      <div class="punch p-l"></div>
+      <div class="info">
+        <div>
+          <div class="label">Lorem / Ipsum</div>
+          <div class="h">Lorem ipsum dolor.</div>
+        </div>
+        <div class="meta">
+          <span><b>Sit Amet</b>Consectetur Ave.</span>
+          <span><b>Hora</b>7:00 PM</span>
+        </div>
+      </div>
+      <div class="punch p-r"></div>
+      <div class="stub">
+        <div class="seat-l">Lorem No.</div>
+        <div class="seat">14</div>
+      </div>
+    </div>
+
+    <div class="grain"></div>
+  </div>
+</body>
+</html>

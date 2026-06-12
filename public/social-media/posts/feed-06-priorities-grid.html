@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 06 — Priorities</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --navy:#093c5d; --navy-deep:#051f33; --cyan:#6fd1d7; --mint:#5df8d8; --fg:#eaf6f8; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body { min-height:100vh; background:#0a0e12; display:grid; place-items:center; padding:32px; font-family:'Inter',sans-serif; }
+  .canvas {
+    position: relative; width: 1080px; height: 1080px; overflow:hidden; color: var(--fg); border-radius:8px;
+    background:
+      radial-gradient(900px 700px at 0% 30%, rgba(111,209,215,0.16), transparent 60%),
+      radial-gradient(900px 800px at 100% 90%, rgba(93,248,216,0.18), transparent 60%),
+      linear-gradient(170deg, #03141f 0%, #051f33 50%, #062a44 100%);
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,0.9);
+  }
+  .grid-bg {
+    position: absolute; inset: 0; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(111,209,215,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(111,209,215,0.06) 1px, transparent 1px);
+    background-size: 90px 90px;
+    mask-image: radial-gradient(circle at 50% 50%, black, transparent 85%);
+  }
+
+  .top {
+    position: absolute; top: 64px; left: 70px; right: 70px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+  }
+  .top .l { color: var(--mint); display: flex; align-items: center; gap: 14px; }
+  .top .l::before { content:''; width: 40px; height: 1px; background: var(--mint);}
+  .top .r { color: rgba(155,182,196,0.75); }
+
+  .heading {
+    position: absolute; top: 130px; left: 70px; right: 70px;
+    font-family: 'Fraunces', serif; font-weight: 400; font-style: italic;
+    font-size: 76px; line-height: 0.95; letter-spacing: -0.025em;
+    color: var(--fg);
+  }
+  .heading b { font-style: normal; font-weight: 500;
+    background: linear-gradient(90deg, var(--cyan), var(--mint));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .grid {
+    position: absolute; top: 340px; left: 70px; right: 70px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 220px 220px 220px;
+    gap: 16px;
+  }
+  .cell {
+    position: relative;
+    border-radius: 22px;
+    border: 1px solid rgba(111,209,215,0.22);
+    background: linear-gradient(160deg, rgba(9,60,93,0.55), rgba(5,31,51,0.85));
+    backdrop-filter: blur(16px);
+    padding: 24px 22px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px -20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  .cell .id {
+    font-family:'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--cyan);
+  }
+  .cell .title {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 26px; line-height: 1.05; letter-spacing: -0.015em;
+    margin-top: 14px; color: var(--fg);
+  }
+  .cell .body {
+    font-size: 11px; line-height: 1.55; color: rgba(234,246,248,0.65); margin-top: 10px;
+  }
+  .icon {
+    position: absolute; top: 20px; right: 20px;
+    width: 36px; height: 36px;
+    color: var(--mint); opacity: 0.95;
+  }
+  /* HERO image cell */
+  .cell-img {
+    grid-column: 1 / 2; grid-row: 1 / 3;
+    padding: 0;
+    background: var(--navy);
+  }
+  .cell-img img { width: 100%; height: 100%; object-fit: cover; }
+  .cell-img::after { content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, transparent 50%, rgba(5,31,51,0.92) 100%),
+      linear-gradient(50deg, rgba(93,248,216,0.08), transparent 50%);}
+  .cell-img .overlay {
+    position: absolute; left: 22px; right: 22px; bottom: 22px;
+    z-index: 2;
+  }
+  .cell-img .overlay .stat-num {
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 90px; line-height: 0.9; letter-spacing: -0.04em;
+    background: linear-gradient(90deg, var(--cyan), var(--mint));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .cell-img .overlay .stat-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: rgba(234,246,248,0.85); margin-top: 6px;
+  }
+  /* Featured large issue cell — span row 3 across 2 */
+  .cell-feature {
+    grid-column: 1 / 3; grid-row: 3 / 4;
+    background: linear-gradient(120deg, rgba(93,248,216,0.18) 0%, rgba(9,60,93,0.7) 70%);
+    border-color: rgba(93,248,216,0.45);
+  }
+  .cell-feature .title { font-size: 36px; max-width: 80%;}
+  .cell-feature .arrow {
+    position: absolute; right: 22px; bottom: 22px;
+    width: 50px; height: 50px; border-radius: 50%;
+    border: 1px solid var(--mint); color: var(--mint);
+    display: grid; place-items: center;
+    background: rgba(93,248,216,0.08);
+  }
+
+  .footer-row {
+    position: absolute; bottom: 60px; left: 70px; right: 70px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(155,182,196,0.6);
+  }
+
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.08; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="grid-bg"></div>
+
+    <div class="top">
+      <div class="l">Lorem · Ipsum</div>
+      <div class="r">№ 06 / Pillars</div>
+    </div>
+
+    <div class="heading">Lorem ipsum dolor <b>sit amet.</b></div>
+
+    <div class="grid">
+      <div class="cell cell-img">
+        <img src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=900&q=80" />
+        <div class="overlay">
+          <div class="stat-num">01</div>
+          <div class="stat-label">Lorem ipsum dolor</div>
+        </div>
+      </div>
+
+      <div class="cell">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12 L12 4 L21 12 M5 11 V20 H19 V11"/></svg>
+        <div class="id">02 / Lorem</div>
+        <div class="title">Lorem ipsum dolor.</div>
+        <div class="body">Lorem ipsum dolor sit amet consectetur adipiscing elit sed.</div>
+      </div>
+
+      <div class="cell">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 L20 7 V12 C20 17 16 20 12 21 C8 20 4 17 4 12 V7 Z"/></svg>
+        <div class="id">03 / Ipsum</div>
+        <div class="title">Consectetur adipi.</div>
+        <div class="body">Sed do eiusmod tempor incididunt ut labore et dolore magna.</div>
+      </div>
+
+      <div class="cell">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>
+        <div class="id">04 / Dolor</div>
+        <div class="title">Eiusmod tempor.</div>
+        <div class="body">Ut enim ad minim veniam quis nostrud exercitation ullamco.</div>
+      </div>
+
+      <div class="cell">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21 C 6 17, 3 13, 3 9 a4 4 0 0 1 9 -2 a4 4 0 0 1 9 2 c 0 4 -3 8 -9 12 Z"/></svg>
+        <div class="id">05 / Sit</div>
+        <div class="title">Veniam quis nost.</div>
+        <div class="body">Ullamco laboris nisi ut aliquip ex ea commodo consequat duis.</div>
+      </div>
+
+      <div class="cell cell-feature">
+        <div class="id">06 / Amet · Priora</div>
+        <div class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        <div class="arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-row">
+      <span>Lorem / Ipsum</span>
+      <span>Dolor · MMXXVI</span>
+    </div>
+
+    <div class="grain"></div>
+  </div>
+</body>
+</html>

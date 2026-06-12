@@ -12,6 +12,7 @@ const links = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Events', href: '/events' },
+  { label: 'Social', href: '/social-media-posts' },
   { label: 'Volunteer', href: '/volunteer' },
   { label: 'Contact', href: '/contact' },
 ]

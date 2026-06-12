@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 02 — Manifesto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --navy:#093c5d; --navy-deep:#051f33; --cyan:#6fd1d7; --mint:#5df8d8; --fg:#eaf6f8; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh; background: #0a0e12;
+    display: grid; place-items: center; padding: 32px;
+    font-family: 'Inter', sans-serif;
+  }
+  .canvas {
+    position: relative; width: 1080px; height: 1080px; overflow: hidden; color: var(--fg); border-radius: 8px;
+    background:
+      radial-gradient(700px 600px at 20% 100%, rgba(93,248,216,0.22), transparent 60%),
+      radial-gradient(900px 700px at 90% 0%, rgba(111,209,215,0.18), transparent 60%),
+      linear-gradient(180deg, #03141f 0%, #051f33 60%, #07273e 100%);
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,0.9);
+  }
+  /* Soft vignette */
+  .vignette { position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 60%, transparent 50%, rgba(0,0,0,0.4));
+    pointer-events: none; }
+  /* Side image strip — masked portrait */
+  .portrait-strip {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 320px;
+    border-left: 1px solid rgba(111,209,215,0.18);
+    overflow: hidden;
+  }
+  .portrait-strip img {
+    width: 100%; height: 100%; object-fit: cover; object-position: 70% center;
+    filter: grayscale(0.2) contrast(1.1) saturate(0.95) brightness(0.85);
+  }
+  .portrait-strip::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(5,31,51,0.95) 0%, rgba(5,31,51,0.2) 30%, transparent 60%),
+                linear-gradient(180deg, rgba(5,31,51,0.6), rgba(5,31,51,0.2), rgba(5,31,51,0.9));
+  }
+  .strip-glow {
+    position: absolute; right: 280px; top: 40%; width: 220px; height: 220px;
+    border-radius: 50%; background: rgba(93,248,216,0.35); filter: blur(80px);
+  }
+
+  /* Big numbered label */
+  .number-mark {
+    position: absolute; top: 80px; left: 80px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--cyan);
+    display: flex; align-items: center; gap: 18px;
+  }
+  .number-mark .bar { width: 60px; height: 1px; background: var(--cyan); }
+
+  /* Main manifesto type, broken across lines */
+  .manifesto {
+    position: absolute; left: 80px; top: 200px; right: 380px;
+  }
+  .word {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    line-height: 0.86;
+    letter-spacing: -0.035em;
+    color: var(--fg);
+  }
+  .l1 { font-size: 160px; font-weight: 300; }
+  .l2 {
+    font-size: 200px; font-style: italic; font-weight: 300;
+    background: linear-gradient(120deg, var(--cyan) 0%, var(--mint) 50%, var(--cyan) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    margin-left: 30px;
+  }
+  .l3 { font-size: 160px; font-weight: 500; margin-left: 60px;}
+  .l4 { font-size: 200px; font-weight: 300; font-style: italic; color: var(--mint);}
+
+  /* Bottom rule with mono */
+  .meta-row {
+    position: absolute; left: 80px; bottom: 90px; right: 380px;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 32px;
+  }
+  .body-copy {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; line-height: 1.6; color: rgba(234,246,248,0.7);
+    max-width: 380px;
+  }
+  .stamp {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: rgba(111,209,215,0.7);
+    text-align: right;
+  }
+  .stamp .big { display: block; font-family: 'Fraunces', serif; font-size: 38px; color: var(--mint); letter-spacing: -0.02em; margin-bottom: 4px; font-weight:500;}
+
+  /* Decorative rotating glyph */
+  .glyph {
+    position: absolute; top: 60px; right: 360px; width: 90px; height: 90px;
+    border: 1px dashed rgba(93,248,216,0.4); border-radius: 50%;
+    display: grid; place-items: center;
+  }
+  .glyph::after { content:''; width: 64px; height: 64px; border: 1px solid rgba(93,248,216,0.55); border-radius: 50%;}
+  .glyph::before {
+    content:'★'; position: absolute; color: var(--mint); font-size: 14px;
+  }
+
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.08; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="strip-glow"></div>
+    <div class="portrait-strip">
+      <img src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=900&q=85" alt="" />
+    </div>
+
+    <div class="number-mark"><span class="bar"></span>№ 02 / Manifesto</div>
+
+    <div class="glyph"></div>
+
+    <div class="manifesto">
+      <span class="word l1">Lorem</span>
+      <span class="word l2">ipsum</span>
+      <span class="word l3">dolor</span>
+      <span class="word l4">sit.</span>
+    </div>
+
+    <div class="meta-row">
+      <p class="body-copy">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+      <div class="stamp"><span class="big">14</span>Lorem / Ipsum</div>
+    </div>
+
+    <div class="vignette"></div>
+    <div class="grain"></div>
+  </div>
+</body>
+</html>

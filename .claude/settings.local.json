@@ -37,7 +37,24 @@
       "Bash(cmd.exe //c \"taskkill /F /IM node.exe\")",
       "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-select.js\")",
       "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-campaign-verify.js\")",
-      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-campaign-reverify.js\")"
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-campaign-reverify.js\")",
+      "Bash(cp C:/Users/General/Documents/GitHub/politco/campaign-social/feed-*.html C:/Users/General/Documents/GitHub/politco/campaign-social/story-*.html C:/Users/General/Documents/GitHub/politco/public/social-media/posts/)",
+      "Bash(cp C:/Users/General/Documents/GitHub/politco/campaign-social/_previews/*.png C:/Users/General/Documents/GitHub/politco/public/social-media/previews/)",
+      "Bash(node -e \"require\\('./lib/helpers'\\).detectDevServers\\(\\).then\\(s => console.log\\(JSON.stringify\\(s\\)\\)\\)\")",
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-social-gallery.js\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/social-media-posts)",
+      "Bash(curl -s http://localhost:3000/social-media-posts)",
+      "Bash(PORT=3010 npx next dev -p 3010)",
+      "Bash(npx next *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3456/social-media-posts)",
+      "Bash(curl -s http://localhost:3456/social-media-posts)",
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-social-quick.js\")",
+      "Bash(netstat -ano -p tcp)",
+      "Bash(taskkill -F -PID 11832)",
+      "Bash(taskkill -F -PID 4808)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3010/)",
+      "Bash(node run.js \"C:/Users/General/AppData/Local/Temp/playwright-test-social-final.js\")",
+      "Bash(taskkill *)"
     ]
   }
 }

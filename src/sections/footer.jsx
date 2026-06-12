@@ -12,6 +12,7 @@ const columns = [
     links: [
       { label: 'About Morgan', href: '/about' },
       { label: 'Events', href: '/events' },
+      { label: 'Social posts', href: '/social-media-posts' },
       { label: 'Donate', href: '/donate' },
     ],
   },
