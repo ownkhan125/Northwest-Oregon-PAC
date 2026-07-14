@@ -1,46 +1,21 @@
 'use client'
 
-import Image from 'next/image'
 import { m } from 'motion/react'
 import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
-import Card from '@/components/ui/card'
-import { cardReveal, stagger } from '@/animations/variants'
-
-const articles = [
-  {
-    tag: 'Statement',
-    date: 'May 12, 2026',
-    title: 'Morgan unveils plan to cap insulin at $25 for every American.',
-    image:
-      'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    tag: 'Press',
-    date: 'May 4, 2026',
-    title: "The Chronicle: 'Hale is the candidate to beat in CA-14.'",
-    image:
-      'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    tag: 'Field',
-    date: 'April 27, 2026',
-    title: 'Volunteers knock 14,000 doors over the weekend across the district.',
-    image:
-      'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80',
-  },
-]
+import { fadeUp, stagger } from '@/animations/variants'
+import { antiSocialismStatement } from '@/data/pac'
 
 export default function News() {
   return (
-    <SectionFrame id="news" eyebrow="Latest Updates" number="05" withGrid>
+    <SectionFrame id="statement" eyebrow="Where we stand" number="05">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <SplitText
           as="h2"
           by="word"
           staggerChildren={0.05}
-          text="From the trail."
-          className="font-display text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
+          text="Economic freedom is the engine."
+          className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
         />
       </div>
 
@@ -49,35 +24,27 @@ export default function News() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-15% 0px' }}
-        className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3"
+        className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-12"
       >
-        {articles.map((a) => (
-          <m.article key={a.title} variants={cardReveal} className="block">
-            <Card className="group h-full overflow-hidden p-0" tilt={false} interactive={false}>
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
-                <Image
-                  src={a.image}
-                  alt={a.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="from-navy-deep/90 via-navy-deep/20 absolute inset-0 bg-gradient-to-t to-transparent" />
-                <span className="border-cyan/30 bg-navy-deep/70 text-mint absolute top-5 left-5 rounded-full border px-3 py-1 text-[10px] tracking-widest uppercase backdrop-blur">
-                  {a.tag}
-                </span>
-              </div>
-              <div className="p-7">
-                <div className="text-cyan/80 font-mono text-[11px] tracking-widest uppercase">
-                  {a.date}
-                </div>
-                <h3 className="font-display text-foreground mt-4 text-2xl leading-tight font-medium">
-                  {a.title}
-                </h3>
-              </div>
-            </Card>
-          </m.article>
-        ))}
+        <m.p
+          variants={fadeUp}
+          className="text-foreground/85 lg:col-span-8 text-base leading-relaxed sm:text-lg"
+        >
+          {antiSocialismStatement}
+        </m.p>
+
+        <m.aside
+          variants={fadeUp}
+          className="border-primary/25 bg-surface-alt/50 rounded-2xl border p-6 lg:col-span-4"
+        >
+          <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+            The takeaway
+          </div>
+          <p className="font-display text-primary mt-3 text-xl leading-snug sm:text-2xl">
+            We reject the false promise of socialism and stand for the proven engine of human
+            flourishing: economic freedom.
+          </p>
+        </m.aside>
       </m.div>
     </SectionFrame>
   )

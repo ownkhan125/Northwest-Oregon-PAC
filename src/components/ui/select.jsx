@@ -148,7 +148,7 @@ const Select = ({
             BASE_FIELD,
             'flex cursor-pointer items-center justify-between gap-3 pr-3 text-left',
             isPlaceholder && 'text-foreground/45',
-            open && 'border-mint bg-mint/[0.04]',
+            open && 'border-primary bg-surface',
             className,
           )}
         >
@@ -157,7 +157,7 @@ const Select = ({
             aria-hidden
             animate={{ rotate: open ? 180 : 0 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="text-cyan grid h-7 w-7 shrink-0 place-items-center rounded-md"
+            className="text-primary grid h-7 w-7 shrink-0 place-items-center rounded-md"
           >
             <svg
               width="14"
@@ -186,7 +186,7 @@ const Select = ({
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -4, scale: 0.98 }}
               transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-              className="border-cyan/25 bg-navy-deep/95 absolute top-full right-0 left-0 z-50 mt-2 max-h-64 overflow-auto rounded-xl border p-1.5 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] backdrop-blur-xl"
+              className="border-border bg-surface absolute top-full right-0 left-0 z-50 mt-2 max-h-64 overflow-auto rounded-xl border p-1.5 shadow-[0_30px_60px_-20px_rgba(46,69,56,0.35)] backdrop-blur-xl"
             >
               {options.map((opt, i) => {
                 const isSelected = opt.value === value && !opt.disabled
@@ -205,8 +205,8 @@ const Select = ({
                     className={cn(
                       'flex cursor-pointer items-center justify-between gap-3 rounded-lg px-3 py-2 text-sm transition-colors',
                       opt.disabled && 'text-foreground/35 cursor-not-allowed',
-                      !opt.disabled && isSelected && 'bg-mint/15 text-mint',
-                      !opt.disabled && !isSelected && isActive && 'bg-cyan/10 text-foreground',
+                      !opt.disabled && isSelected && 'bg-primary text-primary-fg',
+                      !opt.disabled && !isSelected && isActive && 'bg-surface-alt/70 text-foreground',
                       !opt.disabled && !isSelected && !isActive && 'text-foreground/85',
                     )}
                   >

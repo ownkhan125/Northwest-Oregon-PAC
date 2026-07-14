@@ -23,8 +23,8 @@ const Card = ({
   const rx = useTransform(sy, [-50, 50], [4, -4])
   const ry = useTransform(sx, [-50, 50], [-4, 4])
 
-  const glow = useMotionTemplate`radial-gradient(320px circle at ${mx}% ${my}%, rgba(93,248,216,0.22), rgba(111,209,215,0.08) 28%, transparent 60%)`
-  const border = useMotionTemplate`radial-gradient(180px circle at ${mx}% ${my}%, rgba(93,248,216,0.55), transparent 70%)`
+  const glow = useMotionTemplate`radial-gradient(320px circle at ${mx}% ${my}%, color-mix(in oklab, var(--highlight) 18%, transparent), color-mix(in oklab, var(--accent) 35%, transparent) 28%, transparent 60%)`
+  const border = useMotionTemplate`radial-gradient(180px circle at ${mx}% ${my}%, color-mix(in oklab, var(--primary) 55%, transparent), transparent 70%)`
 
   function onMove(e) {
     const el = ref.current
@@ -60,21 +60,19 @@ const Card = ({
         transformPerspective: 1000,
       }}
       className={cn(
-        'group border-card-border relative isolate overflow-hidden rounded-2xl border bg-[rgba(9,60,93,0.45)] backdrop-blur-md transition-[border-color] duration-500',
-        interactive && 'hover:border-mint/40 cursor-pointer',
+        'group border-border bg-surface relative isolate overflow-hidden rounded-2xl border transition-[border-color] duration-500',
+        interactive && 'hover:border-primary/40 cursor-pointer',
         className,
       )}
       {...rest}
     >
       {hoverGlow && (
         <>
-          {/* Soft spotlight follows cursor */}
           <m.div
             aria-hidden
             style={{ background: glow }}
             className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
-          {/* Animated border glow */}
           <m.div
             aria-hidden
             style={{

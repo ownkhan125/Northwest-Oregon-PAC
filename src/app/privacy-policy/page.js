@@ -1,29 +1,30 @@
 import LegalPage from '@/components/ui/legal-page'
+import { pac } from '@/data/pac'
 
 export const metadata = {
-  title: 'Privacy Policy | Morgan Hale for Congress',
-  description: 'How we collect, use, and protect your personal information.',
+  title: 'Privacy Policy | Northwest Oregon PAC',
+  description: 'How Northwest Oregon PAC collects, uses, and protects your personal information.',
 }
 
 const sections = [
   {
     heading: 'Information we collect',
     body: [
-      'We collect information you voluntarily provide when you sign up to volunteer, donate, or contact the campaign — including your name, email, phone number, mailing address, and (where required) employer and occupation for FEC compliance.',
+      'We collect information you voluntarily provide when you sign up to volunteer, donate, or contact the PAC — including your name, email, phone number, mailing address, and (where required by law) employer name, occupation, and employer city and state.',
       'We also collect basic device and analytics information when you visit our website, such as IP address, browser type, and pages viewed, to help us improve the site.',
     ],
   },
   {
     heading: 'How we use your information',
     body: [
-      'We use your information to communicate with you about the campaign, process donations and volunteer signups, comply with applicable election law, and improve our outreach and website.',
+      'We use your information to communicate with you about the PAC, process donations and volunteer signups, comply with applicable Oregon election law, and improve our outreach and website.',
       'We do not sell your personal information to third parties.',
     ],
   },
   {
     heading: 'How we share your information',
     body: [
-      'We share information with service providers (such as our email and donation processors) only as needed to operate the campaign, and with government agencies where required by law (for example, FEC reporting).',
+      'We share information with service providers (such as email and donation processors) only as needed to operate the PAC, and with government agencies where required by law — including the Oregon Secretary of State for state reporting requirements.',
     ],
   },
   {
@@ -37,7 +38,7 @@ const sections = [
   {
     heading: 'Your rights',
     body: [
-      'You have the right to access, correct, or delete personal information we hold about you, and to opt out of certain processing, as provided by applicable law. To exercise these rights, contact us at privacy@morganhale.com.',
+      `You have the right to access, correct, or delete personal information we hold about you, and to opt out of certain processing, as provided by applicable law. To exercise these rights, contact us at ${pac.contact.generalEmail}.`,
     ],
   },
   {
@@ -61,7 +62,7 @@ const sections = [
   {
     heading: 'Contact',
     body: [
-      'Questions about this policy? Email privacy@morganhale.com or write to: Morgan Hale for Congress, 412 Riverside Ave, Oakwood, CA 94602.',
+      `Questions about this policy? Email ${pac.contact.generalEmail}, call ${pac.contact.phone}, or write to Northwest Oregon PAC, ${pac.contact.mailingAddress}. Filing #${pac.filingNumber}, EIN ${pac.ein}, regulated by the ${pac.regulator}.`,
     ],
   },
 ]
@@ -70,11 +71,11 @@ export default function Page() {
   return (
     <LegalPage
       eyebrow="Legal"
-      number="05"
+      number="07"
       title="Privacy Policy"
-      lastUpdated="May 1, 2026"
+      lastUpdated="July 2026"
       intro={
-        'Morgan Hale for Congress (the "Committee," "we," or "us") is committed to protecting the privacy of our visitors, supporters, and contributors. This Privacy Policy explains how we collect, use, and safeguard your personal information.'
+        'Northwest Oregon PAC (the "PAC," "we," or "us") is committed to protecting the privacy of our visitors, supporters, and contributors. This Privacy Policy explains how we collect, use, and safeguard your personal information.'
       }
       sections={sections}
     />

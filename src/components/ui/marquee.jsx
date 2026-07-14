@@ -7,7 +7,7 @@ const Marquee = ({ items, className, separator = '—' }) => {
   const doubled = [...items, ...items]
   return (
     <div
-      className={cn('border-line relative w-full overflow-hidden border-y', className)}
+      className={cn('border-primary/15 relative w-full overflow-hidden border-y', className)}
       aria-hidden
     >
       <div className="marquee-track flex w-max gap-10 py-5 whitespace-nowrap">
@@ -17,7 +17,7 @@ const Marquee = ({ items, className, separator = '—' }) => {
             className="font-display text-foreground/85 flex items-center gap-10 text-3xl font-medium sm:text-4xl"
           >
             <span>{item}</span>
-            <span className="text-mint">{separator}</span>
+            <span className="text-primary">{separator}</span>
           </span>
         ))}
       </div>

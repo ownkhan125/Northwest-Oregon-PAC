@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import SectionFrame from '@/components/ui/section-frame'
@@ -8,66 +7,39 @@ import SplitText from '@/components/ui/split-text'
 import Card from '@/components/ui/card'
 import Button from '@/components/ui/button'
 import { cardReveal, fadeUp, stagger, EASE, lineBuild } from '@/animations/variants'
+import { foundingStory, team, candidates, focusAreas, differentiator, pac } from '@/data/pac'
 
-const story = [
+const storyBlocks = [
   {
-    title: 'California Native',
-    body: 'Morgan grew up in the 14th — the daughter of a nurse and a union electrician. Public school graduate, first in her family to attend college.',
+    title: 'Why we exist',
+    body: 'To support residents, candidates, and values that have been left behind in a region too easily conceded by both state and national party leadership.',
   },
   {
-    title: 'Twelve Years a Civil Rights Attorney',
-    body: "Twelve years at the Bay Area Workers' Defense Center — defending workers, immigrants, and small businesses against bad actors and broken systems.",
+    title: 'Who we serve',
+    body: 'Republicans, moderates, and common-sense voters across our Democratic-leaning communities — the people paying the taxes, running the businesses, and keeping our neighborhoods together.',
   },
   {
-    title: 'City Council, 2018 – 2022',
-    body: "Elected at 29. Passed the district's first affordable housing reform package, expanded paid family leave, and tripled climate resilience funding.",
+    title: 'How we work',
+    body: 'We pool local resources to build lasting infrastructure — recruiting competitive candidates, funding organized outreach, and giving center-right voters a voice again.',
   },
   {
-    title: 'Why Congress',
-    body: "Because Washington isn't broken by accident — it's broken by design. The 14th deserves a representative who shows up, listens, and votes their conscience.",
+    title: 'What we believe',
+    body: 'No community should be written off. Prosperity, accountability, and common sense still have a home in Northwest Oregon.',
   },
-]
-
-const expertise = [
-  {
-    eyebrow: '2022 Public Service Award',
-    title: 'Bay Area Civic League',
-    body: "Recognized for leadership on the district's affordable housing reform package.",
-  },
-  {
-    eyebrow: 'State Legislature Testimony',
-    title: 'California State Senate',
-    body: 'Invited testimony on tenant protections, climate jobs, and small-business permitting.',
-  },
-  {
-    eyebrow: 'Professional Credentials',
-    title: 'J.D. · Berkeley Law',
-    body: 'B.A. Political Science, UC Davis. Member, California State Bar (since 2014).',
-  },
-]
-
-const timeline = [
-  ['2008', 'B.A. Political Science, UC Davis'],
-  ['2014', 'J.D. Berkeley Law — top of class'],
-  ['2014 – 2026', "Civil rights attorney, Bay Area Workers' Defense Center"],
-  ['2018', 'Elected to City Council at 29'],
-  ['2020', "Passed district's affordable housing reform package"],
-  ['2022', 'Re-elected with 71% of the vote'],
-  ['2026', 'Announced campaign for the 14th Congressional District'],
 ]
 
 const values = [
   {
+    title: 'Prosperity',
+    body: 'Private enterprise, small business, and economic freedom — the proven engine of opportunity.',
+  },
+  {
     title: 'Accountability',
-    body: 'Every vote published, every reason explained. No corporate PAC money. No lobbyist gifts. Ever.',
+    body: 'Every taxpayer dollar tracked. Every program measured. Real transparency, real consequences.',
   },
   {
-    title: 'Evidence over ideology',
-    body: 'We solve the problem in front of us with the best evidence available — not the prettiest talking points.',
-  },
-  {
-    title: 'Community first',
-    body: "Real listening, real follow-through. The 14th doesn't need another insider; it needs a neighbor.",
+    title: 'Common sense',
+    body: 'Solving the problem in front of us with the best evidence available — not ideology.',
   },
 ]
 
@@ -75,14 +47,14 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
-        eyebrow="About the Candidate"
+        eyebrow="About the PAC"
         number="01"
-        title="A leader who shows up, listens, and gets it done."
-        description="Born in the 14th. Trained as a lawyer. Tested in office. Running for Congress to deliver results — not headlines."
+        title="A voice for Northwest Oregon."
+        description={pac.tagline}
       />
 
-      {/* Lead bio */}
-      <SectionFrame eyebrow="The Story" number="02" withGrid>
+      {/* Founding story */}
+      <SectionFrame eyebrow="The Story" number="02">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <m.div
             initial="hidden"
@@ -93,24 +65,29 @@ export default function AboutPage() {
           >
             <m.div
               variants={lineBuild}
-              className="bg-cyan absolute top-4 -left-3 h-px w-12 origin-left"
+              className="bg-primary absolute top-4 -left-3 h-px w-12 origin-left"
             />
-            <div className="border-cyan/20 relative aspect-[4/5] w-full overflow-hidden rounded-3xl border">
-              <Image
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80"
-                alt="Morgan Hale portrait"
-                fill
-                sizes="(max-width: 1024px) 90vw, 480px"
-                className="object-cover"
-              />
-              <div className="from-navy-deep via-navy-deep/10 absolute inset-0 bg-gradient-to-t to-transparent" />
-            </div>
-            <div className="border-cyan/20 bg-navy/80 absolute -bottom-6 -left-6 hidden w-[280px] rounded-2xl border p-5 backdrop-blur sm:block">
-              <div className="font-display text-cyan text-sm">
-                "Politics shouldn't be a game for insiders."
+            <div className="border-primary/25 bg-surface-alt/60 relative w-full overflow-hidden rounded-3xl border p-8 sm:p-10">
+              <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+                What makes us different
               </div>
-              <div className="text-foreground/55 mt-3 text-[11px] tracking-widest uppercase">
-                — Morgan, Town Hall · Oakland
+              <p className="font-display text-primary mt-4 text-xl leading-snug sm:text-2xl">
+                “{differentiator}”
+              </p>
+              <div className="border-primary/15 mt-8 border-t pt-6">
+                <div className="text-foreground/60 font-mono text-[10px] tracking-[0.3em] uppercase">
+                  Focus areas
+                </div>
+                <div className="text-foreground/85 mt-3 flex flex-wrap gap-2">
+                  {focusAreas.map((f) => (
+                    <span
+                      key={f}
+                      className="border-primary/25 rounded-full border px-3 py-1 text-xs"
+                    >
+                      {f}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </m.div>
@@ -120,9 +97,13 @@ export default function AboutPage() {
               as="h2"
               by="word"
               staggerChildren={0.05}
-              text="A neighbor first. A leader second."
-              className="font-display text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl"
+              text="A region left behind — until now."
+              className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl"
             />
+
+            <p className="text-foreground/85 mt-8 max-w-2xl text-base leading-relaxed sm:text-lg">
+              {foundingStory.long}
+            </p>
 
             <m.div
               variants={stagger}
@@ -131,12 +112,12 @@ export default function AboutPage() {
               viewport={{ once: true, margin: '-15% 0px' }}
               className="mt-10 space-y-7"
             >
-              {story.map((s) => (
-                <m.div key={s.title} variants={fadeUp} className="border-line border-l pl-6">
+              {storyBlocks.map((s) => (
+                <m.div key={s.title} variants={fadeUp} className="border-primary/20 border-l pl-6">
                   <h3 className="font-display text-foreground text-xl font-medium sm:text-2xl">
                     {s.title}
                   </h3>
-                  <p className="text-foreground/70 mt-2">{s.body}</p>
+                  <p className="text-foreground/75 mt-2">{s.body}</p>
                 </m.div>
               ))}
             </m.div>
@@ -144,15 +125,19 @@ export default function AboutPage() {
         </div>
       </SectionFrame>
 
-      {/* Expertise cards */}
-      <SectionFrame eyebrow="Proven Expertise" number="03">
+      {/* Team */}
+      <SectionFrame eyebrow="Our Team" number="03">
         <SplitText
           as="h2"
           by="word"
           staggerChildren={0.05}
-          text="Recognized leadership. Proven results."
-          className="font-display text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
+          text="Local leadership. Real experience."
+          className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
         />
+        <p className="text-foreground/75 mt-6 max-w-2xl">
+          Northwest Oregon PAC is led by seasoned volunteers already active in our
+          communities — from county government to state party leadership.
+        </p>
         <m.div
           variants={stagger}
           initial="hidden"
@@ -160,80 +145,116 @@ export default function AboutPage() {
           viewport={{ once: true, margin: '-15% 0px' }}
           className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3"
         >
-          {expertise.map((e) => (
-            <m.div key={e.title} variants={cardReveal}>
+          {team.map((member) => (
+            <m.div key={member.name} variants={cardReveal}>
               <Card className="h-full p-7" interactive={false} tilt={false}>
-                <div className="text-cyan/80 font-mono text-[10px] tracking-[0.25em] uppercase">
-                  {e.eyebrow}
+                <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+                  Leadership
                 </div>
-                <h3 className="font-display text-foreground mt-4 text-2xl leading-tight font-medium">
-                  {e.title}
+                <h3 className="font-display text-foreground mt-4 text-2xl leading-tight font-medium sm:text-3xl">
+                  {member.name}
                 </h3>
-                <p className="text-foreground/70 mt-3 text-sm leading-relaxed">{e.body}</p>
+                <ul className="mt-4 space-y-2">
+                  {member.roles.map((role) => (
+                    <li
+                      key={role}
+                      className="text-foreground/80 flex items-start gap-2 text-sm leading-snug"
+                    >
+                      <span
+                        aria-hidden
+                        className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+                      />
+                      {role}
+                    </li>
+                  ))}
+                </ul>
               </Card>
             </m.div>
           ))}
         </m.div>
       </SectionFrame>
 
-      {/* Timeline */}
-      <SectionFrame eyebrow="Career of Service" number="04" withGrid>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
+      {/* Candidates */}
+      <SectionFrame id="candidates" eyebrow="Candidates" number="04">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
             <SplitText
               as="h2"
               by="word"
               staggerChildren={0.05}
-              text="From the courtroom to the council chamber."
-              className="font-display text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl"
+              text="Candidates we’re supporting in 2026."
+              className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
             />
-            <p className="text-foreground/70 mt-6 max-w-md">
-              Two decades of preparation for the moment. A track record built on listening,
-              learning, and getting things done.
-            </p>
           </div>
-
-          <m.ol
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-15% 0px' }}
-            className="relative lg:col-span-7"
-          >
-            <m.span
-              variants={lineBuild}
-              className="bg-line absolute top-2 left-[5rem] h-full w-px origin-top sm:left-[6rem]"
-            />
-            {timeline.map(([year, label], i) => (
-              <m.li
-                key={year + i}
-                variants={fadeUp}
-                className="relative grid grid-cols-[5rem_1fr] items-baseline gap-6 pb-8 sm:grid-cols-[6rem_1fr]"
-              >
-                <span className="font-display text-mint text-2xl font-medium sm:text-3xl">
-                  {year}
-                </span>
-                <span className="text-foreground/85 relative pl-6">
-                  <span
-                    aria-hidden
-                    className="bg-mint absolute top-2 -left-1 grid h-2.5 w-2.5 place-items-center rounded-full"
-                  />
-                  {label}
-                </span>
-              </m.li>
-            ))}
-          </m.ol>
+          <p className="text-foreground/75 max-w-md lg:col-span-5">
+            State house, state legislature, and Congressional District 1 — candidates from
+            across Northwest Oregon who share our values and are ready to serve.
+          </p>
         </div>
+
+        <m.ul
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-15% 0px' }}
+          className="mt-14 divide-forest/15 border-primary/15 divide-y rounded-2xl border"
+        >
+          {candidates.map((c) => (
+            <m.li
+              key={c.slug}
+              variants={fadeUp}
+              className="grid grid-cols-1 items-center gap-4 p-6 sm:grid-cols-[1fr_auto_auto] sm:gap-8 sm:p-7"
+            >
+              <div>
+                <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+                  {c.year} · {c.state}
+                </div>
+                <div className="font-display text-foreground mt-2 text-2xl font-medium sm:text-3xl">
+                  {c.name}
+                </div>
+              </div>
+              <div className="text-foreground/80 text-sm sm:text-base">{c.office}</div>
+              <div>
+                {c.link ? (
+                  <a
+                    href={c.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="border-primary/30 text-primary hover:border-primary hover:bg-surface-alt/60 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs tracking-widest uppercase transition-colors"
+                  >
+                    Visit campaign
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M7 17L17 7M9 7h8v8" />
+                    </svg>
+                  </a>
+                ) : (
+                  <span className="text-foreground/50 text-xs tracking-widest uppercase">
+                    Site coming soon
+                  </span>
+                )}
+              </div>
+            </m.li>
+          ))}
+        </m.ul>
       </SectionFrame>
 
       {/* Values */}
-      <SectionFrame eyebrow="What Drives Morgan" number="05">
+      <SectionFrame eyebrow="What we stand for" number="05">
         <SplitText
           as="h2"
           by="word"
           staggerChildren={0.05}
           text="Three values. No compromises."
-          className="font-display text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
+          className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
         />
         <m.div
           variants={stagger}
@@ -245,13 +266,13 @@ export default function AboutPage() {
           {values.map((v, i) => (
             <m.div key={v.title} variants={cardReveal}>
               <Card className="h-full p-7" interactive={false}>
-                <div className="text-cyan/80 font-mono text-[11px] tracking-[0.3em] uppercase">
+                <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 <h3 className="font-display text-foreground mt-4 text-2xl leading-tight font-medium">
                   {v.title}
                 </h3>
-                <p className="text-foreground/70 mt-3 text-sm leading-relaxed">{v.body}</p>
+                <p className="text-foreground/75 mt-3 text-sm leading-relaxed">{v.body}</p>
               </Card>
             </m.div>
           ))}
@@ -259,31 +280,27 @@ export default function AboutPage() {
       </SectionFrame>
 
       {/* CTA */}
-      <section className="relative overflow-x-clip pt-8 pb-24">
-        <div
-          aria-hidden
-          className="bg-mint/15 pointer-events-none absolute top-1/2 left-1/2 -z-10 h-[40vmin] w-[40vmin] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
-        />
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+      <section className="relative isolate overflow-x-clip pt-8 pb-24">
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-15% 0px' }}
             transition={{ duration: 0.9, ease: EASE }}
-            className="border-cyan/25 bg-navy-deep/70 rounded-3xl border p-8 backdrop-blur-xl sm:p-12 lg:p-16"
+            className="border-primary/25 bg-surface-alt rounded-3xl border p-8 sm:p-12 lg:p-16"
           >
             <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-xl">
-                <div className="text-cyan font-mono text-[11px] tracking-[0.3em] uppercase">
-                  Join the campaign
+                <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
+                  Join us
                 </div>
-                <h2 className="font-display mt-4 text-3xl leading-[1.05] font-medium tracking-tight sm:text-4xl md:text-5xl">
-                  Meet Morgan on the trail.
+                <h2 className="font-display text-foreground mt-4 text-3xl leading-[1.05] font-medium tracking-tight sm:text-4xl md:text-5xl">
+                  Ready to help build the future of Northwest Oregon?
                 </h2>
               </div>
               <div className="flex flex-wrap gap-3">
-                <Button href="/events" size="lg">
-                  See upcoming events
+                <Button href="/donate" size="lg">
+                  Donate
                 </Button>
                 <Button href="/volunteer" variant="secondary" size="lg">
                   Volunteer

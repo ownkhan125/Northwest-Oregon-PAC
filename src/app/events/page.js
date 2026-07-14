@@ -1,9 +1,9 @@
 import EventsPage from '@/sections/pages/events-page'
 
 export const metadata = {
-  title: 'Events | Morgan Hale for Congress',
+  title: 'Events | Northwest Oregon PAC',
   description:
-    'Upcoming town halls, canvass launches, and meet-and-greets with Morgan Hale across CA-14.',
+    'Upcoming events with Northwest Oregon PAC — town halls, canvasses, phone banks, and candidate meet-and-greets across our region.',
 }
 
 export default function Page() {

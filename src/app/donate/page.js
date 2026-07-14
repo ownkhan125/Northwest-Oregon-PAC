@@ -1,9 +1,9 @@
 import DonatePage from '@/sections/pages/donate-page'
 
 export const metadata = {
-  title: 'Donate | Morgan Hale for Congress',
+  title: 'Donate | Northwest Oregon PAC',
   description:
-    'Chip in and change Washington. 94% grassroots funded. No corporate PACs. No lobbyists. Just a campaign powered by you.',
+    'Chip in to Northwest Oregon PAC. Your contribution funds candidates, organizing, and outreach across Northwest Oregon.',
 }
 
 export default function Page() {

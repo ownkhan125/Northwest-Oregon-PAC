@@ -5,10 +5,8 @@ import { m } from 'motion/react'
 import { cn } from '@/lib/cn'
 import { EASE_SOFT } from '@/animations/variants'
 
-const SectionFrame = ({ id, eyebrow, number, className, children, withGrid = false }) => (
+const SectionFrame = ({ id, eyebrow, number, className, children }) => (
   <section id={id} className={cn('relative isolate w-full', className)}>
-    {withGrid && <div aria-hidden className="grid-overlay" />}
-
     <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
       <div className="relative">
         <m.div
@@ -16,14 +14,14 @@ const SectionFrame = ({ id, eyebrow, number, className, children, withGrid = fal
           whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true, margin: '-15% 0px' }}
           transition={{ duration: 0.9, ease: EASE_SOFT }}
-          className="from-cyan/60 via-cyan/20 absolute -top-6 right-0 left-0 h-px origin-left bg-gradient-to-r to-transparent"
+          className="from-primary/60 via-primary/20 absolute -top-6 right-0 left-0 h-px origin-left bg-gradient-to-r to-transparent"
         />
         <m.div
           initial={{ scaleY: 0, opacity: 0 }}
           whileInView={{ scaleY: 1, opacity: 1 }}
           viewport={{ once: true, margin: '-15% 0px' }}
           transition={{ duration: 0.7, delay: 0.1, ease: EASE_SOFT }}
-          className="bg-cyan/60 absolute -top-6 left-0 h-6 w-px origin-top"
+          className="bg-primary/60 absolute -top-6 left-0 h-6 w-px origin-top"
         />
 
         {(eyebrow || number) && (
@@ -32,10 +30,10 @@ const SectionFrame = ({ id, eyebrow, number, className, children, withGrid = fal
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-15% 0px' }}
             transition={{ delay: 0.5, duration: 0.7, ease: EASE_SOFT }}
-            className="text-cyan/80 mb-6 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase"
+            className="text-highlight mb-6 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase"
           >
-            {number && <span className="text-mint">{number}</span>}
-            {number && eyebrow && <span className="bg-cyan/40 h-px w-8" />}
+            {number && <span className="text-primary">{number}</span>}
+            {number && eyebrow && <span className="bg-highlight/40 h-px w-8" />}
             {eyebrow && <span>{eyebrow}</span>}
           </m.div>
         )}
@@ -52,7 +50,6 @@ SectionFrame.propTypes = {
   number: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,
-  withGrid: PropTypes.bool,
 }
 
 export default SectionFrame

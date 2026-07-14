@@ -4,16 +4,17 @@ import { useEffect, useRef, useState } from 'react'
 import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Marquee from '@/components/ui/marquee'
+import { mission, pac } from '@/data/pac'
 
-const words = [
-  'Opportunity',
+const marqueeWords = [
+  'Prosperity',
   'Accountability',
-  'Fairness',
-  'Service',
-  'Climate Action',
-  'Democracy',
-  'Dignity',
-  'Common Ground',
+  'Public Safety',
+  'Education',
+  'Reliable Energy',
+  'Small Business',
+  'Common Sense',
+  'Community',
 ]
 
 const HEADING_CLASS =
@@ -40,7 +41,7 @@ export default function Vision() {
   const y = useTransform(scrollYProgress, [0, 1], [40, -40])
 
   return (
-    <section id="vision" ref={ref} className="relative overflow-x-clip py-24 sm:py-32">
+    <section id="vision" ref={ref} className="relative isolate overflow-x-clip py-24 sm:py-32">
       <div aria-hidden className="grain" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
@@ -49,17 +50,17 @@ export default function Vision() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-20% 0px' }}
           transition={{ duration: 0.7 }}
-          className="text-cyan/80 mb-6 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase"
+          className="text-highlight mb-6 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase"
         >
-          <span className="text-mint">03</span>
-          <span className="bg-cyan/40 h-px w-8" />
-          <span>The Vision</span>
+          <span className="text-primary">03</span>
+          <span className="bg-highlight/40 h-px w-8" />
+          <span>Our Mission</span>
         </m.div>
 
         <m.div style={{ x }} className="will-change-transform">
           <SplitText
             as="h2"
-            text="Government that works"
+            text="A region worth"
             by="word"
             staggerChildren={0.08}
             className={`${HEADING_CLASS} text-foreground`}
@@ -68,12 +69,12 @@ export default function Vision() {
         <m.div style={{ x: x2 }} className="will-change-transform">
           <SplitText
             as="h2"
-            text="for working people."
+            text="fighting for."
             by="word"
             staggerChildren={0.08}
             delay={0.15}
             className={HEADING_CLASS}
-            charClassName="bg-gradient-to-r from-cyan via-mint to-cyan bg-clip-text text-transparent"
+            charClassName="text-primary"
           />
         </m.div>
 
@@ -83,11 +84,9 @@ export default function Vision() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-15% 0px' }}
             transition={{ duration: 0.7 }}
-            className="text-foreground/75 text-base leading-relaxed sm:text-lg lg:col-span-7 lg:text-xl"
+            className="text-foreground/80 text-base leading-relaxed sm:text-lg lg:col-span-7 lg:text-xl"
           >
-            For too long, the people of this district have been told to lower their expectations. We
-            don't believe that. We believe in a country that builds, invests, listens, and acts — a
-            Congress that's worthy of the workers, dreamers, and families it serves.
+            {mission}
           </m.p>
 
           <div className="lg:col-span-5">
@@ -96,22 +95,24 @@ export default function Vision() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-15% 0px' }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="border-cyan/20 bg-navy/40 rounded-2xl border p-6 backdrop-blur"
+              className="border-primary/25 bg-surface-alt/60 rounded-2xl border p-6"
             >
-              <div className="text-cyan/80 font-mono text-[10px] tracking-[0.3em] uppercase">
-                A pledge in writing
+              <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+                A promise to our region
               </div>
-              <p className="font-display text-foreground mt-3 text-lg leading-snug sm:text-xl md:text-2xl">
-                "I won't take a dime of corporate PAC money. I won't take lobbyist gifts. And I'll
-                publish every vote — with my reason — online, every week."
+              <p className="font-display text-primary mt-3 text-lg leading-snug sm:text-xl md:text-2xl">
+                “{pac.shortPromise}”
               </p>
+              <div className="text-foreground/60 mt-4 flex items-center gap-2 text-[10px] tracking-widest uppercase">
+                {pac.values.join(' · ')}
+              </div>
             </m.div>
           </div>
         </m.div>
       </div>
 
       <div className="mt-20 sm:mt-24">
-        <Marquee items={words} />
+        <Marquee items={marqueeWords} />
       </div>
     </section>
   )

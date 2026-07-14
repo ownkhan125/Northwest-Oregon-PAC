@@ -9,9 +9,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const event = getEvent(slug)
-  if (!event) return { title: 'Event not found | Morgan Hale for Congress' }
+  if (!event) return { title: 'Event not found | Northwest Oregon PAC' }
   return {
-    title: `${event.title} | Morgan Hale for Congress`,
+    title: `${event.title} | Northwest Oregon PAC`,
     description: event.excerpt,
   }
 }

@@ -1,9 +1,9 @@
 import VolunteerPage from '@/sections/pages/volunteer-page'
 
 export const metadata = {
-  title: 'Volunteer | Morgan Hale for Congress',
+  title: 'Volunteer | Northwest Oregon PAC',
   description:
-    'Join the team. Knock doors, make calls, host events. This campaign runs on people, not PAC money.',
+    'Join Northwest Oregon PAC. Canvass, phone bank, help plan events, or run for office — we’re building infrastructure for the whole region.',
 }
 
 export default function Page() {

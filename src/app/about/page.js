@@ -1,9 +1,9 @@
 import AboutPage from '@/sections/pages/about-page'
 
 export const metadata = {
-  title: 'About Morgan Hale | Morgan Hale for Congress',
+  title: 'About | Northwest Oregon PAC',
   description:
-    'Born and raised in the 14th District. Civil rights attorney. City council member. Now running for Congress to deliver real results for working families.',
+    'Northwest Oregon PAC exists to support the residents, candidates, and values overlooked in a region too easily conceded by both state and national party leadership.',
 }
 
 export default function Page() {

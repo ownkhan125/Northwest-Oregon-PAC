@@ -6,14 +6,17 @@ import { usePathname } from 'next/navigation'
 import { AnimatePresence, m, useMotionValueEvent, useScroll } from 'motion/react'
 import Logo from '@/components/ui/logo'
 import Button from '@/components/ui/button'
+import ThemeToggle from '@/components/ui/theme-toggle'
 import { cn } from '@/lib/cn'
 
 const links = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
+  { label: 'Ask', href: '/ask' },
+  { label: 'Blogs', href: '/blogs' },
   { label: 'Events', href: '/events' },
-  { label: 'Social', href: '/social-media-posts' },
   { label: 'Volunteer', href: '/volunteer' },
+  { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -35,7 +38,6 @@ export default function Navbar() {
     }
   }, [open])
 
-  // Close mobile menu on route change
   useEffect(() => {
     setOpen(false)
   }, [pathname])
@@ -54,8 +56,8 @@ export default function Navbar() {
           className={cn(
             'flex w-full max-w-7xl items-center justify-between gap-4 rounded-full border px-3 py-2 transition-all duration-500 sm:px-4',
             scrolled
-              ? 'border-cyan/20 bg-navy/70 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.6)] backdrop-blur-xl'
-              : 'border-white/5 bg-white/[0.02] backdrop-blur',
+              ? 'border-border bg-surface/85 shadow-[0_18px_50px_-30px_rgba(46,69,56,0.35)] backdrop-blur-xl'
+              : 'border-border/60 bg-surface/50 backdrop-blur',
           )}
         >
           <Logo />
@@ -72,13 +74,15 @@ export default function Navbar() {
                   href={link.href}
                   className={cn(
                     'group relative inline-flex rounded-full px-4 py-2 text-sm transition-colors',
-                    isActive(link.href) ? 'text-mint' : 'text-foreground/75 hover:text-mint',
+                    isActive(link.href)
+                      ? 'text-primary'
+                      : 'text-foreground/70 hover:text-primary',
                   )}
                 >
                   <span className="relative z-10">{link.label}</span>
                   <span
                     className={cn(
-                      'bg-mint absolute inset-x-3 bottom-1 h-px origin-left transition-transform duration-300',
+                      'bg-primary absolute inset-x-3 bottom-1 h-px origin-left transition-transform duration-300',
                       isActive(link.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
                     )}
                   />
@@ -88,6 +92,7 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
+            <ThemeToggle />
             <Button href="/donate" variant="primary" size="md">
               Donate
               <svg
@@ -105,25 +110,28 @@ export default function Navbar() {
             </Button>
           </div>
 
-          <button
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            className="text-foreground hover:border-mint/50 hover:text-mint relative grid h-10 w-10 cursor-pointer place-items-center rounded-full border border-white/10 transition-colors lg:hidden"
-          >
-            <span className="sr-only">Menu</span>
-            <m.span
-              animate={open ? { rotate: 45, y: 3 } : { rotate: 0, y: -4 }}
-              className="absolute h-px w-5 bg-current"
-            />
-            <m.span
-              animate={open ? { opacity: 0 } : { opacity: 1 }}
-              className="absolute h-px w-5 bg-current"
-            />
-            <m.span
-              animate={open ? { rotate: -45, y: -3 } : { rotate: 0, y: 4 }}
-              className="absolute h-px w-5 bg-current"
-            />
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setOpen((v) => !v)}
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              className="text-foreground hover:border-primary/50 hover:text-primary border-border relative grid h-10 w-10 cursor-pointer place-items-center rounded-full border transition-colors"
+            >
+              <span className="sr-only">Menu</span>
+              <m.span
+                animate={open ? { rotate: 45, y: 3 } : { rotate: 0, y: -4 }}
+                className="absolute h-px w-5 bg-current"
+              />
+              <m.span
+                animate={open ? { opacity: 0 } : { opacity: 1 }}
+                className="absolute h-px w-5 bg-current"
+              />
+              <m.span
+                animate={open ? { rotate: -45, y: -3 } : { rotate: 0, y: 4 }}
+                className="absolute h-px w-5 bg-current"
+              />
+            </button>
+          </div>
         </div>
       </m.header>
 
@@ -135,7 +143,7 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 lg:hidden"
           >
-            <div className="bg-navy-deep/95 absolute inset-0 backdrop-blur-xl" />
+            <div className="bg-background/95 absolute inset-0 backdrop-blur-xl" />
             <m.nav
               initial={{ opacity: 0 }}
               animate={{
@@ -157,7 +165,9 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className={cn(
                       'font-display block text-4xl font-medium sm:text-5xl',
-                      isActive(link.href) ? 'text-mint' : 'text-foreground hover:text-mint',
+                      isActive(link.href)
+                        ? 'text-primary'
+                        : 'text-foreground hover:text-primary',
                     )}
                   >
                     {link.label}

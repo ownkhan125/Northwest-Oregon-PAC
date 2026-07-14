@@ -15,8 +15,8 @@ const LegalPage = ({ eyebrow, number, title, lastUpdated, intro, sections }) => 
         description={`Last updated: ${lastUpdated}`}
       />
 
-      <section className="relative overflow-x-clip py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:px-12">
+      <section className="relative isolate overflow-x-clip py-16 sm:py-20 lg:py-24">
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:px-12">
           {/* Sticky table of contents */}
           <aside className="hidden lg:col-span-3 lg:block">
             <m.div
@@ -26,7 +26,7 @@ const LegalPage = ({ eyebrow, number, title, lastUpdated, intro, sections }) => 
               transition={{ duration: 0.8 }}
               className="sticky top-32"
             >
-              <div className="text-cyan/85 font-mono text-[10px] tracking-[0.3em] uppercase">
+              <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
                 Contents
               </div>
               <ol className="mt-4 space-y-2 text-sm">
@@ -34,9 +34,9 @@ const LegalPage = ({ eyebrow, number, title, lastUpdated, intro, sections }) => 
                   <li key={s.heading}>
                     <a
                       href={`#sec-${i}`}
-                      className="text-foreground/70 hover:text-mint cursor-pointer transition-colors"
+                      className="text-foreground/75 hover:text-primary cursor-pointer transition-colors"
                     >
-                      <span className="text-mint">{String(i + 1).padStart(2, '0')}.</span>{' '}
+                      <span className="text-primary">{String(i + 1).padStart(2, '0')}.</span>{' '}
                       {s.heading}
                     </a>
                   </li>
@@ -52,7 +52,7 @@ const LegalPage = ({ eyebrow, number, title, lastUpdated, intro, sections }) => 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
-                className="text-foreground/80 max-w-2xl text-base leading-relaxed sm:text-lg"
+                className="text-foreground/85 max-w-2xl text-base leading-relaxed sm:text-lg"
               >
                 {intro}
               </m.p>
@@ -70,17 +70,17 @@ const LegalPage = ({ eyebrow, number, title, lastUpdated, intro, sections }) => 
                   key={s.heading}
                   id={`sec-${i}`}
                   variants={fadeUp}
-                  className="border-line scroll-mt-32 border-t pt-10"
+                  className="border-primary/15 scroll-mt-32 border-t pt-10"
                 >
                   <div className="flex items-baseline gap-4">
-                    <span className="text-mint font-mono text-xs">
+                    <span className="text-primary font-mono text-xs">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <h2 className="font-display text-foreground text-2xl leading-tight font-medium tracking-tight sm:text-3xl">
                       {s.heading}
                     </h2>
                   </div>
-                  <div className="text-foreground/75 mt-5 max-w-2xl space-y-4 leading-relaxed">
+                  <div className="text-foreground/80 mt-5 max-w-2xl space-y-4 leading-relaxed">
                     {s.body.map((p, j) => (
                       <p key={j}>{p}</p>
                     ))}
@@ -94,10 +94,10 @@ const LegalPage = ({ eyebrow, number, title, lastUpdated, intro, sections }) => 
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: EASE }}
-              className="from-cyan/60 via-cyan/20 mt-16 h-px origin-left bg-gradient-to-r to-transparent"
+              className="from-primary/60 via-primary/20 mt-16 h-px origin-left bg-gradient-to-r to-transparent"
             />
-            <p className="text-foreground/45 mt-8 text-xs tracking-widest uppercase">
-              Paid for by Morgan Hale for Congress
+            <p className="text-foreground/55 mt-8 text-xs tracking-wide">
+              Paid for by Northwest Oregon PAC #25045. Not authorized by any candidate committee.
             </p>
           </div>
         </div>

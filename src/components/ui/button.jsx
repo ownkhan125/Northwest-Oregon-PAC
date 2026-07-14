@@ -8,10 +8,11 @@ import { cn } from '@/lib/cn'
 
 const variants = {
   primary:
-    'bg-mint text-navy-deep hover:bg-cyan border border-mint/80 shadow-[0_18px_40px_-18px_rgba(93,248,216,0.6)]',
-  secondary: 'bg-transparent text-mint border border-mint/40 hover:border-mint hover:bg-mint/10',
+    'bg-primary text-primary-fg hover:opacity-90 border border-primary shadow-[0_18px_40px_-18px_rgba(46,69,56,0.55)]',
+  secondary:
+    'bg-transparent text-primary border border-primary/40 hover:border-primary hover:bg-primary/10',
   ghost:
-    'bg-white/[0.03] text-foreground/90 border border-white/10 hover:border-cyan/50 hover:bg-cyan/5',
+    'bg-surface/40 text-foreground/90 border border-border hover:border-primary/50 hover:bg-surface-alt/60',
 }
 
 const sizes = {

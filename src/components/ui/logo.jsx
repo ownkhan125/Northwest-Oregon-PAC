@@ -5,21 +5,29 @@ import PropTypes from 'prop-types'
 import { cn } from '@/lib/cn'
 
 const Logo = ({ className }) => (
-  <Link href="/" className={cn('group inline-flex cursor-pointer items-center gap-2', className)}>
-    <span className="from-cyan to-mint relative grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-gradient-to-br">
-      <span className="bg-navy-deep absolute inset-[2px] rounded-full" />
-      <svg viewBox="0 0 24 24" fill="none" className="text-mint relative h-4 w-4">
+  <Link
+    href="/"
+    aria-label="Northwest Oregon PAC — Home"
+    className={cn('group inline-flex cursor-pointer items-center gap-3', className)}
+  >
+    <span className="border-primary/40 bg-surface relative grid h-10 w-10 place-items-center overflow-hidden rounded-full border shadow-sm">
+      <svg viewBox="0 0 32 32" fill="none" className="text-primary h-5 w-5">
+        {/* NW mountain mark */}
         <path
-          d="M4 18L12 4l8 14M8 18h8"
+          d="M4 24 L11 12 L16 20 L21 10 L28 24 Z"
           stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
+          strokeWidth="1.6"
           strokeLinejoin="round"
+          fill="none"
         />
+        <circle cx="24" cy="9" r="1.6" fill="currentColor" />
       </svg>
     </span>
-    <span className="font-display text-foreground text-lg leading-none font-semibold tracking-tight">
-      Morgan<span className="text-mint">.</span>Hale
+    <span className="font-display text-foreground flex flex-col leading-tight">
+      <span className="text-[13px] font-semibold tracking-tight sm:text-sm">Northwest Oregon</span>
+      <span className="text-highlight text-[10px] font-medium tracking-[0.35em] uppercase">
+        PAC · #25045
+      </span>
     </span>
   </Link>
 )
