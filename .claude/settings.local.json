@@ -76,7 +76,9 @@
       "Bash(node *)",
       "Bash(PORT=3459 npx next *)",
       "WebFetch(domain:www.markfororegon.com)",
-      "Bash(tee /tmp/nextdev.log)"
+      "Bash(tee /tmp/nextdev.log)",
+      "Read(//c/Users/General/.claude/**)",
+      "Read(//c/Users/General/.claude/plugins/**)"
     ]
   }
 }

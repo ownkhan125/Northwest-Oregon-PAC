@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { m } from 'motion/react'
 import Logo from '@/components/ui/logo'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
@@ -51,6 +52,10 @@ const socials = [
 ]
 
 export default function Footer() {
+  const pathname = usePathname()
+  // Standalone conversion funnels (/funnel) render without global chrome.
+  if (pathname === '/funnel' || pathname?.startsWith('/funnel/')) return null
+
   return (
     <footer className="bg-surface-alt border-border relative border-t pt-20 sm:pt-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
