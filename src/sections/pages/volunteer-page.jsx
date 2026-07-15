@@ -31,6 +31,7 @@ export default function VolunteerPage() {
         number="03"
         title="Your energy fuels this region."
         description="Northwest Oregon PAC is built by grassroots volunteers. Whether you can give a few hours a month or want to run for office yourself, there is a place for you here."
+        accent="/icons/ballot-box.svg"
       />
 
       {/* Ways to help */}

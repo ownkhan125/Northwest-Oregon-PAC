@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { m } from 'motion/react'
 import Logo from '@/components/ui/logo'
+import CivicIcon from '@/components/ui/civic-icon'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { pac } from '@/data/pac'
 
@@ -57,8 +58,12 @@ export default function Footer() {
   if (pathname === '/funnel' || pathname?.startsWith('/funnel/')) return null
 
   return (
-    <footer className="bg-surface-alt border-border relative border-t pt-20 sm:pt-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+    <footer className="bg-surface-alt border-border relative overflow-hidden border-t pt-20 sm:pt-24">
+      <CivicIcon
+        src="/icons/capitol.svg"
+        className="text-primary/5 pointer-events-none absolute -right-16 bottom-0 hidden h-72 w-72 select-none md:right-8 md:block lg:right-16 lg:h-80 lg:w-80"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Logo />

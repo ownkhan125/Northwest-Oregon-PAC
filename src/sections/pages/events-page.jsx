@@ -14,6 +14,7 @@ export default function EventsPage() {
         number="03"
         title="Events across Northwest Oregon."
         description="Town halls, candidate meet-and-greets, canvass launches, and phone banks. We’ll list them here as they’re scheduled — sign up to get first word."
+        accent="/icons/podium.svg"
       />
 
       <section className="relative isolate overflow-x-clip py-16 sm:py-20 lg:py-24">

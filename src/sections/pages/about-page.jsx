@@ -51,6 +51,7 @@ export default function AboutPage() {
         number="01"
         title="A voice for Northwest Oregon."
         description={pac.tagline}
+        accent="/icons/certificate.svg"
       />
 
       {/* Founding story */}

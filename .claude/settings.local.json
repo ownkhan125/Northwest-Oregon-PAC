@@ -78,7 +78,12 @@
       "WebFetch(domain:www.markfororegon.com)",
       "Bash(tee /tmp/nextdev.log)",
       "Read(//c/Users/General/.claude/**)",
-      "Read(//c/Users/General/.claude/plugins/**)"
+      "Read(//c/Users/General/.claude/plugins/**)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3002/)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3002/)",
+      "Bash(curl *)"
     ]
   }
 }

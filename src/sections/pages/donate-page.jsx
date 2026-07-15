@@ -26,6 +26,7 @@ export default function DonatePage() {
         number="04"
         title="Fund the fight for Northwest Oregon."
         description="Every contribution is pooled locally and invested in candidates, organizing, and outreach across our region."
+        accent="/icons/money-bag.svg"
       />
 
       <section className="relative isolate overflow-x-clip py-12 sm:py-16 lg:py-20">

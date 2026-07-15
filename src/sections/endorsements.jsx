@@ -5,6 +5,7 @@ import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
 import Card from '@/components/ui/card'
 import Button from '@/components/ui/button'
+import CivicIcon from '@/components/ui/civic-icon'
 import { cardReveal, stagger, fadeUp } from '@/animations/variants'
 import { candidates } from '@/data/pac'
 
@@ -87,11 +88,15 @@ export default function Endorsements() {
 
         <m.div variants={fadeUp}>
           <Card
-            className="from-surface-alt/70 to-surface flex h-full flex-col justify-between bg-gradient-to-br p-7"
+            className="from-surface-alt/70 to-surface relative flex h-full flex-col justify-between overflow-hidden bg-gradient-to-br p-7"
             interactive={false}
             tilt={false}
           >
-            <div>
+            <CivicIcon
+              src="/icons/billboard.svg"
+              className="text-primary/10 pointer-events-none absolute -right-6 -bottom-6 h-40 w-40 select-none sm:h-48 sm:w-48"
+            />
+            <div className="relative">
               <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
                 Want to run?
               </div>
@@ -103,7 +108,7 @@ export default function Endorsements() {
                 ready to work hard with grassroots volunteers.
               </p>
             </div>
-            <div className="mt-6">
+            <div className="relative mt-6">
               <Button href="/volunteer" variant="primary" size="md">
                 Start the conversation
               </Button>

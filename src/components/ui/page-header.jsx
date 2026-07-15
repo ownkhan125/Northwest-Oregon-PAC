@@ -3,12 +3,24 @@
 import PropTypes from 'prop-types'
 import { m } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
+import CivicIcon from '@/components/ui/civic-icon'
 import { fadeUp, EASE_SOFT } from '@/animations/variants'
 
-const PageHeader = ({ eyebrow, title, description, number, align = 'left' }) => {
+const PageHeader = ({ eyebrow, title, description, number, align = 'left', accent }) => {
   const center = align === 'center'
   return (
     <section className="relative isolate overflow-x-clip pt-32 pb-12 sm:pt-40 lg:pt-44">
+      {accent && (
+        <m.div
+          aria-hidden
+          initial={{ opacity: 0, y: -12, rotate: -6 }}
+          animate={{ opacity: 1, y: 0, rotate: 0 }}
+          transition={{ delay: 0.5, duration: 1.1, ease: EASE_SOFT }}
+          className="text-primary/15 pointer-events-none absolute top-24 right-4 -z-10 hidden h-40 w-40 select-none sm:right-8 md:top-28 md:right-12 md:block md:h-52 md:w-52 lg:top-32 lg:right-20 lg:h-64 lg:w-64"
+        >
+          <CivicIcon src={accent} className="h-full w-full" />
+        </m.div>
+      )}
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         {(eyebrow || number) && (
           <m.div
@@ -67,6 +79,7 @@ PageHeader.propTypes = {
   description: PropTypes.string,
   number: PropTypes.string,
   align: PropTypes.oneOf(['left', 'center']),
+  accent: PropTypes.string,
 }
 
 export default PageHeader

@@ -7,9 +7,8 @@ import Button from '@/components/ui/button'
 import Input from '@/components/ui/input'
 import Textarea from '@/components/ui/textarea'
 import Checkbox from '@/components/ui/checkbox'
-import Select from '@/components/ui/select'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
-import { pac, audiences } from '@/data/pac'
+import { pac } from '@/data/pac'
 
 const contactInfo = [
   {
@@ -81,7 +80,50 @@ const contactInfo = [
 ]
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | submitting | success | error
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (status === 'submitting') return
+
+    const form = e.currentTarget
+    const fd = new FormData(form)
+    const payload = {
+      firstName: fd.get('firstName') || '',
+      lastName: fd.get('lastName') || '',
+      email: fd.get('email') || '',
+      phone: fd.get('phone') || '',
+      message: fd.get('message') || '',
+      sms_updates: fd.get('sms_updates') === 'on' ? 'Yes' : 'No',
+      sms_promo: fd.get('sms_promo') === 'on' ? 'Yes' : 'No',
+    }
+
+    setStatus('submitting')
+    setErrorMessage('')
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || !data.ok) {
+        setErrorMessage(data.error || 'Something went wrong. Please try again.')
+        setStatus('error')
+        return
+      }
+      setStatus('success')
+      form.reset()
+    } catch {
+      setErrorMessage('Network error. Please try again.')
+      setStatus('error')
+    }
+  }
+
+  const submitted = status === 'success'
+  const submitting = status === 'submitting'
 
   return (
     <>
@@ -90,6 +132,7 @@ export default function ContactPage() {
         number="06"
         title="We want to hear from you."
         description="Donors, volunteers, candidates, or press — reach out and we’ll be in touch soon."
+        accent="/icons/envelope.svg"
       />
 
       <section className="relative isolate overflow-x-clip py-16 sm:py-20 lg:py-24">
@@ -117,13 +160,7 @@ export default function ContactPage() {
                     </p>
                   </div>
                 ) : (
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault()
-                      setSubmitted(true)
-                    }}
-                    className="mt-8 space-y-5"
-                  >
+                  <form onSubmit={handleSubmit} className="mt-8 space-y-5">
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                       <Input
                         label="First name"
@@ -140,17 +177,6 @@ export default function ContactPage() {
                     </div>
                     <Input label="Email" name="email" type="email" required autoComplete="email" />
                     <Input label="Phone (optional)" name="phone" type="tel" autoComplete="tel" />
-                    <Select label="I am a…" name="audience" defaultValue="">
-                      <option value="" disabled>
-                        Select
-                      </option>
-                      {audiences.map((a) => (
-                        <option key={a} value={a}>
-                          {a.charAt(0).toUpperCase() + a.slice(1)}
-                        </option>
-                      ))}
-                      <option value="other">Something else</option>
-                    </Select>
                     <Textarea
                       label="Message"
                       name="message"
@@ -161,10 +187,26 @@ export default function ContactPage() {
 
                     <div className="border-primary/15 space-y-3 border-t pt-6">
                       <Checkbox
-                        name="email_consent"
-                        label="I’d like to receive occasional email updates from Northwest Oregon PAC."
+                        name="sms_updates"
+                        label="Yes — text me updates from Northwest Oregon PAC."
                       />
+                      <Checkbox
+                        name="sms_promo"
+                        label="Yes — I’d also like promotional / event messages by text."
+                      />
+                      <p className="text-foreground/55 mt-2 text-[11px] leading-relaxed">
+                        Message and data rates may apply. Reply STOP to opt out at any time.
+                      </p>
                     </div>
+
+                    {status === 'error' && (
+                      <div
+                        role="alert"
+                        className="border-primary/30 bg-surface-alt/60 text-foreground rounded-2xl border px-4 py-3 text-sm"
+                      >
+                        {errorMessage}
+                      </div>
+                    )}
 
                     <div className="flex flex-col items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
                       <p className="text-foreground/60 text-xs">
@@ -178,8 +220,8 @@ export default function ContactPage() {
                         </a>
                         .
                       </p>
-                      <Button type="submit" size="lg">
-                        Send message
+                      <Button type="submit" size="lg" disabled={submitting}>
+                        {submitting ? 'Sending…' : 'Send message'}
                       </Button>
                     </div>
                   </form>

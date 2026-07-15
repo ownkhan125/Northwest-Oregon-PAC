@@ -68,6 +68,7 @@ export default function FaqPage() {
         number="09"
         title="You ask. We answer."
         description="Common questions about Northwest Oregon PAC — who we are, how we work, and how you can plug in."
+        accent="/icons/gavel.svg"
       />
 
       <section className="relative isolate overflow-x-clip py-16 sm:py-20 lg:py-24">

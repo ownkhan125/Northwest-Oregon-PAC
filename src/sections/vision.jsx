@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Marquee from '@/components/ui/marquee'
+import CivicIcon from '@/components/ui/civic-icon'
 import { mission, pac } from '@/data/pac'
 
 const marqueeWords = [
@@ -43,6 +44,17 @@ export default function Vision() {
   return (
     <section id="vision" ref={ref} className="relative isolate overflow-x-clip py-24 sm:py-32">
       <div aria-hidden className="grain" />
+
+      <m.div
+        aria-hidden
+        initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
+        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+        viewport={{ once: true, margin: '-20% 0px' }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        className="text-primary/10 pointer-events-none absolute top-16 right-4 -z-10 hidden h-48 w-48 select-none sm:right-10 md:right-16 md:block md:h-64 md:w-64 lg:top-20 lg:right-24 lg:h-72 lg:w-72"
+      >
+        <CivicIcon src="/icons/target.svg" className="h-full w-full" />
+      </m.div>
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <m.div

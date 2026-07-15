@@ -183,6 +183,7 @@ export default function AskPage() {
         number="02"
         title="Five priorities. One region."
         description="Northwest Oregon PAC advances a common-sense agenda focused on prosperity, accountability, safety, education, and reliable energy — the fights that matter to families and businesses across our region."
+        accent="/icons/document.svg"
       />
 
       {/* Ask form — primary focus of the page */}
