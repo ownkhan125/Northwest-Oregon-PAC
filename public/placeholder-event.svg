@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Event image placeholder">
+  <rect width="400" height="400" fill="#f0ede6"/>
+  <g fill="none" stroke="#2e4538" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+    <rect x="120" y="130" width="160" height="150" rx="14"/>
+    <line x1="120" y1="170" x2="280" y2="170"/>
+    <line x1="150" y1="115" x2="150" y2="140"/>
+    <line x1="250" y1="115" x2="250" y2="140"/>
+    <circle cx="200" cy="220" r="18"/>
+  </g>
+  <text x="200" y="315" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="14" fill="#2e4538" opacity="0.65" letter-spacing="4">EVENT</text>
+</svg>

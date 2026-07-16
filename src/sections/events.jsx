@@ -6,7 +6,7 @@ import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { stagger, EASE } from '@/animations/variants'
-import { events } from '@/data/events'
+import { formatEventDate, formatEventTime } from '@/lib/event-format'
 
 const rowVariant = {
   hidden: { opacity: 0, y: 24 },
@@ -17,7 +17,7 @@ const rowVariant = {
   },
 }
 
-export default function Events() {
+export default function Events({ events = [] }) {
   const list = events.slice(0, 4)
 
   return (
@@ -85,61 +85,67 @@ export default function Events() {
           viewport={{ once: true, margin: '-15% 0px' }}
           className="relative"
         >
-          {list.map((e, i) => (
-            <m.li key={e.slug} variants={rowVariant} className="group relative">
-              <Link
-                href={`/events/${e.slug}`}
-                className="grid cursor-pointer grid-cols-[auto_1fr] items-center gap-6 py-7 transition-transform duration-500 group-hover:translate-x-2 sm:grid-cols-[auto_1fr_auto] sm:gap-10"
-              >
-                <m.div
-                  whileHover={{ rotate: -2, scale: 1.04 }}
-                  transition={{ type: 'spring', stiffness: 220, damping: 16 }}
-                  className="border-primary/25 bg-surface-alt/60 group-hover:border-primary/60 group-hover:bg-surface-alt relative flex h-20 w-20 flex-col items-center justify-center rounded-xl border transition-colors duration-500 sm:h-24 sm:w-24"
+          {list.map((e, i) => {
+            const dateLabel = formatEventDate(e)
+            const timeLabel = formatEventTime(e)
+            return (
+              <m.li key={e.id} variants={rowVariant} className="group relative">
+                <Link
+                  href={`/events/${e.id}`}
+                  className="grid cursor-pointer grid-cols-[auto_1fr] items-center gap-6 py-7 transition-transform duration-500 group-hover:translate-x-2 sm:grid-cols-[auto_1fr_auto] sm:gap-10"
                 >
-                  <span className="font-display text-foreground group-hover:text-primary text-3xl leading-none font-medium transition-colors duration-500 sm:text-4xl">
-                    {e.day}
-                  </span>
-                  <span className="text-highlight mt-1 font-mono text-[10px] tracking-widest uppercase">
-                    {e.month}
-                  </span>
-                </m.div>
-
-                <div>
-                  <div className="text-primary font-mono text-[10px] tracking-widest uppercase">
-                    {e.type}
-                  </div>
-                  <h3 className="font-display group-hover:text-primary mt-2 text-xl leading-tight font-medium transition-colors duration-300 sm:text-2xl">
-                    {e.title}
-                  </h3>
-                  <div className="text-foreground/70 mt-2 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
-                    <span>{e.when}</span>
-                    <span>{e.where}</span>
-                  </div>
-                </div>
-
-                <span className="border-primary/30 text-foreground/80 group-hover:border-primary group-hover:text-primary relative hidden cursor-pointer items-center gap-2 overflow-hidden rounded-full border px-5 py-2.5 text-xs tracking-widest uppercase transition-colors duration-300 sm:inline-flex">
-                  RSVP
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
+                  <m.div
+                    whileHover={{ rotate: -1.5, scale: 1.04 }}
+                    transition={{ type: 'spring', stiffness: 220, damping: 16 }}
+                    className="border-primary/25 bg-surface-alt/60 group-hover:border-primary/60 relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border transition-colors duration-500 sm:h-24 sm:w-24"
                   >
-                    <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </Link>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={e.image}
+                      alt={e.title ? `${e.title} event image` : 'Event image'}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </m.div>
 
-              {i < list.length - 1 && (
-                <span
-                  aria-hidden
-                  className="bg-primary/15 absolute inset-x-0 bottom-0 block h-px"
-                />
-              )}
-            </m.li>
-          ))}
+                  <div className="min-w-0">
+                    <div className="text-primary font-mono text-[10px] tracking-widest uppercase">
+                      {e.type}
+                    </div>
+                    <h3 className="font-display group-hover:text-primary mt-2 truncate text-xl leading-tight font-medium transition-colors duration-300 sm:text-2xl">
+                      {e.title}
+                    </h3>
+                    <div className="text-foreground/70 mt-2 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
+                      <span className="text-foreground font-medium">{dateLabel}</span>
+                      {timeLabel && <span>{timeLabel}</span>}
+                      {e.location && <span>{e.location}</span>}
+                    </div>
+                  </div>
+
+                  <span className="border-primary/30 text-foreground/80 group-hover:border-primary group-hover:text-primary relative hidden cursor-pointer items-center gap-2 overflow-hidden rounded-full border px-5 py-2.5 text-xs tracking-widest uppercase transition-colors duration-300 sm:inline-flex">
+                    RSVP
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </Link>
+
+                {i < list.length - 1 && (
+                  <span
+                    aria-hidden
+                    className="bg-primary/15 absolute inset-x-0 bottom-0 block h-px"
+                  />
+                )}
+              </m.li>
+            )
+          })}
         </m.ul>
       )}
 

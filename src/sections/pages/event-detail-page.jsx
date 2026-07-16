@@ -1,15 +1,66 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { m } from 'motion/react'
 import Button from '@/components/ui/button'
 import SplitText from '@/components/ui/split-text'
 import Input from '@/components/ui/input'
-import Select from '@/components/ui/select'
-import Checkbox from '@/components/ui/checkbox'
-import { fadeUp, stagger, EASE, lineBuild } from '@/animations/variants'
+import { fadeUp, stagger, EASE } from '@/animations/variants'
+import { formatEventDate, formatEventTime } from '@/lib/event-format'
 
 export default function EventDetailPage({ event }) {
+  const dateLabel = formatEventDate(event, { long: true })
+  const whenLabel = formatEventTime(event)
+  const hasImage = event.image && event.image !== '/placeholder-event.svg'
+
+  // Event context for the RSVP webhook payload.
+  const eventName = event.title || ''
+  const eventDate = formatEventDate(event) // "Jun 14, 2026" style
+  const eventTime = whenLabel
+  const eventCategory = event.type || ''
+
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState('')
+  const submitted = status === 'success'
+
+  async function onSubmit(e) {
+    e.preventDefault()
+    if (status === 'loading') return
+
+    const form = e.currentTarget
+    const data = new FormData(form)
+    const payload = {
+      firstName: String(data.get('firstName') || '').trim(),
+      lastName: String(data.get('lastName') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      phone: String(data.get('phone') || '').trim(),
+      eventName,
+      eventDate,
+      eventTime,
+      eventCategory,
+    }
+
+    setStatus('loading')
+    setErrorMsg('')
+    try {
+      const res = await fetch('/api/event', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const result = await res.json().catch(() => ({}))
+      if (!res.ok || !result.ok) {
+        setErrorMsg(result.error || 'Something went wrong. Please try again in a moment.')
+        setStatus('error')
+        return
+      }
+      setStatus('success')
+    } catch {
+      setStatus('error')
+      setErrorMsg('Network error. Please check your connection and try again.')
+    }
+  }
   return (
     <>
       <section className="relative isolate overflow-x-clip pt-28 pb-12 sm:pt-32 lg:pt-36">
@@ -43,9 +94,9 @@ export default function EventDetailPage({ event }) {
                 transition={{ delay: 0.7, duration: 0.7 }}
                 className="text-foreground/75 mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm"
               >
-                <span>{event.date}</span>
-                <span>{event.when}</span>
-                <span>{event.where}</span>
+                <span>{dateLabel}</span>
+                <span>{whenLabel}</span>
+                <span>{event.location}</span>
               </m.div>
             </div>
           </div>
@@ -57,6 +108,22 @@ export default function EventDetailPage({ event }) {
             transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
             className="from-primary/60 via-primary/20 mt-14 h-px origin-left bg-gradient-to-r to-transparent"
           />
+
+          {hasImage && (
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
+              className="border-primary/25 bg-surface-alt/60 relative mt-12 aspect-[16/9] w-full overflow-hidden rounded-3xl border sm:aspect-[21/9]"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={event.image}
+                alt={event.title ? `${event.title} event image` : 'Event image'}
+                className="h-full w-full object-cover"
+              />
+            </m.div>
+          )}
         </div>
       </section>
 
@@ -86,56 +153,9 @@ export default function EventDetailPage({ event }) {
                   variants={fadeUp}
                   className="text-foreground/80 mt-6 max-w-2xl text-base leading-relaxed sm:text-lg"
                 >
-                  {event.excerpt}
+                  {event.description}
                 </m.p>
               </m.div>
-
-              {event.schedule && event.schedule.length > 0 && (
-                <div className="mt-14">
-                  <div className="flex items-center gap-3">
-                    <m.span
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.7, ease: EASE }}
-                      className="bg-primary block h-px w-10 origin-left"
-                    />
-                    <span className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                      Schedule
-                    </span>
-                  </div>
-                  <m.ol
-                    variants={stagger}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: '-15% 0px' }}
-                    className="relative mt-6"
-                  >
-                    <m.span
-                      variants={lineBuild}
-                      className="bg-primary/20 absolute top-2 left-[5.5rem] h-[calc(100%-1.5rem)] w-px origin-top"
-                    />
-                    {event.schedule.map(([time, label], i) => (
-                      <m.li
-                        key={time + i}
-                        variants={fadeUp}
-                        className="relative grid grid-cols-[5.5rem_1fr] items-baseline gap-5 pb-6"
-                      >
-                        <span className="text-primary font-mono text-xs tracking-widest uppercase">
-                          {time}
-                        </span>
-                        <span className="text-foreground/85 relative pl-5">
-                          <span
-                            aria-hidden
-                            className="bg-primary absolute top-1.5 -left-1 grid h-2 w-2 place-items-center rounded-full"
-                          />
-                          {label}
-                        </span>
-                      </m.li>
-                    ))}
-                  </m.ol>
-                </div>
-              )}
 
               <m.div
                 initial={{ opacity: 0, y: 24 }}
@@ -149,20 +169,17 @@ export default function EventDetailPage({ event }) {
                     Date
                   </div>
                   <div className="font-display text-foreground mt-3 text-2xl font-medium">
-                    {event.date}
+                    {dateLabel}
                   </div>
-                  <div className="text-foreground/70 mt-1 text-sm">{event.when}</div>
+                  <div className="text-foreground/70 mt-1 text-sm">{whenLabel}</div>
                 </div>
                 <div className="bg-surface/80 p-6">
                   <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
                     Location
                   </div>
                   <div className="font-display text-foreground mt-3 text-2xl font-medium">
-                    {event.where}
+                    {event.location}
                   </div>
-                  {event.address && (
-                    <div className="text-foreground/70 mt-1 text-sm">{event.address}</div>
-                  )}
                 </div>
               </m.div>
             </div>
@@ -185,25 +202,72 @@ export default function EventDetailPage({ event }) {
                   Quick form — we’ll send a confirmation email.
                 </p>
 
-                <form onSubmit={(e) => e.preventDefault()} className="mt-7 space-y-4">
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <Input label="First name" name="firstName" required autoComplete="given-name" />
-                    <Input label="Last name" name="lastName" required autoComplete="family-name" />
+                {submitted ? (
+                  <div
+                    role="status"
+                    className="border-primary/25 bg-surface-alt/60 mt-7 rounded-2xl border p-5"
+                  >
+                    <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+                      You&rsquo;re in
+                    </div>
+                    <p className="font-display text-primary mt-2 text-lg leading-snug sm:text-xl">
+                      Thanks — we&rsquo;ll send confirmation details to your inbox.
+                    </p>
                   </div>
-                  <Input label="Email" name="email" type="email" required autoComplete="email" />
-                  <Input label="Phone (optional)" name="phone" type="tel" autoComplete="tel" />
-                  <Select label="How many seats" name="seats" required defaultValue="1">
-                    <option value="1">1 — just me</option>
-                    <option value="2">2 — bringing a guest</option>
-                    <option value="3">3 — bringing a couple of friends</option>
-                    <option value="4">4 or more</option>
-                  </Select>
-                  <Checkbox name="updates" label="Send me updates from Northwest Oregon PAC." />
+                ) : (
+                  <form onSubmit={onSubmit} className="mt-7 space-y-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <Input
+                        label="First name"
+                        name="firstName"
+                        required
+                        autoComplete="given-name"
+                        placeholder="Barbara"
+                      />
+                      <Input
+                        label="Last name"
+                        name="lastName"
+                        required
+                        autoComplete="family-name"
+                        placeholder="Kahl"
+                      />
+                    </div>
+                    <Input
+                      label="Email"
+                      name="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      placeholder="you@email.com"
+                    />
+                    <Input
+                      label="Contact number"
+                      name="phone"
+                      type="tel"
+                      autoComplete="tel"
+                      placeholder="(503) 555-1234"
+                    />
 
-                  <Button type="submit" size="lg" className="w-full">
-                    Register
-                  </Button>
-                </form>
+                    {status === 'error' && errorMsg && (
+                      <div
+                        role="alert"
+                        className="border-primary/30 bg-surface-alt/60 text-foreground rounded-2xl border px-4 py-3 text-sm"
+                      >
+                        {errorMsg}
+                      </div>
+                    )}
+
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full"
+                      disabled={status === 'loading'}
+                      aria-busy={status === 'loading'}
+                    >
+                      {status === 'loading' ? 'Reserving…' : 'Register'}
+                    </Button>
+                  </form>
+                )}
               </m.div>
             </div>
           </div>

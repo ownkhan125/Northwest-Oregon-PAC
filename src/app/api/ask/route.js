@@ -4,17 +4,28 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const ZIP_RE = /^\d{5}(-\d{4})?$/
 
 const asString = (v, max = 4000) =>
   typeof v === 'string' ? v.trim().slice(0, max) : ''
 
 const asYesNo = (v) => (v === true || v === 'true' || v === 'Yes' || v === 'on' ? 'Yes' : 'No')
 
+const splitName = (full) => {
+  const trimmed = full.trim().replace(/\s+/g, ' ')
+  if (!trimmed) return { firstName: '', lastName: '' }
+  const parts = trimmed.split(' ')
+  return {
+    firstName: parts[0],
+    lastName: parts.slice(1).join(' ') || '',
+  }
+}
+
 export async function POST(request) {
-  const webhook = process.env.GHL_CONTACT_WEBHOOK
+  const webhook = process.env.GHL_ASK_WEBHOOK
   if (!webhook) {
     return Response.json(
-      { ok: false, error: 'Contact endpoint is not configured.' },
+      { ok: false, error: 'Ask endpoint is not configured.' },
       { status: 500 },
     )
   }
@@ -26,36 +37,46 @@ export async function POST(request) {
     return Response.json({ ok: false, error: 'Invalid request body.' }, { status: 400 })
   }
 
-  const firstName = asString(body.firstName, 80)
-  const lastName = asString(body.lastName, 80)
+  const fullName = asString(body.name || body.fullName || '', 200)
   const email = asString(body.email, 160).toLowerCase()
   const phone = asString(body.phone, 40)
-  const organization = asString(body.organization, 200)
   const city = asString(body.city, 120)
   const zip_code = asString(body.zip_code, 20)
-  const help_topic = asString(body.help_topic, 120)
-  const message = asString(body.message, 8000)
-  const sms_updates = asYesNo(body.sms_updates)
-  const sms_promo = asYesNo(body.sms_promo)
+  const issue_category = asString(body.issue_category, 120)
+  const issue_location = asString(body.issue_location, 200)
+  const issue_subject = asString(body.issue_subject, 200)
+  const issue_description = asString(body.issue_description, 8000)
+  const email_updates = asYesNo(body.email_updates)
 
-  if (!firstName || !lastName || !EMAIL_RE.test(email) || !message || !city || !zip_code || !help_topic) {
+  if (
+    !fullName ||
+    !EMAIL_RE.test(email) ||
+    !city ||
+    !zip_code ||
+    !ZIP_RE.test(zip_code) ||
+    !issue_subject ||
+    !issue_description
+  ) {
     return Response.json({ ok: false, error: 'Missing required fields' }, { status: 400 })
   }
 
+  const { firstName, lastName } = splitName(fullName)
+
   const payload = {
-    type: 'Contact_Form',
+    type: 'Issue_Report',
     firstName,
     lastName,
     email,
     phone,
-    organization,
     city,
     zip_code,
-    help_topic,
-    message,
-    sms_updates,
-    sms_promo,
-    source: 'src_contact',
+    issue_category,
+    issue_location,
+    issue_subject,
+    issue_description,
+    issue_image: '',
+    email_updates,
+    source: 'src_issue',
     submitted_at: new Date().toISOString(),
   }
 
@@ -90,21 +111,21 @@ export async function POST(request) {
     )
   }
 
-  // Fire the shared SMS Opt-in webhook alongside the primary workflow.
+  // Ask form doesn't collect explicit SMS consent, so opt-in flags are No.
   const sms_optin = await fireSmsOptin({
     firstName,
     lastName,
     email,
     phone,
-    sms_updates,
-    sms_promo,
-    form_type: 'Contact_Form',
-    source: 'src_contact',
+    sms_updates: 'No',
+    sms_promo: 'No',
+    form_type: 'Issue_Report',
+    source: 'src_issue',
   })
 
   return Response.json({
     ok: true,
-    workflow: 'Contact_Form',
+    workflow: 'Issue_Report',
     webhooks: [primaryStatus],
     sms_optin,
   })

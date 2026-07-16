@@ -6,8 +6,12 @@ import Endorsements from '@/sections/endorsements'
 import News from '@/sections/news'
 import Events from '@/sections/events'
 import Donate from '@/sections/donate'
+import { fetchGHLEvents } from '@/lib/ghl'
 
-export default function Home() {
+export const revalidate = 60
+
+export default async function Home() {
+  const events = await fetchGHLEvents()
   return (
     <>
       <Hero />
@@ -16,7 +20,7 @@ export default function Home() {
       <Vision />
       <Endorsements />
       <News />
-      <Events />
+      <Events events={events} />
       <Donate />
     </>
   )

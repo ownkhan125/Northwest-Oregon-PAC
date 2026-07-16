@@ -13,11 +13,7 @@ import Textarea from '@/components/ui/textarea'
 import Checkbox from '@/components/ui/checkbox'
 import { cardReveal, fadeUp, stagger, EASE } from '@/animations/variants'
 import { priorities, antiSocialismStatement, pac } from '@/data/pac'
-
-const TOPIC_OPTIONS = [
-  ...priorities.map((p) => p.name),
-  'Other',
-]
+import { ISSUE_CATEGORIES } from '@/lib/form-constants'
 
 function AskForm() {
   const [status, setStatus] = useState('idle') // idle | loading | success | error
@@ -25,112 +21,131 @@ function AskForm() {
 
   async function onSubmit(e) {
     e.preventDefault()
+    if (status === 'loading') return
+
     const form = e.currentTarget
     const data = new FormData(form)
-    const zip = String(data.get('zip') || '').trim()
-    const topic = String(data.get('topic') || '').trim()
-    if (!/^\d{5}$/.test(zip)) {
-      setStatus('error')
-      setErrorMsg('Please enter a valid 5-digit ZIP code.')
-      return
+    const payload = {
+      name: String(data.get('name') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      phone: String(data.get('phone') || '').trim(),
+      city: String(data.get('city') || '').trim(),
+      zip_code: String(data.get('zip_code') || '').trim(),
+      issue_category: String(data.get('issue_category') || '').trim(),
+      issue_location: String(data.get('issue_location') || '').trim(),
+      issue_subject: String(data.get('issue_subject') || '').trim(),
+      issue_description: String(data.get('issue_description') || '').trim(),
+      email_updates: data.get('email_updates') === 'on' ? 'Yes' : 'No',
     }
-    if (!topic) {
-      setStatus('error')
-      setErrorMsg('Please choose a topic.')
-      return
-    }
+
     setStatus('loading')
     setErrorMsg('')
+
     try {
-      // Simulated submit — replaces network call for now.
-      await new Promise((r) => setTimeout(r, 900))
+      const res = await fetch('/api/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const result = await res.json().catch(() => ({}))
+      if (!res.ok || !result.ok) {
+        setErrorMsg(result.error || 'Something went wrong. Please try again in a moment.')
+        setStatus('error')
+        return
+      }
       setStatus('success')
       form.reset()
     } catch {
       setStatus('error')
-      setErrorMsg('Something went wrong. Please try again in a moment.')
+      setErrorMsg('Network error. Please check your connection and try again.')
     }
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-5">
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <Input
-          label="Full name"
-          name="fullName"
-          required
-          autoComplete="name"
-          placeholder="Your name"
-        />
-        <Input
-          label="Email"
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-          placeholder="you@example.com"
-        />
-      </div>
+    <form onSubmit={onSubmit} className="space-y-5">
+      <Input label="Full name" name="name" required autoComplete="name" />
+
+      <Input
+        label="Email address"
+        name="email"
+        type="email"
+        required
+        autoComplete="email"
+      />
+
+      <Input
+        label="Phone number (optional)"
+        name="phone"
+        type="tel"
+        autoComplete="tel"
+      />
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <Input
-          label="Phone (optional)"
-          name="phone"
-          type="tel"
-          autoComplete="tel"
-          placeholder="503-555-0100"
-        />
+        <Input label="City" name="city" required autoComplete="address-level2" />
         <Input
           label="ZIP code"
-          name="zip"
+          name="zip_code"
           required
           inputMode="numeric"
-          pattern="\d{5}"
-          maxLength={5}
+          pattern="\d{5}(-\d{4})?"
+          maxLength={10}
           autoComplete="postal-code"
-          placeholder="97005"
         />
       </div>
 
-      <Select label="Topic" name="topic" required defaultValue="" placeholder="Choose a topic">
+      <Select
+        label="Category"
+        name="issue_category"
+        required
+        defaultValue=""
+        placeholder="Choose a category"
+      >
         <option value="" disabled>
-          Choose a topic
+          Choose a category
         </option>
-        {TOPIC_OPTIONS.map((t) => (
-          <option key={t} value={t}>
-            {t}
+        {ISSUE_CATEGORIES.map((c) => (
+          <option key={c} value={c}>
+            {c}
           </option>
         ))}
       </Select>
 
-      <Textarea
-        label="Your question"
-        name="question"
-        required
-        rows={6}
-        placeholder="What would you like us to answer?"
+      <Input
+        label="Location (optional)"
+        name="issue_location"
+        autoComplete="street-address"
+        placeholder="Street address or neighborhood"
       />
+
+      <Input label="Subject" name="issue_subject" required />
+
+      <div>
+        <Textarea label="Description" name="issue_description" required rows={6} />
+        <p className="text-foreground/60 mt-2 text-xs leading-relaxed">
+          Please do not include sensitive financial, account, or identification information in your
+          message.
+        </p>
+      </div>
 
       <div className="border-primary/15 space-y-3 border-t pt-6">
         <Checkbox
-          name="smsConsent"
-          label="I agree to receive SMS messages from Northwest Oregon PAC. Message and data rates may apply."
+          name="email_updates"
+          label="Send me occasional updates from Northwest Oregon PAC."
         />
-        <Checkbox name="smsCampaign" label="Send me campaign updates via SMS." />
-        <Checkbox name="smsPromo" label="Send me promotional messages via SMS." />
+        <p className="text-foreground/60 text-xs leading-relaxed">
+          Submitting a question should not add someone to the email list unless this box is
+          selected.
+        </p>
       </div>
 
       <div className="flex flex-col items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
         <p className="text-foreground/60 max-w-md text-xs">
-          By submitting, you agree to our{' '}
+          The information submitted through this form will be used to review and respond to your
+          inquiry. Please review our{' '}
           <a href="/privacy-policy" className="text-primary hover:text-highlight">
             Privacy Policy
           </a>{' '}
-          and{' '}
-          <a href="/terms-of-service" className="text-primary hover:text-highlight">
-            Terms
-          </a>
-          .
+          for additional information.
         </p>
         <Button
           type="submit"
@@ -139,7 +154,7 @@ function AskForm() {
           aria-busy={status === 'loading'}
           className="w-full sm:w-auto"
         >
-          {status === 'loading' ? 'Sending…' : 'Send question'}
+          {status === 'loading' ? 'Submitting…' : 'Submit'}
         </Button>
       </div>
 

@@ -10,19 +10,67 @@ import Select from '@/components/ui/select'
 import Checkbox from '@/components/ui/checkbox'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { volunteerActivities, pac, welcomeEmail } from '@/data/pac'
-
-const counties = [
-  'Clatsop',
-  'Columbia',
-  'Multnomah',
-  'Tillamook',
-  'Washington',
-  'Yamhill',
-  'Other',
-]
+import {
+  A2P_SMS_UPDATES_LABEL,
+  A2P_SMS_PROMO_LABEL,
+  OREGON_COUNTIES,
+  OREGON_REGIONS,
+  CAMPAIGN_EXPERIENCE_OPTIONS,
+  AVAILABILITY_OPTIONS,
+  HELP_FREQUENCY_OPTIONS,
+} from '@/lib/form-constants'
 
 export default function VolunteerPage() {
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState('')
+  const submitted = status === 'success'
+
+  async function onSubmit(e) {
+    e.preventDefault()
+    if (status === 'loading') return
+
+    const form = e.currentTarget
+    const data = new FormData(form)
+
+    const payload = {
+      firstName: String(data.get('firstName') || '').trim(),
+      lastName: String(data.get('lastName') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      phone: String(data.get('phone') || '').trim(),
+      zipCode: String(data.get('zipCode') || '').trim(),
+      city: String(data.get('city') || '').trim(),
+      county: String(data.get('county') || '').trim(),
+      region: String(data.get('region') || '').trim(),
+      registeredVoter: String(data.get('registeredVoter') || '').trim(),
+      campaignExperience: String(data.get('campaignExperience') || '').trim(),
+      availability: String(data.get('availability') || '').trim(),
+      frequency: String(data.get('frequency') || '').trim(),
+      anythingElse: String(data.get('anythingElse') || '').trim(),
+      sms_updates: data.get('sms_updates') === 'on' ? 'Yes' : 'No',
+      sms_promo: data.get('sms_promo') === 'on' ? 'Yes' : 'No',
+    }
+
+    setStatus('loading')
+    setErrorMsg('')
+
+    try {
+      const res = await fetch('/api/volunteer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const result = await res.json().catch(() => ({}))
+      if (!res.ok || !result.ok) {
+        setErrorMsg(result.error || 'Something went wrong. Please try again in a moment.')
+        setStatus('error')
+        return
+      }
+      setStatus('success')
+    } catch {
+      setStatus('error')
+      setErrorMsg('Network error. Please check your connection and try again.')
+    }
+  }
 
   return (
     <>
@@ -108,6 +156,7 @@ export default function VolunteerPage() {
 
           {submitted ? (
             <m.div
+              role="status"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="border-primary/25 bg-surface/85 mx-auto mt-12 max-w-2xl rounded-3xl border p-8 sm:p-10"
@@ -129,10 +178,7 @@ export default function VolunteerPage() {
             </m.div>
           ) : (
             <m.form
-              onSubmit={(e) => {
-                e.preventDefault()
-                setSubmitted(true)
-              }}
+              onSubmit={onSubmit}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-10% 0px' }}
@@ -142,14 +188,43 @@ export default function VolunteerPage() {
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <Input label="First name" name="firstName" required autoComplete="given-name" />
                 <Input label="Last name" name="lastName" required autoComplete="family-name" />
-                <Input label="Email" name="email" type="email" required autoComplete="email" />
-                <Input label="Zip code" name="zipCode" autoComplete="postal-code" />
-                <Input label="Phone (optional)" name="phone" type="tel" autoComplete="tel" />
-                <Select label="County" name="county" defaultValue="">
+                <Input
+                  label="Email address"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                />
+                <Input
+                  label="Phone (optional)"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                />
+                <Input
+                  label="ZIP code (optional)"
+                  name="zipCode"
+                  inputMode="numeric"
+                  pattern="\d{5}(-\d{4})?"
+                  maxLength={10}
+                  autoComplete="postal-code"
+                />
+                <Input
+                  label="City"
+                  name="city"
+                  required
+                  autoComplete="address-level2"
+                />
+                <Select
+                  label="County (optional)"
+                  name="county"
+                  defaultValue=""
+                  placeholder="Select a county"
+                >
                   <option value="" disabled>
-                    Select county
+                    Select a county
                   </option>
-                  {counties.map((c) => (
+                  {OREGON_COUNTIES.map((c) => (
                     <option key={c} value={c}>
                       {c}
                     </option>
@@ -158,67 +233,102 @@ export default function VolunteerPage() {
               </div>
 
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <Select label="Registered voter" name="registeredVoter" required defaultValue="">
-                  <option value="" disabled>
-                    Select
-                  </option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                  <option value="unsure">Not sure</option>
-                </Select>
                 <Select
-                  label="Prior campaign experience"
-                  name="campaignExperience"
+                  label="Region"
+                  name="region"
                   required
                   defaultValue=""
+                  placeholder="Select a region"
                 >
                   <option value="" disabled>
-                    Select
+                    Select a region
                   </option>
-                  <option value="none">None — first time</option>
-                  <option value="some">Some — a few cycles</option>
-                  <option value="lots">A lot — long-time organizer</option>
+                  {OREGON_REGIONS.map((r) => (
+                    <option key={r} value={r}>
+                      {r}
+                    </option>
+                  ))}
+                </Select>
+                <Select
+                  label="Registered to vote in Oregon?"
+                  name="registeredVoter"
+                  required
+                  defaultValue=""
+                  placeholder="Select one"
+                >
+                  <option value="" disabled>
+                    Select one
+                  </option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </Select>
               </div>
 
-              <div>
-                <div className="text-highlight font-mono text-[10px] tracking-[0.25em] uppercase">
-                  How would you like to help? <span className="text-primary">*</span>
-                </div>
-                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {volunteerActivities.map((a) => (
-                    <Checkbox key={a} name={`activity_${a}`} label={a} />
+              <Select
+                label="Prior campaign experience"
+                name="campaignExperience"
+                required
+                defaultValue=""
+                placeholder="Select one"
+              >
+                <option value="" disabled>
+                  Select one
+                </option>
+                {CAMPAIGN_EXPERIENCE_OPTIONS.map((e) => (
+                  <option key={e} value={e}>
+                    {e}
+                  </option>
+                ))}
+              </Select>
+
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <Select
+                  label="Availability"
+                  name="availability"
+                  required
+                  defaultValue=""
+                  placeholder="Select one"
+                >
+                  <option value="" disabled>
+                    Select one
+                  </option>
+                  {AVAILABILITY_OPTIONS.map((a) => (
+                    <option key={a} value={a}>
+                      {a}
+                    </option>
                   ))}
-                </div>
+                </Select>
+                <Select
+                  label="How often would you like to help?"
+                  name="frequency"
+                  required
+                  defaultValue=""
+                  placeholder="Select one"
+                >
+                  <option value="" disabled>
+                    Select one
+                  </option>
+                  {HELP_FREQUENCY_OPTIONS.map((f) => (
+                    <option key={f} value={f}>
+                      {f}
+                    </option>
+                  ))}
+                </Select>
               </div>
 
               <Textarea
-                label="Which of our issues matters most to you?"
-                name="issues"
-                rows={4}
-                placeholder="Small business, accountability, public safety, education, energy — tell us where you want to help."
-              />
-
-              <Textarea
-                label="Anything else we should know? (optional)"
+                label="Anything else you'd like to share? (optional)"
                 name="anythingElse"
                 rows={3}
-                placeholder="Skills, availability, ideas, or context — share what’s useful."
               />
 
-              <div className="border-primary/15 space-y-3 border-t pt-6">
-                <Checkbox
-                  name="email_consent"
-                  label="I’d like to receive email updates from Northwest Oregon PAC."
-                />
-                <Checkbox
-                  name="sms_consent"
-                  label="I’d like to receive occasional SMS updates. Reply STOP to unsubscribe."
-                />
+              <div className="border-primary/15 space-y-4 border-t pt-6">
+                <Checkbox name="sms_updates" label={A2P_SMS_UPDATES_LABEL} />
+                <Checkbox name="sms_promo" label={A2P_SMS_PROMO_LABEL} />
               </div>
 
               <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-foreground/60 text-xs">
+                <p className="text-foreground/60 max-w-md text-xs">
                   By signing up, you agree to our{' '}
                   <a href="/privacy-policy" className="text-primary hover:text-highlight">
                     Privacy Policy
@@ -229,10 +339,27 @@ export default function VolunteerPage() {
                   </a>
                   .
                 </p>
-                <Button type="submit" size="lg">
-                  Sign up
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={status === 'loading'}
+                  aria-busy={status === 'loading'}
+                >
+                  {status === 'loading' ? 'Signing up…' : 'Become a Volunteer'}
                 </Button>
               </div>
+
+              {status === 'error' && errorMsg && (
+                <m.div
+                  role="alert"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: EASE }}
+                  className="border-primary/40 bg-surface-alt/40 mt-4 rounded-2xl border p-4"
+                >
+                  <p className="text-foreground/85 text-sm">{errorMsg}</p>
+                </m.div>
+              )}
             </m.form>
           )}
         </div>
