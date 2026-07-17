@@ -5,25 +5,21 @@ import { fetchGHLBlogs } from '@/lib/ghl-blogs'
 export const revalidate = 60
 export const dynamicParams = true
 
-async function loadPosts() {
-  return (await fetchGHLBlogs()) || []
-}
-
 // Prebuild static params for whichever posts are known at build time. Posts
 // published after the build render on-demand via dynamicParams.
 export async function generateStaticParams() {
-  const posts = await loadPosts()
+  const posts = await fetchGHLBlogs()
   return posts.map((p) => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params
-  const posts = await loadPosts()
+  const posts = await fetchGHLBlogs()
   const post = posts.find((p) => p.slug === slug)
   if (!post) return { title: 'Article not found | Northwest Oregon PAC' }
   return {
-    title: `${post.seoTitle || post.title} | Northwest Oregon PAC`,
-    description: post.seoDescription || post.excerpt,
+    title: `${post.title} | Northwest Oregon PAC`,
+    description: post.excerpt,
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -53,7 +49,7 @@ function related(posts, slug, limit = 2) {
 
 export default async function Page({ params }) {
   const { slug } = await params
-  const posts = await loadPosts()
+  const posts = await fetchGHLBlogs()
   const post = posts.find((p) => p.slug === slug)
   if (!post) notFound()
 
