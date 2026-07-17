@@ -6,7 +6,7 @@ import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { cn } from '@/lib/cn'
-import { donationAmounts, pac } from '@/data/pac'
+import { donationAmounts, pac, home } from '@/data/pac'
 
 export default function Donate() {
   const [picked, setPicked] = useState(100)
@@ -34,18 +34,17 @@ export default function Donate() {
             variants={fadeUp}
             className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase"
           >
-            07 · Chip in
+            07 · {home.donate.eyebrow}
           </m.div>
           <SplitText
             as="h2"
             by="word"
             staggerChildren={0.05}
-            text="Fund the fight for our region."
+            text={home.donate.heading}
             className="font-display text-foreground mt-5 text-5xl leading-[1.05] font-medium tracking-tight sm:text-6xl md:text-7xl"
           />
           <m.p variants={fadeUp} className="text-foreground/80 mx-auto mt-6 max-w-xl text-base sm:text-lg">
-            Every contribution is pooled locally and invested in candidates, organizing, and
-            outreach across Northwest Oregon. Contributions from foreign nationals are prohibited.
+            {home.donate.body}
           </m.p>
         </m.div>
 
@@ -129,10 +128,12 @@ export default function Donate() {
               </Button>
             </m.div>
 
-            <div className="border-primary/15 mt-8 border-t pt-6">
-              <p className="text-foreground/65 text-center text-xs">
-                {pac.disclaimers.donorRequirement} {pac.disclaimers.foreignNationals}
-              </p>
+            <div className="border-primary/15 mt-8 space-y-3 border-t pt-6">
+              {home.donate.notice.split('\n').map((line, i) => (
+                <p key={i} className="text-foreground/65 text-center text-xs">
+                  {line}
+                </p>
+              ))}
               <p className="text-foreground/50 mt-3 text-center text-[10px] tracking-widest uppercase">
                 {pac.disclaimers.paidFor}
               </p>

@@ -6,6 +6,7 @@ import PageHeader from '@/components/ui/page-header'
 import Button from '@/components/ui/button'
 import { stagger, EASE } from '@/animations/variants'
 import { formatEventDate, formatEventTime } from '@/lib/event-format'
+import { eventsPage } from '@/data/pac'
 
 const rowVariant = {
   hidden: { opacity: 0, y: 24 },
@@ -17,13 +18,13 @@ const rowVariant = {
 }
 
 export default function EventsPage({ events = [] }) {
+  const { hero, calendar } = eventsPage
   return (
     <>
       <PageHeader
-        eyebrow="Get involved"
         number="03"
-        title="Events across Northwest Oregon."
-        description="Town halls, candidate meet-and-greets, canvass launches, and phone banks. We’ll list them here as they’re scheduled — sign up to get first word."
+        title={hero.heading}
+        description={hero.paragraphs}
         accent="/icons/podium.svg"
       />
 
@@ -46,22 +47,22 @@ export default function EventsPage({ events = [] }) {
               className="border-primary/25 bg-surface-alt/60 mx-auto mt-16 max-w-3xl rounded-3xl border p-10 text-center sm:p-14"
             >
               <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                Calendar coming online
+                {calendar.eyebrow}
               </div>
               <h2 className="font-display text-primary mt-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
-                No events on the schedule yet.
+                {calendar.heading}
               </h2>
-              <p className="text-foreground/75 mx-auto mt-6 max-w-xl">
-                Northwest Oregon PAC is a new organization and we’re building. Sign up to be
-                notified when we host a canvass, phone bank, or candidate meet-and-greet in your
-                neighborhood — or reach out to host one yourself.
-              </p>
+              <div className="text-foreground/75 mx-auto mt-6 max-w-xl space-y-4">
+                {calendar.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
               <div className="mt-10 flex flex-wrap justify-center gap-3">
-                <Button href="/volunteer" size="lg">
-                  Get event alerts
+                <Button href={calendar.primary.href} size="lg">
+                  {calendar.primary.label}
                 </Button>
-                <Button href="/contact" variant="secondary" size="lg">
-                  Host an event
+                <Button href={calendar.secondary.href} variant="secondary" size="lg">
+                  {calendar.secondary.label}
                 </Button>
               </div>
             </m.div>

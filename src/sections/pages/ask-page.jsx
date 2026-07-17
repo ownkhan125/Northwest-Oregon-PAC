@@ -3,16 +3,14 @@
 import { useState } from 'react'
 import { m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
-import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
-import Card from '@/components/ui/card'
 import Button from '@/components/ui/button'
 import Input from '@/components/ui/input'
 import Select from '@/components/ui/select'
 import Textarea from '@/components/ui/textarea'
 import Checkbox from '@/components/ui/checkbox'
-import { cardReveal, fadeUp, stagger, EASE } from '@/animations/variants'
-import { priorities, antiSocialismStatement, pac } from '@/data/pac'
+import { EASE } from '@/animations/variants'
+import { pac } from '@/data/pac'
 import { ISSUE_CATEGORIES } from '@/lib/form-constants'
 
 function AskForm() {
@@ -164,14 +162,26 @@ function AskForm() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: EASE }}
-          className="border-primary/30 bg-surface-alt/60 mt-4 rounded-2xl border p-5"
+          className="border-primary/30 bg-surface-alt/60 mt-4 rounded-2xl border p-6 sm:p-8"
         >
-          <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-            Thank you
-          </div>
-          <p className="font-display text-primary mt-2 text-lg leading-snug sm:text-xl">
-            Your question is in. We&rsquo;ll be in touch from {pac.contact.generalEmail}.
+          <h3 className="font-display text-primary text-2xl leading-tight font-medium sm:text-3xl">
+            Thank you for reaching out.
+          </h3>
+          <p className="text-foreground/85 mt-3 text-base leading-snug sm:text-lg">
+            Your question has been submitted to Northwest Oregon PAC.
           </p>
+          <p className="text-foreground/80 mt-4 text-sm leading-relaxed sm:text-base">
+            Our team will review your message and route it to the appropriate person. In the
+            meantime, you can learn more about our priorities or explore ways to become involved.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button href="/#priorities" size="lg">
+              Explore Our Priorities
+            </Button>
+            <Button href="/volunteer" variant="secondary" size="lg">
+              Get Involved
+            </Button>
+          </div>
         </m.div>
       )}
 
@@ -194,10 +204,13 @@ export default function AskPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Our Issues"
+        eyebrow="ASK NORTHWEST OREGON PAC"
         number="02"
-        title="Five priorities. One region."
-        description="Northwest Oregon PAC advances a common-sense agenda focused on prosperity, accountability, safety, education, and reliable energy — the fights that matter to families and businesses across our region."
+        title="Have a question? Start here."
+        description={[
+          'Ask us about our mission, policy priorities, supported candidates, volunteer opportunities, events, contributions, or the process of running for office.',
+          'Our team reviews each message and directs it to the appropriate contact.',
+        ]}
         accent="/icons/document.svg"
       />
 
@@ -265,106 +278,6 @@ export default function AskPage() {
         </div>
       </section>
 
-      {priorities.map((issue, idx) => (
-        <SectionFrame
-          key={issue.id}
-          id={issue.id}
-          eyebrow={`Issue ${issue.id}`}
-          number={issue.id}
-        >
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-5">
-              <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                Our position
-              </div>
-              <SplitText
-                as="h2"
-                by="word"
-                staggerChildren={0.05}
-                text={issue.name}
-                className="font-display text-foreground mt-4 text-3xl leading-tight font-medium tracking-tight sm:text-4xl md:text-5xl"
-              />
-              <p className="font-display text-primary mt-6 text-xl leading-snug sm:text-2xl">
-                “{issue.position}”
-              </p>
-
-              {issue.rationale && (
-                <m.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-15% 0px' }}
-                  transition={{ duration: 0.7, ease: EASE }}
-                  className="border-primary/25 bg-surface-alt/50 mt-8 rounded-2xl border p-5"
-                >
-                  <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                    Why it matters here
-                  </div>
-                  <p className="text-foreground/85 mt-2 text-sm sm:text-base">{issue.rationale}</p>
-                </m.div>
-              )}
-            </div>
-
-            <m.ul
-              variants={stagger}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: '-15% 0px' }}
-              className="space-y-4 lg:col-span-7"
-            >
-              {issue.supporting.map((point, i) => (
-                <m.li key={i} variants={fadeUp}>
-                  <Card className="p-6" interactive={false} tilt={false}>
-                    <div className="flex gap-4">
-                      <span className="border-primary/30 text-primary mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full border font-mono text-xs">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <p className="text-foreground/85 flex-1 text-sm leading-relaxed sm:text-base">
-                        {point}
-                      </p>
-                    </div>
-                  </Card>
-                </m.li>
-              ))}
-            </m.ul>
-          </div>
-        </SectionFrame>
-      ))}
-
-      {/* Anti-socialism statement */}
-      <section className="relative isolate overflow-x-clip py-16 sm:py-24">
-        <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-          <m.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-15% 0px' }}
-            transition={{ duration: 0.9, ease: EASE }}
-            className="border-primary/25 bg-primary text-primary-fg on-dark relative overflow-hidden rounded-3xl border p-8 sm:p-12 lg:p-16"
-          >
-            <div className="text-primary-fg/70 font-mono text-[10px] tracking-[0.3em] uppercase">
-              A closing word
-            </div>
-            <h2 className="font-display text-primary-fg mt-4 text-3xl leading-tight font-medium tracking-tight sm:text-4xl md:text-5xl">
-              Economic freedom is the engine of human flourishing.
-            </h2>
-            <p className="text-primary-fg/85 mt-6 max-w-3xl leading-relaxed sm:text-lg">
-              {antiSocialismStatement}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/donate" size="lg">
-                Support the mission
-              </Button>
-              <Button
-                href="/volunteer"
-                variant="ghost"
-                size="lg"
-                className="border-primary-fg/30 bg-primary-fg/10 text-primary-fg hover:bg-primary-fg/20"
-              >
-                Get involved
-              </Button>
-            </div>
-          </m.div>
-        </div>
-      </section>
     </>
   )
 }

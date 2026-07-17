@@ -7,20 +7,28 @@ import Card from '@/components/ui/card'
 import Button from '@/components/ui/button'
 import CivicIcon from '@/components/ui/civic-icon'
 import { cardReveal, stagger, fadeUp } from '@/animations/variants'
-import { candidates } from '@/data/pac'
+import { home } from '@/data/pac'
+
+// Deterministic Unsplash portrait placeholders — professional stock photography.
+// Whitelisted in next.config.mjs (images.unsplash.com).
+const PLACEHOLDER_PORTRAITS = [
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=800&fit=crop',
+  'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=640&h=800&fit=crop',
+  'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=640&h=800&fit=crop',
+  'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=640&h=800&fit=crop',
+  'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=640&h=800&fit=crop',
+]
 
 export default function Endorsements() {
-  const featured = candidates.slice(0, 5)
-
   return (
-    <SectionFrame id="candidates" eyebrow="Who we support" number="04">
+    <SectionFrame id="candidates" eyebrow={home.endorsements.eyebrow} number="04">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-7">
           <SplitText
             as="h2"
             by="word"
             staggerChildren={0.05}
-            text="Candidates we’re standing with in 2026."
+            text={home.endorsements.heading}
             className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
           />
         </div>
@@ -31,8 +39,7 @@ export default function Endorsements() {
           transition={{ delay: 0.4, duration: 0.7 }}
           className="text-foreground/75 max-w-md lg:col-span-5"
         >
-          Competitive candidates for Northwest Oregon — from state house races to Congressional
-          District 1. Support them, learn about them, or help get them across the finish line.
+          {home.endorsements.intro}
         </m.p>
       </div>
 
@@ -43,44 +50,56 @@ export default function Endorsements() {
         viewport={{ once: true, margin: '-15% 0px' }}
         className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
       >
-        {featured.map((c, i) => (
+        {home.endorsements.candidates.map((c, i) => (
           <m.div key={c.slug} variants={cardReveal}>
-            <Card className="flex h-full flex-col p-7" tilt={i % 2 === 0}>
-              <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                {c.year} · {c.state}
+            <Card className="flex h-full flex-col overflow-hidden p-0" tilt={i % 2 === 0}>
+              <div
+                aria-hidden
+                className="border-primary/15 bg-surface-alt/70 relative aspect-[4/3] w-full overflow-hidden border-b"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={PLACEHOLDER_PORTRAITS[i % PLACEHOLDER_PORTRAITS.length]}
+                  alt=""
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
               </div>
-              <h3 className="font-display text-foreground mt-4 text-2xl leading-tight font-medium sm:text-3xl">
-                {c.name}
-              </h3>
-              <p className="text-foreground/75 mt-2 text-sm sm:text-base">{c.office}</p>
+              <div className="flex flex-1 flex-col p-7">
+                <h3 className="font-display text-foreground text-2xl leading-tight font-medium sm:text-3xl">
+                  {c.name}
+                </h3>
+                <p className="text-foreground/75 mt-2 text-sm sm:text-base">{c.office}</p>
+                <p className="text-foreground/70 mt-4 text-sm leading-relaxed">{c.bio}</p>
 
-              <div className="border-primary/15 mt-6 flex items-center justify-between border-t pt-5">
-                {c.link ? (
-                  <a
-                    href={c.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-primary hover:text-highlight inline-flex cursor-pointer items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors"
-                  >
-                    Visit campaign
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                <div className="border-primary/15 mt-6 flex items-center justify-between border-t pt-5">
+                  {c.link ? (
+                    <a
+                      href={c.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-primary hover:text-highlight inline-flex cursor-pointer items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors"
                     >
-                      <path d="M7 17L17 7M9 7h8v8" />
-                    </svg>
-                  </a>
-                ) : (
-                  <span className="text-foreground/50 text-xs tracking-[0.25em] uppercase">
-                    Campaign site coming soon
-                  </span>
-                )}
+                      {c.cta}
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+                  ) : (
+                    <span className="text-foreground/50 text-xs tracking-[0.25em] uppercase">
+                      {c.cta}
+                    </span>
+                  )}
+                </div>
               </div>
             </Card>
           </m.div>
@@ -98,19 +117,18 @@ export default function Endorsements() {
             />
             <div className="relative">
               <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                Want to run?
+                {home.endorsements.runForOffice.eyebrow}
               </div>
               <h3 className="font-display text-primary mt-4 text-2xl leading-tight font-medium sm:text-3xl">
-                Run for office.
+                {home.endorsements.runForOffice.heading}
               </h3>
               <p className="text-foreground/75 mt-3 text-sm">
-                We interview and support candidates who share the values of our region and are
-                ready to work hard with grassroots volunteers.
+                {home.endorsements.runForOffice.description}
               </p>
             </div>
             <div className="relative mt-6">
               <Button href="/volunteer" variant="primary" size="md">
-                Start the conversation
+                {home.endorsements.runForOffice.cta}
               </Button>
             </div>
           </Card>

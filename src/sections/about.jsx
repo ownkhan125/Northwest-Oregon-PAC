@@ -5,25 +5,7 @@ import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { fadeUp, fadeRight, stagger, lineBuild } from '@/animations/variants'
-import { foundingStory, differentiator, focusAreas } from '@/data/pac'
-
-const highlights = [
-  {
-    label: 'Nonpartisan focus',
-    detail:
-      'Built by moderates and Republicans, working to give center-right voters and common-sense candidates real infrastructure across Northwest Oregon.',
-  },
-  {
-    label: 'Regional first',
-    detail:
-      'No other PAC represents Northwest Oregon or works in a nonpartisan, bridge-building frame of mind. We pool local resources for local impact.',
-  },
-  {
-    label: 'A voice for the overlooked',
-    detail:
-      'Our communities have been conceded by both state and national party leadership. We exist to change that — with support, candidates, and results.',
-  },
-]
+import { home, differentiator, focusAreas } from '@/data/pac'
 
 export default function About() {
   return (
@@ -34,7 +16,7 @@ export default function About() {
             as="h2"
             by="word"
             staggerChildren={0.06}
-            text="A voice for the region that keeps getting written off."
+            text={home.about.heading}
             className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
           />
 
@@ -45,9 +27,11 @@ export default function About() {
             viewport={{ once: true, margin: '-15% 0px' }}
             className="text-foreground/80 mt-8 max-w-2xl space-y-5"
           >
-            <m.p variants={fadeUp} className="text-base sm:text-lg">
-              {foundingStory.short}
-            </m.p>
+            {home.about.paragraphs.map((p, i) => (
+              <m.p key={i} variants={fadeUp} className="text-base sm:text-lg">
+                {p}
+              </m.p>
+            ))}
           </m.div>
 
           <m.ul
@@ -57,7 +41,7 @@ export default function About() {
             viewport={{ once: true, margin: '-15% 0px' }}
             className="mt-10 space-y-4"
           >
-            {highlights.map((h, i) => (
+            {home.about.highlights.map((h, i) => (
               <m.li
                 key={h.label}
                 variants={fadeUp}
@@ -78,10 +62,10 @@ export default function About() {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <Button href="/about" variant="primary" size="lg">
-              Read the full story
+              {home.about.ctas.primary}
             </Button>
             <Button href="/ask" variant="ghost" size="lg">
-              See our issues
+              {home.about.ctas.secondary}
             </Button>
           </div>
         </div>
@@ -93,6 +77,27 @@ export default function About() {
           variants={fadeRight}
           className="lg:col-span-5"
         >
+          <m.div
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: '-15% 0px' }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="border-primary/20 relative mb-6 aspect-[16/10] w-full overflow-hidden rounded-3xl border"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80&auto=format&fit=crop"
+              alt=""
+              aria-hidden
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div
+              aria-hidden
+              className="from-primary/30 absolute inset-0 bg-gradient-to-tr via-transparent to-transparent"
+            />
+          </m.div>
+
           <div className="relative">
             <m.div
               variants={lineBuild}

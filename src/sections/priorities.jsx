@@ -6,7 +6,7 @@ import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
 import Card from '@/components/ui/card'
 import { cardReveal, stagger } from '@/animations/variants'
-import { priorities } from '@/data/pac'
+import { home } from '@/data/pac'
 
 const icons = {
   '01': (
@@ -70,7 +70,7 @@ export default function Priorities() {
             as="h2"
             by="word"
             staggerChildren={0.05}
-            text="Five priorities. One region."
+            text={home.priorities.heading}
             className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
           />
         </div>
@@ -81,8 +81,7 @@ export default function Priorities() {
           transition={{ delay: 0.5, duration: 0.7 }}
           className="text-foreground/75 max-w-md lg:col-span-5"
         >
-          A focused, common-sense agenda for Northwest Oregon — the fights that matter to
-          families, small businesses, and communities across our region.
+          {home.priorities.intro}
         </m.p>
       </div>
 
@@ -93,7 +92,7 @@ export default function Priorities() {
         viewport={{ once: true, margin: '-12% 0px' }}
         className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
       >
-        {priorities.map((issue) => (
+        {home.priorities.list.map((issue) => (
           <m.div key={issue.id} variants={cardReveal}>
             <Card className="hover:border-primary/40 h-full p-7 transition-colors">
               <div className="flex items-start justify-between">
@@ -107,7 +106,13 @@ export default function Priorities() {
               <h3 className="font-display text-foreground mt-7 text-xl leading-tight font-medium sm:text-2xl">
                 {issue.name}
               </h3>
-              <p className="text-foreground/75 mt-3 text-sm leading-relaxed">{issue.position}</p>
+              <div className="mt-3 space-y-3">
+                {issue.paragraphs.map((p, i) => (
+                  <p key={i} className="text-foreground/75 text-sm leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+              </div>
               <Link
                 href="/ask"
                 className="text-highlight hover:text-primary mt-7 inline-flex cursor-pointer items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors"

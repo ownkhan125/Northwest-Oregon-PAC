@@ -2,11 +2,30 @@
 
 import { useState } from 'react'
 import { AnimatePresence, m } from 'motion/react'
+import Link from 'next/link'
 import PageHeader from '@/components/ui/page-header'
 import Button from '@/components/ui/button'
-import { fadeUp, stagger, EASE } from '@/animations/variants'
+import { fadeUp, stagger, EASE, EASE_SOFT } from '@/animations/variants'
 import { cn } from '@/lib/cn'
 import { faqs } from '@/data/faqs'
+
+function renderAnswer(a) {
+  if (Array.isArray(a)) {
+    return a.map((part, i) => {
+      if (typeof part === 'string') return part
+      return (
+        <Link
+          key={i}
+          href={part.href}
+          className="text-primary hover:text-highlight underline underline-offset-4 transition-colors"
+        >
+          {part.link}
+        </Link>
+      )
+    })
+  }
+  return a
+}
 
 function FaqItem({ q, a, isOpen, onToggle }) {
   return (
@@ -50,7 +69,7 @@ function FaqItem({ q, a, isOpen, onToggle }) {
             transition={{ duration: 0.4, ease: EASE }}
             className="overflow-hidden"
           >
-            <p className="text-foreground/80 pr-12 pb-6 sm:text-base">{a}</p>
+            <p className="text-foreground/80 pr-12 pb-6 sm:text-base">{renderAnswer(a)}</p>
           </m.div>
         )}
       </AnimatePresence>
@@ -64,15 +83,25 @@ export default function FaqPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Frequently asked"
         number="09"
-        title="You ask. We answer."
-        description="Common questions about Northwest Oregon PAC — who we are, how we work, and how you can plug in."
+        title="Everything you need to know"
+        description="We are here to provide clear answers. If you can’t find what you’re looking for, we’re always happy to hear from you."
         accent="/icons/gavel.svg"
       />
 
       <section className="relative isolate overflow-x-clip py-16 sm:py-20 lg:py-24">
         <div className="relative mx-auto max-w-4xl px-5 sm:px-8 lg:px-12">
+          <m.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.7, ease: EASE_SOFT }}
+            className="-mt-4 mb-4 flex flex-wrap gap-3"
+          >
+            <Button href="/ask" size="lg">
+              Ask a Question
+            </Button>
+          </m.div>
+
           <m.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -107,12 +136,12 @@ export default function FaqPage() {
             className="border-primary/25 bg-surface-alt/60 mt-16 flex flex-col items-start gap-6 rounded-3xl border p-8 sm:p-10 lg:flex-row lg:items-center lg:justify-between"
           >
             <div>
-              <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
-                Still have a question?
-              </div>
-              <h2 className="font-display text-foreground mt-3 text-2xl font-medium tracking-tight sm:text-3xl md:text-4xl">
-                Reach out — we read every message.
+              <h2 className="font-display text-foreground text-2xl font-medium tracking-tight sm:text-3xl md:text-4xl">
+                Still Have Questions?
               </h2>
+              <p className="text-foreground/75 mt-3 text-base sm:text-lg">
+                We’re always happy to help.
+              </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Button href="/contact" size="lg">

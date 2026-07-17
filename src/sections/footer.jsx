@@ -10,30 +10,28 @@ import { pac } from '@/data/pac'
 
 const columns = [
   {
-    title: 'The PAC',
+    title: 'THE PAC',
     links: [
-      { label: 'About us', href: '/about' },
-      { label: 'Ask', href: '/ask' },
-      { label: 'Blogs', href: '/blogs' },
-      { label: 'Endorsed candidates', href: '/about#candidates' },
+      { label: 'About Us', href: '/about' },
       { label: 'Events', href: '/events' },
+      { label: 'Ask', href: '/ask' },
     ],
   },
   {
-    title: 'Get involved',
+    title: 'GET INVOLVED',
     links: [
       { label: 'Donate', href: '/donate' },
       { label: 'Volunteer', href: '/volunteer' },
-      { label: 'Run for office', href: '/volunteer#run' },
+      { label: 'Host an Event', href: '/contact' },
       { label: 'Contact', href: '/contact' },
-      { label: 'FAQ', href: '/faq' },
+      { label: 'FAQs', href: '/faq' },
     ],
   },
   {
-    title: 'Legal',
+    title: 'LEGAL',
     links: [
-      { label: 'Privacy policy', href: '/privacy-policy' },
-      { label: 'Terms of service', href: '/terms-of-service' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms of Service', href: '/terms-of-service' },
       { label: 'Oregon Secretary of State', href: 'https://sos.oregon.gov/elections/' },
     ],
   },
@@ -139,11 +137,9 @@ export default function Footer() {
           <div className="text-foreground/60 flex flex-wrap items-center gap-3 text-[11px] tracking-widest uppercase">
             <span>© {new Date().getFullYear()} {pac.legalName}</span>
             <span className="bg-border-strong h-3 w-px" />
-            <span>{pac.type} · PAC #{pac.pacId}</span>
+            <span>{pac.type} · Committee #{pac.pacId}</span>
             <span className="bg-border-strong h-3 w-px" />
             <span>EIN {pac.ein}</span>
-            <span className="bg-border-strong h-3 w-px" />
-            <span>Regulated by {pac.regulator}</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -164,9 +160,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-border border-t py-6">
+        <div className="border-border border-t py-6 space-y-2">
           <p className="text-foreground/60 text-center text-[11px] tracking-wide">
             {pac.disclaimers.paidFor}
+          </p>
+          <p className="text-foreground/60 text-center text-[11px] tracking-wide">
+            {pac.disclaimers.aiNotice}
           </p>
           <p className="text-foreground/45 mt-2 text-center text-[10px] tracking-widest uppercase">
             {pac.disclaimers.notAuthorized}

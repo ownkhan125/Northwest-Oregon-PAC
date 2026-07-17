@@ -7,50 +7,18 @@ import SplitText from '@/components/ui/split-text'
 import Card from '@/components/ui/card'
 import Button from '@/components/ui/button'
 import { cardReveal, fadeUp, stagger, EASE, lineBuild } from '@/animations/variants'
-import { foundingStory, team, candidates, focusAreas, differentiator, pac } from '@/data/pac'
-
-const storyBlocks = [
-  {
-    title: 'Why we exist',
-    body: 'To support residents, candidates, and values that have been left behind in a region too easily conceded by both state and national party leadership.',
-  },
-  {
-    title: 'Who we serve',
-    body: 'Republicans, moderates, and common-sense voters across our Democratic-leaning communities — the people paying the taxes, running the businesses, and keeping our neighborhoods together.',
-  },
-  {
-    title: 'How we work',
-    body: 'We pool local resources to build lasting infrastructure — recruiting competitive candidates, funding organized outreach, and giving center-right voters a voice again.',
-  },
-  {
-    title: 'What we believe',
-    body: 'No community should be written off. Prosperity, accountability, and common sense still have a home in Northwest Oregon.',
-  },
-]
-
-const values = [
-  {
-    title: 'Prosperity',
-    body: 'Private enterprise, small business, and economic freedom — the proven engine of opportunity.',
-  },
-  {
-    title: 'Accountability',
-    body: 'Every taxpayer dollar tracked. Every program measured. Real transparency, real consequences.',
-  },
-  {
-    title: 'Common sense',
-    body: 'Solving the problem in front of us with the best evidence available — not ideology.',
-  },
-]
+import { focusAreas, differentiator, aboutPage } from '@/data/pac'
 
 export default function AboutPage() {
+  const { hero, story, teamSection, candidatesSection, values, cta } = aboutPage
+
   return (
     <>
       <PageHeader
-        eyebrow="About the PAC"
+        eyebrow={hero.eyebrow}
         number="01"
-        title="A voice for Northwest Oregon."
-        description={pac.tagline}
+        title={hero.heading}
+        description={hero.paragraphs}
         accent="/icons/certificate.svg"
       />
 
@@ -98,13 +66,27 @@ export default function AboutPage() {
               as="h2"
               by="word"
               staggerChildren={0.05}
-              text="A region left behind — until now."
+              text={story.heading}
               className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl"
             />
 
-            <p className="text-foreground/85 mt-8 max-w-2xl text-base leading-relaxed sm:text-lg">
-              {foundingStory.long}
-            </p>
+            <m.div
+              variants={stagger}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-15% 0px' }}
+              className="mt-8 max-w-2xl space-y-5"
+            >
+              {story.paragraphs.map((p, i) => (
+                <m.p
+                  key={i}
+                  variants={fadeUp}
+                  className="text-foreground/85 text-base leading-relaxed sm:text-lg"
+                >
+                  {p}
+                </m.p>
+              ))}
+            </m.div>
 
             <m.div
               variants={stagger}
@@ -113,7 +95,7 @@ export default function AboutPage() {
               viewport={{ once: true, margin: '-15% 0px' }}
               className="mt-10 space-y-7"
             >
-              {storyBlocks.map((s) => (
+              {story.blocks.map((s) => (
                 <m.div key={s.title} variants={fadeUp} className="border-primary/20 border-l pl-6">
                   <h3 className="font-display text-foreground text-xl font-medium sm:text-2xl">
                     {s.title}
@@ -127,18 +109,19 @@ export default function AboutPage() {
       </SectionFrame>
 
       {/* Team */}
-      <SectionFrame eyebrow="Our Team" number="03">
+      <SectionFrame eyebrow={teamSection.eyebrow} number="03">
         <SplitText
           as="h2"
           by="word"
           staggerChildren={0.05}
-          text="Local leadership. Real experience."
+          text={teamSection.heading}
           className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
         />
-        <p className="text-foreground/75 mt-6 max-w-2xl">
-          Northwest Oregon PAC is led by seasoned volunteers already active in our
-          communities — from county government to state party leadership.
-        </p>
+        <div className="text-foreground/75 mt-6 max-w-2xl space-y-4">
+          {teamSection.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
         <m.div
           variants={stagger}
           initial="hidden"
@@ -146,7 +129,7 @@ export default function AboutPage() {
           viewport={{ once: true, margin: '-15% 0px' }}
           className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3"
         >
-          {team.map((member) => (
+          {teamSection.members.map((member) => (
             <m.div key={member.name} variants={cardReveal}>
               <Card className="h-full p-7" interactive={false} tilt={false}>
                 <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
@@ -169,6 +152,11 @@ export default function AboutPage() {
                     </li>
                   ))}
                 </ul>
+                {member.bio && (
+                  <p className="text-foreground/70 border-primary/15 mt-5 border-t pt-4 text-sm leading-relaxed">
+                    {member.bio}
+                  </p>
+                )}
               </Card>
             </m.div>
           ))}
@@ -176,21 +164,22 @@ export default function AboutPage() {
       </SectionFrame>
 
       {/* Candidates */}
-      <SectionFrame id="candidates" eyebrow="Candidates" number="04">
+      <SectionFrame id="candidates" eyebrow={candidatesSection.eyebrow} number="04">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <SplitText
               as="h2"
               by="word"
               staggerChildren={0.05}
-              text="Candidates we’re supporting in 2026."
+              text={candidatesSection.heading}
               className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
             />
           </div>
-          <p className="text-foreground/75 max-w-md lg:col-span-5">
-            State house, state legislature, and Congressional District 1 — candidates from
-            across Northwest Oregon who share our values and are ready to serve.
-          </p>
+          <div className="text-foreground/75 max-w-md space-y-3 lg:col-span-5">
+            {candidatesSection.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
         </div>
 
         <m.ul
@@ -200,17 +189,14 @@ export default function AboutPage() {
           viewport={{ once: true, margin: '-15% 0px' }}
           className="mt-14 divide-forest/15 border-primary/15 divide-y rounded-2xl border"
         >
-          {candidates.map((c) => (
+          {candidatesSection.list.map((c) => (
             <m.li
               key={c.slug}
               variants={fadeUp}
               className="grid grid-cols-1 items-center gap-4 p-6 sm:grid-cols-[1fr_auto_auto] sm:gap-8 sm:p-7"
             >
               <div>
-                <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                  {c.year} · {c.state}
-                </div>
-                <div className="font-display text-foreground mt-2 text-2xl font-medium sm:text-3xl">
+                <div className="font-display text-foreground text-2xl font-medium sm:text-3xl">
                   {c.name}
                 </div>
               </div>
@@ -223,7 +209,7 @@ export default function AboutPage() {
                     rel="noreferrer"
                     className="border-primary/30 text-primary hover:border-primary hover:bg-surface-alt/60 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs tracking-widest uppercase transition-colors"
                   >
-                    Visit campaign
+                    {candidatesSection.cta}
                     <svg
                       width="12"
                       height="12"
@@ -239,7 +225,7 @@ export default function AboutPage() {
                   </a>
                 ) : (
                   <span className="text-foreground/50 text-xs tracking-widest uppercase">
-                    Site coming soon
+                    {candidatesSection.cta}
                   </span>
                 )}
               </div>
@@ -254,7 +240,7 @@ export default function AboutPage() {
           as="h2"
           by="word"
           staggerChildren={0.05}
-          text="Three values. No compromises."
+          text={values.heading}
           className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
         />
         <m.div
@@ -264,7 +250,7 @@ export default function AboutPage() {
           viewport={{ once: true, margin: '-15% 0px' }}
           className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3"
         >
-          {values.map((v, i) => (
+          {values.list.map((v, i) => (
             <m.div key={v.title} variants={cardReveal}>
               <Card className="h-full p-7" interactive={false}>
                 <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
@@ -296,16 +282,38 @@ export default function AboutPage() {
                   Join us
                 </div>
                 <h2 className="font-display text-foreground mt-4 text-3xl leading-[1.05] font-medium tracking-tight sm:text-4xl md:text-5xl">
-                  Ready to help build the future of Northwest Oregon?
+                  {cta.heading}
                 </h2>
+                <p className="text-foreground/75 mt-5 text-base sm:text-lg">{cta.body}</p>
               </div>
-              <div className="flex flex-wrap gap-3">
-                <Button href="/donate" size="lg">
-                  Donate
-                </Button>
-                <Button href="/volunteer" variant="secondary" size="lg">
-                  Volunteer
-                </Button>
+              <div className="flex flex-col items-start gap-3 lg:items-end">
+                <div className="flex flex-wrap gap-3">
+                  <Button href={cta.primary.href} size="lg">
+                    {cta.primary.label}
+                  </Button>
+                  <Button href={cta.secondary.href} variant="secondary" size="lg">
+                    {cta.secondary.label}
+                  </Button>
+                </div>
+                <a
+                  href={cta.textLink.href}
+                  className="text-primary hover:text-highlight inline-flex items-center gap-2 text-sm font-medium tracking-wide uppercase transition-colors"
+                >
+                  {cta.textLink.label}
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </a>
               </div>
             </div>
           </m.div>

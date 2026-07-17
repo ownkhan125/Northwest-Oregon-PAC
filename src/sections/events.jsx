@@ -7,6 +7,7 @@ import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { stagger, EASE } from '@/animations/variants'
 import { formatEventDate, formatEventTime } from '@/lib/event-format'
+import { home } from '@/data/pac'
 
 const rowVariant = {
   hidden: { opacity: 0, y: 24 },
@@ -28,16 +29,21 @@ export default function Events({ events = [] }) {
             as="h2"
             by="word"
             staggerChildren={0.05}
-            text="Show up. Speak up. Be part of it."
+            text={home.volunteerCta.heading}
             className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
           />
+          <div className="text-foreground/80 mt-6 max-w-2xl space-y-4 text-base leading-relaxed sm:text-lg">
+            {home.volunteerCta.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
         </div>
         <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
           <Button href="/volunteer" variant="primary" size="lg">
-            Volunteer
+            {home.volunteerCta.ctas.primary}
           </Button>
-          <Button href="/events" variant="ghost" size="lg">
-            All events
+          <Button href="/volunteer" variant="ghost" size="lg">
+            {home.volunteerCta.ctas.secondary}
           </Button>
         </div>
       </div>
@@ -59,21 +65,22 @@ export default function Events({ events = [] }) {
           className="border-primary/20 bg-surface-alt/60 mt-10 rounded-3xl border p-8 text-center sm:p-14"
         >
           <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-            The calendar is opening up
+            {home.events.label}
           </div>
           <h3 className="font-display text-primary mt-4 text-2xl font-medium sm:text-3xl md:text-4xl">
-            No events on the schedule yet.
+            {home.events.heading}
           </h3>
-          <p className="text-foreground/75 mx-auto mt-4 max-w-xl">
-            We’re a new PAC and we’re building. Sign up to get first word when we host a canvass,
-            phone bank, or candidate meet-and-greet in your neighborhood.
-          </p>
+          <div className="text-foreground/75 mx-auto mt-4 max-w-xl space-y-3">
+            {home.events.body.split('\n').map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button href="/volunteer" size="lg">
-              Get event alerts
+              {home.events.ctas.primary}
             </Button>
             <Button href="/contact" variant="secondary" size="lg">
-              Host an event
+              {home.events.ctas.secondary}
             </Button>
           </div>
         </m.div>

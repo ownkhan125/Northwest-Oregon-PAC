@@ -5,18 +5,9 @@ import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Marquee from '@/components/ui/marquee'
 import CivicIcon from '@/components/ui/civic-icon'
-import { mission, pac } from '@/data/pac'
+import { home } from '@/data/pac'
 
-const marqueeWords = [
-  'Prosperity',
-  'Accountability',
-  'Public Safety',
-  'Education',
-  'Reliable Energy',
-  'Small Business',
-  'Common Sense',
-  'Community',
-]
+const marqueeWords = home.vision.ticker
 
 const HEADING_CLASS =
   'block font-display font-medium leading-[0.95] tracking-tight text-[clamp(2.5rem,9vw,9rem)]'
@@ -72,7 +63,7 @@ export default function Vision() {
         <m.div style={{ x }} className="will-change-transform">
           <SplitText
             as="h2"
-            text="A region worth"
+            text="Build a Northwest Oregon"
             by="word"
             staggerChildren={0.08}
             className={`${HEADING_CLASS} text-foreground`}
@@ -81,7 +72,7 @@ export default function Vision() {
         <m.div style={{ x: x2 }} className="will-change-transform">
           <SplitText
             as="h2"
-            text="fighting for."
+            text="where people can thrive."
             by="word"
             staggerChildren={0.08}
             delay={0.15}
@@ -91,15 +82,17 @@ export default function Vision() {
         </m.div>
 
         <m.div style={{ y }} className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-12">
-          <m.p
+          <m.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-15% 0px' }}
             transition={{ duration: 0.7 }}
-            className="text-foreground/80 text-base leading-relaxed sm:text-lg lg:col-span-7 lg:text-xl"
+            className="text-foreground/80 space-y-5 text-base leading-relaxed sm:text-lg lg:col-span-7 lg:text-xl"
           >
-            {mission}
-          </m.p>
+            {home.vision.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </m.div>
 
           <div className="lg:col-span-5">
             <m.div
@@ -110,13 +103,13 @@ export default function Vision() {
               className="border-primary/25 bg-surface-alt/60 rounded-2xl border p-6"
             >
               <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                A promise to our region
+                {home.vision.promiseEyebrow}
               </div>
               <p className="font-display text-primary mt-3 text-lg leading-snug sm:text-xl md:text-2xl">
-                “{pac.shortPromise}”
+                “{home.vision.promise}”
               </p>
               <div className="text-foreground/60 mt-4 flex items-center gap-2 text-[10px] tracking-widest uppercase">
-                {pac.values.join(' · ')}
+                {home.vision.valuesLine}
               </div>
             </m.div>
           </div>

@@ -5,8 +5,27 @@ import { m } from 'motion/react'
 import { cn } from '@/lib/cn'
 import { EASE_SOFT } from '@/animations/variants'
 
-const SectionFrame = ({ id, eyebrow, number, className, children }) => (
-  <section id={id} className={cn('relative isolate w-full', className)}>
+const SectionFrame = ({ id, eyebrow, number, className, bgImage, overlayClassName, children }) => (
+  <section
+    id={id}
+    className={cn('relative isolate w-full overflow-hidden', className)}
+  >
+    {bgImage && (
+      <>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat bg-scroll lg:bg-fixed"
+          style={{ backgroundImage: `url('${bgImage}')` }}
+        />
+        <div
+          aria-hidden
+          className={cn(
+            'pointer-events-none absolute inset-0 -z-10 bg-background/78',
+            overlayClassName,
+          )}
+        />
+      </>
+    )}
     <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
       <div className="relative">
         <m.div
@@ -49,6 +68,8 @@ SectionFrame.propTypes = {
   eyebrow: PropTypes.string,
   number: PropTypes.string,
   className: PropTypes.string,
+  bgImage: PropTypes.string,
+  overlayClassName: PropTypes.string,
   children: PropTypes.node,
 }
 

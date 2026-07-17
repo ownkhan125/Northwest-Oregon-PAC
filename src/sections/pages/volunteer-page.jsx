@@ -9,7 +9,7 @@ import Textarea from '@/components/ui/textarea'
 import Select from '@/components/ui/select'
 import Checkbox from '@/components/ui/checkbox'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
-import { volunteerActivities, pac, welcomeEmail } from '@/data/pac'
+import { pac, welcomeEmail } from '@/data/pac'
 import {
   A2P_SMS_UPDATES_LABEL,
   A2P_SMS_PROMO_LABEL,
@@ -19,6 +19,70 @@ import {
   AVAILABILITY_OPTIONS,
   HELP_FREQUENCY_OPTIONS,
 } from '@/lib/form-constants'
+
+// Volunteer Page — Section 2 content, sourced verbatim from the Volunteer
+// Page content document. Do NOT paraphrase or edit without an updated doc.
+const WAYS_TO_HELP = [
+  {
+    id: '01',
+    title: 'CANVASS',
+    subheading: 'Meet voters in their communities.',
+    paragraphs: [
+      'Canvassing gives volunteers an opportunity to introduce candidates, discuss important races, distribute information, and listen to the concerns of local residents.',
+    ],
+    listIntro: 'Volunteer activities may include:',
+    list: [
+      'Door-to-door voter outreach',
+      'Literature distribution',
+      'Neighborhood walks',
+      'Voter-information conversations',
+      'Candidate introductions',
+    ],
+    cta: 'Volunteer to Canvass',
+    href: '#run',
+  },
+  {
+    id: '02',
+    title: 'PHONE BANKING',
+    subheading: 'Help candidates reach more people.',
+    paragraphs: [
+      'Phone-bank volunteers help campaigns communicate with voters, recruit supporters, share event information, and identify people interested in becoming involved.',
+      'Opportunities may be conducted individually, remotely, or as part of an organized volunteer session.',
+    ],
+    cta: 'Join a Phone Bank',
+    href: '#run',
+  },
+  {
+    id: '03',
+    title: 'EVENT PLANNING',
+    subheading: 'Help bring the community together.',
+    paragraphs: [
+      'Event volunteers assist with candidate gatherings, community conversations, fundraising activities, volunteer meetings, and other regional events.',
+    ],
+    listIntro: 'Ways to help may include:',
+    list: [
+      'Finding or preparing a venue',
+      'Greeting and checking in guests',
+      'Coordinating volunteers',
+      'Sharing event information',
+      'Assisting with setup and cleanup',
+      'Helping hosts and speakers',
+    ],
+    cta: 'Help With Events',
+    href: '#run',
+  },
+  {
+    id: '04',
+    title: 'RUN FOR OFFICE',
+    subheading: 'Consider becoming the candidate.',
+    paragraphs: [
+      'Northwest Oregon needs capable people who understand their communities and are prepared to listen, organize, communicate, and lead.',
+      'A first conversation does not create a commitment to run. It gives us an opportunity to learn about your experience, the community you want to serve, and what has motivated your interest.',
+    ],
+    cta: 'Start the Conversation',
+    href: '/contact',
+  },
+]
 
 export default function VolunteerPage() {
   const [status, setStatus] = useState('idle') // idle | loading | success | error
@@ -75,53 +139,80 @@ export default function VolunteerPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Join the team"
+        eyebrow="VOLUNTEER WITH NORTHWEST OREGON PAC"
         number="03"
-        title="Your energy fuels this region."
-        description="Northwest Oregon PAC is built by grassroots volunteers. Whether you can give a few hours a month or want to run for office yourself, there is a place for you here."
+        title="Your time can strengthen the region."
+        description="Volunteer with Northwest Oregon PAC by meeting voters, making calls, organizing events, supporting candidates, or beginning a conversation about running for office."
         accent="/icons/ballot-box.svg"
       />
 
-      {/* Ways to help */}
-      <section className="relative isolate overflow-x-clip py-12">
+      {/* Find your way to help */}
+      <section className="relative isolate overflow-x-clip py-12 sm:py-16">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+          <m.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-15% 0px' }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="font-display text-foreground text-3xl leading-tight font-medium tracking-tight sm:text-4xl md:text-5xl"
+          >
+            FIND YOUR WAY TO HELP
+          </m.h2>
+
           <m.div
             variants={stagger}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-15% 0px' }}
-            className="border-primary/15 bg-primary/[0.02] grid grid-cols-2 gap-px overflow-hidden rounded-2xl border md:grid-cols-4"
+            className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2"
           >
-            {volunteerActivities.map((activity, i) => (
-              <m.div
-                key={activity}
+            {WAYS_TO_HELP.map((way) => (
+              <m.article
+                key={way.id}
                 variants={fadeUp}
-                className="bg-surface/80 p-6 text-center sm:p-8"
+                className="border-primary/20 bg-surface/80 flex flex-col rounded-2xl border p-7 sm:p-8"
               >
                 <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                  {String(i + 1).padStart(2, '0')}
+                  {way.id}
                 </div>
-                <div className="font-display text-foreground mt-3 text-xl font-medium sm:text-2xl">
-                  {activity}
+                <h3 className="font-display text-foreground mt-3 text-2xl leading-tight font-medium sm:text-3xl">
+                  {way.title}
+                </h3>
+                <p className="font-display text-primary mt-3 text-lg leading-snug sm:text-xl">
+                  {way.subheading}
+                </p>
+                <div className="text-foreground/80 mt-4 space-y-3 text-sm leading-relaxed sm:text-base">
+                  {way.paragraphs.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
                 </div>
-              </m.div>
+                {way.list && (
+                  <div className="mt-5">
+                    <p className="text-foreground/85 text-sm sm:text-base">{way.listIntro}</p>
+                    <ul className="mt-3 space-y-2">
+                      {way.list.map((item) => (
+                        <li
+                          key={item}
+                          className="text-foreground/75 flex items-start gap-3 text-sm sm:text-base"
+                        >
+                          <span
+                            aria-hidden
+                            className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+                          />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                <div className="mt-auto pt-7">
+                  <Button href={way.href} size="md">
+                    {way.cta}
+                  </Button>
+                </div>
+              </m.article>
             ))}
           </m.div>
-
-          <m.blockquote
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-15% 0px' }}
-            transition={{ duration: 0.8, ease: EASE }}
-            className="mx-auto mt-12 max-w-3xl text-center"
-          >
-            <p className="font-display text-foreground text-2xl leading-snug sm:text-3xl md:text-4xl">
-              “{pac.shortPromise}”
-            </p>
-            <footer className="text-highlight mt-4 font-mono text-[11px] tracking-widest uppercase">
-              — {pac.values.join(' · ')}
-            </footer>
-          </m.blockquote>
         </div>
       </section>
 
@@ -135,25 +226,6 @@ export default function VolunteerPage() {
             transition={{ duration: 0.9, ease: EASE }}
             className="via-primary mx-auto h-px w-32 origin-center bg-gradient-to-r from-transparent to-transparent"
           />
-          <m.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-8 text-center"
-          >
-            <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
-              Sign up
-            </div>
-            <h2 className="font-display text-foreground mt-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
-              Join the team
-            </h2>
-            <p className="text-foreground/75 mx-auto mt-4 max-w-xl">
-              Tell us a little about yourself. We match volunteers with the work that fits their
-              time, interests, and neighborhood.
-            </p>
-          </m.div>
-
           {submitted ? (
             <m.div
               role="status"
@@ -365,7 +437,7 @@ export default function VolunteerPage() {
         </div>
       </section>
 
-      {/* Alt CTA: donate */}
+      {/* Section 3 — Show up for Northwest Oregon */}
       <section className="relative isolate overflow-x-clip py-16 sm:py-20">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <m.div
@@ -376,20 +448,25 @@ export default function VolunteerPage() {
             className="border-primary/25 bg-surface-alt/60 grid grid-cols-1 items-center gap-6 rounded-3xl border p-8 sm:p-12 lg:grid-cols-[1fr_auto]"
           >
             <div>
-              <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
-                Not ready to volunteer?
-              </div>
-              <h2 className="font-display text-foreground mt-4 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
-                Donate instead.
+              <h2 className="font-display text-foreground text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
+                Show up for Northwest Oregon.
               </h2>
-              <p className="text-foreground/75 mt-3 max-w-xl">
-                Every dollar helps us reach another voter, back another candidate, and organize
-                another corner of Northwest Oregon.
-              </p>
+              <div className="text-foreground/75 mt-4 max-w-xl space-y-3">
+                <p>
+                  Give an hour, make a few calls, help organize a room, or begin exploring a larger
+                  role.
+                </p>
+                <p>Every strong organization starts with people willing to take the first step.</p>
+              </div>
             </div>
-            <Button href="/donate" size="lg">
-              Chip in now
-            </Button>
+            <div className="flex flex-wrap gap-3">
+              <Button href="#run" size="lg">
+                Sign Up Today
+              </Button>
+              <Button href="/contact" variant="secondary" size="lg">
+                Contact the PAC
+              </Button>
+            </div>
           </m.div>
         </div>
       </section>

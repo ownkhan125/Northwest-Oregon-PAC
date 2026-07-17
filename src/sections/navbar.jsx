@@ -23,6 +23,7 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [hovered, setHovered] = useState(null)
   const { scrollY } = useScroll()
   const pathname = usePathname()
 
@@ -65,33 +66,59 @@ export default function Navbar() {
         >
           <Logo />
 
-          <nav className="hidden items-center gap-1 lg:flex">
-            {links.map((link, i) => (
-              <m.div
-                key={link.href}
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.45 + i * 0.06, duration: 0.5 }}
-              >
-                <Link
-                  href={link.href}
-                  className={cn(
-                    'group relative inline-flex rounded-full px-4 py-2 text-sm transition-colors',
-                    isActive(link.href)
-                      ? 'text-primary'
-                      : 'text-foreground/70 hover:text-primary',
-                  )}
+          <nav
+            className="relative hidden items-center gap-1 lg:flex"
+            onMouseLeave={() => setHovered(null)}
+          >
+            {links.map((link, i) => {
+              const active = isActive(link.href)
+              const highlighted = hovered === i || (hovered === null && active)
+              return (
+                <m.div
+                  key={link.href}
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.45 + i * 0.06, duration: 0.5 }}
                 >
-                  <span className="relative z-10">{link.label}</span>
-                  <span
+                  <Link
+                    href={link.href}
+                    onMouseEnter={() => setHovered(i)}
+                    onFocus={() => setHovered(i)}
+                    onBlur={() => setHovered(null)}
                     className={cn(
-                      'bg-primary absolute inset-x-3 bottom-1 h-px origin-left transition-transform duration-300',
-                      isActive(link.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
+                      'group relative inline-flex items-center rounded-full px-4 py-2 text-sm transition-colors duration-300',
+                      highlighted ? 'text-primary' : 'text-foreground/70 hover:text-primary',
                     )}
-                  />
-                </Link>
-              </m.div>
-            ))}
+                  >
+                    {highlighted && (
+                      <m.span
+                        layoutId="nav-pill"
+                        aria-hidden
+                        transition={{
+                          type: 'spring',
+                          stiffness: 380,
+                          damping: 32,
+                          mass: 0.6,
+                        }}
+                        className="border-primary/25 bg-primary/[0.06] absolute inset-0 rounded-full border shadow-[0_6px_20px_-10px_var(--primary,rgba(46,69,56,0.35))]"
+                      >
+                        <span
+                          aria-hidden
+                          className="from-primary/40 via-primary/70 to-primary/40 absolute -bottom-[3px] left-1/2 h-[2px] w-6 -translate-x-1/2 rounded-full bg-gradient-to-r"
+                        />
+                      </m.span>
+                    )}
+                    <m.span
+                      className="relative z-10 font-medium tracking-tight"
+                      animate={{ y: highlighted ? -0.5 : 0 }}
+                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      {link.label}
+                    </m.span>
+                  </Link>
+                </m.div>
+              )
+            })}
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
@@ -156,29 +183,48 @@ export default function Navbar() {
               exit={{ opacity: 0 }}
               className="relative flex h-full flex-col justify-center gap-2 px-8 pt-24"
             >
-              {links.map((link) => (
-                <m.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      'font-display block text-4xl font-medium sm:text-5xl',
-                      isActive(link.href)
-                        ? 'text-primary'
-                        : 'text-foreground hover:text-primary',
-                    )}
+              {links.map((link) => {
+                const active = isActive(link.href)
+                return (
+                  <m.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0 }}
                   >
-                    {link.label}
-                  </Link>
-                </m.div>
-              ))}
+                    <Link
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className={cn(
+                        'font-display group relative flex items-center gap-4 py-1 text-4xl font-medium transition-colors duration-300 sm:text-5xl',
+                        active
+                          ? 'text-primary'
+                          : 'text-foreground hover:text-primary',
+                      )}
+                    >
+                      <span
+                        aria-hidden
+                        className={cn(
+                          'bg-primary block h-1.5 w-1.5 shrink-0 origin-left rounded-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+                          active
+                            ? 'scale-100 opacity-100'
+                            : 'scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100',
+                        )}
+                      />
+                      <span
+                        className={cn(
+                          'inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+                          active ? 'translate-x-0' : 'group-hover:translate-x-1',
+                        )}
+                      >
+                        {link.label}
+                      </span>
+                    </Link>
+                  </m.div>
+                )
+              })}
               <div className="mt-8">
-                <Button as={Link} href="/donate" size="lg" onClick={() => setOpen(false)}>
+                <Button href="/donate" size="lg" onClick={() => setOpen(false)}>
                   Donate Now
                 </Button>
               </div>

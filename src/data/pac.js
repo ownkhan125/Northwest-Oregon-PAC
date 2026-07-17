@@ -8,7 +8,7 @@ export const pac = {
   filingNumber: '25045',
   pacId: '25045',
   ein: '42-2643251',
-  type: 'State PAC',
+  type: 'Oregon State PAC',
   scope: 'Statewide',
   primaryActivity: 'Both (Hybrid)',
   foundedYear: '2026',
@@ -24,32 +24,252 @@ export const pac = {
   },
   contact: {
     // General inquiries — routed to the primary contact.
-    generalEmail: 'csawyer007@gmail.com',
+    generalEmail: 'info@northwestoregon.com',
     // Program Director / primary contact
     name: 'Cynthia Sawyer',
     role: 'Program Director',
-    email: 'csawyer007@gmail.com',
-    phone: '1-503-490-4139',
+    email: 'info@northwestoregon.com',
+    phone: '503-490-4139',
     // After-hours contact
     afterHoursName: 'Christina Buehler',
     afterHoursPhone: '1-503-330-7496',
-    mailingAddress: '10700 SW Beaverton-Hillsdale Hwy, Suite 212, Beaverton, OR 97005',
+    mailingAddress: '10700 SW Beaverton-Hillsdale Highway, Suite 212, Beaverton, Oregon 97005',
     mailingAddressLines: [
-      '10700 SW Beaverton-Hillsdale Hwy',
+      '10700 SW Beaverton-Hillsdale Highway',
       'Suite 212',
-      'Beaverton, OR 97005',
+      'Beaverton, Oregon 97005',
     ],
     preferredAreaCodes: ['503', '971'],
   },
   disclaimers: {
-    paidFor:
-      'Paid for by Northwest Oregon PAC #25045. Some images, audio, video, or written content may be created or enhanced using artificial intelligence (AI) tools.',
+    paidFor: 'Paid for by Northwest Oregon PAC #25045.',
+    aiNotice:
+      'Some images, audio, video, or written content may be created or enhanced using artificial intelligence tools.',
     notAuthorized: 'Not authorized by any candidate committee.',
     foreignNationals: 'Contributions from foreign nationals are prohibited.',
     donorRequirement:
       'Federal and state law requires us to collect the name, employer, and employer city and state of individual contributors.',
   },
   successMessage: 'Thank you. We will be in contact soon.',
+}
+
+// Home-page content — sourced verbatim from the Home Page content document.
+// Consumed by src/sections/hero, about, priorities, vision, endorsements, news,
+// events, donate. Do NOT paraphrase or edit without an updated content doc.
+export const home = {
+  hero: {
+    eyebrow: 'OREGON STATE PAC · COMMITTEE #25045 · 2026',
+    heading: 'A stronger voice for Northwest Oregon.',
+    paragraphs: [
+      'Northwest Oregon PAC brings together Republicans, moderates, independents, and common-sense voters who believe our region deserves serious candidates, practical solutions, and sustained local support.',
+      'We invest in the people, organization, and messaging needed to advance prosperity, accountability, public safety, workforce readiness, and reliable energy across Northwest Oregon.',
+    ],
+    ctas: {
+      primary: 'Donate',
+      secondary: 'Volunteer',
+      textLink: 'Meet the PAC',
+    },
+    values: [
+      { label: 'HOPE', description: 'For communities too often written off.' },
+      { label: 'SUPPORT', description: 'For candidates ready to lead.' },
+      { label: 'HEARD', description: 'For voters who deserve a voice.' },
+    ],
+  },
+  about: {
+    heading: 'Northwest Oregon should never be an afterthought.',
+    paragraphs: [
+      'Northwest Oregon PAC was created to support the residents, candidates, and values that have too often been overlooked in a region frequently treated as politically uncompetitive.',
+      'We are building the local infrastructure our communities need: stronger candidates, dependable fundraising, effective messaging, and an organized network of volunteers.',
+      'Our purpose is not simply to participate in one election. It is to build a lasting regional voice for people who believe in private-sector opportunity, responsible government, safe communities, strong schools, and practical leadership.',
+    ],
+    highlights: [
+      {
+        label: 'REGION FIRST',
+        detail:
+          'We concentrate our work on the communities, districts, and issues that shape Northwest Oregon.',
+      },
+      {
+        label: 'PRACTICAL LEADERSHIP',
+        detail:
+          'We support candidates who listen, communicate clearly, show up for their communities, and work effectively with grassroots volunteers.',
+      },
+      {
+        label: 'LONG-TERM INFRASTRUCTURE',
+        detail:
+          'We pool resources to strengthen candidate recruitment, fundraising, volunteer organization, voter outreach, and public messaging throughout the region.',
+      },
+    ],
+    ctas: {
+      primary: 'Read Our Story',
+      secondary: 'Explore Our Priorities',
+    },
+  },
+  priorities: {
+    heading: 'Five priorities. One stronger region.',
+    intro:
+      'Our agenda focuses on the issues that directly affect the ability of Northwest Oregon families, workers, entrepreneurs, and communities to succeed.',
+    list: [
+      {
+        id: '01',
+        name: 'ECONOMIC PROSPERITY AND SMALL BUSINESS',
+        paragraphs: [
+          'Prosperity is created when people are free to start businesses, hire employees, invest locally, and build something of their own.',
+          'We support a competitive tax and regulatory environment that helps small businesses open, expand, and create dependable private-sector jobs in both urban and rural communities.',
+        ],
+      },
+      {
+        id: '02',
+        name: 'GOVERNMENT ACCOUNTABILITY AND FISCAL RESPONSIBILITY',
+        paragraphs: [
+          'Taxpayers deserve to know where their money goes, how it is used, and whether publicly funded programs are delivering what they promised.',
+          'We support transparent spending, competitive contracting, independent audits, measurable performance standards, and real consequences when agencies or contractors fail to deliver.',
+        ],
+      },
+      {
+        id: '03',
+        name: 'PUBLIC SAFETY AND QUALITY OF LIFE',
+        paragraphs: [
+          'People should feel secure in their homes, at work, in local businesses, and in public spaces.',
+          'We support effective law enforcement, clean and well-maintained communities, practical responses to street disorder, and policies that combine compassion with clear standards of public safety and accountability.',
+        ],
+      },
+      {
+        id: '04',
+        name: 'EDUCATION AND WORKFORCE DEVELOPMENT',
+        paragraphs: [
+          'Oregon’s schools should equip students with strong academic foundations, critical-thinking skills, and clear pathways into productive careers.',
+          'We support career and technical education, apprenticeships, STEM programs, employer partnerships, parental involvement, and advancement based on ability, effort, and achievement.',
+        ],
+      },
+      {
+        id: '05',
+        name: 'AFFORDABLE, RELIABLE ENERGY',
+        paragraphs: [
+          'Northwest Oregon families and employers need an energy system that keeps the lights on without placing unnecessary costs on ratepayers.',
+          'We support a practical, all-of-the-above approach that recognizes Oregon’s hydropower advantage, evaluates modern nuclear technology, protects reliability, and requires major energy users to pay their fair share of infrastructure costs.',
+        ],
+      },
+    ],
+  },
+  vision: {
+    heading: 'Build a Northwest Oregon where people can thrive.',
+    paragraphs: [
+      'Northwest Oregon PAC exists to advance policies that grow private-sector prosperity, hold government accountable to taxpayers, keep communities safe and livable, prepare students for real careers, and provide affordable, reliable energy.',
+      'We support candidates who understand that government should be focused, transparent, effective, and accountable to the people it serves.',
+    ],
+    promiseEyebrow: 'OUR PROMISE TO THE REGION',
+    promise: 'We are here to help, and we are not from the government.',
+    valuesLine: 'HOPE · SUPPORT · HEARD',
+    ticker: [
+      'Prosperity',
+      'Accountability',
+      'Public Safety',
+      'Education',
+      'Reliable Energy',
+      'Small Business',
+      'Economic Freedom',
+      'Common Sense',
+      'Community',
+      'Opportunity',
+    ],
+  },
+  endorsements: {
+    eyebrow: 'CANDIDATES WE SUPPORT',
+    heading: 'Candidates standing up for Northwest Oregon in 2026.',
+    intro:
+      'We support candidates who are ready to compete, work alongside grassroots volunteers, and advance practical solutions for the communities they seek to represent.',
+    candidates: [
+      {
+        slug: 'mark-norman',
+        name: 'Mark Norman',
+        office: 'Oregon House District 27',
+        bio: 'Navy veteran, veterinarian, small-business owner, and candidate for the Oregon House of Representatives.',
+        cta: 'Visit Mark’s Campaign',
+        link: 'https://www.markfororegon.com/',
+      },
+      {
+        slug: 'brian-schimmel',
+        name: 'Brian Schimmel',
+        office: 'Oregon House District 29',
+        bio: 'Independent candidate focused on practical representation and the needs of his local community.',
+        cta: 'Visit Brian’s Campaign',
+        link: 'https://brianschimmel.org/',
+      },
+      {
+        slug: 'barbara-kahl',
+        name: 'Dr. Barbara Kahl',
+        office: 'U.S. House · Oregon’s 1st Congressional District',
+        bio: 'Veterinarian, community leader, and candidate for Congress representing communities across Northwest Oregon.',
+        cta: 'Visit Dr. Kahl’s Campaign',
+        link: 'https://www.drkahlforcongress.com/',
+      },
+      {
+        slug: 'ciatta-thompson',
+        name: 'Ciatta Thompson',
+        office: 'Oregon House District 33',
+        bio: 'Community advocate and candidate working to bring common sense, accountability, and responsive leadership to District 33.',
+        cta: 'Visit Ciatta’s Campaign',
+        link: 'https://www.ciattathompson.com/',
+      },
+      {
+        slug: 'randall-fryer',
+        name: 'Randall Fryer',
+        office: 'Oregon House District 28',
+        bio: 'Physician and candidate for the Oregon House of Representatives.',
+        cta: 'Campaign Information Coming Soon',
+        link: '',
+      },
+    ],
+    runForOffice: {
+      eyebrow: 'Want to serve your community?',
+      heading: 'Run for office.',
+      description:
+        'We interview prospective candidates to understand their values, commitment, experience, and readiness to do the work required to run an effective campaign.',
+      cta: 'Start the Conversation',
+    },
+  },
+  freedom: {
+    heading: 'Opportunity grows when people are free to build.',
+    paragraphs: [
+      'We believe broad and lasting prosperity comes from people starting businesses, developing skills, earning success, and investing in their communities.',
+      'Government has an important role: protect individual rights, maintain public safety, provide essential services, establish fair rules, and remain accountable to taxpayers. It should not replace private initiative or concentrate decisions that are better made by families, workers, employers, and communities.',
+      'We support economic freedom because it connects effort with opportunity, encourages innovation, expands consumer choice, and gives more people the ability to shape their own futures.',
+    ],
+    sideCard: {
+      eyebrow: 'SIDE CARD NOTE',
+      body: 'Government should create fair conditions for people to succeed, not stand in the way of the people and businesses creating opportunity.',
+    },
+  },
+  volunteerCta: {
+    heading: 'Show up. Speak up. Strengthen the region.',
+    paragraphs: [
+      'A lasting political organization is built by people willing to contribute their time, experience, voice, and local knowledge.',
+      'Whether you can volunteer for a few hours, host a neighborhood event, help a candidate, or consider running for office, there is a place for you in this effort.',
+    ],
+    ctas: {
+      primary: 'Become a Volunteer',
+      secondary: 'Explore Ways to Help',
+    },
+  },
+  events: {
+    label: 'EVENTS',
+    heading: 'Our calendar is taking shape.',
+    body:
+      'Northwest Oregon PAC is new, and we are building our first schedule of candidate events, volunteer activities, neighborhood gatherings, and community conversations.\nSign up to receive the first announcement when an event is scheduled near you.',
+    ctas: {
+      primary: 'Get Event Alerts',
+      secondary: 'Host an Event',
+    },
+  },
+  donate: {
+    eyebrow: 'CONTRIBUTE',
+    heading: 'Fund the fight for our region.',
+    body:
+      'Every contribution helps strengthen candidate support, voter outreach, fundraising, volunteer organization, and public messaging across Northwest Oregon.',
+    cta: 'Donate to Northwest Oregon PAC',
+    notice:
+      'The contribution form will collect the contributor information required for campaign-finance reporting. Contributions from foreign nationals are prohibited.\nFinal contribution and reporting language must be reviewed and approved before the donation form is published.',
+  },
 }
 
 // The founding story (long-form, verbatim)
@@ -278,3 +498,169 @@ export const focusAreas = [
 // What makes NW Oregon PAC different (verbatim)
 export const differentiator =
   'No other PAC represents the Northwest Oregon region or works in a nonpartisan, bridge-building frame of mind. Our focus is where the issues actually are — losing businesses, unsafe streets, and communities written off by both parties.'
+
+// Events page content — sourced verbatim from the Events Page content document.
+// Consumed by src/sections/pages/events-page.jsx. Do NOT paraphrase or edit
+// without an updated content doc.
+export const eventsPage = {
+  hero: {
+    heading: 'Connect with people working for Northwest Oregon.',
+    paragraphs: [
+      'Attend a volunteer activity, community conversation, candidate gathering, or regional event.',
+      'Events provide an opportunity to learn, participate, meet candidates, and connect with others who care about the future of Northwest Oregon.',
+    ],
+  },
+  calendar: {
+    eyebrow: 'EVENTS',
+    heading: 'Our calendar is taking shape.',
+    paragraphs: [
+      'Northwest Oregon PAC is new, and we are building our first schedule of candidate events, volunteer activities, neighborhood gatherings, and community conversations.',
+      'Sign up to receive the first announcement when an event is scheduled near you.',
+    ],
+    primary: { label: 'Get Event Alerts', href: '/volunteer' },
+    secondary: { label: 'Host an Event', href: '/contact' },
+  },
+}
+
+// About page content — sourced verbatim from the About Page content document.
+// Consumed by src/sections/pages/about-page.jsx. Do NOT paraphrase or edit
+// without an updated content doc.
+export const aboutPage = {
+  hero: {
+    eyebrow: 'ABOUT NORTHWEST OREGON PAC',
+    heading: 'Building a lasting voice for Northwest Oregon.',
+    paragraphs: [
+      'Northwest Oregon PAC is a state political action committee established in 2026 to support capable candidates, strengthen regional campaigns, and advance policies that help families, businesses, and communities thrive.',
+      'We bring local supporters, volunteers, and candidates together around a shared commitment to prosperity, accountability, opportunity, and practical leadership.',
+    ],
+  },
+  story: {
+    heading: 'Our region should never be written off.',
+    paragraphs: [
+      'Northwest Oregon PAC was founded because too many communities in our region have been treated as politically settled territory.',
+      'When districts are considered uncompetitive, candidates receive less support, voters hear fewer alternatives, and local concerns struggle to receive the attention they deserve.',
+      'We came together to change that.',
+      'By pooling local resources, supporting credible candidates, developing effective messaging, and organizing volunteers, we are building the infrastructure needed to compete and remain engaged over the long term.',
+      'Our work is grounded in a simple belief: every community deserves representation, investment, and leaders who are prepared to listen.',
+    ],
+    blocks: [
+      {
+        title: 'Why we exist',
+        body: 'Northwest Oregon residents deserve candidates who will engage seriously with affordability, business growth, public safety, education, energy costs, and the performance of government.',
+      },
+      {
+        title: 'Who we serve',
+        body: 'People who work, build businesses, raise families, serve their communities, and expect government to deliver results. We welcome Republicans, moderates, independents, and other practical voters who believe our region needs a stronger voice.',
+      },
+      {
+        title: 'How we work',
+        body: 'We convert local participation into lasting political capacity. That means raising funds, evaluating candidates, strengthening campaigns, organizing volunteers, communicating regional priorities, and helping credible candidates reach more voters.',
+      },
+      {
+        title: 'What we believe',
+        body: 'No district should be considered unworthy of effort. No voter should be denied a meaningful choice because political organizations decided a race was too difficult. And no public institution should be excused from delivering measurable results.',
+      },
+    ],
+  },
+  teamSection: {
+    eyebrow: 'Our Team',
+    heading: 'Local leadership. Built to organize.',
+    paragraphs: [
+      'Northwest Oregon PAC is led by volunteers with experience in financial stewardship, organizational governance, technology, grassroots engagement, and local political leadership.',
+      'Together, they are helping build an organization designed to operate responsibly, support candidates effectively, and remain active beyond a single election cycle.',
+    ],
+    members: [
+      {
+        name: 'Cindy Sawyer',
+        roles: [
+          'Treasurer, Washington County Republican Party',
+          'President, Downtown Republican Women',
+        ],
+        bio: 'Cindy brings experience in financial oversight, grassroots development, and community-based political organization.',
+      },
+      {
+        name: 'Christina Buehler',
+        roles: [
+          'Parliamentarian, Oregon Republican Party',
+          'Parliamentarian, Washington County Republican Party',
+          'Technology Committee, Washington County Republican Party',
+        ],
+        bio: 'Christina supports the PAC through organizational governance, parliamentary procedure, digital systems, and campaign operations.',
+      },
+      {
+        name: 'Helen Heller',
+        roles: [
+          'Vice Chair, Washington County Republican Party',
+          'Vice Chair, Congressional District 6',
+          'Second Vice President, Beaverton–Hillsboro Republican Women',
+        ],
+        bio: 'Helen contributes extensive experience in local leadership, volunteer engagement, and coordination across political organizations.',
+      },
+    ],
+  },
+  candidatesSection: {
+    eyebrow: 'Candidates',
+    heading: 'Backing the people willing to step forward.',
+    paragraphs: [
+      'A stronger political future begins with capable candidates who are prepared to compete.',
+      'We support candidates who understand their communities, communicate clearly, work alongside grassroots volunteers, and remain focused on practical results.',
+    ],
+    cta: 'Visit Campaign',
+    list: [
+      {
+        slug: 'mark-norman',
+        name: 'Mark Norman',
+        office: 'Oregon House District 27',
+        link: 'https://www.markfororegon.com/',
+      },
+      {
+        slug: 'brian-schimmel',
+        name: 'Brian Schimmel',
+        office: 'Oregon House District 29',
+        link: 'https://brianschimmel.org/',
+      },
+      {
+        slug: 'barbara-kahl',
+        name: 'Dr. Barbara Kahl',
+        office: 'U.S. House · Oregon’s 1st Congressional District',
+        link: 'https://www.drkahlforcongress.com/',
+      },
+      {
+        slug: 'ciatta-thompson',
+        name: 'Ciatta Thompson',
+        office: 'Oregon House District 33',
+        link: 'https://www.ciattathompson.com/',
+      },
+      {
+        slug: 'randall-fryer',
+        name: 'Randall Fryer',
+        office: 'Oregon House District 28',
+        link: '',
+      },
+    ],
+  },
+  values: {
+    heading: 'Three values. One standard: results.',
+    list: [
+      {
+        title: 'Prosperity',
+        body: 'A healthy region depends on people who take risks, create jobs, develop skills, and invest in their communities. We support an economy where small businesses can grow, workers can advance, and families can build secure futures without unnecessary barriers.',
+      },
+      {
+        title: 'Accountability',
+        body: 'Government should clearly explain what it is doing, what it costs, and whether it is working. We support transparent decisions, measurable outcomes, responsible spending, and consequences when public programs repeatedly fail to deliver.',
+      },
+      {
+        title: 'Common sense',
+        body: 'Public policy should solve the problem in front of us, not satisfy an ideological test. We support leadership that listens, examines the evidence, makes practical decisions, and changes direction when the results demand it.',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Northwest Oregon will not become more competitive by accident.',
+    body: 'It will take candidates willing to run, volunteers willing to participate, and local residents willing to invest in the work. Help us build the organization our region needs.',
+    primary: { label: 'Volunteer', href: '/volunteer' },
+    secondary: { label: 'Donate', href: '/donate' },
+    textLink: { label: 'Run for Office', href: '/ask' },
+  },
+}

@@ -48,19 +48,34 @@ const PageHeader = ({ eyebrow, title, description, number, align = 'left', accen
           }`}
         />
 
-        {description && (
-          <m.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            transition={{ delay: 0.7, duration: 0.7, ease: EASE_SOFT }}
-            className={`text-foreground/75 mt-6 max-w-2xl text-base sm:text-lg ${
-              center ? 'mx-auto text-center' : ''
-            }`}
-          >
-            {description}
-          </m.p>
-        )}
+        {description &&
+          (Array.isArray(description) ? (
+            <m.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.7, duration: 0.7, ease: EASE_SOFT }}
+              className={`text-foreground/75 mt-6 max-w-2xl space-y-4 text-base sm:text-lg ${
+                center ? 'mx-auto text-center' : ''
+              }`}
+            >
+              {description.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </m.div>
+          ) : (
+            <m.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.7, duration: 0.7, ease: EASE_SOFT }}
+              className={`text-foreground/75 mt-6 max-w-2xl text-base sm:text-lg ${
+                center ? 'mx-auto text-center' : ''
+              }`}
+            >
+              {description}
+            </m.p>
+          ))}
 
         <m.div
           initial={{ scaleX: 0 }}
@@ -76,7 +91,7 @@ const PageHeader = ({ eyebrow, title, description, number, align = 'left', accen
 PageHeader.propTypes = {
   eyebrow: PropTypes.string,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
   number: PropTypes.string,
   align: PropTypes.oneOf(['left', 'center']),
   accent: PropTypes.string,
