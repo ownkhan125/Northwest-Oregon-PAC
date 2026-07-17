@@ -23,6 +23,7 @@ const columns = [
       { label: 'Donate', href: '/donate' },
       { label: 'Volunteer', href: '/volunteer' },
       { label: 'Host an Event', href: '/contact' },
+      { label: 'Social Posts', href: '/social-posts' },
       { label: 'Contact', href: '/contact' },
       { label: 'FAQs', href: '/faq' },
     ],
