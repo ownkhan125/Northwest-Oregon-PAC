@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Feed post placeholder">
+  <rect width="400" height="400" fill="#f0ede6"/>
+  <g fill="none" stroke="#2e4538" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+    <rect x="110" y="105" width="180" height="180" rx="14"/>
+    <circle cx="140" cy="135" r="12"/>
+    <line x1="162" y1="130" x2="230" y2="130"/>
+    <line x1="162" y1="142" x2="210" y2="142"/>
+    <path d="M120 250l40-44 30 32 24-24 46 46"/>
+    <circle cx="250" cy="180" r="10"/>
+  </g>
+  <text x="200" y="320" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="14" fill="#2e4538" opacity="0.65" letter-spacing="4">FEED POST</text>
+</svg>
