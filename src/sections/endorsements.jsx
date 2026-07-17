@@ -8,16 +8,21 @@ import Button from '@/components/ui/button'
 import CivicIcon from '@/components/ui/civic-icon'
 import { cardReveal, stagger, fadeUp } from '@/animations/variants'
 import { home } from '@/data/pac'
+import markNorman from '@/assets/images/Mark Norman.png'
+import brianSchimmel from '@/assets/images/Brian Schimmel.jpg'
+import barbaraKahl from '@/assets/images/Barbara Kahl.png'
+import ciattaThompson from '@/assets/images/Ciatta Thompson.jpg'
+import randallFryer from '@/assets/images/Randall Fryer.jpg'
 
-// Deterministic Unsplash portrait placeholders — professional stock photography.
-// Whitelisted in next.config.mjs (images.unsplash.com).
-const PLACEHOLDER_PORTRAITS = [
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=800&fit=crop',
-  'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=640&h=800&fit=crop',
-  'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=640&h=800&fit=crop',
-  'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=640&h=800&fit=crop',
-  'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=640&h=800&fit=crop',
-]
+// Candidate portraits keyed by slug (see `home.endorsements.candidates` in
+// src/data/pac.js). Add a new entry here when onboarding a new candidate.
+const CANDIDATE_PORTRAITS = {
+  'mark-norman': markNorman,
+  'brian-schimmel': brianSchimmel,
+  'barbara-kahl': barbaraKahl,
+  'ciatta-thompson': ciattaThompson,
+  'randall-fryer': randallFryer,
+}
 
 export default function Endorsements() {
   return (
@@ -50,20 +55,24 @@ export default function Endorsements() {
         viewport={{ once: true, margin: '-15% 0px' }}
         className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
       >
-        {home.endorsements.candidates.map((c, i) => (
+        {home.endorsements.candidates.map((c, i) => {
+          const portrait = CANDIDATE_PORTRAITS[c.slug]
+          return (
           <m.div key={c.slug} variants={cardReveal}>
             <Card className="flex h-full flex-col overflow-hidden p-0" tilt={i % 2 === 0}>
               <div
                 aria-hidden
                 className="border-primary/15 bg-surface-alt/70 relative aspect-[4/3] w-full overflow-hidden border-b"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={PLACEHOLDER_PORTRAITS[i % PLACEHOLDER_PORTRAITS.length]}
-                  alt=""
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
+                {portrait && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={portrait.src}
+                    alt={c.name}
+                    className="h-full w-full object-cover object-top"
+                    loading="lazy"
+                  />
+                )}
               </div>
               <div className="flex flex-1 flex-col p-7">
                 <h3 className="font-display text-foreground text-2xl leading-tight font-medium sm:text-3xl">
@@ -103,7 +112,8 @@ export default function Endorsements() {
               </div>
             </Card>
           </m.div>
-        ))}
+          )
+        })}
 
         <m.div variants={fadeUp}>
           <Card
