@@ -5,6 +5,7 @@ import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
 import { fadeUp, stagger } from '@/animations/variants'
 import { home } from '@/data/pac'
+import bannerImage from '@/assets/images/banner.jpg'
 
 export default function News() {
   return (
@@ -12,7 +13,7 @@ export default function News() {
       id="statement"
       eyebrow="Where we stand"
       number="05"
-      bgImage="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=2000&q=80&auto=format&fit=crop"
+      bgImage={bannerImage.src}
     >
       <div className="flex flex-wrap items-end justify-between gap-6">
         <SplitText

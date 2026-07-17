@@ -20,6 +20,16 @@ const links = [
   { label: 'Contact', href: '/contact' },
 ]
 
+// Shared spring for both the pill background and the underline — matched so
+// they glide together without desync. Slightly under-damped for a premium
+// settle without any bounce.
+const PILL_SPRING = {
+  type: 'spring',
+  stiffness: 220,
+  damping: 28,
+  mass: 0.9,
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -72,7 +82,7 @@ export default function Navbar() {
           >
             {links.map((link, i) => {
               const active = isActive(link.href)
-              const highlighted = hovered === i || (hovered === null && active)
+              const isHovered = hovered === i
               return (
                 <m.div
                   key={link.href}
@@ -85,36 +95,51 @@ export default function Navbar() {
                     onMouseEnter={() => setHovered(i)}
                     onFocus={() => setHovered(i)}
                     onBlur={() => setHovered(null)}
+                    aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'group relative inline-flex items-center rounded-full px-4 py-2 text-sm transition-colors duration-300',
-                      highlighted ? 'text-primary' : 'text-foreground/70 hover:text-primary',
+                      'relative inline-flex items-center rounded-full px-4 py-2 text-sm transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform',
+                      active || isHovered ? 'text-primary' : 'text-foreground/65',
                     )}
                   >
-                    {highlighted && (
-                      <m.span
-                        layoutId="nav-pill"
-                        aria-hidden
-                        transition={{
-                          type: 'spring',
-                          stiffness: 380,
-                          damping: 32,
-                          mass: 0.6,
-                        }}
-                        className="border-primary/25 bg-primary/[0.06] absolute inset-0 rounded-full border shadow-[0_6px_20px_-10px_var(--primary,rgba(46,69,56,0.35))]"
-                      >
+                    {/* Persistent active indicator — never moves off the current
+                        page's link, even while another link is being hovered. */}
+                    {active && (
+                      <>
                         <span
                           aria-hidden
-                          className="from-primary/40 via-primary/70 to-primary/40 absolute -bottom-[3px] left-1/2 h-[2px] w-6 -translate-x-1/2 rounded-full bg-gradient-to-r"
+                          className="border-primary/30 bg-primary/[0.08] absolute inset-0 rounded-full border shadow-[0_6px_20px_-10px_var(--primary,rgba(46,69,56,0.35))]"
                         />
-                      </m.span>
+                        <span
+                          aria-hidden
+                          className="pointer-events-none absolute inset-x-0 -bottom-[3px] flex justify-center"
+                        >
+                          <span className="from-primary/40 via-primary/70 to-primary/40 h-[2px] w-6 rounded-full bg-gradient-to-r" />
+                        </span>
+                      </>
                     )}
-                    <m.span
-                      className="relative z-10 font-medium tracking-tight"
-                      animate={{ y: highlighted ? -0.5 : 0 }}
-                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                    >
+                    {/* Independent hover indicator — glides between hovered links
+                        via a shared layoutId, without touching the active pill. */}
+                    <AnimatePresence>
+                      {isHovered && (
+                        <m.span
+                          layoutId="nav-hover-pill"
+                          aria-hidden
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={PILL_SPRING}
+                          className={cn(
+                            'absolute inset-0 rounded-full',
+                            active
+                              ? 'bg-primary/[0.04]'
+                              : 'bg-primary/[0.05] ring-primary/10 ring-1 ring-inset',
+                          )}
+                        />
+                      )}
+                    </AnimatePresence>
+                    <span className="relative z-10 font-medium tracking-tight">
                       {link.label}
-                    </m.span>
+                    </span>
                   </Link>
                 </m.div>
               )

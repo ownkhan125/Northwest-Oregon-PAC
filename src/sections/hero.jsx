@@ -6,6 +6,7 @@ import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { pac, home } from '@/data/pac'
+import heroImage from '@/assets/images/hero.jpg'
 
 export default function Hero() {
   const root = useRef(null)
@@ -140,36 +141,21 @@ export default function Hero() {
               aria-hidden
               className="spin-slow border-primary/25 absolute -inset-4 rounded-[2rem] border border-dashed"
             />
-            <div className="border-primary/20 bg-surface-alt relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] border p-10 text-center">
+            <div className="border-primary/20 bg-surface-alt relative flex h-full w-full flex-col items-center justify-end overflow-hidden rounded-[2rem] border p-8 text-center sm:p-10">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=80&auto=format&fit=crop"
-                alt=""
-                aria-hidden
-                className="absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-multiply"
+                src={heroImage.src}
+                alt="Northwest Oregon PAC — Strong Communities. Local Leadership. Real Solutions."
+                className="absolute inset-0 h-full w-full object-cover object-center"
                 loading="eager"
               />
               <div
                 aria-hidden
-                className="from-surface-alt via-surface-alt/85 to-surface-alt/40 absolute inset-0 bg-gradient-to-b"
+                className="from-surface-alt/95 via-surface-alt/10 absolute inset-0 bg-gradient-to-t to-transparent"
               />
-              <div className="relative text-muted font-mono text-[10px] tracking-[0.35em] uppercase">
-                Est. 2025
-              </div>
-              <div className="relative font-display text-primary mt-6 text-4xl leading-tight font-medium sm:text-5xl">
-                Northwest
-                <br />
-                Oregon
-                <br />
-                <span className="text-highlight">PAC</span>
-              </div>
-              <div className="relative bg-primary/40 mt-6 h-px w-16" />
-              <p className="relative text-foreground/75 mt-6 max-w-[240px] text-sm">
-                Prosperity · Accountability · Opportunity
-              </p>
-              <div className="relative border-primary/25 bg-surface/70 mt-8 rounded-full border px-4 py-1.5 backdrop-blur-sm">
+              <div className="relative border-primary/25 bg-surface/80 rounded-full border px-4 py-1.5 backdrop-blur-md">
                 <span className="text-primary font-mono text-[10px] tracking-[0.3em] uppercase">
-                  Filing #{pac.filingNumber}
+                  Filing #{pac.filingNumber} · Est. 2025
                 </span>
               </div>
             </div>

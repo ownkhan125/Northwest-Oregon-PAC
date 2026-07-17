@@ -83,7 +83,8 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3002/)",
       "Bash(curl -s http://localhost:3000/)",
       "Bash(curl -s http://localhost:3002/)",
-      "Bash(curl *)"
+      "Bash(curl *)",
+      "Bash(grep -oE \"\\\\\"\\(node-html-parser|linkedom|parse5|cheerio|htmlparser2|jsdom\\)\\\\\":\\\\\\\\s*\\\\\"[^\\\\\"]+\\\\\"\" \"C:/Users/General/Documents/GitHub/Northwest Oregon PAC/package.json\")"
     ]
   }
 }

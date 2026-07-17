@@ -6,6 +6,7 @@ import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { fadeUp, fadeRight, stagger, lineBuild } from '@/animations/variants'
 import { home, differentiator, focusAreas } from '@/data/pac'
+import whoWeAreImage from '@/assets/images/Who we are.jpg'
 
 export default function About() {
   return (
@@ -86,15 +87,14 @@ export default function About() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80&auto=format&fit=crop"
-              alt=""
-              aria-hidden
-              className="h-full w-full object-cover"
+              src={whoWeAreImage.src}
+              alt="Northwest Oregon PAC leaders in conversation at a community meeting"
+              className="h-full w-full object-cover object-center"
               loading="lazy"
             />
             <div
               aria-hidden
-              className="from-primary/30 absolute inset-0 bg-gradient-to-tr via-transparent to-transparent"
+              className="from-primary/20 absolute inset-0 bg-gradient-to-tr via-transparent to-transparent"
             />
           </m.div>
 

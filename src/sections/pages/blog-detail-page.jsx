@@ -270,12 +270,16 @@ function RelatedArticles({ items }) {
               <Card className="h-full overflow-hidden p-0" interactive={false} tilt={false}>
                 <Link href={`/blogs/${post.slug}`} className="group block">
                   <div className="relative aspect-[16/9] overflow-hidden">
-                    <img
-                      src={post.heroImage}
-                      alt={post.heroAlt}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
-                    />
+                    {post.heroImage ? (
+                      <img
+                        src={post.heroImage}
+                        alt={post.heroAlt}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
+                      />
+                    ) : (
+                      <div className="from-primary/25 via-surface-alt to-surface-alt h-full w-full bg-gradient-to-br" />
+                    )}
                     <span className="border-primary/40 bg-surface/85 text-primary absolute top-3 left-3 rounded-full border px-3 py-1 font-mono text-[10px] tracking-[0.25em] uppercase">
                       {post.category}
                     </span>
@@ -356,18 +360,20 @@ export default function BlogDetailPage({ post, prev, next, related }) {
             </div>
           </div>
 
-          <m.figure
-            initial={{ opacity: 0, y: 30, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
-            className="border-border relative mt-10 overflow-hidden rounded-3xl border"
-          >
-            <img
-              src={post.heroImage}
-              alt={post.heroAlt}
-              className="aspect-[16/9] w-full object-cover"
-            />
-          </m.figure>
+          {post.heroImage && (
+            <m.figure
+              initial={{ opacity: 0, y: 30, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
+              className="border-border relative mt-10 overflow-hidden rounded-3xl border"
+            >
+              <img
+                src={post.heroImage}
+                alt={post.heroAlt}
+                className="aspect-[16/9] w-full object-cover"
+              />
+            </m.figure>
+          )}
         </div>
       </section>
 

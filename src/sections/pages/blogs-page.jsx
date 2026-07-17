@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import { cardReveal, fadeUp, stagger, EASE } from '@/animations/variants'
-import { blogPosts, formatBlogDate } from '@/data/blogs'
+import { formatBlogDate } from '@/data/blogs'
 
 function BlogCard({ post, featured = false }) {
   return (
@@ -24,12 +24,16 @@ function BlogCard({ post, featured = false }) {
             : 'relative block aspect-[16/10] w-full overflow-hidden'
         }
       >
-        <img
-          src={post.heroImage}
-          alt={post.heroAlt}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
-        />
+        {post.heroImage ? (
+          <img
+            src={post.heroImage}
+            alt={post.heroAlt}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
+          />
+        ) : (
+          <div className="from-primary/25 via-surface-alt to-surface-alt h-full w-full bg-gradient-to-br" />
+        )}
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent opacity-60"
@@ -104,8 +108,8 @@ function BlogCard({ post, featured = false }) {
   )
 }
 
-export default function BlogsPage() {
-  const [featured, ...rest] = blogPosts
+export default function BlogsPage({ posts = [] }) {
+  const [featured, ...rest] = posts
 
   return (
     <>
@@ -118,6 +122,26 @@ export default function BlogsPage() {
 
       <section className="relative isolate overflow-x-clip pb-24 sm:pb-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+          {posts.length === 0 && (
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: EASE }}
+              className="border-primary/25 bg-surface-alt/60 mx-auto rounded-3xl border p-10 text-center sm:p-14"
+            >
+              <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+                Field notes coming online
+              </div>
+              <h2 className="font-display text-primary mt-4 text-3xl font-medium sm:text-4xl">
+                New essays are on the way.
+              </h2>
+              <p className="text-foreground/75 mx-auto mt-4 max-w-xl">
+                We&rsquo;re preparing the first working essays for the region — check back shortly,
+                or subscribe below to hear when the first one publishes.
+              </p>
+            </m.div>
+          )}
+
           {featured && (
             <m.div
               variants={stagger}
