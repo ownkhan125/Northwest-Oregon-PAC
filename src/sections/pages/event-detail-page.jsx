@@ -6,8 +6,11 @@ import { m } from 'motion/react'
 import Button from '@/components/ui/button'
 import SplitText from '@/components/ui/split-text'
 import Input from '@/components/ui/input'
+import Checkbox from '@/components/ui/checkbox'
+import { A2P_SMS_UPDATES_LABEL, A2P_SMS_PROMO_LABEL } from '@/lib/form-constants'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { formatEventDate, formatEventTime } from '@/lib/event-format'
+import { validateContactFields } from '@/lib/form'
 
 export default function EventDetailPage({ event }) {
   const dateLabel = formatEventDate(event, { long: true })
@@ -22,7 +25,17 @@ export default function EventDetailPage({ event }) {
 
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
+  const [fieldErrors, setFieldErrors] = useState({})
   const submitted = status === 'success'
+
+  const clearFieldError = (name) => {
+    setFieldErrors((prev) => {
+      if (!prev[name]) return prev
+      const next = { ...prev }
+      delete next[name]
+      return next
+    })
+  }
 
   async function onSubmit(e) {
     e.preventDefault()
@@ -39,7 +52,21 @@ export default function EventDetailPage({ event }) {
       eventDate,
       eventTime,
       eventCategory,
+      sms_updates: data.get('sms_updates') === 'on' ? 'Yes' : 'No',
+      sms_promo: data.get('sms_promo') === 'on' ? 'Yes' : 'No',
     }
+
+    const errs = validateContactFields(payload, {
+      phoneKey: 'phone',
+      phoneRequired: true,
+    })
+    if (Object.keys(errs).length > 0) {
+      setFieldErrors(errs)
+      const firstBadName = Object.keys(errs)[0]
+      form.querySelector(`[name="${firstBadName}"]`)?.focus()
+      return
+    }
+    setFieldErrors({})
 
     setStatus('loading')
     setErrorMsg('')
@@ -245,8 +272,17 @@ export default function EventDetailPage({ event }) {
                       name="phone"
                       type="tel"
                       autoComplete="tel"
+                      inputMode="tel"
+                      required
                       placeholder="(503) 555-1234"
+                      error={fieldErrors.phone}
+                      onChange={() => clearFieldError('phone')}
                     />
+
+                    <div className="border-primary/15 space-y-4 border-t pt-5">
+                      <Checkbox name="sms_updates" label={A2P_SMS_UPDATES_LABEL} />
+                      <Checkbox name="sms_promo" label={A2P_SMS_PROMO_LABEL} />
+                    </div>
 
                     {status === 'error' && errorMsg && (
                       <div

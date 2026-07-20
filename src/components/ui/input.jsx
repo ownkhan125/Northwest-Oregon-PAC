@@ -6,8 +6,12 @@ import Label from '@/components/ui/label'
 import { cn } from '@/lib/cn'
 import { BASE_FIELD } from '@/lib/form'
 
-const Input = forwardRef(function Input({ className, required, label, id, name, ...rest }, ref) {
+const Input = forwardRef(function Input(
+  { className, required, label, id, name, error, ...rest },
+  ref
+) {
   const inputId = id ?? name
+  const errorId = error ? `${inputId}-error` : undefined
   return (
     <div className="w-full">
       {label && (
@@ -20,9 +24,20 @@ const Input = forwardRef(function Input({ className, required, label, id, name, 
         id={inputId}
         name={name}
         required={required}
-        className={cn(BASE_FIELD, className)}
+        aria-invalid={error ? 'true' : undefined}
+        aria-describedby={errorId}
+        className={cn(
+          BASE_FIELD,
+          error && 'border-red-500 focus:border-red-500',
+          className
+        )}
         {...rest}
       />
+      {error && (
+        <p id={errorId} role="alert" className="mt-1.5 text-xs text-red-600">
+          {error}
+        </p>
+      )}
     </div>
   )
 })
@@ -33,6 +48,7 @@ Input.propTypes = {
   label: PropTypes.node,
   id: PropTypes.string,
   name: PropTypes.string,
+  error: PropTypes.string,
 }
 
 export default Input

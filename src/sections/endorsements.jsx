@@ -57,9 +57,13 @@ export default function Endorsements() {
       >
         {home.endorsements.candidates.map((c, i) => {
           const portrait = CANDIDATE_PORTRAITS[c.slug]
-          return (
-          <m.div key={c.slug} variants={cardReveal}>
-            <Card className="flex h-full flex-col overflow-hidden p-0" tilt={i % 2 === 0}>
+          const hasLink = Boolean(c.link)
+          const CardBody = (
+            <Card
+              className="flex h-full flex-col justify-between overflow-hidden p-0"
+              tilt={hasLink && i % 2 === 0}
+              interactive={hasLink}
+            >
               <div
                 aria-hidden
                 className="border-primary/15 bg-surface-alt/70 relative aspect-[4/3] w-full overflow-hidden border-b"
@@ -75,21 +79,22 @@ export default function Endorsements() {
                 )}
               </div>
               <div className="flex flex-1 flex-col p-7">
-                <h3 className="font-display text-foreground text-2xl leading-tight font-medium sm:text-3xl">
+                <h3 className="font-display text-foreground group-hover:text-primary text-2xl leading-tight font-medium transition-colors sm:text-3xl">
                   {c.name}
                 </h3>
                 <p className="text-foreground/75 mt-2 text-sm sm:text-base">{c.office}</p>
                 <p className="text-foreground/70 mt-4 text-sm leading-relaxed">{c.bio}</p>
 
-                <div className="border-primary/15 mt-6 flex items-center justify-between border-t pt-5">
-                  {c.link ? (
-                    <a
-                      href={c.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-primary hover:text-highlight inline-flex cursor-pointer items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors"
-                    >
-                      {c.cta}
+                <div className="border-primary/15 mt-auto flex items-center justify-between border-t pt-5">
+                  <span
+                    className={
+                      hasLink
+                        ? 'text-primary group-hover:text-highlight inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors'
+                        : 'text-foreground/60 inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase'
+                    }
+                  >
+                    {c.cta}
+                    {hasLink && (
                       <svg
                         width="14"
                         height="14"
@@ -99,23 +104,36 @@ export default function Endorsements() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        className="transition-transform group-hover:translate-x-1"
                       >
                         <path d="M7 17L17 7M9 7h8v8" />
                       </svg>
-                    </a>
-                  ) : (
-                    <span className="text-foreground/50 text-xs tracking-[0.25em] uppercase">
-                      {c.cta}
-                    </span>
-                  )}
+                    )}
+                  </span>
                 </div>
               </div>
             </Card>
-          </m.div>
+          )
+          return (
+            <m.div key={c.slug} variants={cardReveal} className="h-full">
+              {hasLink ? (
+                <a
+                  href={c.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${c.cta} — ${c.name}, ${c.office}`}
+                  className="group block h-full"
+                >
+                  {CardBody}
+                </a>
+              ) : (
+                <div className="group block h-full">{CardBody}</div>
+              )}
+            </m.div>
           )
         })}
 
-        <m.div variants={fadeUp}>
+        <m.div variants={fadeUp} className="h-full">
           <Card
             className="from-surface-alt/70 to-surface relative flex h-full flex-col justify-between overflow-hidden bg-gradient-to-br p-7"
             interactive={false}

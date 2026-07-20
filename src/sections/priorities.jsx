@@ -93,45 +93,49 @@ export default function Priorities() {
         className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
       >
         {home.priorities.list.map((issue) => (
-          <m.div key={issue.id} variants={cardReveal}>
-            <Card className="hover:border-primary/40 h-full p-7 transition-colors">
-              <div className="flex items-start justify-between">
-                <span className="border-primary/25 bg-surface-alt/60 text-primary grid h-12 w-12 place-items-center rounded-xl border">
-                  <svg viewBox="0 0 24 24" className="h-6 w-6">
-                    {icons[issue.id]}
+          <m.div key={issue.id} variants={cardReveal} className="h-full">
+            <Link
+              href="/ask"
+              aria-label={`Read the position: ${issue.name}`}
+              className="group block h-full"
+            >
+              <Card className="group-hover:border-primary/40 flex h-full flex-col justify-between p-7 transition-colors">
+                <div className="flex items-start justify-between">
+                  <span className="border-primary/25 bg-surface-alt/60 text-primary grid h-12 w-12 place-items-center rounded-xl border">
+                    <svg viewBox="0 0 24 24" className="h-6 w-6">
+                      {icons[issue.id]}
+                    </svg>
+                  </span>
+                  <span className="text-highlight font-mono text-xs">{issue.id}</span>
+                </div>
+                <h3 className="font-display text-foreground mt-7 text-xl leading-tight font-medium sm:text-2xl">
+                  {issue.name}
+                </h3>
+                <div className="mt-3 flex-1 space-y-3">
+                  {issue.paragraphs.map((p, i) => (
+                    <p key={i} className="text-foreground/75 text-sm leading-relaxed">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+                <div className="text-highlight group-hover:text-primary mt-auto inline-flex items-center gap-2 pt-7 text-xs tracking-[0.25em] uppercase transition-colors">
+                  Read the position
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="transition-transform group-hover:translate-x-1"
+                  >
+                    <path d="M5 12h14M13 5l7 7-7 7" />
                   </svg>
-                </span>
-                <span className="text-highlight font-mono text-xs">{issue.id}</span>
-              </div>
-              <h3 className="font-display text-foreground mt-7 text-xl leading-tight font-medium sm:text-2xl">
-                {issue.name}
-              </h3>
-              <div className="mt-3 space-y-3">
-                {issue.paragraphs.map((p, i) => (
-                  <p key={i} className="text-foreground/75 text-sm leading-relaxed">
-                    {p}
-                  </p>
-                ))}
-              </div>
-              <Link
-                href="/ask"
-                className="text-highlight hover:text-primary mt-7 inline-flex cursor-pointer items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors"
-              >
-                Read the position
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14M13 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </Card>
+                </div>
+              </Card>
+            </Link>
           </m.div>
         ))}
       </m.div>

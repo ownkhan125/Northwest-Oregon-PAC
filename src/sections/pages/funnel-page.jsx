@@ -134,7 +134,7 @@ const WhySection = () => (
           <m.div
             key={it.label}
             variants={cardReveal}
-            className="group border-primary/20 bg-surface hover:border-primary/45 rounded-2xl border p-6 transition-colors"
+            className="group border-primary/20 bg-surface hover:border-primary/45 flex h-full flex-col rounded-2xl border p-6 transition-colors"
           >
             <div className="font-display text-primary text-4xl font-medium sm:text-5xl">
               <Counter value={it.value} suffix={it.suffix} duration={1.6} />
@@ -208,7 +208,7 @@ const CommitmentsSection = () => {
             <div
               key={p.id}
               data-commit-card
-              className="border-primary/20 bg-surface hover:border-primary/45 group relative flex flex-col rounded-2xl border p-6 transition-colors"
+              className="border-primary/20 bg-surface hover:border-primary/45 group relative flex h-full flex-col rounded-2xl border p-6 transition-colors"
             >
               <div className="flex items-center justify-between">
                 <span className="text-highlight font-mono text-[10px] tracking-[0.35em] uppercase">

@@ -86,7 +86,7 @@ const Card = ({
           />
         </>
       )}
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10 flex h-full flex-col">{children}</div>
     </m.div>
   )
 }

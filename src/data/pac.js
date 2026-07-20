@@ -236,7 +236,7 @@ export const home = {
       'We support economic freedom because it connects effort with opportunity, encourages innovation, expands consumer choice, and gives more people the ability to shape their own futures.',
     ],
     sideCard: {
-      eyebrow: 'SIDE CARD NOTE',
+      eyebrow: 'Our core principle',
       body: 'Government should create fair conditions for people to succeed, not stand in the way of the people and businesses creating opportunity.',
     },
   },
@@ -248,7 +248,6 @@ export const home = {
     ],
     ctas: {
       primary: 'Become a Volunteer',
-      secondary: 'Explore Ways to Help',
     },
   },
   events: {
@@ -268,7 +267,7 @@ export const home = {
       'Every contribution helps strengthen candidate support, voter outreach, fundraising, volunteer organization, and public messaging across Northwest Oregon.',
     cta: 'Donate to Northwest Oregon PAC',
     notice:
-      'The contribution form will collect the contributor information required for campaign-finance reporting. Contributions from foreign nationals are prohibited.\nFinal contribution and reporting language must be reviewed and approved before the donation form is published.',
+      'The contribution form collects the contributor information required for campaign-finance reporting. Contributions from foreign nationals are prohibited.',
   },
 }
 
@@ -495,9 +494,9 @@ export const focusAreas = [
   'Messaging',
 ]
 
-// What makes NW Oregon PAC different (verbatim)
+// What makes NW Oregon PAC different
 export const differentiator =
-  'No other PAC represents the Northwest Oregon region or works in a nonpartisan, bridge-building frame of mind. Our focus is where the issues actually are — losing businesses, unsafe streets, and communities written off by both parties.'
+  'No other PAC represents the Northwest Oregon region or works in a nonpartisan, bridge-building frame of mind. Our focus is where the issues actually are — losing businesses, unsafe streets, and communities too often overlooked by partisan politics.'
 
 // Events page content — sourced verbatim from the Events Page content document.
 // Consumed by src/sections/pages/events-page.jsx. Do NOT paraphrase or edit
@@ -579,15 +578,6 @@ export const aboutPage = {
         bio: 'Cindy brings experience in financial oversight, grassroots development, and community-based political organization.',
       },
       {
-        name: 'Christina Buehler',
-        roles: [
-          'Parliamentarian, Oregon Republican Party',
-          'Parliamentarian, Washington County Republican Party',
-          'Technology Committee, Washington County Republican Party',
-        ],
-        bio: 'Christina supports the PAC through organizational governance, parliamentary procedure, digital systems, and campaign operations.',
-      },
-      {
         name: 'Helen Heller',
         roles: [
           'Vice Chair, Washington County Republican Party',
@@ -595,6 +585,15 @@ export const aboutPage = {
           'Second Vice President, Beaverton–Hillsboro Republican Women',
         ],
         bio: 'Helen contributes extensive experience in local leadership, volunteer engagement, and coordination across political organizations.',
+      },
+      {
+        name: 'Christina Buehler',
+        roles: [
+          'Parliamentarian, Oregon Republican Party',
+          'Parliamentarian, Washington County Republican Party',
+          'Technology Committee, Washington County Republican Party',
+        ],
+        bio: 'Christina supports the PAC through organizational governance, parliamentary procedure, digital systems, and campaign operations.',
       },
     ],
   },

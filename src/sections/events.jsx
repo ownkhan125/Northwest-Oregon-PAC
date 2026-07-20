@@ -42,9 +42,6 @@ export default function Events({ events = [] }) {
           <Button href="/volunteer" variant="primary" size="lg">
             {home.volunteerCta.ctas.primary}
           </Button>
-          <Button href="/volunteer" variant="ghost" size="lg">
-            {home.volunteerCta.ctas.secondary}
-          </Button>
         </div>
       </div>
 

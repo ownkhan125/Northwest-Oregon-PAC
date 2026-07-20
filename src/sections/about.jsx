@@ -5,7 +5,7 @@ import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { fadeUp, fadeRight, stagger, lineBuild } from '@/animations/variants'
-import { home, differentiator, focusAreas } from '@/data/pac'
+import { home, differentiator } from '@/data/pac'
 import whoWeAreImage from '@/assets/images/Who we are.jpg'
 
 export default function About() {
@@ -111,19 +111,6 @@ export default function About() {
                 “{differentiator}”
               </p>
             </div>
-          </div>
-
-          <div className="border-primary/15 mt-8 grid grid-cols-3 gap-6 border-t pt-6 lg:mt-12">
-            {focusAreas.map((area) => (
-              <div key={area}>
-                <div className="font-display text-primary text-lg font-medium sm:text-xl">
-                  {area}
-                </div>
-                <div className="text-foreground/55 mt-1 text-[10px] tracking-widest uppercase">
-                  What we do
-                </div>
-              </div>
-            ))}
           </div>
         </m.div>
       </div>

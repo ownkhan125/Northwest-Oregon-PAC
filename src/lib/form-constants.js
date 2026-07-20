@@ -1,13 +1,15 @@
 // Shared constants for GHL-connected forms. See .claude/Rule/ghl-forms-webhooks.md
 // for the source of these values and the payload contract.
 
-// A2P consent labels — required verbatim on every form that collects a phone
-// number. Organization name adapted for this campaign.
+// Original A2P consent labels — restored to preserve the GHL field mapping
+// used by the primary Contact / Volunteer workflows and the shared SMS
+// Opt-in workflow. Each checkbox maps to a discrete GHL field name
+// (sms_updates + sms_promo). Do not rename these fields.
 export const A2P_SMS_UPDATES_LABEL =
-  'By checking this box, I consent to receive campaign updates from Northwest Oregon PAC via automated text messages at the phone number provided. Message frequency may vary. Message and data rates may apply. Text STOP to opt out or HELP for help. View our Privacy Policy and Terms of Service.'
+  'I agree to receive SMS updates from Northwest Oregon PAC regarding campaign updates, event reminders, and volunteer coordination. Message frequency varies. Message & data rates may apply. Reply STOP to unsubscribe or HELP for help.'
 
 export const A2P_SMS_PROMO_LABEL =
-  'By checking this box, I consent to receive promotional messages, event invitations, and fundraising communications from Northwest Oregon PAC via automated text messages. Message frequency may vary. Message and data rates may apply. Text STOP to opt out or HELP for help.'
+  'I agree to receive promotional SMS messages from Northwest Oregon PAC, including fundraising requests, donation drives, and special promotions. Message frequency varies. Message & data rates may apply. Reply STOP to unsubscribe or HELP for help.'
 
 // Volunteer form options — see rule spec.
 export const OREGON_COUNTIES = [

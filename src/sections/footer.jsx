@@ -33,7 +33,7 @@ const columns = [
     links: [
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms of Service', href: '/terms-of-service' },
-      { label: 'Oregon Secretary of State', href: 'https://sos.oregon.gov/elections/' },
+      { label: 'Oregon Secretary of State', href: 'https://sos.oregon.gov/elections/', external: true },
     ],
   },
 ]
@@ -101,6 +101,31 @@ export default function Footer() {
                   ))}
                 </address>
               </div>
+
+              <div className="pt-2">
+                <span className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase">
+                  Follow
+                </span>
+                <div className="mt-3 flex items-center gap-2.5">
+                  {socials.map((s) => (
+                    <a
+                      key={s.name}
+                      href={s.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={s.name}
+                      className="group border-border text-foreground/80 hover:border-primary hover:text-primary hover:bg-primary/5 focus-visible:ring-primary/40 grid h-10 w-10 cursor-pointer place-items-center rounded-full border transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-sm focus-visible:ring-2 focus-visible:outline-none"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-4 w-4 transition-transform duration-300 ease-out group-hover:scale-110"
+                      >
+                        {s.icon}
+                      </svg>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -117,58 +142,55 @@ export default function Footer() {
                   {col.title}
                 </div>
                 <ul className="mt-5 space-y-3">
-                  {col.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="group text-foreground/80 hover:text-primary inline-flex cursor-pointer items-center gap-2 text-sm transition-colors"
-                      >
-                        {link.label}
-                        <span className="bg-primary h-px w-3 origin-left scale-x-0 transition-transform group-hover:scale-x-100" />
-                      </Link>
-                    </li>
-                  ))}
+                  {col.links.map((link) => {
+                    const linkClass =
+                      'group text-foreground/80 hover:text-primary inline-flex cursor-pointer items-center gap-2 text-sm transition-colors'
+                    const indicator = (
+                      <span className="bg-primary h-px w-3 origin-left scale-x-0 transition-transform group-hover:scale-x-100" />
+                    )
+                    return (
+                      <li key={link.label}>
+                        {link.external ? (
+                          <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={linkClass}
+                          >
+                            {link.label}
+                            {indicator}
+                          </a>
+                        ) : (
+                          <Link href={link.href} className={linkClass}>
+                            {link.label}
+                            {indicator}
+                          </Link>
+                        )}
+                      </li>
+                    )
+                  })}
                 </ul>
               </m.div>
             ))}
           </m.div>
         </div>
 
-        <div className="border-border mt-16 flex flex-col items-start gap-6 border-t pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-foreground/60 flex flex-wrap items-center gap-3 text-[11px] tracking-widest uppercase">
+        <div className="border-border mt-12 border-t pt-6 sm:pt-7">
+          <div className="text-foreground/60 flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] tracking-widest uppercase sm:text-[13px]">
             <span>© {new Date().getFullYear()} {pac.legalName}</span>
             <span className="bg-border-strong h-3 w-px" />
             <span>{pac.type} · Committee #{pac.pacId}</span>
-            <span className="bg-border-strong h-3 w-px" />
-            <span>EIN {pac.ein}</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {socials.map((s) => (
-              <a
-                key={s.name}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={s.name}
-                className="border-border text-foreground/80 hover:border-primary hover:text-primary grid h-10 w-10 cursor-pointer place-items-center rounded-full border transition-colors"
-              >
-                <svg viewBox="0 0 24 24" className="h-4 w-4">
-                  {s.icon}
-                </svg>
-              </a>
-            ))}
           </div>
         </div>
 
-        <div className="border-border border-t py-6 space-y-2">
-          <p className="text-foreground/60 text-center text-[11px] tracking-wide">
+        <div className="border-border mt-6 border-t pt-6 pb-8 space-y-2">
+          <p className="text-foreground/70 text-center text-[13px] leading-relaxed tracking-wide">
             {pac.disclaimers.paidFor}
           </p>
-          <p className="text-foreground/60 text-center text-[11px] tracking-wide">
+          <p className="text-foreground/70 text-center text-[13px] leading-relaxed tracking-wide">
             {pac.disclaimers.aiNotice}
           </p>
-          <p className="text-foreground/45 mt-2 text-center text-[10px] tracking-widest uppercase">
+          <p className="text-foreground/55 mt-2 text-center text-[12px] tracking-widest uppercase">
             {pac.disclaimers.notAuthorized}
           </p>
         </div>

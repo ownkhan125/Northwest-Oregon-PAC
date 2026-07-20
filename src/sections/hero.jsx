@@ -115,14 +115,14 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="border-primary/15 mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t pt-6"
+            className="border-primary/15 mt-14 grid max-w-4xl grid-cols-3 gap-x-3 gap-y-6 border-t pt-6 sm:gap-x-6 sm:gap-y-8 md:gap-x-8"
           >
             {home.hero.values.map((v) => (
-              <div key={v.label}>
-                <div className="font-display text-primary text-2xl font-medium tracking-tight sm:text-3xl">
+              <div key={v.label} className="min-w-0">
+                <div className="font-display text-primary text-lg font-medium tracking-tight sm:text-2xl md:text-3xl">
                   {v.label}
                 </div>
-                <div className="text-foreground/70 mt-1 text-xs sm:text-sm">
+                <div className="text-foreground/70 mt-1 text-[11px] leading-snug sm:text-sm">
                   {v.description}
                 </div>
               </div>
@@ -155,7 +155,7 @@ export default function Hero() {
               />
               <div className="relative border-primary/25 bg-surface/80 rounded-full border px-4 py-1.5 backdrop-blur-md">
                 <span className="text-primary font-mono text-[10px] tracking-[0.3em] uppercase">
-                  Filing #{pac.filingNumber} · Est. 2025
+                  Filing #{pac.filingNumber} · Est. 2026
                 </span>
               </div>
             </div>

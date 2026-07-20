@@ -12,6 +12,8 @@ const EVENT_TIMEZONE = 'America/Los_Angeles'
 const asString = (v, max = 4000) =>
   typeof v === 'string' ? v.trim().slice(0, max) : ''
 
+const asYesNo = (v) => (v === true || v === 'true' || v === 'Yes' || v === 'on' ? 'Yes' : 'No')
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 // Parse "Jun 14, 2026" + "2:00 PM" into a local ISO 8601 datetime.
@@ -105,6 +107,8 @@ export async function POST(request) {
   const eventDate = asString(body.eventDate, 80)
   const eventTime = asString(body.eventTime, 80)
   const eventCategory = asString(body.eventCategory, 120)
+  const sms_updates = asYesNo(body.sms_updates)
+  const sms_promo = asYesNo(body.sms_promo)
 
   if (!firstName || !EMAIL_RE.test(email)) {
     return Response.json({ ok: false, error: 'Missing required fields' }, { status: 400 })
@@ -120,6 +124,8 @@ export async function POST(request) {
     eventDate,
     eventTime,
     eventCategory,
+    sms_updates,
+    sms_promo,
     source: 'src_event',
     submitted_at: new Date().toISOString(),
   }
@@ -156,15 +162,13 @@ export async function POST(request) {
     )
   }
 
-  // Fire the shared SMS Opt-in webhook alongside the primary workflow. The
-  // Event RSVP form doesn't collect SMS consent, so opt-in flags default to No.
   const sms_optin = await fireSmsOptin({
     firstName,
     lastName,
     email,
     phone,
-    sms_updates: 'No',
-    sms_promo: 'No',
+    sms_updates,
+    sms_promo,
     form_type: 'Event_RSVP',
     source: 'src_event',
   })

@@ -11,11 +11,22 @@ import Textarea from '@/components/ui/textarea'
 import Checkbox from '@/components/ui/checkbox'
 import { EASE } from '@/animations/variants'
 import { pac } from '@/data/pac'
-import { ISSUE_CATEGORIES } from '@/lib/form-constants'
+import { ISSUE_CATEGORIES, A2P_SMS_UPDATES_LABEL, A2P_SMS_PROMO_LABEL } from '@/lib/form-constants'
+import { validateContactFields } from '@/lib/form'
 
 function AskForm() {
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
+  const [fieldErrors, setFieldErrors] = useState({})
+
+  const clearFieldError = (name) => {
+    setFieldErrors((prev) => {
+      if (!prev[name]) return prev
+      const next = { ...prev }
+      delete next[name]
+      return next
+    })
+  }
 
   async function onSubmit(e) {
     e.preventDefault()
@@ -33,8 +44,23 @@ function AskForm() {
       issue_location: String(data.get('issue_location') || '').trim(),
       issue_subject: String(data.get('issue_subject') || '').trim(),
       issue_description: String(data.get('issue_description') || '').trim(),
-      email_updates: data.get('email_updates') === 'on' ? 'Yes' : 'No',
+      sms_updates: data.get('sms_updates') === 'on' ? 'Yes' : 'No',
+      sms_promo: data.get('sms_promo') === 'on' ? 'Yes' : 'No',
     }
+
+    const errs = validateContactFields(payload, {
+      phoneKey: 'phone',
+      phoneRequired: false,
+      zipKey: 'zip_code',
+      zipRequired: true,
+    })
+    if (Object.keys(errs).length > 0) {
+      setFieldErrors(errs)
+      const firstBadName = Object.keys(errs)[0]
+      form.querySelector(`[name="${firstBadName}"]`)?.focus()
+      return
+    }
+    setFieldErrors({})
 
     setStatus('loading')
     setErrorMsg('')
@@ -76,6 +102,10 @@ function AskForm() {
         name="phone"
         type="tel"
         autoComplete="tel"
+        inputMode="tel"
+        placeholder="(503) 555-0123"
+        error={fieldErrors.phone}
+        onChange={() => clearFieldError('phone')}
       />
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -85,9 +115,11 @@ function AskForm() {
           name="zip_code"
           required
           inputMode="numeric"
-          pattern="\d{5}(-\d{4})?"
-          maxLength={10}
+          maxLength={5}
           autoComplete="postal-code"
+          placeholder="97005"
+          error={fieldErrors.zip_code}
+          onChange={() => clearFieldError('zip_code')}
         />
       </div>
 
@@ -119,25 +151,23 @@ function AskForm() {
 
       <div>
         <Textarea label="Description" name="issue_description" required rows={6} />
-        <p className="text-foreground/60 mt-2 text-xs leading-relaxed">
+        <p className="text-foreground/70 mt-2 text-[13px] leading-relaxed">
           Please do not include sensitive financial, account, or identification information in your
           message.
         </p>
       </div>
 
-      <div className="border-primary/15 space-y-3 border-t pt-6">
-        <Checkbox
-          name="email_updates"
-          label="Send me occasional updates from Northwest Oregon PAC."
-        />
-        <p className="text-foreground/60 text-xs leading-relaxed">
-          Submitting a question should not add someone to the email list unless this box is
-          selected.
+      <div className="border-primary/15 space-y-4 border-t pt-6">
+        <Checkbox name="sms_updates" label={A2P_SMS_UPDATES_LABEL} />
+        <Checkbox name="sms_promo" label={A2P_SMS_PROMO_LABEL} />
+        <p className="text-foreground/70 pt-1 text-[13px] leading-relaxed">
+          By selecting this box, you consent to receive campaign emails. You will not be added to
+          the list just by submitting a question.
         </p>
       </div>
 
       <div className="flex flex-col items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
-        <p className="text-foreground/60 max-w-md text-xs">
+        <p className="text-foreground/70 max-w-md text-[13px] leading-relaxed">
           The information submitted through this form will be used to review and respond to your
           inquiry. Please review our{' '}
           <a href="/privacy-policy" className="text-primary hover:text-highlight">
@@ -239,12 +269,12 @@ export default function AskPage() {
                 Tell us what&rsquo;s on your mind — a policy question, a candidate to endorse,
                 an issue in your neighborhood. We read every message.
               </p>
-              <div className="border-primary/15 mt-8 space-y-3 border-t pt-6 text-sm">
+              <div className="border-primary/15 mt-8 space-y-4 border-t pt-6">
                 <div>
-                  <span className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase">
+                  <span className="text-muted font-mono text-[11px] tracking-[0.3em] uppercase">
                     General inquiries
                   </span>
-                  <p className="mt-1">
+                  <p className="mt-1.5 text-base sm:text-lg">
                     <a
                       href={`mailto:${pac.contact.generalEmail}`}
                       className="text-primary hover:text-highlight transition-colors"
@@ -254,11 +284,18 @@ export default function AskPage() {
                   </p>
                 </div>
                 <div>
-                  <span className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase">
+                  <span className="text-muted font-mono text-[11px] tracking-[0.3em] uppercase">
                     {pac.contact.role}
                   </span>
-                  <p className="text-foreground/85 mt-1">{pac.contact.name}</p>
-                  <p className="text-foreground/70">{pac.contact.phone}</p>
+                  <p className="text-foreground/90 mt-1.5 text-base sm:text-lg">{pac.contact.name}</p>
+                  <p className="text-foreground/80 text-base sm:text-lg">
+                    <a
+                      href={`tel:${pac.contact.phone.replace(/[^\d+]/g, '')}`}
+                      className="hover:text-primary transition-colors"
+                    >
+                      {pac.contact.phone}
+                    </a>
+                  </p>
                 </div>
               </div>
             </m.div>

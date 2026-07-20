@@ -46,7 +46,8 @@ export async function POST(request) {
   const issue_location = asString(body.issue_location, 200)
   const issue_subject = asString(body.issue_subject, 200)
   const issue_description = asString(body.issue_description, 8000)
-  const email_updates = asYesNo(body.email_updates)
+  const sms_updates = asYesNo(body.sms_updates)
+  const sms_promo = asYesNo(body.sms_promo)
 
   if (
     !fullName ||
@@ -75,7 +76,8 @@ export async function POST(request) {
     issue_subject,
     issue_description,
     issue_image: '',
-    email_updates,
+    sms_updates,
+    sms_promo,
     source: 'src_issue',
     submitted_at: new Date().toISOString(),
   }
@@ -111,14 +113,13 @@ export async function POST(request) {
     )
   }
 
-  // Ask form doesn't collect explicit SMS consent, so opt-in flags are No.
   const sms_optin = await fireSmsOptin({
     firstName,
     lastName,
     email,
     phone,
-    sms_updates: 'No',
-    sms_promo: 'No',
+    sms_updates,
+    sms_promo,
     form_type: 'Issue_Report',
     source: 'src_issue',
   })

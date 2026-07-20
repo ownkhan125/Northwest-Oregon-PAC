@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { m } from 'motion/react'
 
 // Applies the initial theme synchronously (before hydration) to avoid a flash.
@@ -13,20 +13,27 @@ export const ThemeInit = () => (
   />
 )
 
+// useLayoutEffect on the server logs a warning; SSR has no DOM to sync from.
+const useIsoLayoutEffect = typeof window === 'undefined' ? () => {} : useLayoutEffect
+
 export default function ThemeToggle({ className = '' }) {
   const [mounted, setMounted] = useState(false)
   const [theme, setTheme] = useState('light')
 
-  useEffect(() => {
-    const root = document.documentElement
-    const current = root.classList.contains('dark') ? 'dark' : 'light'
+  // Sync the toggle's icon to the real DOM class before the first paint so
+  // the button is never showing the wrong icon by the time the user can click.
+  useIsoLayoutEffect(() => {
+    const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
     setTheme(current)
     setMounted(true)
   }, [])
 
   const toggle = () => {
-    const next = theme === 'dark' ? 'light' : 'dark'
+    // Read the DOM at click time — the source of truth — so a stale React
+    // state (pre-hydration or otherwise) can't cause a two-click desync.
     const root = document.documentElement
+    const current = root.classList.contains('dark') ? 'dark' : 'light'
+    const next = current === 'dark' ? 'light' : 'dark'
     root.classList.remove('light', 'dark')
     root.classList.add(next)
     try {

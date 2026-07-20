@@ -98,7 +98,7 @@ export default function SocialPostsPage() {
         eyebrow="Social"
         number="11"
         title="Made to be shared."
-        description="Ready-to-post graphics carrying one consistent voice for Northwest Oregon — squares for the feed, verticals for the story. Final artwork is on the way; placeholder tiles hold each slot for now."
+        description="Ready-to-post graphics carrying one consistent voice for Northwest Oregon — squares for the feed, verticals for the story. Preview each layout below."
       />
 
       <section className="relative isolate overflow-x-clip pb-24 sm:pb-32">

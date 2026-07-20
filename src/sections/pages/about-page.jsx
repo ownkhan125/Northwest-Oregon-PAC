@@ -130,28 +130,34 @@ export default function AboutPage() {
           className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3"
         >
           {teamSection.members.map((member) => (
-            <m.div key={member.name} variants={cardReveal}>
-              <Card className="h-full p-7" interactive={false} tilt={false}>
-                <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                  Leadership
+            <m.div key={member.name} variants={cardReveal} className="h-full">
+              <Card
+                className="flex h-full flex-col justify-between p-7"
+                interactive={false}
+                tilt={false}
+              >
+                <div>
+                  <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+                    Leadership
+                  </div>
+                  <h3 className="font-display text-foreground mt-4 text-2xl leading-tight font-medium sm:text-3xl">
+                    {member.name}
+                  </h3>
+                  <ul className="mt-4 space-y-2">
+                    {member.roles.map((role) => (
+                      <li
+                        key={role}
+                        className="text-foreground/80 flex items-start gap-2 text-sm leading-snug"
+                      >
+                        <span
+                          aria-hidden
+                          className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+                        />
+                        {role}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="font-display text-foreground mt-4 text-2xl leading-tight font-medium sm:text-3xl">
-                  {member.name}
-                </h3>
-                <ul className="mt-4 space-y-2">
-                  {member.roles.map((role) => (
-                    <li
-                      key={role}
-                      className="text-foreground/80 flex items-start gap-2 text-sm leading-snug"
-                    >
-                      <span
-                        aria-hidden
-                        className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
-                      />
-                      {role}
-                    </li>
-                  ))}
-                </ul>
                 {member.bio && (
                   <p className="text-foreground/70 border-primary/15 mt-5 border-t pt-4 text-sm leading-relaxed">
                     {member.bio}
@@ -251,8 +257,11 @@ export default function AboutPage() {
           className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3"
         >
           {values.list.map((v, i) => (
-            <m.div key={v.title} variants={cardReveal}>
-              <Card className="h-full p-7" interactive={false}>
+            <m.div key={v.title} variants={cardReveal} className="h-full">
+              <Card
+                className="flex h-full flex-col p-7"
+                interactive={false}
+              >
                 <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
                   {String(i + 1).padStart(2, '0')}
                 </div>

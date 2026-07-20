@@ -44,9 +44,14 @@ const sections = [
     ],
   },
   {
-    heading: 'SMS messaging',
+    heading: 'SMS messaging program',
     body: [
-      'By opting in, you consent to receive text messages from Northwest Oregon PAC. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe. Reply HELP for help.',
+      'Program name and description. Northwest Oregon PAC operates an SMS messaging program that delivers campaign updates, event reminders, volunteer coordination, fundraising requests, donation drives, and other communications you have opted in to receive.',
+      'Opt-out (STOP). You can cancel the SMS service at any time. Simply text STOP to the shortcode or long code from which you received the message. After you send STOP, we will send you a confirmation and no further messages will be sent until you re-enroll.',
+      `HELP. If you experience issues with the messaging program, reply with the keyword HELP for more assistance, or reach out to us directly at ${pac.contact.generalEmail} or ${pac.contact.phone}.`,
+      'Carrier liability. Carriers are not liable for delayed or undelivered messages.',
+      'Data rates and frequency. As always, message and data rates may apply for messages sent to you from us and to us from you. Message frequency varies.',
+      'Privacy. For privacy-related inquiries — including how we collect, use, retain, and share phone numbers and SMS opt-in data — please refer to our Privacy Policy at /privacy-policy.',
     ],
   },
   {

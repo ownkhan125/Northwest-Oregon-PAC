@@ -20,11 +20,14 @@ const SplitText = ({
 }) => {
   const MotionTag = m[Tag] ?? m.h1
 
+  // For per-character animation we still group characters by their parent
+  // word so line breaks can only fall between words — never inside "voice".
+  // Each entry is either a whitespace string or an array of chars belonging
+  // to the same word.
   const units = useMemo(() => {
-    if (by === 'word') {
-      return text.split(/(\s+)/).filter((s) => s.length > 0)
-    }
-    return text.split('')
+    const tokens = text.split(/(\s+)/).filter((s) => s.length > 0)
+    if (by === 'word') return tokens
+    return tokens.map((t) => (/^\s+$/.test(t) ? t : t.split('')))
   }, [text, by])
 
   const container = {
@@ -63,13 +66,44 @@ const SplitText = ({
       aria-label={text}
     >
       {units.map((u, i) => {
-        if (u === ' ' || /^\s+$/.test(u)) {
+        if (typeof u === 'string' && /^\s+$/.test(u)) {
+          // Render a normal, collapsible space so wrapped lines don't inherit
+          // a leading indent (white-space: pre would preserve the space and
+          // push the first word of each wrapped line to the right).
+          return <span key={`s-${i}`} aria-hidden>{' '}</span>
+        }
+        // Whole-word span — nowrap keeps characters together on one line.
+        if (Array.isArray(u)) {
           return (
-            <span key={`s-${i}`} aria-hidden style={{ whiteSpace: 'pre' }}>
-              {u}
+            <span
+              key={`w-${i}`}
+              aria-hidden
+              className="inline-block"
+              style={{ whiteSpace: 'nowrap' }}
+            >
+              {u.map((ch, j) => (
+                <span
+                  key={`u-${i}-${j}`}
+                  aria-hidden
+                  className="inline-block overflow-hidden align-bottom"
+                  style={{
+                    lineHeight: 1.15,
+                    paddingBottom: '0.18em',
+                    marginBottom: '-0.18em',
+                  }}
+                >
+                  <m.span
+                    variants={child}
+                    className={cn('split-char inline-block', charClassName)}
+                  >
+                    {ch}
+                  </m.span>
+                </span>
+              ))}
             </span>
           )
         }
+        // by="word" — whole word as a single animated unit.
         return (
           <span
             key={`u-${i}`}

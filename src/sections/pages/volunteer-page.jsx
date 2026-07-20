@@ -10,6 +10,7 @@ import Select from '@/components/ui/select'
 import Checkbox from '@/components/ui/checkbox'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { pac, welcomeEmail } from '@/data/pac'
+import { validateContactFields } from '@/lib/form'
 import {
   A2P_SMS_UPDATES_LABEL,
   A2P_SMS_PROMO_LABEL,
@@ -87,7 +88,17 @@ const WAYS_TO_HELP = [
 export default function VolunteerPage() {
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
+  const [fieldErrors, setFieldErrors] = useState({})
   const submitted = status === 'success'
+
+  const clearFieldError = (name) => {
+    setFieldErrors((prev) => {
+      if (!prev[name]) return prev
+      const next = { ...prev }
+      delete next[name]
+      return next
+    })
+  }
 
   async function onSubmit(e) {
     e.preventDefault()
@@ -113,6 +124,20 @@ export default function VolunteerPage() {
       sms_updates: data.get('sms_updates') === 'on' ? 'Yes' : 'No',
       sms_promo: data.get('sms_promo') === 'on' ? 'Yes' : 'No',
     }
+
+    const errs = validateContactFields(payload, {
+      phoneKey: 'phone',
+      phoneRequired: false,
+      zipKey: 'zipCode',
+      zipRequired: false,
+    })
+    if (Object.keys(errs).length > 0) {
+      setFieldErrors(errs)
+      const firstBadName = Object.keys(errs)[0]
+      form.querySelector(`[name="${firstBadName}"]`)?.focus()
+      return
+    }
+    setFieldErrors({})
 
     setStatus('loading')
     setErrorMsg('')
@@ -170,41 +195,43 @@ export default function VolunteerPage() {
               <m.article
                 key={way.id}
                 variants={fadeUp}
-                className="border-primary/20 bg-surface/80 flex flex-col rounded-2xl border p-7 sm:p-8"
+                className="border-primary/20 bg-surface/80 flex h-full flex-col justify-between rounded-2xl border p-7 sm:p-8"
               >
-                <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                  {way.id}
-                </div>
-                <h3 className="font-display text-foreground mt-3 text-2xl leading-tight font-medium sm:text-3xl">
-                  {way.title}
-                </h3>
-                <p className="font-display text-primary mt-3 text-lg leading-snug sm:text-xl">
-                  {way.subheading}
-                </p>
-                <div className="text-foreground/80 mt-4 space-y-3 text-sm leading-relaxed sm:text-base">
-                  {way.paragraphs.map((p, i) => (
-                    <p key={i}>{p}</p>
-                  ))}
-                </div>
-                {way.list && (
-                  <div className="mt-5">
-                    <p className="text-foreground/85 text-sm sm:text-base">{way.listIntro}</p>
-                    <ul className="mt-3 space-y-2">
-                      {way.list.map((item) => (
-                        <li
-                          key={item}
-                          className="text-foreground/75 flex items-start gap-3 text-sm sm:text-base"
-                        >
-                          <span
-                            aria-hidden
-                            className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
-                          />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                <div>
+                  <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+                    {way.id}
                   </div>
-                )}
+                  <h3 className="font-display text-foreground mt-3 text-2xl leading-tight font-medium sm:text-3xl">
+                    {way.title}
+                  </h3>
+                  <p className="font-display text-primary mt-3 text-lg leading-snug sm:text-xl">
+                    {way.subheading}
+                  </p>
+                  <div className="text-foreground/80 mt-4 space-y-3 text-sm leading-relaxed sm:text-base">
+                    {way.paragraphs.map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
+                  </div>
+                  {way.list && (
+                    <div className="mt-5">
+                      <p className="text-foreground/85 text-sm sm:text-base">{way.listIntro}</p>
+                      <ul className="mt-3 space-y-2">
+                        {way.list.map((item) => (
+                          <li
+                            key={item}
+                            className="text-foreground/75 flex items-start gap-3 text-sm sm:text-base"
+                          >
+                            <span
+                              aria-hidden
+                              className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+                            />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
                 <div className="mt-auto pt-7">
                   <Button href={way.href} size="md">
                     {way.cta}
@@ -272,14 +299,20 @@ export default function VolunteerPage() {
                   name="phone"
                   type="tel"
                   autoComplete="tel"
+                  inputMode="tel"
+                  placeholder="(503) 555-0123"
+                  error={fieldErrors.phone}
+                  onChange={() => clearFieldError('phone')}
                 />
                 <Input
                   label="ZIP code (optional)"
                   name="zipCode"
                   inputMode="numeric"
-                  pattern="\d{5}(-\d{4})?"
-                  maxLength={10}
+                  maxLength={5}
                   autoComplete="postal-code"
+                  placeholder="97005"
+                  error={fieldErrors.zipCode}
+                  onChange={() => clearFieldError('zipCode')}
                 />
                 <Input
                   label="City"
@@ -400,7 +433,7 @@ export default function VolunteerPage() {
               </div>
 
               <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-foreground/60 max-w-md text-xs">
+                <p className="text-foreground/70 max-w-md text-[13px] leading-relaxed">
                   By signing up, you agree to our{' '}
                   <a href="/privacy-policy" className="text-primary hover:text-highlight">
                     Privacy Policy

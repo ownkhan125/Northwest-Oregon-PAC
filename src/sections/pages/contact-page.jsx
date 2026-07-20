@@ -11,6 +11,7 @@ import Select from '@/components/ui/select'
 import { EASE } from '@/animations/variants'
 import { pac } from '@/data/pac'
 import { A2P_SMS_UPDATES_LABEL, A2P_SMS_PROMO_LABEL } from '@/lib/form-constants'
+import { validateContactFields } from '@/lib/form'
 
 const HELP_TOPIC_OPTIONS = [
   'General inquiry',
@@ -28,6 +29,16 @@ const HELP_TOPIC_OPTIONS = [
 export default function ContactPage() {
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
   const [errorMessage, setErrorMessage] = useState('')
+  const [fieldErrors, setFieldErrors] = useState({})
+
+  const clearFieldError = (name) => {
+    setFieldErrors((prev) => {
+      if (!prev[name]) return prev
+      const next = { ...prev }
+      delete next[name]
+      return next
+    })
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -48,6 +59,20 @@ export default function ContactPage() {
       sms_updates: fd.get('sms_updates') === 'on' ? 'Yes' : 'No',
       sms_promo: fd.get('sms_promo') === 'on' ? 'Yes' : 'No',
     }
+
+    const errs = validateContactFields(payload, {
+      phoneKey: 'phone',
+      phoneRequired: false,
+      zipKey: 'zip_code',
+      zipRequired: true,
+    })
+    if (Object.keys(errs).length > 0) {
+      setFieldErrors(errs)
+      const firstBadName = Object.keys(errs)[0]
+      form.querySelector(`[name="${firstBadName}"]`)?.focus()
+      return
+    }
+    setFieldErrors({})
 
     setStatus('submitting')
     setErrorMessage('')
@@ -88,7 +113,44 @@ export default function ContactPage() {
         accent="/icons/envelope.svg"
       />
 
-      <section className="relative isolate overflow-x-clip py-16 sm:py-20 lg:py-24">
+      <section aria-label="Contact information" className="relative isolate overflow-x-clip pt-8 pb-4 sm:pt-10">
+        <div className="relative mx-auto max-w-3xl px-5 sm:px-8 lg:px-12">
+          <div className="border-primary/25 bg-surface-alt/50 grid grid-cols-1 gap-6 rounded-2xl border p-6 sm:grid-cols-3 sm:p-7">
+            <div>
+              <span className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase">Phone</span>
+              <p className="mt-1.5">
+                <a
+                  href={`tel:${pac.contact.phone.replace(/[^\d+]/g, '')}`}
+                  className="text-primary hover:text-highlight text-base transition-colors sm:text-lg"
+                >
+                  {pac.contact.phone}
+                </a>
+              </p>
+            </div>
+            <div>
+              <span className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase">Email</span>
+              <p className="mt-1.5">
+                <a
+                  href={`mailto:${pac.contact.generalEmail}`}
+                  className="text-primary hover:text-highlight text-base transition-colors sm:text-lg"
+                >
+                  {pac.contact.generalEmail}
+                </a>
+              </p>
+            </div>
+            <div>
+              <span className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase">Mailing address</span>
+              <address className="text-foreground/85 mt-1.5 text-sm not-italic leading-relaxed">
+                {pac.contact.mailingAddressLines.map((line) => (
+                  <div key={line}>{line}</div>
+                ))}
+              </address>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative isolate overflow-x-clip py-12 sm:py-16 lg:py-20">
         <div className="relative mx-auto max-w-3xl px-5 sm:px-8 lg:px-12">
           <m.div
             initial={{ opacity: 0, y: 30 }}
@@ -134,6 +196,10 @@ export default function ContactPage() {
                       name="phone"
                       type="tel"
                       autoComplete="tel"
+                      inputMode="tel"
+                      placeholder="(503) 555-0123"
+                      error={fieldErrors.phone}
+                      onChange={() => clearFieldError('phone')}
                     />
                     <Input
                       label="Organization — optional"
@@ -147,9 +213,11 @@ export default function ContactPage() {
                         name="zip_code"
                         required
                         inputMode="numeric"
-                        pattern="\d{5}(-\d{4})?"
-                        maxLength={10}
+                        maxLength={5}
                         autoComplete="postal-code"
+                        placeholder="97005"
+                        error={fieldErrors.zip_code}
+                        onChange={() => clearFieldError('zip_code')}
                       />
                     </div>
                     <Select
@@ -170,7 +238,7 @@ export default function ContactPage() {
                     </Select>
                     <div>
                       <Textarea label="Message" name="message" required rows={5} />
-                      <p className="text-foreground/60 mt-2 text-xs leading-relaxed">
+                      <p className="text-foreground/70 mt-2 text-[13px] leading-relaxed">
                         Provide any names, dates, districts, or other details that will help us
                         understand your inquiry.
                       </p>
@@ -190,13 +258,13 @@ export default function ContactPage() {
                       </div>
                     )}
 
-                    <p className="text-foreground/60 pt-2 text-xs leading-relaxed">
+                    <p className="text-foreground/70 pt-2 text-[13px] leading-relaxed">
                       We use the information submitted through this form to review and respond to
                       your inquiry.
                     </p>
 
                     <div className="flex flex-col items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
-                      <p className="text-foreground/60 max-w-md text-xs leading-relaxed">
+                      <p className="text-foreground/70 max-w-md text-[13px] leading-relaxed">
                         By submitting, you agree to our{' '}
                         <a href="/privacy-policy" className="text-primary hover:text-highlight">
                           Privacy Policy

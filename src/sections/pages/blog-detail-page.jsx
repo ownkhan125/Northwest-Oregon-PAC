@@ -266,9 +266,13 @@ function RelatedArticles({ items }) {
           className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2"
         >
           {items.map((post) => (
-            <m.div key={post.slug} variants={fadeUp}>
-              <Card className="h-full overflow-hidden p-0" interactive={false} tilt={false}>
-                <Link href={`/blogs/${post.slug}`} className="group block">
+            <m.div key={post.slug} variants={fadeUp} className="h-full">
+              <Card
+                className="flex h-full flex-col overflow-hidden p-0"
+                interactive
+                tilt={false}
+              >
+                <Link href={`/blogs/${post.slug}`} className="group flex h-full flex-col">
                   <div className="relative aspect-[16/9] overflow-hidden">
                     {post.heroImage ? (
                       <img

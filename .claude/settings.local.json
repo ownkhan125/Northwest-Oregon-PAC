@@ -84,7 +84,9 @@
       "Bash(curl -s http://localhost:3000/)",
       "Bash(curl -s http://localhost:3002/)",
       "Bash(curl *)",
-      "Bash(grep -oE \"\\\\\"\\(node-html-parser|linkedom|parse5|cheerio|htmlparser2|jsdom\\)\\\\\":\\\\\\\\s*\\\\\"[^\\\\\"]+\\\\\"\" \"C:/Users/General/Documents/GitHub/Northwest Oregon PAC/package.json\")"
+      "Bash(grep -oE \"\\\\\"\\(node-html-parser|linkedom|parse5|cheerio|htmlparser2|jsdom\\)\\\\\":\\\\\\\\s*\\\\\"[^\\\\\"]+\\\\\"\" \"C:/Users/General/Documents/GitHub/Northwest Oregon PAC/package.json\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\pw\")",
+      "Bash(cp /tmp/playwright-test-cards.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\pw\\\\cards.js\")"
     ]
   }
 }
