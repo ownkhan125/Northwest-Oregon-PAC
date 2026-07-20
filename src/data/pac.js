@@ -252,11 +252,11 @@ export const home = {
   },
   events: {
     label: 'EVENTS',
-    heading: 'Our calendar is taking shape.',
+    heading: 'Come meet us in your community.',
     body:
-      'Northwest Oregon PAC is new, and we are building our first schedule of candidate events, volunteer activities, neighborhood gatherings, and community conversations.\nSign up to receive the first announcement when an event is scheduled near you.',
+      'Candidate meet-and-greets, volunteer nights, neighborhood conversations, and regional gatherings — Northwest Oregon PAC brings people together across the region.\nSubscribe for updates to hear about the next event near you, or bring one to your community.',
     ctas: {
-      primary: 'Get Event Alerts',
+      primary: 'Get Event Updates',
       secondary: 'Host an Event',
     },
   },
@@ -511,12 +511,12 @@ export const eventsPage = {
   },
   calendar: {
     eyebrow: 'EVENTS',
-    heading: 'Our calendar is taking shape.',
+    heading: 'Come meet us in your community.',
     paragraphs: [
-      'Northwest Oregon PAC is new, and we are building our first schedule of candidate events, volunteer activities, neighborhood gatherings, and community conversations.',
-      'Sign up to receive the first announcement when an event is scheduled near you.',
+      'Candidate meet-and-greets, volunteer nights, neighborhood conversations, and regional gatherings — Northwest Oregon PAC brings people together across the region.',
+      'Subscribe for updates to hear about the next event near you, or bring one to your community.',
     ],
-    primary: { label: 'Get Event Alerts', href: '/volunteer' },
+    primary: { label: 'Get Event Updates', href: '/volunteer' },
     secondary: { label: 'Host an Event', href: '/contact' },
   },
 }

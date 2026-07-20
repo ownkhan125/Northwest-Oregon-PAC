@@ -5,7 +5,7 @@ import { AnimatePresence, m } from 'motion/react'
 import Link from 'next/link'
 import PageHeader from '@/components/ui/page-header'
 import Button from '@/components/ui/button'
-import { fadeUp, stagger, EASE, EASE_SOFT } from '@/animations/variants'
+import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { cn } from '@/lib/cn'
 import { faqs } from '@/data/faqs'
 
@@ -87,29 +87,15 @@ export default function FaqPage() {
         title="Everything you need to know"
         description="We are here to provide clear answers. If you can’t find what you’re looking for, we’re always happy to hear from you."
         accent="/icons/gavel.svg"
+        action={
+          <Button href="/ask" size="lg">
+            Ask a Question
+          </Button>
+        }
       />
 
       <section className="relative isolate overflow-x-clip py-16 sm:py-20 lg:py-24">
         <div className="relative mx-auto max-w-4xl px-5 sm:px-8 lg:px-12">
-          <m.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.7, ease: EASE_SOFT }}
-            className="-mt-4 mb-4 flex flex-wrap gap-3"
-          >
-            <Button href="/ask" size="lg">
-              Ask a Question
-            </Button>
-          </m.div>
-
-          <m.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, ease: EASE }}
-            className="from-primary/60 via-primary/20 h-px origin-left bg-gradient-to-r to-transparent"
-          />
-
           <m.div
             variants={stagger}
             initial="hidden"

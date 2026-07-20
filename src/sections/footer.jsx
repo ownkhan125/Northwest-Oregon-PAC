@@ -65,7 +65,7 @@ export default function Footer() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Logo />
+            <Logo size="lg" />
             <p className="text-foreground/75 mt-6 max-w-md">{pac.tagline}</p>
 
             <div className="mt-6 space-y-3 text-sm">

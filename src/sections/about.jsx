@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { m } from 'motion/react'
 import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
@@ -85,12 +86,12 @@ export default function About() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="border-primary/20 relative mb-6 aspect-[16/10] w-full overflow-hidden rounded-3xl border"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={whoWeAreImage.src}
+            <Image
+              src={whoWeAreImage}
               alt="Northwest Oregon PAC leaders in conversation at a community meeting"
-              className="h-full w-full object-cover object-center"
-              loading="lazy"
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover object-center"
             />
             <div
               aria-hidden

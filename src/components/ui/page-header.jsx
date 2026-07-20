@@ -6,7 +6,7 @@ import SplitText from '@/components/ui/split-text'
 import CivicIcon from '@/components/ui/civic-icon'
 import { fadeUp, EASE_SOFT } from '@/animations/variants'
 
-const PageHeader = ({ eyebrow, title, description, number, align = 'left', accent }) => {
+const PageHeader = ({ eyebrow, title, description, number, align = 'left', accent, action }) => {
   const center = align === 'center'
   return (
     <section className="relative isolate overflow-x-clip pt-32 pb-12 sm:pt-40 lg:pt-44">
@@ -77,6 +77,17 @@ const PageHeader = ({ eyebrow, title, description, number, align = 'left', accen
             </m.p>
           ))}
 
+        {action && (
+          <m.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.7, ease: EASE_SOFT }}
+            className={`mt-8 flex flex-wrap gap-3 ${center ? 'justify-center' : ''}`}
+          >
+            {action}
+          </m.div>
+        )}
+
         <m.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -95,6 +106,7 @@ PageHeader.propTypes = {
   number: PropTypes.string,
   align: PropTypes.oneOf(['left', 'center']),
   accent: PropTypes.string,
+  action: PropTypes.node,
 }
 
 export default PageHeader

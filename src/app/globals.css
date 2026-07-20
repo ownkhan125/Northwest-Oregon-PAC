@@ -1,5 +1,11 @@
 @import 'tailwindcss';
 
+/* Align Tailwind's `dark:` variant with the site's explicit theme class.
+   ThemeInit writes `.dark` / `.light` on <html> synchronously (from
+   localStorage or prefers-color-scheme), so this is the single source of
+   truth for what theme is active. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ---------------------------------------------------------------
    Northwest Oregon PAC — Color System
    -------------------------------------------------------------

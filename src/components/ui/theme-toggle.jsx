@@ -1,7 +1,8 @@
 'use client'
 
-import { useLayoutEffect, useState } from 'react'
+import { useState } from 'react'
 import { m } from 'motion/react'
+import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 
 // Applies the initial theme synchronously (before hydration) to avoid a flash.
 // Included in the app layout so it runs once at page load.
@@ -13,16 +14,13 @@ export const ThemeInit = () => (
   />
 )
 
-// useLayoutEffect on the server logs a warning; SSR has no DOM to sync from.
-const useIsoLayoutEffect = typeof window === 'undefined' ? () => {} : useLayoutEffect
-
 export default function ThemeToggle({ className = '' }) {
   const [mounted, setMounted] = useState(false)
   const [theme, setTheme] = useState('light')
 
   // Sync the toggle's icon to the real DOM class before the first paint so
   // the button is never showing the wrong icon by the time the user can click.
-  useIsoLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
     setTheme(current)
     setMounted(true)

@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
@@ -142,12 +143,13 @@ export default function Hero() {
               className="spin-slow border-primary/25 absolute -inset-4 rounded-[2rem] border border-dashed"
             />
             <div className="border-primary/20 bg-surface-alt relative flex h-full w-full flex-col items-center justify-end overflow-hidden rounded-[2rem] border p-8 text-center sm:p-10">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={heroImage.src}
+              <Image
+                src={heroImage}
                 alt="Northwest Oregon PAC — Strong Communities. Local Leadership. Real Solutions."
-                className="absolute inset-0 h-full w-full object-cover object-center"
-                loading="eager"
+                fill
+                priority
+                sizes="(min-width: 1024px) 448px, (min-width: 640px) 448px, 90vw"
+                className="object-cover object-center"
               />
               <div
                 aria-hidden

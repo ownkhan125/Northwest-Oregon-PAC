@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { m } from 'motion/react'
 import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
@@ -69,12 +70,12 @@ export default function Endorsements() {
                 className="border-primary/15 bg-surface-alt/70 relative aspect-[4/3] w-full overflow-hidden border-b"
               >
                 {portrait && (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
-                    src={portrait.src}
+                  <Image
+                    src={portrait}
                     alt={c.name}
-                    className="h-full w-full object-cover object-top"
-                    loading="lazy"
+                    fill
+                    sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover object-top"
                   />
                 )}
               </div>
