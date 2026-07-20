@@ -91,7 +91,8 @@
       "Bash(cp \"src/assets/icons/Northwest_Oregon_Logo_Designs_in_Brands_Colors_v1-04.png\" \"public/logo-light.png\")",
       "Bash(cp \"src/assets/icons/Northwest_Oregon_Logo_Designs_in_Brands_Colors_v1-03.png\" \"src/app/icon.png\")",
       "Bash(cp \"src/assets/icons/Northwest_Oregon_Logo_Designs_in_Brands_Colors_v1-03.png\" \"src/app/apple-icon.png\")",
-      "Bash(PORT=3003 npx next start)"
+      "Bash(PORT=3003 npx next start)",
+      "Bash(PORT=3004 npx next start)"
     ]
   }
 }
