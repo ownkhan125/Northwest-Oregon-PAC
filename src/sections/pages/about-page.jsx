@@ -257,16 +257,22 @@ export default function AboutPage() {
           {values.list.map((v, i) => (
             <m.div key={v.title} variants={cardReveal} className="h-full">
               <Card
-                className="flex h-full flex-col p-7"
+                className="h-full p-7"
                 interactive={false}
               >
-                <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
-                  {String(i + 1).padStart(2, '0')}
+                <div className="flex h-full flex-col">
+                  <div>
+                    <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                    <h3 className="font-display text-foreground mt-4 min-h-[4rem] text-2xl leading-tight font-medium">
+                      {v.title}
+                    </h3>
+                  </div>
+                  <p className="text-foreground/75 mt-5 flex-1 text-sm leading-relaxed">
+                    {v.body}
+                  </p>
                 </div>
-                <h3 className="font-display text-foreground mt-4 text-2xl leading-tight font-medium">
-                  {v.title}
-                </h3>
-                <p className="text-foreground/75 mt-3 text-sm leading-relaxed">{v.body}</p>
               </Card>
             </m.div>
           ))}

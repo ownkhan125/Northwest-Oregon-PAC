@@ -93,24 +93,28 @@ export default function Priorities() {
       >
         {home.priorities.list.map((issue) => (
           <m.div key={issue.id} variants={cardReveal} className="h-full">
-            <Card className="flex h-full flex-col p-7">
-              <div className="flex items-start justify-between">
-                <span className="border-primary/25 bg-surface-alt/60 text-primary grid h-12 w-12 place-items-center rounded-xl border">
-                  <svg viewBox="0 0 24 24" className="h-6 w-6">
-                    {icons[issue.id]}
-                  </svg>
-                </span>
-                <span className="text-highlight font-mono text-xs">{issue.id}</span>
-              </div>
-              <h3 className="font-display text-foreground mt-7 text-xl leading-tight font-medium sm:text-2xl">
-                {issue.name}
-              </h3>
-              <div className="mt-3 flex-1 space-y-3">
-                {issue.paragraphs.map((p, i) => (
-                  <p key={i} className="text-foreground/75 text-sm leading-relaxed">
-                    {p}
-                  </p>
-                ))}
+            <Card className="h-full p-7">
+              <div className="flex h-full flex-col">
+                <div>
+                  <div className="flex items-start justify-between">
+                    <span className="border-primary/25 bg-surface-alt/60 text-primary grid h-12 w-12 place-items-center rounded-xl border">
+                      <svg viewBox="0 0 24 24" className="h-6 w-6">
+                        {icons[issue.id]}
+                      </svg>
+                    </span>
+                    <span className="text-highlight font-mono text-xs">{issue.id}</span>
+                  </div>
+                  <h3 className="font-display text-foreground mt-7 min-h-[5rem] text-xl leading-tight font-medium sm:min-h-[6rem] sm:text-2xl">
+                    {issue.name}
+                  </h3>
+                </div>
+                <div className="mt-6 space-y-3">
+                  {issue.paragraphs.map((p, i) => (
+                    <p key={i} className="text-foreground/75 text-sm leading-relaxed">
+                      {p}
+                    </p>
+                  ))}
+                </div>
               </div>
             </Card>
           </m.div>

@@ -1,15 +1,15 @@
-// Template renderers for the Northwest Oregon PAC social library.
-// Each renderer returns the canvas-inner HTML for one creative.
-// Layout classes live in assets/templates.css; tokens in assets/social.css.
+// Northwest Oregon PAC — social template renderers v3.
+// Editorial, cinematic layouts that carry PDF-verbatim text without
+// truncation. Layout classes live in assets/templates.css; brand tokens
+// in assets/social.css.
 
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { PRIORITY_META, CANDIDATE_PHOTOS } from './content.mjs'
 
-// Inline the civic icon set (fill="currentColor" SVGs). Masks proved
-// unreliable across file:// contexts, so icons are embedded directly.
-// Per-icon ids keep multi-icon pages collision-free.
+// Inline civic icon set (fill="currentColor"). Masks proved unreliable
+// across file:// contexts, so icons are embedded directly.
 const ICON_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../assets/icons')
 const ICONS = {}
 for (const file of fs.readdirSync(ICON_DIR)) {
@@ -31,7 +31,7 @@ for (const file of fs.readdirSync(ICON_DIR)) {
 export const esc = (s = '') =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
-// Wrap the last n words of a heading in <em> for the serif italic accent.
+// Wrap the last n words in <em> for the italic serif accent.
 export const em = (text, n = 2) => {
   const words = esc(text).split(' ')
   if (words.length < 3) return `<em>${words.join(' ')}</em>`
@@ -41,238 +41,182 @@ export const em = (text, n = 2) => {
   return `${head} <em>${tail}</em>`
 }
 
-// Scale long-form serif copy down as it grows.
-const fsClass = (t = '') => {
-  const len = t.length
-  if (len >= 430) return 'fs-36'
-  if (len >= 330) return 'fs-40'
-  if (len >= 230) return 'fs-44'
-  if (len >= 150) return 'fs-50'
+// Scale display heading down as it grows so it never overflows.
+const headingSize = (text = '', big = false) => {
+  const len = text.length
+  if (big) {
+    if (len > 100) return 'md'
+    if (len > 60) return 'lg'
+    if (len > 32) return 'xl'
+    return 'xxl'
+  }
+  if (len > 120) return 'sm'
+  if (len > 80) return 'md'
+  if (len > 46) return 'lg'
+  if (len > 24) return 'xl'
+  return 'xxl'
+}
+
+// Scale long-form serif body copy so it fits the frame.
+const bodySize = (text = '') => {
+  const len = text.length
+  if (len >= 520) return 'fs-30'
+  if (len >= 400) return 'fs-34'
+  if (len >= 300) return 'fs-38'
+  if (len >= 220) return 'fs-44'
+  if (len >= 140) return 'fs-50'
   if (len >= 80) return 'fs-58'
   return 'fs-66'
 }
 
-const icon = (name, _ctx, size = 84) => {
+// Multi-paragraph copy multiplies the effective length so each gets its
+// own paragraph break, then adds inter-paragraph gaps into the sizing
+// budget. This shrinks aggressively when we have 3+ paragraphs.
+const paragraphSize = (paragraphs = []) => {
+  const total = paragraphs.reduce((a, p) => a + p.length, 0)
+  const gap = Math.max(0, paragraphs.length - 1) * 120
+  return bodySize('x'.repeat(total + gap))
+}
+
+const icon = (name, size = 84, extraStyle = '') => {
   const svg = ICONS[name]
   if (!svg) throw new Error(`Unknown icon: ${name}`)
-  return svg.replace('<svg', `<svg class="icn" style="width:${size}px;height:${size}px;display:block;flex:none"`)
+  return svg.replace(
+    '<svg',
+    `<svg class="icn" style="width:${size}px;height:${size}px;display:block;flex:none;${extraStyle}"`,
+  )
 }
 
-const chipIcon = (name, ctx) => `<div class="chip-icon">${icon(name, ctx, 96)}</div>`
+const kicker = (text, mods = '') => {
+  if (!text) return ''
+  const isLong = text.length > 40
+  return `<div class="kicker ${mods} ${isLong ? 'long' : ''}">${esc(text)}</div>`
+}
 
-export const arrowSvg = `<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>`
-
-const pill = (text) => `<div class="pill"><span class="dot"></span>${esc(text)}</div>`
-const eyebrow = (text) => `<div class="eyebrow"><span class="dash"></span>${esc(text)}</div>`
-
-const siteLabel = (link) =>
-  link
-    .replace(/^https?:\/\//, '')
-    .replace(/^www\./, '')
-    .replace(/\/$/, '')
-
-/* ------------------------------------------------------------------ */
-
-const cover = (d, ctx) => `
-  <div class="backdrop ${d.blur ? 'blurred' : ''}"><img src="${ctx.prefix}img/${d.photo}" alt="" /><div class="wash deep"></div></div>
-  <div class="zone t-cover">
-    ${pill(d.eyebrow)}
-    <h1 class="display ${d.heading.length > 42 ? 'md' : 'lg'}">${em(d.heading)}</h1>
+/* ==================================================================
+   COVER — full-bleed photo with editorial title lockup.
+================================================================== */
+const cover = (d, ctx) => {
+  ctx.onPhoto = true
+  const size = headingSize(d.heading, true)
+  return `
+  <div class="backdrop ${d.blur ? 'blurred' : ''}">
+    <img src="${ctx.prefix}img/${d.photo}" alt="" />
+    <div class="wash ${d.blur ? 'deep' : ''}"></div>
+    <div class="ribbon-hairline"></div>
+  </div>
+  <div class="t-cover">
+    ${kicker(d.eyebrow)}
+    <h1 class="display ${size}">${em(d.heading)}</h1>
     ${d.sub ? `<p class="lede">${esc(d.sub)}</p>` : ''}
+    ${d.lines ? `<div class="cover-lines">${d.lines.map((l) => `<span>${esc(l)}</span>`).join('')}</div>` : ''}
   </div>`
+}
 
-const manifesto = (d, ctx) => `
-  <div class="zone t-manifesto">
-    ${eyebrow(d.eyebrow)}
-    ${d.heading ? `<h1 class="display md">${em(d.heading)}</h1>` : ''}
-    ${
-      d.text
-        ? d.heading
-          ? `<p class="lede" style="font-size:36px;max-width:870px">${esc(d.text)}</p>`
-          : `<p class="serif-body ${fsClass(d.text)}">${em(d.text, 3)}</p>`
-        : ''
-    }
-  </div>`
-
-const values3 = (d, ctx) => `
-  <div class="zone t-values">
-    <div class="head">
-      ${eyebrow(d.eyebrow)}
-      <h1 class="display ${ctx.format === 'story' ? 'md' : 'sm'}">${em(d.heading, 1)}</h1>
-    </div>
-    <div>
-      ${d.values
-        .map(
-          (v) => `
-      <div class="vrow ${v.label.length > 12 ? 'small' : ''}">
-        <div class="vlabel">${esc(v.label)}</div>
-        <div class="vdesc">${esc(v.description)}</div>
-      </div>`,
-        )
-        .join('')}
-    </div>
-  </div>`
-
-const promise = (d) => `
-  <div class="zone t-promise center">
-    ${pill(d.eyebrow)}
-    <p class="serif-body fs-66" style="max-width:850px">${em(d.text, 4)}</p>
-    <div class="sig">
-      <span class="line"></span>
-      <span class="mono-sm">${esc(d.sign)}</span>
-    </div>
-  </div>`
-
-const masthead = (d, ctx) => `
-  <div class="ring" style="width:760px;height:760px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
-  <div class="ring" style="width:980px;height:980px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.5"></div>
-  <div class="zone t-brand center">
-    <div class="logo-lg"><img src="${ctx.prefix}nwop-logo-${ctx.dark ? 'light' : 'dark'}.png" alt="Northwest Oregon PAC" /></div>
-    <p class="lede">${esc(d.tagline)}</p>
-    <div class="sig" style="display:flex;flex-direction:column;align-items:center;gap:26px">
-      <span style="width:120px;height:1.5px;background:rgba(107,90,66,.5)"></span>
-      <span class="mono-sm">${esc(d.values)}</span>
-    </div>
-  </div>`
-
-const ticker = (d) => {
-  const words = d.words
-  const line = (ws) => ws.map(esc).join('<span class="sep">·</span>')
-  const all = line([...words, ...words])
+/* ==================================================================
+   HEADLINE — the scroll-stopping poster. Bold serif over cinematic
+   layered gradients, an accent stripe, and a bottom ribbon.
+================================================================== */
+const headline = (d, ctx) => {
+  const primary = d.headingLine2 ? `${d.heading} ${d.headingLine2}` : d.heading || ''
+  const size = headingSize(primary, true)
   return `
-  <div class="zone t-ticker" style="padding:0">
-    <div class="eyebrow" style="justify-content:center">${esc(d.eyebrow)}<span class="dash"></span></div>
-    <div style="margin-top:52px">
-      <div class="band" style="margin-left:-60px">${all}</div>
-      <div class="band"><em>${line(words.slice(5))}</em></div>
-      <div class="band solid" style="padding-left:24px"><em>${line(words.slice(0, 5))}</em></div>
-      <div class="band" style="margin-left:-320px">${all}</div>
-      <div class="band" style="margin-left:-150px"><em>${all}</em></div>
+  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.55"></div>
+  <div class="glow forest" style="width:720px;height:720px;bottom:-260px;right:-160px"></div>
+  <div class="editorial-rule"></div>
+  <div class="zone t-headline">
+    <div class="head-top">${kicker(d.eyebrow)}</div>
+    <div class="head-mid">
+      <h1 class="display ${size} lead">${em(d.heading, 1)}</h1>
+      ${d.headingLine2 ? `<h1 class="display ${size} follow"><em>${esc(d.headingLine2)}</em></h1>` : ''}
+    </div>
+    ${d.sub ? `<p class="lede">${esc(d.sub)}</p>` : ''}
+    ${d.lines ? `<div class="lines">${d.lines.map((l) => `<span>${esc(l)}</span>`).join('')}</div>` : ''}
+  </div>`
+}
+
+/* ==================================================================
+   LONGFORM — editorial column of paragraph text. Handles the PDF's
+   multi-paragraph "Image text" without cutoff.
+================================================================== */
+const longform = (d, ctx) => {
+  const paragraphs = d.paragraphs || (d.text ? [d.text] : [])
+  const bs = paragraphSize(paragraphs)
+  return `
+  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
+  <div class="editorial-rule"></div>
+  <div class="zone t-longform">
+    ${kicker(d.eyebrow)}
+    ${d.heading ? `<h1 class="display ${headingSize(d.heading)}">${em(d.heading, 2)}</h1>` : ''}
+    ${d.subhead ? `<p class="subhead">${esc(d.subhead)}</p>` : ''}
+    <div class="body ${bs}">
+      ${paragraphs.map((p, i) => `<p class="${i === 0 && !d.heading ? 'lead-p' : ''}">${esc(p)}</p>`).join('')}
     </div>
   </div>`
 }
 
-const pillar = (d, ctx) => {
-  const p = d.p
-  const meta = PRIORITY_META[p.id]
+/* ==================================================================
+   CHECKLIST — editorial list of check items or bullets.
+================================================================== */
+const checklist = (d) => {
+  const bullet = d.bullet || '✓'
+  const heading = d.heading || ''
   return `
-  <div class="ghost-num" style="right:36px;bottom:20px">${p.id}</div>
-  <div class="zone t-pillar">
-    <div class="top">
-      ${chipIcon(meta.icon, ctx)}
-      <div class="kicker">
-        <span class="mono-sm">Priority</span>
-        <span class="of">${p.id} <span style="opacity:.55">/ 05</span></span>
-      </div>
-    </div>
-    <h1 class="display ${ctx.format === 'story' ? 'md' : 'sm'} name">${em(meta.short)}</h1>
-    <p class="serif-body ${fsClass(p.position)} position"><em>${esc(p.position)}</em></p>
+  <div class="glow sage" style="width:660px;height:660px;top:-160px;left:-160px;opacity:.4"></div>
+  <div class="editorial-rule"></div>
+  <div class="zone t-checklist">
+    ${kicker(d.eyebrow)}
+    ${heading ? `<h1 class="display ${headingSize(heading)}">${em(heading, 2)}</h1>` : ''}
+    ${d.subhead ? `<p class="subhead">${esc(d.subhead)}</p>` : ''}
+    <ul class="items">
+      ${d.items.map((it) => `<li><span class="mark">${esc(bullet)}</span><span class="txt">${esc(it)}</span></li>`).join('')}
+    </ul>
+    ${d.footer ? `<div class="footer">${esc(d.footer)}</div>` : ''}
   </div>`
 }
 
-const quote = (d) => `
-  <div class="zone t-quote">
-    <div class="quote-glyph">“</div>
-    <p class="serif-body ${fsClass(d.text)}">${esc(d.text)}</p>
-    <div class="attr">
-      <span class="line"></span>
-      <span class="mono-sm">${esc(d.attr)}</span>
-    </div>
-    ${d.eyebrow ? `<div class="mono-sm" style="position:absolute;top:0;right:0;max-width:420px;text-align:right;line-height:1.9">${esc(d.eyebrow)}</div>` : ''}
-  </div>`
-
-const detail = (d, ctx) => `
-  <div class="zone t-detail">
-    <div class="panel">
-      <div class="phead">
-        ${chipIcon(d.icon, ctx)}
-        <span class="mono-sm" style="text-align:right;max-width:520px;line-height:1.9">${esc(d.kicker)}</span>
-      </div>
-      <p class="serif-body ${fsClass(d.text)}">${esc(d.text)}</p>
-      <div class="pfoot">
-        <span class="mono-sm" style="color:var(--forest);font-weight:500">${esc(d.name)}</span>
-        <span class="hairline"></span>
-      </div>
-    </div>
-  </div>`
-
-const list5 = (d, ctx) => `
-  <div class="zone t-list">
-    <div class="head">
-      ${eyebrow(d.eyebrow)}
-      <h1 class="display ${ctx.format === 'story' ? 'md' : 'sm'}">${em(d.heading)}</h1>
-      ${ctx.format === 'story' && d.intro ? `<p class="lede intro">${esc(d.intro)}</p>` : ''}
-    </div>
-    <div>
-      ${d.items
+/* ==================================================================
+   STACK — key/value editorial stack. Used for the "Every dollar
+   raised here → helps build campaigns here" pattern.
+================================================================== */
+const stack = (d) => `
+  <div class="glow forest" style="width:720px;height:720px;bottom:-200px;right:-160px"></div>
+  <div class="editorial-rule"></div>
+  <div class="zone t-stack">
+    ${kicker(d.eyebrow)}
+    ${d.heading ? `<h1 class="display ${headingSize(d.heading)}">${em(d.heading, 2)}</h1>` : ''}
+    <div class="rows">
+      ${d.rows
         .map(
-          (item) => `
+          (r) => `
       <div class="row">
-        <span class="num">${esc(item.id)}</span>
-        <span class="label">${esc(PRIORITY_META[item.id].short)}</span>
-        <span class="ricon">${icon(PRIORITY_META[item.id].icon, ctx, ctx.format === 'story' ? 64 : 54)}</span>
+        <span class="k">${esc(r.k)}</span>
+        <span class="v">${esc(r.v)}</span>
       </div>`,
         )
         .join('')}
     </div>
+    ${d.footer ? `<div class="footer">${esc(d.footer)}</div>` : ''}
   </div>`
 
-const candidate = (d, ctx) => {
-  const c = d.c
-  const photo = CANDIDATE_PHOTOS[c.slug]
-  return `
-  <div class="zone t-candidate">
-    <div class="info">
-      ${pill('Candidates we support')}
-      <h1 class="display ${c.name.length > 14 ? 'md' : 'lg'}">${em(c.name, 1)}</h1>
-      <div class="office">${esc(c.office)}</div>
-      <div class="hairline" style="width:180px"></div>
-      <p class="bio">${esc(c.bio)}</p>
-      <span class="site">${esc(c.link ? siteLabel(c.link) : c.cta)}</span>
+/* ==================================================================
+   CONTACT — editorial contact spec sheet.
+================================================================== */
+const contact = (d) => `
+  <div class="glow sage" style="width:720px;height:720px;top:-180px;right:-160px;opacity:.4"></div>
+  <div class="editorial-rule"></div>
+  <div class="zone t-contact">
+    <div class="head">
+      ${kicker(d.eyebrow)}
+      <h1 class="display ${headingSize(d.heading)}">${em(d.heading, 1)}</h1>
+      ${d.subhead ? `<p class="subhead">${esc(d.subhead)}</p>` : ''}
     </div>
-    <div class="stage">
-      <div class="ring"></div>
-      <div class="photo"><img src="${ctx.prefix}img/${photo}" alt="${esc(c.name)}" style="object-position:center top" /><div class="wash"></div></div>
-      <div class="year">2026</div>
-    </div>
-  </div>`
-}
-
-const cta = (d) => `
-  <div class="zone t-cta">
-    ${eyebrow(d.eyebrow)}
-    <h1 class="display ${d.heading.length > 46 ? 'md' : 'lg'}">${em(d.heading)}</h1>
-    ${d.text ? `<p class="lede">${esc(d.text)}</p>` : ''}
-    <div class="buttons">
-      ${d.buttons
-        .map((b, i) => `<span class="btn ${i > 0 ? 'ghost' : ''}">${esc(b)}${i === 0 ? arrowSvg : ''}</span>`)
-        .join('')}
-    </div>
-  </div>`
-
-const chips = (d) => {
-  const big = d.chips.every((c) => String(c).startsWith('$'))
-  return `
-  <div class="zone t-chips">
-    ${eyebrow(d.eyebrow)}
-    <h1 class="serif-body ${fsClass(d.heading)}" style="max-width:860px">${em(d.heading)}</h1>
-    <div class="chipset">
-      ${d.chips.map((c) => `<span class="chip ${big ? 'big' : ''}">${esc(c)}</span>`).join('')}
-    </div>
-    <p class="note">${esc(d.note)}</p>
-  </div>`
-}
-
-const facts = (d) => `
-  <div class="zone t-facts">
-    ${eyebrow(d.eyebrow)}
-    <h1 class="display md">${em(d.heading)}</h1>
     <div class="kv">
       ${d.rows
         .map(
           (r) => `
       <div class="krow">
-        <span class="k mono-sm">${esc(r.k)}</span>
+        <span class="k">${esc(r.k)}</span>
         <span class="v">${esc(r.v)}</span>
       </div>`,
         )
@@ -280,87 +224,192 @@ const facts = (d) => `
     </div>
   </div>`
 
-const team = (d) => `
-  <div class="zone t-team">
-    ${eyebrow(d.eyebrow)}
-    <h1 class="display xs" style="margin-bottom:14px">${em(d.heading)}</h1>
-    <div style="width:100%">
-      ${d.members
+/* ==================================================================
+   LADDER — donation amounts as an editorial ladder + call to action.
+================================================================== */
+const ladder = (d) => `
+  <div class="glow sand" style="width:620px;height:620px;top:-160px;left:-140px;opacity:.5"></div>
+  <div class="glow forest" style="width:720px;height:720px;bottom:-220px;right:-160px"></div>
+  <div class="editorial-rule"></div>
+  <div class="zone t-ladder">
+    ${kicker(d.eyebrow)}
+    <h1 class="display ${headingSize(d.heading)}">${em(d.heading, 2)}</h1>
+    <div class="amounts">
+      ${d.amounts.map((a) => `<span class="chip">${esc(a)}</span>`).join('')}
+    </div>
+    <div class="donate-cta">${esc(d.footer || 'DONATE TODAY')}</div>
+  </div>`
+
+/* ==================================================================
+   CANDIDATE — portrait-first cinematic candidate card.
+================================================================== */
+const candidate = (d, ctx) => {
+  const photo = CANDIDATE_PHOTOS[d.slug]
+  const nameSize = d.name.length > 14 ? 'md' : 'lg'
+  if (ctx.format === 'story') ctx.onPhoto = true
+  return `
+  <div class="t-candidate ${ctx.format === 'story' ? 'story-mode' : ''}">
+    <div class="portrait">
+      <img src="${ctx.prefix}img/${photo}" alt="${esc(d.name)}" />
+      <div class="grade"></div>
+    </div>
+    <div class="info">
+      <div class="info-top">
+        ${kicker(d.kicker || 'Candidate · 2026')}
+        <h1 class="display ${nameSize}">${em(d.name, 1)}</h1>
+        <div class="office">${esc(d.office)}</div>
+      </div>
+      <p class="bio">${esc(d.bio)}</p>
+      <div class="info-bottom">
+        <span class="cyc"><em>2026</em></span>
+        <span class="site">${esc(d.cta || '')}</span>
+      </div>
+    </div>
+  </div>`
+}
+
+/* ==================================================================
+   PRIORITY BADGE — a section-labeled card: LEADERSHIP / LOCAL ECONOMY /
+   NORTHWEST OREGON / OUR PRIORITIES. Big vertical rail with section
+   label at top and italic pull-quote center-anchored.
+================================================================== */
+const priorityBadge = (d) => `
+  <div class="glow sage" style="width:820px;height:820px;top:-220px;left:-160px;opacity:.55"></div>
+  <div class="glow forest" style="width:720px;height:720px;bottom:-240px;right:-160px"></div>
+  <div class="editorial-rule"></div>
+  <div class="zone t-badge">
+    <div class="badge-section">${esc(d.section)}</div>
+    <div class="badge-rule"></div>
+    ${d.heading ? `<h1 class="display ${headingSize(d.heading)}">${em(d.heading, 2)}</h1>` : ''}
+    ${d.quote ? `<p class="quote">${esc(d.quote)}</p>` : ''}
+    ${d.body ? `<p class="body">${esc(d.body)}</p>` : ''}
+  </div>`
+
+/* ==================================================================
+   CTA — editorial invitation without buttons.
+================================================================== */
+const cta = (d) => `
+  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.55"></div>
+  <div class="editorial-rule"></div>
+  <div class="zone t-cta">
+    ${kicker(d.eyebrow)}
+    ${d.heading ? `<h1 class="display ${headingSize(d.heading)}">${em(d.heading, 2)}</h1>` : ''}
+    ${d.sub ? `<p class="lede">${esc(d.sub)}</p>` : ''}
+    ${
+      d.items && d.items.length
+        ? `<div class="invitations">
+      ${d.items
         .map(
-          (m) => `
-      <div class="member">
-        <span class="mname">${esc(m.name)}</span>
-        <span class="mroles">${m.roles.map(esc).join('<br />')}</span>
+          (b, i) => `
+      <div class="link">
+        <span class="n">${String(i + 1).padStart(2, '0')}</span>
+        <span class="lbl">${esc(b)}</span>
+        <span class="arrow">→</span>
       </div>`,
         )
         .join('')}
+    </div>`
+        : ''
+    }
+  </div>`
+
+/* ==================================================================
+   STORY CARD — vertical editorial poster for 1080×1920 stories.
+================================================================== */
+const storyCard = (d) => {
+  const primary = d.lines[0] || ''
+  const others = d.lines.slice(1)
+  const size = primary.length > 60 ? 'md' : primary.length > 36 ? 'lg' : 'xl'
+  const cta = d.cta ? (d.cta.includes('→') ? d.cta : `${d.cta} →`) : ''
+  return `
+  <div class="glow sage" style="width:720px;height:720px;top:-220px;left:-140px;opacity:.5"></div>
+  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;right:-160px"></div>
+  <div class="editorial-rule vertical"></div>
+  <div class="zone t-story">
+    <div class="story-top">
+      ${d.pill ? kicker(d.pill) : ''}
+    </div>
+    <div class="story-mid">
+      <h1 class="display ${size}">${em(primary, 2)}</h1>
+      ${others.length ? `<div class="lines">${others.map((l) => `<p>${esc(l)}</p>`).join('')}</div>` : ''}
+    </div>
+    ${d.pill || cta ? `<div class="story-bottom">
+      ${d.pill ? `<span class="pill">${esc(d.pill)}</span>` : '<span></span>'}
+      ${cta ? `<span class="cta">${esc(cta)}</span>` : ''}
+    </div>` : ''}
+  </div>`
+}
+
+/* ==================================================================
+   STORY POLL — vertical layout for a question + poll options.
+================================================================== */
+const storyPoll = (d) => {
+  const q = d.question
+  const size = q.length > 40 ? 'md' : q.length > 24 ? 'lg' : 'xl'
+  return `
+  <div class="glow sage" style="width:720px;height:720px;top:-200px;right:-160px;opacity:.5"></div>
+  <div class="editorial-rule vertical"></div>
+  <div class="zone t-poll">
+    <div class="poll-top">
+      ${kicker('Poll')}
+    </div>
+    <div class="poll-mid">
+      <h1 class="display ${size}">${em(q, 2)}</h1>
+      ${d.subquestion ? `<h2 class="display md">${em(d.subquestion, 1)}</h2>` : ''}
+    </div>
+    <div class="poll-options">
+      ${d.options.map((o) => `<div class="option">${esc(o)}</div>`).join('')}
+    </div>
+    ${d.note ? `<div class="poll-note">${esc(d.note)}</div>` : ''}
+  </div>`
+}
+
+/* ==================================================================
+   STORY CANDIDATE — full-height portrait with candidate meta.
+================================================================== */
+const storyCandidate = (d, ctx) => {
+  const photo = CANDIDATE_PHOTOS[d.slug]
+  ctx.onPhoto = true
+  return `
+  <div class="backdrop">
+    <img src="${ctx.prefix}img/${photo}" alt="${esc(d.heading)}" />
+    <div class="wash deep"></div>
+  </div>
+  <div class="zone t-story-candidate">
+    <div class="sc-top">
+      ${d.subhead ? `<div class="pretitle">${esc(d.subhead)}</div>` : ''}
+      ${d.brand ? `<div class="brand-line">${esc(d.brand)}</div>` : ''}
+      <h1 class="display ${headingSize(d.heading, true)}">${em(d.heading, 1)}</h1>
+    </div>
+    <div class="sc-bottom">
+      ${(d.lines || []).map((l) => `<p>${esc(l)}</p>`).join('')}
     </div>
   </div>`
-
-const stats = (d) => `
-  <div class="zone t-stats">
-    ${eyebrow(d.eyebrow)}
-    <h1 class="display md">${em(d.heading)}</h1>
-    <div class="statgrid">
-      ${d.stats
-        .map(
-          (s) => `
-      <div class="cell">
-        <span class="n">${esc(s.n)}</span>
-        <span class="mono-sm">${esc(s.l)}</span>
-      </div>`,
-        )
-        .join('')}
-    </div>
-  </div>`
-
-const block = (d) => `
-  <div class="ghost-num" style="right:44px;top:80px">${esc(d.n)}</div>
-  <div class="zone t-block">
-    ${eyebrow(`Our story · ${d.n} / 04`)}
-    <h1 class="display lg">${em(d.block.title, 2)}</h1>
-    <div class="hairline" style="width:200px"></div>
-    <p class="body">${esc(d.block.body)}</p>
-  </div>`
-
-const value = (d) => `
-  <div class="zone t-value">
-    ${eyebrow(`Value ${d.n} / ${d.of}`)}
-    <h1 class="word">${em(d.v.title, 1)}</h1>
-    <div class="hairline" style="width:200px"></div>
-    <p class="body">${esc(d.v.body)}</p>
-  </div>`
+}
 
 /* ------------------------------------------------------------------ */
 
 const RENDERERS = {
   cover,
-  manifesto,
-  values3,
-  promise,
-  masthead,
-  ticker,
-  pillar,
-  quote,
-  detail,
-  list5,
+  headline,
+  longform,
+  checklist,
+  stack,
+  contact,
+  ladder,
   candidate,
+  priorityBadge,
   cta,
-  chips,
-  facts,
-  team,
-  stats,
-  block,
-  value,
+  storyCard,
+  storyPoll,
+  storyCandidate,
 }
 
-// Templates that supply their own backdrop skip the line field + glows;
-// covers drop the mast filing (the eyebrow pill carries it), and the
-// brand card hides the mast logo to avoid doubling the wordmark.
+// Per-template chrome hints (matches previous implementation contract).
 export const TEMPLATE_META = {
-  cover: { forceSurface: 's-ink', noLines: true, hideFiling: true },
-  masthead: { hideBrand: true },
-  ticker: { noGlow: true },
+  cover: { forceSurface: 's-ink', onPhoto: true, hideFiling: true },
+  candidate: { padCanvas: true },
+  storyCandidate: { forceSurface: 's-ink', onPhoto: true, hideFiling: true },
 }
 
 export function render(template, data, ctx) {

@@ -21,28 +21,14 @@ const FONTS = `
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />`
 
-const GLOWS = {
-  light: `
-  <div class="glow sage" style="width:680px;height:680px;top:-240px;right:-200px;opacity:.5"></div>
-  <div class="glow" style="width:560px;height:560px;bottom:-220px;left:-180px;background:rgba(107,90,66,.14)"></div>`,
-  dark: `
-  <div class="glow sage" style="width:720px;height:720px;top:-240px;right:-200px"></div>
-  <div class="glow cream" style="width:560px;height:560px;bottom:-240px;left:-200px"></div>`,
-}
-
-const swipeCue = (last) =>
-  last
-    ? `<div class="swipe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Save this</div>`
-    : `<div class="swipe">Swipe<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>`
-
-function buildDoc(post, { format, prefix, slide = 0, slideCount = 0, docTitle }) {
+function buildDoc(post, { format, prefix, docTitle }) {
   const meta = TEMPLATE_META[post.template] || {}
   const surface = meta.forceSurface || post.surface || 's-light'
-  const dark = surface === 's-forest' || surface === 's-ink'
+  const dark = surface === 's-forest' || surface === 's-ink' || meta.onPhoto
   const ctx = { format, prefix, dark }
   const body = render(post.template, post.data, ctx)
+  const onPhoto = meta.onPhoto || ctx.onPhoto
   const logo = `${prefix}nwop-logo-${dark ? 'light' : 'dark'}.png`
-  const isCarousel = slideCount > 0
 
   const chrome = `
   <header class="mast">
@@ -53,15 +39,7 @@ function buildDoc(post, { format, prefix, slide = 0, slideCount = 0, docTitle })
     <span>${esc(PAID_FOR)}</span>
     <span class="rule"></span>
     <span class="domain">${DOMAIN}</span>
-  </footer>
-  <div class="frame"><span class="tick"></span></div>`
-
-  const carouselChrome = isCarousel
-    ? `
-  <div class="slide-meta"><b>${String(slide).padStart(2, '0')}</b><span>/</span><span>${String(slideCount).padStart(2, '0')}</span></div>
-  <div class="dots">${Array.from({ length: slideCount }, (_, i) => `<i class="${i + 1 === slide ? 'on' : ''}"></i>`).join('')}</div>
-  ${swipeCue(slide === slideCount)}`
-    : ''
+  </footer>`
 
   return `<!doctype html>
 <html lang="en">
@@ -74,12 +52,9 @@ ${FONTS}
 <link rel="stylesheet" href="${prefix}templates.css" />
 </head>
 <body>
-  <div class="canvas ${format === 'story' ? 'story' : ''} ${surface}">
-    ${meta.noLines ? '' : '<div class="lines"></div>'}
-    ${meta.noLines || meta.noGlow ? '' : GLOWS[dark ? 'dark' : 'light']}
+  <div class="canvas ${format === 'story' ? 'story' : ''} ${surface}${onPhoto ? ' on-photo' : ''}">
     ${body}
     ${chrome}
-    ${carouselChrome}
     <div class="grain"></div>
   </div>
 </body>

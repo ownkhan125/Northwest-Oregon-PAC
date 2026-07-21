@@ -4,7 +4,7 @@ const { chromium } = require('playwright')
 const fs = require('fs')
 const path = require('path')
 
-const PUB = 'd:/Github/Northwest-Oregon-PAC/public/social'
+const PUB = path.resolve(__dirname, '../../public/social')
 const OUT = path.join(PUB, 'previews')
 
 ;(async () => {
