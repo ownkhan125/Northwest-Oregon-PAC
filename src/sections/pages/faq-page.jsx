@@ -33,7 +33,7 @@ function FaqItem({ q, a, isOpen, onToggle }) {
       <button
         onClick={onToggle}
         className={cn(
-          'flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left transition-colors',
+          'flex w-full cursor-pointer items-center justify-between gap-6 py-4 text-left transition-colors',
           isOpen ? 'text-primary' : 'text-foreground hover:text-primary',
         )}
       >
@@ -69,7 +69,7 @@ function FaqItem({ q, a, isOpen, onToggle }) {
             transition={{ duration: 0.4, ease: EASE }}
             className="overflow-hidden"
           >
-            <p className="text-foreground/80 pr-12 pb-6 sm:text-base">{renderAnswer(a)}</p>
+            <p className="text-foreground/80 pr-12 pb-4 sm:text-base">{renderAnswer(a)}</p>
           </m.div>
         )}
       </AnimatePresence>
@@ -94,14 +94,13 @@ export default function FaqPage() {
         }
       />
 
-      <section className="relative isolate overflow-x-clip py-16 sm:py-20 lg:py-24">
+      <section className="relative isolate overflow-x-clip pt-4 pb-16 sm:pt-6 sm:pb-20 lg:pt-8 lg:pb-24">
         <div className="relative mx-auto max-w-4xl px-5 sm:px-8 lg:px-12">
           <m.div
             variants={stagger}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-15% 0px' }}
-            className="mt-8"
           >
             {faqs.map((f, i) => (
               <FaqItem

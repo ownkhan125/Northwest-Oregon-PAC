@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
+import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import Input from '@/components/ui/input'
 import Textarea from '@/components/ui/textarea'
@@ -113,63 +114,95 @@ export default function ContactPage() {
         accent="/icons/envelope.svg"
       />
 
-      <section aria-label="Contact information" className="relative isolate overflow-x-clip pt-8 pb-4 sm:pt-10">
-        <div className="relative mx-auto max-w-3xl px-5 sm:px-8 lg:px-12">
-          <div className="border-primary/25 bg-surface-alt/50 grid grid-cols-1 gap-6 rounded-2xl border p-6 sm:grid-cols-3 sm:p-7">
-            <div>
-              <span className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase">Phone</span>
-              <p className="mt-1.5">
-                <a
-                  href={`tel:${pac.contact.phone.replace(/[^\d+]/g, '')}`}
-                  className="text-primary hover:text-highlight text-base transition-colors sm:text-lg"
-                >
-                  {pac.contact.phone}
-                </a>
+      <section
+        aria-label="Contact information and form"
+        className="relative isolate overflow-x-clip pt-4 pb-20 sm:pb-24"
+      >
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-10% 0px' }}
+              transition={{ duration: 0.7, ease: EASE }}
+              className="lg:sticky lg:top-32 lg:col-span-4"
+            >
+              <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+                Reach us
+              </div>
+              <SplitText
+                as="h2"
+                by="word"
+                staggerChildren={0.05}
+                text="General inquiries."
+                className="font-display text-foreground mt-4 text-3xl leading-tight font-medium tracking-tight sm:text-4xl md:text-5xl"
+              />
+              <p className="text-foreground/80 mt-5 text-base leading-relaxed">
+                Prefer to reach out directly? Use the details below — otherwise fill out the form
+                and our team will route your message to the right person.
               </p>
-            </div>
-            <div>
-              <span className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase">Email</span>
-              <p className="mt-1.5">
-                <a
-                  href={`mailto:${pac.contact.generalEmail}`}
-                  className="text-primary hover:text-highlight text-base transition-colors sm:text-lg"
-                >
-                  {pac.contact.generalEmail}
-                </a>
-              </p>
-            </div>
-            <div>
-              <span className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase">Mailing address</span>
-              <address className="text-foreground/85 mt-1.5 text-sm not-italic leading-relaxed">
-                {pac.contact.mailingAddressLines.map((line) => (
-                  <div key={line}>{line}</div>
-                ))}
-              </address>
-            </div>
-          </div>
-        </div>
-      </section>
+              <div className="border-primary/15 mt-8 space-y-5 border-t pt-6">
+                <div>
+                  <span className="text-muted font-mono text-[11px] tracking-[0.3em] uppercase">
+                    General inquiries
+                  </span>
+                  <p className="mt-1.5 text-base sm:text-lg">
+                    <a
+                      href={`mailto:${pac.contact.generalEmail}`}
+                      className="text-primary hover:text-highlight transition-colors"
+                    >
+                      {pac.contact.generalEmail}
+                    </a>
+                  </p>
+                </div>
+                <div>
+                  <span className="text-muted font-mono text-[11px] tracking-[0.3em] uppercase">
+                    {pac.contact.role}
+                  </span>
+                  <p className="text-foreground/90 mt-1.5 text-base sm:text-lg">
+                    {pac.contact.name}
+                  </p>
+                  <p className="text-foreground/80 text-base sm:text-lg">
+                    <a
+                      href={`tel:${pac.contact.phone.replace(/[^\d+]/g, '')}`}
+                      className="hover:text-primary transition-colors"
+                    >
+                      {pac.contact.phone}
+                    </a>
+                  </p>
+                </div>
+                <div>
+                  <span className="text-muted font-mono text-[11px] tracking-[0.3em] uppercase">
+                    Mailing address
+                  </span>
+                  <address className="text-foreground/85 mt-1.5 text-base not-italic leading-relaxed sm:text-lg">
+                    {pac.contact.mailingAddressLines.map((line) => (
+                      <div key={line}>{line}</div>
+                    ))}
+                  </address>
+                </div>
+              </div>
+            </m.div>
 
-      <section className="relative isolate overflow-x-clip py-12 sm:py-16 lg:py-20">
-        <div className="relative mx-auto max-w-3xl px-5 sm:px-8 lg:px-12">
-          <m.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-10% 0px' }}
-            transition={{ duration: 0.9, ease: EASE }}
-          >
-            <div className="border-primary/25 bg-surface rounded-3xl border p-6 sm:p-10">
-              {submitted ? (
+            <m.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-10% 0px' }}
+              transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
+              className="lg:col-span-8"
+            >
+              <div className="border-primary/25 bg-surface rounded-3xl border p-6 shadow-[0_30px_80px_-40px_rgba(46,69,56,0.35)] sm:p-10">
+                {submitted ? (
                   <div
                     role="status"
-                    className="border-primary/25 bg-surface-alt/60 mt-8 rounded-2xl border p-6"
+                    className="border-primary/25 bg-surface-alt/60 rounded-2xl border p-6"
                   >
                     <p className="font-display text-primary text-xl sm:text-2xl">
                       {pac.successMessage}
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+                  <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                       <Input
                         label="First name"
@@ -283,6 +316,7 @@ export default function ContactPage() {
                 )}
               </div>
             </m.div>
+          </div>
         </div>
       </section>
     </>

@@ -73,7 +73,7 @@ export default function Events({ events = [] }) {
             ))}
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href="/volunteer" size="lg">
+            <Button href="/events" size="lg">
               {home.events.ctas.primary}
             </Button>
             <Button href="/contact" variant="secondary" size="lg">

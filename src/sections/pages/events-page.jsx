@@ -58,10 +58,7 @@ export default function EventsPage({ events = [] }) {
                 ))}
               </div>
               <div className="mt-10 flex flex-wrap justify-center gap-3">
-                <Button href={calendar.primary.href} size="lg">
-                  {calendar.primary.label}
-                </Button>
-                <Button href={calendar.secondary.href} variant="secondary" size="lg">
+                <Button href={calendar.secondary.href} size="lg">
                   {calendar.secondary.label}
                 </Button>
               </div>

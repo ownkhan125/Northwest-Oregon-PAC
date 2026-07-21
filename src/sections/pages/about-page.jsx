@@ -132,34 +132,32 @@ export default function AboutPage() {
           {teamSection.members.map((member) => (
             <m.div key={member.name} variants={cardReveal} className="h-full">
               <Card
-                className="flex h-full flex-col justify-between p-7"
+                className="flex h-full flex-col p-7"
                 interactive={false}
                 tilt={false}
               >
-                <div>
-                  <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                    Leadership
-                  </div>
-                  <h3 className="font-display text-foreground mt-4 text-2xl leading-tight font-medium sm:text-3xl">
-                    {member.name}
-                  </h3>
-                  <ul className="mt-4 space-y-2">
-                    {member.roles.map((role) => (
-                      <li
-                        key={role}
-                        className="text-foreground/80 flex items-start gap-2 text-sm leading-snug"
-                      >
-                        <span
-                          aria-hidden
-                          className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
-                        />
-                        {role}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+                  Leadership
                 </div>
+                <h3 className="font-display text-foreground mt-4 text-2xl leading-tight font-medium sm:text-3xl">
+                  {member.name}
+                </h3>
+                <ul className="mt-4 min-h-[9rem] space-y-2">
+                  {member.roles.map((role) => (
+                    <li
+                      key={role}
+                      className="text-foreground/80 flex items-start gap-2 text-sm leading-snug"
+                    >
+                      <span
+                        aria-hidden
+                        className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+                      />
+                      {role}
+                    </li>
+                  ))}
+                </ul>
                 {member.bio && (
-                  <p className="text-foreground/70 border-primary/15 mt-5 border-t pt-4 text-sm leading-relaxed">
+                  <p className="text-foreground/70 border-primary/15 mt-auto border-t pt-4 text-sm leading-relaxed">
                     {member.bio}
                   </p>
                 )}

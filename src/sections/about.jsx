@@ -66,9 +66,6 @@ export default function About() {
             <Button href="/about" variant="primary" size="lg">
               {home.about.ctas.primary}
             </Button>
-            <Button href="/ask" variant="ghost" size="lg">
-              {home.about.ctas.secondary}
-            </Button>
           </div>
         </div>
 
