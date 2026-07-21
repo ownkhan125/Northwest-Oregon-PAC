@@ -12,31 +12,110 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-sand">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-220px;left:-140px;opacity:.5"></div>
-  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-story">
-    <div class="story-top">
+  <div class="canvas story s-light">
+    <style>
+        .s10 {
+          position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 15%, rgba(244,239,224,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e6d9b7 100%);
+        }
+        .s10-mast { position:absolute; top:76px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,42,20,.6); }
+        .s10-mast img { height:56px; width:auto; }
+        /* Top editorial caption */
+        .s10-lede {
+          position:absolute; top:220px; left:80px; right:80px; z-index:5;
+        }
+        .s10-lede .kick { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,42,20,.55); display:inline-flex; align-items:center; gap:16px; }
+        .s10-lede .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .s10-lede .head { margin-top:20px; font-family:var(--font-display); font-weight:500; font-size:88px; line-height:1.02; letter-spacing:-.022em; color:#2e4538; }
+        .s10-lede .head em { font-style:italic; color:#6b5a42; }
+        /* Filmstrip */
+        .s10-strip {
+          position:absolute; top:640px; left:-30px; right:-30px; height:520px; z-index:4;
+          background:#111008;
+          padding:56px 20px;
+          transform:rotate(-1.2deg);
+          box-shadow:0 40px 90px -40px rgba(0,0,0,.6);
+        }
+        .s10-strip::before, .s10-strip::after {
+          content:''; position:absolute; left:20px; right:20px; height:26px;
+          background-image: radial-gradient(circle at 20px 13px, #f6f2e8 8px, transparent 8.5px);
+          background-size:52px 26px;
+        }
+        .s10-strip::before { top:12px; }
+        .s10-strip::after { bottom:12px; }
+        .s10-strip .frames {
+          display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; height:100%;
+        }
+        .s10-strip .frame { position:relative; overflow:hidden; background:#000; }
+        .s10-strip .frame img { width:100%; height:100%; object-fit:cover; filter:saturate(.7) contrast(1.2) brightness(.85); }
+        .s10-strip .frame .wash { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.55) 100%); }
+        .s10-strip .frame .lbl { position:absolute; left:14px; bottom:14px; font-family:var(--font-mono); font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:#e0d6bc; }
+        .s10-strip .frame .yr { position:absolute; right:14px; top:14px; font-family:var(--font-display); font-style:italic; font-size:24px; color:#f0efe3; letter-spacing:-.01em; }
+        /* Below-strip commentary */
+        .s10-below {
+          position:absolute; left:80px; right:80px; bottom:190px; z-index:5;
+          padding-top:20px; border-top:1.5px solid rgba(46,42,20,.35);
+          display:flex; align-items:flex-end; justify-content:space-between; gap:24px;
+        }
+        .s10-below .k { font-family:var(--font-mono); font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+        .s10-below .v {
+          font-family:var(--font-display); font-weight:500; font-style:italic; font-size:44px; line-height:1.16; letter-spacing:-.015em; color:#2e4538;
+          max-width:640px;
+        }
+        .s10-below .cornerbadge { font-family:var(--font-display); font-style:italic; font-size:80px; color:rgba(46,69,56,.28); letter-spacing:-.02em; }
+        .s10-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+      </style>
+        <div class="s10">
+          <div class="s10-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Reel 10 · Field Documentary</span>
+          </div>
+
+          <div class="s10-lede">
+            <span class="kick">Frame by frame</span>
+            <h1 class="head">Campaigns <em>come and go.</em></h1>
+          </div>
+
+          <div class="s10-strip">
+            <div class="frames">
+              <div class="frame">
+                <img src="../assets/img/banner.jpg" alt="Then" />
+                <div class="wash"></div>
+                <span class="yr">'22</span>
+                <span class="lbl">— Then</span>
+              </div>
+              <div class="frame">
+                <img src="../assets/img/who-we-are.jpg" alt="Now" />
+                <div class="wash"></div>
+                <span class="yr">'26</span>
+                <span class="lbl">— Now</span>
+              </div>
+              <div class="frame">
+                <img src="../assets/img/hero.jpg" alt="Next" />
+                <div class="wash"></div>
+                <span class="yr">'30</span>
+                <span class="lbl">— Next</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="s10-below">
+            <div>
+              <span class="k">— Strong communities remain</span>
+              <p class="v">That's why we're investing for the long term.</p>
+            </div>
+            <span class="cornerbadge">10.</span>
+          </div>
+
+          <div class="s10-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="story-mid">
-      <h1 class="display xl">Campaigns come <em>and go.</em></h1>
-      <div class="lines"><p>Strong communities remain.</p><p>That's why we're investing for the long term.</p></div>
-    </div>
     
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

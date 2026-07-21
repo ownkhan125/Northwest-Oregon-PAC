@@ -13,32 +13,90 @@
 </head>
 <body>
   <div class="canvas story s-light">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-200px;right:-160px;opacity:.5"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-poll">
-    <div class="poll-top">
-      <div class="kicker  ">Poll</div>
-    </div>
-    <div class="poll-mid">
-      <h1 class="display md">Would you ever consider running for <em>local office?</em></h1>
+    <style>
+        .s26 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(232,222,196,.6) 0%, transparent 55%),
+            linear-gradient(180deg, #e0d6bc 0%, #d4c085 100%);
+          color:#2a2013;
+        }
+        .s26::before {
+          content:''; position:absolute; inset:0; opacity:.5; pointer-events:none;
+          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.32 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+          mix-blend-mode:multiply;
+        }
+        .s26-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(42,32,19,.7); }
+        .s26-mast img { height:52px; width:auto; }
+        /* Form card */
+        .s26-form { position:absolute; top:200px; bottom:200px; left:70px; right:70px; z-index:5;
+          background:#f6f2e8; border:2px solid #2a2013;
+          padding:44px 46px 36px;
+          box-shadow:0 30px 60px -30px rgba(42,32,19,.5), inset 0 1px 0 rgba(255,255,255,.5);
+        }
+        .s26-form::before { content:''; position:absolute; inset:10px; border:1px double #2a2013; pointer-events:none; }
+        /* Header of the form */
+        .s26-form .header { display:flex; align-items:baseline; justify-content:space-between; gap:24px; padding-bottom:16px; border-bottom:2px solid #2a2013; font-family:var(--font-mono); font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:rgba(42,32,19,.65); }
+        .s26-form .header .title { font-family:var(--font-display); font-style:italic; font-size:28px; letter-spacing:-.01em; color:#2a2013; text-transform:none; }
+        .s26-form .instruction { margin-top:26px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(42,32,19,.55); }
+        .s26-form .prompt { margin-top:16px; font-family:var(--font-display); font-weight:500; font-size:76px; line-height:1.02; letter-spacing:-.022em; color:#2a2013; }
+        .s26-form .prompt em { font-style:italic; color:#6b5a42; }
+        .s26-form .sub { margin-top:16px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:34px; letter-spacing:-.015em; color:#2a2013; }
+        /* Write-in name line */
+        .s26-form .writeIn { margin-top:44px; }
+        .s26-form .writeIn .k { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(42,32,19,.55); }
+        .s26-form .writeIn .line {
+          margin-top:14px; height:56px; border-bottom:2px solid #2a2013;
+          display:flex; align-items:flex-end; padding:0 18px 8px;
+          font-family:var(--font-display); font-style:italic; font-size:34px; color:rgba(42,32,19,.35); letter-spacing:-.01em;
+        }
+        .s26-form .writeIn .hint { font-family:var(--font-mono); font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:rgba(42,32,19,.4); margin-top:8px; }
+        /* Two checkboxes at the bottom */
+        .s26-form .boxes { margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+        .s26-form .boxes .box { display:flex; align-items:center; gap:16px; padding:14px 18px; border:1.5px solid rgba(42,32,19,.55); }
+        .s26-form .boxes .box .sq { flex:none; width:32px; height:32px; border:2px solid #2a2013; }
+        .s26-form .boxes .box .lbl { font-family:var(--font-display); font-weight:500; font-size:26px; letter-spacing:-.01em; color:#2a2013; }
+        /* Signature line */
+        .s26-form .sig { position:absolute; left:46px; right:46px; bottom:34px; display:flex; align-items:baseline; gap:14px; font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(42,32,19,.6); }
+        .s26-form .sig .line { flex:1; height:1px; background:rgba(42,32,19,.55); margin:0 12px; }
+        /* Sticker note */
+        .s26-note {
+          position:absolute; right:34px; bottom:180px; z-index:8;
+          transform:rotate(3deg);
+          background:#faf4d8; color:#4b3a20;
+          font-family:var(--font-mono); font-size:11px; letter-spacing:.28em; text-transform:uppercase;
+          padding:10px 16px 12px; box-shadow:0 10px 24px -12px rgba(0,0,0,.5); max-width:260px;
+        }
+        .s26-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(42,32,19,.55); }
+      </style>
+        <div class="s26">
+          <div class="s26-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Form 26 · Declaration of Candidacy</span>
+          </div>
+          <div class="s26-form">
+            <div class="header"><span>The Northwest Filing</span><span class="title">A question, on the record</span><span>Rev. 26</span></div>
+            <div class="instruction">— Section A · Please respond</div>
+            <p class="prompt">Would you ever consider <em>running</em> for local office?</p>
+            <p class="sub">Tell us why or why not.</p>
+            <div class="writeIn">
+              <span class="k">Section B · Your name (write-in)</span>
+              <div class="line">Print here</div>
+              <span class="hint">Every candidate started as someone who just wrote their name.</span>
+            </div>
+            <div class="boxes">
+              <div class="box"><span class="sq"></span><span class="lbl">I've thought about it</span></div>
+              <div class="box"><span class="sq"></span><span class="lbl">Not yet — but tell me more</span></div>
+            </div>
+            <div class="sig"><span>Signed</span><span class="line"></span><span>Date · 2026</span></div>
+          </div>
+          <div class="s26-note">Overlay Instagram<br />ask sticker here</div>
+          <div class="s26-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="poll-options">
-      <div class="option">Tell us why or why not.</div>
-    </div>
-    <div class="poll-note">NOTE: Will add instagram ask Sticker</div>
-  </div>
     
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

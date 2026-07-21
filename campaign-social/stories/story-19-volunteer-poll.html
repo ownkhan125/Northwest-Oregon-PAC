@@ -12,33 +12,118 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-light">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-200px;right:-160px;opacity:.5"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-poll">
-    <div class="poll-top">
-      <div class="kicker  ">Poll</div>
-    </div>
-    <div class="poll-mid">
-      <h1 class="display md">Would you volunteer for a <em>local campaign?</em></h1>
+  <div class="canvas story s-sand">
+    <style>
+        .s19 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,224,180,.6) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #ddc890 100%);
+          color:#2e1a0a;
+        }
+        .s19::before {
+          content:''; position:absolute; inset:0; opacity:.45;
+          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.16  0 0 0 0 0.08  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+          mix-blend-mode:multiply; pointer-events:none;
+        }
+        /* Halftone dot pattern above the fold */
+        .s19-halftone {
+          position:absolute; top:-40px; left:-40px; right:-40px; height:340px; z-index:3; pointer-events:none;
+          background-image: radial-gradient(circle at 8px 8px, rgba(107,90,66,.85) 3px, transparent 3.5px);
+          background-size:22px 22px;
+          -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 100%);
+          mask-image:linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 100%);
+          opacity:.55;
+        }
+        /* Diagonal ribbon behind title */
+        .s19-ribbon {
+          position:absolute; top:340px; left:-40px; right:-40px; height:120px; z-index:3;
+          background:#6b5a42;
+          transform:rotate(-3deg);
+          box-shadow:0 20px 40px -22px rgba(0,0,0,.4);
+        }
+        .s19-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,26,10,.7); }
+        .s19-mast img { height:56px; width:auto; }
+        .s19-tag { position:absolute; top:220px; left:80px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,26,10,.65); display:inline-flex; align-items:center; gap:16px; }
+        .s19-tag::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .s19-title {
+          position:absolute; top:360px; left:80px; right:80px; z-index:5;
+          transform:rotate(-3deg);
+          padding:14px 24px;
+          font-family:var(--font-display); font-weight:500; font-style:italic; font-size:64px; line-height:1.02; letter-spacing:-.022em;
+          color:#f6f2e8;
+          text-shadow:0 3px 20px rgba(0,0,0,.4);
+        }
+        .s19-title strong { font-weight:500; font-style:normal; color:#e0d6bc; letter-spacing:-.02em; }
+        /* Enlistment paper */
+        .s19-paper {
+          position:absolute; left:80px; right:80px; top:600px; bottom:220px; z-index:5;
+          padding:38px 40px 32px;
+          background:#f6f2e8;
+          border:2px solid #2e1a0a;
+          box-shadow:0 30px 60px -30px rgba(46,26,10,.5), inset 0 1px 0 rgba(255,255,255,.6);
+        }
+        .s19-paper::before { content:''; position:absolute; top:8px; left:8px; right:8px; bottom:8px; border:1px dashed rgba(46,26,10,.4); pointer-events:none; }
+        .s19-paper .kick { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,26,10,.6); }
+        .s19-paper .stamp {
+          position:absolute; top:24px; right:34px;
+          font-family:var(--font-mono); font-weight:700; font-size:16px; letter-spacing:.4em; text-transform:uppercase; color:#6b5a42;
+          border:3px solid #6b5a42; padding:8px 14px; transform:rotate(4deg);
+        }
+        .s19-paper .prompt { margin-top:12px; font-family:var(--font-display); font-weight:500; font-size:34px; line-height:1.12; letter-spacing:-.015em; color:#2e1a0a; max-width:600px; }
+        .s19-paper .prompt em { font-style:italic; color:#6b5a42; }
+        .s19-paper .opts { margin-top:22px; display:flex; flex-direction:column; gap:14px; }
+        .s19-paper .opt { display:flex; align-items:center; gap:22px; padding:16px 20px; border:1.5px solid rgba(46,26,10,.55); background:rgba(255,250,232,.6); }
+        .s19-paper .opt .oval { flex:none; width:38px; height:56px; border:2.5px solid #2e1a0a; border-radius:999px; display:flex; align-items:center; justify-content:center; }
+        .s19-paper .opt.filled .oval { background:#2e1a0a; }
+        .s19-paper .opt .mark { color:#f6f2e8; font-family:var(--font-display); font-weight:500; font-size:28px; line-height:1; font-style:italic; }
+        .s19-paper .opt .lbl { flex:1; font-family:var(--font-display); font-weight:500; font-size:34px; letter-spacing:-.015em; color:#2e1a0a; }
+        .s19-paper .opt .abc { font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; color:rgba(46,26,10,.6); text-transform:uppercase; }
+        .s19-note {
+          position:absolute; right:36px; bottom:120px; z-index:8;
+          transform:rotate(3deg);
+          background:#faf4d8; color:#4b3a20;
+          font-family:var(--font-mono); font-size:11px; letter-spacing:.28em; text-transform:uppercase;
+          padding:10px 16px 12px; box-shadow:0 10px 24px -12px rgba(0,0,0,.5); max-width:270px;
+        }
+        .s19-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,26,10,.55); }
+      </style>
+        <div class="s19">
+          <div class="s19-halftone"></div>
+          <div class="s19-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Enlistment 19 · Volunteer Call</span>
+          </div>
+          <span class="s19-tag">— A recruitment notice, printed in earnest</span>
+          <div class="s19-ribbon"></div>
+          <div class="s19-title"><strong>Northwest Oregon</strong> needs you.</div>
+
+          <div class="s19-paper">
+            <span class="stamp">Ballot · Poll</span>
+            <span class="kick">The Question · Enlistment 19 of 30</span>
+            <p class="prompt">Would you <em>volunteer</em> for a local campaign?</p>
+            <div class="opts">
+              <div class="opt filled">
+                <span class="oval"><span class="mark">✓</span></span>
+                <span class="lbl">Absolutely</span>
+                <span class="abc">A</span>
+              </div>
+              <div class="opt">
+                <span class="oval"></span>
+                <span class="lbl">I would Like More Info</span>
+                <span class="abc">B</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="s19-note">Overlay Instagram<br />poll sticker here</div>
+
+          <div class="s19-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="poll-options">
-      <div class="option">Absolutely</div><div class="option">I would Like More Info</div>
-    </div>
-    <div class="poll-note">NOTE: Will add instagram poll Sticker</div>
-  </div>
     
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

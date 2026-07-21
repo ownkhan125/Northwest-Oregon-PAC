@@ -12,31 +12,96 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-sand">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-220px;left:-140px;opacity:.5"></div>
-  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-story">
-    <div class="story-top">
+  <div class="canvas story s-ink">
+    <style>
+        .s07 {
+          position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(90% 60% at 50% 30%, rgba(90,140,110,.28) 0%, transparent 55%),
+            radial-gradient(120% 90% at 50% 100%, rgba(0,0,0,.9) 0%, transparent 65%),
+            linear-gradient(178deg, #0b1a12 0%, #050c07 100%);
+          color:#f0efe3;
+        }
+        /* Subtle bokeh dots — city window lights in the distance */
+        .s07::before {
+          content:''; position:absolute; inset:0; pointer-events:none;
+          background:
+            radial-gradient(3px 3px at 14% 82%, rgba(255,230,150,.6), transparent 60%),
+            radial-gradient(2px 2px at 30% 88%, rgba(255,230,150,.35), transparent 60%),
+            radial-gradient(2px 2px at 62% 84%, rgba(255,230,150,.45), transparent 60%),
+            radial-gradient(3px 3px at 82% 86%, rgba(255,230,150,.55), transparent 60%),
+            radial-gradient(2px 2px at 92% 78%, rgba(255,230,150,.35), transparent 60%);
+          filter:blur(1.2px);
+        }
+        .s07-mast { position:absolute; top:80px; left:96px; right:96px; z-index:5; display:flex; align-items:center; justify-content:space-between; gap:20px; color:rgba(240,239,227,.6); font-family:var(--font-mono); font-size:14px; letter-spacing:.36em; text-transform:uppercase; }
+        .s07-mast img { height:56px; width:auto; opacity:.9; filter:drop-shadow(0 2px 12px rgba(0,0,0,.6)); }
+        .s07-tag {
+          position:absolute; top:220px; left:50%; transform:translateX(-50%); z-index:5;
+          font-family:var(--font-mono); font-size:15px; letter-spacing:.5em; text-transform:uppercase;
+          color:rgba(240,239,227,.5);
+          display:inline-flex; align-items:center; gap:22px;
+        }
+        .s07-tag .bar { display:inline-block; width:60px; height:1px; background:rgba(240,239,227,.4); }
+        /* Neon words — three staggered stacked lines */
+        .s07-neon { position:absolute; top:320px; left:0; right:0; z-index:5; display:flex; flex-direction:column; align-items:center; gap:36px; }
+        .s07-word {
+          font-family:var(--font-display); font-style:italic; font-weight:400;
+          font-size:160px; line-height:1; letter-spacing:-.03em;
+          position:relative;
+        }
+        .s07-word.hope    { color:#e0d6bc; text-shadow:0 0 12px rgba(224,214,188,.95), 0 0 30px rgba(224,214,188,.6), 0 0 60px rgba(224,214,188,.4), 0 0 120px rgba(224,214,188,.22); }
+        .s07-word.support { color:#f0e5c9; text-shadow:0 0 12px rgba(140,168,146,.95), 0 0 30px rgba(140,168,146,.6), 0 0 60px rgba(90,112,96,.45), 0 0 120px rgba(90,112,96,.25); }
+        .s07-word.heard   { color:#f6f2e8; text-shadow:0 0 12px rgba(246,242,232,.95), 0 0 30px rgba(246,242,232,.55), 0 0 60px rgba(246,242,232,.35), 0 0 120px rgba(246,242,232,.2); }
+        .s07-word::after {
+          content:''; position:absolute; left:50%; bottom:-14px; transform:translateX(-50%);
+          width:60%; height:2px; background:currentColor; opacity:.4;
+          box-shadow:0 0 12px currentColor;
+        }
+        /* Engraved plaque */
+        .s07-plaque {
+          position:absolute; left:96px; right:96px; bottom:200px; z-index:5;
+          padding:26px 30px;
+          background:linear-gradient(180deg, rgba(240,239,227,.06) 0%, rgba(240,239,227,.02) 100%);
+          border:1px solid rgba(240,239,227,.35);
+          backdrop-filter: blur(4px);
+        }
+        .s07-plaque .k { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(240,239,227,.55); }
+        .s07-plaque .v { margin-top:12px; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:44px; line-height:1.18; letter-spacing:-.015em; color:#f0efe3; }
+        .s07-plaque .v em { font-style:normal; color:#e0d6bc; }
+        /* Bottom rail */
+        .s07-foot {
+          position:absolute; left:96px; right:96px; bottom:74px; z-index:5;
+          display:flex; align-items:center; justify-content:space-between;
+          font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase;
+          color:rgba(240,239,227,.5);
+        }
+      </style>
+        <div class="s07">
+          <div class="s07-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Sign 07 · After hours</span>
+          </div>
+
+          <span class="s07-tag"><span class="bar"></span>The Northwest Sign<span class="bar"></span></span>
+
+          <div class="s07-neon">
+            <span class="s07-word hope">Hope.</span>
+            <span class="s07-word support">Support.</span>
+            <span class="s07-word heard">Heard.</span>
+          </div>
+
+          <div class="s07-plaque">
+            <span class="k">— Reads the marquee</span>
+            <div class="v">That's the movement <em>we're building.</em></div>
+          </div>
+
+          <div class="s07-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="story-mid">
-      <h1 class="display xl"><em>Hope.</em></h1>
-      <div class="lines"><p>Support.</p><p>Heard.</p><p>That's the movement we're building.</p></div>
-    </div>
     
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

@@ -13,33 +13,181 @@
 </head>
 <body>
   <div class="canvas story s-light">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-220px;left:-140px;opacity:.5"></div>
-  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-story">
-    <div class="story-top">
+    <style>
+        .s05 {
+          position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 15%, rgba(210,192,150,.4) 0%, transparent 55%),
+            linear-gradient(180deg, #f0e6cf 0%, #d9c99e 100%);
+          color:#2a2a1f;
+        }
+        /* Guilloché pattern layer (engraved currency lines) */
+        .s05::before {
+          content:''; position:absolute; inset:0; pointer-events:none; opacity:.16;
+          background:
+            repeating-linear-gradient(38deg, rgba(46,42,20,.5) 0 1px, transparent 1px 5px),
+            repeating-linear-gradient(-42deg, rgba(46,42,20,.35) 0 1px, transparent 1px 7px);
+        }
+        /* Big "$" watermark */
+        .s05-dollar {
+          position:absolute; top:270px; left:50%; transform:translateX(-50%); z-index:1;
+          font-family:var(--font-display); font-weight:500; font-style:italic;
+          font-size:1400px; line-height:.8; letter-spacing:-.08em;
+          color:rgba(74,58,20,.09);
+          pointer-events:none; user-select:none;
+        }
+        /* Currency frame */
+        .s05-frame {
+          position:absolute; top:150px; bottom:140px; left:64px; right:64px; z-index:3;
+          border:4px double #2e4538;
+          padding:52px 60px;
+          background:
+            radial-gradient(120% 90% at 30% 20%, rgba(255,250,235,.65) 0%, transparent 55%),
+            linear-gradient(180deg, rgba(240,230,207,.9) 0%, rgba(230,215,178,.95) 100%);
+        }
+        .s05-frame::before {
+          content:''; position:absolute; inset:16px; border:1px solid rgba(46,69,56,.5); pointer-events:none;
+        }
+        /* Corner ornaments */
+        .s05-corner { position:absolute; z-index:5; font-family:var(--font-display); font-style:italic; font-size:56px; color:#2e4538; letter-spacing:-.02em; }
+        .s05-corner.tl { top:12px; left:12px; }
+        .s05-corner.tr { top:12px; right:12px; }
+        .s05-corner.bl { bottom:20px; left:12px; }
+        .s05-corner.br { bottom:20px; right:12px; }
+        /* Header row inside frame */
+        .s05-authority {
+          display:flex; align-items:baseline; justify-content:space-between; gap:24px;
+          font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase;
+          color:#4b3a20;
+        }
+        .s05-authority .issuer { color:#2e4538; }
+        .s05-issue-title {
+          margin-top:22px;
+          font-family:var(--font-mono); font-size:16px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.7);
+          display:flex; align-items:center; gap:22px;
+        }
+        .s05-issue-title .rule { flex:1; height:1px; background:rgba(46,42,20,.35); }
+        /* The declared value */
+        .s05-lede {
+          margin-top:34px;
+          font-family:var(--font-mono); font-size:14px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55);
+        }
+        .s05-figure {
+          font-family:var(--font-display); font-weight:500; font-style:italic;
+          font-size:200px; line-height:.9; letter-spacing:-.03em; color:#2e4538;
+          margin:2px 0 2px;
+        }
+        .s05-figure .cents { font-size:52px; vertical-align:top; margin-left:6px; color:#4b6252; letter-spacing:0; }
+        .s05-inwords {
+          margin-top:14px;
+          font-family:var(--font-mono); font-size:14px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,42,20,.65);
+        }
+        .s05-inwords .amt {
+          display:block; margin-top:8px;
+          font-family:var(--font-display); font-weight:500; font-style:italic;
+          font-size:46px; letter-spacing:-.015em; text-transform:none; color:#2e4538; line-height:1.16;
+          max-width:820px;
+        }
+        /* Middle engraved emblem — a compass rose vignette */
+        .s05-emblem {
+          margin:36px auto 0; display:flex; flex-direction:column; align-items:center; gap:14px;
+          width:100%;
+        }
+        .s05-emblem .disc {
+          width:190px; height:190px; border-radius:999px;
+          border:2px double #2e4538;
+          display:flex; align-items:center; justify-content:center;
+          position:relative;
+          background:
+            radial-gradient(60% 60% at 50% 50%, rgba(255,250,235,.8) 0%, rgba(240,230,207,.6) 100%);
+        }
+        .s05-emblem .disc::before,
+        .s05-emblem .disc::after {
+          content:''; position:absolute; inset:14px; border-radius:999px; border:1px solid rgba(46,69,56,.4);
+          pointer-events:none;
+        }
+        .s05-emblem .disc::after {
+          inset:26px; border-style:dashed;
+        }
+        .s05-emblem .disc svg { position:relative; z-index:2; width:120px; height:120px; color:#2e4538; }
+        .s05-emblem .cap { font-family:var(--font-mono); font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.6); }
+        /* Signature block */
+        .s05-sig { position:absolute; left:60px; right:60px; bottom:60px; display:flex; align-items:flex-end; justify-content:space-between; gap:40px; }
+        .s05-sig .col { display:flex; flex-direction:column; gap:8px; }
+        .s05-sig .line { width:340px; height:1.5px; background:#2e4538; }
+        .s05-sig .role { font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,42,20,.6); }
+        .s05-sig .name { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:38px; letter-spacing:-.015em; color:#2e4538; line-height:1; padding-bottom:6px; }
+        .s05-seal {
+          width:110px; height:110px; border-radius:999px; border:3px double #2e4538;
+          display:flex; align-items:center; justify-content:center;
+          font-family:var(--font-display); font-style:italic; font-size:44px; color:#2e4538;
+          background:rgba(255,250,235,.3);
+        }
+        /* Mast (above the frame) */
+        .s05-mast { position:absolute; top:70px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; gap:20px; color:#4b3a20; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; }
+        .s05-mast img { height:54px; width:auto; }
+        /* Bottom rail */
+        .s05-foot { position:absolute; left:80px; right:80px; bottom:64px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+      </style>
+        <div class="s05">
+          <div class="s05-dollar">$</div>
+          <div class="s05-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>No. 05 · Bill of Exchange</span>
+          </div>
+
+          <div class="s05-frame">
+            <span class="s05-corner tl">§</span>
+            <span class="s05-corner tr">§</span>
+            <span class="s05-corner bl">§</span>
+            <span class="s05-corner br">§</span>
+
+            <div class="s05-authority">
+              <span>Issuing authority</span>
+              <span class="issuer">Northwest Oregon PAC · 25045</span>
+            </div>
+            <div class="s05-issue-title">
+              <span>The Northwest Oregon Dollar</span>
+              <span class="rule"></span>
+              <span>Series 2026</span>
+            </div>
+
+            <div class="s05-lede">Declared value</div>
+            <div class="s05-figure">$1<span class="cents">.00</span></div>
+
+            <div class="s05-inwords">
+              Every dollar promises —
+              <span class="amt">Every dollar raised stays focused on strengthening Northwest Oregon.</span>
+            </div>
+
+            <div class="s05-emblem">
+              <div class="disc">
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M50 8 L54 46 L92 50 L54 54 L50 92 L46 54 L8 50 L46 46 Z" fill="currentColor" fill-opacity=".08"/>
+                  <path d="M50 8 L54 46 L92 50 L54 54 L50 92 L46 54 L8 50 L46 46 Z"/>
+                  <circle cx="50" cy="50" r="4" fill="currentColor"/>
+                </svg>
+              </div>
+              <span class="cap">— Legal tender for the region —</span>
+            </div>
+
+            <div class="s05-sig">
+              <div class="col">
+                <span class="name">Support the Mission</span>
+                <span class="line"></span>
+                <span class="role">Authorized signature · The People</span>
+              </div>
+              <div class="s05-seal">☘</div>
+            </div>
+          </div>
+
+          <div class="s05-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="story-mid">
-      <h1 class="display md">Every dollar raised stays focused on strengthening <em>Northwest Oregon.</em></h1>
-      
-    </div>
-    <div class="story-bottom">
-      <span></span>
-      <span class="cta">Support the Mission →</span>
-    </div>
-  </div>
     
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

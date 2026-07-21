@@ -12,31 +12,82 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-light">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-220px;left:-140px;opacity:.5"></div>
-  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-story">
-    <div class="story-top">
+  <div class="canvas story s-forest">
+    <style>
+        .s22 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 10%, rgba(90,112,96,.5) 0%, transparent 55%),
+            linear-gradient(178deg, #253e30 0%, #101c15 100%);
+          color:#f0efe3;
+        }
+        .s22-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(240,239,227,.7); }
+        .s22-mast img { height:52px; width:auto; filter:brightness(1.05); }
+        .s22-lede { position:absolute; top:210px; left:80px; right:80px; z-index:6; }
+        .s22-lede .kick { font-family:var(--font-mono); font-size:14px; letter-spacing:.42em; text-transform:uppercase; color:rgba(240,239,227,.55); display:inline-flex; align-items:center; gap:16px; }
+        .s22-lede .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .s22-lede .head { margin-top:14px; font-family:var(--font-display); font-weight:500; font-size:68px; line-height:1.02; letter-spacing:-.022em; color:#f0efe3; max-width:920px; }
+        .s22-lede .head em { font-style:italic; color:#e0d6bc; }
+        /* Wall pin / binding rings */
+        .s22-binding { position:absolute; left:0; right:0; top:520px; height:44px; z-index:5; display:flex; justify-content:center; gap:340px; }
+        .s22-binding .ring { width:44px; height:44px; border-radius:999px; border:5px solid #c4b078; background:transparent; box-shadow:0 4px 12px rgba(0,0,0,.5); }
+        /* Calendar stack */
+        .s22-cal { position:absolute; left:100px; right:100px; top:560px; bottom:200px; z-index:4; }
+        .s22-page {
+          position:absolute; left:0; right:0; padding:24px 30px;
+          background:#f6f2e8; color:#2e2013;
+          box-shadow:0 30px 60px -30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.5);
+        }
+        .s22-page::before {
+          content:''; position:absolute; top:0; left:0; right:0; height:8px;
+          background:repeating-linear-gradient(90deg, transparent 0 12px, rgba(46,32,19,.3) 12px 14px);
+        }
+        .s22-page .row1 { display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,32,19,.6); }
+        .s22-page .date { font-family:var(--font-display); font-weight:500; font-size:78px; line-height:1; letter-spacing:-.022em; color:#2e4538; margin-top:6px; }
+        .s22-page .date em { font-style:italic; color:#6b5a42; }
+        .s22-page .row2 { display:flex; align-items:center; justify-content:space-between; gap:20px; padding-top:14px; border-top:1.5px solid rgba(46,32,19,.35); margin-top:14px; font-family:var(--font-mono); font-size:11px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,32,19,.55); }
+        .s22-page.p1 { top:0; transform:rotate(-1.6deg); }
+        .s22-page.p2 { top:230px; transform:rotate(1.2deg); background:#dfd5aa; }
+        .s22-page.p3 { top:460px; transform:rotate(-0.6deg); background:#c9bd8f; }
+        /* Bottom manifesto */
+        .s22-tail { position:absolute; left:80px; right:80px; bottom:140px; z-index:6; padding:16px 22px; background:rgba(0,0,0,.35); font-family:var(--font-mono); font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:rgba(240,239,227,.75); display:flex; align-items:center; justify-content:space-between; }
+        .s22-tail .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .s22-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(240,239,227,.55); }
+      </style>
+        <div class="s22">
+          <div class="s22-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Calendar 22 · Long horizon</span>
+          </div>
+          <div class="s22-lede">
+            <span class="kick">On the wall this year, and every year</span>
+            <h1 class="head">Northwest Oregon is worth <em>investing</em> in.</h1>
+          </div>
+          <div class="s22-binding"><span class="ring"></span><span class="ring"></span></div>
+          <div class="s22-cal">
+            <div class="s22-page p1">
+              <div class="row1"><span>Page 01</span><span>The moment</span></div>
+              <div class="date"><em>Today.</em></div>
+              <div class="row2"><span>2026 · Right now</span><span>Volunteer · Donate · Show up</span></div>
+            </div>
+            <div class="s22-page p2">
+              <div class="row1"><span>Page 02</span><span>The next chapter</span></div>
+              <div class="date"><em>Tomorrow.</em></div>
+              <div class="row2"><span>The election ahead</span><span>Keep building</span></div>
+            </div>
+            <div class="s22-page p3">
+              <div class="row1"><span>Page 03</span><span>Long horizon</span></div>
+              <div class="date"><em>Every year.</em></div>
+              <div class="row2"><span>The commitment</span><span>Never an afterthought</span></div>
+            </div>
+          </div>
+          <div class="s22-tail"><span>The calendar reads</span><span class="em">— Worth every page turn.</span></div>
+          <div class="s22-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="story-mid">
-      <h1 class="display lg">Northwest Oregon is worth <em>investing in.</em></h1>
-      <div class="lines"><p>Today.</p><p>Tomorrow.</p><p>Every year.</p></div>
-    </div>
     
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

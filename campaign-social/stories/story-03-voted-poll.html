@@ -12,33 +12,141 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-sand">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-200px;right:-160px;opacity:.5"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-poll">
-    <div class="poll-top">
-      <div class="kicker  ">Poll</div>
-    </div>
-    <div class="poll-mid">
-      <h1 class="display md">Have you voted in a local <em>election recently?</em></h1>
+  <div class="canvas story s-light">
+    <style>
+        .s03 {
+          position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(224,214,188,.4) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e8dfc4 100%);
+        }
+        /* Ballot card — a floating document */
+        .s03-card {
+          position:absolute; top:170px; bottom:220px; left:80px; right:80px; z-index:5;
+          background:#f6f2e8;
+          box-shadow:
+            0 40px 90px -40px rgba(46,42,20,.35),
+            0 8px 24px -12px rgba(46,42,20,.2);
+          border-radius:6px;
+          transform:rotate(-1.4deg);
+          transform-origin:center;
+        }
+        /* Perforated top edge on the ballot */
+        .s03-perf {
+          position:absolute; top:-1px; left:0; right:0; height:22px;
+          background-image: radial-gradient(circle at 12px 11px, #e8dfc4 5px, transparent 5.4px);
+          background-size:24px 22px; background-position:6px 0;
+        }
+        .s03-perf-line { position:absolute; top:22px; left:20px; right:20px; height:1px; background:repeating-linear-gradient(90deg, rgba(46,42,20,.35) 0 8px, transparent 8px 14px); }
+        .s03-header { position:absolute; top:80px; left:64px; right:64px; display:flex; align-items:flex-start; justify-content:space-between; gap:24px; font-family:var(--font-mono); font-size:15px; letter-spacing:.32em; text-transform:uppercase; color:#4b6252; }
+        .s03-header .title { font-weight:500; max-width:340px; line-height:1.6; }
+        .s03-header .meta { text-align:right; color:rgba(46,42,20,.55); line-height:1.7; }
+        .s03-header .meta .id { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; display:block; margin-bottom:6px; }
+        .s03-rule { position:absolute; top:200px; left:64px; right:64px; height:2px; background:#2e4538; }
+        .s03-issue { position:absolute; top:232px; left:64px; right:64px; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,42,20,.55); display:flex; justify-content:space-between; }
+        /* Editorial question */
+        .s03-q { position:absolute; top:320px; left:64px; right:64px; font-family:var(--font-display); font-weight:500; font-size:76px; line-height:1.02; letter-spacing:-.02em; color:#2e4538; }
+        .s03-q em { font-style:italic; font-weight:500; color:#5a7060; }
+        .s03-q .qmark { display:block; font-family:var(--font-mono); font-size:14px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); margin-bottom:22px; }
+        /* Ballot options */
+        .s03-opts { position:absolute; left:64px; right:64px; top:720px; display:flex; flex-direction:column; gap:34px; }
+        .s03-opt { display:flex; align-items:center; gap:36px; padding:32px 40px 32px 32px; border:1.5px solid rgba(46,42,20,.35); border-radius:2px; background:rgba(253,250,241,1); }
+        .s03-opt .oval {
+          flex:none; width:56px; height:80px; border:3px solid #2e4538; border-radius:999px;
+          display:flex; align-items:center; justify-content:center;
+        }
+        .s03-opt.filled .oval { background:#2e4538; }
+        .s03-opt .mark { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:56px; color:#f6f2e8; line-height:1; padding-bottom:4px; }
+        .s03-opt .lbl { flex:1; font-family:var(--font-display); font-weight:500; font-size:56px; letter-spacing:-.015em; color:#2e4538; }
+        .s03-opt .sub { font-family:var(--font-mono); font-size:14px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,42,20,.5); }
+        /* Rubber-stamp SAMPLE watermark */
+        .s03-stamp {
+          position:absolute; top:340px; right:96px; z-index:6;
+          font-family:var(--font-mono); font-weight:500; font-size:44px; letter-spacing:.32em;
+          color:#6b5a42; opacity:.85;
+          border:6px solid #6b5a42;
+          padding:12px 24px;
+          transform:rotate(8deg);
+          border-radius:6px;
+          box-shadow:inset 0 0 0 2px rgba(107,90,66,.2);
+          text-transform:uppercase;
+        }
+        /* Taped-on margin note */
+        .s03-note {
+          position:absolute; z-index:8;
+          bottom:76px; right:52px;
+          transform:rotate(3deg);
+          background:#faf4d8;
+          color:#4b3a20;
+          font-family:var(--font-mono); font-size:12px; letter-spacing:.28em; text-transform:uppercase;
+          padding:12px 20px 14px;
+          box-shadow:0 12px 28px -14px rgba(0,0,0,.35);
+          max-width:280px;
+        }
+        .s03-note::before, .s03-note::after {
+          content:''; position:absolute; top:-8px; width:60px; height:16px;
+          background:rgba(200,180,120,.5); transform:rotate(-4deg);
+        }
+        .s03-note::before { left:16px; }
+        .s03-note::after { right:16px; transform:rotate(6deg); }
+        /* Instructions row above options */
+        .s03-instr { position:absolute; left:64px; right:64px; top:640px; font-family:var(--font-mono); font-size:14px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,42,20,.55); display:flex; align-items:center; gap:20px; }
+        .s03-instr .rule { flex:1; height:1px; background:rgba(46,42,20,.25); }
+        /* Mast + footer outside the card */
+        .s03-mast { position:absolute; top:74px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.32em; text-transform:uppercase; color:#4b6252; }
+        .s03-mast img { height:60px; width:auto; }
+        .s03-foot { position:absolute; left:80px; right:80px; bottom:74px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,42,20,.5); }
+      </style>
+        <div class="s03">
+          <div class="s03-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Committee #25045 · Est. 2026</span>
+          </div>
+
+          <div class="s03-card">
+            <div class="s03-perf"></div>
+            <div class="s03-perf-line"></div>
+            <div class="s03-header">
+              <span class="title">Official ballot · Northwest Oregon</span>
+              <span class="meta"><span class="id">Precinct №27</span>Vote by mail — retain for records</span>
+            </div>
+            <div class="s03-rule"></div>
+            <div class="s03-issue">
+              <span>Question · 01 of 01</span>
+              <span>Community poll</span>
+            </div>
+            <div class="s03-q">
+              <span class="qmark">— The question at hand</span>
+              Have you voted in a local election <em>recently?</em>
+            </div>
+            <div class="s03-instr"><span>Mark one oval</span><span class="rule"></span><span>Fill completely</span></div>
+            <div class="s03-opts">
+              <div class="s03-opt filled">
+                <span class="oval"><span class="mark">✓</span></span>
+                <span class="lbl">Yes</span>
+                <span class="sub">A</span>
+              </div>
+              <div class="s03-opt">
+                <span class="oval"></span>
+                <span class="lbl">Not Yet</span>
+                <span class="sub">B</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="s03-stamp">Sample</div>
+
+          <div class="s03-note">
+            Overlay Instagram<br />poll sticker here
+          </div>
+
+          <div class="s03-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="poll-options">
-      <div class="option">Yes</div><div class="option">Not Yet</div>
-    </div>
-    <div class="poll-note">NOTE: Will add instagram ask/poll Sticker</div>
-  </div>
     
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

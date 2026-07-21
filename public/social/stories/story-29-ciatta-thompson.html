@@ -12,32 +12,83 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-ink on-photo">
-    
-  <div class="backdrop">
-    <img src="../assets/img/ciatta-thompson.jpg" alt="Every volunteer strengthens a campaign." />
-    <div class="wash deep"></div>
-  </div>
-  <div class="zone t-story-candidate">
-    <div class="sc-top">
-      <div class="pretitle">Help support Ciatta Thompson today.</div>
+  <div class="canvas story s-ink">
+    <style>
+        .s29 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 90%, rgba(90,112,96,.32) 0%, transparent 55%),
+            radial-gradient(100% 90% at 80% 10%, rgba(224,214,188,.12) 0%, transparent 55%),
+            linear-gradient(178deg, #0e1a13 0%, #050a07 100%);
+          color:#f6f2e8;
+        }
+        /* Diagonal torch path — glowing line (sand + sage) */
+        .s29-path {
+          position:absolute; top:180px; left:-40px; right:-40px; bottom:180px; z-index:3; pointer-events:none;
+          background:
+            linear-gradient(38deg, transparent 0%, transparent 44%, rgba(140,168,146,.9) 46%, rgba(224,214,188,1) 50%, rgba(140,168,146,.9) 54%, transparent 56%, transparent 100%);
+          filter:blur(1px);
+        }
+        .s29-path::after {
+          content:''; position:absolute; inset:0;
+          background: linear-gradient(38deg, transparent 0%, transparent 42%, rgba(224,214,188,.5) 45%, rgba(246,242,232,1) 50%, rgba(224,214,188,.5) 55%, transparent 58%, transparent 100%);
+          filter:blur(14px); mix-blend-mode:screen;
+        }
+        /* Sparks — sand toned */
+        .s29-sparks { position:absolute; inset:0; z-index:4; pointer-events:none;
+          background:
+            radial-gradient(3px 3px at 20% 78%, rgba(224,214,188,.9), transparent 60%),
+            radial-gradient(2px 2px at 32% 70%, rgba(246,242,232,.7), transparent 60%),
+            radial-gradient(2px 2px at 46% 60%, rgba(224,214,188,.9), transparent 60%),
+            radial-gradient(3px 3px at 62% 46%, rgba(224,214,188,.85), transparent 60%),
+            radial-gradient(2px 2px at 76% 34%, rgba(246,242,232,.7), transparent 60%),
+            radial-gradient(3px 3px at 88% 24%, rgba(224,214,188,.9), transparent 60%);
+        }
+        .s29-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(244,236,208,.75); }
+        .s29-mast img { height:52px; width:auto; filter:brightness(1.05); }
+        /* Portrait node */
+        .s29-node {
+          position:absolute; top:640px; left:calc(50% - 130px); z-index:5;
+          width:260px; height:260px; border-radius:999px; overflow:hidden;
+          border:5px solid #f6f2e8;
+          box-shadow:0 0 60px rgba(224,214,188,.6), 0 20px 40px -18px rgba(0,0,0,.55);
+        }
+        .s29-node img { width:100%; height:100%; object-fit:cover; object-position:center 24%; filter:saturate(.85) contrast(1.15); }
+        .s29-nodetag { position:absolute; top:640px; right:60px; z-index:6; padding:8px 14px; background:#f6f2e8; color:#2a1f10; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; }
+        /* Top message */
+        .s29-topmsg { position:absolute; top:210px; left:80px; right:80px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1.02; letter-spacing:-.022em; color:#f6f2e8; text-shadow:0 3px 22px rgba(0,0,0,.55); max-width:820px; }
+        .s29-topmsg em { font-style:italic; color:#e0d6bc; }
+        /* Bottom name + CTA */
+        .s29-bot { position:absolute; left:80px; right:80px; bottom:230px; z-index:6; display:flex; align-items:flex-end; justify-content:space-between; gap:24px; padding-top:22px; border-top:1px solid rgba(244,236,208,.35); }
+        .s29-bot .name { font-family:var(--font-display); font-weight:500; font-size:64px; line-height:.98; letter-spacing:-.022em; color:#f6f2e8; }
+        .s29-bot .name em { font-style:italic; color:#e0d6bc; }
+        .s29-bot .cred { text-align:right; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:28px; letter-spacing:-.012em; color:#f6f2e8; max-width:360px; line-height:1.2; }
+        .s29-bot .cred small { display:block; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(244,236,208,.65); margin-top:8px; font-style:normal; }
+        .s29-tail { position:absolute; left:80px; right:80px; bottom:150px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:#e0d6bc; text-align:center; }
+        .s29-tail::before, .s29-tail::after { content:'▸'; margin:0 16px; }
+        .s29-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(244,236,208,.55); }
+      </style>
+        <div class="s29">
+          <div class="s29-path"></div>
+          <div class="s29-sparks"></div>
+          <div class="s29-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Relay 29 · Pass the Torch</span>
+          </div>
+          <h1 class="s29-topmsg">Every volunteer <em>strengthens</em> a campaign.</h1>
+          <div class="s29-node"><img src="../assets/img/ciatta-thompson.jpg" alt="Ciatta Thompson" /></div>
+          <span class="s29-nodetag">Runner · 29</span>
+          <div class="s29-bot">
+            <div class="name">Ciatta <em>Thompson</em></div>
+            <div class="cred">Help support her today.<small>Oregon House District 33</small></div>
+          </div>
+          <div class="s29-tail">Move Northwest Oregon forward</div>
+          <div class="s29-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-      <h1 class="display xl">Every volunteer strengthens a <em>campaign.</em></h1>
-    </div>
-    <div class="sc-bottom">
-      <p>Move Northwest Oregon forward.</p>
-    </div>
-  </div>
     
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

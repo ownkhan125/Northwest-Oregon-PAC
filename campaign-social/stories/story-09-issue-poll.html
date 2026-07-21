@@ -12,33 +12,108 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-forest">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-200px;right:-160px;opacity:.5"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-poll">
-    <div class="poll-top">
-      <div class="kicker  ">Poll</div>
-    </div>
-    <div class="poll-mid">
-      <h1 class="display md">What's most important for <em>Northwest Oregon?</em></h1>
+  <div class="canvas story s-ink on-photo">
+    <style>
+        .s09 { position:absolute; inset:0; z-index:10; overflow:hidden; background:#0a0f0b; color:#f0efe3; }
+        /* Header band carrying the question */
+        .s09-header {
+          position:absolute; top:0; left:0; right:0; height:340px; z-index:7;
+          background:linear-gradient(180deg, #0a0f0b 0%, #0a0f0b 78%, rgba(10,15,11,0) 100%);
+          padding:80px 70px 20px;
+          display:flex; flex-direction:column; gap:30px;
+        }
+        .s09-header .top-row { display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.36em; text-transform:uppercase; color:rgba(240,239,227,.75); }
+        .s09-header .top-row img { height:52px; width:auto; filter:brightness(1.05); }
+        .s09-header .qkick { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(240,239,227,.55); display:inline-flex; align-items:center; gap:16px; }
+        .s09-header .qkick::before { content:''; display:inline-block; width:44px; height:1px; background:rgba(240,239,227,.5); }
+        .s09-header .q {
+          font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1.02; letter-spacing:-.02em; color:#f6f2e8; max-width:940px;
+        }
+        .s09-header .q em { font-style:italic; color:#e0d6bc; }
+        .s09-pane { position:absolute; left:0; right:0; overflow:hidden; }
+        .s09-pane.top { top:340px; height:calc(50% - 300px + 100px); }
+        .s09-pane.bot { bottom:0; height:calc(50% - 40px); }
+        .s09-pane img { width:100%; height:100%; object-fit:cover; filter:saturate(0.7) contrast(1.15) brightness(0.75); }
+        .s09-pane.top img { filter:saturate(0.75) contrast(1.2) brightness(0.7) hue-rotate(-8deg); }
+        .s09-pane.bot img { filter:saturate(0.6) contrast(1.22) brightness(0.68) sepia(0.35); }
+        .s09-pane .wash { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.1) 40%, rgba(0,0,0,.6) 100%); }
+        .s09-pane.top .wash { background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.1) 40%, rgba(0,0,0,.8) 100%); }
+        .s09-pane.bot .wash { background:linear-gradient(180deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,.5) 100%); }
+        /* Center divider strip */
+        .s09-divider {
+          position:absolute; top:calc(50% + 60px); left:0; right:0; height:100px; z-index:6;
+          background:#0a0f0b;
+          display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+        }
+        .s09-divider .or {
+          font-family:var(--font-display); font-weight:500; font-style:italic; font-size:88px; line-height:1; color:#f0efe3; letter-spacing:-.02em;
+          text-shadow:0 4px 26px rgba(0,0,0,.6);
+        }
+        .s09-divider .hair { position:absolute; left:80px; right:80px; height:1px; background:linear-gradient(90deg, transparent, rgba(240,239,227,.6) 20%, rgba(240,239,227,.6) 80%, transparent); }
+        .s09-divider .hair.top { top:22px; }
+        .s09-divider .hair.bot { bottom:22px; }
+        /* Labels on each pane */
+        .s09-label { position:absolute; z-index:6; display:flex; flex-direction:column; gap:12px; padding:26px 30px; max-width:520px; }
+        .s09-label .kick { font-family:var(--font-mono); font-size:14px; letter-spacing:.42em; text-transform:uppercase; color:rgba(240,239,227,.75); }
+        .s09-label .badge {
+          align-self:flex-start; display:inline-flex; align-items:center; gap:12px;
+          padding:10px 18px; border-radius:999px; border:1.5px solid rgba(240,239,227,.6); background:rgba(0,0,0,.35);
+          font-family:var(--font-mono); font-size:14px; letter-spacing:.36em; text-transform:uppercase; color:#f0efe3;
+        }
+        .s09-label .badge .n { font-family:var(--font-display); font-style:italic; font-size:18px; letter-spacing:-.01em; text-transform:none; color:#e0d6bc; }
+        .s09-label .value { font-family:var(--font-display); font-weight:500; font-size:80px; line-height:1.02; letter-spacing:-.022em; color:#f6f2e8; text-shadow:0 3px 22px rgba(0,0,0,.65); }
+        .s09-label .value em { font-style:italic; color:#e0d6bc; }
+        .s09-label.top { bottom:auto; top:400px; left:70px; }
+        .s09-label.bot { bottom:150px; left:70px; }
+        /* Poll-sticker margin note */
+        .s09-note { position:absolute; right:24px; top:calc(50% + 100px); z-index:8; transform:rotate(3deg); background:#faf4d8; color:#4b3a20; font-family:var(--font-mono); font-size:11px; letter-spacing:.28em; text-transform:uppercase; padding:10px 16px; box-shadow:0 8px 22px -12px rgba(0,0,0,.6); max-width:240px; }
+        /* Footer */
+        .s09-foot { position:absolute; left:70px; right:70px; bottom:60px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(240,239,227,.55); }
+      </style>
+        <div class="s09">
+          <div class="s09-header">
+            <div class="top-row">
+              <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+              <span>Poll · 09 / 30</span>
+            </div>
+            <span class="qkick">The Question</span>
+            <div class="q">What's most important for <em>Northwest Oregon?</em></div>
+          </div>
+
+          <div class="s09-pane top">
+            <img src="../assets/img/banner.jpg" alt="Growth" />
+            <div class="wash"></div>
+          </div>
+          <div class="s09-pane bot">
+            <img src="../assets/img/who-we-are.jpg" alt="Safety" />
+            <div class="wash"></div>
+          </div>
+
+          <div class="s09-label top">
+            <span class="badge"><span class="n">A</span>Option one</span>
+            <span class="value">Economic <em>Growth.</em></span>
+          </div>
+
+          <div class="s09-divider">
+            <span class="hair top"></span>
+            <span class="or">or</span>
+            <span class="hair bot"></span>
+          </div>
+
+          <div class="s09-label bot">
+            <span class="badge"><span class="n">B</span>Option two</span>
+            <span class="value">Community <em>Safety.</em></span>
+          </div>
+
+          <div class="s09-note">Overlay IG poll<br />sticker here</div>
+
+          <div class="s09-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="poll-options">
-      <div class="option">Economic Growth</div><div class="option">Community Safety</div>
-    </div>
-    <div class="poll-note">NOTE: Will add instagram poll Sticker</div>
-  </div>
     
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

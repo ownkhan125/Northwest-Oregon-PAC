@@ -12,34 +12,85 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-forest">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-220px;left:-140px;opacity:.5"></div>
-  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-story">
-    <div class="story-top">
+  <div class="canvas story s-light">
+    <style>
+        .s01 { position:absolute; inset:0; z-index:10; display:flex; flex-direction:column; background:#f6f2e8; }
+        .s01-photo { position:relative; height:56%; overflow:hidden; background:#0f1a13; }
+        .s01-photo img { width:100%; height:100%; object-fit:cover; filter:saturate(0.72) contrast(1.18) brightness(0.86); }
+        .s01-photo::after {
+          content:''; position:absolute; inset:0;
+          background:
+            radial-gradient(110% 90% at 30% 15%, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 100%),
+            linear-gradient(180deg, rgba(15,26,19,.1) 0%, rgba(15,26,19,.35) 60%, rgba(15,26,19,.9) 100%);
+        }
+        .s01-mast { position:absolute; top:64px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; gap:24px; color:#e0d6bc; font-family:var(--font-mono); font-size:20px; letter-spacing:.32em; text-transform:uppercase; text-shadow:0 2px 20px rgba(0,0,0,.5); }
+        .s01-mast img { height:76px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.5)); }
+        .s01-photo-label { position:absolute; left:80px; bottom:60px; z-index:5; display:flex; flex-direction:column; gap:14px; color:#e0d6bc; text-shadow:0 2px 20px rgba(0,0,0,.55); }
+        .s01-photo-label .kick { font-family:var(--font-mono); font-size:22px; letter-spacing:.42em; text-transform:uppercase; opacity:.9; }
+        .s01-photo-label .place { font-family:var(--font-display); font-style:italic; font-size:38px; letter-spacing:-.01em; }
+        /* Torn paper edge — pronounced hand-torn deckle */
+        .s01-tear {
+          position:absolute; left:0; right:0; height:72px; z-index:4;
+          top: calc(56% - 40px);
+          background:#f6f2e8;
+          -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1080 72' preserveAspectRatio='none'><path d='M0 72 L0 46 C 30 18 70 60 118 32 C 168 8 210 54 262 26 C 310 4 358 46 410 22 C 462 2 508 40 560 20 C 616 4 660 42 712 24 C 766 8 810 40 860 22 C 912 6 962 42 1010 26 C 1042 16 1064 34 1080 24 L1080 72 Z' fill='black'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1080 72' preserveAspectRatio='none'><path d='M0 72 L0 46 C 30 18 70 60 118 32 C 168 8 210 54 262 26 C 310 4 358 46 410 22 C 462 2 508 40 560 20 C 616 4 660 42 712 24 C 766 8 810 40 860 22 C 912 6 962 42 1010 26 C 1042 16 1064 34 1080 24 L1080 72 Z' fill='black'/></svg>");
+          -webkit-mask-size:100% 100%; mask-size:100% 100%;
+          filter: drop-shadow(0 -3px 10px rgba(0,0,0,.2));
+        }
+        /* Fine paper fibre texture at the tear */
+        .s01-tear::after {
+          content:''; position:absolute; inset:0;
+          background:
+            repeating-linear-gradient(90deg, rgba(140,120,80,0) 0 2px, rgba(140,120,80,.06) 2px 3px),
+            linear-gradient(180deg, rgba(180,160,110,.18) 0%, rgba(180,160,110,0) 60%);
+          mix-blend-mode:multiply;
+        }
+        .s01-page { position:relative; flex:1; padding:80px 90px 140px; display:flex; flex-direction:column; gap:38px; background:#f6f2e8; }
+        .s01-page::before {
+          content:''; position:absolute; top:0; bottom:120px; left:60px; width:2px;
+          background:linear-gradient(180deg, rgba(46,69,56,.5) 0%, rgba(46,69,56,0) 92%);
+        }
+        .s01-issue { display:flex; align-items:baseline; gap:20px; font-family:var(--font-mono); font-size:20px; letter-spacing:.4em; text-transform:uppercase; color:#4b6252; }
+        .s01-issue .no { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:44px; letter-spacing:-.02em; color:#2e4538; text-transform:none; }
+        .s01-issue .rule { display:inline-block; width:44px; height:1px; background:#4b6252; opacity:.6; }
+        .s01-lede { font-family:var(--font-display); font-weight:500; font-size:76px; line-height:1.02; letter-spacing:-.022em; color:#2e4538; max-width:900px; }
+        .s01-lede em { font-style:italic; color:#5a7060; font-weight:500; }
+        .s01-sub { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; line-height:1.22; color:#4b6252; max-width:820px; margin-top:4px; }
+        .s01-foot { position:absolute; left:90px; right:90px; bottom:70px; display:flex; align-items:flex-end; justify-content:space-between; gap:32px; padding-top:24px; border-top:1px solid rgba(46,69,56,.2); }
+        .s01-foot .cta { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:42px; color:#2e4538; letter-spacing:-.01em; display:inline-flex; align-items:center; gap:20px; }
+        .s01-foot .cta .arrow { display:inline-flex; align-items:center; justify-content:center; width:68px; height:68px; border-radius:999px; background:#2e4538; color:#f6f2e8; font-family:var(--font-sans); font-size:30px; box-shadow:0 12px 30px -14px rgba(46,69,56,.55); }
+        .s01-foot .meta { font-family:var(--font-mono); font-size:14px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.5); text-align:right; line-height:1.9; max-width:280px; }
+      </style>
+        <div class="s01">
+          <div class="s01-photo">
+            <img src="../assets/img/banner.jpg" alt="Northwest Oregon landscape" />
+            <div class="s01-mast">
+              <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+              <span>Vol. 01 · The Region</span>
+            </div>
+            <div class="s01-photo-label">
+              <span class="kick">— Field notes</span>
+              <span class="place">Northwest Oregon, at dusk.</span>
+            </div>
+          </div>
+          <div class="s01-tear" aria-hidden="true"></div>
+          <div class="s01-page">
+            <div class="s01-issue">
+              <span class="no">No. 01</span>
+              <span class="rule"></span>
+              <span>Manifesto</span>
+            </div>
+            <p class="s01-lede">Northwest Oregon deserves more than <em>attention every four years.</em></p>
+            <p class="s01-sub">We're building something that lasts.</p>
+            <div class="s01-foot">
+              <span class="cta">Learn more <span class="arrow">→</span></span>
+              <span class="meta">Paid for by Northwest Oregon PAC #25045<br />northwestoregon.com</span>
+            </div>
+          </div>
+        </div>
       
-    </div>
-    <div class="story-mid">
-      <h1 class="display md">Northwest Oregon deserves more than attention every <em>four years.</em></h1>
-      <div class="lines"><p>We're building something that lasts.</p></div>
-    </div>
-    <div class="story-bottom">
-      <span></span>
-      <span class="cta">Learn More →</span>
-    </div>
-  </div>
     
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

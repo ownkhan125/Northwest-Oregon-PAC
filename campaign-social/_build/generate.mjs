@@ -22,7 +22,8 @@ const FONTS = `
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />`
 
 function buildDoc(post, { format, prefix, docTitle }) {
-  const meta = TEMPLATE_META[post.template] || {}
+  // Per-post `meta` (set inline in content.mjs) overrides template-level meta.
+  const meta = { ...(TEMPLATE_META[post.template] || {}), ...(post.meta || {}) }
   const surface = meta.forceSurface || post.surface || 's-light'
   const dark = surface === 's-forest' || surface === 's-ink' || meta.onPhoto
   const ctx = { format, prefix, dark }
@@ -30,7 +31,9 @@ function buildDoc(post, { format, prefix, docTitle }) {
   const onPhoto = meta.onPhoto || ctx.onPhoto
   const logo = `${prefix}nwop-logo-${dark ? 'light' : 'dark'}.png`
 
-  const chrome = `
+  const chrome = meta.hideChrome
+    ? ''
+    : `
   <header class="mast">
     ${meta.hideBrand ? '<span></span>' : `<div class="brand"><img src="${logo}" alt="${esc(pac.name)}" /></div>`}
     ${meta.hideFiling ? '' : `<div class="filing">${esc(FILING)}</div>`}
@@ -283,6 +286,11 @@ write('index.html', gallery)
 
 /* -------------------------------------------- app data + public copy */
 
+// Cache-buster: every regeneration bumps this stamp, so the app cards
+// re-fetch previews and HTML instead of showing browser-cached versions
+// from an earlier build.
+const V = Date.now().toString(36)
+
 const appData = {
   feedPosts: feed.map((p, i) => ({
     id: p.id,
@@ -292,8 +300,8 @@ const appData = {
     caption: captionFor(p),
     format: 'feed',
     size: '1080 × 1080',
-    html: `/social/feed/${p.id}.html`,
-    preview: `/social/previews/${p.id}.jpg`,
+    html: `/social/feed/${p.id}.html?v=${V}`,
+    preview: `/social/previews/${p.id}.jpg?v=${V}`,
   })),
   storyPosts: stories.map((p, i) => ({
     id: p.id,
@@ -303,8 +311,8 @@ const appData = {
     caption: captionFor(p),
     format: 'story',
     size: '1080 × 1920',
-    html: `/social/stories/${p.id}.html`,
-    preview: `/social/previews/${p.id}.jpg`,
+    html: `/social/stories/${p.id}.html?v=${V}`,
+    preview: `/social/previews/${p.id}.jpg?v=${V}`,
   })),
   carouselPosts: carousels.map((c, i) => ({
     id: c.id,
@@ -315,8 +323,8 @@ const appData = {
     format: 'carousel',
     size: '1080 × 1080',
     slideCount: c.slides.length,
-    slides: c.slides.map((_, s) => `/social/carousels/${c.id}/slide-${s + 1}.html`),
-    preview: `/social/previews/${c.id}.jpg`,
+    slides: c.slides.map((_, s) => `/social/carousels/${c.id}/slide-${s + 1}.html?v=${V}`),
+    preview: `/social/previews/${c.id}.jpg?v=${V}`,
   })),
 }
 
@@ -344,6 +352,9 @@ export const socialTags = [
 fs.writeFileSync(path.join(REPO, 'src/data/social-posts.js'), dataFile)
 
 // Mirror the library into public/social so the app can serve it.
+// Preserve previews across regeneration, but prune any that no longer
+// correspond to a current post id — otherwise the app gallery ends up
+// serving stale artwork whenever a post is renamed.
 const PUB = path.join(REPO, 'public/social')
 const existingPreviews = path.join(PUB, 'previews')
 const keepPreviews = fs.existsSync(existingPreviews)
@@ -357,6 +368,24 @@ if (keepPreviews) {
   fs.rmSync(path.join(REPO, '.social-previews-tmp'), { recursive: true, force: true })
 }
 
+// Prune orphaned preview jpgs (posts that were renamed or removed).
+if (fs.existsSync(existingPreviews)) {
+  const expected = new Set([
+    ...feed.map((p) => `${p.id}.jpg`),
+    ...stories.map((p) => `${p.id}.jpg`),
+    ...carousels.map((c) => `${c.id}.jpg`),
+  ])
+  let pruned = 0
+  for (const f of fs.readdirSync(existingPreviews)) {
+    if (!f.endsWith('.jpg')) continue
+    if (!expected.has(f)) {
+      fs.rmSync(path.join(existingPreviews, f))
+      pruned++
+    }
+  }
+  if (pruned > 0) console.log(`  · pruned ${pruned} orphaned previews`)
+}
+
 console.log(`Generated ${count} creatives`)
 console.log(`  feed:      ${feed.length}`)
 console.log(`  stories:   ${stories.length}`)
@@ -364,3 +393,6 @@ console.log(`  carousels: ${carousels.length} (${carousels.reduce((a, c) => a + 
 console.log('  + campaign-social/index.html gallery')
 console.log('  + src/data/social-posts.js')
 console.log('  + public/social mirror')
+console.log('')
+console.log('Regenerate previews so the app gallery reflects the new artwork:')
+console.log('  node campaign-social/_build/previews.js')

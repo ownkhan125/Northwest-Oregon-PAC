@@ -12,31 +12,118 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-forest">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-220px;left:-140px;opacity:.5"></div>
-  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-story">
-    <div class="story-top">
+  <div class="canvas story s-light">
+    <style>
+        .s23 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #e0d6bc 0%, #d9c88f 100%);
+          color:#2a2213;
+        }
+        .s23::before {
+          content:''; position:absolute; inset:0; opacity:.4; pointer-events:none;
+          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.22  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.3 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+          mix-blend-mode:multiply;
+        }
+        .s23-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(42,34,19,.7); }
+        .s23-mast img { height:52px; width:auto; }
+        /* Header row */
+        .s23-headplate { position:absolute; top:190px; left:80px; right:80px; z-index:6; padding-bottom:20px; border-bottom:2px double #2a2213; display:flex; align-items:baseline; justify-content:space-between; gap:24px; }
+        .s23-headplate .title { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:44px; letter-spacing:-.015em; color:#2a2213; }
+        .s23-headplate .no { font-family:var(--font-mono); font-size:14px; letter-spacing:.42em; text-transform:uppercase; color:rgba(42,34,19,.6); }
+        /* Three tiles */
+        .s23-tiles { position:absolute; top:340px; bottom:340px; left:80px; right:80px; z-index:5; display:flex; flex-direction:column; gap:22px; }
+        .s23-tile { position:relative; flex:1; padding:22px 30px; background:#f6f2e8; border:2px solid #2a2213; display:grid; grid-template-columns:100px 1fr auto; gap:26px; align-items:center; box-shadow:0 20px 40px -24px rgba(42,34,19,.4); }
+        .s23-tile::before, .s23-tile::after { content:''; position:absolute; left:8px; right:8px; height:2px; background:#2a2213; }
+        .s23-tile::before { top:8px; opacity:.6; }
+        .s23-tile::after { bottom:8px; opacity:.6; }
+        .s23-tile .glyph { width:88px; height:88px; border:1.5px solid #2a2213; border-radius:999px; display:flex; align-items:center; justify-content:center; color:#2a2213; }
+        .s23-tile .glyph svg { width:52px; height:52px; }
+        .s23-tile .txt { display:flex; flex-direction:column; gap:8px; }
+        .s23-tile .txt .kick { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(42,34,19,.6); }
+        .s23-tile .txt .title { font-family:var(--font-display); font-weight:500; font-size:56px; line-height:1; letter-spacing:-.022em; color:#2a2213; }
+        .s23-tile .txt .title em { font-style:italic; color:#6b5a42; }
+        .s23-tile .no { font-family:var(--font-display); font-style:italic; font-size:60px; color:rgba(42,34,19,.25); letter-spacing:-.02em; }
+        /* Bookend imprimatur */
+        .s23-imprimatur { position:absolute; left:80px; right:80px; bottom:150px; z-index:6; padding-top:16px; border-top:2px double #2a2213; display:flex; align-items:baseline; justify-content:space-between; gap:14px; }
+        .s23-imprimatur .kick { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(42,34,19,.55); }
+        .s23-imprimatur .em { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:44px; line-height:1.1; letter-spacing:-.018em; color:#2a2213; }
+        .s23-imprimatur .em em { font-style:normal; color:#6b5a42; }
+        .s23-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(42,34,19,.55); }
+      </style>
+        <div class="s23">
+          <div class="s23-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Specimen 23 · Three Tiles</span>
+          </div>
+
+          <div class="s23-headplate">
+            <span class="title">Type specimen book · The Northwest Set</span>
+            <span class="no">Fascicle · 23 / 30</span>
+          </div>
+
+          <div class="s23-tiles">
+            <div class="s23-tile">
+              <span class="glyph">
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 42 L14 82 L86 82 L86 42"/>
+                  <path d="M14 42 L26 20 L74 20 L86 42"/>
+                  <path d="M40 82 L40 58 L60 58 L60 82"/>
+                  <path d="M14 42 L86 42"/>
+                </svg>
+              </span>
+              <div class="txt">
+                <span class="kick">Specimen · I</span>
+                <span class="title">Small <em>businesses.</em></span>
+              </div>
+              <span class="no">01</span>
+            </div>
+            <div class="s23-tile">
+              <span class="glyph">
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="50" cy="30" r="10"/>
+                  <path d="M30 78 C 30 62 40 55 50 55 C 60 55 70 62 70 78"/>
+                  <circle cx="26" cy="42" r="7"/>
+                  <path d="M14 78 C 14 68 20 62 26 62 C 32 62 38 68 38 78"/>
+                  <circle cx="74" cy="42" r="7"/>
+                  <path d="M62 78 C 62 68 68 62 74 62 C 80 62 86 68 86 78"/>
+                </svg>
+              </span>
+              <div class="txt">
+                <span class="kick">Specimen · II</span>
+                <span class="title">Strong <em>families.</em></span>
+              </div>
+              <span class="no">02</span>
+            </div>
+            <div class="s23-tile">
+              <span class="glyph">
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 82 L14 46 L28 32 L42 46 L42 82"/>
+                  <path d="M42 82 L42 40 L58 26 L74 40 L74 82"/>
+                  <path d="M74 82 L74 52 L86 46"/>
+                  <path d="M14 82 L86 82"/>
+                </svg>
+              </span>
+              <div class="txt">
+                <span class="kick">Specimen · III</span>
+                <span class="title">Thriving <em>communities.</em></span>
+              </div>
+              <span class="no">03</span>
+            </div>
+          </div>
+
+          <div class="s23-imprimatur">
+            <span class="kick">Imprimatur</span>
+            <span class="em">That's <em>worth protecting.</em></span>
+          </div>
+
+          <div class="s23-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="story-mid">
-      <h1 class="display xl"><em>Small businesses.</em></h1>
-      <div class="lines"><p>Strong families.</p><p>Thriving communities.</p><p>That's worth protecting.</p></div>
-    </div>
     
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

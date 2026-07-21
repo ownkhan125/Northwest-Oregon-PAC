@@ -61,7 +61,7 @@ export const home = {
     eyebrow: 'OREGON STATE PAC · COMMITTEE #25045 · 2026',
     heading: 'A stronger voice for Northwest Oregon.',
     paragraphs: [
-      'Northwest Oregon PAC brings together Republicans, moderates, independents, and common-sense voters who believe our region deserves serious candidates, practical solutions, and sustained local support.',
+      'Northwest Oregon PAC brings together neighbours, moderates, independents, and common-sense voters who believe our region deserves serious candidates, practical solutions, and sustained local support.',
       'We invest in the people, organization, and messaging needed to advance prosperity, accountability, public safety, workforce readiness, and reliable energy across Northwest Oregon.',
     ],
     ctas: {
@@ -253,8 +253,7 @@ export const home = {
   events: {
     label: 'EVENTS',
     heading: 'Come meet us in your community.',
-    body:
-      'Candidate meet-and-greets, volunteer nights, neighborhood conversations, and regional gatherings — Northwest Oregon PAC brings people together across the region.\nSubscribe for updates to hear about the next event near you, or bring one to your community.',
+    body: 'Candidate meet-and-greets, volunteer nights, neighborhood conversations, and regional gatherings — Northwest Oregon PAC brings people together across the region.\nSubscribe for updates to hear about the next event near you, or bring one to your community.',
     ctas: {
       primary: 'Get Event Updates',
       secondary: 'Host an Event',
@@ -263,8 +262,7 @@ export const home = {
   donate: {
     eyebrow: 'CONTRIBUTE',
     heading: 'Fund the fight for our region.',
-    body:
-      'Every contribution helps strengthen candidate support, voter outreach, fundraising, volunteer organization, and public messaging across Northwest Oregon.',
+    body: 'Every contribution helps strengthen candidate support, voter outreach, fundraising, volunteer organization, and public messaging across Northwest Oregon.',
     cta: 'Donate to Northwest Oregon PAC',
     notice:
       'The contribution form collects the contributor information required for campaign-finance reporting. Contributions from foreign nationals are prohibited.',
@@ -416,10 +414,7 @@ export const candidates = [
 export const team = [
   {
     name: 'Cindy Sawyer',
-    roles: [
-      'Washington County Treasurer',
-      'President, Downtown Republican Women',
-    ],
+    roles: ['Washington County Treasurer', 'President, Downtown Republican Women'],
   },
   {
     name: 'Christina Buehler',
@@ -440,12 +435,7 @@ export const team = [
 ]
 
 // Volunteer activities offered (from doc)
-export const volunteerActivities = [
-  'Run for office',
-  'Canvass',
-  'Phone banking',
-  'Event planning',
-]
+export const volunteerActivities = ['Run for office', 'Canvass', 'Phone banking', 'Event planning']
 
 // Donation ladder (from doc)
 export const donationAmounts = [25, 100, 500, 1000]
@@ -488,11 +478,7 @@ Onward,
 The Northwest Oregon PAC Team`
 
 // Focus areas listed on public materials
-export const focusAreas = [
-  'Fundraising',
-  'Candidate Support',
-  'Messaging',
-]
+export const focusAreas = ['Fundraising', 'Candidate Support', 'Messaging']
 
 // What makes NW Oregon PAC different
 export const differentiator =
@@ -549,7 +535,7 @@ export const aboutPage = {
       },
       {
         title: 'Who we serve',
-        body: 'People who work, build businesses, raise families, serve their communities, and expect government to deliver results. We welcome Republicans, moderates, independents, and other practical voters who believe our region needs a stronger voice.',
+        body: 'People who work, build businesses, raise families, serve their communities, and expect government to deliver results. We welcome neighbours, moderates, independents, and other practical voters who believe our region needs a stronger voice.',
       },
       {
         title: 'How we work',

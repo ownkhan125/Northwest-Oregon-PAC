@@ -137,8 +137,8 @@
   padding: 40px 0 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 34px;
+  justify-content: flex-start;
+  gap: 28px;
   align-items: flex-start;
 }
 
@@ -175,11 +175,11 @@
   color: var(--sand);
 }
 
-.t-headline .display.xxl { font-size: 168px; line-height: 0.98; }
-.t-headline .display.xl  { font-size: 132px; line-height: 1.0;  }
-.t-headline .display.lg  { font-size: 104px; line-height: 1.04; }
-.t-headline .display.md  { font-size: 82px;  line-height: 1.08; }
-.t-headline .display.sm  { font-size: 64px;  line-height: 1.12; }
+.t-headline .display.xxl { font-size: 132px; line-height: 0.98; }
+.t-headline .display.xl  { font-size: 108px; line-height: 1.02; }
+.t-headline .display.lg  { font-size: 88px;  line-height: 1.06; }
+.t-headline .display.md  { font-size: 72px;  line-height: 1.1;  }
+.t-headline .display.sm  { font-size: 58px;  line-height: 1.14; }
 
 .t-headline .lede {
   max-width: 800px;
@@ -233,7 +233,9 @@
 .canvas .zone.t-ladder,
 .canvas .zone.t-stack,
 .canvas .zone.t-checklist,
-.canvas .zone.t-badge {
+.canvas .zone.t-badge,
+.canvas .zone.t-cta,
+.canvas .zone.t-headline {
   bottom: 200px;
 }
 
@@ -242,7 +244,9 @@
 .canvas.story .zone.t-ladder,
 .canvas.story .zone.t-stack,
 .canvas.story .zone.t-checklist,
-.canvas.story .zone.t-badge {
+.canvas.story .zone.t-badge,
+.canvas.story .zone.t-cta,
+.canvas.story .zone.t-headline {
   bottom: 240px;
 }
 
@@ -259,11 +263,11 @@
   color: var(--cream);
 }
 
-.t-longform .display.xxl { font-size: 132px; }
-.t-longform .display.xl  { font-size: 108px; }
-.t-longform .display.lg  { font-size: 84px;  }
-.t-longform .display.md  { font-size: 66px;  }
-.t-longform .display.sm  { font-size: 52px;  }
+.t-longform .display.xxl { font-size: 104px; }
+.t-longform .display.xl  { font-size: 88px;  }
+.t-longform .display.lg  { font-size: 70px;  }
+.t-longform .display.md  { font-size: 58px;  }
+.t-longform .display.sm  { font-size: 46px;  }
 
 .t-longform .subhead {
   font-family: var(--font-sans);
@@ -465,6 +469,12 @@
 .canvas.s-ink .t-stack .display {
   color: var(--cream);
 }
+
+.t-stack .display.xxl { font-size: 116px; }
+.t-stack .display.xl  { font-size: 94px;  }
+.t-stack .display.lg  { font-size: 72px;  }
+.t-stack .display.md  { font-size: 56px;  }
+.t-stack .display.sm  { font-size: 44px;  }
 
 .t-stack .rows {
   display: flex;

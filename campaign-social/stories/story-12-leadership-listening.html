@@ -12,31 +12,96 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-light">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-220px;left:-140px;opacity:.5"></div>
-  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-story">
-    <div class="story-top">
+  <div class="canvas story s-forest">
+    <style>
+        .s12 {
+          position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 10%, rgba(90,112,96,.5) 0%, transparent 55%),
+            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.95) 0%, transparent 60%),
+            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+          color:#f0efe3;
+        }
+        .s12-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(240,239,227,.65); }
+        .s12-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        /* Section 1 — LISTENING */
+        .s12-chapter { position:absolute; left:80px; right:80px; z-index:5; }
+        .s12-chapter.one { top:220px; }
+        .s12-chapter.two { bottom:220px; }
+        .s12-chapter .no { font-family:var(--font-display); font-style:italic; font-weight:400; font-size:32px; letter-spacing:-.02em; color:rgba(240,239,227,.5); display:inline-flex; align-items:baseline; gap:14px; }
+        .s12-chapter .no .n { font-size:62px; color:#e0d6bc; font-weight:500; }
+        .s12-chapter .no small { font-family:var(--font-mono); font-style:normal; font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(240,239,227,.6); }
+        .s12-chapter .body {
+          margin-top:20px; display:grid; grid-template-columns:auto 1fr; gap:36px; align-items:center;
+        }
+        .s12-chapter .body svg { width:170px; height:170px; color:#e0d6bc; opacity:.95; }
+        .s12-chapter .msg { display:flex; flex-direction:column; gap:12px; }
+        .s12-chapter .msg .head { font-family:var(--font-display); font-weight:500; font-size:70px; line-height:1.02; letter-spacing:-.022em; color:#f0efe3; }
+        .s12-chapter .msg .head em { font-style:italic; color:#e0d6bc; }
+        .s12-chapter .msg .sub { font-family:var(--font-mono); font-size:14px; letter-spacing:.42em; text-transform:uppercase; color:rgba(240,239,227,.55); }
+        /* Middle rule with rotating arrow */
+        .s12-middle { position:absolute; top:50%; left:80px; right:80px; z-index:4; display:flex; align-items:center; gap:24px; transform:translateY(-50%); }
+        .s12-middle .line { flex:1; height:1px; background:linear-gradient(90deg, rgba(240,239,227,.55), rgba(240,239,227,.55)); opacity:.5; }
+        .s12-middle .arrow { display:inline-flex; align-items:center; justify-content:center; width:80px; height:80px; border-radius:999px; border:1.5px solid rgba(240,239,227,.55); color:#e0d6bc; font-family:var(--font-display); font-style:italic; font-size:44px; letter-spacing:-.02em; background:rgba(14,22,17,.6); }
+        .s12-middle .arrow svg { width:32px; height:32px; }
+        .s12-middle .stamp { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(240,239,227,.55); }
+        .s12-foot { position:absolute; left:80px; right:80px; bottom:74px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(240,239,227,.55); }
+      </style>
+        <div class="s12">
+          <div class="s12-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Field Manual 12 · Two-Part Practice</span>
+          </div>
+
+          <div class="s12-chapter one">
+            <span class="no"><span class="n">01</span> — <small>The first act</small></span>
+            <div class="body">
+              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M32 42 C32 22 68 22 68 42 C68 62 60 68 60 78 C60 88 46 92 40 82 C36 75 34 68 34 62"/>
+                <path d="M42 50 C46 44 54 44 58 50"/>
+                <path d="M40 58 C45 52 55 52 60 58"/>
+                <circle cx="52" cy="66" r="3" fill="currentColor"/>
+              </svg>
+              <div class="msg">
+                <span class="sub">Chapter 01 · Listen</span>
+                <p class="head">Leadership starts with <em>listening.</em></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="s12-middle">
+            <span class="line"></span>
+            <span class="arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M6 14l6 6 6-6"/></svg>
+            </span>
+            <span class="line"></span>
+            <span class="stamp">then</span>
+            <span class="line"></span>
+          </div>
+
+          <div class="s12-chapter two">
+            <div class="body">
+              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="34" cy="22" r="8"/>
+                <path d="M34 30 L34 60 L26 84 M34 60 L44 84"/>
+                <path d="M34 40 L22 52 L18 62 M34 40 L48 50 L54 44"/>
+                <circle cx="68" cy="30" r="7" opacity=".8"/>
+                <path d="M68 37 L68 62 L62 82 M68 62 L76 82" opacity=".8"/>
+              </svg>
+              <div class="msg">
+                <span class="sub">Chapter 02 · Act</span>
+                <p class="head">Then it <em>grows</em> through action.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="s12-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="story-mid">
-      <h1 class="display xl">Leadership starts <em>with listening.</em></h1>
-      <div class="lines"><p>Then it grows through action.</p></div>
-    </div>
     
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

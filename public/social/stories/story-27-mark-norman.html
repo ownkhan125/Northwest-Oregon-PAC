@@ -12,32 +12,93 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-ink on-photo">
-    
-  <div class="backdrop">
-    <img src="../assets/img/mark-norman.jpg" alt="Mark Norman" />
-    <div class="wash deep"></div>
-  </div>
-  <div class="zone t-story-candidate">
-    <div class="sc-top">
-      <div class="pretitle">Northwest Oregon PAC proudly supports</div>
+  <div class="canvas story s-light">
+    <style>
+        .s27 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,208,.6) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #d6c493 100%);
+          color:#2a1f10;
+        }
+        .s27::before {
+          content:''; position:absolute; inset:0; opacity:.44; pointer-events:none;
+          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.22  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.28 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+          mix-blend-mode:multiply;
+        }
+        .s27-letter { position:absolute; top:130px; bottom:130px; left:64px; right:64px; z-index:5;
+          background:#f6f2e8; border:1px solid rgba(42,31,16,.35);
+          box-shadow:0 30px 60px -30px rgba(42,31,16,.55), inset 0 1px 0 rgba(255,255,255,.6);
+          padding:60px 60px 44px;
+        }
+        /* Letterhead */
+        .s27-letter .letterhead { display:flex; align-items:center; justify-content:space-between; padding-bottom:20px; border-bottom:2px solid #2a1f10; }
+        .s27-letter .letterhead img { height:70px; width:auto; }
+        .s27-letter .letterhead .meta { text-align:right; font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; text-transform:uppercase; color:rgba(42,31,16,.65); line-height:1.8; }
+        .s27-letter .letterhead .meta .title { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#2a1f10; text-transform:none; display:block; margin-bottom:4px; }
+        /* Recipient */
+        .s27-letter .to { margin-top:24px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(42,31,16,.55); }
+        /* Body */
+        .s27-letter .body { margin-top:22px; display:grid; grid-template-columns:240px 1fr; gap:34px; align-items:start; }
+        .s27-letter .plate { width:240px; height:290px; overflow:hidden; border:2px solid #2a1f10; background:#333; box-shadow:0 20px 40px -22px rgba(42,31,16,.5); }
+        .s27-letter .plate img { width:100%; height:100%; object-fit:cover; object-position:center 20%; filter:saturate(.82) contrast(1.14); }
+        .s27-letter .prose { display:flex; flex-direction:column; gap:16px; }
+        .s27-letter .prose .kick { font-family:var(--font-mono); font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:rgba(42,31,16,.55); }
+        .s27-letter .prose .head { font-family:var(--font-display); font-weight:500; font-size:52px; line-height:1.02; letter-spacing:-.022em; color:#2a1f10; }
+        .s27-letter .prose .head em { font-style:italic; color:#6b5a42; }
+        .s27-letter .prose .name { font-family:var(--font-display); font-weight:500; font-size:66px; line-height:.98; letter-spacing:-.022em; color:#2a1f10; }
+        .s27-letter .prose .name em { font-style:italic; color:#6b5a42; }
+        .s27-letter .prose .quote { margin-top:8px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:30px; line-height:1.24; letter-spacing:-.012em; color:#2a1f10; }
+        /* Bottom signature block */
+        .s27-letter .close { position:absolute; left:60px; right:60px; bottom:44px; display:flex; align-items:flex-end; justify-content:space-between; gap:24px; padding-top:22px; border-top:1.5px solid rgba(42,31,16,.4); }
+        .s27-letter .close .sig { flex:1; display:flex; flex-direction:column; gap:4px; }
+        .s27-letter .close .sig .signature { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; letter-spacing:-.012em; color:#2a1f10; }
+        .s27-letter .close .sig .role { font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(42,31,16,.6); }
+        /* Embossed seal */
+        .s27-letter .seal {
+          width:140px; height:140px; border-radius:999px; border:3px double #6b5a42;
+          display:flex; align-items:center; justify-content:center; flex-direction:column; gap:2px;
+          font-family:var(--font-mono); font-size:10px; letter-spacing:.36em; text-transform:uppercase; color:#6b5a42;
+          transform:rotate(-6deg);
+          box-shadow:inset 0 0 0 1px rgba(107,90,66,.35);
+        }
+        .s27-letter .seal .star { font-family:var(--font-display); font-style:italic; font-size:30px; color:#6b5a42; }
+        .s27-letter .seal .lbl { text-align:center; line-height:1.4; }
+        .s27-foot { position:absolute; left:64px; right:64px; bottom:64px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(42,31,16,.55); }
+      </style>
+        <div class="s27">
+          <div class="s27-letter">
+            <div class="letterhead">
+              <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+              <div class="meta">
+                <span class="title">Formal Endorsement</span>
+                Letter No. 27 · Series 2026<br />Issued at Beaverton, Oregon
+              </div>
+            </div>
+            <div class="to">— To the residents of Northwest Oregon:</div>
+            <div class="body">
+              <div class="plate"><img src="../assets/img/mark-norman.jpg" alt="Mark Norman" /></div>
+              <div class="prose">
+                <span class="kick">Be it known that</span>
+                <div class="head">Northwest Oregon PAC <em>proudly supports</em></div>
+                <div class="name">Mark <em>Norman.</em></div>
+                <p class="quote">— Because stronger communities deserve dedicated representation.</p>
+              </div>
+            </div>
+            <div class="close">
+              <div class="sig">
+                <span class="signature">The Board & Members</span>
+                <span class="role">On behalf of Northwest Oregon PAC · Committee #25045</span>
+              </div>
+              <div class="seal"><span class="star">★</span><span class="lbl">Northwest<br/>Oregon<br/>Endorsed</span></div>
+            </div>
+          </div>
+          <div class="s27-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-      <h1 class="display xxl"><em>Mark Norman</em></h1>
-    </div>
-    <div class="sc-bottom">
-      <p>Because stronger communities deserve dedicated representation.</p>
-    </div>
-  </div>
     
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

@@ -13,30 +13,76 @@
 </head>
 <body>
   <div class="canvas story s-light">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-220px;left:-140px;opacity:.5"></div>
-  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-story">
-    <div class="story-top">
+    <style>
+        .s17 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 15%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+        }
+        .s17::before {
+          content:''; position:absolute; inset:0; opacity:.5;
+          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.2  0 0 0 0 0.14  0 0 0 0.28 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+          mix-blend-mode:multiply; pointer-events:none;
+        }
+        .s17-mast { position:absolute; top:80px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+        .s17-mast img { height:52px; width:auto; }
+        .s17-runhead { position:absolute; top:170px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:1.5px solid #2e4538; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,42,20,.65); }
+        .s17-runhead .title { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        /* Body — two columns */
+        .s17-body { position:absolute; top:250px; bottom:200px; left:76px; right:76px; z-index:5; display:grid; grid-template-columns:1.05fr 1px 1fr; gap:30px; }
+        .s17-body .col-rule { background:linear-gradient(180deg, rgba(46,42,20,.35) 0%, rgba(46,42,20,0) 100%); }
+        /* Left column - drop cap + prose */
+        .s17-left { position:relative; }
+        .s17-left .dropcap {
+          font-family:var(--font-display); font-weight:500; font-style:italic;
+          font-size:340px; line-height:.82; letter-spacing:-.05em; color:#2e4538;
+          float:left; margin:0 24px 8px 0; padding-top:14px;
+        }
+        .s17-left p { font-family:var(--font-display); font-weight:500; font-size:52px; line-height:1.06; letter-spacing:-.018em; color:#2e4538; }
+        .s17-left p em { font-style:italic; color:#6b5a42; font-weight:500; }
+        .s17-left .attribution { margin-top:32px; padding-top:16px; border-top:1px solid rgba(46,42,20,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+        /* Right column - pull quote */
+        .s17-right { display:flex; flex-direction:column; justify-content:center; gap:22px; }
+        .s17-right .qmark { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:180px; line-height:.6; color:rgba(107,90,66,.9); letter-spacing:-.06em; }
+        .s17-right .pull { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:60px; line-height:1.05; letter-spacing:-.02em; color:#2e4538; }
+        .s17-right .pull em { font-style:normal; color:#6b5a42; }
+        .s17-right .sig { margin-top:24px; display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+        .s17-right .sig::before { content:''; width:40px; height:1px; background:currentColor; opacity:.55; }
+        /* Folio (page number) */
+        .s17-folio { position:absolute; bottom:130px; left:50%; transform:translateX(-50%); z-index:6; font-family:var(--font-display); font-style:italic; font-size:24px; color:rgba(46,42,20,.55); letter-spacing:-.01em; }
+        .s17-foot { position:absolute; left:76px; right:76px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,42,20,.5); }
+      </style>
+        <div class="s17">
+          <div class="s17-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Spread 17 · Two Columns</span>
+          </div>
+          <div class="s17-runhead">
+            <span>The Northwest Reader</span>
+            <span class="title">A note on participation</span>
+            <span>P. 17</span>
+          </div>
+          <div class="s17-body">
+            <div class="s17-left">
+              <span class="dropcap">Y</span>
+              <p>ou don't have to <em>run</em> for office to make a <em>difference.</em></p>
+              <span class="attribution">— A note to the reader</span>
+            </div>
+            <div class="col-rule"></div>
+            <div class="s17-right">
+              <span class="qmark">"</span>
+              <p class="pull">You simply have to <em>get involved.</em></p>
+              <span class="sig">The invitation stands</span>
+            </div>
+          </div>
+          <span class="s17-folio">— 17 —</span>
+          <div class="s17-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="story-mid">
-      <h1 class="display lg">You don't have to run for office to make <em>a difference.</em></h1>
-      <div class="lines"><p>You simply have to get involved.</p></div>
-    </div>
     
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

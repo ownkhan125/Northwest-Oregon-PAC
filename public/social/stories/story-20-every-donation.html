@@ -12,31 +12,105 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-sand">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-220px;left:-140px;opacity:.5"></div>
-  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-story">
-    <div class="story-top">
+  <div class="canvas story s-light">
+    <style>
+        .s20 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 15%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #d9c99e 100%);
+          color:#2a2213;
+        }
+        .s20-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(42,34,19,.7); }
+        .s20-mast img { height:52px; width:auto; }
+        .s20-kicker { position:absolute; top:210px; left:80px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(42,34,19,.6); display:inline-flex; align-items:center; gap:16px; }
+        .s20-kicker::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .s20-head { position:absolute; top:250px; left:80px; right:80px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:62px; line-height:1.04; letter-spacing:-.022em; color:#2e4538; max-width:940px; }
+        .s20-head em { font-style:italic; color:#6b5a42; }
+        /* Elevation diagram — the tower */
+        .s20-elevation { position:absolute; left:80px; right:80px; top:520px; bottom:230px; z-index:4; display:grid; grid-template-columns:100px 1fr 260px; gap:24px; }
+        .s20-elevation .scale { position:relative; }
+        .s20-elevation .scale::after {
+          content:''; position:absolute; left:22px; top:0; bottom:0; width:1px; background:linear-gradient(180deg, rgba(42,34,19,.5) 0%, rgba(42,34,19,.2) 100%);
+        }
+        .s20-elevation .scale .tick {
+          position:absolute; left:12px; width:24px; height:1px; background:rgba(42,34,19,.55);
+          font-family:var(--font-mono); font-size:10px; letter-spacing:.32em; text-transform:uppercase; color:rgba(42,34,19,.6);
+        }
+        .s20-elevation .scale .tick::after { content:attr(data-h); position:absolute; left:34px; top:-6px; white-space:nowrap; }
+        .s20-elevation .tower { position:relative; display:flex; flex-direction:column; }
+        .s20-elevation .tower .floor {
+          flex:1; border:2px solid #2a2213; border-bottom:none;
+          background:linear-gradient(180deg, rgba(240,232,206,.6) 0%, rgba(180,160,100,.35) 100%);
+          padding:14px 22px;
+          display:flex; align-items:center; justify-content:space-between; gap:16px;
+        }
+        .s20-elevation .tower .floor:last-of-type { border-bottom:2px solid #2a2213; }
+        .s20-elevation .tower .floor .no { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:30px; color:#2e4538; letter-spacing:-.01em; }
+        .s20-elevation .tower .floor .name { font-family:var(--font-mono); font-size:13px; letter-spacing:.4em; text-transform:uppercase; color:#2a2213; }
+        .s20-elevation .tower .foundation {
+          margin-top:6px; padding:8px 22px; background:#2a2213; color:#f6f2e8;
+          font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase;
+          display:flex; align-items:center; justify-content:space-between;
+        }
+        .s20-elevation .tower .foundation .coins { display:flex; align-items:center; gap:6px; }
+        .s20-elevation .tower .foundation .coin { display:inline-block; width:22px; height:22px; border-radius:999px; background:radial-gradient(circle at 30% 30%, #e0d6bc 0%, #6b5a42 90%); border:1px solid #3d2f14; }
+        /* Callouts on the right */
+        .s20-elevation .callouts { display:flex; flex-direction:column; justify-content:space-between; padding:6px 0; }
+        .s20-elevation .callouts .co { display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; text-transform:uppercase; color:rgba(42,34,19,.75); }
+        .s20-elevation .callouts .co .stroke { flex:none; width:36px; height:1px; background:#2e4538; }
+        .s20-elevation .callouts .co .val { font-family:var(--font-display); font-style:italic; font-size:20px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        /* Bottom banner */
+        .s20-band { position:absolute; left:80px; right:80px; bottom:140px; z-index:6; padding:14px 22px; background:#2e4538; color:#f6f2e8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.42em; text-transform:uppercase; }
+        .s20-band .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .s20-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(42,34,19,.55); }
+      </style>
+        <div class="s20">
+          <div class="s20-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Elevation 20 · Long-term Build</span>
+          </div>
+          <span class="s20-kicker">Section drawing · Investment infrastructure</span>
+          <h1 class="s20-head">Every donation helps build long-term political <em>infrastructure</em> across Northwest Oregon.</h1>
+
+          <div class="s20-elevation">
+            <div class="scale">
+              <span class="tick" style="top:0" data-h="Comms"></span>
+              <span class="tick" style="top:25%" data-h="Outreach"></span>
+              <span class="tick" style="top:50%" data-h="Volunteers"></span>
+              <span class="tick" style="top:75%" data-h="Candidates"></span>
+              <span class="tick" style="top:100%" data-h="Base"></span>
+            </div>
+            <div class="tower">
+              <div class="floor"><span class="no">04</span><span class="name">Communications</span></div>
+              <div class="floor"><span class="no">03</span><span class="name">Outreach</span></div>
+              <div class="floor"><span class="no">02</span><span class="name">Volunteers</span></div>
+              <div class="floor"><span class="no">01</span><span class="name">Candidates</span></div>
+              <div class="foundation">
+                <span>Foundation · Every dollar</span>
+                <span class="coins"><span class="coin"></span><span class="coin"></span><span class="coin"></span><span class="coin"></span></span>
+              </div>
+            </div>
+            <div class="callouts">
+              <div class="co"><span class="stroke"></span><span class="val">Message the region</span></div>
+              <div class="co"><span class="stroke"></span><span class="val">Meet every voter</span></div>
+              <div class="co"><span class="stroke"></span><span class="val">Show up together</span></div>
+              <div class="co"><span class="stroke"></span><span class="val">Field capable people</span></div>
+              <div class="co"><span class="stroke"></span><span class="val">Rests on you</span></div>
+            </div>
+          </div>
+
+          <div class="s20-band">
+            <span>Long-term infrastructure</span>
+            <span class="em">Built to last across the region.</span>
+          </div>
+
+          <div class="s20-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="story-mid">
-      <h1 class="display md">Every donation helps build long-term political infrastructure across <em>Northwest Oregon.</em></h1>
-      
-    </div>
     
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

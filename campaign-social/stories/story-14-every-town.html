@@ -12,31 +12,104 @@
 <link rel="stylesheet" href="../assets/templates.css" />
 </head>
 <body>
-  <div class="canvas story s-light">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-220px;left:-140px;opacity:.5"></div>
-  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule vertical"></div>
-  <div class="zone t-story">
-    <div class="story-top">
+  <div class="canvas story s-ink">
+    <style>
+        .s14 {
+          position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(90% 60% at 50% 40%, rgba(90,140,110,.24) 0%, transparent 55%),
+            radial-gradient(120% 100% at 50% 100%, rgba(0,0,0,.9) 0%, transparent 65%),
+            linear-gradient(178deg, #0b1b1a 0%, #071010 100%);
+          color:#e0e5db;
+        }
+        .s14::before {
+          content:''; position:absolute; inset:0;
+          background:
+            radial-gradient(1.5px 1.5px at 14% 22%, rgba(200,240,220,.3), transparent 60%),
+            radial-gradient(1.5px 1.5px at 82% 12%, rgba(200,240,220,.35), transparent 60%),
+            radial-gradient(2px 2px at 62% 74%, rgba(200,240,220,.3), transparent 60%),
+            radial-gradient(1.5px 1.5px at 24% 62%, rgba(200,240,220,.25), transparent 60%);
+          pointer-events:none;
+        }
+        .s14-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; gap:24px; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(224,229,219,.7); }
+        .s14-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        /* Sonar disk */
+        .s14-radar {
+          position:absolute; top:340px; left:50%; width:880px; height:880px;
+          transform:translateX(-50%);
+          z-index:4;
+        }
+        .s14-radar .ring { position:absolute; inset:0; border-radius:999px; border:1px solid rgba(200,240,220,.35); }
+        .s14-radar .ring.r1 { inset:0; }
+        .s14-radar .ring.r2 { inset:80px; opacity:.55; }
+        .s14-radar .ring.r3 { inset:160px; opacity:.4; }
+        .s14-radar .ring.r4 { inset:240px; opacity:.32; }
+        .s14-radar .ring.r5 { inset:320px; opacity:.24; }
+        .s14-radar .crosshair-h { position:absolute; left:0; right:0; top:50%; height:1px; background:rgba(200,240,220,.28); }
+        .s14-radar .crosshair-v { position:absolute; top:0; bottom:0; left:50%; width:1px; background:rgba(200,240,220,.28); }
+        .s14-radar .dot { position:absolute; width:20px; height:20px; border-radius:999px; background:#e0d6bc; box-shadow:0 0 30px rgba(200,240,220,.7); }
+        .s14-radar .dot.origin { left:calc(50% - 10px); top:calc(50% - 10px); background:#e0d6bc; box-shadow:0 0 40px rgba(244,215,143,.9); }
+        .s14-radar .town { position:absolute; display:flex; align-items:center; gap:12px; font-family:var(--font-mono); font-size:14px; letter-spacing:.32em; text-transform:uppercase; color:#e0e5db; white-space:nowrap; }
+        .s14-radar .town .marker { display:inline-block; width:14px; height:14px; border:2px solid #e0d6bc; border-radius:999px; }
+        .s14-radar .town.a { top:40px; left:calc(50% + 90px); }
+        .s14-radar .town.b { top:280px; right:calc(50% + 260px); flex-direction:row-reverse; }
+        .s14-radar .town.c { bottom:220px; left:calc(50% + 220px); }
+        .s14-radar .town.d { bottom:40px; right:calc(50% + 60px); flex-direction:row-reverse; }
+        .s14-radar .town.e { top:calc(50% + 40px); left:calc(50% - 240px); }
+        /* Left-side call-out */
+        .s14-callout {
+          position:absolute; top:220px; left:80px; z-index:6;
+          font-family:var(--font-mono); font-size:14px; letter-spacing:.42em; text-transform:uppercase;
+          color:rgba(224,229,219,.6);
+        }
+        .s14-callout::after { content:''; display:block; margin-top:12px; width:100px; height:1px; background:currentColor; opacity:.5; }
+        /* Bottom message */
+        .s14-message { position:absolute; left:80px; right:80px; bottom:170px; z-index:5; }
+        .s14-message .head { font-family:var(--font-display); font-weight:500; font-size:80px; line-height:1.02; letter-spacing:-.022em; color:#f0efe3; }
+        .s14-message .head em { font-style:italic; color:#e0d6bc; }
+        .s14-message .sub { margin-top:14px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:38px; letter-spacing:-.015em; color:rgba(224,229,219,.75); }
+        /* Frequency meta */
+        .s14-freq { position:absolute; left:80px; right:80px; bottom:110px; z-index:5; display:flex; align-items:center; gap:22px; font-family:var(--font-mono); font-size:12px; letter-spacing:.38em; text-transform:uppercase; color:rgba(224,229,219,.55); }
+        .s14-freq .rule { flex:1; height:1px; background:rgba(224,229,219,.35); }
+        .s14-foot { position:absolute; left:80px; right:80px; bottom:60px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(224,229,219,.45); }
+      </style>
+        <div class="s14">
+          <div class="s14-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Frequency 14 · Every Town</span>
+          </div>
+          <div class="s14-callout">— Broadcast log · Northwest Oregon</div>
+          <div class="s14-radar">
+            <div class="ring r1"></div>
+            <div class="ring r2"></div>
+            <div class="ring r3"></div>
+            <div class="ring r4"></div>
+            <div class="ring r5"></div>
+            <div class="crosshair-h"></div>
+            <div class="crosshair-v"></div>
+            <div class="dot origin"></div>
+            <span class="town a"><span class="marker"></span>Astoria</span>
+            <span class="town b">Hillsboro<span class="marker"></span></span>
+            <span class="town c"><span class="marker"></span>Tillamook</span>
+            <span class="town d">Forest Grove<span class="marker"></span></span>
+            <span class="town e"><span class="marker"></span>Columbia County</span>
+          </div>
+          <div class="s14-message">
+            <div class="head">We believe every town deserves a <em>voice.</em></div>
+            <div class="sub">Not just the biggest ones.</div>
+          </div>
+          <div class="s14-freq">
+            <span>Signal · 25.045 MHz</span>
+            <span class="rule"></span>
+            <span>Range · The entire region</span>
+          </div>
+          <div class="s14-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-    </div>
-    <div class="story-mid">
-      <h1 class="display lg">We believe every town deserves <em>a voice.</em></h1>
-      <div class="lines"><p>Not just the biggest ones.</p></div>
-    </div>
     
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

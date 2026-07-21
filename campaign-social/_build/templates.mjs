@@ -141,7 +141,12 @@ const headline = (d, ctx) => {
 ================================================================== */
 const longform = (d, ctx) => {
   const paragraphs = d.paragraphs || (d.text ? [d.text] : [])
-  const bs = paragraphSize(paragraphs)
+  // When there's also a heading + subhead, the vertical budget shrinks —
+  // pretend the body copy is longer than it is so bodySize downgrades.
+  const budgetPenalty = (d.heading ? 200 : 0) + (d.subhead ? 100 : 0)
+  const total = paragraphs.reduce((a, p) => a + p.length, 0)
+  const gap = Math.max(0, paragraphs.length - 1) * 120
+  const bs = bodySize('x'.repeat(total + gap + budgetPenalty))
   return `
   <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
   <div class="editorial-rule"></div>
@@ -387,6 +392,18 @@ const storyCandidate = (d, ctx) => {
   </div>`
 }
 
+/* ==================================================================
+   CUSTOM — bespoke per-post composition. `data.body` is raw HTML,
+   `data.css` is inline scoped CSS. Used when a post gets its own
+   creative direction rather than sharing a template.
+================================================================== */
+const custom = (d, ctx) => {
+  if (d.onPhoto) ctx.onPhoto = true
+  const styles = d.css ? `<style>${d.css}</style>` : ''
+  const body = typeof d.body === 'function' ? d.body(ctx) : d.body
+  return `${styles}${body}`
+}
+
 /* ------------------------------------------------------------------ */
 
 const RENDERERS = {
@@ -403,6 +420,7 @@ const RENDERERS = {
   storyCard,
   storyPoll,
   storyCandidate,
+  custom,
 }
 
 // Per-template chrome hints (matches previous implementation contract).
@@ -410,7 +428,11 @@ export const TEMPLATE_META = {
   cover: { forceSurface: 's-ink', onPhoto: true, hideFiling: true },
   candidate: { padCanvas: true },
   storyCandidate: { forceSurface: 's-ink', onPhoto: true, hideFiling: true },
+  // custom posts declare their own chrome via `meta` in content.mjs data.
 }
+
+// For custom posts, per-post chrome hints are read directly off the
+// content post's `meta` field by the generator (see generate.mjs).
 
 export function render(template, data, ctx) {
   const fn = RENDERERS[template]
