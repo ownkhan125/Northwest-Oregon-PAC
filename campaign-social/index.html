@@ -2,113 +2,133 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Campaign — Social Gallery</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Northwest Oregon PAC — Social Library</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
-  :root { --navy:#093c5d; --navy-deep:#051f33; --cyan:#6fd1d7; --mint:#5df8d8; --fg:#eaf6f8; }
-  * { box-sizing: border-box; }
-  html, body { margin:0; padding:0; background: #07121a; color: var(--fg); font-family: 'Inter', sans-serif;}
+  :root {
+    --sand:#e0d6bc; --cream:#f6f2e8; --sage:#5a7060; --forest:#2e4538; --brown:#6b5a42; --ink:#2a2a26;
+    --line: rgba(107,90,66,.22);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
   body {
-    min-height: 100vh; padding: 64px 56px;
     background:
-      radial-gradient(900px 700px at 80% 0%, rgba(93,248,216,0.08), transparent 60%),
-      radial-gradient(800px 700px at 0% 100%, rgba(111,209,215,0.07), transparent 60%),
-      #07121a;
+      radial-gradient(1100px 700px at 85% -10%, rgba(90,112,96,.14), transparent 60%),
+      radial-gradient(900px 700px at -10% 110%, rgba(107,90,66,.12), transparent 60%),
+      var(--cream);
+    color: var(--ink);
+    font-family:'Source Sans 3', system-ui, sans-serif;
+    min-height:100vh;
+    padding: 72px clamp(20px, 5vw, 72px) 120px;
+    -webkit-font-smoothing: antialiased;
   }
-  header { max-width: 1400px; margin: 0 auto 56px; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px;}
-  h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 64px; letter-spacing: -0.03em; margin: 0;}
-  h1 em { font-style: italic; font-weight: 300; background: linear-gradient(90deg, var(--cyan), var(--mint)); -webkit-background-clip: text; background-clip: text; color: transparent;}
-  .sub { font-family:'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mint);}
-  h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 32px; letter-spacing: -0.02em; margin: 56px auto 24px; max-width: 1400px;}
-  h2 em { font-style: italic; color: var(--mint);}
-  .grid-feed { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;}
-  .grid-story { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px;}
-  .card {
-    border-radius: 16px; overflow: hidden;
-    border: 1px solid rgba(111,209,215,0.18);
-    background: var(--navy-deep);
-    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.55);
-    text-decoration: none; color: inherit;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-  .card:hover { transform: translateY(-6px); box-shadow: 0 40px 70px -20px rgba(93,248,216,0.18);}
-  .card .frame { position: relative; overflow: hidden; background: var(--navy-deep);}
-  .card.feed .frame { aspect-ratio: 1 / 1;}
-  .card.story .frame { aspect-ratio: 9 / 16;}
-  .card iframe { position: absolute; inset: 0; width: 1080px; height: 1080px; border: 0; transform-origin: top left; }
-  .card.story iframe { width: 1080px; height: 1920px;}
-  .card .meta { padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;}
-  .card .meta b { color: var(--mint); font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; font-size: 18px; letter-spacing: -0.01em; text-transform: none;}
+  .grain-bg { position:fixed; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply; z-index:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.16  0 0 0 0 0.15  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .wrap { position:relative; z-index:1; max-width:1480px; margin:0 auto; }
+  header.page { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:28px; margin-bottom:22px; }
+  .eyebrow { display:inline-flex; align-items:center; gap:12px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#465d4e; margin-bottom:18px; }
+  .eyebrow::before { content:''; width:36px; height:1px; background:#465d4e; opacity:.6; }
+  h1 { font-family:'Lora', serif; font-weight:500; letter-spacing:-.02em; font-size: clamp(38px, 5vw, 64px); line-height:1.04; color:var(--forest); }
+  h1 em { font-style:italic; font-weight:400; color:var(--sage); }
+  .meta { font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:rgba(42,42,38,.6); line-height:2.1; text-align:right; }
+  nav.tabs { position:sticky; top:0; z-index:5; display:flex; flex-wrap:wrap; gap:10px; padding:18px 0; margin:26px 0 40px;
+    background:linear-gradient(180deg, var(--cream) 78%, transparent); }
+  nav.tabs a { font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; text-decoration:none;
+    color:var(--forest); border:1.5px solid rgba(46,69,56,.35); border-radius:999px; padding:11px 22px; transition:.25s; background:rgba(246,242,232,.7); }
+  nav.tabs a:hover { background:var(--forest); color:var(--cream); }
+  h2.sect { font-family:'Lora', serif; font-weight:500; font-size:30px; letter-spacing:-.01em; color:var(--forest); margin:64px 0 8px; scroll-margin-top:96px; }
+  h2.sect em { font-style:italic; color:var(--sage); }
+  .sect-line { display:flex; align-items:center; gap:18px; margin-bottom:28px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:rgba(42,42,38,.55); }
+  .sect-line::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, rgba(46,69,56,.4), transparent); }
+  .grid { display:grid; gap:26px; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); }
+  .grid.story-grid { grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); }
+  .card { position:relative; display:block; text-decoration:none; color:inherit; border-radius:22px; overflow:hidden;
+    border:1.5px solid var(--line); background:#fffdf8; box-shadow:0 26px 60px -34px rgba(46,69,56,.4);
+    transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s, border-color .45s; }
+  .card:hover { transform: translateY(-7px); border-color: rgba(46,69,56,.5); box-shadow:0 42px 80px -36px rgba(46,69,56,.5); }
+  .thumb { position:relative; overflow:hidden; background:var(--sand); }
+  .card.feed .thumb, .card.carousel .thumb { aspect-ratio:1/1; }
+  .card.story .thumb { aspect-ratio:9/16; }
+  .thumb iframe { position:absolute; top:0; left:0; width:1080px; height:1080px; border:0; transform-origin:top left; pointer-events:none; }
+  .card.story .thumb iframe { height:1920px; }
+  .meta-row { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:16px 20px; }
+  .meta-row .t { font-family:'Lora', serif; font-style:italic; font-weight:500; font-size:17px; color:var(--forest); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .meta-row .n { font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:rgba(42,42,38,.55); flex:none; }
+  .badge { position:absolute; top:14px; right:14px; z-index:2; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.2em;
+    background:rgba(36,54,44,.82); color:var(--sand); border:1px solid rgba(224,214,188,.35); padding:7px 13px; border-radius:999px; backdrop-filter: blur(6px); }
+  footer.legal { margin-top:110px; border-top:1.5px solid var(--line); padding-top:30px; text-align:center;
+    font-size:13px; letter-spacing:.08em; color:rgba(42,42,38,.65); line-height:2; }
+  footer.legal .mono { font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:#465d4e; }
 </style>
 </head>
 <body>
-  <header>
-    <h1>Lorem <em>Ipsum</em> — Campaign Pack</h1>
-    <div class="sub">20 designs · 10 feed · 10 stories</div>
+<div class="grain-bg"></div>
+<div class="wrap">
+  <header class="page">
+    <div>
+      <div class="eyebrow">Oregon State PAC · Committee #25045 · 2026</div>
+      <h1>The Northwest Oregon PAC<br /><em>social library.</em></h1>
+    </div>
+    <div class="meta">
+      60 feed posts · 1080 × 1080<br />
+      30 stories · 1080 × 1920<br />
+      10 carousels · 67 slides
+    </div>
   </header>
 
-  <h2>Instagram <em>feed</em> — 1080 × 1080</h2>
-  <div class="grid-feed" id="feed"></div>
+  <nav class="tabs">
+    <a href="#feed">Feed — 60</a>
+    <a href="#stories">Stories — 30</a>
+    <a href="#carousels">Carousels — 10</a>
+  </nav>
 
-  <h2>Instagram <em>stories</em> — 1080 × 1920</h2>
-  <div class="grid-story" id="story"></div>
+  <h2 class="sect" id="feed">Instagram <em>feed</em></h2>
+  <div class="sect-line">1080 × 1080 · tap any tile to open the artboard</div>
+  <div class="grid" id="grid-feed"></div>
+
+  <h2 class="sect" id="stories">Instagram <em>stories</em></h2>
+  <div class="sect-line">1080 × 1920</div>
+  <div class="grid story-grid" id="grid-stories"></div>
+
+  <h2 class="sect" id="carousels">Instagram <em>carousels</em></h2>
+  <div class="sect-line">1080 × 1080 · 5–7 slides each · open a cover, then use slide links</div>
+  <div class="grid" id="grid-carousels"></div>
+
+  <footer class="legal">
+    <div class="mono">Championing prosperity, accountability, and opportunity for Northwest Oregon.</div>
+    <div style="margin-top:10px">Paid for by Northwest Oregon PAC #25045. Not authorized by any candidate committee.</div>
+  </footer>
+</div>
 
 <script>
-  const feed = [
-    ['feed-01-editorial-cover.html', '01 · Editorial Cover'],
-    ['feed-02-manifesto.html', '02 · Manifesto'],
-    ['feed-03-stats.html', '03 · Stats'],
-    ['feed-04-pullquote.html', '04 · Pull Quote'],
-    ['feed-05-save-the-date.html', '05 · Save the Date'],
-    ['feed-06-priorities-grid.html', '06 · Priorities'],
-    ['feed-07-endorsement.html', '07 · Endorsement'],
-    ['feed-08-rosette.html', '08 · Rosette'],
-    ['feed-09-movement.html', '09 · Movement'],
-    ['feed-10-donate.html', '10 · Donate'],
-  ];
-  const story = [
-    ['story-01-hero.html', '01 · Hero'],
-    ['story-02-quote.html', '02 · Quote'],
-    ['story-03-stats.html', '03 · Stats'],
-    ['story-04-event.html', '04 · Event'],
-    ['story-05-manifesto.html', '05 · Manifesto'],
-    ['story-06-volunteer.html', '06 · Volunteer'],
-    ['story-07-issue.html', '07 · Issue'],
-    ['story-08-endorsement.html', '08 · Endorsement'],
-    ['story-09-trail.html', '09 · On the Trail'],
-    ['story-10-donate.html', '10 · Donate'],
-  ];
+  const DATA = {"feed":[{"n":1,"id":"feed-01-hero","tag":"Introduction","title":"A stronger voice","href":"feed/feed-01-hero.html"},{"n":2,"id":"feed-02-mission","tag":"Introduction","title":"Our mission","href":"feed/feed-02-mission.html"},{"n":3,"id":"feed-03-values","tag":"Values","title":"Hope · Support · Heard","href":"feed/feed-03-values.html"},{"n":4,"id":"feed-04-promise","tag":"Values","title":"Our promise","href":"feed/feed-04-promise.html"},{"n":5,"id":"feed-05-brand","tag":"Introduction","title":"The wordmark","href":"feed/feed-05-brand.html"},{"n":6,"id":"feed-06-region","tag":"Introduction","title":"Never an afterthought","href":"feed/feed-06-region.html"},{"n":7,"id":"feed-07-ticker","tag":"Introduction","title":"What we stand for","href":"feed/feed-07-ticker.html"},{"n":8,"id":"feed-08-priority-01","tag":"Issues","title":"Priority 01 · Prosperity","href":"feed/feed-08-priority-01.html"},{"n":9,"id":"feed-09-priority-01-quote","tag":"Issues","title":"Built by enterprise","href":"feed/feed-09-priority-01-quote.html"},{"n":10,"id":"feed-10-priority-01-detail","tag":"Issues","title":"Something of their own","href":"feed/feed-10-priority-01-detail.html"},{"n":11,"id":"feed-11-priority-02","tag":"Issues","title":"Priority 02 · Accountability","href":"feed/feed-11-priority-02.html"},{"n":12,"id":"feed-12-priority-02-quote","tag":"Issues","title":"Every dollar","href":"feed/feed-12-priority-02-quote.html"},{"n":13,"id":"feed-13-priority-02-detail","tag":"Issues","title":"Consequences","href":"feed/feed-13-priority-02-detail.html"},{"n":14,"id":"feed-14-priority-03","tag":"Issues","title":"Priority 03 · Public safety","href":"feed/feed-14-priority-03.html"},{"n":15,"id":"feed-15-priority-03-quote","tag":"Issues","title":"Safe streets","href":"feed/feed-15-priority-03-quote.html"},{"n":16,"id":"feed-16-priority-03-detail","tag":"Issues","title":"Behind the badge","href":"feed/feed-16-priority-03-detail.html"},{"n":17,"id":"feed-17-priority-04","tag":"Issues","title":"Priority 04 · Education","href":"feed/feed-17-priority-04.html"},{"n":18,"id":"feed-18-priority-04-quote","tag":"Issues","title":"The real world","href":"feed/feed-18-priority-04-quote.html"},{"n":19,"id":"feed-19-priority-04-detail","tag":"Issues","title":"Skills that pay","href":"feed/feed-19-priority-04-detail.html"},{"n":20,"id":"feed-20-priority-05","tag":"Issues","title":"Priority 05 · Energy","href":"feed/feed-20-priority-05.html"},{"n":21,"id":"feed-21-priority-05-quote","tag":"Issues","title":"Affordable bills","href":"feed/feed-21-priority-05-quote.html"},{"n":22,"id":"feed-22-priority-05-detail","tag":"Issues","title":"Oregon's advantage","href":"feed/feed-22-priority-05-detail.html"},{"n":23,"id":"feed-23-priorities-index","tag":"Issues","title":"Five priorities","href":"feed/feed-23-priorities-index.html"},{"n":24,"id":"feed-24-vision","tag":"Introduction","title":"The vision","href":"feed/feed-24-vision.html"},{"n":25,"id":"feed-25-candidates","tag":"Candidates","title":"Standing up in 2026","href":"feed/feed-25-candidates.html"},{"n":26,"id":"feed-26-mark-norman","tag":"Candidates","title":"Mark Norman","href":"feed/feed-26-mark-norman.html"},{"n":27,"id":"feed-27-brian-schimmel","tag":"Candidates","title":"Brian Schimmel","href":"feed/feed-27-brian-schimmel.html"},{"n":28,"id":"feed-28-barbara-kahl","tag":"Candidates","title":"Dr. Barbara Kahl","href":"feed/feed-28-barbara-kahl.html"},{"n":29,"id":"feed-29-ciatta-thompson","tag":"Candidates","title":"Ciatta Thompson","href":"feed/feed-29-ciatta-thompson.html"},{"n":30,"id":"feed-30-randall-fryer","tag":"Candidates","title":"Randall Fryer","href":"feed/feed-30-randall-fryer.html"},{"n":31,"id":"feed-31-run-for-office","tag":"Candidates","title":"Run for office","href":"feed/feed-31-run-for-office.html"},{"n":32,"id":"feed-32-volunteer","tag":"Get involved","title":"Show up. Speak up.","href":"feed/feed-32-volunteer.html"},{"n":33,"id":"feed-33-volunteer-ways","tag":"Get involved","title":"Ways to help","href":"feed/feed-33-volunteer-ways.html"},{"n":34,"id":"feed-34-events","tag":"Get involved","title":"Come meet us","href":"feed/feed-34-events.html"},{"n":35,"id":"feed-35-host-event","tag":"Get involved","title":"Host an event","href":"feed/feed-35-host-event.html"},{"n":36,"id":"feed-36-movement","tag":"Get involved","title":"People like you","href":"feed/feed-36-movement.html"},{"n":37,"id":"feed-37-follow","tag":"Get involved","title":"Follow along","href":"feed/feed-37-follow.html"},{"n":38,"id":"feed-38-contact","tag":"Get involved","title":"Contact card","href":"feed/feed-38-contact.html"},{"n":39,"id":"feed-39-someone-in-your-corner","tag":"Get involved","title":"In your corner","href":"feed/feed-39-someone-in-your-corner.html"},{"n":40,"id":"feed-40-donate","tag":"Support","title":"Fund the fight","href":"feed/feed-40-donate.html"},{"n":41,"id":"feed-41-donate-ladder","tag":"Support","title":"Choose an amount","href":"feed/feed-41-donate-ladder.html"},{"n":42,"id":"feed-42-donate-impact","tag":"Support","title":"Where it goes","href":"feed/feed-42-donate-impact.html"},{"n":43,"id":"feed-43-fuel-the-work","tag":"Support","title":"Fuel the work","href":"feed/feed-43-fuel-the-work.html"},{"n":44,"id":"feed-44-infrastructure","tag":"Support","title":"Lasting infrastructure","href":"feed/feed-44-infrastructure.html"},{"n":45,"id":"feed-45-freedom","tag":"Beliefs","title":"Free to build","href":"feed/feed-45-freedom.html"},{"n":46,"id":"feed-46-core-principle","tag":"Beliefs","title":"Our core principle","href":"feed/feed-46-core-principle.html"},{"n":47,"id":"feed-47-economic-freedom","tag":"Beliefs","title":"The proven engine","href":"feed/feed-47-economic-freedom.html"},{"n":48,"id":"feed-48-why-we-exist","tag":"Beliefs","title":"Why we exist","href":"feed/feed-48-why-we-exist.html"},{"n":49,"id":"feed-49-who-we-serve","tag":"Beliefs","title":"Who we serve","href":"feed/feed-49-who-we-serve.html"},{"n":50,"id":"feed-50-how-we-work","tag":"Beliefs","title":"How we work","href":"feed/feed-50-how-we-work.html"},{"n":51,"id":"feed-51-what-we-believe","tag":"Beliefs","title":"What we believe","href":"feed/feed-51-what-we-believe.html"},{"n":52,"id":"feed-52-different","tag":"Beliefs","title":"Where the issues are","href":"feed/feed-52-different.html"},{"n":53,"id":"feed-53-value-prosperity","tag":"Values","title":"Value · Prosperity","href":"feed/feed-53-value-prosperity.html"},{"n":54,"id":"feed-54-value-accountability","tag":"Values","title":"Value · Accountability","href":"feed/feed-54-value-accountability.html"},{"n":55,"id":"feed-55-value-common-sense","tag":"Values","title":"Value · Common sense","href":"feed/feed-55-value-common-sense.html"},{"n":56,"id":"feed-56-team","tag":"About","title":"Local leadership","href":"feed/feed-56-team.html"},{"n":57,"id":"feed-57-facts","tag":"About","title":"The filing","href":"feed/feed-57-facts.html"},{"n":58,"id":"feed-58-highlights","tag":"About","title":"How we operate","href":"feed/feed-58-highlights.html"},{"n":59,"id":"feed-59-never-written-off","tag":"About","title":"Never written off","href":"feed/feed-59-never-written-off.html"},{"n":60,"id":"feed-60-closing","tag":"About","title":"Not by accident","href":"feed/feed-60-closing.html"}],"stories":[{"n":1,"id":"story-01-hero","tag":"Introduction","title":"A stronger voice","href":"stories/story-01-hero.html"},{"n":2,"id":"story-02-values","tag":"Values","title":"Hope · Support · Heard","href":"stories/story-02-values.html"},{"n":3,"id":"story-03-mission","tag":"Introduction","title":"Our mission","href":"stories/story-03-mission.html"},{"n":4,"id":"story-04-promise","tag":"Values","title":"Our promise","href":"stories/story-04-promise.html"},{"n":5,"id":"story-05-priority-01","tag":"Issues","title":"Priority 01 · Prosperity","href":"stories/story-05-priority-01.html"},{"n":6,"id":"story-06-priority-02","tag":"Issues","title":"Priority 02 · Accountability","href":"stories/story-06-priority-02.html"},{"n":7,"id":"story-07-priority-03","tag":"Issues","title":"Priority 03 · Public safety","href":"stories/story-07-priority-03.html"},{"n":8,"id":"story-08-priority-04","tag":"Issues","title":"Priority 04 · Education","href":"stories/story-08-priority-04.html"},{"n":9,"id":"story-09-priority-05","tag":"Issues","title":"Priority 05 · Energy","href":"stories/story-09-priority-05.html"},{"n":10,"id":"story-10-priorities-index","tag":"Issues","title":"Five priorities","href":"stories/story-10-priorities-index.html"},{"n":11,"id":"story-11-mark-norman","tag":"Candidates","title":"Mark Norman","href":"stories/story-11-mark-norman.html"},{"n":12,"id":"story-12-brian-schimmel","tag":"Candidates","title":"Brian Schimmel","href":"stories/story-12-brian-schimmel.html"},{"n":13,"id":"story-13-barbara-kahl","tag":"Candidates","title":"Dr. Barbara Kahl","href":"stories/story-13-barbara-kahl.html"},{"n":14,"id":"story-14-ciatta-thompson","tag":"Candidates","title":"Ciatta Thompson","href":"stories/story-14-ciatta-thompson.html"},{"n":15,"id":"story-15-randall-fryer","tag":"Candidates","title":"Randall Fryer","href":"stories/story-15-randall-fryer.html"},{"n":16,"id":"story-16-run-for-office","tag":"Candidates","title":"Run for office","href":"stories/story-16-run-for-office.html"},{"n":17,"id":"story-17-volunteer","tag":"Get involved","title":"Show up. Speak up.","href":"stories/story-17-volunteer.html"},{"n":18,"id":"story-18-volunteer-ways","tag":"Get involved","title":"Ways to help","href":"stories/story-18-volunteer-ways.html"},{"n":19,"id":"story-19-events","tag":"Get involved","title":"Come meet us","href":"stories/story-19-events.html"},{"n":20,"id":"story-20-host-event","tag":"Get involved","title":"Host an event","href":"stories/story-20-host-event.html"},{"n":21,"id":"story-21-donate","tag":"Support","title":"Fund the fight","href":"stories/story-21-donate.html"},{"n":22,"id":"story-22-donate-ladder","tag":"Support","title":"Choose an amount","href":"stories/story-22-donate-ladder.html"},{"n":23,"id":"story-23-freedom","tag":"Beliefs","title":"Free to build","href":"stories/story-23-freedom.html"},{"n":24,"id":"story-24-economic-freedom","tag":"Beliefs","title":"The proven engine","href":"stories/story-24-economic-freedom.html"},{"n":25,"id":"story-25-region","tag":"About","title":"Never an afterthought","href":"stories/story-25-region.html"},{"n":26,"id":"story-26-vision","tag":"Introduction","title":"The vision","href":"stories/story-26-vision.html"},{"n":27,"id":"story-27-movement","tag":"Get involved","title":"People like you","href":"stories/story-27-movement.html"},{"n":28,"id":"story-28-team","tag":"About","title":"Local leadership","href":"stories/story-28-team.html"},{"n":29,"id":"story-29-follow","tag":"Get involved","title":"Follow along","href":"stories/story-29-follow.html"},{"n":30,"id":"story-30-closing","tag":"About","title":"Not by accident","href":"stories/story-30-closing.html"}],"carousels":[{"n":1,"id":"carousel-01-meet-the-pac","tag":"Introduction","title":"Meet Northwest Oregon PAC","count":7,"slides":["carousels/carousel-01-meet-the-pac/slide-1.html","carousels/carousel-01-meet-the-pac/slide-2.html","carousels/carousel-01-meet-the-pac/slide-3.html","carousels/carousel-01-meet-the-pac/slide-4.html","carousels/carousel-01-meet-the-pac/slide-5.html","carousels/carousel-01-meet-the-pac/slide-6.html","carousels/carousel-01-meet-the-pac/slide-7.html"]},{"n":2,"id":"carousel-02-five-priorities","tag":"Issues","title":"Five priorities. One stronger region.","count":7,"slides":["carousels/carousel-02-five-priorities/slide-1.html","carousels/carousel-02-five-priorities/slide-2.html","carousels/carousel-02-five-priorities/slide-3.html","carousels/carousel-02-five-priorities/slide-4.html","carousels/carousel-02-five-priorities/slide-5.html","carousels/carousel-02-five-priorities/slide-6.html","carousels/carousel-02-five-priorities/slide-7.html"]},{"n":3,"id":"carousel-03-prosperity","tag":"Issues","title":"Economic Prosperity & Small Business","count":7,"slides":["carousels/carousel-03-prosperity/slide-1.html","carousels/carousel-03-prosperity/slide-2.html","carousels/carousel-03-prosperity/slide-3.html","carousels/carousel-03-prosperity/slide-4.html","carousels/carousel-03-prosperity/slide-5.html","carousels/carousel-03-prosperity/slide-6.html","carousels/carousel-03-prosperity/slide-7.html"]},{"n":4,"id":"carousel-04-accountability","tag":"Issues","title":"Government Accountability","count":7,"slides":["carousels/carousel-04-accountability/slide-1.html","carousels/carousel-04-accountability/slide-2.html","carousels/carousel-04-accountability/slide-3.html","carousels/carousel-04-accountability/slide-4.html","carousels/carousel-04-accountability/slide-5.html","carousels/carousel-04-accountability/slide-6.html","carousels/carousel-04-accountability/slide-7.html"]},{"n":5,"id":"carousel-05-public-safety","tag":"Issues","title":"Public Safety & Quality of Life","count":7,"slides":["carousels/carousel-05-public-safety/slide-1.html","carousels/carousel-05-public-safety/slide-2.html","carousels/carousel-05-public-safety/slide-3.html","carousels/carousel-05-public-safety/slide-4.html","carousels/carousel-05-public-safety/slide-5.html","carousels/carousel-05-public-safety/slide-6.html","carousels/carousel-05-public-safety/slide-7.html"]},{"n":6,"id":"carousel-06-education","tag":"Issues","title":"Education & Workforce Development","count":7,"slides":["carousels/carousel-06-education/slide-1.html","carousels/carousel-06-education/slide-2.html","carousels/carousel-06-education/slide-3.html","carousels/carousel-06-education/slide-4.html","carousels/carousel-06-education/slide-5.html","carousels/carousel-06-education/slide-6.html","carousels/carousel-06-education/slide-7.html"]},{"n":7,"id":"carousel-07-energy","tag":"Issues","title":"Affordable, Reliable Energy","count":7,"slides":["carousels/carousel-07-energy/slide-1.html","carousels/carousel-07-energy/slide-2.html","carousels/carousel-07-energy/slide-3.html","carousels/carousel-07-energy/slide-4.html","carousels/carousel-07-energy/slide-5.html","carousels/carousel-07-energy/slide-6.html","carousels/carousel-07-energy/slide-7.html"]},{"n":8,"id":"carousel-08-candidates","tag":"Candidates","title":"Candidates we support in 2026","count":7,"slides":["carousels/carousel-08-candidates/slide-1.html","carousels/carousel-08-candidates/slide-2.html","carousels/carousel-08-candidates/slide-3.html","carousels/carousel-08-candidates/slide-4.html","carousels/carousel-08-candidates/slide-5.html","carousels/carousel-08-candidates/slide-6.html","carousels/carousel-08-candidates/slide-7.html"]},{"n":9,"id":"carousel-09-get-involved","tag":"Get involved","title":"Show up. Speak up. Strengthen the region.","count":5,"slides":["carousels/carousel-09-get-involved/slide-1.html","carousels/carousel-09-get-involved/slide-2.html","carousels/carousel-09-get-involved/slide-3.html","carousels/carousel-09-get-involved/slide-4.html","carousels/carousel-09-get-involved/slide-5.html"]},{"n":10,"id":"carousel-10-our-story","tag":"About","title":"Our region should never be written off.","count":6,"slides":["carousels/carousel-10-our-story/slide-1.html","carousels/carousel-10-our-story/slide-2.html","carousels/carousel-10-our-story/slide-3.html","carousels/carousel-10-our-story/slide-4.html","carousels/carousel-10-our-story/slide-5.html","carousels/carousel-10-our-story/slide-6.html"]}]};
 
-  function build(arr, mountId, kind) {
-    const root = document.getElementById(mountId);
-    root.innerHTML = arr.map(([href, title]) => `
-      <a class="card ${kind}" href="${href}">
-        <div class="frame"><iframe src="${href}" scrolling="no" loading="lazy"></iframe></div>
-        <div class="meta"><b>${title.split('·')[1].trim()}</b><span>${title.split('·')[0].trim()}</span></div>
-      </a>
-    `).join('');
-    // Scale iframes to fit the card frame
-    requestAnimationFrame(() => {
-      root.querySelectorAll('.card').forEach(card => {
-        const frame = card.querySelector('.frame');
-        const iframe = card.querySelector('iframe');
-        const scale = frame.clientWidth / 1080;
-        iframe.style.transform = `scale(${scale})`;
-      });
+  const card = (kind, href, title, n, badge) => `
+    <a class="card ${kind}" href="${href}">
+      ${badge ? `<span class="badge">${badge}</span>` : ''}
+      <div class="thumb"><iframe src="${href}" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+      <div class="meta-row"><span class="t">${title}</span><span class="n">${String(n).padStart(2, '0')}</span></div>
+    </a>`;
+
+  document.getElementById('grid-feed').innerHTML =
+    DATA.feed.map((p) => card('feed', p.href, p.title, p.n)).join('');
+  document.getElementById('grid-stories').innerHTML =
+    DATA.stories.map((p) => card('story', p.href, p.title, p.n)).join('');
+  document.getElementById('grid-carousels').innerHTML =
+    DATA.carousels.map((c) => card('carousel', c.slides[0], c.title, c.n, c.count + ' slides')).join('');
+
+  function fit() {
+    document.querySelectorAll('.thumb').forEach((frame) => {
+      const iframe = frame.querySelector('iframe');
+      if (!iframe) return;
+      iframe.style.transform = 'scale(' + frame.clientWidth / 1080 + ')';
     });
   }
-
-  build(feed, 'feed', 'feed');
-  build(story, 'story', 'story');
-
-  window.addEventListener('resize', () => {
-    document.querySelectorAll('.card').forEach(card => {
-      const frame = card.querySelector('.frame');
-      const iframe = card.querySelector('iframe');
-      const scale = frame.clientWidth / 1080;
-      iframe.style.transform = `scale(${scale})`;
-    });
-  });
+  requestAnimationFrame(fit);
+  addEventListener('resize', fit);
 </script>
 </body>
 </html>

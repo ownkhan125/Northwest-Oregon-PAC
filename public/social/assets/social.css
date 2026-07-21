@@ -1,0 +1,898 @@
+/* -------------------------------------------------------------------
+   Northwest Oregon PAC — Social Creative Design System
+   -------------------------------------------------------------------
+   Mirrors the website brand (src/app/globals.css):
+     sand #E0D6BC · cream #F6F2E8 · sage #5A7060
+     forest #2E4538 · brown #6B5A42 · ink #2A2A26
+   Type: Lora (display) · Source Sans 3 (body) · JetBrains Mono (labels)
+   Canvases are fixed Instagram artboards:
+     feed / carousel slide 1080×1080 · story 1080×1920
+------------------------------------------------------------------- */
+
+:root {
+  --sand: #e0d6bc;
+  --cream: #f6f2e8;
+  --sage: #5a7060;
+  --forest: #2e4538;
+  --brown: #6b5a42;
+  --ink: #2a2a26;
+  --forest-deep: #24362c;
+  --highlight-light: #465d4e; /* eyebrows on light surfaces */
+  --highlight-dark: #d4d5ca; /* eyebrows on dark surfaces */
+
+  --font-display: 'Lora', Georgia, serif;
+  --font-sans: 'Source Sans 3', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: var(--ink);
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------------------------------------------------------------
+   Canvas — the fixed-size artboard
+--------------------------------------------------------------- */
+.canvas {
+  position: relative;
+  width: 1080px;
+  height: 1080px;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.canvas.story {
+  height: 1920px;
+}
+
+/* Surface variants */
+.canvas.s-forest {
+  background: linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%);
+  color: var(--cream);
+}
+
+.canvas.s-sand {
+  background: linear-gradient(180deg, #e4dbc4 0%, var(--sand) 100%);
+  color: var(--ink);
+}
+
+.canvas.s-ink {
+  background: linear-gradient(180deg, #2e2e29 0%, var(--ink) 100%);
+  color: var(--cream);
+}
+
+/* ---------------------------------------------------------------
+   Atmosphere — grain, drifting hairline field, soft glow
+--------------------------------------------------------------- */
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.16  0 0 0 0 0.15  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.s-forest .grain,
+.s-ink .grain {
+  mix-blend-mode: screen;
+  opacity: 0.09;
+}
+
+.lines {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    115deg,
+    rgba(107, 90, 66, 0.09) 0,
+    rgba(107, 90, 66, 0.09) 1.5px,
+    transparent 1.5px,
+    transparent 26px
+  );
+  -webkit-mask-image: radial-gradient(120% 120% at 50% 40%, black 30%, transparent 78%);
+  mask-image: radial-gradient(120% 120% at 50% 40%, black 30%, transparent 78%);
+}
+
+.s-forest .lines,
+.s-ink .lines {
+  background-image: repeating-linear-gradient(
+    115deg,
+    rgba(246, 242, 232, 0.07) 0,
+    rgba(246, 242, 232, 0.07) 1.5px,
+    transparent 1.5px,
+    transparent 26px
+  );
+}
+
+.glow {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(110px);
+}
+
+.glow.sage {
+  background: rgba(90, 112, 96, 0.34);
+}
+
+.glow.sand {
+  background: rgba(224, 214, 188, 0.16);
+}
+
+.glow.cream {
+  background: rgba(246, 242, 232, 0.1);
+}
+
+/* ---------------------------------------------------------------
+   Frame — inset hairline with corner ticks
+--------------------------------------------------------------- */
+.frame {
+  position: absolute;
+  inset: 40px;
+  z-index: 30;
+  pointer-events: none;
+  border: 1.5px solid rgba(107, 90, 66, 0.28);
+}
+
+.s-forest .frame,
+.s-ink .frame {
+  border-color: rgba(224, 214, 188, 0.26);
+}
+
+.frame::before,
+.frame::after,
+.frame .tick::before,
+.frame .tick::after {
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-color: rgba(107, 90, 66, 0.85);
+  border-style: solid;
+}
+
+.s-forest .frame::before,
+.s-forest .frame::after,
+.s-forest .frame .tick::before,
+.s-forest .frame .tick::after,
+.s-ink .frame::before,
+.s-ink .frame::after,
+.s-ink .frame .tick::before,
+.s-ink .frame .tick::after {
+  border-color: rgba(224, 214, 188, 0.8);
+}
+
+.frame::before {
+  top: -1.5px;
+  left: -1.5px;
+  border-width: 1.5px 0 0 1.5px;
+}
+
+.frame::after {
+  top: -1.5px;
+  right: -1.5px;
+  border-width: 1.5px 1.5px 0 0;
+}
+
+.frame .tick::before {
+  bottom: -1.5px;
+  left: -1.5px;
+  border-width: 0 0 1.5px 1.5px;
+}
+
+.frame .tick::after {
+  bottom: -1.5px;
+  right: -1.5px;
+  border-width: 0 1.5px 1.5px 0;
+}
+
+/* ---------------------------------------------------------------
+   Masthead — logo + filing line
+--------------------------------------------------------------- */
+.mast {
+  position: absolute;
+  top: 84px;
+  left: 96px;
+  right: 96px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.mast .brand {
+  display: flex;
+  align-items: center;
+}
+
+.mast .brand img {
+  height: 74px;
+  width: auto;
+  display: block;
+}
+
+.mast .filing {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--highlight-light);
+  white-space: nowrap;
+}
+
+.s-forest .mast .filing,
+.s-ink .mast .filing {
+  color: var(--highlight-dark);
+}
+
+.story .mast {
+  top: 104px;
+}
+
+/* ---------------------------------------------------------------
+   Foot rail — paid-for disclaimer + domain
+--------------------------------------------------------------- */
+.rail {
+  position: absolute;
+  left: 96px;
+  right: 96px;
+  bottom: 76px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(42, 42, 38, 0.62);
+}
+
+.s-forest .rail,
+.s-ink .rail {
+  color: rgba(246, 242, 232, 0.6);
+}
+
+.rail .rule {
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(107, 90, 66, 0.45), transparent);
+}
+
+.s-forest .rail .rule,
+.s-ink .rail .rule {
+  background: linear-gradient(90deg, rgba(224, 214, 188, 0.4), transparent);
+}
+
+.rail .domain {
+  color: var(--forest);
+  font-weight: 500;
+}
+
+.s-forest .rail .domain,
+.s-ink .rail .domain {
+  color: var(--sand);
+}
+
+.story .rail {
+  bottom: 96px;
+}
+
+/* ---------------------------------------------------------------
+   Eyebrow pill — mono label with pulse dot
+--------------------------------------------------------------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 34px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(46, 69, 56, 0.3);
+  background: rgba(246, 242, 232, 0.55);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--forest);
+  white-space: nowrap;
+}
+
+.s-forest .pill,
+.s-ink .pill {
+  border-color: rgba(224, 214, 188, 0.35);
+  background: rgba(36, 54, 44, 0.45);
+  color: var(--sand);
+}
+
+.pill .dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--forest);
+  flex: none;
+}
+
+.s-forest .pill .dot,
+.s-ink .pill .dot {
+  background: var(--sand);
+}
+
+.pill .dot::after {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  opacity: 0.4;
+}
+
+/* Bare eyebrow (no pill chrome) */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--highlight-light);
+}
+
+.s-forest .eyebrow,
+.s-ink .eyebrow {
+  color: var(--highlight-dark);
+}
+
+.eyebrow .dash {
+  width: 56px;
+  height: 1.5px;
+  background: currentColor;
+  opacity: 0.6;
+  flex: none;
+}
+
+/* ---------------------------------------------------------------
+   Typography
+--------------------------------------------------------------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  color: var(--forest);
+}
+
+.s-forest .display,
+.s-ink .display {
+  color: var(--cream);
+}
+
+.display em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sage);
+}
+
+.s-forest .display em,
+.s-ink .display em {
+  color: var(--sand);
+}
+
+.display.xl {
+  font-size: 128px;
+  line-height: 1.0;
+}
+
+.display.lg {
+  font-size: 104px;
+}
+
+.display.md {
+  font-size: 82px;
+}
+
+.display.sm {
+  font-size: 64px;
+}
+
+.display.xs {
+  font-size: 50px;
+}
+
+.lede {
+  font-family: var(--font-sans);
+  font-size: 33px;
+  line-height: 1.55;
+  color: rgba(42, 42, 38, 0.82);
+}
+
+.s-forest .lede,
+.s-ink .lede {
+  color: rgba(246, 242, 232, 0.82);
+}
+
+.lede strong {
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.s-forest .lede strong,
+.s-ink .lede strong {
+  color: var(--sand);
+}
+
+.mono-sm {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(42, 42, 38, 0.6);
+}
+
+.s-forest .mono-sm,
+.s-ink .mono-sm {
+  color: rgba(246, 242, 232, 0.6);
+}
+
+/* Thin rule with gradient fade (site motif) */
+.hairline {
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(46, 69, 56, 0.6), rgba(46, 69, 56, 0.15), transparent);
+}
+
+.s-forest .hairline,
+.s-ink .hairline {
+  background: linear-gradient(90deg, rgba(224, 214, 188, 0.6), rgba(224, 214, 188, 0.15), transparent);
+}
+
+/* ---------------------------------------------------------------
+   Components
+--------------------------------------------------------------- */
+
+/* Icon rendered via CSS mask so it inherits any brand color */
+.cicon {
+  display: inline-block;
+  background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+/* Rounded icon chip */
+.chip-icon {
+  display: grid;
+  place-items: center;
+  width: 132px;
+  height: 132px;
+  border-radius: 40px;
+  border: 1.5px solid rgba(46, 69, 56, 0.3);
+  background: rgba(224, 214, 188, 0.4);
+  color: var(--forest);
+}
+
+.s-forest .chip-icon,
+.s-ink .chip-icon {
+  border-color: rgba(224, 214, 188, 0.32);
+  background: rgba(246, 242, 232, 0.08);
+  color: var(--sand);
+}
+
+.chip-icon .cicon {
+  width: 84px;
+  height: 84px;
+}
+
+/* Dashed orbital ring (site's spin-slow motif, static) */
+.ring {
+  position: absolute;
+  border: 2px dashed rgba(46, 69, 56, 0.35);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.s-forest .ring,
+.s-ink .ring {
+  border-color: rgba(224, 214, 188, 0.3);
+}
+
+/* Solid button pill */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 30px 60px;
+  border-radius: 999px;
+  background: var(--forest);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 26px 60px -24px rgba(46, 69, 56, 0.65);
+}
+
+.s-forest .btn,
+.s-ink .btn {
+  background: var(--sand);
+  color: var(--ink);
+  box-shadow: 0 26px 60px -24px rgba(0, 0, 0, 0.55);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--forest);
+  border: 2px solid rgba(46, 69, 56, 0.45);
+  box-shadow: none;
+}
+
+.s-forest .btn.ghost,
+.s-ink .btn.ghost {
+  color: var(--sand);
+  border-color: rgba(224, 214, 188, 0.45);
+}
+
+.btn .arrow {
+  width: 30px;
+  height: 30px;
+  flex: none;
+}
+
+/* Value / word chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 44px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(46, 69, 56, 0.32);
+  background: rgba(246, 242, 232, 0.6);
+  font-family: var(--font-mono);
+  font-size: 26px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+
+.s-forest .chip,
+.s-ink .chip {
+  border-color: rgba(224, 214, 188, 0.34);
+  background: rgba(36, 54, 44, 0.5);
+  color: var(--cream);
+}
+
+/* Giant ghost numeral behind content */
+.ghost-num {
+  position: absolute;
+  z-index: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 560px;
+  line-height: 1;
+  color: rgba(46, 69, 56, 0.07);
+  pointer-events: none;
+  user-select: none;
+}
+
+.s-forest .ghost-num,
+.s-ink .ghost-num {
+  color: rgba(246, 242, 232, 0.055);
+}
+
+.s-sand .ghost-num {
+  color: rgba(46, 69, 56, 0.08);
+}
+
+/* Photo frame with brand wash */
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 44px;
+  border: 1.5px solid rgba(107, 90, 66, 0.35);
+  background: var(--sand);
+}
+
+.s-forest .photo,
+.s-ink .photo {
+  border-color: rgba(224, 214, 188, 0.3);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.photo .wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(46, 69, 56, 0) 46%, rgba(36, 54, 44, 0.82) 100%),
+    linear-gradient(120deg, rgba(90, 112, 96, 0.16), transparent 55%);
+  pointer-events: none;
+}
+
+/* Full-bleed cinematic backdrop */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.88) contrast(1.04);
+}
+
+/* Cinematic abstraction for backdrops that carry their own artwork */
+.backdrop.blurred img {
+  transform: scale(1.18);
+  filter: blur(18px) saturate(0.82) contrast(1.05) brightness(0.92);
+}
+
+.backdrop .wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(200deg, rgba(36, 54, 44, 0.28) 0%, rgba(36, 54, 44, 0.62) 55%, rgba(29, 43, 35, 0.94) 100%);
+}
+
+.backdrop .wash.deep {
+  background:
+    linear-gradient(200deg, rgba(36, 54, 44, 0.5) 0%, rgba(29, 43, 35, 0.8) 52%, rgba(24, 34, 27, 0.97) 100%);
+}
+
+/* Quote glyph */
+.quote-glyph {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 300px;
+  line-height: 0.6;
+  height: 150px;
+  color: var(--sage);
+  user-select: none;
+}
+
+.s-forest .quote-glyph,
+.s-ink .quote-glyph {
+  color: var(--sand);
+}
+
+/* Numbered list row */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 25px 0;
+  border-bottom: 1.5px solid rgba(107, 90, 66, 0.22);
+}
+
+.story .row {
+  padding: 42px 0;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.s-forest .row,
+.s-ink .row {
+  border-color: rgba(224, 214, 188, 0.18);
+}
+
+.row .num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 36px;
+  color: var(--sage);
+  width: 66px;
+  flex: none;
+}
+
+.s-forest .row .num,
+.s-ink .row .num {
+  color: var(--sand);
+}
+
+.row .label {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 39px;
+  letter-spacing: -0.01em;
+  line-height: 1.14;
+  color: var(--ink);
+}
+
+.s-forest .row .label,
+.s-ink .row .label {
+  color: var(--cream);
+}
+
+.row .ricon {
+  margin-left: auto;
+  color: var(--highlight-light);
+  flex: none;
+}
+
+.s-forest .row .ricon,
+.s-ink .row .ricon {
+  color: var(--highlight-dark);
+}
+
+/* Card panel */
+.panel {
+  border-radius: 48px;
+  border: 1.5px solid rgba(107, 90, 66, 0.26);
+  background: rgba(246, 242, 232, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.s-forest .panel,
+.s-ink .panel {
+  border-color: rgba(224, 214, 188, 0.22);
+  background: rgba(36, 54, 44, 0.55);
+}
+
+.panel.solid-forest {
+  background: linear-gradient(160deg, var(--forest) 0%, var(--forest-deep) 100%);
+  border-color: rgba(224, 214, 188, 0.25);
+}
+
+.panel.solid-sand {
+  background: linear-gradient(160deg, #e6ddc8 0%, var(--sand) 100%);
+  border-color: rgba(107, 90, 66, 0.3);
+}
+
+/* ---------------------------------------------------------------
+   Carousel chrome — slide counter, progress, swipe cue
+--------------------------------------------------------------- */
+.slide-meta {
+  position: absolute;
+  top: 190px;
+  right: 96px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.3em;
+  color: rgba(42, 42, 38, 0.55);
+}
+
+.s-forest .slide-meta,
+.s-ink .slide-meta {
+  color: rgba(246, 242, 232, 0.55);
+}
+
+.slide-meta b {
+  font-weight: 500;
+  color: var(--forest);
+}
+
+.s-forest .slide-meta b,
+.s-ink .slide-meta b {
+  color: var(--sand);
+}
+
+.dots {
+  position: absolute;
+  bottom: 118px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dots i {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(46, 69, 56, 0.25);
+}
+
+.s-forest .dots i,
+.s-ink .dots i {
+  background: rgba(246, 242, 232, 0.25);
+}
+
+.dots i.on {
+  width: 44px;
+  background: var(--forest);
+}
+
+.s-forest .dots i.on,
+.s-ink .dots i.on {
+  background: var(--sand);
+}
+
+.swipe {
+  position: absolute;
+  bottom: 110px;
+  right: 96px;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--highlight-light);
+}
+
+.s-forest .swipe,
+.s-ink .swipe {
+  color: var(--highlight-dark);
+}
+
+.swipe svg {
+  width: 34px;
+  height: 34px;
+}
+
+/* ---------------------------------------------------------------
+   Shared layout scaffolding
+--------------------------------------------------------------- */
+.pad {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  padding: 96px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content zone between mast and rail */
+.zone {
+  position: absolute;
+  left: 96px;
+  right: 96px;
+  top: 220px;
+  bottom: 170px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story .zone {
+  top: 260px;
+  bottom: 210px;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+}
