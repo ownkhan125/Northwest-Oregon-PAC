@@ -10,30 +10,71 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-sand">
+  <div class="canvas  s-light">
+    <style>
+        .f43 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f43-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f43-mast img { height:56px; width:auto; }
+        .f43-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f43-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f43-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:70px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
+        .f43-head em { display:block; font-style:italic; color:#5a7060; }
+        /* Struck-through boardroom card */
+        .f43-strike { position:absolute; left:76px; right:76px; top:440px; z-index:5;
+          background:rgba(46,69,56,.08); border:1.5px dashed rgba(46,69,56,.5);
+          padding:18px 22px;
+        }
+        .f43-strike::after {
+          content:''; position:absolute; left:22px; right:22px; top:calc(74% - 2px); height:3px; background:#2e4538; transform:rotate(-.7deg); opacity:.85;
+        }
+        .f43-strike .lbl { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); position:relative; z-index:2; }
+        .f43-strike .txt { position:relative; z-index:2; margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:32px; line-height:1.06; letter-spacing:-.022em; color:rgba(46,69,56,.75); }
+        /* Alternative — three doorstep tiles */
+        .f43-tiles { position:absolute; left:76px; right:76px; top:600px; z-index:5; display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+        .f43-tile { padding:18px 20px; background:#2e4538; color:#f6f2e8; border-top:4px solid #e0d6bc; }
+        .f43-tile .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.7); }
+        .f43-tile .w { margin-top:8px; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:32px; line-height:1.02; letter-spacing:-.022em; color:#f6f2e8; }
+        .f43-tile .w em { font-style:normal; color:#e0d6bc; }
+        /* Sig */
+        .f43-sig { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:#2e4538; max-width:920px; }
+        .f43-sig em { font-style:normal; color:#5a7060; }
+        .f43-tag { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f43-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f43-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f43">
+          <div class="f43-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Correction 43 · Grassroots</span>
+          </div>
+          <span class="f43-kick">Grassroots is where it happens</span>
+          <h1 class="f43-head">Campaigns aren't built in<em>boardrooms.</em></h1>
+          <div class="f43-strike">
+            <span class="lbl">— Not here</span>
+            <p class="txt">Boardroom · Meeting minutes · Corporate slate</p>
+          </div>
+          <div class="f43-tiles">
+            <div class="f43-tile"><span class="n">— Here 01</span><span class="w">On <em>doorsteps.</em></span></div>
+            <div class="f43-tile"><span class="n">— Here 02</span><span class="w">At <em>community events.</em></span></div>
+            <div class="f43-tile"><span class="n">— Here 03</span><span class="w">In <em>conversations between neighbors.</em></span></div>
+          </div>
+          <p class="f43-sig">Volunteers are the <em>heart</em> of every successful campaign.</p>
+          <div class="f43-tag"><span>Whether one hour or one weekend</span><span class="em">— Join our volunteer network.</span></div>
+          <div class="f43-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Grassroots is where it happens</div>
-    
-    
-    <div class="body fs-44">
-      <p class="lead-p">Campaigns aren't built in boardrooms.</p><p class="">They're built on doorsteps, at community events, and through conversations between neighbours.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

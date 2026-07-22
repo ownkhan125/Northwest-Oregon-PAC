@@ -10,42 +10,62 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-sand">
-    
-  <div class="glow forest" style="width:720px;height:720px;bottom:-200px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-stack">
-    <div class="kicker  ">Compete</div>
-    <h1 class="display xl">Northwest Oregon deserves <em>to compete.</em></h1>
-    <div class="rows">
+  <div class="canvas  s-light">
+    <style>
+        .f54 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f54-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f54-mast img { height:56px; width:auto; }
+        .f54-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f54-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f54-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:76px; line-height:.98; letter-spacing:-.028em; color:#2e4538; max-width:920px; }
+        .f54-head em { font-style:italic; color:#5a7060; }
+        /* Race lanes */
+        .f54-track { position:absolute; left:76px; right:76px; top:460px; height:280px; z-index:5; display:flex; flex-direction:column; gap:8px; }
+        .f54-lane { position:relative; flex:1; padding:14px 20px; display:grid; grid-template-columns:60px 1fr auto; gap:18px; align-items:center; background:#2e4538; color:#e0d6bc; border-left:6px solid #e0d6bc; }
+        .f54-lane .n { font-family:var(--font-mono); font-weight:600; font-size:24px; letter-spacing:.4em; color:#e0d6bc; }
+        .f54-lane .lbl { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:40px; line-height:1; letter-spacing:-.02em; color:#e0d6bc; }
+        .f54-lane .tag { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.6); }
+        /* Starting line stripes */
+        .f54-track::before {
+          content:''; position:absolute; left:-20px; top:0; bottom:0; width:8px;
+          background:repeating-linear-gradient(0deg, #2e4538 0 12px, #e0d6bc 12px 24px);
+        }
+        /* Body */
+        .f54-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:#2e4538; text-align:center; }
+        .f54-body em { font-style:normal; color:#5a7060; }
+        .f54-tag { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f54-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f54-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f54">
+          <div class="f54-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Track 54 · Compete</span>
+          </div>
+          <span class="f54-kick">Compete</span>
+          <h1 class="f54-head">Northwest Oregon deserves to <em>compete.</em></h1>
+          <div class="f54-track">
+            <div class="f54-lane"><span class="n">i.</span><span class="lbl">Every district.</span><span class="tag">— Lane 01</span></div>
+            <div class="f54-lane"><span class="n">ii.</span><span class="lbl">Every voter.</span><span class="tag">— Lane 02</span></div>
+            <div class="f54-lane"><span class="n">iii.</span><span class="lbl">Every election.</span><span class="tag">— Lane 03</span></div>
+          </div>
+          <p class="f54-body">Ensuring communities always have <em>candidates, conversations, and real choices.</em></p>
+          <div class="f54-tag"><span>Join us in this movement</span><span class="em">— The starting line is here.</span></div>
+          <div class="f54-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-      <div class="row">
-        <span class="k">·</span>
-        <span class="v">Every district.</span>
-      </div>
-      <div class="row">
-        <span class="k">·</span>
-        <span class="v">Every voter.</span>
-      </div>
-      <div class="row">
-        <span class="k">·</span>
-        <span class="v">Every election.</span>
-      </div>
-    </div>
     
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

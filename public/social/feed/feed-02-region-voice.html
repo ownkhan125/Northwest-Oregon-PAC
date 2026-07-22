@@ -10,32 +10,83 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-forest">
+  <div class="canvas  s-light">
+    <style>
+        .f02 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.6) 0%, transparent 55%),
+            linear-gradient(180deg, #efe6cd 0%, #d9c99e 100%);
+          color:#2e4538;
+        }
+        .f02::before {
+          content:''; position:absolute; inset:0; opacity:.35; pointer-events:none;
+          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.2  0 0 0 0 0.12  0 0 0 0.3 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+          mix-blend-mode:multiply;
+        }
+        .f02-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f02-mast img { height:56px; width:auto; }
+        /* Left title lockup */
+        .f02-title { position:absolute; top:190px; left:76px; right:520px; z-index:6; }
+        .f02-title .kick { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f02-title .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f02-title .head { margin-top:22px; font-family:var(--font-display); font-weight:500; font-size:104px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
+        .f02-title .head em { font-style:italic; color:#5a7060; display:block; }
+        /* Atlas plate on right */
+        .f02-atlas { position:absolute; top:150px; right:70px; z-index:5; width:440px; height:520px; padding:24px 26px; background:rgba(246,242,232,.7); border:1.5px solid rgba(46,69,56,.35); box-shadow:0 24px 60px -32px rgba(46,69,56,.4); }
+        .f02-atlas::before { content:''; position:absolute; inset:8px; border:1px solid rgba(46,69,56,.28); pointer-events:none; }
+        .f02-atlas .head { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:10px; border-bottom:1px solid rgba(46,69,56,.4); font-family:var(--font-mono); font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.65); }
+        .f02-atlas .head .n { font-family:var(--font-display); font-style:italic; font-size:18px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f02-atlas svg { display:block; margin:12px auto; width:100%; height:280px; color:#2e4538; }
+        .f02-atlas .marker { fill:#5a7060; }
+        .f02-atlas .towns { margin-top:6px; display:grid; grid-template-columns:1fr 1fr; gap:6px 14px; font-family:var(--font-mono); font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:rgba(46,69,56,.75); }
+        .f02-atlas .towns span::before { content:'•'; margin-right:8px; color:#5a7060; }
+        /* Bottom manifesto strip */
+        .f02-manifesto { position:absolute; left:76px; right:76px; bottom:130px; z-index:5; display:flex; align-items:center; gap:22px; padding-top:20px; border-top:2px solid rgba(46,69,56,.4); }
+        .f02-manifesto .k { font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.65); flex:none; }
+        .f02-manifesto .v { flex:1; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.22; letter-spacing:-.012em; color:#2e4538; }
+        .f02-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f02">
+          <div class="f02-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Plate 02 · Regional Atlas</span>
+          </div>
+          <div class="f02-title">
+            <span class="kick">Our region</span>
+            <h1 class="head">Our Region.<em>Our Voice.</em></h1>
+          </div>
+          <div class="f02-atlas">
+            <div class="head"><span>Northwest Oregon</span><span class="n">Fig. 02</span></div>
+            <svg viewBox="0 0 200 220" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M20 30 C 42 22 60 34 78 28 C 96 22 106 40 122 34 C 138 28 152 42 168 34 L 180 60 L 172 88 L 184 116 L 168 148 L 178 176 L 152 200 L 118 208 L 82 202 L 46 208 L 26 188 L 30 156 L 22 130 L 34 100 L 24 68 Z" fill="currentColor" fill-opacity=".08"/>
+              <path d="M20 30 C 42 22 60 34 78 28 C 96 22 106 40 122 34 C 138 28 152 42 168 34 L 180 60 L 172 88 L 184 116 L 168 148 L 178 176 L 152 200 L 118 208 L 82 202 L 46 208 L 26 188 L 30 156 L 22 130 L 34 100 L 24 68 Z"/>
+              <circle class="marker" cx="46" cy="62" r="4"/>
+              <text x="55" y="66" font-family="JetBrains Mono" font-size="9" fill="currentColor" stroke="none">ASTORIA</text>
+              <circle class="marker" cx="72" cy="106" r="4"/>
+              <text x="80" y="110" font-family="JetBrains Mono" font-size="9" fill="currentColor" stroke="none">TILLAMOOK</text>
+              <circle class="marker" cx="132" cy="90" r="4"/>
+              <text x="140" y="94" font-family="JetBrains Mono" font-size="9" fill="currentColor" stroke="none">FOREST GROVE</text>
+              <circle class="marker" cx="152" cy="118" r="4"/>
+              <text x="160" y="122" font-family="JetBrains Mono" font-size="9" fill="currentColor" stroke="none">HILLSBORO</text>
+              <circle class="marker" cx="98" cy="46" r="4"/>
+              <text x="105" y="50" font-family="JetBrains Mono" font-size="9" fill="currentColor" stroke="none">COLUMBIA CO.</text>
+            </svg>
+            <div class="towns"><span>Hillsboro</span><span>Forest Grove</span><span>Astoria</span><span>Tillamook</span><span>Columbia County</span></div>
+          </div>
+          <div class="f02-manifesto">
+            <span class="k">The claim</span>
+            <p class="v">Every community deserves competitive candidates, meaningful conversations, and leaders who understand local priorities.</p>
+          </div>
+          <div class="f02-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-headline">
-    <div class="head-top"><div class="kicker  ">Our region</div></div>
-    <div class="head-mid">
-      <h1 class="display xxl lead"><em>Our Region.</em></h1>
-      <h1 class="display xxl follow"><em>Our Voice.</em></h1>
-    </div>
-    <p class="lede">Hillsboro · Forest Grove · Astoria · Tillamook · Columbia County</p>
-    
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

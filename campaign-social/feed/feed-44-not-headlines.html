@@ -10,30 +10,67 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-light">
-    
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">How we measure</div>
-    
-    
-    <div class="body fs-58">
-      <p class="lead-p">We don't measure success by headlines. We measure it by stronger communities, better candidates, and more engaged citizens.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
+    <style>
+        .f44 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(224,214,188,.5) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2a2a26;
+        }
+        .f44::before {
+          content:''; position:absolute; inset:0; opacity:.14; pointer-events:none;
+          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.14  0 0 0 0 0.1  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+        }
+        .f44-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f44-mast img { height:56px; width:auto; }
+        /* Newspaper masthead — small editorial detail */
+        .f44-paper { position:absolute; top:170px; left:76px; right:76px; z-index:6; padding-bottom:12px; border-bottom:3px double #2a2a26; }
+        .f44-paper .meta { display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,69,56,.65); }
+        .f44-paper .meta .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2a2a26; text-transform:none; }
+        /* Primary headline — the title copy */
+        .f44-head { position:absolute; top:240px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:64px; line-height:1.02; letter-spacing:-.028em; color:#2e4538; max-width:920px; }
+        .f44-head em { font-style:italic; color:#6b5a42; }
+        /* Real measures */
+        .f44-measures { position:absolute; left:76px; right:76px; top:490px; z-index:5; padding-top:20px; border-top:1.5px solid rgba(46,69,56,.4); display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+        .f44-measure { padding:22px 22px; background:rgba(246,242,232,.78); border:1.5px solid rgba(46,69,56,.4); display:flex; flex-direction:column; gap:10px; position:relative; box-shadow:0 20px 40px -24px rgba(46,69,56,.4); }
+        .f44-measure .n { font-family:var(--font-display); font-style:italic; font-size:36px; line-height:1; color:rgba(46,69,56,.35); letter-spacing:-.02em; }
+        .f44-measure .k { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f44-measure .v { margin-top:auto; font-family:var(--font-display); font-weight:500; font-size:30px; line-height:1.04; letter-spacing:-.022em; color:#2e4538; }
+        .f44-measure .v em { font-style:italic; color:#5a7060; }
+        /* Sig */
+        .f44-sig { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.18; letter-spacing:-.015em; color:#2e4538; text-align:center; }
+        .f44-sig em { font-style:normal; color:#5a7060; }
+        .f44-tag { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f44-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f44-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f44">
+          <div class="f44-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Correction 44 · How We Measure</span>
+          </div>
+          <div class="f44-paper">
+            <div class="meta"><span>Vol. 44 · No. 01</span><span class="em">The Northwest Front Page</span><span>Est. 2026</span></div>
+          </div>
+          <h1 class="f44-head">We don't measure success by <em>headlines.</em></h1>
+          <div class="f44-measures">
+            <div class="f44-measure"><span class="n">i.</span><span class="k">— Measure 01</span><span class="v">Stronger <em>communities.</em></span></div>
+            <div class="f44-measure"><span class="n">ii.</span><span class="k">— Measure 02</span><span class="v">Better <em>candidates.</em></span></div>
+            <div class="f44-measure"><span class="n">iii.</span><span class="k">— Measure 03</span><span class="v">More <em>engaged citizens.</em></span></div>
+          </div>
+          <p class="f44-sig">A stronger political organization can make a difference for <em>generations.</em></p>
+          <div class="f44-tag"><span>That's the commitment we're making</span><span class="em">— To Northwest Oregon.</span></div>
+          <div class="f44-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+
+
     <div class="grain"></div>
   </div>
 </body>

@@ -10,30 +10,69 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-sand">
+  <div class="canvas  s-light">
+    <style>
+        .f51 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f51-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f51-mast img { height:56px; width:auto; }
+        .f51-section { position:absolute; top:180px; left:76px; right:76px; z-index:6; display:flex; align-items:center; gap:22px; font-family:var(--font-mono); font-weight:600; font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:#6b5a42; }
+        .f51-section .rule { flex:1; height:1px; background:currentColor; opacity:.5; }
+        .f51-head { position:absolute; top:230px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:56px; line-height:1.02; letter-spacing:-.028em; color:#2e4538; max-width:920px; }
+        .f51-head em { font-style:italic; color:#5a7060; }
+        /* Year strip */
+        .f51-strip { position:absolute; left:76px; right:76px; top:450px; z-index:5; padding-top:22px; border-top:1.5px solid rgba(46,69,56,.35); }
+        .f51-strip .yrs { position:relative; height:240px; display:grid; grid-template-columns:1fr 1fr 1fr 1fr 1fr; gap:12px; align-items:start; }
+        .f51-strip .yr { display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:10px; padding-bottom:14px; border-bottom:1px dashed rgba(46,69,56,.35); position:relative; }
+        .f51-strip .yr .lbl { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.5); }
+        .f51-strip .yr .disc { width:64px; height:64px; border-radius:999px; border:2px solid #2e4538; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:22px; letter-spacing:-.02em; color:#2e4538; background:transparent; }
+        .f51-strip .yr.on .disc { background:#e0d6bc; box-shadow:0 8px 22px -8px rgba(46,69,56,.4); }
+        .f51-strip .yr.on .lbl { color:#5a7060; font-weight:500; }
+        /* Bracket over dark years — sits BELOW the row */
+        .f51-strip .brace { position:absolute; left:22%; right:22%; top:150px; height:28px; border:2px solid #2e4538; border-bottom:none; border-radius:12px 12px 0 0; pointer-events:none; }
+        .f51-strip .brace-lbl { position:absolute; left:22%; right:22%; top:182px; text-align:center; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); display:flex; align-items:baseline; justify-content:center; gap:14px; }
+        .f51-strip .brace-lbl .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        /* Body */
+        .f51-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.012em; color:#2e4538; max-width:920px; }
+        .f51-body em { font-style:italic; color:#6b5a42; }
+        .f51-tag { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f51-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f51-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f51">
+          <div class="f51-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Calendar 51 · The Empty Years</span>
+          </div>
+          <div class="f51-section"><span>Northwest Oregon</span><span class="rule"></span><span>No. 51</span></div>
+          <h1 class="f51-head">Our communities deserve more than <em>attention every four years.</em></h1>
+          <div class="f51-strip">
+            <div class="yrs">
+              <div class="yr on"><span class="lbl">— Election</span><span class="disc">'22</span></div>
+              <div class="yr"><span class="lbl">— Quiet year</span><span class="disc">'23</span></div>
+              <div class="yr"><span class="lbl">— Quiet year</span><span class="disc">'24</span></div>
+              <div class="yr"><span class="lbl">— Quiet year</span><span class="disc">'25</span></div>
+              <div class="yr on"><span class="lbl">— Election</span><span class="disc">'26</span></div>
+              <div class="brace"></div>
+              <div class="brace-lbl"><span>Three empty years</span><span class="em">— Where were they?</span></div>
+            </div>
+          </div>
+          <p class="f51-body">They deserve <em>consistent leadership,</em> local investment, and representatives who never stop showing up.</p>
+          <div class="f51-tag"><span>Campaigns come and go</span><span class="em">— Communities remain.</span></div>
+          <div class="f51-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sage" style="width:820px;height:820px;top:-220px;left:-160px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-240px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-badge">
-    <div class="badge-section">Northwest Oregon</div>
-    <div class="badge-rule"></div>
-    <h1 class="display lg">Our communities deserve more than attention every <em>four years.</em></h1>
-    
-    <p class="body">They deserve consistent leadership, local investment, and representatives who never stop showing up.</p>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

@@ -61,7 +61,7 @@ export const home = {
     eyebrow: 'OREGON STATE PAC · COMMITTEE #25045 · 2026',
     heading: 'A stronger voice for Northwest Oregon.',
     paragraphs: [
-      'Northwest Oregon PAC brings together neighbours, moderates, independents, and common-sense voters who believe our region deserves serious candidates, practical solutions, and sustained local support.',
+      'Northwest Oregon PAC brings together neighbors, moderates, independents, and common-sense voters who believe our region deserves serious candidates, practical solutions, and sustained local support.',
       'We invest in the people, organization, and messaging needed to advance prosperity, accountability, public safety, workforce readiness, and reliable energy across Northwest Oregon.',
     ],
     ctas: {
@@ -535,7 +535,7 @@ export const aboutPage = {
       },
       {
         title: 'Who we serve',
-        body: 'People who work, build businesses, raise families, serve their communities, and expect government to deliver results. We welcome neighbours, moderates, independents, and other practical voters who believe our region needs a stronger voice.',
+        body: 'People who work, build businesses, raise families, serve their communities, and expect government to deliver results. We welcome neighbors, moderates, independents, and other practical voters who believe our region needs a stronger voice.',
       },
       {
         title: 'How we work',

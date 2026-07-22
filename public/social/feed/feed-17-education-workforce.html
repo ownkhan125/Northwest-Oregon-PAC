@@ -10,32 +10,92 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-forest">
+  <div class="canvas  s-light">
+    <style>
+        .f17 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 10%, rgba(224,214,188,.6) 0%, transparent 55%),
+            linear-gradient(180deg, #ecdfb4 0%, #cfb87a 100%);
+          color:#2e4538;
+        }
+        .f17::before {
+          content:''; position:absolute; inset:0; opacity:.3; pointer-events:none;
+          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.2  0 0 0 0 0.12  0 0 0 0.3 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+          mix-blend-mode:multiply;
+        }
+        .f17-mast { position:absolute; top:56px; left:76px; right:76px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f17-mast img { height:56px; width:auto; }
+        /* Parchment */
+        .f17-parch { position:absolute; top:170px; bottom:150px; left:80px; right:80px; z-index:5;
+          background:
+            radial-gradient(120% 90% at 20% 15%, rgba(255,250,235,.9) 0%, rgba(240,232,206,.9) 100%);
+          border:1.5px solid rgba(46,69,56,.4);
+          box-shadow:0 30px 60px -30px rgba(46,69,56,.5), inset 0 1px 0 rgba(255,255,255,.6);
+          padding:34px 46px 40px;
+          display:flex; flex-direction:column;
+        }
+        .f17-parch::before { content:''; position:absolute; inset:14px; border:1px double #2e4538; pointer-events:none; }
+        /* Scroll top curl */
+        .f17-parch::after {
+          content:''; position:absolute; left:0; right:0; top:-4px; height:14px;
+          background:linear-gradient(180deg, rgba(140,110,60,.3) 0%, transparent 100%);
+        }
+        /* Corner ornaments */
+        .f17-corner { position:absolute; font-family:var(--font-display); font-style:italic; font-size:48px; color:#5a7060; letter-spacing:-.02em; }
+        .f17-corner.tl { top:14px; left:22px; }
+        .f17-corner.tr { top:14px; right:22px; }
+        .f17-corner.bl { bottom:18px; left:22px; }
+        .f17-corner.br { bottom:18px; right:22px; }
+        /* Header row */
+        .f17-parch .head { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:14px; border-bottom:2px solid #2e4538; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f17-parch .head .em { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        /* Priority kicker */
+        .f17-parch .prio { margin-top:24px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f17-parch .prio::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        /* Big title */
+        .f17-parch .title { margin-top:14px; font-family:var(--font-display); font-weight:500; font-size:80px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
+        .f17-parch .title em { display:block; font-style:italic; color:#5a7060; }
+        /* Subtitle */
+        .f17-parch .sub { margin-top:14px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:32px; line-height:1.16; letter-spacing:-.015em; color:rgba(46,69,56,.85); }
+        /* Body paragraph */
+        .f17-parch .body { margin-top:22px; padding-top:16px; border-top:1.5px dashed rgba(46,69,56,.45); font-family:var(--font-display); font-weight:500; font-size:26px; line-height:1.24; letter-spacing:-.012em; color:#2e4538; max-width:840px; }
+        .f17-parch .body em { font-style:italic; color:#6b5a42; }
+        /* Ribbon at bottom */
+        .f17-parch .ribbon { margin-top:auto; padding-top:18px; border-top:1.5px solid rgba(46,69,56,.4); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
+        .f17-parch .ribbon .class {
+          padding:8px 18px; background:#2e4538; color:#f6f2e8;
+          font-family:var(--font-mono); font-weight:600; font-size:14px; letter-spacing:.4em;
+        }
+        .f17-parch .ribbon .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f17-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f17">
+          <div class="f17-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Diploma 17 · Priority 04</span>
+          </div>
+          <div class="f17-parch">
+            <span class="f17-corner tl">§</span>
+            <span class="f17-corner tr">§</span>
+            <span class="f17-corner bl">§</span>
+            <span class="f17-corner br">§</span>
+            <div class="head"><span>The Northwest Diploma</span><span class="em">Priority · 04</span><span>No. 17</span></div>
+            <span class="prio">— Awarded to the next generation</span>
+            <h1 class="title">Education & Workforce<em>Development</em></h1>
+            <p class="sub">Preparing today's students for tomorrow's opportunities.</p>
+            <p class="body">Northwest Oregon's students need classrooms that <em>inspire learning,</em> career pathways that reflect today's economy, and the skills to succeed wherever their ambitions lead.</p>
+            <div class="ribbon"><span class="class">Class of 2026</span><span class="em">— A stronger workforce, a stronger region.</span></div>
+          </div>
+          <div class="f17-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-headline">
-    <div class="head-top"><div class="kicker  ">Priority · 04</div></div>
-    <div class="head-mid">
-      <h1 class="display xl lead">Education &amp; <em>Workforce</em></h1>
-      <h1 class="display xl follow"><em>Development</em></h1>
-    </div>
-    <p class="lede">Preparing today's students for tomorrow's opportunities.</p>
-    
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

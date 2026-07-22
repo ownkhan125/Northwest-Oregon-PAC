@@ -10,31 +10,68 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-sand">
-    
-  <div class="glow sage" style="width:660px;height:660px;top:-160px;left:-160px;opacity:.4"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-checklist">
-    <div class="kicker  long">Every movement needs people willing to step forward.</div>
-    <h1 class="display xxl">Where do you <em>fit in?</em></h1>
-    
-    <ul class="items">
-      <li><span class="mark">•</span><span class="txt">Knock doors</span></li><li><span class="mark">•</span><span class="txt">Make calls</span></li><li><span class="mark">•</span><span class="txt">Help at events</span></li><li><span class="mark">•</span><span class="txt">Support candidates</span></li><li><span class="mark">•</span><span class="txt">Share your skills</span></li>
-    </ul>
-    <div class="footer">There's a place for you.</div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
+  <div class="canvas s-sand">
+    <style>
+      .f33 { position:absolute; inset:0; z-index:10; overflow:hidden;
+        background:
+          radial-gradient(120% 90% at 20% 5%, rgba(240,232,206,.6) 0%, transparent 55%),
+          radial-gradient(80% 60% at 100% 100%, rgba(107,90,66,.3) 0%, transparent 60%),
+          linear-gradient(180deg, #efe6cd 0%, #d8c68e 100%);
+        color:#2e4538;
+      }
+      .f33::before { content:''; position:absolute; inset:0; opacity:.24; pointer-events:none;
+        background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.3 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+        mix-blend-mode:multiply; }
+      .f33-mast { position:absolute; top:56px; left:76px; right:76px; z-index:7; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+      .f33-mast img { height:56px; width:auto; }
+      /* Headline block */
+      .f33-kick { position:absolute; top:176px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+      .f33-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+      .f33-head { position:absolute; top:216px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:110px; line-height:.94; letter-spacing:-.03em; color:#2e4538; }
+      .f33-head em { font-style:italic; color:#5a7060; }
+      .f33-head .rule { display:block; width:120px; height:2px; margin-top:22px; background:#2e4538; }
+      /* Puzzle-piece tiles - each cell a distinct shape */
+      .f33-grid { position:absolute; left:76px; right:76px; top:470px; z-index:5; display:grid; grid-template-columns:1.1fr 1fr 1fr; grid-template-rows:120px 120px; gap:14px; }
+      .f33-tile { position:relative; padding:18px 22px; background:rgba(246,242,232,.9); border:1.5px solid rgba(46,69,56,.4); box-shadow:0 12px 26px -18px rgba(46,69,56,.35); display:flex; flex-direction:column; justify-content:space-between; }
+      .f33-tile.dark { background:#2e4538; color:#f6f2e8; border-color:#2e4538; }
+      .f33-tile.sage { background:#5a7060; color:#f6f2e8; border-color:#5a7060; }
+      .f33-tile .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      .f33-tile.dark .n, .f33-tile.sage .n { color:rgba(224,214,188,.55); }
+      .f33-tile .w { font-family:var(--font-display); font-weight:500; font-size:26px; line-height:1.02; letter-spacing:-.022em; color:#2e4538; }
+      .f33-tile.dark .w, .f33-tile.sage .w { color:#e0d6bc; }
+      .f33-tile.dark .w em, .f33-tile.sage .w em { font-style:italic; }
+      /* Bottom body strip */
+      .f33-body { position:absolute; left:76px; right:76px; bottom:190px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-weight:500; font-size:24px; line-height:1.22; letter-spacing:-.015em; color:#2e4538; max-width:920px; }
+      .f33-body em { font-style:italic; color:#6b5a42; }
+      .f33-sig { position:absolute; left:76px; right:76px; bottom:118px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+      .f33-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+      .f33-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+    </style>
+    <div class="f33">
+      <div class="f33-mast">
+        <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+        <span>No. 33 · Where You Fit</span>
+      </div>
+      <span class="f33-kick">There's a place for everyone</span>
+      <h1 class="f33-head">Where do <em>you</em> fit in?<span class="rule"></span></h1>
+      <div class="f33-grid">
+        <div class="f33-tile dark"><span class="n">Option i.</span><span class="w"><em>A few hours a month.</em></span></div>
+        <div class="f33-tile"><span class="n">Option ii.</span><span class="w">Every week.</span></div>
+        <div class="f33-tile sage"><span class="n">Option iii.</span><span class="w"><em>Whenever it counts.</em></span></div>
+        <div class="f33-tile"><span class="n">Role i.</span><span class="w">Strengthen campaigns.</span></div>
+        <div class="f33-tile"><span class="n">Role ii.</span><span class="w">Strengthen communities.</span></div>
+        <div class="f33-tile dark"><span class="n">Role iii.</span><span class="w"><em>Across Northwest Oregon.</em></span></div>
+      </div>
+      <p class="f33-body">Whether you have a few hours a month or want to get involved every week, <em>your time can help</em> strengthen campaigns and communities across Northwest Oregon.</p>
+      <div class="f33-sig"><span>Find your place</span><span class="em">— We'll meet you there.</span></div>
+      <div class="f33-foot">
+        <span>Paid for by Northwest Oregon PAC · #25045</span>
+        <span>northwestoregon.com</span>
+      </div>
+    </div>
     <div class="grain"></div>
   </div>
 </body>

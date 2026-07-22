@@ -10,30 +10,72 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-forest">
+    <style>
+        .f06 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 10%, rgba(90,112,96,.5) 0%, transparent 55%),
+            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
+            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+          color:#f6f2e8;
+        }
+        .f06-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f06-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        /* Ceremonial preamble */
+        .f06-preamble { position:absolute; top:180px; left:76px; right:76px; z-index:6; padding-bottom:16px; border-bottom:1.5px solid rgba(246,242,232,.35); display:flex; align-items:baseline; justify-content:space-between; gap:22px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.65); }
+        .f06-preamble .em { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        /* Big statement */
+        .f06-title { position:absolute; top:250px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:96px; line-height:.98; letter-spacing:-.028em; color:#f6f2e8; max-width:900px; }
+        .f06-title em { font-style:italic; color:#e0d6bc; display:block; }
+        /* Three numbered inscription rules */
+        .f06-clauses { position:absolute; left:76px; right:76px; bottom:200px; z-index:6; display:flex; flex-direction:column; gap:22px; }
+        .f06-clauses .clause { display:flex; align-items:baseline; gap:24px; padding-bottom:16px; border-bottom:1px solid rgba(246,242,232,.28); }
+        .f06-clauses .clause .n { flex:none; width:56px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+        .f06-clauses .clause .txt { flex:1; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:30px; line-height:1.16; letter-spacing:-.015em; color:rgba(246,242,232,.94); }
+        .f06-clauses .clause .txt em { font-style:normal; color:#e0d6bc; }
+        /* Wax seal — icon on top, label centered beneath with tight gap */
+        .f06-seal {
+          position:absolute; right:76px; top:170px; z-index:7;
+          width:132px; height:132px; border-radius:999px;
+          background:radial-gradient(circle at 32% 30%, #e0d6bc 0%, #6b5a42 90%);
+          border:3px solid rgba(224,214,188,.75);
+          display:flex; align-items:center; justify-content:center; flex-direction:column;
+          gap:6px;
+          color:#2e4538; font-family:var(--font-mono); font-size:10px; letter-spacing:.32em; text-transform:uppercase;
+          transform:rotate(-8deg);
+          box-shadow:0 20px 40px -18px rgba(0,0,0,.5), inset 0 -6px 12px rgba(0,0,0,.2);
+        }
+        .f06-seal .icon { font-family:var(--font-display); font-style:italic; font-size:28px; line-height:1; }
+        .f06-seal .lbl { padding-top:4px; border-top:1px solid rgba(46,69,56,.35); }
+        /* Signed footer */
+        .f06-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f06-sig .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f06-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f06">
+          <div class="f06-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Charter 06 · Our Mission</span>
+          </div>
+          <div class="f06-preamble"><span>The Charter</span><span class="em">Signed by the region</span><span>No. 06</span></div>
+          <h1 class="f06-title">We Exist For<em>NorthWest Oregon</em></h1>
+          <div class="f06-seal"><span class="icon">☘</span><span class="lbl">Est. 2026</span></div>
+          <div class="f06-clauses">
+            <div class="clause"><span class="n">01</span><span class="txt">We believe every voter deserves a <em>meaningful choice.</em></span></div>
+            <div class="clause"><span class="n">02</span><span class="txt">That's why Northwest Oregon PAC works to strengthen campaigns, recruit leaders, organize volunteers, and support <em>candidates prepared to serve.</em></span></div>
+            <div class="clause"><span class="n">03</span><span class="txt">Building a stronger region starts long <em>before Election Day.</em></span></div>
+          </div>
+          <div class="f06-sig"><span>Learn more at our website</span><span class="em">— northwestoregon.com</span></div>
+          <div class="f06-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Northwest Oregon PAC</div>
-    <h1 class="display xl">We Exist For <em>NorthWest Oregon</em></h1>
-    
-    <div class="body fs-30">
-      <p class="">We believe every voter deserves a meaningful choice.</p><p class="">That's why Northwest Oregon PAC works to strengthen campaigns, recruit leaders, organize volunteers, and support candidates prepared to serve.</p><p class="">Building a stronger region starts long before Election Day.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

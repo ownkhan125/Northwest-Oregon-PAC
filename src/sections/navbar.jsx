@@ -55,8 +55,14 @@ export default function Navbar() {
 
   const isActive = (href) => (href === '/' ? pathname === '/' : pathname?.startsWith(href))
 
-  // Standalone conversion funnels (/funnel) render without global chrome.
-  if (pathname === '/funnel' || pathname?.startsWith('/funnel/')) return null
+  // Standalone conversion funnels (/funnel, /thank-you) render without global chrome.
+  if (
+    pathname === '/funnel' ||
+    pathname?.startsWith('/funnel/') ||
+    pathname === '/thank-you' ||
+    pathname?.startsWith('/thank-you/')
+  )
+    return null
 
   return (
     <>

@@ -10,32 +10,101 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-sand">
-    
-  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-headline">
-    <div class="head-top"><div class="kicker  ">Stay connected</div></div>
-    <div class="head-mid">
-      <h1 class="display xxl lead"><em>Stay informed.</em></h1>
-      <h1 class="display xxl follow"><em>Stay involved.</em></h1>
+  <div class="canvas s-forest">
+    <style>
+      .f37 { position:absolute; inset:0; z-index:10; overflow:hidden;
+        background:
+          radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
+          radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
+          linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+        color:#f6f2e8;
+      }
+      .f37::before { content:''; position:absolute; inset:0; opacity:.2; pointer-events:none;
+        background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.92  0 0 0 0 0.88  0 0 0 0 0.78  0 0 0 0.24 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+        mix-blend-mode:overlay; }
+      .f37-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+      .f37-mast img { height:56px; width:auto; filter:brightness(1.05); }
+      /* Two column layout — headline left, broadcast wave right */
+      .f37-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); display:inline-flex; align-items:center; gap:16px; }
+      .f37-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+      .f37-head { position:absolute; top:220px; left:76px; width:540px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:72px; line-height:.98; letter-spacing:-.028em; color:#f6f2e8; }
+      .f37-head .a { display:block; }
+      .f37-head .b { display:block; font-style:italic; color:#e0d6bc; }
+      .f37-head .rule { display:block; width:110px; height:2px; margin-top:22px; background:#e0d6bc; }
+      /* Broadcast beacon right */
+      .f37-beacon { position:absolute; top:210px; right:60px; width:420px; height:420px; z-index:5; }
+      .f37-beacon svg { display:block; width:100%; height:100%; }
+      /* Body */
+      .f37-body { position:absolute; top:530px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:26px; line-height:1.24; letter-spacing:-.015em; color:#f6f2e8; max-width:920px; }
+      .f37-body em { font-style:italic; color:#e0d6bc; }
+      /* Channels row */
+      .f37-lbl { position:absolute; left:76px; right:76px; bottom:280px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+      .f37-bands { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; }
+      .f37-band { padding:14px 16px; background:rgba(224,214,188,.06); border:1px solid rgba(246,242,232,.35); text-align:center; }
+      .f37-band .n { font-family:var(--font-mono); font-size:10px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      .f37-band .w { display:block; margin-top:6px; font-family:var(--font-display); font-style:italic; font-size:20px; letter-spacing:-.01em; color:#e0d6bc; }
+      .f37-sig { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.65); }
+      .f37-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+      .f37-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+    </style>
+    <div class="f37">
+      <div class="f37-mast">
+        <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+        <span>No. 37 · Stay Connected</span>
+      </div>
+      <span class="f37-kick">Change starts with staying informed</span>
+      <h1 class="f37-head">
+        <span class="a">Stay informed.</span>
+        <span class="b">Stay involved.</span>
+        <span class="rule"></span>
+      </h1>
+      <div class="f37-beacon">
+        <svg viewBox="0 0 420 420" fill="none">
+          <!-- Beacon signal rings -->
+          <circle cx="210" cy="210" r="190" stroke="rgba(224,214,188,.18)" stroke-width="1.2" fill="none"/>
+          <circle cx="210" cy="210" r="150" stroke="rgba(224,214,188,.28)" stroke-width="1.2" fill="none"/>
+          <circle cx="210" cy="210" r="112" stroke="rgba(224,214,188,.4)" stroke-width="1.4" fill="none"/>
+          <circle cx="210" cy="210" r="76" stroke="rgba(224,214,188,.55)" stroke-width="1.4" fill="none"/>
+          <!-- Center transmitter -->
+          <circle cx="210" cy="210" r="44" fill="#e0d6bc"/>
+          <circle cx="210" cy="210" r="26" fill="#2e4538"/>
+          <text x="210" y="212" font-family="JetBrains Mono" font-size="10" fill="#e0d6bc" text-anchor="middle" letter-spacing="2.5">NWOP</text>
+          <!-- Signal ticks at cardinal directions -->
+          <g stroke="#e0d6bc" stroke-width="2" stroke-linecap="round">
+            <line x1="210" y1="16" x2="210" y2="34"/>
+            <line x1="404" y1="210" x2="386" y2="210"/>
+            <line x1="210" y1="404" x2="210" y2="386"/>
+            <line x1="16" y1="210" x2="34" y2="210"/>
+          </g>
+          <!-- Small dashes -->
+          <g stroke="rgba(224,214,188,.55)" stroke-width="1.2" stroke-linecap="round">
+            <line x1="347" y1="72" x2="336" y2="83"/>
+            <line x1="347" y1="348" x2="336" y2="337"/>
+            <line x1="72" y1="347" x2="83" y2="336"/>
+            <line x1="72" y1="72" x2="83" y2="83"/>
+          </g>
+          <!-- Label -->
+          <text x="210" y="285" font-family="JetBrains Mono" font-size="10" fill="#e0d6bc" text-anchor="middle" letter-spacing="3">BROADCASTING</text>
+          <text x="210" y="308" font-family="Lora" font-style="italic" font-size="20" fill="#e0d6bc" text-anchor="middle">across the region</text>
+        </svg>
+      </div>
+      <p class="f37-body">Follow Northwest Oregon PAC for <em>campaign updates,</em> <em>community events,</em> <em>candidate announcements,</em> and opportunities to get involved.</p>
+      <p class="f37-lbl">— Follow the PAC on</p>
+      <div class="f37-bands">
+        <div class="f37-band"><span class="n">Ch. i.</span><span class="w">Facebook</span></div>
+        <div class="f37-band"><span class="n">Ch. ii.</span><span class="w">Website</span></div>
+        <div class="f37-band"><span class="n">Ch. iii.</span><span class="w">Email</span></div>
+        <div class="f37-band"><span class="n">Ch. iv.</span><span class="w">Newsletter</span></div>
+      </div>
+      <div class="f37-sig"><span>Tune in</span><span class="em">— Stay involved.</span></div>
+      <div class="f37-foot">
+        <span>Paid for by Northwest Oregon PAC · #25045</span>
+        <span>northwestoregon.com</span>
+      </div>
     </div>
-    <p class="lede">Follow Northwest Oregon PAC for candidate updates, local events, campaign news, and the issues shaping our communities.</p>
-    <div class="lines"><span>Facebook · Website · Email Updates</span></div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

@@ -10,32 +10,95 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-light">
+    <style>
+        .f07 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 5%, rgba(224,214,188,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e2d4a8 100%);
+          color:#2e4538;
+        }
+        .f07-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f07-mast img { height:56px; width:auto; }
+        /* Editorial title top-right */
+        .f07-title { position:absolute; top:180px; left:76px; right:76px; z-index:6; display:flex; align-items:flex-end; justify-content:space-between; gap:22px; }
+        .f07-title .kick { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f07-title .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f07-title .h { font-family:var(--font-display); font-weight:500; font-size:92px; line-height:.98; letter-spacing:-.028em; color:#2e4538; text-align:right; }
+        .f07-title .h em { display:block; font-style:italic; color:#5a7060; }
+        /* Balance beam */
+        .f07-scale { position:absolute; left:76px; right:76px; top:420px; height:340px; z-index:5; }
+        .f07-scale .fulcrum { position:absolute; left:calc(50% - 12px); top:60px; width:24px; height:190px; background:linear-gradient(180deg, #2e4538 0%, #1c2b23 100%); border-radius:2px; }
+        .f07-scale .beam {
+          position:absolute; left:6%; right:6%; top:66px; height:6px; background:#2e4538; border-radius:3px;
+          transform:rotate(-3deg); transform-origin:center;
+          box-shadow:0 6px 14px -6px rgba(46,69,56,.5);
+        }
+        .f07-scale .pan {
+          position:absolute; top:56px;
+          width:280px; padding:20px 22px;
+          background:rgba(246,242,232,.65); border:1.5px solid rgba(46,69,56,.4);
+          box-shadow:0 20px 40px -22px rgba(46,69,56,.4);
+        }
+        .f07-scale .pan.left { left:10px; transform:translateY(-6px) rotate(-3deg); transform-origin:top center; }
+        .f07-scale .pan.right { right:10px; transform:translateY(30px) rotate(-3deg); transform-origin:top center; }
+        .f07-scale .pan::before { content:''; position:absolute; left:calc(50% - 1px); top:-56px; width:2px; height:56px; background:rgba(46,69,56,.5); }
+        .f07-scale .pan .lbl { font-family:var(--font-mono); font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.55); margin-bottom:10px; }
+        .f07-scale .pan.right .lbl { color:rgba(46,69,56,.6); }
+        .f07-scale .pan .stack { display:flex; flex-direction:column; gap:6px; }
+        .f07-scale .pan .stack .chip {
+          padding:8px 12px; background:rgba(46,69,56,.08); border:1px solid rgba(46,69,56,.35);
+          font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; text-transform:uppercase; color:#2e4538; text-align:center;
+        }
+        .f07-scale .pan.right .big {
+          font-family:var(--font-display); font-weight:500; font-style:italic; font-size:36px;
+          line-height:1.02; letter-spacing:-.015em; color:#2e4538; text-align:center; padding:8px 6px;
+        }
+        .f07-scale .pan.right .big em { font-style:normal; color:#5a7060; }
+        /* Legend under scale */
+        .f07-legend { position:absolute; left:76px; right:76px; bottom:160px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); display:flex; align-items:baseline; justify-content:space-between; gap:22px; }
+        .f07-legend .k { font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.55); flex:none; }
+        .f07-legend .v { flex:1; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; line-height:1.22; letter-spacing:-.012em; color:#2e4538; text-align:right; }
+        .f07-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f07">
+          <div class="f07-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Figure 07 · The Balance</span>
+          </div>
+          <div class="f07-title">
+            <span class="kick">Together we build</span>
+            <h1 class="h">Small Actions.<em>Big Impact.</em></h1>
+          </div>
+          <div class="f07-scale">
+            <div class="beam"></div>
+            <div class="fulcrum"></div>
+            <div class="pan left">
+              <span class="lbl">— Small actions</span>
+              <div class="stack">
+                <span class="chip">Every conversation</span>
+                <span class="chip">Every volunteer</span>
+                <span class="chip">Every donation</span>
+                <span class="chip">Every supporter</span>
+              </div>
+            </div>
+            <div class="pan right">
+              <span class="lbl">— Big impact</span>
+              <div class="big">Stronger <em>campaigns.</em></div>
+              <div class="big">Stronger <em>communities.</em></div>
+            </div>
+          </div>
+          <div class="f07-legend"><span class="k">— Thank you</span><span class="v">For helping shape Northwest Oregon's future.</span></div>
+          <div class="f07-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-headline">
-    <div class="head-top"><div class="kicker  ">Together we build</div></div>
-    <div class="head-mid">
-      <h1 class="display xxl lead"><em>Small Actions.</em></h1>
-      <h1 class="display xxl follow"><em>Big Impact.</em></h1>
-    </div>
-    
-    
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

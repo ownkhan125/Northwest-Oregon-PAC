@@ -10,30 +10,77 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-light">
+    <style>
+        .f59 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f59-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f59-mast img { height:56px; width:auto; }
+        .f59-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f59-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f59-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:72px; line-height:1; letter-spacing:-.028em; color:#2e4538; }
+        .f59-head em { font-style:italic; color:#5a7060; }
+        /* Flowchart nodes */
+        .f59-flow { position:absolute; left:76px; right:76px; top:410px; z-index:5; height:340px; }
+        /* Question box */
+        .f59-q { position:absolute; left:calc(50% - 200px); top:0; width:400px; padding:22px 24px; background:#2e4538; color:#e0d6bc; text-align:center; box-shadow:0 24px 44px -20px rgba(46,69,56,.55); }
+        .f59-q .lbl { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.7); }
+        .f59-q .v { margin-top:8px; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:36px; line-height:1.06; letter-spacing:-.02em; color:#e0d6bc; }
+        /* Branch line */
+        .f59-branches { position:absolute; left:0; right:0; top:180px; height:60px; }
+        .f59-branches svg { display:block; width:100%; height:100%; }
+        /* Result boxes */
+        .f59-result { position:absolute; top:240px; width:38%; padding:18px 20px; }
+        .f59-result.yes { left:6%; background:rgba(90,112,96,.14); border:1.5px solid #2e4538; }
+        .f59-result.no { right:6%; background:transparent; border:1.5px dashed rgba(46,69,56,.55); opacity:.7; }
+        .f59-result .lbl { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f59-result .v { margin-top:6px; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:32px; line-height:1.02; letter-spacing:-.022em; color:#2e4538; }
+        .f59-result.no .v { color:rgba(46,69,56,.55); font-style:normal; }
+        /* Body */
+        .f59-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:#2e4538; text-align:center; max-width:920px; }
+        .f59-body em { font-style:normal; color:#5a7060; }
+        .f59-tag { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f59-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f59-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f59">
+          <div class="f59-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Decision 59 · One Question</span>
+          </div>
+          <span class="f59-kick">One question guides every decision</span>
+          <h1 class="f59-head">Northwest Oregon comes <em>first.</em></h1>
+          <div class="f59-flow">
+            <div class="f59-q">
+              <span class="lbl">— The question</span>
+              <div class="v">Will this make our communities stronger?</div>
+            </div>
+            <div class="f59-branches">
+              <svg viewBox="0 0 800 60" fill="none" stroke="#2e4538" stroke-width="2">
+                <path d="M 400 0 L 400 30 L 150 30 L 150 60 M 400 30 L 650 30 L 650 60" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="220" y="20" font-family="JetBrains Mono" font-size="12" fill="#2e4538" stroke="none" letter-spacing="3">YES</text>
+                <text x="540" y="20" font-family="JetBrains Mono" font-size="12" fill="rgba(46,69,56,.55)" stroke="none" letter-spacing="3">NO</text>
+              </svg>
+            </div>
+            <div class="f59-result yes"><span class="lbl">— If yes</span><p class="v">We'll <em>fight</em> for it.</p></div>
+            <div class="f59-result no"><span class="lbl">— If no</span><p class="v">We won't.</p></div>
+          </div>
+          <p class="f59-body">Our focus has never been on <em>headlines or politics for politics' sake.</em></p>
+          <div class="f59-tag"><span>Practical leadership · Competitive candidates</span><span class="em">— Long-term investment.</span></div>
+          <div class="f59-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">One question guides every decision</div>
-    
-    
-    <div class="body fs-34">
-      <p class="lead-p">Northwest Oregon comes first.</p><p class="">Every decision we make is guided by one question:</p><p class="">Will this make our communities stronger?</p><p class="">If the answer is yes, we'll fight for it.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

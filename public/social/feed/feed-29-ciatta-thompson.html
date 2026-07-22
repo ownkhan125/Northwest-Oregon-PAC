@@ -10,38 +10,64 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-forest">
+    <style>
+        .f29 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
+            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
+            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+          color:#f6f2e8;
+        }
+        .f29-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f29-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        .f29-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
+        .f29-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        /* Portrait plate left */
+        .f29-plate { position:absolute; top:230px; left:76px; width:400px; height:520px; z-index:5; overflow:hidden; border:4px solid #e0d6bc; box-shadow:0 30px 60px -22px rgba(0,0,0,.55); }
+        .f29-plate img { width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:saturate(.88) contrast(1.14); }
+        /* Right column */
+        .f29-col { position:absolute; top:230px; left:520px; right:76px; z-index:6; display:flex; flex-direction:column; gap:22px; }
+        .f29-col .name { font-family:var(--font-display); font-weight:500; font-size:80px; line-height:.98; letter-spacing:-.028em; color:#f6f2e8; }
+        .f29-col .name em { display:block; font-style:italic; color:#e0d6bc; }
+        .f29-col .office { padding-top:14px; border-top:1.5px solid rgba(246,242,232,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f29-col .pledges { display:flex; flex-direction:column; gap:18px; margin-top:8px; }
+        .f29-col .pledges .p { display:flex; align-items:baseline; gap:18px; padding-bottom:12px; border-bottom:1px solid rgba(246,242,232,.28); }
+        .f29-col .pledges .p .n { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.5); min-width:44px; }
+        .f29-col .pledges .p .v { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:rgba(246,242,232,.94); }
+        .f29-col .pledges .p .v em { font-style:normal; color:#e0d6bc; }
+        /* Bio + CTA at bottom */
+        .f29-cta { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f29-cta .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f29-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f29">
+          <div class="f29-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Plate 29 · Oregon House · District 33</span>
+          </div>
+          <span class="f29-kick">Meet the candidate</span>
+          <div class="f29-plate"><img src="../assets/img/ciatta-thompson.jpg" alt="Ciatta Thompson" /></div>
+          <div class="f29-col">
+            <h1 class="name">Ciatta<em>Thompson</em></h1>
+            <div class="office">— Running for Oregon House District 33</div>
+            <div class="pledges">
+              <div class="p"><span class="n">01</span><span class="v">Committed to <em>practical leadership.</em></span></div>
+              <div class="p"><span class="n">02</span><span class="v">Committed to <em>stronger communities.</em></span></div>
+              <div class="p"><span class="n">03</span><span class="v">Putting the <em>people of District 33 first.</em></span></div>
+            </div>
+          </div>
+          <div class="f29-cta"><span>Learn more</span><span class="em">— Follow the campaign</span></div>
+          <div class="f29-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="t-candidate ">
-    <div class="portrait">
-      <img src="../assets/img/ciatta-thompson.jpg" alt="Ciatta Thompson" />
-      <div class="grade"></div>
-    </div>
-    <div class="info">
-      <div class="info-top">
-        <div class="kicker  ">Meet the candidate</div>
-        <h1 class="display md"><em>Ciatta Thompson</em></h1>
-        <div class="office">Running for Oregon House District 33</div>
-      </div>
-      <p class="bio">Committed to practical leadership, stronger communities, and putting the people of District 33 first.</p>
-      <div class="info-bottom">
-        <span class="cyc"><em>2026</em></span>
-        <span class="site">Follow the campaign</span>
-      </div>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

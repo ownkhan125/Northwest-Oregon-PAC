@@ -10,31 +10,63 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-forest">
+    <style>
+        .f41 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
+            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
+            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+          color:#f6f2e8;
+        }
+        .f41-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f41-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        .f41-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
+        .f41-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f41-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1.02; letter-spacing:-.028em; color:#f6f2e8; max-width:920px; }
+        .f41-head em { display:block; font-style:italic; color:#e0d6bc; }
+        /* Ascending steps */
+        .f41-stairs { position:absolute; left:76px; right:76px; top:430px; height:340px; z-index:5; display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:14px; align-items:end; }
+        .f41-step { position:relative; background:linear-gradient(180deg, rgba(224,214,188,.14) 0%, rgba(224,214,188,.06) 100%); border:1.5px solid rgba(246,242,232,.5); padding:16px 14px 14px; display:flex; flex-direction:column; gap:8px; box-shadow:0 20px 40px -22px rgba(0,0,0,.5); }
+        .f41-step .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+        .f41-step .amt { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:52px; line-height:1; letter-spacing:-.03em; color:#e0d6bc; }
+        .f41-step .lbl { margin-top:auto; font-family:var(--font-mono); font-size:10px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f41-step.s1 { height:180px; }
+        .f41-step.s2 { height:220px; }
+        .f41-step.s3 { height:280px; }
+        .f41-step.s4 { height:340px; background:linear-gradient(180deg, rgba(224,214,188,.28) 0%, rgba(224,214,188,.08) 100%); border-width:2.5px; }
+        /* CTA plate */
+        .f41-cta { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding:16px 22px; background:#e0d6bc; color:#2e4538; display:flex; align-items:center; justify-content:space-between; gap:16px; font-family:var(--font-mono); font-weight:700; font-size:16px; letter-spacing:.44em; text-transform:uppercase; }
+        .f41-cta .em { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f41-sig { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f41-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f41-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f41">
+          <div class="f41-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Ladder 41 · Donate</span>
+          </div>
+          <span class="f41-kick">Donate</span>
+          <h1 class="f41-head">Every contribution builds a stronger<em>Northwest Oregon.</em></h1>
+          <div class="f41-stairs">
+            <div class="f41-step s1"><span class="n">— Step 01</span><span class="amt">$25</span><span class="lbl">Chip in</span></div>
+            <div class="f41-step s2"><span class="n">— Step 02</span><span class="amt">$100</span><span class="lbl">Take a stand</span></div>
+            <div class="f41-step s3"><span class="n">— Step 03</span><span class="amt">$500</span><span class="lbl">Build the bench</span></div>
+            <div class="f41-step s4"><span class="n">— Step 04</span><span class="amt">$1,000</span><span class="lbl">Anchor the region</span></div>
+          </div>
+          <div class="f41-cta"><span>Donate Today</span><span class="em">— Chip in and help strengthen Northwest Oregon.</span></div>
+          <div class="f41-sig"><span>Every dollar stays here</span><span class="em">— Focused on Northwest Oregon.</span></div>
+          <div class="f41-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:620px;height:620px;top:-160px;left:-140px;opacity:.5"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-220px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-ladder">
-    <div class="kicker  ">Donate</div>
-    <h1 class="display lg">Every contribution builds a stronger <em>Northwest Oregon.</em></h1>
-    <div class="amounts">
-      <span class="chip">$25</span><span class="chip">$100</span><span class="chip">$500</span><span class="chip">$1,000</span>
-    </div>
-    <div class="donate-cta">DONATE TODAY</div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

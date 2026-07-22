@@ -53,8 +53,14 @@ const socials = [
 
 export default function Footer() {
   const pathname = usePathname()
-  // Standalone conversion funnels (/funnel) render without global chrome.
-  if (pathname === '/funnel' || pathname?.startsWith('/funnel/')) return null
+  // Standalone conversion funnels (/funnel, /thank-you) render without global chrome.
+  if (
+    pathname === '/funnel' ||
+    pathname?.startsWith('/funnel/') ||
+    pathname === '/thank-you' ||
+    pathname?.startsWith('/thank-you/')
+  )
+    return null
 
   return (
     <footer className="bg-surface-alt border-border relative overflow-hidden border-t pt-20 sm:pt-24">

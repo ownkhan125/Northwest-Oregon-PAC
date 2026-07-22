@@ -10,30 +10,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-light">
+    <style>
+        .f10 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 5%, rgba(224,214,188,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f10::before {
+          content:''; position:absolute; inset:0; opacity:.28; pointer-events:none;
+          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.2  0 0 0 0 0.12  0 0 0 0.28 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+          mix-blend-mode:multiply;
+        }
+        .f10-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f10-mast img { height:56px; width:auto; }
+        /* Running head strip */
+        .f10-runhead { position:absolute; top:170px; left:76px; right:76px; z-index:6; padding-bottom:14px; border-bottom:1.5px solid rgba(46,69,56,.4); display:flex; align-items:baseline; justify-content:space-between; gap:22px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
+        .f10-runhead .title { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        /* Big italic quote glyph */
+        .f10-qmark { position:absolute; top:200px; left:70px; z-index:4; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:520px; line-height:.62; letter-spacing:-.08em; color:rgba(90,112,96,.22); user-select:none; }
+        /* Pull quote */
+        .f10-quote { position:absolute; top:280px; left:200px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:64px; line-height:1.04; letter-spacing:-.02em; color:#2e4538; max-width:820px; }
+        .f10-quote em { font-style:normal; color:#5a7060; }
+        /* Signed subhead */
+        .f10-sign { position:absolute; left:200px; right:76px; bottom:220px; z-index:6; padding-top:22px; border-top:1.5px solid rgba(46,69,56,.4); }
+        .f10-sign .k { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+        .f10-sign .v { margin-top:10px; font-family:var(--font-display); font-weight:500; font-size:44px; line-height:1.06; letter-spacing:-.022em; color:#2e4538; }
+        .f10-sign .v em { font-style:italic; color:#6b5a42; }
+        /* Author line */
+        .f10-author { position:absolute; left:200px; right:76px; bottom:150px; z-index:6; display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f10-author::before { content:''; width:40px; height:1px; background:currentColor; opacity:.55; }
+        .f10-author .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        /* Folio */
+        .f10-folio { position:absolute; left:76px; bottom:112px; z-index:6; font-family:var(--font-display); font-style:italic; font-size:26px; color:rgba(46,69,56,.6); letter-spacing:-.01em; }
+        .f10-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f10">
+          <div class="f10-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Pull-quote 10 · Economic Prosperity</span>
+          </div>
+          <div class="f10-runhead">
+            <span>The Northwest Reader</span>
+            <span class="title">A belief, set in serif</span>
+            <span>Fol. 10</span>
+          </div>
+          <span class="f10-qmark">"</span>
+          <p class="f10-quote">Economic opportunity <em>isn't created by government,</em> it is created by the people willing to work hard, take risks, and build something meaningful.</p>
+          <div class="f10-sign">
+            <span class="k">— The job at hand</span>
+            <p class="v">Our job is to <em>remove barriers</em> so they can succeed.</p>
+          </div>
+          <span class="f10-author"><span>Signed</span><span class="em">— Northwest Oregon PAC</span></span>
+          <span class="f10-folio">— 10 —</span>
+          <div class="f10-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Economic Prosperity</div>
-    
-    
-    <div class="body fs-38">
-      <p class="lead-p">Economic opportunity isn't created by government, it is created by the people willing to work hard, take risks, and build something meaningful.</p><p class="">Our job is to remove barriers so they can succeed.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

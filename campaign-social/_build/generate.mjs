@@ -53,6 +53,7 @@ function buildDoc(post, { format, prefix, docTitle }) {
 ${FONTS}
 <link rel="stylesheet" href="${prefix}social.css" />
 <link rel="stylesheet" href="${prefix}templates.css" />
+<link rel="stylesheet" href="${prefix}carousels.css" />
 </head>
 <body>
   <div class="canvas ${format === 'story' ? 'story' : ''} ${surface}${onPhoto ? ' on-photo' : ''}">

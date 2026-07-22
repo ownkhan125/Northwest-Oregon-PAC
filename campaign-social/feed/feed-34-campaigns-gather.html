@@ -10,32 +10,65 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-light">
-    
-  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-headline">
-    <div class="head-top"><div class="kicker  ">Community events</div></div>
-    <div class="head-mid">
-      <h1 class="display xl lead">Campaigns work when people <em>gather.</em></h1>
-      
+  <div class="canvas s-ink">
+    <style>
+      .f34 { position:absolute; inset:0; z-index:10; overflow:hidden; background:#0f1512; color:#f6f2e8; }
+      /* Full-bleed image with dark overlay - inside f34 */
+      .f34-photo { position:absolute; inset:0; z-index:0; }
+      .f34-photo img { width:100%; height:100%; object-fit:cover; object-position:center 40%; filter:saturate(.85) contrast(1.05) brightness(.75); }
+      .f34-photo::after { content:''; position:absolute; inset:0;
+        background:
+          linear-gradient(180deg, rgba(15,21,18,.85) 0%, rgba(15,21,18,.55) 25%, rgba(15,21,18,.72) 55%, rgba(15,21,18,.94) 100%),
+          radial-gradient(60% 45% at 50% 45%, rgba(46,69,56,.35) 0%, transparent 70%);
+      }
+      .f34::after { content:''; position:absolute; inset:0; z-index:2; opacity:.22; pointer-events:none;
+        background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.92  0 0 0 0 0.88  0 0 0 0 0.78  0 0 0 0.25 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+      .f34-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.8); }
+      .f34-mast img { height:56px; width:auto; filter:brightness(1.05); }
+      /* Centered massive editorial headline */
+      .f34-kick { position:absolute; top:230px; left:0; right:0; z-index:6; text-align:center; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.75); }
+      .f34-head { position:absolute; top:280px; left:76px; right:76px; z-index:6; text-align:center; font-family:var(--font-display); font-weight:500; font-size:104px; line-height:.94; letter-spacing:-.03em; color:#f6f2e8; text-shadow:0 4px 30px rgba(0,0,0,.4); }
+      .f34-head em { display:block; font-style:italic; color:#e0d6bc; }
+      /* Cinematic quote card */
+      .f34-quote { position:absolute; left:76px; right:76px; bottom:280px; z-index:6; padding:26px 30px; background:rgba(15,21,18,.55); border:1px solid rgba(224,214,188,.35); backdrop-filter:blur(4px); text-align:center; }
+      .f34-quote .qm { font-family:var(--font-display); font-style:italic; font-size:60px; line-height:.5; color:#e0d6bc; }
+      .f34-quote .body { margin-top:10px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:28px; line-height:1.24; letter-spacing:-.015em; color:#f6f2e8; }
+      .f34-quote .body em { font-style:normal; color:#e0d6bc; }
+      /* Sig */
+      .f34-sig { position:absolute; left:76px; right:76px; bottom:200px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.72); }
+      .f34-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+      /* Three invitation channels */
+      .f34-inv { position:absolute; left:76px; right:76px; bottom:118px; z-index:6; padding-top:14px; border-top:1.5px solid rgba(246,242,232,.35); display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+      .f34-inv .c { font-family:var(--font-mono); font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.7); text-align:center; }
+      .f34-inv .c .em { display:block; margin-top:6px; font-family:var(--font-display); font-style:italic; font-size:20px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+      .f34-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+    </style>
+    <div class="f34">
+      <div class="f34-photo"><img src="../assets/img/community.jpg" alt="" /></div>
+      <div class="f34-mast">
+        <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+        <span>No. 34 · Come Together</span>
+      </div>
+      <p class="f34-kick">— Community events —</p>
+      <h1 class="f34-head">Campaigns work when<em>people gather.</em></h1>
+      <div class="f34-quote">
+        <div class="qm">“</div>
+        <p class="body">The best conversations don't happen online — <em>they happen in our communities.</em></p>
+      </div>
+      <div class="f34-sig"><span>Join us at upcoming events</span><span class="em">— See you there.</span></div>
+      <div class="f34-inv">
+        <div class="c">— i.<span class="em">Meet-and-greets</span></div>
+        <div class="c">— ii.<span class="em">Volunteer nights</span></div>
+        <div class="c">— iii.<span class="em">Community discussions</span></div>
+      </div>
+      <div class="f34-foot">
+        <span>Paid for by Northwest Oregon PAC · #25045</span>
+        <span>northwestoregon.com</span>
+      </div>
     </div>
-    
-    <div class="lines"><span>Meet candidates.</span><span>Meet neighbours.</span><span>Join the conversation.</span></div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

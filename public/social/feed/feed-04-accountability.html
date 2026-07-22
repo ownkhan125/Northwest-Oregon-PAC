@@ -10,31 +10,92 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-ink on-photo">
+  <div class="canvas  s-light">
+    <style>
+        .f04 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(224,214,188,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #e8dcbb 0%, #cebc85 100%);
+          color:#2a2a26;
+        }
+        .f04::before {
+          content:''; position:absolute; inset:0; opacity:.35; pointer-events:none;
+          background:
+            repeating-linear-gradient(45deg, rgba(46,69,56,.06) 0 1px, transparent 1px 8px);
+        }
+        /* Certificate frame */
+        .f04-frame { position:absolute; top:70px; bottom:110px; left:70px; right:70px; z-index:4;
+          background:#f9f0d5; border:4px double #2e4538;
+          box-shadow:0 30px 60px -30px rgba(46,69,56,.5), inset 0 1px 0 rgba(255,255,255,.5);
+        }
+        .f04-frame::before { content:''; position:absolute; inset:14px; border:1px solid rgba(46,69,56,.5); pointer-events:none; }
+        /* Header row inside frame */
+        .f04-frame .head { position:absolute; top:44px; left:52px; right:52px; padding-bottom:18px; border-bottom:2px solid #2e4538; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.75); }
+        .f04-frame .head .title { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        /* Kicker + big title */
+        .f04-frame .kick { position:absolute; top:150px; left:52px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f04-frame .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f04-frame .headline { position:absolute; top:210px; left:52px; right:280px; font-family:var(--font-display); font-weight:500; font-size:88px; line-height:1; letter-spacing:-.028em; color:#2e4538; }
+        .f04-frame .headline em { font-style:italic; color:#5a7060; }
+        /* Embossed seal top-right */
+        .f04-seal { position:absolute; top:170px; right:110px; z-index:5;
+          width:140px; height:140px; border-radius:999px; border:3px double #2e4538;
+          display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+          font-family:var(--font-mono); font-size:10px; letter-spacing:.36em; text-transform:uppercase; color:#2e4538;
+          transform:rotate(-4deg);
+          box-shadow:inset 0 0 0 1px rgba(46,69,56,.3);
+          background:radial-gradient(60% 60% at 50% 50%, rgba(246,242,232,.7) 0%, rgba(232,220,187,.4) 100%);
+        }
+        .f04-seal .star { font-family:var(--font-display); font-style:italic; font-size:34px; color:#5a7060; }
+        .f04-seal .lbl { text-align:center; line-height:1.4; font-weight:500; }
+        /* Three pillar columns */
+        .f04-pillars { position:absolute; left:52px; right:52px; top:400px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; }
+        .f04-pillars .col { padding:22px 22px; text-align:center; }
+        .f04-pillars .col + .col { border-left:1px solid rgba(46,69,56,.4); }
+        .f04-pillars .col .no { font-family:var(--font-display); font-style:italic; font-size:38px; color:rgba(46,69,56,.35); letter-spacing:-.02em; }
+        .f04-pillars .col .word { display:block; margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1; letter-spacing:-.022em; color:#2e4538; }
+        .f04-pillars .col .word.italic { font-style:italic; color:#5a7060; }
+        .f04-pillars .col .sub { display:block; margin-top:10px; font-family:var(--font-mono); font-size:11px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+        /* Middle statement */
+        .f04-mid { position:absolute; left:52px; right:52px; bottom:180px; padding-top:20px; border-top:1.5px solid rgba(46,69,56,.4); display:flex; align-items:baseline; justify-content:space-between; gap:22px; }
+        .f04-mid .k { font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.55); flex:none; }
+        .f04-mid .v { flex:1; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:30px; line-height:1.22; letter-spacing:-.012em; color:#2e4538; text-align:right; }
+        /* Signature */
+        .f04-sig { position:absolute; left:52px; right:52px; bottom:60px; padding-top:18px; border-top:1px solid rgba(46,69,56,.4); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f04-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        /* Mast + footer outside the frame */
+        .f04-mast { position:absolute; top:24px; left:70px; right:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f04-mast img { height:36px; width:auto; }
+        .f04-foot { position:absolute; left:76px; right:76px; bottom:34px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f04">
+          <div class="f04-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Certificate 04 · Public Trust</span>
+          </div>
+          <div class="f04-frame">
+            <div class="head"><span>The Northwest Register</span><span class="title">A civic certificate</span><span>No. 04</span></div>
+            <span class="kick">Public trust</span>
+            <h1 class="headline">Accountability <em>Matters.</em></h1>
+            <div class="f04-seal"><span class="star">☘</span><span class="lbl">Northwest<br/>Oregon<br/>Audited</span></div>
+            <div class="f04-pillars">
+              <div class="col"><span class="no">i.</span><span class="word">Transparency</span><span class="sub">Every dollar accounted</span></div>
+              <div class="col"><span class="no">ii.</span><span class="word italic">Responsibility</span><span class="sub">Priorities kept</span></div>
+              <div class="col"><span class="no">iii.</span><span class="word">Results</span><span class="sub">Outcomes measured</span></div>
+            </div>
+            <div class="f04-mid"><span class="k">— The pledge</span><span class="v">Good government isn't about bigger government. It's about better government.</span></div>
+            <div class="f04-sig"><span>Signed on behalf of the region</span><span class="em">— Northwest Oregon PAC</span></div>
+          </div>
+          <div class="f04-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="backdrop ">
-    <img src="../assets/img/hero.jpg" alt="" />
-    <div class="wash "></div>
-    <div class="ribbon-hairline"></div>
-  </div>
-  <div class="t-cover">
-    <div class="kicker  ">Public trust</div>
-    <h1 class="display xxl"><em>Accountability Matters.</em></h1>
-    <p class="lede">Transparency · Responsibility · Results</p>
-    
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

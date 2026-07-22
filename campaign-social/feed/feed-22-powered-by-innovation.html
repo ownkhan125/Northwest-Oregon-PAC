@@ -10,30 +10,69 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-forest">
+    <style>
+        .f22 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
+            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
+            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+          color:#f6f2e8;
+        }
+        .f22-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f22-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        .f22-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
+        .f22-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f22-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1.02; letter-spacing:-.028em; color:#f6f2e8; max-width:900px; }
+        .f22-head em { display:block; font-style:italic; color:#e0d6bc; }
+        /* Timeline strip — pushed lower, more clearance from headline */
+        .f22-timeline { position:absolute; left:76px; right:76px; top:520px; z-index:5; padding-top:24px; border-top:1.5px solid rgba(224,214,188,.55); }
+        .f22-timeline .rail { position:relative; height:150px; }
+        .f22-timeline .rail::before { content:''; position:absolute; left:0; right:0; top:20px; height:1px; background:linear-gradient(90deg, rgba(224,214,188,.6), rgba(224,214,188,.35)); }
+        .f22-timeline .node { position:absolute; top:0; display:flex; flex-direction:column; align-items:center; gap:8px; width:16%; text-align:center; }
+        .f22-timeline .node .dot { width:22px; height:22px; border-radius:999px; background:#e0d6bc; border:3px solid #2e4538; box-shadow:0 4px 8px rgba(0,0,0,.4); }
+        .f22-timeline .node .year { font-family:var(--font-mono); font-size:10px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.5); }
+        .f22-timeline .node .name { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:19px; line-height:1.14; letter-spacing:-.015em; color:#e0d6bc; margin-top:2px; min-height:44px; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 2px; white-space:nowrap; }
+        .f22-timeline .node.n1 { left:0; }
+        .f22-timeline .node.n2 { left:20%; }
+        .f22-timeline .node.n3 { left:40%; }
+        .f22-timeline .node.n4 { left:60%; }
+        .f22-timeline .node.n5 { left:80%; }
+        /* Body strip */
+        .f22-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(224,214,188,.35); font-family:var(--font-display); font-weight:500; font-size:26px; line-height:1.24; letter-spacing:-.012em; color:rgba(246,242,232,.94); max-width:900px; }
+        .f22-body em { font-style:italic; color:#e0d6bc; }
+        .f22-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:flex; align-items:baseline; justify-content:space-between; }
+        .f22-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f22-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f22">
+          <div class="f22-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Timeline 22 · A Resilient Future</span>
+          </div>
+          <span class="f22-kick">A resilient future</span>
+          <h1 class="f22-head">Northwest Oregon has always been<em>powered by innovation.</em></h1>
+          <div class="f22-timeline">
+            <div class="rail">
+              <div class="node n1"><span class="dot"></span><span class="year">— Era 01</span><span class="name">Hydropower</span></div>
+              <div class="node n2"><span class="dot"></span><span class="year">— Era 02</span><span class="name">Forestry</span></div>
+              <div class="node n3"><span class="dot"></span><span class="year">— Era 03</span><span class="name">Agriculture</span></div>
+              <div class="node n4"><span class="dot"></span><span class="year">— Era 04</span><span class="name">Manufacturing</span></div>
+              <div class="node n5"><span class="dot"></span><span class="year">— Era 05</span><span class="name">Emerging tech</span></div>
+            </div>
+          </div>
+          <p class="f22-body">From hydropower and forestry to agriculture, manufacturing, and emerging technologies, our region succeeds when we build on the resources that make <em>Oregon unique.</em></p>
+          <div class="f22-sig"><span>Balanced decisions</span><span class="em">— A resilient future.</span></div>
+          <div class="f22-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">A resilient future</div>
-    
-    
-    <div class="body fs-38">
-      <p class="lead-p">Northwest Oregon has always been powered by innovation.</p><p class="">From hydropower and forestry to agriculture, manufacturing, and emerging technologies, our region succeeds when we build on the resources that make Oregon unique.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

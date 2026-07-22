@@ -10,38 +10,71 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-light">
+    <style>
+        .f30 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f30-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f30-mast img { height:56px; width:auto; }
+        /* Portrait plate right */
+        .f30-plate { position:absolute; top:180px; right:60px; width:420px; height:520px; z-index:5; overflow:hidden; border:4px solid #2e4538; box-shadow:0 30px 60px -30px rgba(46,69,56,.5); }
+        .f30-plate img { width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:saturate(.88) contrast(1.14); }
+        .f30-plate::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 60%, rgba(28,43,35,.55) 100%); }
+        .f30-plate .lbl { position:absolute; left:14px; bottom:14px; z-index:2; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:#f6f2e8; text-shadow:0 2px 12px rgba(0,0,0,.5); }
+        /* Left column */
+        .f30-col { position:absolute; top:180px; left:76px; width:440px; z-index:6; display:flex; flex-direction:column; gap:20px; }
+        .f30-col .kick { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f30-col .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f30-col .name { font-family:var(--font-display); font-weight:500; font-size:76px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
+        .f30-col .name em { display:block; font-style:italic; color:#5a7060; }
+        .f30-col .office { padding-top:14px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.65); }
+        .f30-col .virtues { display:flex; flex-direction:column; gap:14px; margin-top:6px; }
+        .f30-col .virtues .v { display:flex; align-items:baseline; gap:16px; padding-bottom:10px; border-bottom:1px dashed rgba(46,69,56,.4); }
+        .f30-col .virtues .v .n { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.02em; color:rgba(46,69,56,.35); min-width:40px; }
+        .f30-col .virtues .v .w { font-family:var(--font-display); font-weight:500; font-size:32px; line-height:1; letter-spacing:-.022em; color:#2e4538; }
+        .f30-col .virtues .v .w em { font-style:italic; color:#5a7060; }
+        /* Bio strip */
+        .f30-bio { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:22px; line-height:1.22; letter-spacing:-.012em; color:#2e4538; max-width:920px; }
+        .f30-bio em { font-style:normal; color:#6b5a42; }
+        .f30-cta { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f30-cta .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f30-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f30">
+          <div class="f30-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Poster 30 · Oregon House · District 28</span>
+          </div>
+          <div class="f30-plate">
+            <img src="../assets/img/randall-fryer.jpg" alt="Randall Fryer" />
+            <span class="lbl">— The candidate</span>
+          </div>
+          <div class="f30-col">
+            <span class="kick">Meet the candidate</span>
+            <h1 class="name">Randall<em>Fryer</em></h1>
+            <div class="office">— Running for Oregon House District 28</div>
+            <div class="virtues">
+              <div class="v"><span class="n">i.</span><span class="w"><em>Integrity</em></span></div>
+              <div class="v"><span class="n">ii.</span><span class="w"><em>Experience</em></span></div>
+              <div class="v"><span class="n">iii.</span><span class="w">A willingness <em>to serve</em></span></div>
+            </div>
+          </div>
+          <p class="f30-bio">Bringing decades of <em>professional experience</em> and a commitment to thoughtful, community-focused leadership.</p>
+          <div class="f30-cta"><span>Learn more</span><span class="em">— Follow the campaign</span></div>
+          <div class="f30-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="t-candidate ">
-    <div class="portrait">
-      <img src="../assets/img/randall-fryer.jpg" alt="Randall Fryer" />
-      <div class="grade"></div>
-    </div>
-    <div class="info">
-      <div class="info-top">
-        <div class="kicker  ">Meet the candidate</div>
-        <h1 class="display lg"><em>Randall Fryer</em></h1>
-        <div class="office">Running for Oregon House District 28</div>
-      </div>
-      <p class="bio">Bringing decades of professional experience and a commitment to thoughtful, community-focused leadership.</p>
-      <div class="info-bottom">
-        <span class="cyc"><em>2026</em></span>
-        <span class="site">Follow the campaign</span>
-      </div>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

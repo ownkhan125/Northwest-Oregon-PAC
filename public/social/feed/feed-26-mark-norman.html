@@ -10,38 +10,56 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-light">
+  <div class="canvas  s-ink on-photo">
+    <style>
+        .f26 { position:absolute; inset:0; z-index:10; overflow:hidden; background:#0a100c; color:#f6f2e8; }
+        .f26 .bg { position:absolute; inset:0; z-index:1; }
+        .f26 .bg img { width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:saturate(.75) contrast(1.18) brightness(.78); }
+        .f26 .bg::after {
+          content:''; position:absolute; inset:0;
+          background:
+            linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,.95) 100%);
+        }
+        /* Masthead */
+        .f26-mast { position:absolute; top:56px; left:76px; right:76px; z-index:5; padding-bottom:16px; border-bottom:1px solid rgba(246,242,232,.4); display:flex; align-items:center; justify-content:space-between; gap:24px; font-family:var(--font-mono); font-size:13px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.85); text-shadow:0 2px 12px rgba(0,0,0,.5); }
+        .f26-mast img { height:56px; width:auto; filter:brightness(1.05) drop-shadow(0 2px 12px rgba(0,0,0,.5)); }
+        .f26-mast .title { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#f6f2e8; text-transform:none; }
+        /* Kicker */
+        .f26-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:#e0d6bc; text-shadow:0 2px 12px rgba(0,0,0,.5); display:inline-flex; align-items:center; gap:16px; }
+        .f26-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        /* Big name lockup */
+        .f26-name { position:absolute; left:76px; right:76px; bottom:340px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:120px; line-height:.96; letter-spacing:-.028em; color:#f6f2e8; text-shadow:0 4px 30px rgba(0,0,0,.6); }
+        .f26-name em { font-style:italic; color:#e0d6bc; }
+        .f26-name .lbl { display:block; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.75); margin-bottom:12px; text-shadow:0 2px 12px rgba(0,0,0,.5); }
+        /* District bar */
+        .f26-bar { position:absolute; left:76px; right:76px; bottom:200px; z-index:6; padding:14px 22px; background:rgba(246,242,232,.14); border:1px solid rgba(246,242,232,.4); display:flex; align-items:center; justify-content:space-between; gap:16px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.85); backdrop-filter:blur(4px); }
+        .f26-bar .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        /* Bio */
+        .f26-bio { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:22px; line-height:1.22; letter-spacing:-.012em; color:rgba(246,242,232,.9); text-shadow:0 2px 12px rgba(0,0,0,.5); max-width:920px; }
+        .f26-bio em { font-style:normal; color:#e0d6bc; }
+        .f26-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f26">
+          <div class="bg"><img src="../assets/img/mark-norman.jpg" alt="Mark Norman" /></div>
+          <div class="f26-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span class="title">The Candidate Cover · No. 26</span>
+            <span>Est. 2026</span>
+          </div>
+          <span class="f26-kick">The candidate</span>
+          <h1 class="f26-name"><span class="lbl">— Endorsed by Northwest Oregon PAC</span>Mark <em>Norman.</em></h1>
+          <div class="f26-bar"><span>Oregon House · District 27</span><span class="em">MarkNormanForOregon.com</span></div>
+          <p class="f26-bio">From military service to caring for animals and serving his community, Mark Norman has built a career around <em>helping others,</em> and now he's ready to bring that same commitment to Salem.</p>
+          <div class="f26-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="t-candidate ">
-    <div class="portrait">
-      <img src="../assets/img/mark-norman.jpg" alt="Mark Norman" />
-      <div class="grade"></div>
-    </div>
-    <div class="info">
-      <div class="info-top">
-        <div class="kicker  ">The candidate</div>
-        <h1 class="display lg"><em>Mark Norman</em></h1>
-        <div class="office">Oregon House District 27</div>
-      </div>
-      <p class="bio">From military service to caring for animals and serving his community, Mark Norman has built a career around helping others, and now he's ready to bring that same commitment to Salem.</p>
-      <div class="info-bottom">
-        <span class="cyc"><em>2026</em></span>
-        <span class="site">MarkNormanForOregon.com</span>
-      </div>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

@@ -10,48 +10,81 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-light">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-180px;right:-160px;opacity:.4"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-contact">
-    <div class="head">
-      <div class="kicker  ">Contact</div>
-      <h1 class="display xxl">Have a <em>question?</em></h1>
-      <p class="subhead">Reach the PAC directly.</p>
+  <div class="canvas s-light">
+    <style>
+      .f38 { position:absolute; inset:0; z-index:10; overflow:hidden;
+        background:
+          radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+          linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+        color:#2e4538;
+      }
+      .f38::before { content:''; position:absolute; inset:0; opacity:.2; pointer-events:none;
+        background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.3 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+        mix-blend-mode:multiply; }
+      .f38-mast { position:absolute; top:56px; left:76px; right:76px; z-index:7; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.72); }
+      .f38-mast img { height:56px; width:auto; }
+      /* Kick + huge question mark hero */
+      .f38-kick { position:absolute; top:176px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+      .f38-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+      /* Massive question mark */
+      .f38-qmark { position:absolute; top:150px; right:60px; z-index:5; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:520px; line-height:.82; letter-spacing:-.04em; color:#2e4538; text-shadow:0 8px 40px rgba(46,69,56,.28); }
+      /* Two-line title */
+      .f38-head { position:absolute; top:216px; left:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:72px; line-height:.98; letter-spacing:-.028em; color:#2e4538; max-width:640px; }
+      .f38-head .a { display:block; }
+      .f38-head .b { display:block; font-style:italic; color:#5a7060; }
+      .f38-head .rule { display:block; width:110px; height:2px; margin-top:22px; background:#2e4538; }
+      /* Question topics band */
+      .f38-lbl { position:absolute; top:490px; left:76px; z-index:6; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+      .f38-topics { position:absolute; top:520px; left:76px; right:76px; z-index:6; display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; }
+      .f38-topic { padding:14px 12px; background:rgba(246,242,232,.85); border:1px solid rgba(46,69,56,.4); text-align:center; }
+      .f38-topic .n { font-family:var(--font-mono); font-size:10px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      .f38-topic .w { display:block; margin-top:6px; font-family:var(--font-display); font-style:italic; font-size:20px; letter-spacing:-.01em; color:#2e4538; }
+      /* Contact row */
+      .f38-lbl2 { position:absolute; left:76px; right:76px; bottom:280px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+      .f38-contact { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+      .f38-c { padding:14px 16px; background:#2e4538; color:#e0d6bc; }
+      .f38-c .n { font-family:var(--font-mono); font-size:10px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.6); }
+      .f38-c .w { display:block; margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:20px; line-height:1.14; letter-spacing:-.012em; color:#f6f2e8; }
+      .f38-c .w em { font-style:italic; color:#e0d6bc; }
+      .f38-sig { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
+      .f38-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+      .f38-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+    </style>
+    <div class="f38">
+      <div class="f38-mast">
+        <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+        <span>No. 38 · Contact</span>
+      </div>
+      <span class="f38-qmark">?</span>
+      <span class="f38-kick">Reach out directly</span>
+      <h1 class="f38-head">
+        <span class="a">Have a question?</span>
+        <span class="b">Reach the PAC directly.</span>
+        <span class="rule"></span>
+      </h1>
+      <span class="f38-lbl">— Questions about</span>
+      <div class="f38-topics">
+        <div class="f38-topic"><span class="n">01</span><span class="w">Volunteering</span></div>
+        <div class="f38-topic"><span class="n">02</span><span class="w">Candidates</span></div>
+        <div class="f38-topic"><span class="n">03</span><span class="w">Events</span></div>
+        <div class="f38-topic"><span class="n">04</span><span class="w">Donations</span></div>
+        <div class="f38-topic"><span class="n">05</span><span class="w">Running for office</span></div>
+      </div>
+      <span class="f38-lbl2">— Reach the PAC directly</span>
+      <div class="f38-contact">
+        <div class="f38-c"><span class="n">— Email</span><span class="w"><em>info@northwestoregon.com</em></span></div>
+        <div class="f38-c"><span class="n">— Program Director</span><span class="w">Cynthia Sawyer<br/><em>503-490-4139</em></span></div>
+        <div class="f38-c"><span class="n">— Mail</span><span class="w"><em>Beaverton, Oregon 97005</em></span></div>
+      </div>
+      <div class="f38-sig"><span>We want you to know who we are</span><span class="em">— Northwest Oregon residents welcome.</span></div>
+      <div class="f38-foot">
+        <span>Paid for by Northwest Oregon PAC · #25045</span>
+        <span>northwestoregon.com</span>
+      </div>
     </div>
-    <div class="kv">
-      
-      <div class="krow">
-        <span class="k">General Inquiries</span>
-        <span class="v">info@northwestoregon.com</span>
-      </div>
-      <div class="krow">
-        <span class="k">Program Director</span>
-        <span class="v">Cynthia Sawyer · 503-490-4139</span>
-      </div>
-      <div class="krow">
-        <span class="k">Mailing Address</span>
-        <span class="v">10700 SW Beaverton-Hillsdale Highway, Suite 212, Beaverton, Oregon 97005</span>
-      </div>
-      <div class="krow">
-        <span class="k">Region</span>
-        <span class="v">Northwest Oregon · Pacific Time</span>
-      </div>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

@@ -10,30 +10,78 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-forest">
+    <style>
+        .f14 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(60% 45% at 50% 42%, rgba(224,214,188,.32) 0%, rgba(224,214,188,0) 55%),
+            radial-gradient(90% 60% at 20% 5%, rgba(46,69,56,.5) 0%, transparent 55%),
+            linear-gradient(178deg, #1c2b23 0%, #0a1310 60%, #050a07 100%);
+          color:#f6f2e8;
+        }
+        .f14::before {
+          content:''; position:absolute; inset:0; pointer-events:none;
+          background:
+            radial-gradient(2px 2px at 20% 15%, rgba(224,214,188,.35), transparent 60%),
+            radial-gradient(2px 2px at 78% 8%, rgba(224,214,188,.28), transparent 60%),
+            radial-gradient(1.5px 1.5px at 62% 88%, rgba(224,214,188,.32), transparent 60%),
+            radial-gradient(2px 2px at 8% 74%, rgba(224,214,188,.22), transparent 60%);
+        }
+        .f14-mast { position:absolute; top:56px; left:76px; right:76px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f14-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        /* Streetlamp SVG center */
+        .f14-lamp {
+          position:absolute; top:170px; left:calc(50% - 200px); width:400px; height:340px; z-index:5;
+          pointer-events:none;
+        }
+        .f14-lamp .halo {
+          position:absolute; left:calc(50% - 200px); top:60px; width:400px; height:280px;
+          background:radial-gradient(circle at 50% 30%, rgba(255,236,192,.6) 0%, rgba(255,236,192,.15) 40%, rgba(255,236,192,0) 70%);
+          filter:blur(6px);
+        }
+        .f14-lamp svg { position:relative; z-index:2; display:block; margin:0 auto; width:200px; height:100%; color:#e0d6bc; }
+        /* Kicker */
+        .f14-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
+        .f14-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        /* Headline block */
+        .f14-head { position:absolute; left:76px; right:76px; top:540px; z-index:6; padding-top:20px; border-top:1.5px solid rgba(246,242,232,.35); font-family:var(--font-display); font-weight:500; font-size:56px; line-height:1.02; letter-spacing:-.022em; color:#f6f2e8; max-width:920px; }
+        .f14-head em { font-style:italic; color:#e0d6bc; }
+        /* Subhead */
+        .f14-sub { position:absolute; left:76px; right:76px; bottom:190px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; gap:22px; padding-top:16px; border-top:1px solid rgba(246,242,232,.28); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f14-sub .em { flex:1; font-family:var(--font-display); font-style:italic; font-size:32px; line-height:1.16; letter-spacing:-.015em; color:#e0d6bc; text-transform:none; text-align:right; }
+        /* Foot */
+        .f14-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f14">
+          <div class="f14-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Lamp 14 · Public Safety</span>
+          </div>
+          <span class="f14-kick">Public safety</span>
+          <div class="f14-lamp">
+            <div class="halo"></div>
+            <svg viewBox="0 0 200 340" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M100 330 L100 130"/>
+              <path d="M100 130 L100 90"/>
+              <path d="M80 90 Q100 60 120 90 L120 96 Q100 78 80 96 Z" fill="currentColor" fill-opacity=".22"/>
+              <path d="M80 90 Q100 60 120 90 L120 96 Q100 78 80 96 Z"/>
+              <path d="M100 40 L100 90" stroke-width="1.6" opacity=".6"/>
+              <circle cx="100" cy="36" r="3" fill="currentColor"/>
+              <path d="M90 330 L110 330" stroke-width="4"/>
+            </svg>
+          </div>
+          <h1 class="f14-head">Safe neighborhoods give children room to <em>dream,</em> families peace of mind, and local businesses the confidence to grow.</h1>
+          <div class="f14-sub"><span>The finding</span><span class="em">Public safety is where opportunity begins.</span></div>
+          <div class="f14-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Public Safety</div>
-    
-    
-    <div class="body fs-44">
-      <p class="lead-p">Safe neighborhoods give children room to dream, families peace of mind, and local businesses the confidence to grow.</p><p class="">Public safety is where opportunity begins.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

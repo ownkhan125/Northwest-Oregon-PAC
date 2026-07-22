@@ -10,30 +10,91 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-forest">
+    <style>
+        .f56 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(90% 60% at 60% 60%, rgba(224,214,188,.14) 0%, rgba(224,214,188,0) 55%),
+            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.4) 0%, transparent 55%),
+            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+          color:#f6f2e8;
+        }
+        .f56-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f56-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        .f56-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
+        .f56-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f56-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:74px; line-height:.98; letter-spacing:-.028em; color:#f6f2e8; max-width:920px; }
+        .f56-head em { display:block; font-style:italic; color:#e0d6bc; }
+        /* Skyline SVG */
+        .f56-sky { position:absolute; left:0; right:0; top:440px; height:280px; z-index:5; }
+        .f56-sky svg { display:block; width:100%; height:100%; }
+        /* Four labels below */
+        .f56-labels { position:absolute; left:76px; right:76px; bottom:180px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:14px; }
+        .f56-labels .l { padding:14px 16px; background:rgba(224,214,188,.06); border:1px solid rgba(246,242,232,.35); font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.65); text-align:center; }
+        .f56-labels .l .em { display:block; margin-top:6px; font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f56-sig { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f56-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f56-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f56">
+          <div class="f56-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Skyline 56 · Beyond Election Day</span>
+          </div>
+          <span class="f56-kick">Beyond Election Day</span>
+          <h1 class="f56-head">We are building<em>beyond Election Day.</em></h1>
+          <div class="f56-sky">
+            <svg viewBox="0 0 1080 280" fill="none" stroke="#e0d6bc" stroke-width="1.6">
+              <!-- Horizon glow (already in bg) -->
+              <line x1="0" y1="240" x2="1080" y2="240" stroke="#e0d6bc" stroke-width="1.4" opacity="0.6"/>
+              <!-- Distant hills -->
+              <path d="M 0 220 L 120 190 L 240 210 L 380 180 L 520 200 L 660 175 L 800 205 L 940 185 L 1080 210 L 1080 240 L 0 240 Z" fill="rgba(90,112,96,.3)" stroke="none"/>
+              <!-- Buildings silhouette -->
+              <rect x="60" y="180" width="60" height="60" fill="#1c2b23" stroke="#e0d6bc" stroke-width="1"/>
+              <rect x="140" y="140" width="80" height="100" fill="#1c2b23" stroke="#e0d6bc" stroke-width="1"/>
+              <rect x="240" y="170" width="60" height="70" fill="#1c2b23" stroke="#e0d6bc" stroke-width="1"/>
+              <rect x="880" y="150" width="70" height="90" fill="#1c2b23" stroke="#e0d6bc" stroke-width="1"/>
+              <rect x="970" y="180" width="60" height="60" fill="#1c2b23" stroke="#e0d6bc" stroke-width="1"/>
+              <!-- Construction crane center-right -->
+              <g stroke="#e0d6bc" stroke-width="2">
+                <line x1="540" y1="60" x2="540" y2="240"/>
+                <line x1="380" y1="80" x2="720" y2="80"/>
+                <line x1="540" y1="60" x2="380" y2="80"/>
+                <line x1="540" y1="60" x2="720" y2="80"/>
+                <line x1="540" y1="80" x2="540" y2="120"/>
+                <line x1="480" y1="80" x2="480" y2="105" stroke-width="1.4"/>
+                <rect x="472" y="102" width="18" height="16" fill="#1c2b23" stroke="#e0d6bc"/>
+                <!-- Building rising under crane -->
+                <rect x="480" y="145" width="120" height="95" fill="#2e4538" stroke="#e0d6bc"/>
+                <line x1="480" y1="170" x2="600" y2="170" stroke-width="1"/>
+                <line x1="480" y1="195" x2="600" y2="195" stroke-width="1"/>
+                <line x1="480" y1="220" x2="600" y2="220" stroke-width="1"/>
+                <line x1="510" y1="145" x2="510" y2="240" stroke-width="1" opacity="0.55"/>
+                <line x1="540" y1="145" x2="540" y2="240" stroke-width="1" opacity="0.55"/>
+                <line x1="570" y1="145" x2="570" y2="240" stroke-width="1" opacity="0.55"/>
+              </g>
+              <!-- Rising labels -->
+              <text x="600" y="60" font-family="Lora" font-style="italic" font-size="18" fill="#e0d6bc" stroke="none">still building</text>
+              <text x="380" y="70" font-family="JetBrains Mono" font-size="10" fill="#e0d6bc" stroke="none" letter-spacing="3">EST. 2026</text>
+            </svg>
+          </div>
+          <div class="f56-labels">
+            <div class="l">— 01<span class="em">More candidates.</span></div>
+            <div class="l">— 02<span class="em">More volunteers.</span></div>
+            <div class="l">— 03<span class="em">Stronger campaigns.</span></div>
+            <div class="l">— 04<span class="em">A lasting regional voice.</span></div>
+          </div>
+          <div class="f56-sig"><span>One election cannot build everything</span><span class="em">— The goal is long-term.</span></div>
+          <div class="f56-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Beyond Election Day</div>
-    
-    
-    <div class="body fs-44">
-      <p class="lead-p">We are building beyond Election Day.</p><p class="">More candidates. More volunteers. Stronger campaigns. A lasting regional voice.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

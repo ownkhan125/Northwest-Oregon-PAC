@@ -10,30 +10,77 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-sand">
+  <div class="canvas  s-light">
+    <style>
+        .f11 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 10%, rgba(224,214,188,.5) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e4d7b3 100%);
+          color:#2a2a26;
+        }
+        .f11-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f11-mast img { height:56px; width:auto; }
+        /* Ledger book */
+        .f11-book { position:absolute; top:170px; bottom:120px; left:76px; right:76px; z-index:5;
+          background:#f9f1d4; border:1.5px solid rgba(46,69,56,.4);
+          box-shadow:0 30px 60px -30px rgba(46,69,56,.4);
+          padding:28px 30px 24px;
+          display:flex; flex-direction:column;
+        }
+        /* Center gutter */
+        .f11-book::before { content:''; position:absolute; left:50%; top:12px; bottom:12px; width:1px; background:linear-gradient(180deg, rgba(46,69,56,.35), rgba(46,69,56,.05)); }
+        /* Header row */
+        .f11-book .header { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:12px; border-bottom:2px double #2e4538; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f11-book .header .title { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        /* Body: two columns */
+        .f11-body { flex:1; display:grid; grid-template-columns:1fr 1fr; gap:30px; padding-top:20px; }
+        .f11-body .col { display:flex; flex-direction:column; gap:16px; }
+        .f11-body .col .colhead { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); display:flex; align-items:baseline; justify-content:space-between; }
+        .f11-body .col .colhead::after { content:''; flex:1; height:1px; background:currentColor; margin-left:14px; opacity:.35; }
+        .f11-body .col .entry { display:flex; flex-direction:column; gap:2px; padding-bottom:12px; border-bottom:1px dashed rgba(46,69,56,.4); }
+        .f11-body .col .entry .k { font-family:var(--font-mono); font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f11-body .col .entry .v { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:22px; line-height:1.14; letter-spacing:-.012em; color:#2e4538; }
+        .f11-body .col.right .quote { font-family:var(--font-display); font-weight:500; font-size:52px; line-height:1.02; letter-spacing:-.022em; color:#2e4538; }
+        .f11-body .col.right .quote em { font-style:italic; color:#5a7060; }
+        .f11-body .col.right .sub { margin-top:14px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; line-height:1.22; letter-spacing:-.012em; color:rgba(46,69,56,.85); }
+        /* Book footer — running total */
+        .f11-book .totals { margin-top:16px; padding-top:14px; border-top:2px double #2e4538; display:flex; align-items:baseline; justify-content:space-between; gap:14px; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
+        .f11-book .totals .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f11-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f11">
+          <div class="f11-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Ledger 11 · Government Accountability</span>
+          </div>
+          <div class="f11-book">
+            <div class="header"><span>Public Ledger</span><span class="title">Government accountability</span><span>Fol. 11</span></div>
+            <div class="f11-body">
+              <div class="col left">
+                <div class="colhead"><span>Debit · what taxpayers give</span></div>
+                <div class="entry"><span class="k">— Line 01</span><span class="v">Transparency</span></div>
+                <div class="entry"><span class="k">— Line 02</span><span class="v">Measurable results</span></div>
+                <div class="entry"><span class="k">— Line 03</span><span class="v">Confidence in public dollars</span></div>
+                <div class="entry"><span class="k">— Line 04</span><span class="v">Priorities that align</span></div>
+              </div>
+              <div class="col right">
+                <div class="colhead"><span>Credit · what stewardship returns</span></div>
+                <p class="quote">Responsible government starts with <em>responsible stewardship.</em></p>
+                <p class="sub">Every taxpayer deserves transparency, measurable results, and confidence that public dollars are being spent wisely.</p>
+              </div>
+            </div>
+            <div class="totals"><span>Running balance</span><span class="em">— Trust, kept.</span></div>
+          </div>
+          <div class="f11-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Government Accountability</div>
-    
-    
-    <div class="body fs-44">
-      <p class="lead-p">Responsible government starts with responsible stewardship.</p><p class="">Every taxpayer deserves transparency, measurable results, and confidence that public dollars are being spent wisely.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

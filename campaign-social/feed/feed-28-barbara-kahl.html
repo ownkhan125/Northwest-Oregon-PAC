@@ -10,38 +10,56 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-light">
+    <style>
+        .f28 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f28-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f28-mast img { height:56px; width:auto; }
+        .f28-kick { position:absolute; top:180px; left:0; right:0; z-index:6; text-align:center; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f28-kick::before, .f28-kick::after { content:'—'; margin:0 20px; opacity:.6; }
+        /* Medallion */
+        .f28-medallion { position:absolute; left:calc(50% - 190px); top:230px; width:380px; height:380px; z-index:5; border-radius:999px; overflow:hidden; border:6px solid #f6f2e8; box-shadow:0 30px 60px -22px rgba(46,69,56,.55), 0 0 0 12px rgba(46,69,56,.3); }
+        .f28-medallion img { width:100%; height:100%; object-fit:cover; object-position:center 20%; filter:saturate(.9) contrast(1.12); }
+        /* Name */
+        .f28-name { position:absolute; left:76px; right:76px; top:640px; z-index:6; text-align:center; font-family:var(--font-display); font-weight:500; font-size:76px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
+        .f28-name em { font-style:italic; color:#5a7060; }
+        /* Roles stack */
+        .f28-roles { position:absolute; left:76px; right:76px; top:750px; z-index:6; display:flex; align-items:center; justify-content:center; gap:24px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
+        .f28-roles span { position:relative; }
+        .f28-roles span + span::before { content:'·'; margin-right:24px; color:rgba(46,69,56,.5); }
+        /* Office */
+        .f28-office { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); text-align:center; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.22; letter-spacing:-.015em; color:#2e4538; }
+        .f28-office em { font-style:normal; color:#6b5a42; }
+        .f28-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; text-align:center; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f28-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f28-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f28">
+          <div class="f28-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Medallion 28 · U.S. House · Oregon's 1st</span>
+          </div>
+          <span class="f28-kick">Meet the candidate</span>
+          <div class="f28-medallion"><img src="../assets/img/barbara-kahl.jpg" alt="Dr. Barbara Kahl" /></div>
+          <h1 class="f28-name">Dr. Barbara <em>Kahl</em></h1>
+          <div class="f28-roles"><span>Veterinarian</span><span>Community advocate</span><span>Candidate for Congress</span></div>
+          <p class="f28-office">Candidate for U.S. House — <em>Oregon's 1st Congressional District.</em></p>
+          <div class="f28-sig">Learn more · <span class="em">Learn about her campaign</span></div>
+          <div class="f28-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="t-candidate ">
-    <div class="portrait">
-      <img src="../assets/img/barbara-kahl.jpg" alt="Dr. Barbara Kahl" />
-      <div class="grade"></div>
-    </div>
-    <div class="info">
-      <div class="info-top">
-        <div class="kicker  ">Meet the candidate</div>
-        <h1 class="display md">Dr. Barbara <em>Kahl</em></h1>
-        <div class="office">Candidate for U.S. House – Oregon's 1st Congressional District</div>
-      </div>
-      <p class="bio">Veterinarian. Community advocate. Candidate for Congress.</p>
-      <div class="info-bottom">
-        <span class="cyc"><em>2026</em></span>
-        <span class="site">Learn about her campaign</span>
-      </div>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

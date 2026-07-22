@@ -10,31 +10,82 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-ink on-photo">
+  <div class="canvas  s-light">
+    <style>
+        .f01 { position:absolute; inset:0; z-index:10; display:flex; flex-direction:column; background:#f6f2e8; }
+        .f01-photo { position:relative; height:60%; overflow:hidden; background:#0f1a13; }
+        .f01-photo img { width:100%; height:100%; object-fit:cover; filter:saturate(.72) contrast(1.18) brightness(.86); }
+        .f01-photo::after {
+          content:''; position:absolute; inset:0;
+          background:
+            radial-gradient(110% 90% at 25% 15%, rgba(0,0,0,0) 0%, rgba(0,0,0,.5) 100%),
+            linear-gradient(180deg, rgba(15,26,19,.08) 0%, rgba(15,26,19,.32) 55%, rgba(15,26,19,.85) 100%);
+        }
+        .f01-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; gap:20px; color:#e5dfcc; font-family:var(--font-mono); font-size:18px; letter-spacing:.36em; text-transform:uppercase; text-shadow:0 2px 20px rgba(0,0,0,.5); }
+        .f01-mast img { height:66px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.5)); }
+        .f01-photo-label { position:absolute; left:76px; bottom:52px; z-index:5; display:flex; align-items:baseline; gap:22px; color:#e5dfcc; text-shadow:0 2px 22px rgba(0,0,0,.55); }
+        .f01-photo-label .kick { font-family:var(--font-mono); font-size:16px; letter-spacing:.42em; text-transform:uppercase; opacity:.9; }
+        .f01-photo-label .place { font-family:var(--font-display); font-style:italic; font-size:34px; letter-spacing:-.01em; }
+        .f01-flag {
+          position:absolute; z-index:7; top:60%; right:70px; transform:translateY(-50%);
+          padding:22px 28px 24px; background:#2e4538; color:#f6f2e8;
+          font-family:var(--font-display); text-align:center;
+          box-shadow:0 20px 46px -18px rgba(0,0,0,.55);
+        }
+        .f01-flag .no { display:block; font-size:64px; font-weight:500; font-style:italic; line-height:1; letter-spacing:-.02em; color:#e0d6bc; }
+        .f01-flag .label { display:block; margin-top:6px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.85); }
+        /* Cream page */
+        .f01-page { position:relative; flex:1; padding:44px 76px 130px; display:flex; flex-direction:column; gap:26px; }
+        .f01-page::before { content:''; position:absolute; top:16px; left:76px; right:76px; height:1px; background:linear-gradient(90deg, rgba(46,69,56,.5), rgba(46,69,56,0)); }
+        .f01-issue { display:flex; align-items:baseline; gap:20px; font-family:var(--font-mono); font-size:18px; letter-spacing:.42em; text-transform:uppercase; color:#4b6252; }
+        .f01-issue .em { font-family:var(--font-display); font-style:italic; font-size:36px; letter-spacing:-.02em; color:#2e4538; text-transform:none; }
+        .f01-issue .rule { display:inline-block; width:44px; height:1px; background:#4b6252; opacity:.6; }
+        .f01-head { font-family:var(--font-display); font-weight:500; font-size:82px; line-height:1.02; letter-spacing:-.022em; color:#2e4538; max-width:940px; }
+        .f01-head em { font-style:italic; color:#5a7060; }
+        .f01-values {
+          margin-top:auto; padding-top:22px; border-top:1.5px solid rgba(46,69,56,.35);
+          display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px;
+        }
+        .f01-values .v { display:flex; flex-direction:column; gap:4px; }
+        .f01-values .v .n { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f01-values .v .w { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:38px; letter-spacing:-.015em; color:#2e4538; line-height:1; }
+        .f01-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+      </style>
+        <div class="f01">
+          <div class="f01-photo">
+            <img src="../assets/img/banner.jpg" alt="Northwest Oregon" />
+            <div class="f01-mast">
+              <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+              <span>Vol. 01 · The Region</span>
+            </div>
+            <div class="f01-photo-label">
+              <span class="kick">— Cover story</span>
+              <span class="place">A stronger voice.</span>
+            </div>
+          </div>
+          <div class="f01-flag">
+            <span class="no">01</span>
+            <span class="label">The Manifesto</span>
+          </div>
+          <div class="f01-page">
+            <div class="f01-issue"><span class="em">No. 01</span><span class="rule"></span><span>Northwest Oregon</span></div>
+            <h1 class="f01-head">A Stronger Voice for <em>Northwest Oregon.</em></h1>
+            <div class="f01-values">
+              <div class="v"><span class="n">— i.</span><span class="w">Prosperity</span></div>
+              <div class="v"><span class="n">— ii.</span><span class="w">Accountability</span></div>
+              <div class="v"><span class="n">— iii.</span><span class="w">Opportunity</span></div>
+            </div>
+            <div class="f01-foot">
+              <span>Paid for by Northwest Oregon PAC · #25045</span>
+              <span>northwestoregon.com</span>
+            </div>
+          </div>
+        </div>
+      
     
-  <div class="backdrop ">
-    <img src="../assets/img/banner.jpg" alt="" />
-    <div class="wash "></div>
-    <div class="ribbon-hairline"></div>
-  </div>
-  <div class="t-cover">
-    <div class="kicker  ">Northwest Oregon PAC</div>
-    <h1 class="display xl">A Stronger Voice for <em>Northwest Oregon.</em></h1>
-    <p class="lede">Prosperity · Accountability · Opportunity</p>
-    
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

@@ -10,32 +10,75 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-sand">
+  <div class="canvas  s-light">
+    <style>
+        .f05 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f0e6cd 0%, #d6c493 100%);
+          color:#2e4538;
+        }
+        .f05-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f05-mast img { height:56px; width:auto; }
+        /* Kicker */
+        .f05-kick { position:absolute; top:170px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f05-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        /* Photographic grid — three panels */
+        .f05-grid { position:absolute; top:220px; left:76px; right:76px; height:460px; z-index:5; display:grid; grid-template-columns:1.4fr 1fr; grid-template-rows:1fr 1fr; gap:14px; }
+        .f05-grid .panel { position:relative; overflow:hidden; background:#0f1a13; box-shadow:0 20px 40px -20px rgba(46,69,56,.4); }
+        .f05-grid .panel img { width:100%; height:100%; object-fit:cover; filter:saturate(.78) contrast(1.14) brightness(.88); }
+        .f05-grid .panel::after {
+          content:''; position:absolute; inset:0;
+          background:linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.55) 100%);
+        }
+        .f05-grid .panel.tall { grid-row:1 / span 2; }
+        .f05-grid .panel .lbl { position:absolute; left:14px; bottom:14px; z-index:2; font-family:var(--font-mono); font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:#f0e6cd; text-shadow:0 2px 12px rgba(0,0,0,.5); }
+        .f05-grid .panel .no { position:absolute; right:14px; top:14px; z-index:2; font-family:var(--font-display); font-style:italic; font-size:26px; color:#e0d6bc; text-shadow:0 2px 12px rgba(0,0,0,.5); }
+        /* Title plate */
+        .f05-plate { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; padding-top:18px; border-top:2px double #2e4538; display:flex; align-items:flex-end; justify-content:space-between; gap:22px; }
+        .f05-plate .title { font-family:var(--font-display); font-weight:500; font-size:76px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
+        .f05-plate .title em { display:block; font-style:italic; color:#5a7060; font-size:56px; }
+        .f05-plate .callout { max-width:420px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; line-height:1.24; letter-spacing:-.012em; color:#2e4538; text-align:right; padding-bottom:12px; }
+        .f05-plate .callout small { display:block; margin-top:8px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.55); font-style:normal; }
+        .f05-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f05">
+          <div class="f05-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Mosaic 05 · The Region</span>
+          </div>
+          <span class="f05-kick">Our region</span>
+          <div class="f05-grid">
+            <div class="panel tall">
+              <img src="../assets/img/banner.jpg" alt="Downtown Northwest Oregon" />
+              <span class="no">i.</span>
+              <span class="lbl">— Downtown</span>
+            </div>
+            <div class="panel">
+              <img src="../assets/img/hero.jpg" alt="Community" />
+              <span class="no">ii.</span>
+              <span class="lbl">— Community</span>
+            </div>
+            <div class="panel">
+              <img src="../assets/img/who-we-are.jpg" alt="Neighbors at work" />
+              <span class="no">iii.</span>
+              <span class="lbl">— Neighbors</span>
+            </div>
+          </div>
+          <div class="f05-plate">
+            <h1 class="title">Meet<em>Northwest Oregon.</em></h1>
+            <p class="callout">More than a place on the map.<small>Families · Businesses · Neighbors</small></p>
+          </div>
+          <div class="f05-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-headline">
-    <div class="head-top"><div class="kicker  ">Our region</div></div>
-    <div class="head-mid">
-      <h1 class="display xxl lead"><em>Meet</em></h1>
-      <h1 class="display xxl follow"><em>Northwest Oregon.</em></h1>
-    </div>
-    
-    
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

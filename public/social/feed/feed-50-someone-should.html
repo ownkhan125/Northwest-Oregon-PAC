@@ -10,30 +10,56 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-light">
+    <style>
+        .f50 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f50-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f50-mast img { height:56px; width:auto; }
+        .f50-section { position:absolute; top:180px; left:76px; right:76px; z-index:6; display:flex; align-items:center; gap:22px; font-family:var(--font-mono); font-weight:600; font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:#6b5a42; }
+        .f50-section .rule { flex:1; height:1px; background:currentColor; opacity:.5; }
+        /* First voice */
+        .f50-said { position:absolute; top:250px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-style:italic; font-weight:400; font-size:32px; letter-spacing:-.02em; color:rgba(46,69,56,.55); }
+        .f50-quote { position:absolute; top:310px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:76px; line-height:1.02; letter-spacing:-.028em; color:#2e4538; }
+        .f50-quote em { font-style:italic; color:#5a7060; }
+        /* Reveal separator */
+        .f50-mirror { position:absolute; left:76px; right:76px; top:620px; z-index:5; height:2px; background:linear-gradient(90deg, transparent, #2e4538 20%, #2e4538 80%, transparent); }
+        .f50-mirror::before { content:'⟨ the reveal ⟩'; position:absolute; left:50%; transform:translateX(-50%); top:-14px; padding:0 22px; background:#f0e8cf; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:#6b5a42; }
+        /* The answer — reads right-side up, editorial italic */
+        .f50-reflect { position:absolute; top:660px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:60px; line-height:1.02; letter-spacing:-.028em; color:#5a7060; text-align:center; }
+        /* CTA plate */
+        .f50-cta { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding:16px 22px; background:#2e4538; color:#e0d6bc; display:flex; align-items:center; justify-content:space-between; gap:16px; font-family:var(--font-mono); font-weight:700; font-size:16px; letter-spacing:.44em; text-transform:uppercase; }
+        .f50-cta .em { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; letter-spacing:-.01em; color:#f6f2e8; text-transform:none; }
+        .f50-tag { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f50-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f50-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f50">
+          <div class="f50-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Mirror 50 · Leadership</span>
+          </div>
+          <div class="f50-section"><span>Leadership</span><span class="rule"></span><span>No. 50</span></div>
+          <p class="f50-said">— The person saying,</p>
+          <h1 class="f50-quote">"Someone should do something" might be the <em>person who should run.</em></h1>
+          <div class="f50-mirror"></div>
+          <p class="f50-reflect">— might be <em style="font-style:normal;color:#2e4538;">you.</em></p>
+          <div class="f50-cta"><span>Start the conversation</span><span class="em">— Exploring a campaign begins with a conversation, not a commitment.</span></div>
+          <div class="f50-tag"><span>Northwest Oregon needs capable residents</span><span class="em">— Ready to serve.</span></div>
+          <div class="f50-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sage" style="width:820px;height:820px;top:-220px;left:-160px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-240px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-badge">
-    <div class="badge-section">Leadership</div>
-    <div class="badge-rule"></div>
-    <h1 class="display xxl">The <em>person saying,</em></h1>
-    <p class="quote">"Someone should do something" might be the person who should run.</p>
-    <p class="body">START THE CONVERSATION</p>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

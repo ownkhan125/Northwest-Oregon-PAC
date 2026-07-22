@@ -10,30 +10,90 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-light">
+    <style>
+        .f13 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 10%, rgba(224,214,188,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #efe6cd 0%, #d9c99e 100%);
+          color:#2a2a26;
+        }
+        .f13::before {
+          content:''; position:absolute; inset:0; opacity:.3; pointer-events:none;
+          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.2  0 0 0 0 0.12  0 0 0 0.3 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+          mix-blend-mode:multiply;
+        }
+        .f13-mast { position:absolute; top:56px; left:76px; right:76px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f13-mast img { height:56px; width:auto; }
+        /* Twine loop from top edge into hole */
+        .f13-twine {
+          position:absolute; top:150px; left:calc(50% - 90px); width:180px; height:120px; z-index:5;
+        }
+        .f13-twine svg { width:100%; height:100%; }
+        /* Swing tag body */
+        .f13-tag {
+          position:absolute; top:260px; left:80px; right:80px; bottom:180px; z-index:5;
+          background:
+            radial-gradient(120% 90% at 20% 15%, rgba(224,197,140,.9) 0%, rgba(184,144,86,.85) 100%);
+          border:1.5px solid rgba(58,44,20,.4);
+          box-shadow:0 26px 60px -26px rgba(58,44,20,.5), inset 0 -6px 20px rgba(58,44,20,.15);
+          padding:80px 46px 34px;
+          clip-path:polygon(0 8%, 50% 0, 100% 8%, 100% 100%, 0 100%);
+        }
+        /* Punched hole */
+        .f13-hole {
+          position:absolute; top:12px; left:calc(50% - 22px); width:44px; height:44px; z-index:6;
+          background:radial-gradient(circle at 45% 40%, #a89162 0%, #6b4f24 70%, #4a3a1f 100%);
+          border-radius:999px;
+          box-shadow:inset 0 4px 8px rgba(0,0,0,.5), inset 0 -2px 4px rgba(255,255,255,.15);
+        }
+        /* Tag header rule */
+        .f13-tag .head { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:12px; border-bottom:2px double #3d2f14; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(58,44,20,.75); }
+        .f13-tag .head .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#3d2f14; text-transform:none; }
+        /* Big serif title */
+        .f13-tag .title { margin-top:22px; font-family:var(--font-display); font-weight:500; font-size:74px; line-height:.98; letter-spacing:-.028em; color:#3d2f14; }
+        .f13-tag .title em { font-style:italic; color:#5a7060; }
+        .f13-tag .subtitle { margin-top:8px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(58,44,20,.65); }
+        /* Spec block */
+        .f13-tag .spec { margin-top:22px; padding-top:16px; border-top:1.5px dashed rgba(58,44,20,.5); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.24; letter-spacing:-.012em; color:#3d2f14; }
+        .f13-tag .spec em { font-style:normal; color:#5a7060; }
+        /* Price/rev block */
+        .f13-tag .rev { position:absolute; left:46px; right:46px; bottom:26px; padding-top:16px; border-top:1.5px solid rgba(58,44,20,.5); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(58,44,20,.7); }
+        .f13-tag .rev .n { font-family:var(--font-display); font-style:italic; font-size:32px; letter-spacing:-.02em; color:#3d2f14; text-transform:none; }
+        .f13-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f13">
+          <div class="f13-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Swing-tag 13 · Made in Northwest Oregon</span>
+          </div>
+          <div class="f13-twine">
+            <svg viewBox="0 0 180 120" fill="none" stroke="#5a4a20" stroke-width="4" stroke-linecap="round">
+              <path d="M40 8 C 40 40, 90 40, 90 80" stroke-dasharray="6 4"/>
+              <path d="M140 8 C 140 40, 90 40, 90 80" stroke-dasharray="6 4"/>
+            </svg>
+          </div>
+          <div class="f13-hole"></div>
+          <div class="f13-tag">
+            <div class="head"><span>Northwest Made</span><span class="em">Fig. 13</span><span>Small business</span></div>
+            <h1 class="title">Economic Prosperity<em>& Small Business</em></h1>
+            <p class="subtitle">— A tag pinned to the region</p>
+            <p class="spec">We support policies that encourage entrepreneurship, strengthen <em>local businesses,</em> reduce unnecessary barriers, and create an environment where innovation and hard work can thrive across Northwest Oregon.</p>
+            <div class="rev">
+              <span>Signed for the region</span>
+              <span class="n">— Northwest Oregon PAC</span>
+            </div>
+          </div>
+          <div class="f13-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Economic Prosperity &amp; Small Business</div>
-    
-    
-    <div class="body fs-50">
-      <p class="lead-p">We support policies that encourage entrepreneurship, strengthen local businesses, reduce unnecessary barriers, and create an environment where innovation and hard work can thrive across Northwest Oregon.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

@@ -10,30 +10,85 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-light">
+    <style>
+        .f55 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f55-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f55-mast img { height:56px; width:auto; }
+        .f55-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f55-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f55-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:64px; line-height:1.02; letter-spacing:-.028em; color:#2e4538; max-width:920px; }
+        .f55-head em { font-style:italic; color:#5a7060; }
+        /* Diptych */
+        .f55-pair { position:absolute; left:76px; right:76px; top:440px; height:340px; z-index:5; display:grid; grid-template-columns:1fr 60px 1fr; gap:22px; align-items:stretch; }
+        /* Ballot side */
+        .f55-ballot { position:relative; background:#faf3d8; border:2px solid #2e4538; padding:22px 24px; box-shadow:0 20px 40px -22px rgba(46,69,56,.4); transform:rotate(-1.5deg); }
+        .f55-ballot::before { content:''; position:absolute; inset:10px; border:1px double #2e4538; pointer-events:none; }
+        .f55-ballot .k { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f55-ballot .title { margin-top:4px; font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; }
+        .f55-ballot .rows { margin-top:14px; display:flex; flex-direction:column; gap:10px; }
+        .f55-ballot .row { display:flex; align-items:center; gap:14px; padding-bottom:8px; border-bottom:1px dashed rgba(46,69,56,.4); }
+        .f55-ballot .row .oval { flex:none; width:28px; height:40px; border:2.5px solid #2e4538; border-radius:999px; display:flex; align-items:center; justify-content:center; }
+        .f55-ballot .row.f .oval { background:#2e4538; }
+        .f55-ballot .row .oval .mark { color:#e0d6bc; font-family:var(--font-display); font-style:italic; font-size:22px; line-height:1; }
+        .f55-ballot .row .lbl { flex:1; font-family:var(--font-display); font-weight:500; font-size:22px; letter-spacing:-.015em; color:#2e4538; }
+        .f55-ballot .stamp { position:absolute; right:24px; bottom:20px; padding:6px 12px; border:2px solid #5a7060; color:#5a7060; font-family:var(--font-mono); font-weight:700; font-size:12px; letter-spacing:.36em; text-transform:uppercase; transform:rotate(-4deg); }
+        /* Plus sign */
+        .f55-plus { display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-style:italic; font-size:96px; color:#5a7060; letter-spacing:-.02em; }
+        /* Volunteer button */
+        .f55-button { position:relative; align-self:center; justify-self:center; width:290px; height:290px; border-radius:999px; background:#2e4538; color:#e0d6bc; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; box-shadow:0 20px 40px -18px rgba(46,69,56,.55), inset 0 -8px 20px rgba(0,0,0,.3), inset 0 4px 12px rgba(255,255,255,.1); border:5px solid #e0d6bc; transform:rotate(6deg); }
+        .f55-button::before { content:''; position:absolute; inset:14px; border:1.5px dashed rgba(224,214,188,.5); border-radius:999px; }
+        .f55-button .lbl { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.7); }
+        .f55-button .word { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:60px; letter-spacing:-.028em; color:#e0d6bc; }
+        .f55-button .call { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.85); }
+        /* Body */
+        .f55-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:#2e4538; text-align:center; }
+        .f55-body em { font-style:normal; color:#5a7060; }
+        .f55-tag { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f55-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f55-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f55">
+          <div class="f55-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Pair 55 · More Than a Vote</span>
+          </div>
+          <span class="f55-kick">Volunteer</span>
+          <h1 class="f55-head">Your community needs more than <em>your vote.</em></h1>
+          <div class="f55-pair">
+            <div class="f55-ballot">
+              <span class="k">— Received</span>
+              <div class="title">Your vote · counted</div>
+              <div class="rows">
+                <div class="row f"><span class="oval"><span class="mark">✓</span></span><span class="lbl">Your ballot</span></div>
+                <div class="row"><span class="oval"></span><span class="lbl">Everything else it takes</span></div>
+              </div>
+              <span class="stamp">Counted</span>
+            </div>
+            <div class="f55-plus">+</div>
+            <div class="f55-button">
+              <span class="lbl">— Also needed</span>
+              <span class="word">More.</span>
+              <span class="call">Volunteer today</span>
+            </div>
+          </div>
+          <p class="f55-body">Whether once a month or once a week — <em>everyone has something valuable to contribute.</em></p>
+          <div class="f55-tag"><span>Your involvement helps</span><span class="em">— Strengthen campaigns and connect communities.</span></div>
+          <div class="f55-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Volunteer</div>
-    
-    
-    <div class="body fs-66">
-      <p class="lead-p">Your community needs more than your vote.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

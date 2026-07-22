@@ -393,6 +393,248 @@ const storyCandidate = (d, ctx) => {
 }
 
 /* ==================================================================
+   CAROUSEL SUITE — cinematic magazine-spread compositions.
+   Each template exposes a different visual language so a single
+   carousel can move between: cover → manifesto → duo-split →
+   checklist-over-image → big-numeral → belief → closing.
+================================================================== */
+
+const kickerLine = (text) => (text ? `<div class="c-kicker">${esc(text)}</div>` : '')
+
+/* -------- 1. cCover — full-bleed photo w/ editorial title lockup */
+const cCover = (d, ctx) => {
+  ctx.onPhoto = true
+  const size = headingSize(d.heading, true)
+  return `
+  <div class="c-cover-bg">
+    <img src="${ctx.prefix}img/${d.photo}" alt="" />
+    <div class="c-cover-wash ${d.washDeep ? 'deep' : ''}"></div>
+    <div class="c-cover-vignette"></div>
+  </div>
+  <div class="zone c-cover">
+    <div class="c-cover-top">
+      ${kickerLine(d.eyebrow)}
+      ${d.brandLine ? `<span class="c-cover-brand">${esc(d.brandLine)}</span>` : ''}
+    </div>
+    <div class="c-cover-body">
+      <h1 class="display ${size}">${em(d.heading, d.emWords || 2)}</h1>
+      ${d.sub ? `<p class="c-cover-sub">${esc(d.sub)}</p>` : ''}
+      ${d.hairline !== false ? '<div class="c-cover-hairline"></div>' : ''}
+    </div>
+  </div>`
+}
+
+/* -------- 2. cManifesto — single-statement editorial pull quote */
+const cManifesto = (d, ctx) => {
+  if (d.photo) ctx.onPhoto = true
+  const paragraphs = d.paragraphs || (d.heading ? [d.heading] : [])
+  const total = paragraphs.reduce((a, p) => a + p.length, 0)
+  const size = total > 260 ? 'sm' : total > 180 ? 'md' : total > 100 ? 'lg' : 'xl'
+  return `
+  ${
+    d.photo
+      ? `<div class="c-mani-bg"><img src="${ctx.prefix}img/${d.photo}" alt="" /><div class="c-mani-wash ${d.washTone || ''}"></div></div>`
+      : `<div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.5"></div>
+         <div class="glow forest" style="width:720px;height:720px;bottom:-260px;right:-160px;opacity:.5"></div>`
+  }
+  <div class="zone c-mani ${d.align || 'center'}">
+    ${kickerLine(d.eyebrow)}
+    <div class="c-mani-body">
+      ${
+        d.heading
+          ? `<h1 class="display ${headingSize(d.heading)}">${em(d.heading, d.emWords || 2)}</h1>`
+          : ''
+      }
+      ${paragraphs
+        .map(
+          (p, i) => `<p class="c-mani-p ${!d.heading && i === 0 ? 'lead' : ''} ${size}">${em(p, i === 0 ? 3 : 2)}</p>`,
+        )
+        .join('')}
+    </div>
+    <div class="c-mani-mark">
+      <span class="c-mani-line"></span>
+      <span class="c-mani-brand">${esc(d.brand || 'NORTHWEST OREGON PAC')}</span>
+    </div>
+  </div>`
+}
+
+/* -------- 3. cDuoSplit — 50/50 photo + solid surface heading+body */
+const cDuoSplit = (d, ctx) => {
+  const flip = d.flip ? 'flip' : ''
+  return `
+  <div class="c-duo ${flip} ${d.orientation || 'vertical'}">
+    <div class="c-duo-photo">
+      <img src="${ctx.prefix}img/${d.photo}" alt="" />
+      <div class="c-duo-photo-wash"></div>
+      ${d.photoLabel ? `<span class="c-duo-photo-label">${esc(d.photoLabel)}</span>` : ''}
+    </div>
+    <div class="c-duo-copy c-duo-copy--${d.copyTone || 'forest'}">
+      <div class="c-duo-inner">
+        ${kickerLine(d.eyebrow)}
+        ${d.heading ? `<h1 class="display ${headingSize(d.heading)}">${em(d.heading, d.emWords || 2)}</h1>` : ''}
+        ${
+          d.paragraphs
+            ? `<div class="c-duo-body">${d.paragraphs
+                .map((p) => `<p>${esc(p)}</p>`)
+                .join('')}</div>`
+            : ''
+        }
+        ${d.sub ? `<p class="c-duo-sub">${esc(d.sub)}</p>` : ''}
+      </div>
+      <span class="c-duo-mark">NW · OR</span>
+    </div>
+  </div>`
+}
+
+/* -------- 4. cCheckOverImage — checklist floats over cinematic photo */
+const cCheckOverImage = (d, ctx) => {
+  ctx.onPhoto = true
+  const bullet = d.bullet || '✓'
+  return `
+  <div class="c-checkimg-bg">
+    <img src="${ctx.prefix}img/${d.photo}" alt="" />
+    <div class="c-checkimg-wash ${d.washTone || ''}"></div>
+    <div class="c-checkimg-stripe"></div>
+  </div>
+  <div class="zone c-checkimg">
+    <div class="c-checkimg-top">
+      ${kickerLine(d.eyebrow)}
+      ${d.heading ? `<h1 class="display ${headingSize(d.heading)}">${em(d.heading, d.emWords || 2)}</h1>` : ''}
+      ${d.subhead ? `<p class="c-checkimg-sub">${esc(d.subhead)}</p>` : ''}
+    </div>
+    <ul class="c-checkimg-items">
+      ${d.items
+        .map(
+          (it, i) => `<li>
+            <span class="c-checkimg-num">${String(i + 1).padStart(2, '0')}</span>
+            <span class="c-checkimg-mark">${esc(bullet)}</span>
+            <span class="c-checkimg-txt">${esc(it)}</span>
+          </li>`,
+        )
+        .join('')}
+    </ul>
+    ${d.footer ? `<div class="c-checkimg-footer">${esc(d.footer)}</div>` : ''}
+  </div>`
+}
+
+/* -------- 5. cCheckSolid — checklist on solid surface w/ editorial rules */
+const cCheckSolid = (d) => {
+  const bullet = d.bullet || '✓'
+  return `
+  <div class="glow sage" style="width:720px;height:720px;top:-200px;right:-160px;opacity:.5"></div>
+  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;left:-140px;opacity:.5"></div>
+  <div class="zone c-checksolid">
+    <div class="c-checksolid-head">
+      ${kickerLine(d.eyebrow)}
+      ${d.heading ? `<h1 class="display ${headingSize(d.heading)}">${em(d.heading, d.emWords || 2)}</h1>` : ''}
+      ${d.subhead ? `<p class="c-checksolid-sub">${esc(d.subhead)}</p>` : ''}
+    </div>
+    <ul class="c-checksolid-items">
+      ${d.items
+        .map(
+          (it, i) => `<li>
+            <span class="c-num">${String(i + 1).padStart(2, '0')}</span>
+            <span class="c-check">${esc(bullet)}</span>
+            <span class="c-txt">${esc(it)}</span>
+            <span class="c-rule"></span>
+          </li>`,
+        )
+        .join('')}
+    </ul>
+    ${d.footer ? `<div class="c-checksolid-footer"><span class="c-mark"></span>${esc(d.footer)}</div>` : ''}
+  </div>`
+}
+
+/* -------- 6. cBigNum — huge italic numeral + step content */
+const cBigNum = (d, ctx) => {
+  return `
+  <div class="c-num-frame">
+    <div class="c-num-left">
+      <div class="c-num-kicker">${esc(d.eyebrow || '')}</div>
+      <div class="c-num-figure">${esc(d.num)}</div>
+      <div class="c-num-tag">${esc(d.tag || 'STEP')}</div>
+    </div>
+    <div class="c-num-right">
+      ${d.photo ? `<div class="c-num-photo"><img src="${ctx.prefix}img/${d.photo}" alt="" /><div class="c-num-photo-wash"></div></div>` : ''}
+      <div class="c-num-copy">
+        ${d.heading ? `<h1 class="display ${headingSize(d.heading)}">${em(d.heading, d.emWords || 2)}</h1>` : ''}
+        ${
+          d.paragraphs
+            ? d.paragraphs.map((p) => `<p class="c-num-p">${esc(p)}</p>`).join('')
+            : ''
+        }
+        ${d.footer ? `<div class="c-num-footer">${esc(d.footer)}</div>` : ''}
+      </div>
+    </div>
+  </div>`
+}
+
+/* -------- 7. cBeliefStatement — belief manifesto w/ side badge */
+const cBeliefStatement = (d, ctx) => {
+  return `
+  <div class="glow ${d.tone === 'sand' ? 'sand' : 'sage'}" style="width:820px;height:820px;top:-260px;${d.side === 'right' ? 'right:-140px' : 'left:-140px'};opacity:.5"></div>
+  ${
+    d.photo
+      ? `<div class="c-belief-photo ${d.side === 'right' ? 'right' : 'left'}"><img src="${ctx.prefix}img/${d.photo}" alt="" /><div class="c-belief-photo-wash"></div></div>`
+      : ''
+  }
+  <div class="zone c-belief ${d.side === 'right' ? 'copy-left' : 'copy-right'} ${d.photo ? 'with-photo' : 'no-photo'}">
+    <div class="c-belief-badge">
+      <span class="c-belief-index">${esc(d.index || '·')}</span>
+      <span class="c-belief-tag">${esc(d.tag || 'BELIEF')}</span>
+    </div>
+    <div class="c-belief-body">
+      ${kickerLine(d.eyebrow)}
+      ${d.heading ? `<h1 class="display ${headingSize(d.heading)}">${em(d.heading, d.emWords || 2)}</h1>` : ''}
+      ${
+        d.paragraphs
+          ? d.paragraphs.map((p) => `<p class="c-belief-p">${esc(p)}</p>`).join('')
+          : ''
+      }
+    </div>
+  </div>`
+}
+
+/* -------- 8. cClosing — cinematic finale card */
+const cClosing = (d, ctx) => {
+  if (d.photo) ctx.onPhoto = true
+  return `
+  ${
+    d.photo
+      ? `<div class="c-close-bg"><img src="${ctx.prefix}img/${d.photo}" alt="" /><div class="c-close-wash"></div></div>`
+      : `<div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.55"></div>
+         <div class="glow forest" style="width:720px;height:720px;bottom:-260px;right:-160px;opacity:.55"></div>`
+  }
+  <div class="zone c-close">
+    ${kickerLine(d.eyebrow)}
+    <div class="c-close-body">
+      ${d.heading ? `<h1 class="display ${headingSize(d.heading)}">${em(d.heading, d.emWords || 2)}</h1>` : ''}
+      ${d.sub ? `<p class="c-close-sub">${esc(d.sub)}</p>` : ''}
+      ${
+        d.items
+          ? `<div class="c-close-items">${d.items
+              .map(
+                (it, i) => `
+        <div class="c-close-item">
+          <span class="n">${String(i + 1).padStart(2, '0')}</span>
+          <span class="lbl">${esc(it)}</span>
+          <span class="arrow">→</span>
+        </div>`,
+              )
+              .join('')}</div>`
+          : ''
+      }
+      ${d.footer ? `<div class="c-close-footer">${esc(d.footer)}</div>` : ''}
+    </div>
+    <div class="c-close-flag">
+      <span class="stripe s1"></span>
+      <span class="stripe s2"></span>
+      <span class="stripe s3"></span>
+    </div>
+  </div>`
+}
+
+/* ==================================================================
    CUSTOM — bespoke per-post composition. `data.body` is raw HTML,
    `data.css` is inline scoped CSS. Used when a post gets its own
    creative direction rather than sharing a template.
@@ -420,6 +662,14 @@ const RENDERERS = {
   storyCard,
   storyPoll,
   storyCandidate,
+  cCover,
+  cManifesto,
+  cDuoSplit,
+  cCheckOverImage,
+  cCheckSolid,
+  cBigNum,
+  cBeliefStatement,
+  cClosing,
   custom,
 }
 
@@ -428,6 +678,14 @@ export const TEMPLATE_META = {
   cover: { forceSurface: 's-ink', onPhoto: true, hideFiling: true },
   candidate: { padCanvas: true },
   storyCandidate: { forceSurface: 's-ink', onPhoto: true, hideFiling: true },
+  cCover: { forceSurface: 's-ink', onPhoto: true, hideFiling: true },
+  cCheckOverImage: { onPhoto: true, hideFiling: true },
+  cDuoSplit: { forceSurface: 's-light', hideChrome: true },
+  cManifesto: {},
+  cBigNum: { hideFiling: true },
+  cBeliefStatement: {},
+  cCheckSolid: {},
+  cClosing: {},
   // custom posts declare their own chrome via `meta` in content.mjs data.
 }
 

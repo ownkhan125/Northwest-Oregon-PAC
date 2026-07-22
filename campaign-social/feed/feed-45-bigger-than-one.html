@@ -10,30 +10,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-forest">
+    <style>
+        .f45 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
+            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
+            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+          color:#f6f2e8;
+        }
+        .f45-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f45-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        .f45-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
+        .f45-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f45-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:76px; line-height:.98; letter-spacing:-.028em; color:#f6f2e8; max-width:920px; }
+        .f45-head em { display:block; font-style:italic; color:#e0d6bc; }
+        /* Cycles strip */
+        .f45-strip { position:absolute; left:76px; right:76px; top:460px; z-index:5; padding-top:20px; border-top:1.5px solid rgba(224,214,188,.55); }
+        .f45-strip .rail { position:relative; height:180px; }
+        .f45-strip .rail::before { content:''; position:absolute; left:0; right:0; top:60px; height:1px; background:linear-gradient(90deg, rgba(224,214,188,.6), rgba(224,214,188,.35) 90%, transparent); }
+        .f45-cycle { position:absolute; top:0; display:flex; flex-direction:column; align-items:center; gap:10px; width:22%; text-align:center; }
+        .f45-cycle .disc { width:100px; height:100px; border-radius:999px; border:2px solid #e0d6bc; background:#1c2b23; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 22px -8px rgba(0,0,0,.5); }
+        .f45-cycle.now .disc { background:#e0d6bc; }
+        .f45-cycle .disc .yr { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:32px; letter-spacing:-.02em; color:#e0d6bc; }
+        .f45-cycle.now .disc .yr { color:#2e4538; }
+        .f45-cycle .disc .inf { font-family:var(--font-display); font-weight:500; font-size:42px; color:#e0d6bc; }
+        .f45-cycle .lbl { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f45-cycle.c1 { left:0; }
+        .f45-cycle.c2 { left:26%; }
+        .f45-cycle.c3 { left:52%; }
+        .f45-cycle.c4 { left:78%; }
+        /* Body */
+        .f45-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(224,214,188,.35); font-family:var(--font-display); font-weight:500; font-size:24px; line-height:1.24; letter-spacing:-.012em; color:rgba(246,242,232,.94); max-width:920px; }
+        .f45-body em { font-style:italic; color:#e0d6bc; }
+        .f45-tag { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f45-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f45-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f45">
+          <div class="f45-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Horizon 45 · Bigger Than One</span>
+          </div>
+          <span class="f45-kick">Bigger than one election</span>
+          <h1 class="f45-head">This is bigger than<em>one election.</em></h1>
+          <div class="f45-strip">
+            <div class="rail">
+              <div class="f45-cycle c1 now"><div class="disc"><span class="yr">'26</span></div><span class="lbl">— This cycle</span></div>
+              <div class="f45-cycle c2"><div class="disc"><span class="yr">'28</span></div><span class="lbl">— Next cycle</span></div>
+              <div class="f45-cycle c3"><div class="disc"><span class="yr">'30</span></div><span class="lbl">— After next</span></div>
+              <div class="f45-cycle c4"><div class="disc"><span class="inf">∞</span></div><span class="lbl">— And beyond</span></div>
+            </div>
+          </div>
+          <p class="f45-body">It's about building a Northwest Oregon where every community has a <em>voice,</em> every voter has a <em>choice,</em> and every candidate has the opportunity to compete.</p>
+          <div class="f45-tag"><span>Join us as we build what's next</span><span class="em">— A long-term vision.</span></div>
+          <div class="f45-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Bigger than one election</div>
-    
-    
-    <div class="body fs-38">
-      <p class="lead-p">This is bigger than one election.</p><p class="">It's about building a Northwest Oregon where every community has a voice, every voter has a choice, and every candidate has the opportunity to compete.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

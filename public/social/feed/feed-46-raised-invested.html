@@ -10,30 +10,78 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-light">
+    <style>
+        .f46 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f46-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f46-mast img { height:56px; width:auto; }
+        .f46-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f46-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        /* Split title */
+        .f46-title { position:absolute; top:240px; left:76px; right:520px; z-index:6; }
+        .f46-title .l1 { font-family:var(--font-display); font-weight:500; font-size:72px; line-height:1; letter-spacing:-.028em; color:#2e4538; }
+        .f46-title .l2 { display:block; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:72px; line-height:1; letter-spacing:-.028em; color:#5a7060; }
+        /* Right SVG loop */
+        .f46-loop { position:absolute; top:200px; right:70px; width:420px; height:420px; z-index:5; }
+        .f46-loop svg { display:block; width:100%; height:100%; }
+        /* Verbs strip */
+        .f46-verbs { position:absolute; left:76px; right:76px; bottom:180px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+        .f46-verbs .v { padding:14px 16px; background:#2e4538; color:#f6f2e8; display:flex; align-items:baseline; justify-content:space-between; gap:14px; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f46-verbs .v .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f46-sig { position:absolute; left:76px; right:76px; bottom:120px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f46-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f46-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f46">
+          <div class="f46-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Loop 46 · Raised Here. Invested Here.</span>
+          </div>
+          <span class="f46-kick">Raised here. Invested here.</span>
+          <div class="f46-title">
+            <span class="l1">Raised here.</span>
+            <span class="l2">Invested here.</span>
+          </div>
+          <div class="f46-loop">
+            <svg viewBox="0 0 420 420" fill="none" stroke="#2e4538" stroke-width="2">
+              <circle cx="210" cy="210" r="170" fill="rgba(90,112,96,.06)"/>
+              <!-- Circular flow path leaves clear gap at 3 & 9 o'clock -->
+              <path d="M 90 152 A 150 150 0 0 1 330 152" stroke-dasharray="6 6" opacity="0.6"/>
+              <path d="M 90 268 A 150 150 0 0 0 330 268" stroke-dasharray="6 6" opacity="0.6"/>
+              <!-- Arrows -->
+              <path d="M 322 148 L 332 152 L 320 168" stroke-width="2.5" fill="none"/>
+              <path d="M 98 148 L 88 152 L 100 168" stroke-width="2.5" fill="none"/>
+              <!-- Nodes — larger and pushed to the sides -->
+              <circle cx="60" cy="210" r="44" fill="#e0d6bc" stroke="#2e4538" stroke-width="2"/>
+              <text x="60" y="202" font-family="JetBrains Mono" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="2">RAISED</text>
+              <text x="60" y="224" font-family="Lora" font-style="italic" font-size="16" fill="#2e4538" text-anchor="middle" stroke="none">here</text>
+              <circle cx="360" cy="210" r="44" fill="#2e4538" stroke="#e0d6bc" stroke-width="2"/>
+              <text x="360" y="202" font-family="JetBrains Mono" font-size="10" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2">INVESTED</text>
+              <text x="360" y="224" font-family="Lora" font-style="italic" font-size="16" fill="#e0d6bc" text-anchor="middle" stroke="none">here</text>
+              <text x="210" y="216" font-family="JetBrains Mono" font-size="11" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">THE REGION</text>
+            </svg>
+          </div>
+          <div class="f46-verbs">
+            <div class="v"><span>— 01</span><span class="em">Organize</span></div>
+            <div class="v"><span>— 02</span><span class="em">Communicate</span></div>
+            <div class="v"><span>— 03</span><span class="em">Compete</span></div>
+          </div>
+          <div class="f46-sig"><span>No waiting for outside organizations</span><span class="em">— Help strengthen the region.</span></div>
+          <div class="f46-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Raised here. Invested here.</div>
-    
-    
-    <div class="body fs-58">
-      <p class="lead-p">Local contributions help Northwest Oregon candidates organize, communicate, and compete.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

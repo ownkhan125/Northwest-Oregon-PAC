@@ -10,32 +10,63 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-forest">
+    <style>
+        .f12 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 10%, rgba(90,112,96,.5) 0%, transparent 55%),
+            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
+            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+          color:#f6f2e8;
+        }
+        .f12-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f12-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        .f12-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
+        .f12-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f12-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:88px; line-height:1; letter-spacing:-.028em; color:#f6f2e8; max-width:900px; }
+        .f12-head em { display:block; font-style:italic; color:#e0d6bc; }
+        /* Roster */
+        .f12-roster { position:absolute; left:76px; right:76px; bottom:180px; z-index:6; padding:22px 26px; background:rgba(224,214,188,.06); border:1px solid rgba(246,242,232,.28); }
+        .f12-roster .rhead { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:14px; border-bottom:2px solid rgba(224,214,188,.5); font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.7); }
+        .f12-roster .rhead .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f12-roster ul { list-style:none; padding:0; margin:14px 0 0; display:flex; flex-direction:column; gap:6px; }
+        .f12-roster li { display:grid; grid-template-columns:36px 1fr auto; align-items:center; gap:20px; padding:8px 0; border-bottom:1px dashed rgba(224,214,188,.22); font-family:var(--font-display); font-weight:500; font-size:32px; letter-spacing:-.015em; color:rgba(246,242,232,.95); }
+        .f12-roster li:last-child { border-bottom:none; }
+        .f12-roster li .tick { font-family:var(--font-display); font-style:italic; font-size:32px; color:#e0d6bc; line-height:1; text-align:center; }
+        .f12-roster li .lbl em { font-style:italic; color:#e0d6bc; }
+        .f12-roster li .mark { font-family:var(--font-mono); font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+        /* Foot */
+        .f12-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; padding-top:14px; border-top:1.5px solid rgba(246,242,232,.35); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f12-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f12-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f12">
+          <div class="f12-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Roster 12 · The Present</span>
+          </div>
+          <span class="f12-kick">Show up</span>
+          <h1 class="f12-head">The Future Belongs<em>to Those Who Show Up.</em></h1>
+          <div class="f12-roster">
+            <div class="rhead"><span>The attendance sheet</span><span class="em">Marked present</span><span>Dated 2026</span></div>
+            <ul>
+              <li><span class="tick">✓</span><span class="lbl">Volunteering</span><span class="mark">Line 01</span></li>
+              <li><span class="tick">✓</span><span class="lbl">Supporting <em>a candidate</em></span><span class="mark">Line 02</span></li>
+              <li><span class="tick">✓</span><span class="lbl">Attending <em>an event</em></span><span class="mark">Line 03</span></li>
+              <li><span class="tick">✓</span><span class="lbl">Staying <em>informed</em></span><span class="mark">Line 04</span></li>
+            </ul>
+          </div>
+          <div class="f12-sig"><span>Every action makes a difference</span><span class="em">— Visit our website</span></div>
+          <div class="f12-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-headline">
-    <div class="head-top"><div class="kicker  ">Show up</div></div>
-    <div class="head-mid">
-      <h1 class="display xl lead">The Future <em>Belongs</em></h1>
-      <h1 class="display xl follow"><em>to Those Who Show Up.</em></h1>
-    </div>
-    
-    
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

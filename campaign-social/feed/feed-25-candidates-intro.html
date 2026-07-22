@@ -10,30 +10,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-forest">
+    <style>
+        .f25 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(90% 50% at 50% 42%, rgba(224,214,188,.22) 0%, rgba(224,214,188,0) 55%),
+            radial-gradient(90% 60% at 20% 5%, rgba(46,69,56,.5) 0%, transparent 55%),
+            linear-gradient(178deg, #1c2b23 0%, #0a1310 60%, #050a07 100%);
+          color:#f6f2e8;
+        }
+        .f25-mast { position:absolute; top:56px; left:76px; right:76px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f25-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        .f25-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
+        .f25-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        /* Podium svg + pool of light */
+        .f25-stage { position:absolute; top:230px; left:calc(50% - 200px); width:400px; height:340px; z-index:5; }
+        .f25-stage .halo {
+          position:absolute; left:calc(50% - 200px); top:20px; width:400px; height:220px;
+          background:radial-gradient(circle at 50% 40%, rgba(255,236,192,.5) 0%, rgba(255,236,192,.15) 40%, rgba(255,236,192,0) 70%);
+          filter:blur(6px);
+        }
+        .f25-stage svg { position:relative; z-index:2; display:block; margin:0 auto; width:220px; height:100%; color:#e0d6bc; }
+        /* Big serif title */
+        .f25-head { position:absolute; left:76px; right:76px; top:600px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1; letter-spacing:-.028em; color:#f6f2e8; }
+        .f25-head em { display:block; font-style:italic; color:#e0d6bc; }
+        /* Body */
+        .f25-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; line-height:1.24; letter-spacing:-.012em; color:rgba(246,242,232,.9); max-width:920px; }
+        .f25-body em { font-style:normal; color:#e0d6bc; }
+        .f25-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f25-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f25-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f25">
+          <div class="f25-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Stage 25 · Meet the Candidates</span>
+          </div>
+          <span class="f25-kick">Meet the candidates</span>
+          <div class="f25-stage">
+            <div class="halo"></div>
+            <svg viewBox="0 0 220 340" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Podium -->
+              <path d="M60 220 L60 320 L160 320 L160 220 Z" fill="currentColor" fill-opacity=".15"/>
+              <path d="M60 220 L60 320 L160 320 L160 220 Z"/>
+              <path d="M50 200 L170 200 L160 220 L60 220 Z"/>
+              <path d="M50 200 L170 200"/>
+              <line x1="110" y1="200" x2="110" y2="150"/>
+              <circle cx="110" cy="140" r="8"/>
+              <!-- Ground -->
+              <line x1="20" y1="330" x2="200" y2="330"/>
+            </svg>
+          </div>
+          <h1 class="f25-head">Candidates<em>standing up for Northwest Oregon.</em></h1>
+          <p class="f25-body">This election, we're supporting candidates who are prepared to listen, serve, and work for the communities they represent, <em>not just during campaign season, but long after Election Day.</em></p>
+          <div class="f25-sig"><span>Stay tuned</span><span class="em">— Meet the candidates.</span></div>
+          <div class="f25-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Meet the candidates</div>
-    
-    
-    <div class="body fs-38">
-      <p class="lead-p">Candidates standing up for Northwest Oregon.</p><p class="">This election, we're supporting candidates who are prepared to listen, serve, and work for the communities they represent, not just during campaign season, but long after Election Day.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

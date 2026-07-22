@@ -10,46 +10,90 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-forest">
-    
-  <div class="glow forest" style="width:720px;height:720px;bottom:-200px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-stack">
-    <div class="kicker  ">Our promise</div>
-    <h1 class="display xxl">This is <em>our promise.</em></h1>
-    <div class="rows">
+  <div class="canvas  s-light">
+    <style>
+        .f58 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f58-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f58-mast img { height:56px; width:auto; }
+        /* Oath card */
+        .f58-oath { position:absolute; top:170px; bottom:130px; left:80px; right:80px; z-index:5;
+          background:#faf3d8; border:2px solid #2e4538;
+          box-shadow:0 30px 60px -30px rgba(46,69,56,.5), inset 0 1px 0 rgba(255,255,255,.5);
+          padding:34px 40px 30px;
+          display:flex; flex-direction:column;
+        }
+        .f58-oath::before { content:''; position:absolute; inset:12px; border:1px double #2e4538; pointer-events:none; }
+        /* Corner ornaments */
+        .f58-corner { position:absolute; font-family:var(--font-display); font-style:italic; font-size:42px; color:#5a7060; }
+        .f58-corner.tl { top:16px; left:26px; }
+        .f58-corner.tr { top:16px; right:26px; }
+        .f58-corner.bl { bottom:20px; left:26px; }
+        .f58-corner.br { bottom:20px; right:26px; }
+        .f58-oath .header { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:14px; border-bottom:2px solid #2e4538; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f58-oath .header .em { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f58-oath .kick { margin-top:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f58-oath .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f58-oath .head { margin-top:10px; font-family:var(--font-display); font-weight:500; font-size:74px; line-height:1; letter-spacing:-.028em; color:#2e4538; }
+        .f58-oath .head em { font-style:italic; color:#5a7060; }
+        .f58-oath .pledges { margin-top:22px; display:flex; flex-direction:column; gap:16px; }
+        .f58-oath .pledge { display:flex; align-items:baseline; gap:22px; padding-bottom:12px; border-bottom:1px dashed rgba(46,69,56,.4); }
+        .f58-oath .pledge .n { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); min-width:60px; }
+        .f58-oath .pledge .v { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:36px; line-height:1.06; letter-spacing:-.02em; color:#2e4538; }
+        .f58-oath .pledge .v em { font-style:normal; color:#6b5a42; }
+        /* Seal + plate */
+        .f58-oath .seal-row { margin-top:auto; padding-top:16px; border-top:1.5px solid #2e4538; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+        .f58-oath .plate { padding:12px 22px; background:#2e4538; color:#e0d6bc; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:34px; letter-spacing:-.015em; }
+        .f58-oath .seal {
+          width:100px; height:100px; border-radius:999px; border:3px double #2e4538;
+          display:flex; flex-direction:column; align-items:center; justify-content:center;
+          font-family:var(--font-mono); font-size:9px; letter-spacing:.32em; text-transform:uppercase; color:#2e4538;
+          transform:rotate(-6deg); background:rgba(90,112,96,.14);
+        }
+        .f58-oath .seal .star { font-family:var(--font-display); font-style:italic; font-size:26px; color:#5a7060; }
+        .f58-oath .signoff { padding:12px 18px; background:rgba(46,69,56,.08); border:1px solid rgba(46,69,56,.4); font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
+        .f58-oath .signoff .em { display:block; margin-top:6px; font-family:var(--font-display); font-style:italic; font-size:20px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f58-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f58">
+          <div class="f58-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Oath 58 · Our Promise</span>
+          </div>
+          <div class="f58-oath">
+            <span class="f58-corner tl">§</span>
+            <span class="f58-corner tr">§</span>
+            <span class="f58-corner bl">§</span>
+            <span class="f58-corner br">§</span>
+            <div class="header"><span>The Northwest Oath</span><span class="em">Our promise</span><span>No. 58</span></div>
+            <span class="kick">Our promise</span>
+            <h1 class="head">This is <em>our promise.</em></h1>
+            <div class="pledges">
+              <div class="pledge"><span class="n">01</span><span class="v">We'll keep <em>recruiting.</em></span></div>
+              <div class="pledge"><span class="n">02</span><span class="v">We'll keep <em>organizing.</em></span></div>
+              <div class="pledge"><span class="n">03</span><span class="v">We'll keep <em>supporting.</em></span></div>
+              <div class="pledge"><span class="n">04</span><span class="v">We'll keep <em>showing up.</em></span></div>
+            </div>
+            <div class="seal-row">
+              <span class="plate">For Northwest Oregon.</span>
+              <span class="signoff">Signed by the region<span class="em">— This is only the beginning.</span></span>
+              <div class="seal"><span class="star">☘</span><span>Est.<br/>2026</span></div>
+            </div>
+          </div>
+          <div class="f58-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-      <div class="row">
-        <span class="k">·</span>
-        <span class="v">We'll keep recruiting.</span>
-      </div>
-      <div class="row">
-        <span class="k">·</span>
-        <span class="v">We'll keep organizing.</span>
-      </div>
-      <div class="row">
-        <span class="k">·</span>
-        <span class="v">We'll keep supporting.</span>
-      </div>
-      <div class="row">
-        <span class="k">·</span>
-        <span class="v">We'll keep showing up.</span>
-      </div>
-    </div>
-    <div class="footer">For Northwest Oregon.</div>
-  </div>
     
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

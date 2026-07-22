@@ -10,32 +10,66 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-sand">
+  <div class="canvas  s-light">
+    <style>
+        .f15 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 8%, rgba(240,232,206,.6) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e2d4a8 40%, #7f9182 82%, #2e4538 100%);
+          color:#2e4538;
+        }
+        .f15::before {
+          content:''; position:absolute; inset:0; opacity:.25; pointer-events:none;
+          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.2  0 0 0 0 0.12  0 0 0 0.25 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+          mix-blend-mode:multiply;
+        }
+        /* Horizon line */
+        .f15-horizon { position:absolute; left:0; right:0; top:62%; height:1px; background:linear-gradient(90deg, transparent 0%, rgba(46,69,56,.4) 15%, rgba(46,69,56,.4) 85%, transparent 100%); z-index:3; }
+        .f15-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f15-mast img { height:56px; width:auto; }
+        /* Kicker */
+        .f15-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f15-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        /* Big serif title */
+        .f15-head { position:absolute; top:230px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:110px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
+        .f15-head em { display:block; font-style:italic; color:#5a7060; }
+        /* Below-horizon ways-to-participate chips */
+        .f15-ways { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:14px; }
+        .f15-ways .chip {
+          padding:14px 18px; text-align:center; background:rgba(246,242,232,.14); border:1.5px solid rgba(246,242,232,.6);
+          font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; text-transform:uppercase; color:#f6f2e8;
+        }
+        .f15-ways .chip .em { display:block; margin-top:6px; font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        /* Sub call-out */
+        .f15-note { position:absolute; left:76px; right:76px; bottom:118px; z-index:6; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.012em; color:#e0d6bc; text-align:center; }
+        /* Foot */
+        .f15-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.75); }
+      </style>
+        <div class="f15">
+          <div class="f15-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Horizon 15 · The Bigger Frame</span>
+          </div>
+          <span class="f15-kick">Get involved</span>
+          <h1 class="f15-head">Be Part of Something<em>Bigger for Oregon.</em></h1>
+          <div class="f15-horizon"></div>
+          <div class="f15-ways">
+            <div class="chip">Volunteer<span class="em">— show up</span></div>
+            <div class="chip">Support<span class="em">— a candidate</span></div>
+            <div class="chip">Attend<span class="em">— an event</span></div>
+            <div class="chip">Start<span class="em">— a conversation</span></div>
+          </div>
+          <p class="f15-note">Let's build that future, together.</p>
+          <div class="f15-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-260px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-headline">
-    <div class="head-top"><div class="kicker  ">Get involved</div></div>
-    <div class="head-mid">
-      <h1 class="display xl lead">Be Part of <em>Something</em></h1>
-      <h1 class="display xl follow"><em>Bigger for Oregon.</em></h1>
-    </div>
-    
-    
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

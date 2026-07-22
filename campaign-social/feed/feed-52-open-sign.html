@@ -10,30 +10,85 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-forest">
+    <style>
+        .f52 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(90% 60% at 50% 42%, rgba(224,214,188,.18) 0%, rgba(224,214,188,0) 55%),
+            radial-gradient(120% 100% at 50% 100%, rgba(14,22,17,.9) 0%, transparent 65%),
+            linear-gradient(178deg, #1c2b23 0%, #0a1310 60%, #050a07 100%);
+          color:#f6f2e8;
+        }
+        .f52-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f52-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        .f52-section { position:absolute; top:180px; left:76px; right:76px; z-index:6; display:flex; align-items:center; gap:22px; font-family:var(--font-mono); font-weight:600; font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:#e0d6bc; }
+        .f52-section .rule { flex:1; height:1px; background:currentColor; opacity:.5; }
+        /* Shop-window SVG */
+        .f52-shop { position:absolute; left:calc(50% - 220px); top:250px; width:440px; height:440px; z-index:5; }
+        .f52-shop .halo { position:absolute; left:calc(50% - 200px); top:60px; width:400px; height:340px;
+          background:radial-gradient(circle at 50% 40%, rgba(255,236,192,.28) 0%, rgba(255,236,192,.06) 40%, rgba(255,236,192,0) 70%);
+          filter:blur(6px);
+        }
+        .f52-shop svg { position:relative; z-index:2; display:block; margin:0 auto; width:100%; height:100%; }
+        /* Big quote below */
+        .f52-quote { position:absolute; left:76px; right:76px; top:730px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:44px; line-height:1.02; letter-spacing:-.028em; color:#f6f2e8; text-align:center; }
+        .f52-quote em { font-style:italic; color:#e0d6bc; }
+        /* Body */
+        .f52-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; line-height:1.22; letter-spacing:-.015em; color:rgba(246,242,232,.9); text-align:center; max-width:920px; }
+        .f52-body em { font-style:normal; color:#e0d6bc; }
+        .f52-tag { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f52-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f52-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f52">
+          <div class="f52-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Window 52 · Local Economy</span>
+          </div>
+          <div class="f52-section"><span>Local Economy</span><span class="rule"></span><span>No. 52</span></div>
+          <div class="f52-shop">
+            <div class="halo"></div>
+            <svg viewBox="0 0 440 440" fill="none" stroke="#e0d6bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Storefront outer frame -->
+              <path d="M 40 90 L 40 400 L 400 400 L 400 90 Z" fill="rgba(224,214,188,.06)"/>
+              <path d="M 40 90 L 40 400 L 400 400 L 400 90"/>
+              <!-- Awning -->
+              <path d="M 30 90 L 410 90 L 380 60 L 60 60 Z" fill="rgba(90,112,96,.2)"/>
+              <path d="M 30 90 L 410 90 L 380 60 L 60 60 Z"/>
+              <!-- Awning stripes -->
+              <line x1="120" y1="60" x2="100" y2="90" opacity="0.6"/>
+              <line x1="180" y1="60" x2="164" y2="90" opacity="0.6"/>
+              <line x1="240" y1="60" x2="228" y2="90" opacity="0.6"/>
+              <line x1="300" y1="60" x2="292" y2="90" opacity="0.6"/>
+              <line x1="360" y1="60" x2="356" y2="90" opacity="0.6"/>
+              <!-- Window frame -->
+              <rect x="70" y="130" width="300" height="240" fill="rgba(255,236,192,.14)" stroke="#e0d6bc"/>
+              <line x1="220" y1="130" x2="220" y2="370"/>
+              <line x1="70" y1="250" x2="370" y2="250"/>
+              <!-- Door -->
+              <rect x="180" y="290" width="80" height="110" fill="rgba(14,22,17,.7)" stroke="#e0d6bc"/>
+              <circle cx="248" cy="345" r="3" fill="#e0d6bc"/>
+              <!-- OPEN sign hanging in the window -->
+              <line x1="220" y1="130" x2="220" y2="160" opacity="0.7"/>
+              <rect x="176" y="160" width="88" height="42" fill="#e0d6bc" stroke="#2e4538" stroke-width="1.4"/>
+              <text x="220" y="187" font-family="Lora" font-style="italic" font-size="26" fill="#2e4538" text-anchor="middle" stroke="none">Open</text>
+              <!-- Sidewalk -->
+              <line x1="10" y1="400" x2="430" y2="400" stroke-width="1.2" stroke-dasharray="6 6" opacity="0.5"/>
+            </svg>
+          </div>
+          <p class="f52-quote">Every "Open" sign represents <em>someone's dream.</em></p>
+          <p class="f52-body">Strong communities are built by <em>entrepreneurs,</em> family businesses, and people willing to take a chance on Northwest Oregon.</p>
+          <div class="f52-tag"><span>Supporting local business</span><span class="em">— Is supporting Northwest Oregon.</span></div>
+          <div class="f52-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sage" style="width:820px;height:820px;top:-220px;left:-160px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-240px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-badge">
-    <div class="badge-section">Local Economy</div>
-    <div class="badge-rule"></div>
-    <h1 class="display xl">Every "Open" sign represents <em>someone's dream.</em></h1>
-    
-    <p class="body">Strong communities are built by entrepreneurs, family businesses, and people willing to take a chance on Northwest Oregon.</p>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

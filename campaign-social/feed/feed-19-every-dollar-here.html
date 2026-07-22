@@ -10,42 +10,88 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
   <div class="canvas  s-forest">
-    
-  <div class="glow forest" style="width:720px;height:720px;bottom:-200px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-stack">
-    <div class="kicker  ">Raised here. Invested here.</div>
-    
-    <div class="rows">
+    <style>
+        .f19 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
+            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
+            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+          color:#f6f2e8;
+        }
+        .f19-mast { position:absolute; top:56px; left:76px; right:76px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f19-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        .f19-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
+        .f19-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f19-head { position:absolute; top:220px; left:76px; right:520px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:66px; line-height:1; letter-spacing:-.028em; color:#f6f2e8; }
+        .f19-head em { display:block; font-style:italic; color:#e0d6bc; }
+        /* Loop diagram right side */
+        .f19-loop { position:absolute; top:200px; right:60px; width:440px; height:440px; z-index:5; }
+        .f19-loop svg { display:block; width:100%; height:100%; }
+        /* Three rows below */
+        .f19-rows { position:absolute; left:76px; right:76px; bottom:180px; z-index:6; display:flex; flex-direction:column; gap:14px; }
+        .f19-rows .row { display:grid; grid-template-columns:auto 1fr auto; gap:22px; align-items:baseline; padding-bottom:12px; border-bottom:1px solid rgba(246,242,232,.28); }
+        .f19-rows .row .n { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.5); min-width:52px; }
+        .f19-rows .row .k { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:22px; line-height:1.2; letter-spacing:-.012em; color:#e0d6bc; }
+        .f19-rows .row .v { font-family:var(--font-display); font-weight:500; font-size:22px; line-height:1.2; letter-spacing:-.012em; color:#f6f2e8; text-align:right; }
+        .f19-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; padding-top:14px; border-top:1.5px solid rgba(246,242,232,.35); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f19-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f19-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f19">
+          <div class="f19-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Circuit 19 · Raised Here</span>
+          </div>
+          <span class="f19-kick">Raised here. Invested here.</span>
+          <h1 class="f19-head">Every dollar raised here<em>stays here.</em></h1>
+          <div class="f19-loop">
+            <svg viewBox="0 0 440 440" fill="none" stroke="#e0d6bc" stroke-width="1.8">
+              <!-- Circular flow -->
+              <circle cx="220" cy="220" r="160" stroke-dasharray="6 6" opacity="0.5"/>
+              <!-- Three nodes — enlarged to fit labels comfortably -->
+              <g>
+                <circle cx="220" cy="60" r="60" fill="#1c2b23" stroke="#e0d6bc"/>
+                <text x="220" y="52" font-family="JetBrains Mono" font-size="10" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2.5">DOLLAR</text>
+                <text x="220" y="80" font-family="Lora" font-style="italic" font-size="26" fill="#f6f2e8" text-anchor="middle" stroke="none">$1</text>
+              </g>
+              <g>
+                <circle cx="60" cy="320" r="60" fill="#1c2b23" stroke="#e0d6bc"/>
+                <text x="60" y="312" font-family="JetBrains Mono" font-size="9" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2">CAMPAIGNS</text>
+                <text x="60" y="338" font-family="Lora" font-style="italic" font-size="15" fill="#f6f2e8" text-anchor="middle" stroke="none">built here</text>
+              </g>
+              <g>
+                <circle cx="380" cy="320" r="60" fill="#1c2b23" stroke="#e0d6bc"/>
+                <text x="380" y="312" font-family="JetBrains Mono" font-size="9" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2">COMMUNITY</text>
+                <text x="380" y="338" font-family="Lora" font-style="italic" font-size="15" fill="#f6f2e8" text-anchor="middle" stroke="none">forward</text>
+              </g>
+              <!-- Arrows on the ring -->
+              <path d="M300 100 L316 88 L318 108" fill="#e0d6bc" stroke="none"/>
+              <path d="M380 260 L392 244 L400 262" fill="#e0d6bc" stroke="none"/>
+              <path d="M220 380 L204 372 L228 358" fill="#e0d6bc" stroke="none"/>
+              <path d="M60 260 L48 244 L40 262" fill="#e0d6bc" stroke="none"/>
+              <path d="M140 100 L124 108 L126 88" fill="#e0d6bc" stroke="none"/>
+              <!-- Center note -->
+              <text x="220" y="216" font-family="JetBrains Mono" font-size="11" fill="rgba(246,242,232,0.6)" text-anchor="middle" stroke="none" letter-spacing="3">CLOSED LOOP</text>
+              <text x="220" y="240" font-family="Lora" font-style="italic" font-size="20" fill="#e0d6bc" text-anchor="middle" stroke="none">the region</text>
+            </svg>
+          </div>
+          <div class="f19-rows">
+            <div class="row"><span class="n">01</span><span class="k">Every dollar raised here…</span><span class="v">helps build campaigns here.</span></div>
+            <div class="row"><span class="n">02</span><span class="k">Every volunteer recruited here…</span><span class="v">helps strengthen communities here.</span></div>
+            <div class="row"><span class="n">03</span><span class="k">Every conversation started here…</span><span class="v">helps Northwest Oregon move forward.</span></div>
+          </div>
+          <div class="f19-sig"><span>Not sent somewhere else</span><span class="em">— Kept here.</span></div>
+          <div class="f19-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
       
-      <div class="row">
-        <span class="k">Every dollar raised here…</span>
-        <span class="v">helps build campaigns here.</span>
-      </div>
-      <div class="row">
-        <span class="k">Every volunteer recruited here…</span>
-        <span class="v">helps strengthen communities here.</span>
-      </div>
-      <div class="row">
-        <span class="k">Every conversation started here…</span>
-        <span class="v">helps Northwest Oregon move forward.</span>
-      </div>
-    </div>
     
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

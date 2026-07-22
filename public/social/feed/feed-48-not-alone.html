@@ -10,30 +10,80 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-light">
+  <div class="canvas  s-forest">
+    <style>
+        .f48 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(90% 60% at 50% 42%, rgba(224,214,188,.14) 0%, rgba(224,214,188,0) 55%),
+            radial-gradient(90% 60% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
+            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+          color:#f6f2e8;
+        }
+        .f48-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+        .f48-mast img { height:56px; width:auto; filter:brightness(1.05); }
+        .f48-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
+        .f48-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f48-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1; letter-spacing:-.028em; color:#f6f2e8; max-width:920px; }
+        .f48-head em { display:block; font-style:italic; color:#e0d6bc; }
+        /* Central figure + beams */
+        .f48-diagram { position:absolute; top:450px; left:calc(50% - 200px); width:400px; height:260px; z-index:5; }
+        .f48-diagram svg { display:block; width:100%; height:100%; }
+        /* Four beam labels around the figure */
+        .f48-lbl { position:absolute; z-index:6; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.65); }
+        .f48-lbl .em { display:block; margin-top:4px; font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f48-lbl.tl { top:450px; left:80px; width:240px; text-align:right; }
+        .f48-lbl.tr { top:450px; right:80px; width:240px; text-align:left; }
+        .f48-lbl.bl { top:660px; left:80px; width:240px; text-align:right; }
+        .f48-lbl.br { top:660px; right:80px; width:240px; text-align:left; }
+        /* Body */
+        .f48-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); font-family:var(--font-display); font-weight:500; font-size:24px; line-height:1.22; letter-spacing:-.012em; color:rgba(246,242,232,.94); max-width:920px; }
+        .f48-body em { font-style:italic; color:#e0d6bc; }
+        .f48-tag { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
+        .f48-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        .f48-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+      </style>
+        <div class="f48">
+          <div class="f48-mast">
+            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+            <span>Diagram 48 · Candidate Support</span>
+          </div>
+          <span class="f48-kick">Candidate support</span>
+          <h1 class="f48-head">A credible candidate should never have to<em>build alone.</em></h1>
+          <div class="f48-diagram">
+            <svg viewBox="0 0 400 260" fill="none" stroke="#e0d6bc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Center silhouette -->
+              <circle cx="200" cy="90" r="24"/>
+              <path d="M 160 200 L 160 130 C 160 122 168 116 200 116 C 232 116 240 122 240 130 L 240 200"/>
+              <!-- Four support beams -->
+              <line x1="200" y1="90" x2="60" y2="30" stroke-width="1.2" stroke-dasharray="4 4"/>
+              <line x1="200" y1="90" x2="340" y2="30" stroke-width="1.2" stroke-dasharray="4 4"/>
+              <line x1="200" y1="200" x2="60" y2="240" stroke-width="1.2" stroke-dasharray="4 4"/>
+              <line x1="200" y1="200" x2="340" y2="240" stroke-width="1.2" stroke-dasharray="4 4"/>
+              <!-- Beam anchors -->
+              <circle cx="60" cy="30" r="8" fill="#e0d6bc"/>
+              <circle cx="340" cy="30" r="8" fill="#e0d6bc"/>
+              <circle cx="60" cy="240" r="8" fill="#e0d6bc"/>
+              <circle cx="340" cy="240" r="8" fill="#e0d6bc"/>
+              <!-- Ground line -->
+              <line x1="140" y1="220" x2="260" y2="220" stroke-width="1.4"/>
+            </svg>
+          </div>
+          <span class="f48-lbl tl">— Beam 01<span class="em">Fundraising</span></span>
+          <span class="f48-lbl tr">— Beam 02<span class="em">Messaging</span></span>
+          <span class="f48-lbl bl">— Beam 03<span class="em">Outreach</span></span>
+          <span class="f48-lbl br">— Beam 04<span class="em">Volunteer support</span></span>
+          <p class="f48-body">Running a serious campaign takes <em>more than determination.</em> It takes organization, resources, and people willing to help.</p>
+          <div class="f48-tag"><span>That is the infrastructure</span><span class="em">— Northwest Oregon PAC is building.</span></div>
+          <div class="f48-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sand" style="width:640px;height:640px;top:-160px;right:-140px;opacity:.45"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-longform">
-    <div class="kicker  ">Candidate support</div>
-    
-    
-    <div class="body fs-44">
-      <p class="lead-p">A credible candidate should never have to build alone.</p><p class="">We help candidates strengthen fundraising, messaging, outreach, and volunteer support.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

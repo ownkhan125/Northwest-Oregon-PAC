@@ -10,30 +10,79 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-forest">
+  <div class="canvas  s-light">
+    <style>
+        .f49 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f49-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f49-mast img { height:56px; width:auto; }
+        .f49-section { position:absolute; top:180px; left:76px; right:76px; z-index:6; display:flex; align-items:center; gap:22px; font-family:var(--font-mono); font-weight:600; font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:#6b5a42; }
+        .f49-section .rule { flex:1; height:1px; background:currentColor; opacity:.5; }
+        .f49-head { position:absolute; top:230px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:76px; line-height:1; letter-spacing:-.028em; color:#2e4538; }
+        .f49-head em { font-style:italic; color:#5a7060; }
+        /* Brick wall */
+        .f49-wall { position:absolute; left:76px; right:76px; top:400px; height:280px; z-index:5; display:flex; flex-direction:column; gap:8px; }
+        .f49-brickrow { display:grid; gap:8px; align-items:center; }
+        .f49-brickrow.r1 { grid-template-columns:2fr 1.4fr 1.6fr; margin-left:0; }
+        .f49-brickrow.r2 { grid-template-columns:1.6fr 2fr 1.4fr; margin-left:40px; }
+        .f49-brickrow.r3 { grid-template-columns:1.4fr 1.6fr 2fr; margin-left:20px; }
+        .f49-brick {
+          padding:18px 22px; background:linear-gradient(180deg, #c8b581 0%, #9c8144 100%);
+          border:1.5px solid #2e4538; color:#2e4538;
+          display:flex; align-items:baseline; justify-content:space-between; gap:14px;
+          font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase;
+          box-shadow:0 6px 12px -6px rgba(46,32,19,.5), inset 0 -3px 6px rgba(46,32,19,.2);
+        }
+        .f49-brick .em { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; line-height:1; }
+        .f49-brick.dark { background:linear-gradient(180deg, #2e4538 0%, #1c2b23 100%); color:rgba(224,214,188,.7); }
+        .f49-brick.dark .em { color:#e0d6bc; }
+        /* Body */
+        .f49-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-weight:500; font-size:22px; line-height:1.22; letter-spacing:-.012em; color:#2e4538; max-width:920px; }
+        .f49-body em { font-style:italic; color:#6b5a42; }
+        .f49-tag { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f49-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f49-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f49">
+          <div class="f49-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Wall 49 · Our Priorities</span>
+          </div>
+          <div class="f49-section"><span>Our Priorities</span><span class="rule"></span><span>No. 49</span></div>
+          <h1 class="f49-head">Let builders <em>build.</em></h1>
+          <div class="f49-wall">
+            <div class="f49-brickrow r1">
+              <div class="f49-brick"><span>— 01</span><span class="em">Start</span></div>
+              <div class="f49-brick dark"><span>— 02</span><span class="em">Hire</span></div>
+              <div class="f49-brick"><span>— 03</span><span class="em">Invest</span></div>
+            </div>
+            <div class="f49-brickrow r2">
+              <div class="f49-brick dark"><span>— 04</span><span class="em">Grow</span></div>
+              <div class="f49-brick"><span>— 05</span><span class="em">Create jobs</span></div>
+              <div class="f49-brick dark"><span>— 06</span><span class="em">Support families</span></div>
+            </div>
+            <div class="f49-brickrow r3">
+              <div class="f49-brick"><span>— 07</span><span class="em">Keep communities moving</span></div>
+              <div class="f49-brick dark"><span>— 08</span><span class="em">Without unnecessary barriers</span></div>
+              <div class="f49-brick"><span>— 09</span><span class="em">Northwest Oregon succeeds</span></div>
+            </div>
+          </div>
+          <p class="f49-body">Northwest Oregon succeeds when entrepreneurs can start, hire, invest, and <em>grow without unnecessary barriers.</em></p>
+          <div class="f49-tag"><span>Local employers create jobs</span><span class="em">— Support families. Keep communities moving.</span></div>
+          <div class="f49-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
     
-  <div class="glow sage" style="width:820px;height:820px;top:-220px;left:-160px;opacity:.55"></div>
-  <div class="glow forest" style="width:720px;height:720px;bottom:-240px;right:-160px"></div>
-  <div class="editorial-rule"></div>
-  <div class="zone t-badge">
-    <div class="badge-section">Our Priorities</div>
-    <div class="badge-rule"></div>
-    <h1 class="display xxl">Let <em>builders build.</em></h1>
-    
-    <p class="body">Northwest Oregon succeeds when entrepreneurs can start, hire, invest, and grow without unnecessary barriers.</p>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

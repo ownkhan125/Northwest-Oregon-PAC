@@ -10,38 +10,78 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
+<link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas  s-forest">
-    
-  <div class="t-candidate ">
-    <div class="portrait">
-      <img src="../assets/img/brian-schimmel.jpg" alt="Brian Schimmel" />
-      <div class="grade"></div>
-    </div>
-    <div class="info">
-      <div class="info-top">
-        <div class="kicker  ">Meet the candidate</div>
-        <h1 class="display lg"><em>Brian Schimmel</em></h1>
-        <div class="office">Candidate for Oregon House District 29</div>
-      </div>
-      <p class="bio">Focused on practical leadership, local priorities, and serving the people of District 29.</p>
-      <div class="info-bottom">
-        <span class="cyc"><em>2026</em></span>
-        <span class="site">Follow the campaign</span>
-      </div>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
+  <div class="canvas  s-light">
+    <style>
+        .f27 { position:absolute; inset:0; z-index:10; overflow:hidden; background:#f6f2e8; color:#2e4538; }
+        /* Left duotone portrait */
+        .f27-portrait { position:absolute; top:130px; bottom:130px; left:0; width:50%; z-index:2; overflow:hidden; background:#1c2b23; }
+        .f27-portrait img { width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:grayscale(1) contrast(1.15) brightness(.9); mix-blend-mode:multiply; }
+        .f27-portrait::before { content:''; position:absolute; inset:0; background:linear-gradient(178deg, #2e4538 0%, #1c2b23 100%); z-index:1; }
+        .f27-portrait::after { content:''; position:absolute; inset:0; background:linear-gradient(178deg, transparent 0%, rgba(28,43,35,.55) 100%); z-index:3; pointer-events:none; }
+        .f27-portrait img { position:relative; z-index:2; }
+        /* Portrait tag */
+        .f27-tag {
+          position:absolute; top:154px; left:44px; z-index:4;
+          padding:10px 16px; background:rgba(224,214,188,.14); border:1px solid rgba(224,214,188,.55);
+          font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:#f6f2e8;
+          backdrop-filter:blur(4px);
+        }
+        /* Portrait caption bottom */
+        .f27-portrait .cap {
+          position:absolute; left:44px; bottom:44px; z-index:4;
+          font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.85);
+        }
+        .f27-portrait .cap .em { display:block; margin-top:4px; font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        /* Global masthead — spans right column only */
+        .f27-mast { position:absolute; top:56px; left:calc(50% + 40px); right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); padding-bottom:14px; border-bottom:1.5px solid rgba(46,69,56,.35); }
+        .f27-mast img { height:44px; width:auto; }
+        /* Right column */
+        .f27-col { position:absolute; top:160px; bottom:130px; left:calc(50% + 40px); right:76px; z-index:3; display:flex; flex-direction:column; }
+        .f27-col .kick { margin-top:20px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; align-self:flex-start; }
+        .f27-col .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f27-col .name { margin-top:18px; font-family:var(--font-display); font-weight:500; font-size:76px; line-height:.96; letter-spacing:-.028em; color:#2e4538; }
+        .f27-col .name em { display:block; font-style:italic; color:#5a7060; }
+        .f27-col .office { margin-top:24px; padding-top:14px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.65); }
+        .f27-col .bio { margin-top:26px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; line-height:1.24; letter-spacing:-.012em; color:#2e4538; }
+        .f27-col .bio em { font-style:normal; color:#6b5a42; }
+        .f27-col .cta { margin-top:auto; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f27-col .cta .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        /* Left column top plate — logo strip aligned with mast on the dark side */
+        .f27-leftmast { position:absolute; top:56px; left:44px; right:calc(50% + 40px); z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); padding-bottom:14px; border-bottom:1.5px solid rgba(46,69,56,.35); }
+        .f27-leftmast img { height:44px; width:auto; }
+        .f27-foot { position:absolute; left:44px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f27">
+          <div class="f27-leftmast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Spread 27</span>
+          </div>
+          <div class="f27-mast">
+            <span>The Candidate</span>
+            <span>No. 27</span>
+          </div>
+          <div class="f27-portrait">
+            <img src="../assets/img/brian-schimmel.jpg" alt="Brian Schimmel" />
+            <span class="cap">— Candidate<span class="em">Brian Schimmel</span></span>
+          </div>
+          <span class="f27-tag">Candidate · 2026</span>
+          <div class="f27-col">
+            <span class="kick">Meet the candidate</span>
+            <h1 class="name">Brian<em>Schimmel</em></h1>
+            <div class="office">— Candidate for Oregon House District 29</div>
+            <p class="bio">Focused on practical <em>leadership,</em> local priorities, and serving the people of District 29.</p>
+            <div class="cta"><span>Learn more</span><span class="em">— Follow the campaign</span></div>
+          </div>
+          <div class="f27-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+
+
     <div class="grain"></div>
   </div>
 </body>
