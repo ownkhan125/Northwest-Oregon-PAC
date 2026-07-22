@@ -271,7 +271,7 @@ const SocialProofSection = () => (
           Community impact
         </div>
         <h2 className="font-display text-foreground mt-4 text-3xl leading-tight font-medium tracking-tight sm:text-4xl md:text-5xl">
-          A growing coalition of neighbors, donors, and volunteers.
+          A growing coalition of neighbours, donors, and volunteers.
         </h2>
       </div>
 

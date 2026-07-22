@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
   }
 }
 
-function neighbors(posts, slug) {
+function neighbours(posts, slug) {
   const idx = posts.findIndex((p) => p.slug === slug)
   if (idx === -1) return { prev: null, next: null }
   return {
@@ -53,7 +53,7 @@ export default async function Page({ params }) {
   const post = posts.find((p) => p.slug === slug)
   if (!post) notFound()
 
-  const { prev, next } = neighbors(posts, slug)
+  const { prev, next } = neighbours(posts, slug)
   const relatedList = related(posts, slug, 2)
 
   return <BlogDetailPage post={post} prev={prev} next={next} related={relatedList} />

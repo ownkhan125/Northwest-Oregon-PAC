@@ -517,7 +517,7 @@ export default function SocialPostsPage() {
                 Post it forward
               </div>
               <h2 className="font-display text-foreground mt-3 text-2xl font-medium tracking-tight sm:text-3xl">
-                Share these with your neighbors.
+                Share these with your neighbours.
               </h2>
               <p className="text-foreground/75 mt-3 max-w-xl text-sm sm:text-base">
                 Open any graphic, pair it with your own words, and tag {pac.name}.

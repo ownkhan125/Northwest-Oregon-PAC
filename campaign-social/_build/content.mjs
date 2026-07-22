@@ -558,7 +558,7 @@ export const feed = [
     title: 'Volunteer with Northwest Oregon PAC.',
     template: 'longform',
     caption:
-      "Become a volunteer today. Whether it's volunteering at events, talking with neighbors, or supporting local candidates, every effort helps strengthen Northwest Oregon.\n\nJoin us and be part of the movement.\n\n#Volunteer #NorthwestOregonPAC #GetInvolved #Grassroots #CommunityLeadership #Election2026",
+      "Become a volunteer today. Whether it's volunteering at events, talking with neighbours, or supporting local candidates, every effort helps strengthen Northwest Oregon.\n\nJoin us and be part of the movement.\n\n#Volunteer #NorthwestOregonPAC #GetInvolved #Grassroots #CommunityLeadership #Election2026",
     data: {
       eyebrow: 'Volunteer',
       heading: 'Volunteer with Northwest Oregon PAC.',
@@ -601,10 +601,10 @@ export const feed = [
     data: {
       eyebrow: 'Community events',
       heading: 'Campaigns work when people gather.',
-      lines: ['Meet candidates.', 'Meet neighbors.', 'Join the conversation.'],
+      lines: ['Meet candidates.', 'Meet neighbours.', 'Join the conversation.'],
     },
   },
-  // #35 — Host a meet-up. Invite your neighbors.
+  // #35 — Host a meet-up. Invite your neighbours.
   {
     id: 'feed-35-host-meetup',
     tag: 'Get involved',
@@ -615,7 +615,7 @@ export const feed = [
       'One conversation can inspire an entire neighborhood.\n\nWhether it\'s a living room gathering, a local business, or a community space, hosting an event is one of the most meaningful ways to connect people with the issues and candidates that matter.\n\nHost an event with us.\n\n#HostAnEvent #NorthwestOregonPAC #CommunityLeadership',
     data: {
       eyebrow: 'Host an event',
-      heading: 'Host a meet-up. Invite your neighbors.',
+      heading: 'Host a meet-up. Invite your neighbours.',
       paragraphs: [
         'Help connect people with the candidates shaping Northwest Oregon\'s future.',
       ],
@@ -628,12 +628,12 @@ export const feed = [
     title: "Northwest Oregon isn't changing because of one candidate.",
     template: 'longform',
     caption:
-      'This movement is powered by volunteers, supporters, local businesses, donors, and neighbors who believe Northwest Oregon deserves a stronger future.\n\nThank you for being part of it.\n\n#NorthwestOregonPAC #CommunityFirst #Grassroots #Volunteer #Leadership',
+      'This movement is powered by volunteers, supporters, local businesses, donors, and neighbours who believe Northwest Oregon deserves a stronger future.\n\nThank you for being part of it.\n\n#NorthwestOregonPAC #CommunityFirst #Grassroots #Volunteer #Leadership',
     data: {
-      eyebrow: 'A movement of neighbors',
+      eyebrow: 'A movement of neighbours',
       paragraphs: [
         "Northwest Oregon isn't changing because of one candidate.",
-        "It's changing because neighbors are choosing to get involved.",
+        "It's changing because neighbours are choosing to get involved.",
       ],
     },
   },
@@ -759,7 +759,7 @@ export const feed = [
       eyebrow: 'Grassroots is where it happens',
       paragraphs: [
         "Campaigns aren't built in boardrooms.",
-        "They're built on doorsteps, at community events, and through conversations between neighbors.",
+        "They're built on doorsteps, at community events, and through conversations between neighbours.",
       ],
     },
   },
@@ -1548,7 +1548,7 @@ export const stories = [
           </div>
 
           <div class="s04-ledger">
-            <div class="row"><span>Material</span><span class="v">Neighbors, showing up.</span></div>
+            <div class="row"><span>Material</span><span class="v">Neighbours, showing up.</span></div>
             <div class="row"><span>Method</span><span class="v">One conversation at a time.</span></div>
             <div class="row"><span>Load-bearing</span><span class="v">Trust.</span></div>
           </div>
@@ -1879,7 +1879,7 @@ export const stories = [
               <span class="kick">— Notice to residents</span>
               <p class="call">We're recruiting <em>tomorrow's</em> community leaders <em>today.</em></p>
               <span class="rule"></span>
-              <p class="desc">Open to teachers, veterans, small-business owners, farmers, parents, neighbors — anyone who cares enough to step forward.</p>
+              <p class="desc">Open to teachers, veterans, small-business owners, farmers, parents, neighbours — anyone who cares enough to step forward.</p>
             </div>
           </div>
 
@@ -2670,7 +2670,7 @@ export const stories = [
               <p class="head">The future of Northwest Oregon belongs to those <em>willing to build it.</em></p>
             </div>
             <div class="s13-meta">
-              <div><span class="k">Contractor</span><span class="v">You & your neighbors</span></div>
+              <div><span class="k">Contractor</span><span class="v">You & your neighbours</span></div>
               <div><span class="k">Completion</span><span class="v">A generation from now</span></div>
               <div><span class="k">Permit</span><span class="v">#25045-NWOR</span></div>
               <div><span class="k">Inspection</span><span class="v">Every election</span></div>
@@ -3044,25 +3044,26 @@ export const stories = [
         .s17-mast img { height:52px; width:auto; }
         .s17-runhead { position:absolute; top:170px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:1.5px solid #2e4538; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,42,20,.65); }
         .s17-runhead .title { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        /* Body — two columns */
-        .s17-body { position:absolute; top:250px; bottom:200px; left:76px; right:76px; z-index:5; display:grid; grid-template-columns:1.05fr 1px 1fr; gap:30px; }
+        /* Body — two columns; left column widened so wrap breathes */
+        .s17-body { position:absolute; top:250px; bottom:200px; left:76px; right:76px; z-index:5; display:grid; grid-template-columns:1.4fr 1px 1fr; gap:36px; }
         .s17-body .col-rule { background:linear-gradient(180deg, rgba(46,42,20,.35) 0%, rgba(46,42,20,0) 100%); }
-        /* Left column - drop cap + prose */
-        .s17-left { position:relative; }
+        /* Left column — drop cap sits inline, paragraph reads normally */
+        .s17-left { position:relative; display:flex; flex-direction:column; justify-content:center; gap:20px; }
         .s17-left .dropcap {
           font-family:var(--font-display); font-weight:500; font-style:italic;
-          font-size:340px; line-height:.82; letter-spacing:-.05em; color:#2e4538;
-          float:left; margin:0 24px 8px 0; padding-top:14px;
+          font-size:220px; line-height:.85; letter-spacing:-.05em; color:#2e4538;
+          float:left; margin:8px 24px 0 0; padding:0;
+          shape-outside:margin-box;
         }
-        .s17-left p { font-family:var(--font-display); font-weight:500; font-size:52px; line-height:1.06; letter-spacing:-.018em; color:#2e4538; }
+        .s17-left p { font-family:var(--font-display); font-weight:500; font-size:44px; line-height:1.14; letter-spacing:-.018em; color:#2e4538; }
         .s17-left p em { font-style:italic; color:#6b5a42; font-weight:500; }
-        .s17-left .attribution { margin-top:32px; padding-top:16px; border-top:1px solid rgba(46,42,20,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+        .s17-left .attribution { margin-top:28px; padding-top:14px; border-top:1px solid rgba(46,42,20,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); clear:both; }
         /* Right column - pull quote */
-        .s17-right { display:flex; flex-direction:column; justify-content:center; gap:22px; }
-        .s17-right .qmark { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:180px; line-height:.6; color:rgba(107,90,66,.9); letter-spacing:-.06em; }
-        .s17-right .pull { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:60px; line-height:1.05; letter-spacing:-.02em; color:#2e4538; }
+        .s17-right { display:flex; flex-direction:column; justify-content:center; gap:20px; }
+        .s17-right .qmark { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:160px; line-height:.55; color:rgba(107,90,66,.9); letter-spacing:-.06em; }
+        .s17-right .pull { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:48px; line-height:1.1; letter-spacing:-.02em; color:#2e4538; }
         .s17-right .pull em { font-style:normal; color:#6b5a42; }
-        .s17-right .sig { margin-top:24px; display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+        .s17-right .sig { margin-top:20px; display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); }
         .s17-right .sig::before { content:''; width:40px; height:1px; background:currentColor; opacity:.55; }
         /* Folio (page number) */
         .s17-folio { position:absolute; bottom:130px; left:50%; transform:translateX(-50%); z-index:6; font-family:var(--font-display); font-style:italic; font-size:24px; color:rgba(46,42,20,.55); letter-spacing:-.01em; }
@@ -3102,15 +3103,15 @@ export const stories = [
     },
   },
   /* ------------------------------------------------------------
-     STORY 18 — "Communities thrive when neighbors work together"
+     STORY 18 — "Communities thrive when neighbours work together"
      Creative direction: hand-loom textile diagram. Interlocking
-     warp and weft rules visualize the neighbors-woven metaphor.
+     warp and weft rules visualize the neighbours-woven metaphor.
      Warm ecru palette, edge finishing, editorial swatch labels.
   ------------------------------------------------------------ */
   {
-    id: 'story-18-neighbors-thrive',
+    id: 'story-18-neighbours-thrive',
     tag: 'Introduction',
-    title: 'Communities thrive when neighbors work together.',
+    title: 'Communities thrive when neighbours work together.',
     template: 'custom',
     meta: { forceSurface: 's-sand', hideChrome: true },
     data: {
@@ -3183,7 +3184,7 @@ export const stories = [
             <span>Weave 18 · Field Textile</span>
           </div>
           <span class="s18-kicker">— A study in the warp &amp; weft</span>
-          <h1 class="s18-head">Communities thrive when neighbors work <em>together.</em></h1>
+          <h1 class="s18-head">Communities thrive when neighbours work <em>together.</em></h1>
           <div class="s18-loom">
             <span class="selvage top"><span>Warp · Values</span><span>Selvage</span></span>
             <span class="selvage bottom"><span>Weft · Actions</span><span>Loom · Northwest</span></span>
@@ -3803,19 +3804,26 @@ export const stories = [
         .s24-mast .headtitle { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#f6f2e8; text-transform:none; }
         /* Section: name + district */
         .s24-section { position:absolute; top:220px; left:80px; right:80px; z-index:5; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(240,239,227,.75); }
-        /* Title lockup at the bottom */
-        .s24-lockup { position:absolute; left:80px; right:80px; bottom:280px; z-index:5; display:flex; flex-direction:column; gap:14px; }
-        .s24-lockup .kick { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:#e0d6bc; }
-        .s24-lockup .name { font-family:var(--font-display); font-weight:500; font-size:140px; line-height:.96; letter-spacing:-.028em; color:#f6f2e8; text-shadow:0 4px 30px rgba(0,0,0,.6); }
+        /* Title lockup — lifted higher with real breathing room. */
+        .s24-lockup { position:absolute; left:80px; right:80px; bottom:560px; z-index:5; display:flex; flex-direction:column; gap:26px; }
+        .s24-lockup .kick { font-family:var(--font-mono); font-size:15px; letter-spacing:.44em; text-transform:uppercase; color:#e0d6bc; }
+        .s24-lockup .name { font-family:var(--font-display); font-weight:500; font-size:126px; line-height:1; letter-spacing:-.028em; color:#f6f2e8; text-shadow:0 4px 30px rgba(0,0,0,.6); }
         .s24-lockup .name em { font-style:italic; color:#e0d6bc; }
-        .s24-lockup .district { font-family:var(--font-mono); font-size:16px; letter-spacing:.42em; text-transform:uppercase; color:rgba(240,239,227,.75); padding-top:14px; border-top:1px solid rgba(240,239,227,.35); display:flex; align-items:center; justify-content:space-between; }
-        .s24-lockup .district .cred { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        /* Three inscription rules for the "Committed to" lines */
-        .s24-inscriptions { position:absolute; left:80px; right:80px; bottom:130px; z-index:5; display:flex; flex-direction:column; gap:12px; }
-        .s24-inscriptions .row { display:flex; align-items:center; gap:16px; padding-bottom:8px; border-bottom:1px solid rgba(240,239,227,.28); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:28px; letter-spacing:-.015em; color:rgba(240,239,227,.9); }
-        .s24-inscriptions .row .n { font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(240,239,227,.5); font-style:normal; min-width:60px; }
+        /* District band — its own row, well spaced from lockup and inscriptions */
+        .s24-district {
+          position:absolute; left:80px; right:80px; bottom:440px; z-index:5;
+          padding-top:24px; border-top:1px solid rgba(240,239,227,.4);
+          display:flex; align-items:center; justify-content:space-between; gap:22px;
+          font-family:var(--font-mono); font-size:16px; letter-spacing:.42em; text-transform:uppercase; color:rgba(240,239,227,.8);
+        }
+        .s24-district .cred { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        /* Three inscription rules — generous spacing, larger italic */
+        .s24-inscriptions { position:absolute; left:80px; right:80px; bottom:140px; z-index:5; display:flex; flex-direction:column; gap:26px; }
+        .s24-inscriptions .row { display:flex; align-items:center; gap:30px; padding-bottom:22px; border-bottom:1px solid rgba(240,239,227,.3); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; letter-spacing:-.015em; color:rgba(240,239,227,.95); line-height:1.1; }
+        .s24-inscriptions .row .n { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(240,239,227,.55); font-style:normal; min-width:52px; }
+        .s24-inscriptions .row .v { flex:1; }
         .s24-inscriptions .row .v em { font-style:normal; color:#e0d6bc; }
-        .s24-foot { position:absolute; left:80px; right:80px; bottom:60px; z-index:5; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(240,239,227,.55); }
+        .s24-foot { position:absolute; left:80px; right:80px; bottom:64px; z-index:5; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(240,239,227,.55); }
       `,
       body: (ctx) => `
         <div class="s24">
@@ -3829,8 +3837,8 @@ export const stories = [
           <div class="s24-lockup">
             <span class="kick">— Endorsed by Northwest Oregon PAC</span>
             <h1 class="name">Meet <em>Brian Schimmel.</em></h1>
-            <div class="district"><span>Candidate for Oregon House District 29</span><span class="cred">Practical leadership</span></div>
           </div>
+          <div class="s24-district"><span>Candidate for Oregon House District 29</span><span class="cred">Practical leadership</span></div>
           <div class="s24-inscriptions">
             <div class="row"><span class="n">01</span><span class="v">Committed to <em>service.</em></span></div>
             <div class="row"><span class="n">02</span><span class="v">Committed to <em>the community.</em></span></div>
@@ -4795,7 +4803,7 @@ export const carousels = [
         data: {
           eyebrow: 'Slide 4',
           paragraphs: [
-            'Every campaign is powered by neighbors helping neighbors.',
+            'Every campaign is powered by neighbours helping neighbours.',
             "Not because they're paid.",
             'Because they care.',
           ],
@@ -5016,7 +5024,7 @@ export const carousels = [
         data: {
           eyebrow: 'Slide 2',
           paragraphs: [
-            'Behind every local business is someone willing to invest in Northwest Oregon, creating jobs, serving neighbors, and strengthening our local economy.',
+            'Behind every local business is someone willing to invest in Northwest Oregon, creating jobs, serving neighbours, and strengthening our local economy.',
           ],
         },
       },
@@ -5071,7 +5079,7 @@ export const carousels = [
         data: {
           eyebrow: 'Slide 3',
           paragraphs: [
-            'Real change happens when neighbors work together with a shared purpose and a long-term commitment to their communities.',
+            'Real change happens when neighbours work together with a shared purpose and a long-term commitment to their communities.',
           ],
         },
       },

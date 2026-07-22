@@ -28,25 +28,26 @@
         .s17-mast img { height:52px; width:auto; }
         .s17-runhead { position:absolute; top:170px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:1.5px solid #2e4538; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,42,20,.65); }
         .s17-runhead .title { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        /* Body — two columns */
-        .s17-body { position:absolute; top:250px; bottom:200px; left:76px; right:76px; z-index:5; display:grid; grid-template-columns:1.05fr 1px 1fr; gap:30px; }
+        /* Body — two columns; left column widened so wrap breathes */
+        .s17-body { position:absolute; top:250px; bottom:200px; left:76px; right:76px; z-index:5; display:grid; grid-template-columns:1.4fr 1px 1fr; gap:36px; }
         .s17-body .col-rule { background:linear-gradient(180deg, rgba(46,42,20,.35) 0%, rgba(46,42,20,0) 100%); }
-        /* Left column - drop cap + prose */
-        .s17-left { position:relative; }
+        /* Left column — drop cap sits inline, paragraph reads normally */
+        .s17-left { position:relative; display:flex; flex-direction:column; justify-content:center; gap:20px; }
         .s17-left .dropcap {
           font-family:var(--font-display); font-weight:500; font-style:italic;
-          font-size:340px; line-height:.82; letter-spacing:-.05em; color:#2e4538;
-          float:left; margin:0 24px 8px 0; padding-top:14px;
+          font-size:220px; line-height:.85; letter-spacing:-.05em; color:#2e4538;
+          float:left; margin:8px 24px 0 0; padding:0;
+          shape-outside:margin-box;
         }
-        .s17-left p { font-family:var(--font-display); font-weight:500; font-size:52px; line-height:1.06; letter-spacing:-.018em; color:#2e4538; }
+        .s17-left p { font-family:var(--font-display); font-weight:500; font-size:44px; line-height:1.14; letter-spacing:-.018em; color:#2e4538; }
         .s17-left p em { font-style:italic; color:#6b5a42; font-weight:500; }
-        .s17-left .attribution { margin-top:32px; padding-top:16px; border-top:1px solid rgba(46,42,20,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+        .s17-left .attribution { margin-top:28px; padding-top:14px; border-top:1px solid rgba(46,42,20,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); clear:both; }
         /* Right column - pull quote */
-        .s17-right { display:flex; flex-direction:column; justify-content:center; gap:22px; }
-        .s17-right .qmark { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:180px; line-height:.6; color:rgba(107,90,66,.9); letter-spacing:-.06em; }
-        .s17-right .pull { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:60px; line-height:1.05; letter-spacing:-.02em; color:#2e4538; }
+        .s17-right { display:flex; flex-direction:column; justify-content:center; gap:20px; }
+        .s17-right .qmark { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:160px; line-height:.55; color:rgba(107,90,66,.9); letter-spacing:-.06em; }
+        .s17-right .pull { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:48px; line-height:1.1; letter-spacing:-.02em; color:#2e4538; }
         .s17-right .pull em { font-style:normal; color:#6b5a42; }
-        .s17-right .sig { margin-top:24px; display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+        .s17-right .sig { margin-top:20px; display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); }
         .s17-right .sig::before { content:''; width:40px; height:1px; background:currentColor; opacity:.55; }
         /* Folio (page number) */
         .s17-folio { position:absolute; bottom:130px; left:50%; transform:translateX(-50%); z-index:6; font-family:var(--font-display); font-style:italic; font-size:24px; color:rgba(46,42,20,.55); letter-spacing:-.01em; }

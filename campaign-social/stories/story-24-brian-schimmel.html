@@ -28,19 +28,26 @@
         .s24-mast .headtitle { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#f6f2e8; text-transform:none; }
         /* Section: name + district */
         .s24-section { position:absolute; top:220px; left:80px; right:80px; z-index:5; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(240,239,227,.75); }
-        /* Title lockup at the bottom */
-        .s24-lockup { position:absolute; left:80px; right:80px; bottom:280px; z-index:5; display:flex; flex-direction:column; gap:14px; }
-        .s24-lockup .kick { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:#e0d6bc; }
-        .s24-lockup .name { font-family:var(--font-display); font-weight:500; font-size:140px; line-height:.96; letter-spacing:-.028em; color:#f6f2e8; text-shadow:0 4px 30px rgba(0,0,0,.6); }
+        /* Title lockup — lifted higher with real breathing room. */
+        .s24-lockup { position:absolute; left:80px; right:80px; bottom:560px; z-index:5; display:flex; flex-direction:column; gap:26px; }
+        .s24-lockup .kick { font-family:var(--font-mono); font-size:15px; letter-spacing:.44em; text-transform:uppercase; color:#e0d6bc; }
+        .s24-lockup .name { font-family:var(--font-display); font-weight:500; font-size:126px; line-height:1; letter-spacing:-.028em; color:#f6f2e8; text-shadow:0 4px 30px rgba(0,0,0,.6); }
         .s24-lockup .name em { font-style:italic; color:#e0d6bc; }
-        .s24-lockup .district { font-family:var(--font-mono); font-size:16px; letter-spacing:.42em; text-transform:uppercase; color:rgba(240,239,227,.75); padding-top:14px; border-top:1px solid rgba(240,239,227,.35); display:flex; align-items:center; justify-content:space-between; }
-        .s24-lockup .district .cred { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        /* Three inscription rules for the "Committed to" lines */
-        .s24-inscriptions { position:absolute; left:80px; right:80px; bottom:130px; z-index:5; display:flex; flex-direction:column; gap:12px; }
-        .s24-inscriptions .row { display:flex; align-items:center; gap:16px; padding-bottom:8px; border-bottom:1px solid rgba(240,239,227,.28); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:28px; letter-spacing:-.015em; color:rgba(240,239,227,.9); }
-        .s24-inscriptions .row .n { font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(240,239,227,.5); font-style:normal; min-width:60px; }
+        /* District band — its own row, well spaced from lockup and inscriptions */
+        .s24-district {
+          position:absolute; left:80px; right:80px; bottom:440px; z-index:5;
+          padding-top:24px; border-top:1px solid rgba(240,239,227,.4);
+          display:flex; align-items:center; justify-content:space-between; gap:22px;
+          font-family:var(--font-mono); font-size:16px; letter-spacing:.42em; text-transform:uppercase; color:rgba(240,239,227,.8);
+        }
+        .s24-district .cred { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
+        /* Three inscription rules — generous spacing, larger italic */
+        .s24-inscriptions { position:absolute; left:80px; right:80px; bottom:140px; z-index:5; display:flex; flex-direction:column; gap:26px; }
+        .s24-inscriptions .row { display:flex; align-items:center; gap:30px; padding-bottom:22px; border-bottom:1px solid rgba(240,239,227,.3); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; letter-spacing:-.015em; color:rgba(240,239,227,.95); line-height:1.1; }
+        .s24-inscriptions .row .n { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(240,239,227,.55); font-style:normal; min-width:52px; }
+        .s24-inscriptions .row .v { flex:1; }
         .s24-inscriptions .row .v em { font-style:normal; color:#e0d6bc; }
-        .s24-foot { position:absolute; left:80px; right:80px; bottom:60px; z-index:5; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(240,239,227,.55); }
+        .s24-foot { position:absolute; left:80px; right:80px; bottom:64px; z-index:5; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(240,239,227,.55); }
       </style>
         <div class="s24">
           <div class="bg"><img src="../assets/img/brian-schimmel.jpg" alt="Brian Schimmel" /></div>
@@ -53,8 +60,8 @@
           <div class="s24-lockup">
             <span class="kick">— Endorsed by Northwest Oregon PAC</span>
             <h1 class="name">Meet <em>Brian Schimmel.</em></h1>
-            <div class="district"><span>Candidate for Oregon House District 29</span><span class="cred">Practical leadership</span></div>
           </div>
+          <div class="s24-district"><span>Candidate for Oregon House District 29</span><span class="cred">Practical leadership</span></div>
           <div class="s24-inscriptions">
             <div class="row"><span class="n">01</span><span class="v">Committed to <em>service.</em></span></div>
             <div class="row"><span class="n">02</span><span class="v">Committed to <em>the community.</em></span></div>
