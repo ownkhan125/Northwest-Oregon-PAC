@@ -11,7 +11,7 @@ content and design system. Open `index.html` for the visual gallery.
 
 Every artboard uses the site palette (cream `#F6F2E8`, sand `#E0D6BC`,
 sage `#5A7060`, forest `#2E4538`, brown `#6B5A42`, ink `#2A2A26`), the
-site type stack (Lora · Source Sans 3 · JetBrains Mono), and carries the
+site type stack (Lora · Source Sans 3), and carries the
 `Paid for by Northwest Oregon PAC #25045` rail. All copy is sourced
 verbatim from `src/data/pac.js` — never edit creative text directly.
 

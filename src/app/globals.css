@@ -6,6 +6,11 @@
    truth for what theme is active. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Safelist utilities that only appear inside dynamic hover paths on Card
+   consumers (priorities cards). Without this, the scanner may skip them
+   when the file's other content hasn't otherwise changed. */
+@source inline("group-hover:text-primary-fg group-hover:text-primary-fg/85 group-hover:text-primary-fg/80 group-hover:text-primary-fg/70 group-hover:text-accent group-hover:border-accent/60 group-hover:border-primary-fg/25 group-hover:bg-primary-fg/10 hover:bg-primary hover:text-primary-fg hover:border-primary bg-background/62 dark:bg-background/58");
+
 /* ---------------------------------------------------------------
    Northwest Oregon PAC — Color System
    -------------------------------------------------------------

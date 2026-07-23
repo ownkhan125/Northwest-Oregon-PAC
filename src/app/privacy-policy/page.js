@@ -78,7 +78,7 @@ const sections = [
   {
     heading: 'Contact',
     body: [
-      `Questions about this policy? Email ${pac.contact.generalEmail}, call ${pac.contact.phone}, or write to Northwest Oregon PAC, ${pac.contact.mailingAddress}. Filing #${pac.filingNumber}, EIN ${pac.ein}, regulated by the ${pac.regulator}.`,
+      `Questions about this policy? Email ${pac.contact.generalEmail}, call ${pac.contact.phone}, or write to Northwest Oregon PAC, ${pac.contact.mailingAddress}. Filing #${pac.filingNumber}, regulated by the ${pac.regulator}.`,
     ],
   },
 ]

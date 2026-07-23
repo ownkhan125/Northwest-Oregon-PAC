@@ -97,20 +97,25 @@ export default function Priorities() {
               <div className="flex h-full flex-col">
                 <div>
                   <div className="flex items-start justify-between">
-                    <span className="border-primary/25 bg-surface-alt/60 text-primary grid h-12 w-12 place-items-center rounded-xl border">
+                    <span className="border-primary/25 bg-surface-alt/60 text-primary group-hover:border-accent/60 group-hover:bg-primary-fg/10 group-hover:text-accent grid h-12 w-12 place-items-center rounded-xl border transition-colors duration-500">
                       <svg viewBox="0 0 24 24" className="h-6 w-6">
                         {icons[issue.id]}
                       </svg>
                     </span>
-                    <span className="text-highlight font-mono text-xs">{issue.id}</span>
+                    <span className="text-highlight group-hover:text-accent font-mono text-xs transition-colors duration-500">
+                      {issue.id}
+                    </span>
                   </div>
-                  <h3 className="font-display text-foreground mt-7 min-h-[5rem] text-xl leading-tight font-medium sm:min-h-[6rem] sm:text-2xl">
+                  <h3 className="font-display text-foreground group-hover:text-primary-fg mt-7 min-h-[5rem] text-xl leading-tight font-medium transition-colors duration-500 sm:min-h-[6rem] sm:text-2xl">
                     {issue.name}
                   </h3>
                 </div>
                 <div className="mt-6 space-y-3">
                   {issue.paragraphs.map((p, i) => (
-                    <p key={i} className="text-foreground/75 text-sm leading-relaxed">
+                    <p
+                      key={i}
+                      className="text-foreground/75 group-hover:text-primary-fg/85 text-sm leading-relaxed transition-colors duration-500"
+                    >
                       {p}
                     </p>
                   ))}

@@ -5,7 +5,7 @@ import { m } from 'motion/react'
 import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
-import { fadeUp, fadeRight, stagger, lineBuild } from '@/animations/variants'
+import { fadeUp, fadeRight, stagger } from '@/animations/variants'
 import { home, differentiator } from '@/data/pac'
 import whoWeAreImage from '@/assets/images/Who we are.jpg'
 
@@ -97,10 +97,6 @@ export default function About() {
           </m.div>
 
           <div className="relative">
-            <m.div
-              variants={lineBuild}
-              className="bg-primary absolute top-4 -left-3 h-px w-12 origin-left"
-            />
             <div className="border-primary/20 bg-surface-alt/60 relative w-full overflow-hidden rounded-3xl border p-8 sm:p-10">
               <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
                 What makes us different

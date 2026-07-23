@@ -2,89 +2,71 @@
 
 import { useRef } from 'react'
 import PropTypes from 'prop-types'
-import { m, useMotionTemplate, useMotionValue, useSpring, useTransform } from 'motion/react'
+import { m, useMotionValue, useSpring, useTransform } from 'motion/react'
 import { cn } from '@/lib/cn'
 
+/**
+ * Editorial card. On hover:
+ *   • background swaps to brand primary (forest)
+ *   • text + icon surfaces flip to cream via [data-card-hover]
+ *   • a slim gold accent line rises from the bottom edge
+ * No gradient spotlight, no glass, no glow.
+ */
 const Card = ({
   className,
   children,
-  hoverGlow = true,
+  hoverGlow: _legacyHoverGlow, // retained in prop list for backwards compat
   tilt = true,
   interactive = true,
   ...rest
 }) => {
   const ref = useRef(null)
-  const mx = useMotionValue(50)
-  const my = useMotionValue(50)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const sx = useSpring(x, { stiffness: 140, damping: 18 })
   const sy = useSpring(y, { stiffness: 140, damping: 18 })
-  const rx = useTransform(sy, [-50, 50], [4, -4])
-  const ry = useTransform(sx, [-50, 50], [-4, 4])
-
-  const glow = useMotionTemplate`radial-gradient(320px circle at ${mx}% ${my}%, color-mix(in oklab, var(--highlight) 18%, transparent), color-mix(in oklab, var(--accent) 35%, transparent) 28%, transparent 60%)`
-  const border = useMotionTemplate`radial-gradient(180px circle at ${mx}% ${my}%, color-mix(in oklab, var(--primary) 55%, transparent), transparent 70%)`
+  const rx = useTransform(sy, [-50, 50], [3, -3])
+  const ry = useTransform(sx, [-50, 50], [-3, 3])
 
   function onMove(e) {
     const el = ref.current
-    if (!el) return
+    if (!el || !tilt) return
     const r = el.getBoundingClientRect()
-    const px = ((e.clientX - r.left) / r.width) * 100
-    const py = ((e.clientY - r.top) / r.height) * 100
-    mx.set(px)
-    my.set(py)
-    if (tilt) {
-      x.set(e.clientX - r.left - r.width / 2)
-      y.set(e.clientY - r.top - r.height / 2)
-    }
+    x.set(e.clientX - r.left - r.width / 2)
+    y.set(e.clientY - r.top - r.height / 2)
   }
 
   function onLeave() {
     x.set(0)
     y.set(0)
-    mx.set(50)
-    my.set(50)
   }
 
   return (
     <m.div
       ref={ref}
+      data-card={interactive ? 'hover' : undefined}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      whileHover={interactive ? { y: -4 } : undefined}
-      transition={{ type: 'spring', stiffness: 180, damping: 18 }}
+      whileHover={interactive ? { y: -6 } : undefined}
+      transition={{ type: 'spring', stiffness: 200, damping: 22 }}
       style={{
         rotateX: tilt ? rx : 0,
         rotateY: tilt ? ry : 0,
         transformPerspective: 1000,
       }}
       className={cn(
-        'group border-border bg-surface relative isolate overflow-hidden rounded-2xl border transition-[border-color] duration-500',
-        interactive && 'hover:border-primary/40 cursor-pointer',
+        'group border-border bg-surface relative isolate overflow-hidden rounded-2xl border transition-[background-color,border-color,color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+        interactive &&
+          'cursor-pointer hover:border-primary hover:bg-primary hover:text-primary-fg hover:shadow-[0_28px_60px_-30px_rgba(46,69,56,0.55)]',
         className,
       )}
       {...rest}
     >
-      {hoverGlow && (
-        <>
-          <m.div
-            aria-hidden
-            style={{ background: glow }}
-            className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-          />
-          <m.div
-            aria-hidden
-            style={{
-              background: border,
-              WebkitMask: 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
-              WebkitMaskComposite: 'xor',
-              maskComposite: 'exclude',
-              padding: '1px',
-            }}
-            className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-          />
-        </>
+      {interactive && (
+        <span
+          aria-hidden
+          className="from-accent/0 via-accent to-accent/0 pointer-events-none absolute inset-x-6 bottom-0 h-px origin-center scale-x-0 bg-gradient-to-r opacity-0 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100 group-hover:opacity-100"
+        />
       )}
       <div className="relative z-10 flex h-full flex-col">{children}</div>
     </m.div>

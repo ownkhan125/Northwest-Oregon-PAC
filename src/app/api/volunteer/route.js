@@ -53,6 +53,7 @@ export async function POST(request) {
   const lastName = asString(body.lastName, 80)
   const email = asString(body.email, 160).toLowerCase()
   const phone = asString(body.phone, 40)
+  const address = asString(body.address, 200)
   const zipCode = asString(body.zipCode, 20)
   const city = asString(body.city, 120)
   const county = asString(body.county, 80)
@@ -75,6 +76,7 @@ export async function POST(request) {
     lastName,
     email,
     phone,
+    address,
     zipCode,
     city,
     county,

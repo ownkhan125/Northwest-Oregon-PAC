@@ -197,15 +197,15 @@ export const feed = [
               <path d="M20 30 C 42 22 60 34 78 28 C 96 22 106 40 122 34 C 138 28 152 42 168 34 L 180 60 L 172 88 L 184 116 L 168 148 L 178 176 L 152 200 L 118 208 L 82 202 L 46 208 L 26 188 L 30 156 L 22 130 L 34 100 L 24 68 Z" fill="currentColor" fill-opacity=".08"/>
               <path d="M20 30 C 42 22 60 34 78 28 C 96 22 106 40 122 34 C 138 28 152 42 168 34 L 180 60 L 172 88 L 184 116 L 168 148 L 178 176 L 152 200 L 118 208 L 82 202 L 46 208 L 26 188 L 30 156 L 22 130 L 34 100 L 24 68 Z"/>
               <circle class="marker" cx="46" cy="62" r="4"/>
-              <text x="55" y="66" font-family="JetBrains Mono" font-size="9" fill="currentColor" stroke="none">ASTORIA</text>
+              <text x="55" y="66" font-family="Source Sans 3" font-size="9" fill="currentColor" stroke="none">ASTORIA</text>
               <circle class="marker" cx="72" cy="106" r="4"/>
-              <text x="80" y="110" font-family="JetBrains Mono" font-size="9" fill="currentColor" stroke="none">TILLAMOOK</text>
+              <text x="80" y="110" font-family="Source Sans 3" font-size="9" fill="currentColor" stroke="none">TILLAMOOK</text>
               <circle class="marker" cx="132" cy="90" r="4"/>
-              <text x="140" y="94" font-family="JetBrains Mono" font-size="9" fill="currentColor" stroke="none">FOREST GROVE</text>
+              <text x="140" y="94" font-family="Source Sans 3" font-size="9" fill="currentColor" stroke="none">FOREST GROVE</text>
               <circle class="marker" cx="152" cy="118" r="4"/>
-              <text x="160" y="122" font-family="JetBrains Mono" font-size="9" fill="currentColor" stroke="none">HILLSBORO</text>
+              <text x="160" y="122" font-family="Source Sans 3" font-size="9" fill="currentColor" stroke="none">HILLSBORO</text>
               <circle class="marker" cx="98" cy="46" r="4"/>
-              <text x="105" y="50" font-family="JetBrains Mono" font-size="9" fill="currentColor" stroke="none">COLUMBIA CO.</text>
+              <text x="105" y="50" font-family="Source Sans 3" font-size="9" fill="currentColor" stroke="none">COLUMBIA CO.</text>
             </svg>
             <div class="towns"><span>Hillsboro</span><span>Forest Grove</span><span>Astoria</span><span>Tillamook</span><span>Columbia County</span></div>
           </div>
@@ -1624,7 +1624,7 @@ export const feed = [
               <text x="95" y="90" font-family="Lora" font-style="italic" font-weight="500" font-size="34" fill="#f6f2e8" letter-spacing="-1">Worth fighting for.</text>
               <!-- Second smaller pennant below — resized to fit label -->
               <path d="M70 190 L300 210 L360 225 L300 240 L70 255 Z" fill="#e0d6bc" opacity="0.9"/>
-              <text x="90" y="232" font-family="JetBrains Mono" font-weight="600" font-size="11" fill="#2e4538" letter-spacing="3">EST. 2026 · PLANTED HERE</text>
+              <text x="90" y="232" font-family="Source Sans 3" font-weight="600" font-size="11" fill="#2e4538" letter-spacing="3">EST. 2026 · PLANTED HERE</text>
               <!-- Pole shadow into ground -->
               <path d="M40 340 L100 340 L90 360 L50 360 Z" fill="#6b5a42" opacity="0.5"/>
               <!-- Small tuft grass -->
@@ -1703,17 +1703,17 @@ export const feed = [
               <!-- Three nodes — enlarged to fit labels comfortably -->
               <g>
                 <circle cx="220" cy="60" r="60" fill="#1c2b23" stroke="#e0d6bc"/>
-                <text x="220" y="52" font-family="JetBrains Mono" font-size="10" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2.5">DOLLAR</text>
+                <text x="220" y="52" font-family="Source Sans 3" font-size="10" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2.5">DOLLAR</text>
                 <text x="220" y="80" font-family="Lora" font-style="italic" font-size="26" fill="#f6f2e8" text-anchor="middle" stroke="none">$1</text>
               </g>
               <g>
                 <circle cx="60" cy="320" r="60" fill="#1c2b23" stroke="#e0d6bc"/>
-                <text x="60" y="312" font-family="JetBrains Mono" font-size="9" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2">CAMPAIGNS</text>
+                <text x="60" y="312" font-family="Source Sans 3" font-size="9" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2">CAMPAIGNS</text>
                 <text x="60" y="338" font-family="Lora" font-style="italic" font-size="15" fill="#f6f2e8" text-anchor="middle" stroke="none">built here</text>
               </g>
               <g>
                 <circle cx="380" cy="320" r="60" fill="#1c2b23" stroke="#e0d6bc"/>
-                <text x="380" y="312" font-family="JetBrains Mono" font-size="9" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2">COMMUNITY</text>
+                <text x="380" y="312" font-family="Source Sans 3" font-size="9" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2">COMMUNITY</text>
                 <text x="380" y="338" font-family="Lora" font-style="italic" font-size="15" fill="#f6f2e8" text-anchor="middle" stroke="none">forward</text>
               </g>
               <!-- Arrows on the ring -->
@@ -1723,7 +1723,7 @@ export const feed = [
               <path d="M60 260 L48 244 L40 262" fill="#e0d6bc" stroke="none"/>
               <path d="M140 100 L124 108 L126 88" fill="#e0d6bc" stroke="none"/>
               <!-- Center note -->
-              <text x="220" y="216" font-family="JetBrains Mono" font-size="11" fill="rgba(246,242,232,0.6)" text-anchor="middle" stroke="none" letter-spacing="3">CLOSED LOOP</text>
+              <text x="220" y="216" font-family="Source Sans 3" font-size="11" fill="rgba(246,242,232,0.6)" text-anchor="middle" stroke="none" letter-spacing="3">CLOSED LOOP</text>
               <text x="220" y="240" font-family="Lora" font-style="italic" font-size="20" fill="#e0d6bc" text-anchor="middle" stroke="none">the region</text>
             </svg>
           </div>
@@ -1810,17 +1810,17 @@ export const feed = [
               <circle cx="230" cy="230" r="94" stroke="rgba(46,69,56,.55)" stroke-width="1.4" fill="none"/>
               <circle cx="232" cy="228" r="62" stroke="rgba(46,69,56,.6)" stroke-width="1.4" fill="none"/>
               <circle cx="230" cy="230" r="30" fill="#2e4538" stroke="#e0d6bc" stroke-width="1.4"/>
-              <text x="230" y="228" font-family="JetBrains Mono" font-size="10" fill="#e0d6bc" text-anchor="middle" letter-spacing="2.5">CORE</text>
+              <text x="230" y="228" font-family="Source Sans 3" font-size="10" fill="#e0d6bc" text-anchor="middle" letter-spacing="2.5">CORE</text>
               <text x="230" y="244" font-family="Lora" font-style="italic" font-size="14" fill="#e0d6bc" text-anchor="middle">2026</text>
               <!-- Ring labels -->
               <line x1="290" y1="230" x2="380" y2="180" stroke="rgba(46,69,56,.5)" stroke-width="1"/>
-              <text x="384" y="178" font-family="JetBrains Mono" font-size="10" fill="#2e4538" letter-spacing="2.5">STRONGER ORGS</text>
+              <text x="384" y="178" font-family="Source Sans 3" font-size="10" fill="#2e4538" letter-spacing="2.5">STRONGER ORGS</text>
               <line x1="326" y1="230" x2="420" y2="240" stroke="rgba(46,69,56,.5)" stroke-width="1"/>
-              <text x="424" y="244" font-family="JetBrains Mono" font-size="10" fill="#2e4538" letter-spacing="2.5">MORE CANDIDATES</text>
+              <text x="424" y="244" font-family="Source Sans 3" font-size="10" fill="#2e4538" letter-spacing="2.5">MORE CANDIDATES</text>
               <line x1="358" y1="230" x2="410" y2="330" stroke="rgba(46,69,56,.5)" stroke-width="1"/>
-              <text x="286" y="378" font-family="JetBrains Mono" font-size="10" fill="#2e4538" letter-spacing="2.5">ENGAGED CITIZENS</text>
+              <text x="286" y="378" font-family="Source Sans 3" font-size="10" fill="#2e4538" letter-spacing="2.5">ENGAGED CITIZENS</text>
               <line x1="230" y1="380" x2="180" y2="430" stroke="rgba(46,69,56,.5)" stroke-width="1"/>
-              <text x="20" y="440" font-family="JetBrains Mono" font-size="10" fill="#2e4538" letter-spacing="2.5">A VOICE, RESTORED</text>
+              <text x="20" y="440" font-family="Source Sans 3" font-size="10" fill="#2e4538" letter-spacing="2.5">A VOICE, RESTORED</text>
               <!-- Radial hairlines for growth grain -->
               <line x1="230" y1="30" x2="230" y2="430" stroke="rgba(46,69,56,.15)" stroke-width="0.8"/>
               <line x1="30" y1="230" x2="430" y2="230" stroke="rgba(46,69,56,.15)" stroke-width="0.8"/>
@@ -2066,10 +2066,10 @@ export const feed = [
               <circle cx="200" cy="200" r="14" fill="#2e4538"/>
               <!-- Star points -->
               <path d="M200 40 L212 190 L360 200 L212 210 L200 360 L188 210 L40 200 L188 190 Z" fill="#5a7060" fill-opacity=".22" stroke="#2e4538" stroke-width="1.6"/>
-              <text x="200" y="26" font-family="JetBrains Mono" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">N</text>
-              <text x="384" y="204" font-family="JetBrains Mono" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">E</text>
-              <text x="200" y="384" font-family="JetBrains Mono" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">S</text>
-              <text x="16" y="204" font-family="JetBrains Mono" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">W</text>
+              <text x="200" y="26" font-family="Source Sans 3" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">N</text>
+              <text x="384" y="204" font-family="Source Sans 3" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">E</text>
+              <text x="200" y="384" font-family="Source Sans 3" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">S</text>
+              <text x="16" y="204" font-family="Source Sans 3" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">W</text>
             </svg>
           </div>
           <span class="f23-lbl n">— i.<span class="em">Supporting local businesses</span></span>
@@ -2872,7 +2872,7 @@ export const feed = [
             <svg viewBox="0 0 440 440" fill="none">
               <!-- Round table -->
               <circle cx="220" cy="220" r="120" fill="rgba(224,214,188,.14)" stroke="#e0d6bc" stroke-width="2"/>
-              <text x="220" y="216" font-family="JetBrains Mono" font-size="11" fill="#e0d6bc" text-anchor="middle" letter-spacing="3">THE TABLE</text>
+              <text x="220" y="216" font-family="Source Sans 3" font-size="11" fill="#e0d6bc" text-anchor="middle" letter-spacing="3">THE TABLE</text>
               <text x="220" y="240" font-family="Lora" font-style="italic" font-size="20" fill="#e0d6bc" text-anchor="middle">community</text>
               <!-- 8 chairs around table -->
               <g fill="rgba(224,214,188,.9)" stroke="#e0d6bc" stroke-width="1.5">
@@ -3170,7 +3170,7 @@ export const feed = [
               <circle cx="200" cy="200" r="14" fill="#e0d6bc"/>
               <circle cx="200" cy="200" r="6" fill="#2e4538"/>
               <!-- Center label -->
-              <text x="200" y="252" font-family="JetBrains Mono" font-size="11" fill="#e0d6bc" text-anchor="middle" letter-spacing="3">FREQUENCY</text>
+              <text x="200" y="252" font-family="Source Sans 3" font-size="11" fill="#e0d6bc" text-anchor="middle" letter-spacing="3">FREQUENCY</text>
               <text x="200" y="278" font-family="Lora" font-style="italic" font-size="24" fill="#e0d6bc" text-anchor="middle">the region</text>
             </svg>
           </div>
@@ -3875,12 +3875,12 @@ export const feed = [
               <path d="M 98 148 L 88 152 L 100 168" stroke-width="2.5" fill="none"/>
               <!-- Nodes — larger and pushed to the sides -->
               <circle cx="60" cy="210" r="44" fill="#e0d6bc" stroke="#2e4538" stroke-width="2"/>
-              <text x="60" y="202" font-family="JetBrains Mono" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="2">RAISED</text>
+              <text x="60" y="202" font-family="Source Sans 3" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="2">RAISED</text>
               <text x="60" y="224" font-family="Lora" font-style="italic" font-size="16" fill="#2e4538" text-anchor="middle" stroke="none">here</text>
               <circle cx="360" cy="210" r="44" fill="#2e4538" stroke="#e0d6bc" stroke-width="2"/>
-              <text x="360" y="202" font-family="JetBrains Mono" font-size="10" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2">INVESTED</text>
+              <text x="360" y="202" font-family="Source Sans 3" font-size="10" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2">INVESTED</text>
               <text x="360" y="224" font-family="Lora" font-style="italic" font-size="16" fill="#e0d6bc" text-anchor="middle" stroke="none">here</text>
-              <text x="210" y="216" font-family="JetBrains Mono" font-size="11" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">THE REGION</text>
+              <text x="210" y="216" font-family="Source Sans 3" font-size="11" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">THE REGION</text>
             </svg>
           </div>
           <div class="f46-verbs">
@@ -4697,7 +4697,7 @@ export const feed = [
               </g>
               <!-- Rising labels -->
               <text x="600" y="60" font-family="Lora" font-style="italic" font-size="18" fill="#e0d6bc" stroke="none">still building</text>
-              <text x="380" y="70" font-family="JetBrains Mono" font-size="10" fill="#e0d6bc" stroke="none" letter-spacing="3">EST. 2026</text>
+              <text x="380" y="70" font-family="Source Sans 3" font-size="10" fill="#e0d6bc" stroke="none" letter-spacing="3">EST. 2026</text>
             </svg>
           </div>
           <div class="f56-labels">
@@ -4968,8 +4968,8 @@ export const feed = [
             <div class="f59-branches">
               <svg viewBox="0 0 800 60" fill="none" stroke="#2e4538" stroke-width="2">
                 <path d="M 400 0 L 400 30 L 150 30 L 150 60 M 400 30 L 650 30 L 650 60" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="220" y="20" font-family="JetBrains Mono" font-size="12" fill="#2e4538" stroke="none" letter-spacing="3">YES</text>
-                <text x="540" y="20" font-family="JetBrains Mono" font-size="12" fill="rgba(46,69,56,.55)" stroke="none" letter-spacing="3">NO</text>
+                <text x="220" y="20" font-family="Source Sans 3" font-size="12" fill="#2e4538" stroke="none" letter-spacing="3">YES</text>
+                <text x="540" y="20" font-family="Source Sans 3" font-size="12" fill="rgba(46,69,56,.55)" stroke="none" letter-spacing="3">NO</text>
               </svg>
             </div>
             <div class="f59-result yes"><span class="lbl">— If yes</span><p class="v">We'll <em>fight</em> for it.</p></div>

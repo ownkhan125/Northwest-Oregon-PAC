@@ -8,6 +8,7 @@ import Card from '@/components/ui/card'
 import Button from '@/components/ui/button'
 import CivicIcon from '@/components/ui/civic-icon'
 import { cardReveal, stagger, fadeUp } from '@/animations/variants'
+import { cn } from '@/lib/cn'
 import { home } from '@/data/pac'
 import markNorman from '@/assets/images/Mark Norman.png'
 import brianSchimmel from '@/assets/images/Brian Schimmel.jpg'
@@ -67,7 +68,7 @@ export default function Endorsements() {
             >
               <div
                 aria-hidden
-                className="border-primary/15 bg-surface-alt/70 relative aspect-[4/3] w-full overflow-hidden border-b"
+                className="border-primary/15 bg-surface-alt/70 relative aspect-[4/5] w-full overflow-hidden border-b"
               >
                 {portrait && (
                   <Image
@@ -75,22 +76,46 @@ export default function Endorsements() {
                     alt={c.name}
                     fill
                     sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover object-top"
+                    className="object-cover object-[center_18%]"
                   />
                 )}
               </div>
               <div className="flex flex-1 flex-col p-7">
-                <h3 className="font-display text-foreground group-hover:text-primary text-2xl leading-tight font-medium transition-colors sm:text-3xl">
+                <h3
+                  className={cn(
+                    'font-display text-foreground text-2xl leading-tight font-medium transition-colors duration-500 sm:text-3xl',
+                    hasLink && 'group-hover:text-primary-fg',
+                  )}
+                >
                   {c.name}
                 </h3>
-                <p className="text-foreground/75 mt-2 text-sm sm:text-base">{c.office}</p>
-                <p className="text-foreground/70 mt-4 text-sm leading-relaxed">{c.bio}</p>
+                <p
+                  className={cn(
+                    'text-foreground/75 mt-2 text-sm transition-colors duration-500 sm:text-base',
+                    hasLink && 'group-hover:text-primary-fg/85',
+                  )}
+                >
+                  {c.office}
+                </p>
+                <p
+                  className={cn(
+                    'text-foreground/70 mt-4 text-sm leading-relaxed transition-colors duration-500',
+                    hasLink && 'group-hover:text-primary-fg/80',
+                  )}
+                >
+                  {c.bio}
+                </p>
 
-                <div className="border-primary/15 mt-auto flex items-center justify-between border-t pt-5">
+                <div
+                  className={cn(
+                    'border-primary/15 mt-auto flex items-center justify-between border-t pt-5 transition-colors duration-500',
+                    hasLink && 'group-hover:border-primary-fg/25',
+                  )}
+                >
                   <span
                     className={
                       hasLink
-                        ? 'text-primary group-hover:text-highlight inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors'
+                        ? 'text-primary group-hover:text-accent inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors duration-500'
                         : 'text-foreground/60 inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase'
                     }
                   >

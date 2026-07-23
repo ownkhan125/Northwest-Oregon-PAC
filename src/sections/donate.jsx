@@ -8,7 +8,7 @@ import { pac, home } from '@/data/pac'
 
 export default function Donate() {
   return (
-    <section id="donate" className="bg-surface-alt/30 relative overflow-x-clip py-24 sm:py-32">
+    <section id="donate" className="bg-surface-alt/30 relative overflow-x-clip py-14 sm:py-20 lg:py-24">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <m.div
           initial={{ scaleX: 0 }}

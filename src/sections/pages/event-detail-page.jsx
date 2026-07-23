@@ -90,7 +90,7 @@ export default function EventDetailPage({ event }) {
   }
   return (
     <>
-      <section className="relative isolate overflow-x-clip pt-28 pb-12 sm:pt-32 lg:pt-36">
+      <section className="relative isolate overflow-x-clip pt-24 pb-10 sm:pt-28 lg:pt-32">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <m.div
             initial={{ opacity: 0, y: 10 }}

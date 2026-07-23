@@ -6,7 +6,7 @@ import SectionFrame from '@/components/ui/section-frame'
 import SplitText from '@/components/ui/split-text'
 import Card from '@/components/ui/card'
 import Button from '@/components/ui/button'
-import { cardReveal, fadeUp, stagger, EASE, lineBuild } from '@/animations/variants'
+import { cardReveal, fadeUp, stagger, EASE } from '@/animations/variants'
 import { focusAreas, differentiator, aboutPage } from '@/data/pac'
 
 export default function AboutPage() {
@@ -32,10 +32,6 @@ export default function AboutPage() {
             variants={fadeUp}
             className="relative lg:sticky lg:top-32 lg:col-span-5"
           >
-            <m.div
-              variants={lineBuild}
-              className="bg-primary absolute top-4 -left-3 h-px w-12 origin-left"
-            />
             <div className="border-primary/25 bg-surface-alt/60 relative w-full overflow-hidden rounded-3xl border p-8 sm:p-10">
               <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
                 What makes us different

@@ -6,28 +6,9 @@ import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import Input from '@/components/ui/input'
-import ThemeToggle from '@/components/ui/theme-toggle'
-import Logo from '@/components/ui/logo'
 import { fadeUp, stagger, cardReveal, EASE } from '@/animations/variants'
 import { cn } from '@/lib/cn'
 import { pac } from '@/data/pac'
-
-/* ------------------------------------------------------------------
-   Minimal top strip — logo + theme toggle only. No nav, no menu.
------------------------------------------------------------------- */
-const TopStrip = () => (
-  <m.div
-    initial={{ opacity: 0, y: -12 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-    className="pointer-events-none fixed inset-x-0 top-0 z-40 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6"
-  >
-    <div className="border-border/60 bg-surface/70 pointer-events-auto flex w-full max-w-6xl items-center justify-between rounded-full border px-3 py-2 backdrop-blur-xl sm:px-4">
-      <Logo />
-      <ThemeToggle />
-    </div>
-  </m.div>
-)
 
 /* ------------------------------------------------------------------
    Conversion form — LEFT UNTOUCHED (fields, validation, webhook,
@@ -78,8 +59,18 @@ const ConversionForm = ({ compact = false }) => {
     setStatus('loading')
     setErrors({})
     try {
-      // Simulated submission — swap with real endpoint when wired up.
-      await new Promise((resolve) => setTimeout(resolve, 900))
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          firstName: values.firstName.trim(),
+          lastName: values.lastName.trim(),
+          email: values.email.trim(),
+          zip: values.zip.trim(),
+          source: '5-minutes-voter-guide',
+        }),
+      })
+      if (!res.ok) throw new Error('submission_failed')
       setStatus('success')
       router.push('/thank-you')
     } catch {
@@ -329,7 +320,7 @@ const learnItems = [
 ]
 
 const LearnSection = () => (
-  <section className="relative isolate overflow-x-clip py-20 sm:py-24">
+  <section className="relative isolate overflow-x-clip py-14 sm:py-20">
     <div
       aria-hidden
       className="bg-highlight/10 pointer-events-none absolute top-1/2 -right-32 -z-10 h-[45vmin] w-[45vmin] -translate-y-1/2 rounded-full blur-3xl"
@@ -461,7 +452,6 @@ const LegalStrip = () => (
 export default function VoterGuidePage() {
   return (
     <>
-      <TopStrip />
       <Hero />
       <LearnSection />
       <FooterNote />

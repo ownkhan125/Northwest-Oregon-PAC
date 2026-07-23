@@ -1,4 +1,4 @@
-import { Source_Sans_3, Lora, JetBrains_Mono } from 'next/font/google'
+import { Source_Sans_3, Lora } from 'next/font/google'
 import MotionProvider from '@/components/motion-provider'
 import Navbar from '@/sections/navbar'
 import Footer from '@/sections/footer'
@@ -19,7 +19,10 @@ const lora = Lora({
   display: 'swap',
 })
 
-const jetbrains = JetBrains_Mono({
+// The mono slot resolves to Source Sans 3 as well — every `font-mono`
+// utility across the app now renders in the same family as body copy,
+// keeping typography consistent without touching every consumer.
+const sourceSansMono = Source_Sans_3({
   variable: '--font-mono',
   subsets: ['latin'],
   display: 'swap',
@@ -36,7 +39,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${sourceSans.variable} ${lora.variable} ${jetbrains.variable} h-full antialiased`}
+      className={`${sourceSans.variable} ${lora.variable} ${sourceSansMono.variable} h-full antialiased`}
     >
       <head>
         <ThemeInit />

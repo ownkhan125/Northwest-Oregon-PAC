@@ -167,7 +167,7 @@ const ConfirmationHero = () => (
 )
 
 const WhatsNextSection = () => (
-  <section className="relative isolate overflow-x-clip pb-20 sm:pb-24">
+  <section className="relative isolate overflow-x-clip pb-14 sm:pb-20">
     <div className="mx-auto max-w-4xl px-5 sm:px-8 lg:px-12">
       <m.div
         variants={stagger}

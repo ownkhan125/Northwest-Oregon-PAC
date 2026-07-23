@@ -116,7 +116,7 @@ export default function ContactPage() {
 
       <section
         aria-label="Contact information and form"
-        className="relative isolate overflow-x-clip pt-4 pb-20 sm:pb-24"
+        className="relative isolate overflow-x-clip pt-4 pb-14 sm:pb-20"
       >
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">

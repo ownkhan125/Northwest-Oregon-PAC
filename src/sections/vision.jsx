@@ -5,12 +5,13 @@ import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Marquee from '@/components/ui/marquee'
 import CivicIcon from '@/components/ui/civic-icon'
+import SectionMarker from '@/components/ui/section-marker'
 import { home } from '@/data/pac'
 
 const marqueeWords = home.vision.ticker
 
 const HEADING_CLASS =
-  'block font-display font-medium leading-[0.95] tracking-tight text-[clamp(2.5rem,9vw,9rem)]'
+  'block font-display font-medium leading-[1.02] tracking-tight text-[clamp(2rem,5.5vw,4.75rem)]'
 
 export default function Vision() {
   const ref = useRef(null)
@@ -33,7 +34,7 @@ export default function Vision() {
   const y = useTransform(scrollYProgress, [0, 1], [40, -40])
 
   return (
-    <section id="vision" ref={ref} className="relative isolate overflow-x-clip py-24 sm:py-32">
+    <section id="vision" ref={ref} className="relative isolate overflow-x-clip py-14 sm:py-20 lg:py-24">
       <div aria-hidden className="grain" />
 
       <m.div
@@ -48,17 +49,7 @@ export default function Vision() {
       </m.div>
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-20% 0px' }}
-          transition={{ duration: 0.7 }}
-          className="text-highlight mb-6 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase"
-        >
-          <span className="text-primary">03</span>
-          <span className="bg-highlight/40 h-px w-8" />
-          <span>Our Mission</span>
-        </m.div>
+        <SectionMarker number="03" eyebrow="Our Mission" />
 
         <m.div style={{ x }} className="will-change-transform">
           <SplitText

@@ -1,9 +1,8 @@
 'use client'
 
 import PropTypes from 'prop-types'
-import { m } from 'motion/react'
+import SectionMarker from '@/components/ui/section-marker'
 import { cn } from '@/lib/cn'
-import { EASE_SOFT } from '@/animations/variants'
 
 const SectionFrame = ({ id, eyebrow, number, className, bgImage, overlayClassName, children }) => (
   <section
@@ -12,51 +11,30 @@ const SectionFrame = ({ id, eyebrow, number, className, bgImage, overlayClassNam
   >
     {bgImage && (
       <>
+        {/* Backdrop image with a subtle cinematic grade so it holds up
+            behind the wash without looking flat. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat bg-scroll lg:bg-fixed"
+          className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat bg-scroll saturate-[1.08] contrast-[1.04] lg:bg-fixed"
           style={{ backgroundImage: `url('${bgImage}')` }}
         />
+        {/* Uniform readability wash — flat, edge-to-edge, no gradient and
+            no vignette. Same coverage left, center, and right so nothing
+            reads as darker or lighter than anywhere else. Tuned separately
+            for light and dark modes to preserve WCAG contrast without
+            burying the image. */}
         <div
           aria-hidden
           className={cn(
-            'pointer-events-none absolute inset-0 -z-10 bg-background/78',
+            'pointer-events-none absolute inset-0 -z-10 bg-background/62 dark:bg-background/58',
             overlayClassName,
           )}
         />
       </>
     )}
-    <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
+    <div className="relative mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
       <div className="relative">
-        <m.div
-          initial={{ scaleX: 0, opacity: 0 }}
-          whileInView={{ scaleX: 1, opacity: 1 }}
-          viewport={{ once: true, margin: '-15% 0px' }}
-          transition={{ duration: 0.9, ease: EASE_SOFT }}
-          className="from-primary/60 via-primary/20 absolute -top-6 right-0 left-0 h-px origin-left bg-gradient-to-r to-transparent"
-        />
-        <m.div
-          initial={{ scaleY: 0, opacity: 0 }}
-          whileInView={{ scaleY: 1, opacity: 1 }}
-          viewport={{ once: true, margin: '-15% 0px' }}
-          transition={{ duration: 0.7, delay: 0.1, ease: EASE_SOFT }}
-          className="bg-primary/60 absolute -top-6 left-0 h-6 w-px origin-top"
-        />
-
-        {(eyebrow || number) && (
-          <m.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-15% 0px' }}
-            transition={{ delay: 0.5, duration: 0.7, ease: EASE_SOFT }}
-            className="text-highlight mb-6 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase"
-          >
-            {number && <span className="text-primary">{number}</span>}
-            {number && eyebrow && <span className="bg-highlight/40 h-px w-8" />}
-            {eyebrow && <span>{eyebrow}</span>}
-          </m.div>
-        )}
-
+        <SectionMarker number={number} eyebrow={eyebrow} />
         {children}
       </div>
     </div>

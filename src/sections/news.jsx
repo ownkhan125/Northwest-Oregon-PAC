@@ -43,7 +43,7 @@ export default function News() {
 
         <m.aside
           variants={fadeUp}
-          className="border-primary/25 bg-surface-alt/50 rounded-2xl border p-6 lg:col-span-4"
+          className="border-primary/30 bg-surface-alt/90 rounded-2xl border p-6 shadow-[0_18px_50px_-30px_rgba(46,69,56,0.45)] backdrop-blur-sm lg:col-span-4"
         >
           <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
             {home.freedom.sideCard.eyebrow}

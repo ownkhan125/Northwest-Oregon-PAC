@@ -4,12 +4,13 @@ import PropTypes from 'prop-types'
 import { m } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import CivicIcon from '@/components/ui/civic-icon'
+import SectionMarker from '@/components/ui/section-marker'
 import { fadeUp, EASE_SOFT } from '@/animations/variants'
 
 const PageHeader = ({ eyebrow, title, description, number, align = 'left', accent, action }) => {
   const center = align === 'center'
   return (
-    <section className="relative isolate overflow-x-clip pt-32 pb-12 sm:pt-40 lg:pt-44">
+    <section className="relative isolate overflow-x-clip pt-24 pb-8 sm:pt-28 sm:pb-10 lg:pt-32">
       {accent && (
         <m.div
           aria-hidden
@@ -22,20 +23,7 @@ const PageHeader = ({ eyebrow, title, description, number, align = 'left', accen
         </m.div>
       )}
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        {(eyebrow || number) && (
-          <m.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.7, ease: EASE_SOFT }}
-            className={`text-highlight mb-6 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase ${
-              center ? 'justify-center' : ''
-            }`}
-          >
-            {number && <span className="text-primary">{number}</span>}
-            {number && eyebrow && <span className="bg-highlight/40 h-px w-8" />}
-            {eyebrow && <span>{eyebrow}</span>}
-          </m.div>
-        )}
+        <SectionMarker number={number} eyebrow={eyebrow} className={center ? 'flex flex-col items-center [&>div]:justify-center' : ''} />
 
         <SplitText
           as="h1"
@@ -92,7 +80,7 @@ const PageHeader = ({ eyebrow, title, description, number, align = 'left', accen
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ delay: 1, duration: 0.9, ease: EASE_SOFT }}
-          className="from-primary/60 via-primary/20 mt-12 h-px origin-left bg-gradient-to-r to-transparent"
+          className="from-primary/60 via-primary/20 mt-8 h-px origin-left bg-gradient-to-r to-transparent"
         />
       </div>
     </section>

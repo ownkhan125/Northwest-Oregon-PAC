@@ -245,7 +245,7 @@ export default function AskPage() {
       />
 
       {/* Ask form — primary focus of the page */}
-      <section id="ask" className="relative isolate overflow-x-clip pt-4 pb-20 sm:pb-24">
+      <section id="ask" className="relative isolate overflow-x-clip pt-4 pb-14 sm:pb-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
             <m.div

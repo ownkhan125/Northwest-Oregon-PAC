@@ -1,14 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { m } from 'motion/react'
+import { AnimatePresence, m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import Button from '@/components/ui/button'
 import Input from '@/components/ui/input'
 import Textarea from '@/components/ui/textarea'
 import Select from '@/components/ui/select'
 import Checkbox from '@/components/ui/checkbox'
-import { fadeUp, stagger, EASE } from '@/animations/variants'
+import { EASE } from '@/animations/variants'
 import { pac, welcomeEmail } from '@/data/pac'
 import { validateContactFields } from '@/lib/form'
 import {
@@ -85,6 +85,99 @@ const WAYS_TO_HELP = [
   },
 ]
 
+function WaysAccordion({ items }) {
+  const [openId, setOpenId] = useState(items[0]?.id ?? null)
+  return (
+    <div className="border-primary/20 divide-primary/15 divide-y overflow-hidden rounded-2xl border">
+      {items.map((way) => {
+        const isOpen = openId === way.id
+        return (
+          <div key={way.id} className="bg-surface/70">
+            <button
+              type="button"
+              onClick={() => setOpenId(isOpen ? null : way.id)}
+              aria-expanded={isOpen}
+              aria-controls={`way-${way.id}`}
+              className="hover:bg-surface-alt/40 flex w-full cursor-pointer items-center gap-5 px-5 py-5 text-left transition-colors sm:px-7 sm:py-6"
+            >
+              <span className="text-highlight w-8 shrink-0 font-mono text-[11px] tracking-[0.3em]">
+                {way.id}
+              </span>
+              <span className="font-display text-foreground flex-1 text-lg leading-tight font-medium tracking-tight sm:text-xl">
+                {way.title}
+              </span>
+              <span
+                aria-hidden
+                className={`text-primary transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? 'rotate-45' : ''}`}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 5v14M5 12h14"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <m.div
+                  key="content"
+                  id={`way-${way.id}`}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-5 pb-6 sm:px-7 sm:pb-7">
+                    <div className="border-primary/15 border-t pt-5 sm:pt-6">
+                      <p className="font-display text-primary text-base leading-snug sm:text-lg">
+                        {way.subheading}
+                      </p>
+                      <div className="text-foreground/80 mt-4 space-y-3 text-sm leading-relaxed sm:text-base">
+                        {way.paragraphs.map((p, i) => (
+                          <p key={i}>{p}</p>
+                        ))}
+                      </div>
+                      {way.list && (
+                        <div className="mt-5">
+                          <p className="text-foreground/85 text-sm sm:text-base">{way.listIntro}</p>
+                          <ul className="mt-3 space-y-2">
+                            {way.list.map((item) => (
+                              <li
+                                key={item}
+                                className="text-foreground/75 flex items-start gap-3 text-sm sm:text-base"
+                              >
+                                <span
+                                  aria-hidden
+                                  className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+                                />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      <div className="mt-6">
+                        <Button href={way.href} size="md">
+                          {way.cta}
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </m.div>
+              )}
+            </AnimatePresence>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 export default function VolunteerPage() {
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
@@ -112,6 +205,7 @@ export default function VolunteerPage() {
       lastName: String(data.get('lastName') || '').trim(),
       email: String(data.get('email') || '').trim(),
       phone: String(data.get('phone') || '').trim(),
+      address: String(data.get('address') || '').trim(),
       zipCode: String(data.get('zipCode') || '').trim(),
       city: String(data.get('city') || '').trim(),
       county: String(data.get('county') || '').trim(),
@@ -171,79 +265,7 @@ export default function VolunteerPage() {
         accent="/icons/ballot-box.svg"
       />
 
-      {/* Find your way to help */}
-      <section className="relative isolate overflow-x-clip py-12 sm:py-16">
-        <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-          <m.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-15% 0px' }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="font-display text-foreground text-3xl leading-tight font-medium tracking-tight sm:text-4xl md:text-5xl"
-          >
-            FIND YOUR WAY TO HELP
-          </m.h2>
-
-          <m.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-15% 0px' }}
-            className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2"
-          >
-            {WAYS_TO_HELP.map((way) => (
-              <m.article
-                key={way.id}
-                variants={fadeUp}
-                className="border-primary/20 bg-surface/80 flex h-full flex-col justify-between rounded-2xl border p-7 sm:p-8"
-              >
-                <div>
-                  <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                    {way.id}
-                  </div>
-                  <h3 className="font-display text-foreground mt-3 text-2xl leading-tight font-medium sm:text-3xl">
-                    {way.title}
-                  </h3>
-                  <p className="font-display text-primary mt-3 text-lg leading-snug sm:text-xl">
-                    {way.subheading}
-                  </p>
-                  <div className="text-foreground/80 mt-4 space-y-3 text-sm leading-relaxed sm:text-base">
-                    {way.paragraphs.map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
-                  </div>
-                  {way.list && (
-                    <div className="mt-5">
-                      <p className="text-foreground/85 text-sm sm:text-base">{way.listIntro}</p>
-                      <ul className="mt-3 space-y-2">
-                        {way.list.map((item) => (
-                          <li
-                            key={item}
-                            className="text-foreground/75 flex items-start gap-3 text-sm sm:text-base"
-                          >
-                            <span
-                              aria-hidden
-                              className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
-                            />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-                <div className="mt-auto pt-7">
-                  <Button href={way.href} size="md">
-                    {way.cta}
-                  </Button>
-                </div>
-              </m.article>
-            ))}
-          </m.div>
-        </div>
-      </section>
-
-      {/* Form */}
+      {/* Form (primary CTA — moved above the accordion for a stronger conversion path) */}
       <section id="run" className="relative isolate overflow-x-clip py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-4xl px-5 sm:px-8 lg:px-12">
           <m.div
@@ -304,6 +326,14 @@ export default function VolunteerPage() {
                   error={fieldErrors.phone}
                   onChange={() => clearFieldError('phone')}
                 />
+                <div className="sm:col-span-2">
+                  <Input
+                    label="Street address (optional)"
+                    name="address"
+                    autoComplete="street-address"
+                    placeholder="123 Main St"
+                  />
+                </div>
                 <Input
                   label="ZIP code (optional)"
                   name="zipCode"
@@ -467,6 +497,30 @@ export default function VolunteerPage() {
               )}
             </m.form>
           )}
+        </div>
+      </section>
+
+      {/* Find your way to help — compact accordion below the form */}
+      <section className="relative isolate overflow-x-clip py-12 sm:py-16">
+        <div className="relative mx-auto max-w-4xl px-5 sm:px-8 lg:px-12">
+          <m.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-15% 0px' }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="font-display text-foreground text-3xl leading-tight font-medium tracking-tight sm:text-4xl"
+          >
+            FIND YOUR WAY TO HELP
+          </m.h2>
+          <m.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-15% 0px' }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
+            className="mt-8"
+          >
+            <WaysAccordion items={WAYS_TO_HELP} />
+          </m.div>
         </div>
       </section>
 

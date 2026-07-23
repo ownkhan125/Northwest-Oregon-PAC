@@ -7,7 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet" />
 <style>
   :root {
     --sand:#e0d6bc; --cream:#f6f2e8; --sage:#5a7060; --forest:#2e4538; --brown:#6b5a42; --ink:#2a2a26;
@@ -29,19 +29,19 @@
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.16  0 0 0 0 0.15  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
   .wrap { position:relative; z-index:1; max-width:1480px; margin:0 auto; }
   header.page { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:28px; margin-bottom:22px; }
-  .eyebrow { display:inline-flex; align-items:center; gap:12px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#465d4e; margin-bottom:18px; }
+  .eyebrow { display:inline-flex; align-items:center; gap:12px; font-family:'Source Sans 3', system-ui, sans-serif; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#465d4e; margin-bottom:18px; }
   .eyebrow::before { content:''; width:36px; height:1px; background:#465d4e; opacity:.6; }
   h1 { font-family:'Lora', serif; font-weight:500; letter-spacing:-.02em; font-size: clamp(38px, 5vw, 64px); line-height:1.04; color:var(--forest); }
   h1 em { font-style:italic; font-weight:400; color:var(--sage); }
-  .meta { font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:rgba(42,42,38,.6); line-height:2.1; text-align:right; }
+  .meta { font-family:'Source Sans 3', system-ui, sans-serif; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:rgba(42,42,38,.6); line-height:2.1; text-align:right; }
   nav.tabs { position:sticky; top:0; z-index:5; display:flex; flex-wrap:wrap; gap:10px; padding:18px 0; margin:26px 0 40px;
     background:linear-gradient(180deg, var(--cream) 78%, transparent); }
-  nav.tabs a { font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; text-decoration:none;
+  nav.tabs a { font-family:'Source Sans 3', system-ui, sans-serif; font-size:11px; letter-spacing:.24em; text-transform:uppercase; text-decoration:none;
     color:var(--forest); border:1.5px solid rgba(46,69,56,.35); border-radius:999px; padding:11px 22px; transition:.25s; background:rgba(246,242,232,.7); }
   nav.tabs a:hover { background:var(--forest); color:var(--cream); }
   h2.sect { font-family:'Lora', serif; font-weight:500; font-size:30px; letter-spacing:-.01em; color:var(--forest); margin:64px 0 8px; scroll-margin-top:96px; }
   h2.sect em { font-style:italic; color:var(--sage); }
-  .sect-line { display:flex; align-items:center; gap:18px; margin-bottom:28px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:rgba(42,42,38,.55); }
+  .sect-line { display:flex; align-items:center; gap:18px; margin-bottom:28px; font-family:'Source Sans 3', system-ui, sans-serif; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:rgba(42,42,38,.55); }
   .sect-line::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, rgba(46,69,56,.4), transparent); }
   .grid { display:grid; gap:26px; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); }
   .grid.story-grid { grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); }
@@ -56,12 +56,12 @@
   .card.story .thumb iframe { height:1920px; }
   .meta-row { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:16px 20px; }
   .meta-row .t { font-family:'Lora', serif; font-style:italic; font-weight:500; font-size:17px; color:var(--forest); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .meta-row .n { font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:rgba(42,42,38,.55); flex:none; }
-  .badge { position:absolute; top:14px; right:14px; z-index:2; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.2em;
+  .meta-row .n { font-family:'Source Sans 3', system-ui, sans-serif; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:rgba(42,42,38,.55); flex:none; }
+  .badge { position:absolute; top:14px; right:14px; z-index:2; font-family:'Source Sans 3', system-ui, sans-serif; font-size:10px; letter-spacing:.2em;
     background:rgba(36,54,44,.82); color:var(--sand); border:1px solid rgba(224,214,188,.35); padding:7px 13px; border-radius:999px; backdrop-filter: blur(6px); }
   footer.legal { margin-top:110px; border-top:1.5px solid var(--line); padding-top:30px; text-align:center;
     font-size:13px; letter-spacing:.08em; color:rgba(42,42,38,.65); line-height:2; }
-  footer.legal .mono { font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:#465d4e; }
+  footer.legal .mono { font-family:'Source Sans 3', system-ui, sans-serif; font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:#465d4e; }
 </style>
 </head>
 <body>

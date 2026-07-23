@@ -6,8 +6,8 @@ import Link from 'next/link'
 import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
-import { pac, home } from '@/data/pac'
-import heroImage from '@/assets/images/hero.jpg'
+import { home } from '@/data/pac'
+import heroBackdrop from '@/assets/images/Bridge-7.png'
 
 export default function Hero() {
   const root = useRef(null)
@@ -21,18 +21,68 @@ export default function Hero() {
     <section
       ref={root}
       id="top"
-      className="relative isolate flex min-h-screen w-full items-center overflow-x-clip pt-28 pb-16 sm:pt-32 sm:pb-24"
+      className="relative isolate flex min-h-screen w-full items-center overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16"
     >
+      {/* Layer 1 — solid brand fallback behind everything. */}
+      <div aria-hidden className="bg-background pointer-events-none absolute inset-0 -z-40" />
+
+      {/* Layer 2 — full-bleed backdrop with subtle cinematic grade
+          (contrast + saturation for depth; dark mode dims the frame). */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 overflow-hidden">
+        <Image
+          src={heroBackdrop}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[68%_center] opacity-95 saturate-[1.08] contrast-[1.06] sm:object-[72%_center] lg:object-center dark:opacity-55 dark:brightness-90"
+        />
+      </div>
+
+      {/* Layer 3 — cinematic vignette. Subtle radial darkening pulls the
+          eye toward the copy and keeps the corners feeling composed. */}
       <div
         aria-hidden
-        className="bg-highlight/15 pointer-events-none absolute top-1/3 -left-32 -z-10 h-[55vmin] w-[55vmin] rounded-full blur-3xl"
+        className="pointer-events-none absolute inset-0 -z-25"
+        style={{
+          background:
+            'radial-gradient(ellipse 95% 80% at 62% 45%, transparent 42%, rgba(0,0,0,0.32) 100%)',
+        }}
+      />
+
+      {/* Layer 4a — mobile readability wash, top → bottom.
+          Copy stacks over the top half, image reveals below. */}
+      <div
+        aria-hidden
+        className="from-background via-background/88 to-background/40 pointer-events-none absolute inset-0 -z-20 bg-gradient-to-b sm:hidden"
+      />
+      {/* Layer 4b — tablet readability wash, left → right.
+          Copy extends closer to the right edge on tablet widths, so the
+          wash stays strong further across before releasing the image. */}
+      <div
+        aria-hidden
+        className="from-background via-background/88 to-background/25 pointer-events-none absolute inset-0 -z-20 hidden bg-gradient-to-r sm:block lg:hidden"
+      />
+      {/* Layer 4c — desktop readability wash, left → right.
+          Full-opacity brand color behind the copy, fading to transparent
+          so the skyline stays vivid on the right two-fifths. */}
+      <div
+        aria-hidden
+        className="from-background via-background/78 to-transparent pointer-events-none absolute inset-0 -z-20 hidden bg-gradient-to-r lg:block"
+      />
+
+      {/* Layer 5 — bottom fade softens the transition into the next
+          section so the skyline / snow rooftops don't clash with About. */}
+      <div
+        aria-hidden
+        className="from-background via-background/65 to-transparent pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t sm:h-44"
       />
 
       <m.div
         style={{ y }}
-        className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-5 pb-20 sm:px-8 lg:grid-cols-12 lg:gap-8 lg:px-12"
+        className="relative mx-auto w-full max-w-7xl px-5 pb-8 sm:px-8 sm:pb-10 lg:px-12"
       >
-        <div className="lg:col-span-8">
+        <div className="max-w-4xl">
           <m.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,7 +96,7 @@ export default function Hero() {
             {home.hero.eyebrow}
           </m.div>
 
-          <div className="font-display text-foreground text-[12vw] leading-[0.95] font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-[86px]">
+          <div className="font-display text-foreground text-[12vw] leading-[0.95] font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-[92px]">
             <SplitText
               as="span"
               text={home.hero.heading}
@@ -116,11 +166,11 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="border-primary/15 mt-14 grid max-w-4xl grid-cols-3 gap-x-3 gap-y-6 border-t pt-6 sm:gap-x-6 sm:gap-y-8 md:gap-x-8"
+            className="border-primary/15 mt-12 grid max-w-2xl grid-cols-3 gap-x-6 gap-y-6 border-t pt-6 sm:gap-x-10 sm:gap-y-8 md:gap-x-12"
           >
             {home.hero.values.map((v) => (
               <div key={v.label} className="min-w-0">
-                <div className="font-display text-primary text-lg font-medium tracking-tight sm:text-2xl md:text-3xl">
+                <div className="font-display text-primary text-xl font-medium tracking-tight sm:text-2xl md:text-3xl">
                   {v.label}
                 </div>
                 <div className="text-foreground/70 mt-1 text-[11px] leading-snug sm:text-sm">
@@ -128,47 +178,6 @@ export default function Hero() {
                 </div>
               </div>
             ))}
-          </m.div>
-        </div>
-
-        <div className="relative lg:col-span-4">
-          <m.div
-            initial={{ opacity: 0, scale: 0.92, y: 24 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative mx-auto aspect-[4/5] w-full max-w-md"
-          >
-            <div
-              aria-hidden
-              className="spin-slow border-primary/25 absolute -inset-4 rounded-[2rem] border border-dashed"
-            />
-            <div className="border-primary/20 bg-surface-alt relative flex h-full w-full flex-col items-center justify-end overflow-hidden rounded-[2rem] border p-8 text-center sm:p-10">
-              <Image
-                src={heroImage}
-                alt="Northwest Oregon PAC — Strong Communities. Local Leadership. Real Solutions."
-                fill
-                priority
-                sizes="(min-width: 1024px) 448px, (min-width: 640px) 448px, 90vw"
-                className="object-cover object-center"
-              />
-              <div
-                aria-hidden
-                className="from-surface-alt/95 via-surface-alt/10 absolute inset-0 bg-gradient-to-t to-transparent"
-              />
-              <div className="relative border-primary/25 bg-surface/80 rounded-full border px-4 py-1.5 backdrop-blur-md">
-                <span className="text-primary font-mono text-[10px] tracking-[0.3em] uppercase">
-                  Filing #{pac.filingNumber} · Est. 2026
-                </span>
-              </div>
-            </div>
-
-            <m.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-              className="border-primary/30 bg-surface text-primary absolute top-10 -left-6 hidden rotate-[-6deg] rounded-2xl border px-4 py-2 text-xs font-medium tracking-widest uppercase shadow-md sm:block"
-            >
-              For our region
-            </m.div>
           </m.div>
         </div>
       </m.div>

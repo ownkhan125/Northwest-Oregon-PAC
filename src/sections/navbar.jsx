@@ -55,14 +55,8 @@ export default function Navbar() {
 
   const isActive = (href) => (href === '/' ? pathname === '/' : pathname?.startsWith(href))
 
-  // Standalone conversion pages (/5-minutes-voter-guide, /thank-you) render without global chrome.
-  if (
-    pathname === '/5-minutes-voter-guide' ||
-    pathname?.startsWith('/5-minutes-voter-guide/') ||
-    pathname === '/thank-you' ||
-    pathname?.startsWith('/thank-you/')
-  )
-    return null
+  // Standalone conversion pages (/thank-you) render without global chrome.
+  if (pathname === '/thank-you' || pathname?.startsWith('/thank-you/')) return null
 
   return (
     <>
@@ -89,6 +83,7 @@ export default function Navbar() {
             {links.map((link, i) => {
               const active = isActive(link.href)
               const isHovered = hovered === i
+              const emphasize = active || isHovered
               return (
                 <m.div
                   key={link.href}
@@ -103,49 +98,43 @@ export default function Navbar() {
                     onBlur={() => setHovered(null)}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'relative inline-flex items-center rounded-full px-4 py-2 text-sm transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform',
-                      active || isHovered ? 'text-primary' : 'text-foreground/65',
+                      'relative inline-flex items-center px-3 py-2 text-sm transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+                      emphasize ? 'text-primary' : 'text-foreground/65',
                     )}
                   >
-                    {/* Persistent active indicator — never moves off the current
-                        page's link, even while another link is being hovered. */}
+                    <span
+                      className={cn(
+                        'relative tracking-tight transition-[font-weight,letter-spacing] duration-300',
+                        emphasize ? 'font-semibold' : 'font-medium',
+                      )}
+                    >
+                      {link.label}
+                    </span>
+                    {/* Persistent active underline — anchored to the active
+                        link, does not move when other links are hovered. */}
                     {active && (
-                      <>
-                        <span
-                          aria-hidden
-                          className="border-primary/30 bg-primary/[0.08] absolute inset-0 rounded-full border shadow-[0_6px_20px_-10px_var(--primary,rgba(46,69,56,0.35))]"
-                        />
-                        <span
-                          aria-hidden
-                          className="pointer-events-none absolute inset-x-0 -bottom-[3px] flex justify-center"
-                        >
-                          <span className="from-primary/40 via-primary/70 to-primary/40 h-[2px] w-6 rounded-full bg-gradient-to-r" />
-                        </span>
-                      </>
+                      <m.span
+                        layoutId="nav-active-underline"
+                        aria-hidden
+                        transition={PILL_SPRING}
+                        className="bg-primary pointer-events-none absolute inset-x-3 -bottom-[2px] h-[2px] origin-left rounded-full"
+                      />
                     )}
-                    {/* Independent hover indicator — glides between hovered links
-                        via a shared layoutId, without touching the active pill. */}
+                    {/* Independent hover underline — glides between hovered
+                        (non-active) links. */}
                     <AnimatePresence>
-                      {isHovered && (
+                      {isHovered && !active && (
                         <m.span
-                          layoutId="nav-hover-pill"
+                          layoutId="nav-hover-underline"
                           aria-hidden
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
+                          initial={{ opacity: 0, scaleX: 0.6 }}
+                          animate={{ opacity: 1, scaleX: 1 }}
+                          exit={{ opacity: 0, scaleX: 0.6 }}
                           transition={PILL_SPRING}
-                          className={cn(
-                            'absolute inset-0 rounded-full',
-                            active
-                              ? 'bg-primary/[0.04]'
-                              : 'bg-primary/[0.05] ring-primary/10 ring-1 ring-inset',
-                          )}
+                          className="bg-primary/70 pointer-events-none absolute inset-x-3 -bottom-[2px] h-[2px] origin-left rounded-full"
                         />
                       )}
                     </AnimatePresence>
-                    <span className="relative z-10 font-medium tracking-tight">
-                      {link.label}
-                    </span>
                   </Link>
                 </m.div>
               )

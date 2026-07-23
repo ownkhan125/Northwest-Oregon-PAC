@@ -7,7 +7,6 @@ export const pac = {
   legalName: 'Northwest Oregon PAC',
   filingNumber: '25045',
   pacId: '25045',
-  ein: '42-2643251',
   type: 'Oregon State PAC',
   scope: 'Statewide',
   primaryActivity: 'Both (Hybrid)',

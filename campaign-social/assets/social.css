@@ -5,7 +5,7 @@
    NOT reuse website layout language.
      sand #E0D6BC · cream #F6F2E8 · sage #5A7060
      forest #2E4538 · brown #6B5A42 · ink #2A2A26
-   Type: Lora (display) · Source Sans 3 (body) · JetBrains Mono (labels)
+   Type: Lora (display) · Source Sans 3 (body + labels)
    Fixed Instagram artboards:
      feed / carousel slide 1080×1080 · story 1080×1920
 ------------------------------------------------------------------- */
@@ -27,7 +27,7 @@
 
   --font-display: 'Lora', Georgia, serif;
   --font-sans: 'Source Sans 3', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-mono: 'Source Sans 3', system-ui, sans-serif;
 }
 
 * {

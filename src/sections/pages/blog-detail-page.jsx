@@ -243,7 +243,7 @@ PrevNext.propTypes = { prev: PropTypes.object, next: PropTypes.object }
 function RelatedArticles({ items }) {
   if (!items?.length) return null
   return (
-    <section className="relative isolate overflow-x-clip py-20 sm:py-28">
+    <section className="relative isolate overflow-x-clip py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <div className="text-highlight mb-6 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase">
           <span className="text-primary">Related</span>
@@ -319,7 +319,7 @@ export default function BlogDetailPage({ post, prev, next, related }) {
       <ReadingProgress targetId="article-body" />
 
       {/* Hero */}
-      <section className="relative isolate overflow-x-clip pt-28 pb-12 sm:pt-32 lg:pt-36">
+      <section className="relative isolate overflow-x-clip pt-24 pb-10 sm:pt-28 lg:pt-32">
         <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-12">
           <Breadcrumb
             items={[
