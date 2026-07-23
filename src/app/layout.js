@@ -4,6 +4,7 @@ import Navbar from '@/sections/navbar'
 import Footer from '@/sections/footer'
 import LinesBackground from '@/components/ui/lines-background'
 import { ThemeInit } from '@/components/ui/theme-toggle'
+import CookieBanner from '@/components/ui/cookie-banner'
 import './globals.css'
 
 const sourceSans = Source_Sans_3({
@@ -46,6 +47,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <main className="flex flex-1 flex-col">{children}</main>
           <Footer />
+          <CookieBanner />
         </MotionProvider>
       </body>
     </html>

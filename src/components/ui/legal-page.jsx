@@ -81,9 +81,19 @@ const LegalPage = ({ eyebrow, number, title, lastUpdated, intro, sections }) => 
                     </h2>
                   </div>
                   <div className="text-foreground/80 mt-5 max-w-2xl space-y-4 leading-relaxed">
-                    {s.body.map((p, j) => (
-                      <p key={j}>{p}</p>
-                    ))}
+                    {s.body.map((p, j) => {
+                      if (typeof p === 'string') return <p key={j}>{p}</p>
+                      if (p && Array.isArray(p.list)) {
+                        return (
+                          <ul key={j} className="text-foreground/80 list-disc space-y-2 pl-6">
+                            {p.list.map((li, k) => (
+                              <li key={k}>{li}</li>
+                            ))}
+                          </ul>
+                        )
+                      }
+                      return null
+                    })}
                   </div>
                 </m.section>
               ))}
@@ -115,7 +125,12 @@ LegalPage.propTypes = {
   sections: PropTypes.arrayOf(
     PropTypes.shape({
       heading: PropTypes.string.isRequired,
-      body: PropTypes.arrayOf(PropTypes.string).isRequired,
+      body: PropTypes.arrayOf(
+        PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.shape({ list: PropTypes.arrayOf(PropTypes.string).isRequired }),
+        ]),
+      ).isRequired,
     }),
   ).isRequired,
 }

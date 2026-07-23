@@ -51,7 +51,7 @@ const sections = [
       `HELP. If you experience issues with the messaging program, reply with the keyword HELP for more assistance, or reach out to us directly at ${pac.contact.generalEmail} or ${pac.contact.phone}.`,
       'Carrier liability. Carriers are not liable for delayed or undelivered messages.',
       'Data rates and frequency. As always, message and data rates may apply for messages sent to you from us and to us from you. Message frequency varies.',
-      'Privacy. For privacy-related inquiries — including how we collect, use, retain, and share phone numbers and SMS opt-in data — please refer to our Privacy Policy at /privacy-policy.',
+      'Privacy. For privacy-related inquiries, including how we collect, use, retain, and share phone numbers and SMS opt-in data, please refer to our Privacy Policy available at /privacy-policy.',
     ],
   },
   {
