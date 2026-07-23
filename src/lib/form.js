@@ -27,6 +27,23 @@ export function isValidUSPhone(value) {
 
 export const US_PHONE_ERROR = 'Enter a valid US phone number, e.g. (503) 555-0123.'
 
+// Normalize a US phone to E.164 (+1XXXXXXXXXX) for outgoing webhook +
+// SMS opt-in payloads. The user's raw input in the UI is NOT modified —
+// this only touches the value transmitted upstream. Empty strings pass
+// through so an unfilled optional field stays optional.
+//   "5035551234"        → "+15035551234"
+//   "(503) 555-0123"    → "+15035550123"
+//   "1-503-555-0123"    → "+15035550123"
+//   "+15035550123"      → "+15035550123"  (idempotent)
+//   ""                  → ""
+export function toE164US(raw) {
+  if (!raw) return ''
+  const digits = String(raw).replace(/\D/g, '')
+  if (digits.length === 10) return `+1${digits}`
+  if (digits.length === 11 && digits.startsWith('1')) return `+${digits}`
+  return raw
+}
+
 // US ZIP: exactly 5 digits.
 export function isValidUSZip(value) {
   if (typeof value !== 'string') return false
@@ -38,6 +55,10 @@ export const US_ZIP_ERROR = 'Enter a valid 5-digit US ZIP code.'
 // Central helper used by every form. Given the built payload and which fields
 // are required/optional, returns { fieldKey: 'message' } for anything invalid.
 // Empty optional values are treated as valid.
+//
+// Pass `phoneKey: null` (or any falsy value) to skip phone validation entirely
+// — the input is accepted as typed and normalized server-side before the
+// webhook fires.
 export function validateContactFields(payload, opts = {}) {
   const {
     phoneKey = 'phone',
@@ -47,11 +68,13 @@ export function validateContactFields(payload, opts = {}) {
   } = opts
   const errors = {}
 
-  const phone = String(payload[phoneKey] ?? '').trim()
-  if (phone === '') {
-    if (phoneRequired) errors[phoneKey] = 'Phone number is required.'
-  } else if (!isValidUSPhone(phone)) {
-    errors[phoneKey] = US_PHONE_ERROR
+  if (phoneKey) {
+    const phone = String(payload[phoneKey] ?? '').trim()
+    if (phone === '') {
+      if (phoneRequired) errors[phoneKey] = 'Phone number is required.'
+    } else if (!isValidUSPhone(phone)) {
+      errors[phoneKey] = US_PHONE_ERROR
+    }
   }
 
   if (zipKey) {

@@ -1,4 +1,5 @@
 import { fireSmsOptin } from '@/lib/ghl-sms-optin'
+import { toE164US } from '@/lib/form'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -29,7 +30,8 @@ export async function POST(request) {
   const firstName = asString(body.firstName, 80)
   const lastName = asString(body.lastName, 80)
   const email = asString(body.email, 160).toLowerCase()
-  const phone = asString(body.phone, 40)
+  const rawPhone = asString(body.phone, 40)
+  const phone = toE164US(rawPhone)
   const organization = asString(body.organization, 200)
   const city = asString(body.city, 120)
   const zip_code = asString(body.zip_code, 20)

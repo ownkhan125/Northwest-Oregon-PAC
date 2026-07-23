@@ -220,8 +220,7 @@ export default function VolunteerPage() {
     }
 
     const errs = validateContactFields(payload, {
-      phoneKey: 'phone',
-      phoneRequired: false,
+      phoneKey: null, // Phone accepted as typed; server normalizes to +1 for webhook.
       zipKey: 'zipCode',
       zipRequired: false,
     })
