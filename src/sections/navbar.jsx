@@ -55,10 +55,10 @@ export default function Navbar() {
 
   const isActive = (href) => (href === '/' ? pathname === '/' : pathname?.startsWith(href))
 
-  // Standalone conversion funnels (/funnel, /thank-you) render without global chrome.
+  // Standalone conversion pages (/5-minutes-voter-guide, /thank-you) render without global chrome.
   if (
-    pathname === '/funnel' ||
-    pathname?.startsWith('/funnel/') ||
+    pathname === '/5-minutes-voter-guide' ||
+    pathname?.startsWith('/5-minutes-voter-guide/') ||
     pathname === '/thank-you' ||
     pathname?.startsWith('/thank-you/')
   )
