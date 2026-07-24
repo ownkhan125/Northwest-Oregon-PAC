@@ -29,10 +29,14 @@
         .f54-head em { font-style:italic; color:#5a7060; }
         /* Race lanes */
         .f54-track { position:absolute; left:76px; right:76px; top:460px; height:280px; z-index:5; display:flex; flex-direction:column; gap:8px; }
-        .f54-lane { position:relative; flex:1; padding:14px 20px; display:grid; grid-template-columns:60px 1fr auto; gap:18px; align-items:center; background:#2e4538; color:#e0d6bc; border-left:6px solid #e0d6bc; }
-        .f54-lane .n { font-family:var(--font-mono); font-weight:600; font-size:24px; letter-spacing:.4em; color:#e0d6bc; }
+        .f54-lane { position:relative; flex:1; padding:14px 20px; display:grid; grid-template-columns:76px 1fr auto; gap:18px; align-items:center; background:#2e4538; color:#e0d6bc; border-left:6px solid #e0d6bc; }
+        /* 76px column + trailing-space compensation: "iii." overflowed a 60px track and
+           collided with the label */
+        .f54-lane .n { font-family:var(--font-mono); font-weight:600; font-size:24px; letter-spacing:.4em; color:#e0d6bc; margin-right:-.4em; }
         .f54-lane .lbl { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:40px; line-height:1; letter-spacing:-.02em; color:#e0d6bc; }
-        .f54-lane .tag { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.6); }
+        /* reset the global .tag pill (social.css) — its 18px/34px padding and border
+           pushed these labels off the right grid line */
+        .f54-lane .tag { display:inline; padding:0; border:0; border-radius:0; background:none; margin-right:-.44em; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.6); }
         /* Starting line stripes */
         .f54-track::before {
           content:''; position:absolute; left:-20px; top:0; bottom:0; width:8px;
