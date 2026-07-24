@@ -30,7 +30,9 @@
       .f38-kick { position:absolute; top:176px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
       .f38-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
       /* Massive question mark */
-      .f38-qmark { position:absolute; top:150px; right:60px; z-index:5; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:520px; line-height:.82; letter-spacing:-.04em; color:#2e4538; text-shadow:0 8px 40px rgba(46,69,56,.28); }
+      /* sized so the glyph terminates above the topic row at y=520; at 520px its dot
+         landed inside card 05 and showed through the 85%-opaque card face */
+      .f38-qmark { position:absolute; top:142px; right:76px; z-index:5; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:400px; line-height:.82; letter-spacing:-.04em; color:#2e4538; text-shadow:0 8px 40px rgba(46,69,56,.28); }
       /* Two-line title */
       .f38-head { position:absolute; top:216px; left:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:72px; line-height:.98; letter-spacing:-.028em; color:#2e4538; max-width:640px; }
       .f38-head .a { display:block; }
