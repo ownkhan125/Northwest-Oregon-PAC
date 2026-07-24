@@ -53,14 +53,12 @@ const socials = [
 
 export default function Footer() {
   const pathname = usePathname()
-  // Standalone conversion pages (/guide-to-action, /thank-you, /survey) render without global chrome.
+  // Standalone conversion pages (/guide-to-action, /thank-you) render without global chrome.
   if (
     pathname === '/guide-to-action' ||
     pathname?.startsWith('/guide-to-action/') ||
     pathname === '/thank-you' ||
-    pathname?.startsWith('/thank-you/') ||
-    pathname === '/survey' ||
-    pathname?.startsWith('/survey/')
+    pathname?.startsWith('/thank-you/')
   )
     return null
 
@@ -200,6 +198,14 @@ export default function Footer() {
           </p>
           <p className="text-foreground/55 mt-2 text-center text-[12px] tracking-widest uppercase">
             {pac.disclaimers.notAuthorized}
+          </p>
+        </div>
+
+        <div className="border-border/70 mt-2 border-t pt-5 pb-8">
+          <p className="text-foreground/55 mx-auto max-w-3xl text-center text-[12px] leading-relaxed italic sm:text-[13px]">
+            Note: The current Vercel URL is being used for preview purposes. It
+            will be replaced with the final live domain once the website is
+            deployed.
           </p>
         </div>
       </div>
