@@ -193,7 +193,7 @@ const ConversionForm = ({ compact = false }) => {
             </>
           )}
         </Button>
-        <p className="text-foreground/55 text-center text-[11px] leading-relaxed">
+        <p className="text-foreground/55 text-center text-[14px] leading-relaxed">
           By submitting, you agree to our{' '}
           <a href="/privacy-policy" className="text-primary hover:text-highlight">
             Privacy Policy

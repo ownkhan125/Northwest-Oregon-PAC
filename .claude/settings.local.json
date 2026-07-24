@@ -168,7 +168,10 @@
       "Bash(rm -f src/app/survey/thank-you/page.js src/app/survey/page.js src/app/api/survey/route.js src/sections/pages/survey-page.jsx src/sections/pages/survey-thank-you-page.jsx)",
       "Bash(rmdir src/app/survey/thank-you src/app/survey src/app/api/survey)",
       "Bash(rm -f scripts/setup-ghl-survey-fields.mjs)",
-      "Bash(rmdir scripts *)"
+      "Bash(rmdir scripts *)",
+      "Bash(powershell *)",
+      "Bash(cygpath -w /tmp/playwright-test-voter-guide-privacy.js)",
+      "Bash(wslpath -w /tmp/playwright-test-voter-guide-privacy.js)"
     ]
   }
 }

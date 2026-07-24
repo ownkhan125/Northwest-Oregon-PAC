@@ -186,16 +186,6 @@ const SOCIALS = [
       />
     ),
   },
-  {
-    name: 'Instagram',
-    href: pac.socials.instagram || '#',
-    icon: (
-      <path
-        d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm4.5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
-        fill="currentColor"
-      />
-    ),
-  },
 ]
 
 const StayConnectedSection = () => (
