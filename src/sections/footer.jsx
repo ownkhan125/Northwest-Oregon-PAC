@@ -23,7 +23,7 @@ const columns = [
       { label: 'Donate', href: pac.donateUrl, external: true },
       { label: 'Volunteer', href: '/volunteer' },
       { label: 'Host an Event', href: '/contact' },
-      { label: 'Social Posts', href: '/social-posts' },
+      { label: 'Social Media Posts', href: '/social-media-posts' },
       { label: 'Contact', href: '/contact' },
       { label: 'FAQs', href: '/faq' },
     ],
