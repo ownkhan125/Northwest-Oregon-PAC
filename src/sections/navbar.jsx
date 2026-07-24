@@ -7,6 +7,7 @@ import { AnimatePresence, m, useMotionValueEvent, useScroll } from 'motion/react
 import Logo from '@/components/ui/logo'
 import Button from '@/components/ui/button'
 import ThemeToggle from '@/components/ui/theme-toggle'
+import { pac } from '@/data/pac'
 import { cn } from '@/lib/cn'
 
 const links = [
@@ -54,9 +55,6 @@ export default function Navbar() {
   }, [pathname])
 
   const isActive = (href) => (href === '/' ? pathname === '/' : pathname?.startsWith(href))
-
-  // Standalone conversion pages (/thank-you) render without global chrome.
-  if (pathname === '/thank-you' || pathname?.startsWith('/thank-you/')) return null
 
   return (
     <>
@@ -143,7 +141,13 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-2 lg:flex">
             <ThemeToggle />
-            <Button href="/donate" variant="primary" size="md">
+            <Button
+              href={pac.donateUrl}
+              variant="primary"
+              size="md"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Donate
               <svg
                 width="14"
@@ -244,7 +248,13 @@ export default function Navbar() {
                 )
               })}
               <div className="mt-8">
-                <Button href="/donate" size="lg" onClick={() => setOpen(false)}>
+                <Button
+                  href={pac.donateUrl}
+                  size="lg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                >
                   Donate Now
                 </Button>
               </div>

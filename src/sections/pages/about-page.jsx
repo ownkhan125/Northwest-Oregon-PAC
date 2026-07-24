@@ -300,7 +300,13 @@ export default function AboutPage() {
                   <Button href={cta.primary.href} size="lg">
                     {cta.primary.label}
                   </Button>
-                  <Button href={cta.secondary.href} variant="secondary" size="lg">
+                  <Button
+                    href={cta.secondary.href}
+                    variant="secondary"
+                    size="lg"
+                    target={cta.secondary.external ? '_blank' : undefined}
+                    rel={cta.secondary.external ? 'noopener noreferrer' : undefined}
+                  >
                     {cta.secondary.label}
                   </Button>
                 </div>

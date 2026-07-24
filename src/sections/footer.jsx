@@ -20,7 +20,7 @@ const columns = [
   {
     title: 'GET INVOLVED',
     links: [
-      { label: 'Donate', href: '/donate' },
+      { label: 'Donate', href: pac.donateUrl, external: true },
       { label: 'Volunteer', href: '/volunteer' },
       { label: 'Host an Event', href: '/contact' },
       { label: 'Social Posts', href: '/social-posts' },
@@ -53,12 +53,14 @@ const socials = [
 
 export default function Footer() {
   const pathname = usePathname()
-  // Standalone conversion pages (/5-minutes-voter-guide, /thank-you) render without global chrome.
+  // Standalone conversion pages (/guide-to-action, /thank-you, /survey) render without global chrome.
   if (
-    pathname === '/5-minutes-voter-guide' ||
-    pathname?.startsWith('/5-minutes-voter-guide/') ||
+    pathname === '/guide-to-action' ||
+    pathname?.startsWith('/guide-to-action/') ||
     pathname === '/thank-you' ||
-    pathname?.startsWith('/thank-you/')
+    pathname?.startsWith('/thank-you/') ||
+    pathname === '/survey' ||
+    pathname?.startsWith('/survey/')
   )
     return null
 

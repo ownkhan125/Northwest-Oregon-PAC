@@ -67,7 +67,7 @@ const ConversionForm = ({ compact = false }) => {
           lastName: values.lastName.trim(),
           email: values.email.trim(),
           zip: values.zip.trim(),
-          source: '5-minutes-voter-guide',
+          source: 'guide-to-action',
         }),
       })
       if (!res.ok) throw new Error('submission_failed')

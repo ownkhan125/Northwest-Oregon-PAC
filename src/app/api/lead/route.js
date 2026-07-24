@@ -18,7 +18,7 @@ export async function POST(request) {
   const lastName = String(body.lastName || '').trim()
   const email = String(body.email || '').trim()
   const zip = String(body.zip || '').trim()
-  const source = String(body.source || '5-minutes-voter-guide').trim()
+  const source = String(body.source || 'guide-to-action').trim()
 
   if (!firstName || !lastName || !email || !EMAIL_RE.test(email)) {
     return NextResponse.json({ ok: false, error: 'invalid_fields' }, { status: 400 })

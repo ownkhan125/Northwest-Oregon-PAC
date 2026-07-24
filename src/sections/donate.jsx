@@ -64,7 +64,7 @@ export default function Donate() {
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Button href="/donate" size="lg">
+              <Button href={pac.donateUrl} size="lg" target="_blank" rel="noopener noreferrer">
                 See ways to give
                 <svg
                   width="16"

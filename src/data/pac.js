@@ -50,6 +50,8 @@ export const pac = {
       'Federal and state law requires us to collect the name, employer, and employer city and state of individual contributors.',
   },
   successMessage: 'Thank you. We will be in contact soon.',
+  donateUrl:
+    'https://secure.winred.com/northwest-oregon/donate-today?sc=winred-directory&money_pledge=false&recurring=false',
 }
 
 // Home-page content — sourced verbatim from the Home Page content document.
@@ -644,7 +646,11 @@ export const aboutPage = {
     heading: 'Northwest Oregon will not become more competitive by accident.',
     body: 'It will take candidates willing to run, volunteers willing to participate, and local residents willing to invest in the work. Help us build the organization our region needs.',
     primary: { label: 'Volunteer', href: '/volunteer' },
-    secondary: { label: 'Donate', href: '/donate' },
+    secondary: {
+      label: 'Donate',
+      href: 'https://secure.winred.com/northwest-oregon/donate-today?sc=winred-directory&money_pledge=false&recurring=false',
+      external: true,
+    },
     textLink: { label: 'Run for Office', href: '/ask' },
   },
 }

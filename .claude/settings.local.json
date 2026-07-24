@@ -160,7 +160,10 @@
       "Bash(NODE_PATH=\"/c/Users/General/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/node_modules\" node .claude/skills/playwright-skill/_verify-social-index-carousels.mjs)",
       "Bash(NODE_PATH=\"/c/Users/General/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/node_modules\" node .claude/skills/playwright-skill/_verify-carousels-scroll.mjs)",
       "Bash(xargs grep *)",
-      "Bash(xargs sed *)"
+      "Bash(xargs sed *)",
+      "Bash(git mv *)",
+      "Bash(rm -f \"src/app/donate/page.js\" \"src/sections/pages/donate-page.jsx\")",
+      "Bash(rmdir \"src/app/donate\")"
     ]
   }
 }

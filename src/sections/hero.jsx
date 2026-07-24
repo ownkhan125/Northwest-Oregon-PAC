@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
-import { home } from '@/data/pac'
+import { home, pac } from '@/data/pac'
 import heroBackdrop from '@/assets/images/Bridge-7.png'
 
 export default function Hero() {
@@ -124,7 +124,7 @@ export default function Hero() {
             transition={{ delay: 1.2, duration: 0.6 }}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
-            <Button href="/donate" size="lg">
+            <Button href={pac.donateUrl} size="lg" target="_blank" rel="noopener noreferrer">
               {home.hero.ctas.primary}
               <svg
                 width="16"

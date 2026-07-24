@@ -3,27 +3,11 @@
 import { m } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
-import ThemeToggle from '@/components/ui/theme-toggle'
-import Logo from '@/components/ui/logo'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { pac } from '@/data/pac'
 
 const GUIDE_URL = '/downloads/northwest-oregon-guide.pdf'
 const GUIDE_FILENAME = 'northwest-oregon-guide.pdf'
-
-const TopStrip = () => (
-  <m.div
-    initial={{ opacity: 0, y: -12 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-    className="pointer-events-none fixed inset-x-0 top-0 z-40 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6"
-  >
-    <div className="border-border/60 bg-surface/70 pointer-events-auto flex w-full max-w-6xl items-center justify-between rounded-full border px-3 py-2 backdrop-blur-xl sm:px-4">
-      <Logo />
-      <ThemeToggle />
-    </div>
-  </m.div>
-)
 
 const LegalStrip = () => (
   <div className="border-primary/10 border-t py-8">
@@ -88,19 +72,6 @@ const ConfirmationHero = () => (
     />
 
     <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-5 text-center sm:px-8 lg:px-12">
-      <m.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1, duration: 0.6 }}
-        className="border-primary/25 bg-surface text-primary mb-8 inline-flex items-center gap-3 rounded-full border px-4 py-1.5 text-[11px] tracking-[0.28em] uppercase"
-      >
-        <span className="relative grid h-2 w-2 place-items-center">
-          <span className="bg-primary absolute inset-0 rounded-full" />
-          <span className="pulse-ring bg-primary absolute inset-0 rounded-full" />
-        </span>
-        Submission received
-      </m.div>
-
       <div className="text-primary mb-6">
         <CheckMark />
       </div>
@@ -108,7 +79,7 @@ const ConfirmationHero = () => (
       <SplitText
         as="h1"
         by="word"
-        text="Thank you."
+        text="Thank You!"
         className="font-display text-foreground text-5xl leading-[1.05] font-medium tracking-tight sm:text-6xl md:text-7xl"
         delay={0.2}
         staggerChildren={0.06}
@@ -122,14 +93,21 @@ const ConfirmationHero = () => (
         transition={{ delay: 0.9, duration: 0.6 }}
         className="text-foreground/80 mt-6 max-w-xl text-base leading-relaxed sm:text-lg"
       >
-        Your details are in. Your free guide is ready to download &mdash; and a copy is on its way
-        to your inbox.
+        Your guide is on its way to your inbox.
+      </m.p>
+      <m.p
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.0, duration: 0.6 }}
+        className="text-foreground/80 mt-2 max-w-xl text-base leading-relaxed sm:text-lg"
+      >
+        You can also download it immediately below.
       </m.p>
 
       <m.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.05, duration: 0.6 }}
+        transition={{ delay: 1.15, duration: 0.6 }}
         className="mt-10"
       >
         <Button
@@ -138,7 +116,7 @@ const ConfirmationHero = () => (
           data-testid="download-guide"
           {...{ download: GUIDE_FILENAME }}
         >
-          Download the guide
+          DOWNLOAD THE GUIDE
           <svg
             width="18"
             height="18"
@@ -153,20 +131,11 @@ const ConfirmationHero = () => (
           </svg>
         </Button>
       </m.div>
-
-      <m.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
-        className="text-foreground/55 mt-5 text-xs tracking-wider uppercase"
-      >
-        PDF &middot; ~500&thinsp;KB &middot; 12 pages
-      </m.p>
     </div>
   </section>
 )
 
-const WhatsNextSection = () => (
+const WhatHappensNextSection = () => (
   <section className="relative isolate overflow-x-clip pb-14 sm:pb-20">
     <div className="mx-auto max-w-4xl px-5 sm:px-8 lg:px-12">
       <m.div
@@ -174,119 +143,138 @@ const WhatsNextSection = () => (
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-10% 0px' }}
-        className="border-primary/20 bg-surface grid grid-cols-1 gap-8 rounded-3xl border p-8 sm:p-10 md:grid-cols-3"
+        className="border-primary/20 bg-surface relative overflow-hidden rounded-3xl border p-8 sm:p-10"
       >
-        <m.div variants={fadeUp} className="md:col-span-1">
-          <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
-            What&rsquo;s next
-          </div>
-          <h2 className="font-display text-foreground mt-3 text-2xl leading-tight font-medium tracking-tight sm:text-3xl">
-            A few things to know.
+        <m.div variants={fadeUp}>
+          <h2 className="font-display text-foreground text-3xl leading-tight font-medium tracking-tight sm:text-4xl md:text-5xl">
+            What Happens Next?
           </h2>
         </m.div>
 
-        <div className="grid grid-cols-1 gap-6 md:col-span-2 sm:grid-cols-2">
-          <m.div variants={fadeUp}>
-            <div className="border-primary/30 text-primary grid h-9 w-9 place-items-center rounded-full border">
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
-                <path
-                  d="M4 6h16v12H4zM4 6l8 7 8-7"
-                  stroke="currentColor"
-                  strokeWidth="1.7"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <h3 className="font-display text-foreground mt-4 text-base font-medium">
-              Check your inbox
-            </h3>
-            <p className="text-foreground/70 mt-2 text-sm leading-relaxed">
-              A confirmation email with the guide is on its way. Add us to your contacts so it
-              doesn&rsquo;t land in spam.
-            </p>
-          </m.div>
-
-          <m.div variants={fadeUp}>
-            <div className="border-primary/30 text-primary grid h-9 w-9 place-items-center rounded-full border">
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
-                <path
-                  d="M12 20l-7-4V8l7-4 7 4v8l-7 4z M12 12l7-4 M12 12v8 M12 12L5 8"
-                  stroke="currentColor"
-                  strokeWidth="1.7"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <h3 className="font-display text-foreground mt-4 text-base font-medium">
-              Read at your pace
-            </h3>
-            <p className="text-foreground/70 mt-2 text-sm leading-relaxed">
-              The guide is a quick 5-minute read covering the issues shaping Northwest Oregon
-              families right now.
-            </p>
-          </m.div>
-
-          <m.div variants={fadeUp}>
-            <div className="border-primary/30 text-primary grid h-9 w-9 place-items-center rounded-full border">
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
-                <path
-                  d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75"
-                  stroke="currentColor"
-                  strokeWidth="1.7"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <h3 className="font-display text-foreground mt-4 text-base font-medium">
-              Stay connected
-            </h3>
-            <p className="text-foreground/70 mt-2 text-sm leading-relaxed">
-              We&rsquo;ll share occasional updates about the work happening across the region.
-              You can unsubscribe anytime.
-            </p>
-          </m.div>
-
-          <m.div variants={fadeUp}>
-            <div className="border-primary/30 text-primary grid h-9 w-9 place-items-center rounded-full border">
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
-                <path
-                  d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"
-                  stroke="currentColor"
-                  strokeWidth="1.7"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <h3 className="font-display text-foreground mt-4 text-base font-medium">
-              Nonpartisan by design
-            </h3>
-            <p className="text-foreground/70 mt-2 text-sm leading-relaxed">
-              Clear, practical information about the issues shaping Northwest Oregon &mdash;
-              without political jargon or partisan talking points.
-            </p>
-          </m.div>
-        </div>
-      </m.div>
-
-      <m.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: '-10% 0px' }}
-        transition={{ duration: 0.6, ease: EASE }}
-        className="text-foreground/60 mt-10 text-center text-sm"
-      >
-        Trouble downloading?{' '}
-        <a
-          href={GUIDE_URL}
-          {...{ download: GUIDE_FILENAME }}
-          className="text-primary hover:text-highlight underline underline-offset-4"
+        <m.p
+          variants={fadeUp}
+          className="text-foreground/80 mt-6 max-w-2xl text-base leading-relaxed sm:text-lg"
         >
-          Try this direct link
-        </a>
-        .
+          Over the next week, we&rsquo;ll share additional insights into the issues affecting
+          Northwest Oregon and explain why they matter to our communities.
+        </m.p>
+
+        <m.div
+          variants={fadeUp}
+          className="border-primary/25 bg-surface-alt/50 mt-8 rounded-2xl border-l-4 border-l-primary border p-6 sm:p-7"
+        >
+          <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
+            Our goal is simple:
+          </div>
+          <p className="font-display text-primary mt-3 text-xl leading-snug sm:text-2xl">
+            Provide practical information that helps residents stay informed and engaged.
+          </p>
+        </m.div>
+      </m.div>
+    </div>
+  </section>
+)
+
+const SOCIALS = [
+  {
+    name: 'Facebook',
+    href: pac.socials.facebook,
+    icon: (
+      <path
+        d="M13 22v-8h3l.5-4H13V7.5c0-1 .3-1.6 1.7-1.6H17V2.5c-.4 0-1.5-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V10H7v4h2.8v8H13Z"
+        fill="currentColor"
+      />
+    ),
+  },
+  {
+    name: 'Instagram',
+    href: pac.socials.instagram || '#',
+    icon: (
+      <path
+        d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm4.5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
+        fill="currentColor"
+      />
+    ),
+  },
+]
+
+const StayConnectedSection = () => (
+  <section className="relative isolate overflow-x-clip pb-16 sm:pb-20">
+    <div className="mx-auto max-w-4xl px-5 sm:px-8 lg:px-12">
+      <m.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-10% 0px' }}
+        className="border-primary/20 bg-surface-alt/40 relative overflow-hidden rounded-3xl border p-8 text-center sm:p-10"
+      >
+        <m.div variants={fadeUp}>
+          <h2 className="font-display text-foreground text-3xl leading-tight font-medium tracking-tight sm:text-4xl md:text-5xl">
+            Stay Connected
+          </h2>
+        </m.div>
+
+        <m.p
+          variants={fadeUp}
+          className="text-foreground/80 mx-auto mt-6 max-w-xl text-base leading-relaxed sm:text-lg"
+        >
+          Follow Northwest Oregon PAC for updates, community conversations, and local news.
+        </m.p>
+
+        <m.div
+          variants={fadeUp}
+          className="mt-8 flex flex-wrap items-center justify-center gap-3"
+        >
+          {SOCIALS.map((s) => (
+            <a
+              key={s.name}
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={s.name}
+              className="group border-border bg-surface text-foreground/80 hover:border-primary hover:text-primary hover:bg-primary/5 focus-visible:ring-primary/40 grid h-12 w-12 cursor-pointer place-items-center rounded-full border transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-sm focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5 transition-transform duration-300 ease-out group-hover:scale-110"
+              >
+                {s.icon}
+              </svg>
+            </a>
+          ))}
+        </m.div>
+
+        <m.div variants={fadeUp} className="mt-6">
+          <a
+            href={`https://${pac.domain}`}
+            className="text-primary hover:text-highlight inline-flex items-center gap-2 text-sm underline underline-offset-4 transition-colors"
+          >
+            {pac.domain}
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <path d="M7 17L17 7M9 7h8v8" />
+            </svg>
+          </a>
+        </m.div>
+
+        <m.div
+          variants={fadeUp}
+          className="border-primary/15 mx-auto mt-8 max-w-xs border-t pt-5"
+        >
+          <p className="text-primary font-display text-sm tracking-[0.28em] uppercase sm:text-base">
+            Hope <span className="text-highlight">&bull;</span> Support{' '}
+            <span className="text-highlight">&bull;</span> Heard.
+          </p>
+        </m.div>
       </m.div>
     </div>
   </section>
@@ -295,9 +283,9 @@ const WhatsNextSection = () => (
 export default function ThankYouPage() {
   return (
     <>
-      <TopStrip />
       <ConfirmationHero />
-      <WhatsNextSection />
+      <WhatHappensNextSection />
+      <StayConnectedSection />
       <LegalStrip />
     </>
   )
