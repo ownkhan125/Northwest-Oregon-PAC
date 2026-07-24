@@ -32,16 +32,18 @@
           background:rgba(46,69,56,.08); border:1.5px dashed rgba(46,69,56,.5);
           padding:18px 22px;
         }
-        .f43-strike::after {
-          content:''; position:absolute; left:22px; right:22px; top:calc(74% - 2px); height:3px; background:#2e4538; transform:rotate(-.7deg); opacity:.85;
+        .f43-strike .lbl { display:block; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); position:relative; z-index:2; }
+        /* inline-block so the rule below measures the text, not the full panel width */
+        .f43-strike .txt { display:inline-block; position:relative; z-index:2; margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:32px; line-height:1.06; letter-spacing:-.022em; color:rgba(46,69,56,.75); }
+        .f43-strike .txt::after {
+          content:''; position:absolute; left:-4px; right:-4px; top:54%; height:3px; background:#2e4538; transform:rotate(-.7deg); opacity:.85;
         }
-        .f43-strike .lbl { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); position:relative; z-index:2; }
-        .f43-strike .txt { position:relative; z-index:2; margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:32px; line-height:1.06; letter-spacing:-.022em; color:rgba(46,69,56,.75); }
         /* Alternative — three doorstep tiles */
         .f43-tiles { position:absolute; left:76px; right:76px; top:600px; z-index:5; display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
         .f43-tile { padding:18px 20px; background:#2e4538; color:#f6f2e8; border-top:4px solid #e0d6bc; }
-        .f43-tile .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.7); }
-        .f43-tile .w { margin-top:8px; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:32px; line-height:1.02; letter-spacing:-.022em; color:#f6f2e8; }
+        /* block, or these inline spans run together on one line and margin-top is dropped */
+        .f43-tile .n { display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.7); }
+        .f43-tile .w { display:block; margin-top:8px; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:32px; line-height:1.02; letter-spacing:-.022em; color:#f6f2e8; }
         .f43-tile .w em { font-style:normal; color:#e0d6bc; }
         /* Sig */
         .f43-sig { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:#2e4538; max-width:920px; }

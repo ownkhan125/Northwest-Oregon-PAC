@@ -32,10 +32,12 @@
       .f39-preamble .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
       /* Centered title */
       .f39-kick { position:absolute; top:250px; left:0; right:0; z-index:6; text-align:center; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.75); }
-      .f39-title { position:absolute; top:296px; left:76px; right:76px; z-index:6; text-align:center; font-family:var(--font-display); font-weight:500; font-size:150px; line-height:.92; letter-spacing:-.03em; color:#f6f2e8; text-shadow:0 6px 30px rgba(0,0,0,.4); }
+      /* 126px keeps the two lines inside 296-528 so the label below clears them; at 150px
+         the title ran to y=572 and swallowed the "we are here to" rule */
+      .f39-title { position:absolute; top:296px; left:76px; right:76px; z-index:6; text-align:center; font-family:var(--font-display); font-weight:500; font-size:126px; line-height:.92; letter-spacing:-.03em; color:#f6f2e8; text-shadow:0 6px 30px rgba(0,0,0,.4); }
       .f39-title em { font-style:italic; color:#e0d6bc; }
       /* Three principle pillars */
-      .f39-lbl { position:absolute; left:76px; right:76px; top:530px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.65); text-align:center; }
+      .f39-lbl { position:absolute; left:76px; right:76px; top:544px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.65); text-align:center; }
       .f39-pillars { position:absolute; left:76px; right:76px; top:590px; z-index:6; display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
       .f39-pillar { position:relative; padding:24px 22px 22px; background:rgba(224,214,188,.06); border:1px solid rgba(224,214,188,.4); text-align:center; }
       .f39-pillar::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:44px; height:3px; background:#e0d6bc; }
