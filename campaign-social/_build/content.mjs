@@ -7507,11 +7507,9 @@ export const stories = [
           background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.2  0 0 0 0 0.12  0 0 0 0.28 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
           mix-blend-mode:multiply;
         }
-        /* Faint horizontal ruled lines like typing paper */
+        /* Manuscript page — solid paper, no ruled lines behind the title */
         .s21-page {
           position:absolute; top:200px; bottom:200px; left:70px; right:70px; z-index:4;
-          background:
-            repeating-linear-gradient(180deg, rgba(42,34,19,0) 0 65px, rgba(42,34,19,.12) 65px 66px);
           padding:40px 46px;
         }
         /* Left margin red rule (like manuscript paper) */
@@ -7530,7 +7528,7 @@ export const stories = [
           position:relative; color:rgba(42,34,19,.6);
         }
         .s21-para .strike::before {
-          content:''; position:absolute; left:-6px; right:-6px; top:calc(50% + 4px); height:12px; background:#2a2213; transform:rotate(-1.2deg);
+          content:''; position:absolute; left:-4px; right:-4px; top:58%; height:4px; background:#6b5a42; transform:rotate(-1.2deg); border-radius:2px;
         }
         .s21-para .highlight {
           background:linear-gradient(180deg, rgba(90,112,96,0) 20%, rgba(90,112,96,.55) 20%, rgba(90,112,96,.55) 90%, rgba(90,112,96,0) 90%);
@@ -7541,7 +7539,7 @@ export const stories = [
         /* Editor's margin marks */
         .s21-marginmark { position:absolute; font-family:var(--font-display); font-style:italic; color:#6b5a42; }
         .s21-marginmark.m1 { top:230px; left:80px; font-size:36px; transform:rotate(-8deg); }
-        .s21-marginmark.m2 { top:400px; left:80px; font-size:28px; letter-spacing:.02em; font-style:italic; }
+        .s21-marginmark.m2 { top:320px; left:44px; font-size:28px; letter-spacing:.02em; font-style:italic; }
         .s21-note {
           position:absolute; right:74px; bottom:280px; z-index:6;
           padding:12px 16px; background:#faf4d8;
