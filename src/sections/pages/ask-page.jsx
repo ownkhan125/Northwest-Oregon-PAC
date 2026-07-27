@@ -208,7 +208,7 @@ function AskForm() {
             <Button href="/#priorities" size="lg">
               Explore Our Priorities
             </Button>
-            <Button href="/volunteer" variant="secondary" size="lg">
+            <Button href="/contact" variant="secondary" size="lg">
               Get Involved
             </Button>
           </div>
@@ -238,7 +238,7 @@ export default function AskPage() {
         number="02"
         title="Have a question? Start here."
         description={[
-          'Ask us about our mission, policy priorities, supported candidates, volunteer opportunities, events, contributions, or the process of running for office.',
+          'Ask us about our mission, policy priorities, supported candidates, campaign support, fundraising, contributions, or the process of running for office.',
           'Our team reviews each message and directs it to the appropriate contact.',
         ]}
         accent="/icons/document.svg"
@@ -266,8 +266,9 @@ export default function AskPage() {
                 className="font-display text-foreground mt-4 text-3xl leading-tight font-medium tracking-tight sm:text-4xl md:text-5xl"
               />
               <p className="text-foreground/80 mt-5 text-base leading-relaxed">
-                Tell us what&rsquo;s on your mind — a policy question, a candidate to endorse,
-                an issue in your neighborhood. We read every message.
+                Tell us what&rsquo;s on your mind. A policy question, a candidate recommendation,
+                campaign support, fundraising, or an issue affecting Northwest Oregon. We read
+                every message.
               </p>
               <div className="border-primary/15 mt-8 space-y-4 border-t pt-6">
                 <div>

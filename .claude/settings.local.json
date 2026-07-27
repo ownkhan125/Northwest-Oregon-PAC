@@ -176,7 +176,14 @@
       "Bash(cp \"Social media post/feed-01-a-stronger-voice.png\"           public/social-media-posts/01-a-stronger-voice.png)",
       "Bash(cp \"Social media post/feed-09-what-matters-most.png\"          public/social-media-posts/02-what-matters-most.png)",
       "Bash(cp \"Social media post/feed-15-be-part-of-something-bigger.png\" public/social-media-posts/03-be-part-of-something-bigger.png)",
-      "Bash(cp \"Social media post/feed-29-ciatta-thompson.png\"            public/social-media-posts/04-ciatta-thompson.png)"
+      "Bash(cp \"Social media post/feed-29-ciatta-thompson.png\"            public/social-media-posts/04-ciatta-thompson.png)",
+      "Bash(grep -E \"^\\(next|eslint\\)$\")",
+      "Bash(npx --no-install next lint)",
+      "Bash(npx --no-install eslint src)",
+      "Bash(npx --no-install playwright --version)",
+      "Bash(rm -f /tmp/playwright-test-qa.js)",
+      "Read(//c/tmp/**)",
+      "Bash(python3 -c \"import tempfile; print\\(tempfile.gettempdir\\(\\)\\)\")"
     ]
   }
 }

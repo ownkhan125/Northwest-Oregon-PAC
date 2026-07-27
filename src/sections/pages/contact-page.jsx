@@ -107,7 +107,7 @@ export default function ContactPage() {
         number="06"
         title="Let’s start a conversation."
         description={[
-          'Contact Northwest Oregon PAC about our work, candidates, policy priorities, volunteer opportunities, upcoming events, contributions, or running for office.',
+          'Contact Northwest Oregon PAC about our work, candidates, policy priorities, upcoming events, contributions, or running for office.',
           'Choose the contact method that best fits your inquiry.',
         ]}
         accent="/icons/envelope.svg"

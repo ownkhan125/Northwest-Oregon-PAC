@@ -181,7 +181,7 @@ export default function Endorsements() {
               </p>
             </div>
             <div className="relative mt-6">
-              <Button href="/volunteer" variant="primary" size="md">
+              <Button href="/ask?category=Running%20for%20office" variant="primary" size="md">
                 {home.endorsements.runForOffice.cta}
               </Button>
             </div>

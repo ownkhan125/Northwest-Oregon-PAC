@@ -125,15 +125,16 @@ export default function FaqPage() {
                 Still Have Questions?
               </h2>
               <p className="text-foreground/75 mt-3 text-base sm:text-lg">
-                We’re always happy to help.
+                We&rsquo;re here to answer your questions about Northwest Oregon PAC, our
+                supported candidates, fundraising, and running for office.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Button href="/contact" size="lg">
-                Contact us
+                Contact Us
               </Button>
-              <Button href="/volunteer" variant="secondary" size="lg">
-                Volunteer
+              <Button href="/ask?category=Running%20for%20office" variant="secondary" size="lg">
+                Run for Office
               </Button>
             </div>
           </m.div>

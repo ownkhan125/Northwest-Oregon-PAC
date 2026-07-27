@@ -21,7 +21,6 @@ const columns = [
     title: 'GET INVOLVED',
     links: [
       { label: 'Donate', href: pac.donateUrl, external: true },
-      { label: 'Volunteer', href: '/volunteer' },
       { label: 'Host an Event', href: '/contact' },
       { label: 'Social Media Posts', href: '/social-media-posts' },
       { label: 'Contact', href: '/contact' },

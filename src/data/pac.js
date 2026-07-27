@@ -62,12 +62,11 @@ export const home = {
     eyebrow: 'OREGON STATE PAC · COMMITTEE #25045 · 2026',
     heading: 'A stronger voice for Northwest Oregon.',
     paragraphs: [
-      'Northwest Oregon PAC brings together neighbors, moderates, independents, and common-sense voters who believe our region deserves serious candidates, practical solutions, and sustained local support.',
-      'We invest in the people, organization, and messaging needed to advance prosperity, accountability, public safety, workforce readiness, and reliable energy across Northwest Oregon.',
+      'Northwest Oregon PAC identifies and supports principled candidates, strengthens campaign fundraising, and delivers strategic messaging that advances prosperity, accountability, public safety, workforce readiness, and reliable energy across Northwest Oregon.',
     ],
     ctas: {
       primary: 'Donate',
-      secondary: 'Volunteer',
+      secondary: 'Support a Candidate',
       textLink: 'Meet the PAC',
     },
     values: [
@@ -80,7 +79,7 @@ export const home = {
     heading: 'Northwest Oregon should never be an afterthought.',
     paragraphs: [
       'Northwest Oregon PAC was created to support the residents, candidates, and values that have too often been overlooked in a region frequently treated as politically uncompetitive.',
-      'We are building the local infrastructure our communities need: stronger candidates, dependable fundraising, effective messaging, and an organized network of volunteers.',
+      'We are building the political infrastructure Northwest Oregon needs through stronger candidate recruitment, dependable fundraising, effective communications, and long-term campaign support.',
       'Our purpose is not simply to participate in one election. It is to build a lasting regional voice for people who believe in private-sector opportunity, responsible government, safe communities, strong schools, and practical leadership.',
     ],
     highlights: [
@@ -92,12 +91,12 @@ export const home = {
       {
         label: 'PRACTICAL LEADERSHIP',
         detail:
-          'We support candidates who listen, communicate clearly, show up for their communities, and work effectively with grassroots volunteers.',
+          'We support candidates who listen, demonstrate integrity, communicate clearly, and provide practical leadership for the communities they serve.',
       },
       {
         label: 'LONG-TERM INFRASTRUCTURE',
         detail:
-          'We pool resources to strengthen candidate recruitment, fundraising, volunteer organization, voter outreach, and public messaging throughout the region.',
+          'We invest in candidate recruitment, fundraising, campaign strategy, and public messaging to strengthen Northwest Oregon elections for years to come.',
       },
     ],
     ctas: {
@@ -156,7 +155,7 @@ export const home = {
     heading: 'Build a Northwest Oregon where people can thrive.',
     paragraphs: [
       'Northwest Oregon PAC exists to advance policies that grow private-sector prosperity, hold government accountable to taxpayers, keep communities safe and livable, prepare students for real careers, and provide affordable, reliable energy.',
-      'We support candidates who understand that government should be focused, transparent, effective, and accountable to the people it serves.',
+      'We recruit, support, and invest in candidates who believe government should be focused, transparent, effective, and accountable to the people it serves.',
     ],
     promiseEyebrow: 'OUR PROMISE TO THE REGION',
     promise: 'We are here to help, and we are not from the government.',
@@ -178,7 +177,7 @@ export const home = {
     eyebrow: 'CANDIDATES WE SUPPORT',
     heading: 'Candidates standing up for Northwest Oregon in 2026.',
     intro:
-      'We support candidates who are ready to compete, work alongside grassroots volunteers, and advance practical solutions for the communities they seek to represent.',
+      'We support candidates who are ready to build competitive campaigns and advance practical solutions for the communities they seek to represent.',
     candidates: [
       {
         slug: 'mark-norman',
@@ -242,28 +241,28 @@ export const home = {
     },
   },
   volunteerCta: {
-    heading: 'Show up. Speak up. Strengthen the region.',
+    heading: 'Help Build Winning Campaigns.',
     paragraphs: [
-      'A lasting political organization is built by people willing to contribute their time, experience, voice, and local knowledge.',
-      'Whether you can volunteer for a few hours, host a neighborhood event, help a candidate, or consider running for office, there is a place for you in this effort.',
+      'Northwest Oregon PAC is focused on identifying strong candidates, building competitive campaigns, and delivering the resources needed to win elections across Northwest Oregon.',
+      "Whether you're considering running for office, supporting a candidate financially, or helping strengthen campaign communications, your support helps build a stronger future for our region.",
     ],
     ctas: {
-      primary: 'Become a Volunteer',
+      primary: 'Support Our Mission',
     },
   },
   events: {
     label: 'EVENTS',
     heading: 'Come meet us in your community.',
-    body: 'Candidate meet-and-greets, volunteer nights, neighborhood conversations, and regional gatherings — Northwest Oregon PAC brings people together across the region.\nSubscribe for updates to hear about the next event near you, or bring one to your community.',
+    body: 'Candidate forums, fundraising events, policy discussions, and campaign updates help connect supporters with the leaders working to strengthen Northwest Oregon.\nStay informed about upcoming events and opportunities to support our endorsed candidates.',
     ctas: {
       primary: 'Get Event Updates',
-      secondary: 'Host an Event',
+      secondary: 'View Upcoming Events',
     },
   },
   donate: {
     eyebrow: 'CONTRIBUTE',
     heading: 'Fund the fight for our region.',
-    body: 'Every contribution helps strengthen candidate support, voter outreach, fundraising, volunteer organization, and public messaging across Northwest Oregon.',
+    body: 'Every contribution helps recruit qualified candidates, strengthen campaigns, expand fundraising efforts, and deliver strategic messaging that advances conservative leadership across Northwest Oregon.',
     cta: 'Donate to Northwest Oregon PAC',
     notice:
       'The contribution form collects the contributor information required for campaign-finance reporting. Contributions from foreign nationals are prohibited.',
@@ -483,28 +482,27 @@ export const focusAreas = ['Fundraising', 'Candidate Support', 'Messaging']
 
 // What makes NW Oregon PAC different
 export const differentiator =
-  'No other PAC represents the Northwest Oregon region or works in a nonpartisan, bridge-building frame of mind. Our focus is where the issues actually are — losing businesses, unsafe streets, and communities too often overlooked by partisan politics.'
+  'Northwest Oregon PAC exists to recruit strong candidates, provide meaningful campaign support, and deliver strategic messaging focused on the issues that matter most to Northwest Oregon families and businesses.'
 
 // Events page content — sourced verbatim from the Events Page content document.
 // Consumed by src/sections/pages/events-page.jsx. Do NOT paraphrase or edit
 // without an updated content doc.
 export const eventsPage = {
   hero: {
-    heading: 'Connect with people working for Northwest Oregon.',
+    heading: "Connect with the leaders shaping Northwest Oregon's future.",
     paragraphs: [
-      'Attend a volunteer activity, community conversation, candidate gathering, or regional event.',
-      'Events provide an opportunity to learn, participate, meet candidates, and connect with others who care about the future of Northwest Oregon.',
+      'Attend candidate forums, fundraising events, policy discussions, campaign announcements, and regional gatherings hosted by Northwest Oregon PAC.',
+      'Our events provide opportunities to meet endorsed candidates, learn about the issues affecting Northwest Oregon, hear campaign updates, and support the leaders working to strengthen our region.',
     ],
   },
   calendar: {
     eyebrow: 'EVENTS',
-    heading: 'Come meet us in your community.',
+    heading: 'Join us at upcoming campaign events.',
     paragraphs: [
-      'Candidate meet-and-greets, volunteer nights, neighborhood conversations, and regional gatherings — Northwest Oregon PAC brings people together across the region.',
-      'Subscribe for updates to hear about the next event near you, or bring one to your community.',
+      'Northwest Oregon PAC hosts candidate meet-and-greets, fundraising receptions, policy discussions, campaign announcements, and regional events designed to strengthen conservative leadership across Northwest Oregon.',
+      'Subscribe for updates to learn about upcoming events and opportunities to support our endorsed candidates.',
     ],
-    primary: { label: 'Get Event Updates', href: '/volunteer' },
-    secondary: { label: 'Host an Event', href: '/contact' },
+    primary: { label: 'Get Event Updates', href: '/contact' },
   },
 }
 
@@ -516,8 +514,8 @@ export const aboutPage = {
     eyebrow: 'ABOUT NORTHWEST OREGON PAC',
     heading: 'Building a lasting voice for Northwest Oregon.',
     paragraphs: [
-      'Northwest Oregon PAC is a state political action committee established in 2026 to support capable candidates, strengthen regional campaigns, and advance policies that help families, businesses, and communities thrive.',
-      'We bring local supporters, volunteers, and candidates together around a shared commitment to prosperity, accountability, opportunity, and practical leadership.',
+      'Northwest Oregon PAC is a state political action committee established in 2026 to recruit and support capable candidates, strengthen regional campaigns, and advance policies that help families, businesses, and communities thrive.',
+      'We provide the fundraising, strategic messaging, and campaign support needed to help strong candidates compete and succeed across Northwest Oregon.',
     ],
   },
   story: {
@@ -526,7 +524,7 @@ export const aboutPage = {
       'Northwest Oregon PAC was founded because too many communities in our region have been treated as politically settled territory.',
       'When districts are considered uncompetitive, candidates receive less support, voters hear fewer alternatives, and local concerns struggle to receive the attention they deserve.',
       'We came together to change that.',
-      'By pooling local resources, supporting credible candidates, developing effective messaging, and organizing volunteers, we are building the infrastructure needed to compete and remain engaged over the long term.',
+      'By pooling local resources, supporting credible candidates, developing effective messaging, and strengthening campaign operations, we are building the political infrastructure needed to compete and remain effective over the long term.',
       'Our work is grounded in a simple belief: every community deserves representation, investment, and leaders who are prepared to listen.',
     ],
     blocks: [
@@ -540,7 +538,7 @@ export const aboutPage = {
       },
       {
         title: 'How we work',
-        body: 'We convert local participation into lasting political capacity. That means raising funds, evaluating candidates, strengthening campaigns, organizing volunteers, communicating regional priorities, and helping credible candidates reach more voters.',
+        body: 'We build lasting political capacity by recruiting qualified candidates, raising the resources they need to compete, strengthening campaigns, delivering strategic messaging, and helping credible candidates reach more voters throughout Northwest Oregon.',
       },
       {
         title: 'What we believe',
@@ -550,9 +548,9 @@ export const aboutPage = {
   },
   teamSection: {
     eyebrow: 'Our Team',
-    heading: 'Local leadership. Built to organize.',
+    heading: 'Local leadership. Built to win.',
     paragraphs: [
-      'Northwest Oregon PAC is led by volunteers with experience in financial stewardship, organizational governance, technology, grassroots engagement, and local political leadership.',
+      'Northwest Oregon PAC is led by experienced leaders with backgrounds in financial stewardship, organizational governance, campaign operations, technology, fundraising, and political leadership.',
       'Together, they are helping build an organization designed to operate responsibly, support candidates effectively, and remain active beyond a single election cycle.',
     ],
     members: [
@@ -562,7 +560,7 @@ export const aboutPage = {
           'Treasurer, Washington County Republican Party',
           'President, Downtown Republican Women',
         ],
-        bio: 'Cindy brings experience in financial oversight, grassroots development, and community-based political organization.',
+        bio: 'Cindy brings extensive experience in financial oversight, campaign operations, organizational leadership, and political fundraising.',
       },
       {
         name: 'Helen Heller',
@@ -571,16 +569,7 @@ export const aboutPage = {
           'Vice Chair, Congressional District 6',
           'Second Vice President, Beaverton–Hillsboro Republican Women',
         ],
-        bio: 'Helen contributes extensive experience in local leadership, volunteer engagement, and coordination across political organizations.',
-      },
-      {
-        name: 'Christina Buehler',
-        roles: [
-          'Parliamentarian, Oregon Republican Party',
-          'Parliamentarian, Washington County Republican Party',
-          'Technology Committee, Washington County Republican Party',
-        ],
-        bio: 'Christina supports the PAC through organizational governance, parliamentary procedure, digital systems, and campaign operations.',
+        bio: 'Helen contributes extensive experience in political leadership, campaign coordination, and organizational development across Republican organizations.',
       },
     ],
   },
@@ -589,7 +578,7 @@ export const aboutPage = {
     heading: 'Backing the people willing to step forward.',
     paragraphs: [
       'A stronger political future begins with capable candidates who are prepared to compete.',
-      'We support candidates who understand their communities, communicate clearly, work alongside grassroots volunteers, and remain focused on practical results.',
+      'We support candidates who understand their communities, communicate clearly, build competitive campaigns, and remain focused on practical, results-driven leadership.',
     ],
     cta: 'Visit Campaign',
     list: [
@@ -644,13 +633,13 @@ export const aboutPage = {
   },
   cta: {
     heading: 'Northwest Oregon will not become more competitive by accident.',
-    body: 'It will take candidates willing to run, volunteers willing to participate, and local residents willing to invest in the work. Help us build the organization our region needs.',
-    primary: { label: 'Volunteer', href: '/volunteer' },
-    secondary: {
+    body: 'Building a stronger political future requires principled candidates, effective campaigns, and the financial resources to compete. Your support helps recruit qualified leaders, strengthen campaign efforts, and amplify the message that Northwest Oregon deserves effective representation.',
+    primary: {
       label: 'Donate',
       href: 'https://secure.winred.com/northwest-oregon/donate-today?sc=winred-directory&money_pledge=false&recurring=false',
       external: true,
     },
-    textLink: { label: 'Run for Office', href: '/ask' },
+    secondary: { label: 'Support a Candidate', href: '/about#candidates' },
+    textLink: { label: 'Run for Office', href: '/ask?category=Running%20for%20office' },
   },
 }

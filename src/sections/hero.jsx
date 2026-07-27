@@ -35,7 +35,7 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[68%_center] opacity-95 saturate-[1.08] contrast-[1.06] sm:object-[72%_center] lg:object-center dark:opacity-55 dark:brightness-90"
+          className="object-cover object-[68%_center] opacity-95 contrast-[1.06] saturate-[1.08] sm:object-[72%_center] lg:object-center dark:opacity-55 dark:brightness-90"
         />
       </div>
 
@@ -68,14 +68,14 @@ export default function Hero() {
           so the skyline stays vivid on the right two-fifths. */}
       <div
         aria-hidden
-        className="from-background via-background/78 to-transparent pointer-events-none absolute inset-0 -z-20 hidden bg-gradient-to-r lg:block"
+        className="from-background via-background/78 pointer-events-none absolute inset-0 -z-20 hidden bg-gradient-to-r to-transparent lg:block"
       />
 
       {/* Layer 5 — bottom fade softens the transition into the next
           section so the skyline / snow rooftops don't clash with About. */}
       <div
         aria-hidden
-        className="from-background via-background/65 to-transparent pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t sm:h-44"
+        className="from-background via-background/65 pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t to-transparent sm:h-44"
       />
 
       <m.div
@@ -139,7 +139,7 @@ export default function Hero() {
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </Button>
-            <Button href="/volunteer" variant="secondary" size="lg">
+            <Button href="/#candidates" variant="secondary" size="lg">
               {home.hero.ctas.secondary}
             </Button>
             <Link

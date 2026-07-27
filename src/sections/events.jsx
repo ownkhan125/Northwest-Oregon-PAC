@@ -7,7 +7,7 @@ import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { stagger, EASE } from '@/animations/variants'
 import { formatEventDate, formatEventTime } from '@/lib/event-format'
-import { home } from '@/data/pac'
+import { home, pac } from '@/data/pac'
 
 const rowVariant = {
   hidden: { opacity: 0, y: 24 },
@@ -39,7 +39,13 @@ export default function Events({ events = [] }) {
           </div>
         </div>
         <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
-          <Button href="/volunteer" variant="primary" size="lg">
+          <Button
+            href={pac.donateUrl}
+            variant="primary"
+            size="lg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {home.volunteerCta.ctas.primary}
           </Button>
         </div>
@@ -73,10 +79,10 @@ export default function Events({ events = [] }) {
             ))}
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href="/events" size="lg">
+            <Button href="/contact" size="lg">
               {home.events.ctas.primary}
             </Button>
-            <Button href="/contact" variant="secondary" size="lg">
+            <Button href="/events" variant="secondary" size="lg">
               {home.events.ctas.secondary}
             </Button>
           </div>
