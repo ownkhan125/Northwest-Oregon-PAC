@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { m } from 'motion/react'
 import Button from '@/components/ui/button'
@@ -11,6 +11,7 @@ import { A2P_SMS_UPDATES_LABEL, A2P_SMS_PROMO_LABEL } from '@/lib/form-constants
 import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { formatEventDate, formatEventTime } from '@/lib/event-format'
 import { validateContactFields } from '@/lib/form'
+import { formatPhoneInput } from '@/lib/phone'
 
 export default function EventDetailPage({ event }) {
   const dateLabel = formatEventDate(event, { long: true })
@@ -26,7 +27,18 @@ export default function EventDetailPage({ event }) {
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
   const [fieldErrors, setFieldErrors] = useState({})
+  const [phone, setPhone] = useState('')
+  const [smsUpdates, setSmsUpdates] = useState(false)
+  const [smsPromo, setSmsPromo] = useState(false)
   const submitted = status === 'success'
+  const hasPhone = phone.trim().length > 0
+
+  useEffect(() => {
+    if (!hasPhone) {
+      setSmsUpdates(false)
+      setSmsPromo(false)
+    }
+  }, [hasPhone])
 
   const clearFieldError = (name) => {
     setFieldErrors((prev) => {
@@ -47,18 +59,18 @@ export default function EventDetailPage({ event }) {
       firstName: String(data.get('firstName') || '').trim(),
       lastName: String(data.get('lastName') || '').trim(),
       email: String(data.get('email') || '').trim(),
-      phone: String(data.get('phone') || '').trim(),
+      phone,
       eventName,
       eventDate,
       eventTime,
       eventCategory,
-      sms_updates: data.get('sms_updates') === 'on' ? 'Yes' : 'No',
-      sms_promo: data.get('sms_promo') === 'on' ? 'Yes' : 'No',
+      sms_updates: smsUpdates ? 'Yes' : 'No',
+      sms_promo: smsPromo ? 'Yes' : 'No',
     }
 
     const errs = validateContactFields(payload, {
       phoneKey: 'phone',
-      phoneRequired: true,
+      phoneRequired: false,
     })
     if (Object.keys(errs).length > 0) {
       setFieldErrors(errs)
@@ -268,20 +280,42 @@ export default function EventDetailPage({ event }) {
                       placeholder="you@email.com"
                     />
                     <Input
-                      label="Contact number"
+                      label="Contact number (optional)"
                       name="phone"
                       type="tel"
                       autoComplete="tel"
                       inputMode="tel"
-                      required
-                      placeholder="(503) 555-1234"
+                      placeholder="+1 (503) 555-1234"
+                      value={phone}
+                      onChange={(e) => {
+                        setPhone(formatPhoneInput(e.target.value))
+                        clearFieldError('phone')
+                      }}
                       error={fieldErrors.phone}
-                      onChange={() => clearFieldError('phone')}
                     />
 
                     <div className="border-primary/15 space-y-4 border-t pt-5">
-                      <Checkbox name="sms_updates" label={A2P_SMS_UPDATES_LABEL} />
-                      <Checkbox name="sms_promo" label={A2P_SMS_PROMO_LABEL} />
+                      {!hasPhone && (
+                        <p className="text-foreground/60 text-xs italic">
+                          Enter a phone number above to opt in to SMS messages.
+                        </p>
+                      )}
+                      <Checkbox
+                        name="sms_updates"
+                        label={A2P_SMS_UPDATES_LABEL}
+                        checked={smsUpdates}
+                        onChange={(e) => setSmsUpdates(e.target.checked)}
+                        disabled={!hasPhone}
+                        required={hasPhone}
+                      />
+                      <Checkbox
+                        name="sms_promo"
+                        label={A2P_SMS_PROMO_LABEL}
+                        checked={smsPromo}
+                        onChange={(e) => setSmsPromo(e.target.checked)}
+                        disabled={!hasPhone}
+                        required={hasPhone}
+                      />
                     </div>
 
                     {status === 'error' && errorMsg && (

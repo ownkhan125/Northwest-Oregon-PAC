@@ -25,24 +25,7 @@ export function isValidUSPhone(value) {
   return false
 }
 
-export const US_PHONE_ERROR = 'Enter a valid US phone number, e.g. (503) 555-0123.'
-
-// Normalize a US phone to E.164 (+1XXXXXXXXXX) for outgoing webhook +
-// SMS opt-in payloads. The user's raw input in the UI is NOT modified —
-// this only touches the value transmitted upstream. Empty strings pass
-// through so an unfilled optional field stays optional.
-//   "5035551234"        → "+15035551234"
-//   "(503) 555-0123"    → "+15035550123"
-//   "1-503-555-0123"    → "+15035550123"
-//   "+15035550123"      → "+15035550123"  (idempotent)
-//   ""                  → ""
-export function toE164US(raw) {
-  if (!raw) return ''
-  const digits = String(raw).replace(/\D/g, '')
-  if (digits.length === 10) return `+1${digits}`
-  if (digits.length === 11 && digits.startsWith('1')) return `+${digits}`
-  return raw
-}
+export const US_PHONE_ERROR = 'Enter a valid US phone number, e.g. +1 (503) 555-0123.'
 
 // US ZIP: exactly 5 digits.
 export function isValidUSZip(value) {

@@ -1,10 +1,11 @@
-import { fireSmsOptin } from '@/lib/ghl-sms-optin'
+import { normalizePhoneForSubmit } from '@/lib/phone'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const ZIP_RE = /^\d{5}(-\d{4})?$/
+const WEBHOOK_TIMEOUT_MS = 12_000
 
 const asString = (v, max = 4000) =>
   typeof v === 'string' ? v.trim().slice(0, max) : ''
@@ -21,9 +22,32 @@ const splitName = (full) => {
   }
 }
 
+async function fireWebhook(url, payload, headers) {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), WEBHOOK_TIMEOUT_MS)
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    })
+    return { ok: res.ok, status: res.status }
+  } catch (err) {
+    console.error('[Ask API] webhook error:', err)
+    return { ok: false, status: 0 }
+  } finally {
+    clearTimeout(timeout)
+  }
+}
+
 export async function POST(request) {
-  const webhook = process.env.GHL_ASK_WEBHOOK
-  if (!webhook) {
+  const WEBHOOK_URLS = [
+    process.env.GHL_ASK_WEBHOOK,
+    process.env.GHL_SMS_OPTIN_WEBHOOK,
+  ].filter(Boolean)
+
+  if (WEBHOOK_URLS.length === 0) {
     return Response.json(
       { ok: false, error: 'Ask endpoint is not configured.' },
       { status: 500 },
@@ -39,7 +63,7 @@ export async function POST(request) {
 
   const fullName = asString(body.name || body.fullName || '', 200)
   const email = asString(body.email, 160).toLowerCase()
-  const phone = asString(body.phone, 40)
+  const phone = normalizePhoneForSubmit(body.phone)
   const city = asString(body.city, 120)
   const zip_code = asString(body.zip_code, 20)
   const issue_category = asString(body.issue_category, 120)
@@ -89,45 +113,18 @@ export async function POST(request) {
   const token = process.env.GHL_PRIVATE_KEY || process.env.GHL_API_KEY
   if (token) headers.Authorization = `Bearer ${token}`
 
-  let primaryStatus = 0
-  try {
-    const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 12_000)
-    const res = await fetch(webhook, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(payload),
-      signal: controller.signal,
-    })
-    clearTimeout(timeout)
-    primaryStatus = res.status
+  const results = await Promise.all(WEBHOOK_URLS.map((url) => fireWebhook(url, payload, headers)))
 
-    if (!res.ok) {
-      return Response.json({ ok: false, error: 'Upstream webhook failed', webhooks: [primaryStatus] }, { status: 502 })
-    }
-  } catch (err) {
-    const aborted = err?.name === 'AbortError'
+  if (!results.some((r) => r.ok)) {
     return Response.json(
-      { ok: false, error: aborted ? 'Request timed out' : 'Network error' },
+      { ok: false, error: 'Webhook delivery failed', webhooks: results.map((r) => r.status) },
       { status: 502 },
     )
   }
 
-  const sms_optin = await fireSmsOptin({
-    firstName,
-    lastName,
-    email,
-    phone,
-    sms_updates,
-    sms_promo,
-    form_type: 'Issue_Report',
-    source: 'src_issue',
-  })
-
   return Response.json({
     ok: true,
     workflow: 'Issue_Report',
-    webhooks: [primaryStatus],
-    sms_optin,
+    webhooks: results.map((r) => r.status),
   })
 }

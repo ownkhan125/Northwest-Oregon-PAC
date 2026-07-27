@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import SplitText from '@/components/ui/split-text'
@@ -13,11 +13,23 @@ import { EASE } from '@/animations/variants'
 import { pac } from '@/data/pac'
 import { ISSUE_CATEGORIES, A2P_SMS_UPDATES_LABEL, A2P_SMS_PROMO_LABEL } from '@/lib/form-constants'
 import { validateContactFields } from '@/lib/form'
+import { formatPhoneInput } from '@/lib/phone'
 
 function AskForm() {
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
   const [fieldErrors, setFieldErrors] = useState({})
+  const [phone, setPhone] = useState('')
+  const [smsUpdates, setSmsUpdates] = useState(false)
+  const [smsPromo, setSmsPromo] = useState(false)
+  const hasPhone = phone.trim().length > 0
+
+  useEffect(() => {
+    if (!hasPhone) {
+      setSmsUpdates(false)
+      setSmsPromo(false)
+    }
+  }, [hasPhone])
 
   const clearFieldError = (name) => {
     setFieldErrors((prev) => {
@@ -37,15 +49,15 @@ function AskForm() {
     const payload = {
       name: String(data.get('name') || '').trim(),
       email: String(data.get('email') || '').trim(),
-      phone: String(data.get('phone') || '').trim(),
+      phone,
       city: String(data.get('city') || '').trim(),
       zip_code: String(data.get('zip_code') || '').trim(),
       issue_category: String(data.get('issue_category') || '').trim(),
       issue_location: String(data.get('issue_location') || '').trim(),
       issue_subject: String(data.get('issue_subject') || '').trim(),
       issue_description: String(data.get('issue_description') || '').trim(),
-      sms_updates: data.get('sms_updates') === 'on' ? 'Yes' : 'No',
-      sms_promo: data.get('sms_promo') === 'on' ? 'Yes' : 'No',
+      sms_updates: smsUpdates ? 'Yes' : 'No',
+      sms_promo: smsPromo ? 'Yes' : 'No',
     }
 
     const errs = validateContactFields(payload, {
@@ -79,6 +91,9 @@ function AskForm() {
       }
       setStatus('success')
       form.reset()
+      setPhone('')
+      setSmsUpdates(false)
+      setSmsPromo(false)
     } catch {
       setStatus('error')
       setErrorMsg('Network error. Please check your connection and try again.')
@@ -103,9 +118,13 @@ function AskForm() {
         type="tel"
         autoComplete="tel"
         inputMode="tel"
-        placeholder="(503) 555-0123"
+        placeholder="+1 (503) 555-0123"
+        value={phone}
+        onChange={(e) => {
+          setPhone(formatPhoneInput(e.target.value))
+          clearFieldError('phone')
+        }}
         error={fieldErrors.phone}
-        onChange={() => clearFieldError('phone')}
       />
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -158,8 +177,27 @@ function AskForm() {
       </div>
 
       <div className="border-primary/15 space-y-4 border-t pt-6">
-        <Checkbox name="sms_updates" label={A2P_SMS_UPDATES_LABEL} />
-        <Checkbox name="sms_promo" label={A2P_SMS_PROMO_LABEL} />
+        {!hasPhone && (
+          <p className="text-foreground/60 text-xs italic">
+            Enter a phone number above to opt in to SMS messages.
+          </p>
+        )}
+        <Checkbox
+          name="sms_updates"
+          label={A2P_SMS_UPDATES_LABEL}
+          checked={smsUpdates}
+          onChange={(e) => setSmsUpdates(e.target.checked)}
+          disabled={!hasPhone}
+          required={hasPhone}
+        />
+        <Checkbox
+          name="sms_promo"
+          label={A2P_SMS_PROMO_LABEL}
+          checked={smsPromo}
+          onChange={(e) => setSmsPromo(e.target.checked)}
+          disabled={!hasPhone}
+          required={hasPhone}
+        />
         <p className="text-foreground/70 pt-1 text-[13px] leading-relaxed">
           By selecting this box, you consent to receive campaign emails. You will not be added to
           the list just by submitting a question.

@@ -1,19 +1,42 @@
-import { fireSmsOptin } from '@/lib/ghl-sms-optin'
-import { toE164US } from '@/lib/form'
+import { normalizePhoneForSubmit } from '@/lib/phone'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const WEBHOOK_TIMEOUT_MS = 12_000
 
 const asString = (v, max = 4000) =>
   typeof v === 'string' ? v.trim().slice(0, max) : ''
 
 const asYesNo = (v) => (v === true || v === 'true' || v === 'Yes' || v === 'on' ? 'Yes' : 'No')
 
+async function fireWebhook(url, payload, headers) {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), WEBHOOK_TIMEOUT_MS)
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    })
+    return { ok: res.ok, status: res.status }
+  } catch (err) {
+    console.error('[Contact API] webhook error:', err)
+    return { ok: false, status: 0 }
+  } finally {
+    clearTimeout(timeout)
+  }
+}
+
 export async function POST(request) {
-  const webhook = process.env.GHL_CONTACT_WEBHOOK
-  if (!webhook) {
+  const WEBHOOK_URLS = [
+    process.env.GHL_CONTACT_WEBHOOK,
+    process.env.GHL_SMS_OPTIN_WEBHOOK,
+  ].filter(Boolean)
+
+  if (WEBHOOK_URLS.length === 0) {
     return Response.json(
       { ok: false, error: 'Contact endpoint is not configured.' },
       { status: 500 },
@@ -30,8 +53,7 @@ export async function POST(request) {
   const firstName = asString(body.firstName, 80)
   const lastName = asString(body.lastName, 80)
   const email = asString(body.email, 160).toLowerCase()
-  const rawPhone = asString(body.phone, 40)
-  const phone = toE164US(rawPhone)
+  const phone = normalizePhoneForSubmit(body.phone)
   const organization = asString(body.organization, 200)
   const city = asString(body.city, 120)
   const zip_code = asString(body.zip_code, 20)
@@ -68,46 +90,18 @@ export async function POST(request) {
   const token = process.env.GHL_PRIVATE_KEY || process.env.GHL_API_KEY
   if (token) headers.Authorization = `Bearer ${token}`
 
-  let primaryStatus = 0
-  try {
-    const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 12_000)
-    const res = await fetch(webhook, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(payload),
-      signal: controller.signal,
-    })
-    clearTimeout(timeout)
-    primaryStatus = res.status
+  const results = await Promise.all(WEBHOOK_URLS.map((url) => fireWebhook(url, payload, headers)))
 
-    if (!res.ok) {
-      return Response.json({ ok: false, error: 'Upstream webhook failed', webhooks: [primaryStatus] }, { status: 502 })
-    }
-  } catch (err) {
-    const aborted = err?.name === 'AbortError'
+  if (!results.some((r) => r.ok)) {
     return Response.json(
-      { ok: false, error: aborted ? 'Request timed out' : 'Network error' },
+      { ok: false, error: 'Webhook delivery failed', webhooks: results.map((r) => r.status) },
       { status: 502 },
     )
   }
 
-  // Fire the shared SMS Opt-in webhook alongside the primary workflow.
-  const sms_optin = await fireSmsOptin({
-    firstName,
-    lastName,
-    email,
-    phone,
-    sms_updates,
-    sms_promo,
-    form_type: 'Contact_Form',
-    source: 'src_contact',
-  })
-
   return Response.json({
     ok: true,
     workflow: 'Contact_Form',
-    webhooks: [primaryStatus],
-    sms_optin,
+    webhooks: results.map((r) => r.status),
   })
 }

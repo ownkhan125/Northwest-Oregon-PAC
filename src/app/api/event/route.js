@@ -1,4 +1,4 @@
-import { fireSmsOptin } from '@/lib/ghl-sms-optin'
+import { normalizePhoneForSubmit } from '@/lib/phone'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -8,6 +8,7 @@ const GHL_BASE = 'https://services.leadconnectorhq.com'
 const GHL_VERSION = '2021-07-28'
 const CALENDAR_ID = process.env.GHL_EVENTS_CALENDAR_ID || 'UTM5EkrGwiZjQyc19WGN'
 const EVENT_TIMEZONE = 'America/Los_Angeles'
+const WEBHOOK_TIMEOUT_MS = 12_000
 
 const asString = (v, max = 4000) =>
   typeof v === 'string' ? v.trim().slice(0, max) : ''
@@ -23,6 +24,25 @@ const parseEventStart = (dateStr, timeStr) => {
   const parsed = Date.parse(`${dateStr} ${startTime}`)
   if (Number.isNaN(parsed)) return null
   return new Date(parsed).toISOString()
+}
+
+async function fireWebhook(url, payload, headers) {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), WEBHOOK_TIMEOUT_MS)
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    })
+    return { ok: res.ok, status: res.status }
+  } catch (err) {
+    console.error('[Event API] webhook error:', err)
+    return { ok: false, status: 0 }
+  } finally {
+    clearTimeout(timeout)
+  }
 }
 
 async function ghlFetch(path, init = {}) {
@@ -84,8 +104,12 @@ async function createAppointment({ contactId, eventName, eventDate, eventTime })
 }
 
 export async function POST(request) {
-  const webhook = process.env.GHL_EVENT_WEBHOOK
-  if (!webhook) {
+  const WEBHOOK_URLS = [
+    process.env.GHL_EVENT_WEBHOOK,
+    process.env.GHL_SMS_OPTIN_WEBHOOK,
+  ].filter(Boolean)
+
+  if (WEBHOOK_URLS.length === 0) {
     return Response.json(
       { ok: false, error: 'Event RSVP endpoint is not configured.' },
       { status: 500 },
@@ -102,7 +126,7 @@ export async function POST(request) {
   const firstName = asString(body.firstName, 80)
   const lastName = asString(body.lastName, 80)
   const email = asString(body.email, 160).toLowerCase()
-  const phone = asString(body.phone, 40)
+  const phone = normalizePhoneForSubmit(body.phone)
   const eventName = asString(body.eventName, 300)
   const eventDate = asString(body.eventDate, 80)
   const eventTime = asString(body.eventTime, 80)
@@ -130,7 +154,6 @@ export async function POST(request) {
     submitted_at: new Date().toISOString(),
   }
 
-  // 1. Fire the webhook so the GHL workflow creates/upserts the contact.
   const headers = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
@@ -138,45 +161,19 @@ export async function POST(request) {
   const token = process.env.GHL_PRIVATE_KEY || process.env.GHL_API_KEY
   if (token) headers.Authorization = `Bearer ${token}`
 
-  let primaryStatus = 0
-  try {
-    const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 12_000)
-    const res = await fetch(webhook, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(payload),
-      signal: controller.signal,
-    })
-    clearTimeout(timeout)
-    primaryStatus = res.status
+  const results = await Promise.all(WEBHOOK_URLS.map((url) => fireWebhook(url, payload, headers)))
 
-    if (!res.ok) {
-      return Response.json({ ok: false, error: 'Upstream webhook failed', webhooks: [primaryStatus] }, { status: 502 })
-    }
-  } catch (err) {
-    const aborted = err?.name === 'AbortError'
+  if (!results.some((r) => r.ok)) {
     return Response.json(
-      { ok: false, error: aborted ? 'Request timed out' : 'Network error' },
+      { ok: false, error: 'Webhook delivery failed', webhooks: results.map((r) => r.status) },
       { status: 502 },
     )
   }
 
-  const sms_optin = await fireSmsOptin({
-    firstName,
-    lastName,
-    email,
-    phone,
-    sms_updates,
-    sms_promo,
-    form_type: 'Event_RSVP',
-    source: 'src_event',
-  })
-
-  // 2. Give the GHL workflow a moment to upsert the contact.
+  // Give the GHL workflow a moment to upsert the contact before we pin an
+  // appointment to it.
   await sleep(2000)
 
-  // 3. Look up the contact so we can pin an appointment to it.
   let contactId = null
   let appointmentId = null
   try {
@@ -192,9 +189,8 @@ export async function POST(request) {
   return Response.json({
     ok: true,
     workflow: 'Event_RSVP',
-    webhooks: [primaryStatus],
+    webhooks: results.map((r) => r.status),
     contactId,
     appointmentId,
-    sms_optin,
   })
 }
