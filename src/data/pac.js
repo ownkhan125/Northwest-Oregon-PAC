@@ -240,7 +240,7 @@ export const home = {
       body: 'Government should create fair conditions for people to succeed, not stand in the way of the people and businesses creating opportunity.',
     },
   },
-  volunteerCta: {
+  campaignsCta: {
     heading: 'Help Build Winning Campaigns.',
     paragraphs: [
       'Northwest Oregon PAC is focused on identifying strong candidates, building competitive campaigns, and delivering the resources needed to win elections across Northwest Oregon.',
@@ -434,17 +434,8 @@ export const team = [
   },
 ]
 
-// Volunteer activities offered (from doc)
-export const volunteerActivities = ['Run for office', 'Canvass', 'Phone banking', 'Event planning']
-
 // Donation ladder (from doc)
 export const donationAmounts = [25, 100, 500, 1000]
-
-// Primary CTAs
-export const primaryCTAs = ['Donate', 'Volunteer', 'Run for Office']
-
-// Audiences we speak to
-export const audiences = ['donors', 'volunteers', 'candidates', 'press']
 
 // Region description (used for hero/meta)
 export const regionKeywords = [
@@ -453,29 +444,6 @@ export const regionKeywords = [
   'Portland metro',
   'Congressional District 1',
 ]
-
-// Welcome email — used verbatim in signup confirmation flows
-export const welcomeEmail = `Hi [First Name],
-
-Welcome — and thank you for joining us.
-
-By signing up, you’ve become part of a growing community of Northwest Oregon residents who believe our region deserves better than to be written off. For too long, the Republicans, moderates, and common-sense voters in our area have been overlooked — by their own party and by a political establishment that concedes districts like ours without a fight.
-
-We started Northwest Oregon PAC to change that. We’re pooling our resources to give this region something it hasn’t had: real support, competitive candidates, and a voice that stands up for the people who actually live and work here.
-
-Here’s what you can expect from us:
-• Updates on the candidates and races we’re working to support
-• Ways to get involved, from volunteering to spreading the word
-• Straight talk about the issues that affect your community, your safety, and your wallet
-
-This movement works because of people like you. Whether you can give your time, your voice, or your support, there’s a place for you here.
-
-Want to do more right now? Reply to this email or visit our website to learn how you can volunteer or contribute — every bit strengthens the effort.
-
-We’re glad to have you with us.
-
-Onward,
-The Northwest Oregon PAC Team`
 
 // Focus areas listed on public materials
 export const focusAreas = ['Fundraising', 'Candidate Support', 'Messaging']

@@ -29,11 +29,11 @@ export default function Events({ events = [] }) {
             as="h2"
             by="word"
             staggerChildren={0.05}
-            text={home.volunteerCta.heading}
+            text={home.campaignsCta.heading}
             className="font-display text-foreground text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-6xl"
           />
           <div className="text-foreground/80 mt-6 max-w-2xl space-y-4 text-base leading-relaxed sm:text-lg">
-            {home.volunteerCta.paragraphs.map((p, i) => (
+            {home.campaignsCta.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
@@ -46,7 +46,7 @@ export default function Events({ events = [] }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {home.volunteerCta.ctas.primary}
+            {home.campaignsCta.ctas.primary}
           </Button>
         </div>
       </div>

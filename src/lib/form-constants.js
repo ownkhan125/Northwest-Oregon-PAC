@@ -17,7 +17,6 @@ export const ISSUE_CATEGORIES = [
   'Supported candidates',
   'Candidate support',
   'Running for office',
-  'Volunteering',
   'Events',
   'Contributions',
   'Media or interview request',

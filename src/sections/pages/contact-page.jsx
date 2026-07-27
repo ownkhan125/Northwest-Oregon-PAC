@@ -18,7 +18,6 @@ const HELP_TOPIC_OPTIONS = [
   'General inquiry',
   'Candidate support',
   'Running for office',
-  'Volunteer opportunity',
   'Event information',
   'Host an event',
   'Contribution question',

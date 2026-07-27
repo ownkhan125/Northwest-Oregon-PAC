@@ -10,7 +10,7 @@ const sections = [
   {
     heading: 'Information we collect',
     body: [
-      'We collect information you voluntarily provide when you sign up to volunteer, donate, or contact the PAC — including your name, email, phone number, mailing address, and (where required by law) employer name, occupation, and employer city and state.',
+      'We collect information you voluntarily provide when you donate or contact the PAC — including your name, email, phone number, mailing address, and (where required by law) employer name, occupation, and employer city and state.',
       'We also collect basic device and analytics information when you visit our website, such as your IP address, browser type, pages viewed, device identifiers, and information collected through cookies and similar tracking technologies. These technologies help us understand how visitors use our website, improve user experience, measure the effectiveness of our communications, and support outreach efforts.',
       'We use cookies, pixels, and similar tracking technologies to improve website functionality, analyze traffic, and measure the effectiveness of our communications and outreach efforts.',
       'These technologies may include:',
@@ -28,7 +28,7 @@ const sections = [
   {
     heading: 'How we use your information',
     body: [
-      'We use your information to communicate with you about the PAC, process donations and volunteer signups, comply with applicable Oregon election law, and improve our outreach and website.',
+      'We use your information to communicate with you about the PAC, process donations, comply with applicable Oregon election law, and improve our outreach and website.',
       'We do not sell your personal information to third parties.',
     ],
   },
@@ -43,7 +43,7 @@ const sections = [
     heading: 'SMS / text messaging privacy',
     body: [
       'What phone numbers are collected for. If you expressly opt in to receive text messages from Northwest Oregon PAC, we collect the phone number you provide together with a record of the specific SMS consent(s) you gave, including the date and time of your opt-in and the page or form where consent was provided. SMS messages are sent only after you have provided your express consent.',
-      'Types of messages sent. Depending on the consent(s) you gave, messages may include campaign updates, event reminders, volunteer coordination, fundraising requests, donation drives, and special promotions from Northwest Oregon PAC.',
+      'Types of messages sent. Depending on the consent(s) you gave, messages may include campaign updates, event reminders, fundraising requests, donation drives, and special promotions from Northwest Oregon PAC.',
       'Consent to receive informational SMS messages does not automatically include consent to receive promotional or fundraising messages. These are managed separately based on the specific consent(s) you provide.',
       'Data retention. We retain your phone number and consent records for as long as you remain opted in and for a reasonable period after you opt out, typically no longer than four (4) years, to demonstrate compliance with TCPA and carrier requirements, and to honor your opt-out preference across future sign-ups. After the retention period we delete or de-identify the records.',
       `Requesting deletion. You can request deletion of your phone number and SMS consent records at any time by emailing ${pac.contact.generalEmail} or writing to Northwest Oregon PAC at ${pac.contact.mailingAddress}. To simply stop receiving messages without a full deletion, reply STOP to any message we send you.`,

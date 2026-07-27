@@ -51,7 +51,6 @@ const CATEGORY_LABELS = {
   debate: 'Debate',
   press_conference: 'Press Conference',
   community_meetup: 'Community Meetup',
-  volunteer_drive: 'Volunteer Drive',
   doortodoor_campaign: 'Door-to-Door Campaign',
   victory_celebration: 'Victory Celebration',
   protest__march: 'Protest / March',
