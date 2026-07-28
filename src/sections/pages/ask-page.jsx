@@ -198,10 +198,6 @@ function AskForm() {
           disabled={!hasPhone}
           required={hasPhone}
         />
-        <p className="text-foreground/70 pt-1 text-[13px] leading-relaxed">
-          By selecting this box, you consent to receive campaign emails. You will not be added to
-          the list just by submitting a question.
-        </p>
       </div>
 
       <div className="flex flex-col items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
