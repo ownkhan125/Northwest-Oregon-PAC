@@ -12,9 +12,7 @@ const GUIDE_FILENAME = 'northwest-oregon-guide.pdf'
 const LegalStrip = () => (
   <div className="border-primary/10 border-t py-8">
     <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-5 text-center sm:px-8 lg:px-12">
-      <p className="text-foreground/55 text-[11px] leading-relaxed">
-        {pac.disclaimers.paidFor}
-      </p>
+      <p className="text-foreground/55 text-[11px] leading-relaxed">{pac.disclaimers.paidFor}</p>
       <p className="text-foreground/40 text-[10px] tracking-widest uppercase">
         {pac.disclaimers.notAuthorized}
       </p>
@@ -64,7 +62,7 @@ const ConfirmationHero = () => (
     />
     <div
       aria-hidden
-      className="bg-primary/10 pointer-events-none absolute bottom-0 -right-24 -z-10 h-[40vmin] w-[40vmin] rounded-full blur-3xl"
+      className="bg-primary/10 pointer-events-none absolute -right-24 bottom-0 -z-10 h-[40vmin] w-[40vmin] rounded-full blur-3xl"
     />
     <div
       aria-hidden
@@ -155,19 +153,21 @@ const WhatHappensNextSection = () => (
           variants={fadeUp}
           className="text-foreground/80 mt-6 max-w-2xl text-base leading-relaxed sm:text-lg"
         >
-          Over the next week, we&rsquo;ll share additional insights into the issues affecting
-          Northwest Oregon and explain why they matter to our communities.
+          Over the next week, we'll share additional insights into the issues affecting Northwest
+          Oregon and explain how these issues affect Northwest Oregon and the candidates working to
+          address them.
         </m.p>
 
         <m.div
           variants={fadeUp}
-          className="border-primary/25 bg-surface-alt/50 mt-8 rounded-2xl border-l-4 border-l-primary border p-6 sm:p-7"
+          className="border-primary/25 bg-surface-alt/50 border-l-primary mt-8 rounded-2xl border border-l-4 p-6 sm:p-7"
         >
           <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
             Our goal is simple:
           </div>
           <p className="font-display text-primary mt-3 text-xl leading-snug sm:text-2xl">
-            Provide practical information that helps residents stay informed and engaged.
+            Provide practical information that helps residents stay informed about the issues,
+            candidates, and priorities shaping Northwest Oregon.
           </p>
         </m.div>
       </m.div>
@@ -208,13 +208,11 @@ const StayConnectedSection = () => (
           variants={fadeUp}
           className="text-foreground/80 mx-auto mt-6 max-w-xl text-base leading-relaxed sm:text-lg"
         >
-          Follow Northwest Oregon PAC for updates, community conversations, and local news.
+          Follow Northwest Oregon PAC for campaign updates, candidate announcements, and policy
+          news.
         </m.p>
 
-        <m.div
-          variants={fadeUp}
-          className="mt-8 flex flex-wrap items-center justify-center gap-3"
-        >
+        <m.div variants={fadeUp} className="mt-8 flex flex-wrap items-center justify-center gap-3">
           {SOCIALS.map((s) => (
             <a
               key={s.name}
@@ -256,10 +254,7 @@ const StayConnectedSection = () => (
           </a>
         </m.div>
 
-        <m.div
-          variants={fadeUp}
-          className="border-primary/15 mx-auto mt-8 max-w-xs border-t pt-5"
-        >
+        <m.div variants={fadeUp} className="border-primary/15 mx-auto mt-8 max-w-xs border-t pt-5">
           <p className="text-primary font-display text-sm tracking-[0.28em] uppercase sm:text-base">
             Hope <span className="text-highlight">&bull;</span> Support{' '}
             <span className="text-highlight">&bull;</span> Heard.
