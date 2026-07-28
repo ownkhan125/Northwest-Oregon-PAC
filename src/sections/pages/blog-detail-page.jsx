@@ -289,15 +289,17 @@ function RelatedArticles({ items }) {
                     </span>
                   </div>
                   <div className="space-y-3 p-6 sm:p-7">
-                    <div className="text-foreground/60 flex flex-wrap items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase">
+                    <div className="text-foreground/60 group-hover:text-primary-fg/70 flex flex-wrap items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase transition-colors duration-500">
                       <span>{formatBlogDate(post.date)}</span>
-                      <span aria-hidden className="bg-border h-3 w-px" />
+                      <span aria-hidden className="bg-border group-hover:bg-primary-fg/25 h-3 w-px transition-colors duration-500" />
                       <span>{post.readingMinutes} min read</span>
                     </div>
-                    <h3 className="font-display text-foreground group-hover:text-primary text-xl leading-tight font-medium transition-colors sm:text-2xl">
+                    <h3 className="font-display text-foreground group-hover:text-primary-fg text-xl leading-tight font-medium transition-colors duration-500 sm:text-2xl">
                       {post.title}
                     </h3>
-                    <p className="text-foreground/75 text-sm sm:text-base">{post.excerpt}</p>
+                    <p className="text-foreground/75 group-hover:text-primary-fg/85 text-sm transition-colors duration-500 sm:text-base">
+                      {post.excerpt}
+                    </p>
                   </div>
                 </Link>
               </Card>
