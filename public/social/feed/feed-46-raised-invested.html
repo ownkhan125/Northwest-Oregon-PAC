@@ -11,77 +11,93 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f46 { position:absolute; inset:0; z-index:5; overflow:hidden; background:#eae0c6; }
+  /* Diptych — top half sand w/ photo, bottom half forest */
+  .f46-top { position:absolute; z-index:2; top:0; left:0; right:0; height:50%; overflow:hidden;
+    background:linear-gradient(180deg, #f0e7cf 0%, #e0d6bc 100%);
+  }
+  .f46-top .p { position:absolute; z-index:2; inset:0; }
+  .f46-top .p img { width:100%; height:100%; object-fit:cover; object-position:50% 60%;
+    filter:saturate(.72) contrast(1.14) brightness(.86);
+    opacity:.75; mix-blend-mode:multiply;
+  }
+  .f46-top::after { content:''; position:absolute; z-index:3; inset:0;
+    background:
+      linear-gradient(180deg, rgba(240,231,207,.4) 0%, rgba(240,231,207,.1) 40%, rgba(240,231,207,.9) 100%);
+  }
+  .f46-bot { position:absolute; z-index:2; top:50%; left:0; right:0; bottom:0; overflow:hidden;
+    background:
+      radial-gradient(90% 80% at 50% 100%, rgba(90,112,96,.35) 0%, transparent 60%),
+      linear-gradient(180deg, #2e4538 0%, #1c2b23 100%);
+  }
+  .f46-bot .p { position:absolute; z-index:2; inset:0; }
+  .f46-bot .p img { width:100%; height:100%; object-fit:cover; object-position:50% 40%;
+    filter:saturate(.55) contrast(1.2) brightness(.5);
+    opacity:.45;
+  }
+  .f46-bot::after { content:''; position:absolute; z-index:3; inset:0;
+    background:linear-gradient(180deg, rgba(15,26,19,.6) 0%, rgba(15,26,19,.2) 40%, rgba(15,26,19,.8) 100%);
+  }
+  /* Center horizontal seam w/ registration diamond */
+  .f46-seam { position:absolute; z-index:8; left:0; right:0; top:50%; height:1px; background:rgba(46,69,56,.55); }
+  .f46-seam::before { content:''; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) rotate(45deg); width:16px; height:16px; background:#eae0c6; border:1.5px solid #2e4538; }
+  /* Mast — top left over top panel */
+  .f46-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .f46-mast img { height:56px; width:auto; }
+  /* Bottom mast — logo light echo */
+  .f46-star { position:absolute; z-index:14; top:112px; right:96px; display:flex; gap:12px; opacity:.55; }
+  /* Panel titles — mirrored composition */
+  .f46-panel-top { position:absolute; z-index:10; left:96px; right:96px; top:230px; height:calc(50% - 260px); display:flex; flex-direction:column; justify-content:center; }
+  .f46-panel-bot { position:absolute; z-index:10; left:96px; right:96px; top:calc(50% + 30px); bottom:180px; display:flex; flex-direction:column; justify-content:center; }
+  .f46-kick { display:flex; align-items:center; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; }
+  .f46-panel-top .f46-kick { color:#5a7060; }
+  .f46-panel-bot .f46-kick { color:#e0d6bc; }
+  .f46-kick .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  .f46-word { margin-top:26px;
+    font-family:var(--font-display); font-weight:500; font-size:140px; line-height:.92; letter-spacing:-.04em;
+  }
+  .f46-panel-top .f46-word { color:#2e4538; }
+  .f46-panel-bot .f46-word { color:#f6f2e8; font-style:italic; font-weight:400; }
+  /* Sub paragraph — centered under seam over bottom panel */
+  .f46-sub { position:absolute; z-index:10; left:96px; right:96px; bottom:96px; padding-top:22px; border-top:1px solid rgba(246,242,232,.35);
+    font-family:var(--font-display); font-weight:500; font-size:30px; line-height:1.28; letter-spacing:-.008em; color:#f6f2e8;
+    max-width:820px;
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f46 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-          color:#2e4538;
-        }
-        .f46-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f46-mast img { height:56px; width:auto; }
-        .f46-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
-        .f46-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        /* Split title */
-        .f46-title { position:absolute; top:230px; left:76px; right:520px; z-index:6; }
-        .f46-title .l1 { font-family:var(--font-display); font-weight:500; font-size:96px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
-        .f46-title .l2 { display:block; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:96px; line-height:.98; letter-spacing:-.028em; color:#5a7060; }
-        /* Right SVG loop */
-        .f46-loop { position:absolute; top:200px; right:70px; width:420px; height:420px; z-index:5; }
-        .f46-loop svg { display:block; width:100%; height:100%; }
-        /* Verbs strip */
-        .f46-verbs { position:absolute; left:76px; right:76px; bottom:180px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
-        .f46-verbs .v { padding:14px 16px; background:#2e4538; color:#f6f2e8; display:flex; align-items:baseline; justify-content:space-between; gap:14px; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.7); }
-        .f46-verbs .v .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        .f46-sig { position:absolute; left:76px; right:76px; bottom:120px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f46-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f46-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f46">
-          <div class="f46-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Loop 46 · Raised Here. Invested Here.</span>
-          </div>
-          <span class="f46-kick">Raised here. Invested here.</span>
-          <div class="f46-title">
-            <span class="l1">Raised here.</span>
-            <span class="l2">Invested here.</span>
-          </div>
-          <div class="f46-loop">
-            <svg viewBox="0 0 420 420" fill="none" stroke="#2e4538" stroke-width="2">
-              <circle cx="210" cy="210" r="170" fill="rgba(90,112,96,.06)"/>
-              <!-- Circular flow path leaves clear gap at 3 & 9 o'clock -->
-              <path d="M 90 152 A 150 150 0 0 1 330 152" stroke-dasharray="6 6" opacity="0.6"/>
-              <path d="M 90 268 A 150 150 0 0 0 330 268" stroke-dasharray="6 6" opacity="0.6"/>
-              <!-- Arrows -->
-              <path d="M 322 148 L 332 152 L 320 168" stroke-width="2.5" fill="none"/>
-              <path d="M 98 148 L 88 152 L 100 168" stroke-width="2.5" fill="none"/>
-              <!-- Nodes — larger and pushed to the sides -->
-              <circle cx="60" cy="210" r="44" fill="#e0d6bc" stroke="#2e4538" stroke-width="2"/>
-              <text x="60" y="202" font-family="Source Sans 3" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="2">RAISED</text>
-              <text x="60" y="224" font-family="Lora" font-style="italic" font-size="16" fill="#2e4538" text-anchor="middle" stroke="none">here</text>
-              <circle cx="360" cy="210" r="44" fill="#2e4538" stroke="#e0d6bc" stroke-width="2"/>
-              <text x="360" y="202" font-family="Source Sans 3" font-size="10" fill="#e0d6bc" text-anchor="middle" stroke="none" letter-spacing="2">INVESTED</text>
-              <text x="360" y="224" font-family="Lora" font-style="italic" font-size="16" fill="#e0d6bc" text-anchor="middle" stroke="none">here</text>
-              <text x="210" y="216" font-family="Source Sans 3" font-size="11" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">THE REGION</text>
-            </svg>
-          </div>
-          <div class="f46-verbs">
-            <div class="v"><span>— 01</span><span class="em">Organize</span></div>
-            <div class="v"><span>— 02</span><span class="em">Communicate</span></div>
-            <div class="v"><span>— 03</span><span class="em">Compete</span></div>
-          </div>
-          <div class="f46-sig"><span>No waiting for outside organizations</span><span class="em">— Help strengthen the region.</span></div>
-          <div class="f46-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
-      
-    
+  <div class="canvas s-forest">
+    <div class="f46">
+      <div class="f46-top">
+        <div class="p"><img src="../assets/img/community.jpg" alt="" /></div>
+      </div>
+      <div class="f46-bot">
+        <div class="p"><img src="../assets/img/campaign.jpg" alt="" /></div>
+      </div>
+      <div class="f46-seam"></div>
+
+      <div class="f46-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f46-star" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f46-panel-top">
+        <div class="f46-kick"><span class="bar"></span></div>
+        <div class="f46-word">Raised here.</div>
+      </div>
+
+      <div class="f46-panel-bot">
+        <div class="f46-kick"><span class="bar"></span></div>
+        <div class="f46-word">Invested here.</div>
+      </div>
+
+      <p class="f46-sub">Local contributions help Northwest Oregon candidates organize, communicate, and compete.</p>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

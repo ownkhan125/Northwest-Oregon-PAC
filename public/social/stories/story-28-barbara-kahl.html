@@ -11,86 +11,83 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .s28 { position:absolute; inset:0; z-index:5; background:#f6f2e8; overflow:hidden; }
+  .s28-bg { position:absolute; z-index:1; inset:0;
+    background:linear-gradient(180deg, #f6f2e8 0%, #ede5c9 100%);
+  }
+
+  /* Portrait in polaroid frame center-right upper */
+  .s28-photo { position:absolute; z-index:3; left:96px; top:340px; width:520px; height:640px; overflow:hidden;
+    padding:24px 24px 80px; background:#faf3d8;
+    box-shadow: 0 60px 100px -30px rgba(46,42,20,.4);
+    border:1px solid rgba(46,42,20,.14);
+    transform:rotate(-1.6deg);
+  }
+  .s28-photo img { width:100%; height:calc(100% - 24px); object-fit:cover; object-position:center 15%; }
+  .s28-photo .cap { position:absolute; left:0; right:0; bottom:22px; text-align:center; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:#6B5A42; }
+
+  /* Right column with question */
+  .s28-right { position:absolute; z-index:8; right:96px; top:340px; width:340px; display:flex; flex-direction:column; gap:24px; }
+  .s28-right .cap { font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5A7060; display:flex; align-items:center; gap:14px; }
+  .s28-right .cap .bar { width:44px; height:1px; background:currentColor; }
+  .s28-right .have { font-family:var(--font-display); font-style:italic; font-weight:400; font-size:72px; line-height:.98; letter-spacing:-.02em; color:#2e4538; }
+  .s28-right .name { font-family:var(--font-display); font-weight:600; font-size:98px; line-height:.92; letter-spacing:-.03em; color:#2e4538; }
+
+  .s28-mast { position:absolute; z-index:12; top:132px; left:96px; }
+  .s28-mast img { height:56px; width:auto; }
+  .s28-kick { position:absolute; z-index:10; top:150px; right:96px; font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,42,20,.7); display:flex; align-items:center; gap:18px; }
+  .s28-kick .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+
+  /* Poll below: ballot-card style */
+  .s28-poll-lbl { position:absolute; z-index:10; left:96px; top:1170px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#6B5A42; display:flex; align-items:center; gap:14px; }
+  .s28-poll-lbl .bar { width:52px; height:1px; background:currentColor; }
+
+  .s28-choices { position:absolute; z-index:10; left:96px; right:96px; top:1230px; display:flex; flex-direction:column; gap:24px; }
+  .s28-choice { display:flex; align-items:center; gap:28px; padding:36px 44px;
+    border:2px solid #2e4538;
+    font-family:var(--font-display); font-weight:500; font-size:60px; letter-spacing:-.015em; color:#2e4538;
+    box-shadow: 6px 6px 0 rgba(46,69,56,.9);
+  }
+  .s28-choice .box { width:40px; height:40px; border:2px solid #2e4538; flex-shrink:0; position:relative; }
+  .s28-choice.filled { background:#2e4538; color:#f6f2e8; box-shadow: 6px 6px 0 #6B5A42; }
+  .s28-choice.filled .box { background:#e0d6bc; border-color:#e0d6bc; }
+  .s28-choice.filled .box::after { content:''; position:absolute; inset:7px; background:#2e4538; }
+  .s28-choice .dash { font-family:var(--font-mono); font-size:30px; opacity:.7; }
+
+  .s28-foot { position:absolute; z-index:10; left:96px; right:96px; bottom:150px; display:flex; align-items:center; justify-content:space-between; padding-top:26px; border-top:1px solid rgba(46,42,20,.28); }
+  .s28-foot .txt { font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+</style>
 </head>
 <body>
   <div class="canvas story s-sand">
-    <style>
-        .s28 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(240,232,208,.6) 0%, transparent 55%),
-            linear-gradient(180deg, #e0d6bc 0%, #cfb87a 100%);
-          color:#2a1f10;
-        }
-        .s28::before {
-          content:''; position:absolute; inset:0; opacity:.4; pointer-events:none;
-          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.3 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-          mix-blend-mode:multiply;
-        }
-        .s28-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(42,31,16,.7); }
-        .s28-mast img { height:52px; width:auto; }
-        .s28-kicker { position:absolute; top:200px; left:80px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(42,31,16,.55); display:inline-flex; align-items:center; gap:16px; }
-        .s28-kicker::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .s28-question { position:absolute; top:250px; left:80px; right:80px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:66px; line-height:1.02; letter-spacing:-.022em; color:#2a1f10; }
-        .s28-question em { font-style:italic; color:#6b5a42; }
-        /* Meet-and-greet card */
-        .s28-card { position:absolute; top:500px; left:64px; right:64px; z-index:5;
-          background:#f6f2e8; border:2px solid #2a1f10;
-          box-shadow:0 30px 60px -30px rgba(42,31,16,.55), inset 0 1px 0 rgba(255,255,255,.5);
-          display:grid; grid-template-columns:1fr 1fr; gap:0;
-          transform:rotate(-1.2deg);
-        }
-        .s28-card::before { content:''; position:absolute; inset:10px; border:1px double #2a1f10; pointer-events:none; }
-        .s28-card .plate { position:relative; overflow:hidden; }
-        .s28-card .plate img { width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:saturate(.85) contrast(1.14); display:block; }
-        .s28-card .plate::after { content:''; position:absolute; top:0; right:0; bottom:0; width:1px; background:#2a1f10; }
-        .s28-card .content { padding:34px 34px 26px; display:flex; flex-direction:column; gap:14px; }
-        .s28-card .content .kick { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(42,31,16,.55); }
-        .s28-card .content .name { font-family:var(--font-display); font-weight:500; font-size:56px; line-height:1; letter-spacing:-.022em; color:#2a1f10; }
-        .s28-card .content .name em { font-style:italic; color:#6b5a42; }
-        .s28-card .content .role { font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(42,31,16,.6); }
-        .s28-card .content .rule { width:60px; height:2px; background:#6b5a42; margin:8px 0; }
-        .s28-card .content .rsvp { margin-top:8px; display:flex; flex-direction:column; gap:12px; }
-        .s28-card .content .rsvp .opt { display:flex; align-items:center; gap:14px; padding:12px 14px; border:1.5px solid #2a1f10; }
-        .s28-card .content .rsvp .opt .sq { flex:none; width:24px; height:24px; border:2px solid #2a1f10; }
-        .s28-card .content .rsvp .opt.filled .sq { background:#2a1f10; position:relative; }
-        .s28-card .content .rsvp .opt.filled .sq::after { content:'✓'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#f6f2e8; font-family:var(--font-display); font-size:16px; font-style:italic; }
-        .s28-card .content .rsvp .opt .lbl { font-family:var(--font-display); font-weight:500; font-size:26px; letter-spacing:-.01em; color:#2a1f10; }
-        .s28-note {
-          position:absolute; right:34px; bottom:180px; z-index:8; transform:rotate(4deg);
-          background:#faf4d8; color:#4b3a20;
-          font-family:var(--font-mono); font-size:11px; letter-spacing:.28em; text-transform:uppercase;
-          padding:10px 16px 12px; box-shadow:0 10px 24px -12px rgba(0,0,0,.5); max-width:250px;
-        }
-        .s28-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(42,31,16,.55); }
-      </style>
-        <div class="s28">
-          <div class="s28-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Card 28 · Meet-and-Greet</span>
-          </div>
-          <span class="s28-kicker">— A calling card, extended</span>
-          <h1 class="s28-question">Have you met <em>Barbara Kahl?</em></h1>
-          <div class="s28-card">
-            <div class="plate"><img src="../assets/img/barbara-kahl.jpg" alt="Barbara Kahl" /></div>
-            <div class="content">
-              <span class="kick">— The candidate</span>
-              <div class="name">Dr. Barbara <em>Kahl</em></div>
-              <span class="role">U.S. House · Oregon's 1st Congressional District</span>
-              <span class="rule"></span>
-              <div class="rsvp">
-                <div class="opt filled"><span class="sq"></span><span class="lbl">Yes</span></div>
-                <div class="opt"><span class="sq"></span><span class="lbl">I would Like To</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="s28-note">Overlay Instagram<br />poll sticker here</div>
-          <div class="s28-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
-      
-    
+    <div class="s28">
+      <div class="s28-bg"></div>
+
+      <div class="s28-photo"><img src="../assets/img/barbara-kahl.jpg" alt="Barbara Kahl" /><span class="cap">Dr. Kahl · Portrait</span></div>
+
+      <div class="s28-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="s28-kick"><span class="bar"></span>Poll · 28</div>
+
+      <div class="s28-right">
+        <div class="cap"><span class="bar"></span>Introduction</div>
+        <div class="have">Have you met</div>
+        <div class="name">Barbara Kahl?</div>
+      </div>
+
+      <div class="s28-poll-lbl"><span class="bar"></span>Cast Your Vote</div>
+
+      <div class="s28-choices">
+        <div class="s28-choice filled"><span class="box"></span><span class="dash">-</span>Yes</div>
+        <div class="s28-choice"><span class="box"></span><span class="dash">-</span>I would Like To</div>
+      </div>
+
+      <div class="s28-foot">
+        <span class="txt">NWOP · Poll 28</span>
+        <span class="txt">2026</span>
+      </div>
+    </div>
     <div class="grain"></div>
   </div>
 </body>

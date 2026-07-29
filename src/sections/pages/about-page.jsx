@@ -127,33 +127,29 @@ export default function AboutPage() {
         >
           {teamSection.members.map((member) => (
             <m.div key={member.name} variants={cardReveal} className="h-full">
-              <Card
-                className="flex h-full flex-col p-7"
-                interactive={false}
-                tilt={false}
-              >
-                <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+              <Card className="flex h-full flex-col p-7">
+                <div className="text-highlight group-hover:text-accent font-mono text-[10px] tracking-[0.3em] uppercase transition-colors duration-500">
                   Leadership
                 </div>
-                <h3 className="font-display text-foreground mt-4 text-2xl leading-tight font-medium sm:text-3xl">
+                <h3 className="font-display text-foreground group-hover:text-primary-fg mt-4 text-2xl leading-tight font-medium transition-colors duration-500 sm:text-3xl">
                   {member.name}
                 </h3>
                 <ul className="mt-4 min-h-[9rem] space-y-2">
                   {member.roles.map((role) => (
                     <li
                       key={role}
-                      className="text-foreground/80 flex items-start gap-2 text-sm leading-snug"
+                      className="text-foreground/80 group-hover:text-primary-fg/85 flex items-start gap-2 text-sm leading-snug transition-colors duration-500"
                     >
                       <span
                         aria-hidden
-                        className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+                        className="bg-primary group-hover:bg-accent mt-2 h-1.5 w-1.5 shrink-0 rounded-full transition-colors duration-500"
                       />
                       {role}
                     </li>
                   ))}
                 </ul>
                 {member.bio && (
-                  <p className="text-foreground/70 border-primary/15 mt-auto border-t pt-4 text-sm leading-relaxed">
+                  <p className="text-foreground/70 group-hover:text-primary-fg/85 border-primary/15 group-hover:border-primary-fg/25 mt-auto border-t pt-4 text-sm leading-relaxed transition-colors duration-500">
                     {member.bio}
                   </p>
                 )}
@@ -252,20 +248,17 @@ export default function AboutPage() {
         >
           {values.list.map((v, i) => (
             <m.div key={v.title} variants={cardReveal} className="h-full">
-              <Card
-                className="h-full p-7"
-                interactive={false}
-              >
+              <Card className="h-full p-7">
                 <div className="flex h-full flex-col">
                   <div>
-                    <div className="text-highlight font-mono text-[11px] tracking-[0.3em] uppercase">
+                    <div className="text-highlight group-hover:text-accent font-mono text-[11px] tracking-[0.3em] uppercase transition-colors duration-500">
                       {String(i + 1).padStart(2, '0')}
                     </div>
-                    <h3 className="font-display text-foreground mt-4 min-h-[4rem] text-2xl leading-tight font-medium">
+                    <h3 className="font-display text-foreground group-hover:text-primary-fg mt-4 min-h-[4rem] text-2xl leading-tight font-medium transition-colors duration-500">
                       {v.title}
                     </h3>
                   </div>
-                  <p className="text-foreground/75 mt-5 flex-1 text-sm leading-relaxed">
+                  <p className="text-foreground/75 group-hover:text-primary-fg/85 mt-5 flex-1 text-sm leading-relaxed transition-colors duration-500">
                     {v.body}
                   </p>
                 </div>

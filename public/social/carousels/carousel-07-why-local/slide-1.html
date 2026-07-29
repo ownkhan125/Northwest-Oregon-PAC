@@ -11,36 +11,89 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c07-1 { position:absolute; inset:0; z-index:5; overflow:hidden; }
+  .c07-1-bg { position:absolute; inset:0; z-index:1; }
+  .c07-1-bg img { width:100%; height:100%; object-fit:cover; object-position:center 60%;
+    filter:saturate(.55) contrast(1.32) brightness(.42);
+  }
+  .c07-1-bg::after { content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(20,30,24,.92) 0%, rgba(20,30,24,.28) 45%, rgba(6,10,7,.92) 100%),
+      radial-gradient(60% 40% at 20% 20%, rgba(90,112,96,.3) 0%, transparent 65%);
+  }
+  .c07-1-hatch { position:absolute; inset:0; z-index:2; opacity:.06; pointer-events:none;
+    background-image:
+      linear-gradient(90deg, #e0d6bc 1px, transparent 1px),
+      linear-gradient(180deg, #e0d6bc 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .c07-1-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .c07-1-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.7)); }
+  .c07-1-index { position:absolute; z-index:14; top:112px; right:96px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.6);
+    display:flex; align-items:center; gap:14px;
+  }
+  .c07-1-index .bar { width:38px; height:1px; background:currentColor; opacity:.7; }
+  .c07-1-spine { position:absolute; z-index:8; left:96px; top:230px; bottom:200px; width:1px;
+    background:linear-gradient(180deg, rgba(224,214,188,0), rgba(224,214,188,.5) 20%, rgba(224,214,188,.5) 80%, rgba(224,214,188,0));
+  }
+  .c07-1-kicker { position:absolute; z-index:10; left:140px; top:280px;
+    font-family:var(--font-mono); font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.75);
+    display:flex; align-items:center; gap:18px;
+  }
+  .c07-1-kicker .slash { color:rgba(224,214,188,.35); }
+  .c07-1-title { position:absolute; z-index:10; left:140px; right:120px; top:360px;
+    font-family:var(--font-display); font-weight:500; font-size:150px; line-height:.94; letter-spacing:-.032em; color:#f6f2e8;
+    text-shadow: 0 8px 40px rgba(0,0,0,.55);
+  }
+  .c07-1-title em { display:block; font-style:italic; font-weight:400; color:#e0d6bc; }
+  .c07-1-orn { position:absolute; z-index:10; left:140px; top:820px; width:180px; height:1px; background:#e0d6bc; opacity:.55; }
+  .c07-1-tag { position:absolute; z-index:10; left:140px; top:842px; font-family:var(--font-mono); font-size:14px; letter-spacing:.45em; text-transform:uppercase; color:rgba(224,214,188,.7); }
+  .c07-1-stars { position:absolute; z-index:10; right:96px; bottom:220px; display:grid; grid-template-columns:repeat(4, 12px); gap:14px; opacity:.6; }
+  .c07-1-footer { position:absolute; z-index:10; left:96px; right:96px; bottom:96px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(224,214,188,.6);
+  }
+  .c07-1-footer .barline { flex:1; height:1px; background:currentColor; opacity:.35; margin:0 22px; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-ink on-photo">
-    
-  <div class="c-cover-bg">
-    <img src="../../assets/img/bridge.png" alt="" />
-    <div class="c-cover-wash deep"></div>
-    <div class="c-cover-vignette"></div>
-  </div>
-  <div class="zone c-cover">
-    <div class="c-cover-top">
-      <div class="c-kicker">Slide 1 · A civic thesis</div>
-      <span class="c-cover-brand">On Local Politics · 2026</span>
+  <div class="canvas s-forest on-photo" style="background:#0a100c;">
+    <div class="c07-1">
+      <div class="c07-1-bg"><img src="../../assets/img/oregon-roads.png" alt="" /></div>
+      <div class="c07-1-hatch"></div>
+
+      <div class="c07-1-mast"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c07-1-index"><span class="bar"></span>01 / 05</div>
+
+      <div class="c07-1-spine"></div>
+
+      <div class="c07-1-kicker">
+        <span>Series</span>
+        <span class="slash">//</span>
+        <span>Local Elections</span>
+      </div>
+
+      <h1 class="c07-1-title">Why Local <em>Elections</em> Matter</h1>
+
+      <div class="c07-1-orn"></div>
+      <div class="c07-1-tag">A Northwest Oregon dispatch</div>
+
+      <div class="c07-1-stars" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="c07-1-footer">
+        <span>Dispatch 07 // Local</span>
+        <span class="barline"></span>
+        <span>Northwest Oregon PAC</span>
+      </div>
     </div>
-    <div class="c-cover-body">
-      <h1 class="display xxl">Why Local <em>Elections Matter</em></h1>
-      
-      <div class="c-cover-hairline"></div>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

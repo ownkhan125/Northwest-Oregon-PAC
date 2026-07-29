@@ -11,55 +11,87 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  /* Congressional campaign-poster composition — full bleed portrait, left-column dark plate, big stacked serif name, flag-inspired star band */
+  .f28 { position:absolute; inset:0; z-index:5; overflow:hidden; background:#0a100c; }
+  .f28-portrait { position:absolute; z-index:1; inset:0; }
+  .f28-portrait img { width:100%; height:100%; object-fit:cover; object-position:65% 22%; filter:saturate(.72) contrast(1.22) brightness(.72); }
+  .f28-wash { position:absolute; z-index:2; inset:0;
+    background:
+      linear-gradient(90deg, rgba(6,10,7,.94) 0%, rgba(10,16,12,.82) 34%, rgba(10,16,12,.22) 58%, rgba(0,0,0,.05) 78%, rgba(6,10,7,.5) 100%),
+      radial-gradient(70% 55% at 18% 30%, rgba(90,112,96,.28) 0%, transparent 65%),
+      linear-gradient(180deg, rgba(20,30,22,.35) 0%, rgba(20,30,22,.05) 20%, rgba(6,10,7,.75) 100%);
+  }
+  /* Left thin spine */
+  .f28-spine { position:absolute; z-index:6; top:280px; bottom:96px; left:56px; width:1px; background:linear-gradient(180deg, rgba(224,214,188,0), rgba(224,214,188,.4) 25%, rgba(224,214,188,.4) 75%, rgba(224,214,188,0)); }
+  /* Mast */
+  .f28-mast { position:absolute; z-index:14; top:64px; left:96px; }
+  .f28-mast img { height:60px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  /* Star cluster top-right — flag nod */
+  .f28-stars { position:absolute; z-index:14; top:92px; right:96px; display:grid; grid-template-columns:repeat(7,12px); gap:14px; opacity:.78; }
+  /* Star band across upper third */
+  .f28-band { position:absolute; z-index:6; left:96px; right:96px; top:206px; height:1px; background:linear-gradient(90deg, rgba(224,214,188,.55), rgba(224,214,188,.18) 60%, transparent); }
+  .f28-band-2 { position:absolute; z-index:6; left:96px; right:96px; top:246px; height:1px; background:linear-gradient(90deg, transparent, rgba(224,214,188,.18) 40%, rgba(224,214,188,.55)); }
+  .f28-band-stars { position:absolute; z-index:8; left:96px; right:96px; top:212px; height:28px; display:flex; align-items:center; justify-content:center; gap:26px; opacity:.6; }
+  /* Stacked serif name block */
+  .f28-name { position:absolute; z-index:10; left:96px; right:120px; top:322px; font-family:var(--font-display); color:#f6f2e8; letter-spacing:-.035em; line-height:.88; }
+  .f28-name .meet { display:block; font-size:52px; font-style:italic; font-weight:400; color:#e0d6bc; margin-bottom:14px; letter-spacing:-.02em; text-shadow:0 4px 24px rgba(0,0,0,.7); }
+  .f28-name .dr { font-style:italic; font-weight:400; color:#e0d6bc; }
+  .f28-name .first { display:block; font-weight:500; font-size:172px; text-shadow:0 8px 40px rgba(0,0,0,.75); }
+  .f28-name .last  { display:block; font-weight:500; font-style:italic; font-size:172px; color:#e0d6bc; text-shadow:0 8px 40px rgba(0,0,0,.75); }
+  /* Office plate */
+  .f28-office { position:absolute; z-index:10; left:96px; right:120px; top:770px; padding:22px 26px; background:rgba(6,10,7,.7); border:1px solid rgba(224,214,188,.42); border-left:3px solid #e0d6bc;
+    font-family:var(--font-display); font-weight:500; font-size:30px; line-height:1.22; letter-spacing:-.015em; color:#f6f2e8;
+  }
+  .f28-office em { font-style:italic; color:#e0d6bc; }
+  /* Bio line */
+  .f28-bio { position:absolute; z-index:10; left:96px; right:120px; bottom:110px; padding-top:20px; border-top:1px solid rgba(224,214,188,.35);
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:28px; line-height:1.36; letter-spacing:-.01em; color:rgba(246,242,232,.94); text-shadow:0 2px 14px rgba(0,0,0,.7);
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f28 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-          color:#2e4538;
-        }
-        .f28-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f28-mast img { height:56px; width:auto; }
-        .f28-kick { position:absolute; top:180px; left:0; right:0; z-index:6; text-align:center; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f28-kick::before, .f28-kick::after { content:'—'; margin:0 20px; opacity:.6; }
-        /* Medallion */
-        .f28-medallion { position:absolute; left:calc(50% - 190px); top:230px; width:380px; height:380px; z-index:5; border-radius:999px; overflow:hidden; border:6px solid #f6f2e8; box-shadow:0 30px 60px -22px rgba(46,69,56,.55), 0 0 0 12px rgba(46,69,56,.3); }
-        .f28-medallion img { width:100%; height:100%; object-fit:cover; object-position:center 20%; filter:saturate(.9) contrast(1.12); }
-        /* Name */
-        .f28-name { position:absolute; left:76px; right:76px; top:640px; z-index:6; text-align:center; font-family:var(--font-display); font-weight:500; font-size:76px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
-        .f28-name em { font-style:italic; color:#5a7060; }
-        /* Roles stack */
-        .f28-roles { position:absolute; left:76px; right:76px; top:750px; z-index:6; display:flex; align-items:center; justify-content:center; gap:24px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
-        .f28-roles span { position:relative; }
-        .f28-roles span + span::before { content:'·'; margin-right:24px; color:rgba(46,69,56,.5); }
-        /* Office */
-        .f28-office { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); text-align:center; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.22; letter-spacing:-.015em; color:#2e4538; }
-        .f28-office em { font-style:normal; color:#6b5a42; }
-        .f28-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; text-align:center; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f28-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f28-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f28">
-          <div class="f28-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Medallion 28 · U.S. House · Oregon's 1st</span>
-          </div>
-          <span class="f28-kick">Meet the candidate</span>
-          <div class="f28-medallion"><img src="../assets/img/barbara-kahl.jpg" alt="Dr. Barbara Kahl" /></div>
-          <h1 class="f28-name">Dr. Barbara <em>Kahl</em></h1>
-          <div class="f28-roles"><span>Veterinarian</span><span>Community advocate</span><span>Candidate for Congress</span></div>
-          <p class="f28-office">Candidate for U.S. House — <em>Oregon's 1st Congressional District.</em></p>
-          <div class="f28-sig">Learn more · <span class="em">Learn about her campaign</span></div>
-          <div class="f28-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
-      
-    
+  <div class="canvas on-photo">
+    <div class="f28">
+      <div class="f28-portrait"><img src="../assets/img/barbara-kahl.jpg" alt="" /></div>
+      <div class="f28-wash"></div>
+
+      <div class="f28-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+
+      <div class="f28-stars" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f28-band"></div>
+      <div class="f28-band-stars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+      <div class="f28-band-2"></div>
+
+      <div class="f28-spine"></div>
+
+      <div class="f28-name">
+        <span class="meet">Meet <span class="dr">Dr.</span></span>
+        <span class="first">Barbara</span>
+        <span class="last">Kahl</span>
+      </div>
+
+      <div class="f28-office">Candidate for U.S. House <em>·</em> Oregon's 1st Congressional District</div>
+
+      <p class="f28-bio">Veterinarian. Community advocate. Candidate for Congress.</p>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

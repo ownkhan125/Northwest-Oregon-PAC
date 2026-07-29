@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Feed 31 · Northwest Oregon needs good leaders. Run for office. — Northwest Oregon PAC</title>
+<title>Feed 31 · Northwest Oregon needs good leaders. — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,72 +11,81 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  /* 2-line manifesto — display serif "Northwest Oregon / needs good leaders." dominates the upper 2/3,
+     hairline rule, then smaller italic imperative "Run for office." below. Forest ground with warm radial glow,
+     capitol icon detail lower-right, star row upper-right. NO photo — pure typographic poster. */
+  .f31 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(75% 55% at 22% 25%, rgba(90,112,96,.42) 0%, transparent 65%),
+      radial-gradient(60% 45% at 88% 80%, rgba(107,90,66,.32) 0%, transparent 70%),
+      linear-gradient(180deg, #253a2e 0%, #182620 100%);
+  }
+  /* Corner registration marks */
+  .f31-mark { position:absolute; z-index:6; width:32px; height:32px; }
+  .f31-mark::before, .f31-mark::after { content:''; position:absolute; background:rgba(224,214,188,.55); }
+  .f31-mark::before { left:15px; top:0; width:2px; height:32px; }
+  .f31-mark::after  { top:15px; left:0; width:32px; height:2px; }
+  .f31-mark.tl { top:80px; left:80px; }
+  .f31-mark.tr { top:80px; right:80px; }
+  .f31-mark.bl { bottom:80px; left:80px; }
+  .f31-mark.br { bottom:80px; right:80px; }
+  /* Mast — centered under top marks */
+  .f31-mast { position:absolute; z-index:14; top:150px; left:50%; transform:translateX(-50%); }
+  .f31-mast img { height:52px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.5)); }
+  /* Ornament stars top center */
+  .f31-topstars { position:absolute; z-index:12; top:236px; left:50%; transform:translateX(-50%); display:flex; gap:20px; opacity:.6; }
+  /* MANIFESTO — big serif, two lines, left aligned in a generous column */
+  .f31-h1 { position:absolute; z-index:10; left:130px; right:130px; top:322px;
+    font-family:var(--font-display); font-weight:500; color:#f6f2e8; letter-spacing:-.032em; line-height:.92; text-align:center;
+    font-size:118px; text-shadow:0 6px 30px rgba(0,0,0,.4);
+  }
+  .f31-h1 em { display:block; font-style:italic; font-weight:500; color:#e0d6bc; margin-top:8px; }
+  /* Divider rule */
+  .f31-rule { position:absolute; z-index:10; left:50%; transform:translateX(-50%); top:702px; width:180px; height:1px; background:rgba(224,214,188,.5); }
+  .f31-rule::before { content:''; position:absolute; left:50%; top:-4px; transform:translateX(-50%); width:9px; height:9px; background:#e0d6bc; border-radius:50%; }
+  /* Imperative "Run for office." — smaller italic, offset below rule */
+  .f31-imperative { position:absolute; z-index:10; left:0; right:0; top:770px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:80px; letter-spacing:-.022em; color:#e0d6bc; text-align:center; line-height:1;
+  }
+  /* Bottom mono label */
+  .f31-mono { position:absolute; z-index:10; left:0; right:0; bottom:170px; text-align:center; font-family:var(--font-mono); font-size:14px; letter-spacing:.6em; text-transform:uppercase; color:rgba(224,214,188,.6); }
+  /* Star row bottom center */
+  .f31-botstars { position:absolute; z-index:12; bottom:130px; left:50%; transform:translateX(-50%); display:flex; gap:18px; opacity:.55; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    <style>
-        .f31 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
-            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
-            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
-          color:#f6f2e8;
-        }
-        .f31-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
-        .f31-mast img { height:56px; width:auto; filter:brightness(1.05); }
-        /* Notice card */
-        .f31-notice { position:absolute; top:170px; bottom:130px; left:80px; right:80px; z-index:5;
-          background:rgba(224,214,188,.06); border:1.5px solid rgba(224,214,188,.5);
-          box-shadow:0 30px 60px -30px rgba(0,0,0,.5);
-          padding:30px 40px 34px;
-          display:flex; flex-direction:column;
-        }
-        .f31-notice .header { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:14px; border-bottom:2px solid rgba(224,214,188,.5); font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.75); }
-        .f31-notice .header .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        .f31-notice .kick { margin-top:22px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
-        .f31-notice .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f31-notice .head { margin-top:12px; font-family:var(--font-display); font-weight:500; font-size:66px; line-height:1; letter-spacing:-.028em; color:#f6f2e8; }
-        .f31-notice .head em { display:block; font-style:italic; color:#e0d6bc; }
-        .f31-notice .sub { margin-top:14px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; line-height:1.22; letter-spacing:-.012em; color:rgba(246,242,232,.85); }
-        /* Backgrounds bullets */
-        .f31-notice .bg-lbl { margin-top:26px; padding-top:14px; border-top:1px dashed rgba(246,242,232,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.55); }
-        .f31-notice .bg-grid { margin-top:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px 20px; }
-        .f31-notice .bg { display:flex; align-items:baseline; gap:12px; padding-bottom:8px; border-bottom:1px solid rgba(246,242,232,.22); font-family:var(--font-display); font-weight:500; font-size:22px; line-height:1.14; letter-spacing:-.015em; color:rgba(246,242,232,.94); }
-        .f31-notice .bg .n { font-family:var(--font-mono); font-size:10px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.5); }
-        .f31-notice .bg em { font-style:italic; color:#e0d6bc; }
-        /* Sign-off */
-        .f31-notice .signoff { margin-top:auto; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
-        .f31-notice .signoff .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        .f31-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
-      </style>
-        <div class="f31">
-          <div class="f31-mast">
-            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
-            <span>Notice 31 · Run for Office</span>
-          </div>
-          <div class="f31-notice">
-            <div class="header"><span>The Northwest Vacancy Notice</span><span class="em">Position — Leader</span><span>No. 31</span></div>
-            <span class="kick">A position for you</span>
-            <h1 class="head">Northwest Oregon needs good leaders.<em>Run for office.</em></h1>
-            <p class="sub">The next great leader doesn't always come from politics. Sometimes they're someone who simply wants to serve.</p>
-            <div class="bg-lbl">Backgrounds welcomed</div>
-            <div class="bg-grid">
-              <div class="bg"><span class="n">01</span>Teacher</div>
-              <div class="bg"><span class="n">02</span>Veteran</div>
-              <div class="bg"><span class="n">03</span>Business owner</div>
-              <div class="bg"><span class="n">04</span>Healthcare professional</div>
-              <div class="bg"><span class="n">05</span>Farmer</div>
-              <div class="bg"><span class="n">06</span>Volunteer</div>
-            </div>
-            <div class="signoff"><span>If you've ever considered running for office</span><span class="em">— Let's talk.</span></div>
-          </div>
-          <div class="f31-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
-      
-    
+  <div class="canvas s-forest">
+    <div class="f31">
+      <span class="f31-mark tl"></span>
+      <span class="f31-mark tr"></span>
+      <span class="f31-mark bl"></span>
+      <span class="f31-mark br"></span>
+
+      <div class="f31-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+
+      <div class="f31-topstars" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <h1 class="f31-h1">Northwest Oregon<em>needs good leaders.</em></h1>
+
+      <div class="f31-rule"></div>
+
+      <div class="f31-imperative">Run for office.</div>
+
+      <div class="f31-botstars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

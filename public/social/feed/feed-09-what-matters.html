@@ -11,95 +11,94 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f09 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(60% 45% at 20% 8%, rgba(90,112,96,.45) 0%, transparent 60%),
+      radial-gradient(70% 60% at 100% 100%, rgba(24,34,27,.9) 0%, transparent 60%),
+      linear-gradient(178deg, #2a3d33 0%, #1c2b23 60%, #131e17 100%);
+  }
+  .f09-hatch { position:absolute; inset:0; z-index:2; opacity:.05;
+    background-image:
+      linear-gradient(90deg, #e0d6bc 1px, transparent 1px),
+      linear-gradient(180deg, #e0d6bc 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events:none;
+  }
+  .f09-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .f09-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  .f09-star { position:absolute; z-index:14; top:110px; right:96px; display:flex; gap:12px; opacity:.7; }
+  /* Kicker mono under mast */
+  .f09-kick { position:absolute; z-index:10; top:230px; left:96px; display:flex; align-items:center; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.65); }
+  .f09-kick .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+  /* Small pre-title with tag */
+  .f09-pretitle { position:absolute; z-index:10; top:280px; left:96px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:44px; color:#e0d6bc; letter-spacing:-.015em;
+  }
+  /* Big question — takes middle */
+  .f09-q { position:absolute; z-index:10; left:96px; right:96px; top:352px;
+    font-family:var(--font-display); font-weight:500; font-size:104px; line-height:.98; letter-spacing:-.03em; color:#f6f2e8;
+  }
+  .f09-q em { font-style:italic; font-weight:400; color:#e0d6bc; }
+  /* Grid of 5 icon cards — 5 across, monospaced pill-icons */
+  .f09-grid { position:absolute; z-index:10; left:96px; right:96px; bottom:180px; display:grid; grid-template-columns:repeat(5, 1fr); gap:16px; }
+  .f09-cell { display:flex; flex-direction:column; align-items:center; gap:14px; padding:22px 8px; border:1px solid rgba(224,214,188,.28); background:rgba(224,214,188,.05); border-radius:14px; }
+  .f09-cell .ico-wrap { width:56px; height:56px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(224,214,188,.14); }
+  .f09-cell .ico-wrap svg { width:32px; height:32px; color:#e0d6bc; }
+  .f09-cell .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:rgba(224,214,188,.55); }
+  .f09-cell .lbl { font-family:var(--font-display); font-weight:500; font-size:22px; line-height:1.14; color:#f6f2e8; letter-spacing:-.012em; text-align:center; }
+  /* Bottom rule + credit */
+  .f09-baseline { position:absolute; z-index:10; left:96px; right:96px; bottom:96px; height:1px; background:linear-gradient(90deg, rgba(224,214,188,.55), rgba(224,214,188,0)); }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f09 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(224,214,188,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #d6c493 0%, #b5a067 100%);
-          color:#2a2a26;
-        }
-        .f09::before {
-          content:''; position:absolute; inset:0; opacity:.45; pointer-events:none;
-          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.22  0 0 0 0 0.12  0 0 0 0.32 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-          mix-blend-mode:multiply;
-        }
-        .f09-mast { position:absolute; top:56px; left:76px; right:76px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.4em; text-transform:uppercase; color:rgba(42,42,38,.7); }
-        .f09-mast img { height:46px; width:auto; }
-        /* Clipboard body */
-        .f09-clip { position:absolute; top:130px; bottom:130px; left:80px; right:80px; z-index:5;
-          background:linear-gradient(180deg, #3d2f14 0%, #241a08 100%);
-          border-radius:8px;
-          box-shadow:0 30px 60px -30px rgba(0,0,0,.6), inset 0 -8px 20px rgba(0,0,0,.3);
-          padding:22px;
-        }
-        /* Metal clip */
-        .f09-metalclip {
-          position:absolute; top:-14px; left:calc(50% - 90px); z-index:8;
-          width:180px; height:60px;
-          background:linear-gradient(180deg, #cfcfcf 0%, #7c7c7c 60%, #4a4a4a 100%);
-          border-radius:8px;
-          box-shadow:0 8px 14px -4px rgba(0,0,0,.5), inset 0 -3px 6px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.5);
-        }
-        .f09-metalclip::before {
-          content:''; position:absolute; left:calc(50% - 22px); top:16px; width:44px; height:20px;
-          background:#2a2a26; border-radius:3px;
-        }
-        /* Paper sheet on clipboard */
-        .f09-sheet { position:relative; background:#f6f2e8; height:100%; padding:34px 40px 26px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.05); display:flex; flex-direction:column; }
-        /* Sheet header row */
-        .f09-sheet .head { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:14px; border-bottom:2px solid #2e4538; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f09-sheet .head .title { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        /* Question block */
-        .f09-sheet .kick { margin-top:18px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f09-sheet .q { margin-top:10px; font-family:var(--font-display); font-weight:500; font-size:66px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
-        .f09-sheet .q em { font-style:italic; color:#5a7060; }
-        .f09-sheet .sub { margin-top:8px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:22px; letter-spacing:-.012em; color:rgba(46,69,56,.75); }
-        /* Ruled options */
-        .f09-sheet .opts { margin-top:20px; display:flex; flex-direction:column; gap:12px; }
-        .f09-sheet .opt { display:flex; align-items:center; gap:20px; padding:10px 14px; border-bottom:1px dashed rgba(46,69,56,.4); }
-        .f09-sheet .opt .box { flex:none; width:30px; height:30px; border:2px solid #2e4538; display:flex; align-items:center; justify-content:center; }
-        .f09-sheet .opt .box .mark { display:none; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:24px; color:#2e4538; line-height:1; margin-top:-2px; }
-        .f09-sheet .opt.ticked .box .mark { display:inline; }
-        .f09-sheet .opt .lbl { flex:1; font-family:var(--font-display); font-weight:500; font-size:32px; letter-spacing:-.015em; color:#2a2a26; }
-        .f09-sheet .opt .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.5); }
-        /* Vote-below strip */
-        .f09-sheet .vote { margin-top:auto; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.4); display:flex; align-items:baseline; justify-content:space-between; gap:22px; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f09-sheet .vote .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        /* Foot */
-        .f09-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(42,42,38,.55); }
-      </style>
-        <div class="f09">
-          <div class="f09-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Clipboard 09 · Community Poll</span>
-          </div>
-          <div class="f09-clip">
-            <div class="f09-metalclip"></div>
-            <div class="f09-sheet">
-              <div class="head"><span>NorthWest Oregon</span><span class="title">A field poll</span><span>Sheet 09 / 60</span></div>
-              <span class="kick">— The question</span>
-              <h1 class="q">What Matters <em>Most?</em></h1>
-              <p class="sub">Every community has different priorities. We want to hear yours.</p>
-              <div class="opts">
-                <div class="opt"><span class="box"><span class="mark">✓</span></span><span class="lbl">Public Safety</span><span class="n">A</span></div>
-                <div class="opt"><span class="box"><span class="mark">✓</span></span><span class="lbl">Small Business</span><span class="n">B</span></div>
-                <div class="opt"><span class="box"><span class="mark">✓</span></span><span class="lbl">Education</span><span class="n">C</span></div>
-                <div class="opt"><span class="box"><span class="mark">✓</span></span><span class="lbl">Affordable Energy</span><span class="n">D</span></div>
-                <div class="opt"><span class="box"><span class="mark">✓</span></span><span class="lbl">Government Accountability</span><span class="n">E</span></div>
-              </div>
-              <div class="vote"><span>Vote below</span><span class="em">— Tell us in the comments</span></div>
-            </div>
-          </div>
-          <div class="f09-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-forest">
+    <div class="f09">
+      <div class="f09-hatch"></div>
+
+      <div class="f09-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f09-star" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f09-kick"><span class="bar"></span></div>
+      <div class="f09-pretitle">NorthWest Oregon.</div>
+      <h1 class="f09-q">What Matters <em>Most?</em></h1>
+
+      <div class="f09-grid">
+        <div class="f09-cell">
+          <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 L20 6 v6 c0 5-3.5 9-8 10-4.5-1-8-5-8-10 V6 z"/></svg></div>
+          <div class="n">i</div>
+          <div class="lbl">Public<br/>Safety</div>
         </div>
-      
-    
+        <div class="f09-cell">
+          <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 22 V10 L12 3 L21 10 V22"/><path d="M9 22 v-8 h6 v8"/></svg></div>
+          <div class="n">ii</div>
+          <div class="lbl">Small<br/>Business</div>
+        </div>
+        <div class="f09-cell">
+          <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8 L12 3 L22 8 L12 13 z"/><path d="M6 10 v6 c0 2 3 4 6 4 s6-2 6-4 v-6"/></svg></div>
+          <div class="n">iii</div>
+          <div class="lbl">Education</div>
+        </div>
+        <div class="f09-cell">
+          <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 L4 14 h7 L10 22 L20 10 h-7 z"/></svg></div>
+          <div class="n">iv</div>
+          <div class="lbl">Affordable<br/>Energy</div>
+        </div>
+        <div class="f09-cell">
+          <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 v18"/><path d="M5 6 L19 6"/><path d="M3 10 L21 10"/><rect x="6" y="14" width="12" height="6" rx="1"/></svg></div>
+          <div class="n">v</div>
+          <div class="lbl">Government<br/>Accountability</div>
+        </div>
+      </div>
+
+      <div class="f09-baseline"></div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

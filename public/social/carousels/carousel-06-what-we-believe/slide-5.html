@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>WHAT WE BELIEVE · 5/6 — Northwest Oregon PAC</title>
+<title>Long-term investment · 5/6 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,33 +11,75 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c06-5 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(65% 55% at 12% 12%, rgba(224,214,188,.75) 0%, transparent 60%),
+      radial-gradient(70% 65% at 100% 108%, rgba(107,90,66,.14) 0%, transparent 60%),
+      linear-gradient(178deg, #f6f2e8 0%, #ebe3ce 100%);
+  }
+  .c06-5-grid { position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.05;
+    background-image:
+      linear-gradient(90deg, #2e4538 1px, transparent 1px),
+      linear-gradient(180deg, #2e4538 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .c06-5-mast { position:absolute; z-index:12; top:96px; left:96px; }
+  .c06-5-mast img { height:52px; width:auto; }
+  .c06-5-index { position:absolute; z-index:12; top:112px; right:96px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060;
+    display:flex; align-items:center; gap:14px;
+  }
+  .c06-5-index .bar { width:38px; height:1px; background:#5a7060; opacity:.7; }
+  .c06-5-eyebrow { position:absolute; z-index:10; top:250px; left:96px; display:flex; align-items:baseline; gap:20px;
+    font-family:var(--font-mono); font-size:16px; letter-spacing:.55em; text-transform:uppercase; color:#5a7060;
+  }
+  .c06-5-eyebrow .num { font-size:14px; letter-spacing:.4em; color:#6b5a42; opacity:.85; }
+  .c06-5-eyebrow .bar { width:62px; height:1px; background:#5a7060; opacity:.7; }
+  .c06-5-quote-mark { position:absolute; z-index:6; left:60px; top:220px;
+    font-family:var(--font-display); font-style:italic; font-weight:400; font-size:340px; line-height:.7; color:rgba(46,69,56,.14);
+  }
+  .c06-5-body { position:absolute; z-index:10; left:190px; right:120px; top:400px;
+    font-family:var(--font-display); font-weight:500; font-size:68px; line-height:1.1; letter-spacing:-.026em; color:#2e4538;
+  }
+  .c06-5-body em { font-style:italic; font-weight:400; color:#5a7060; }
+  .c06-5-orn { position:absolute; z-index:10; left:190px; top:830px; width:180px; height:2px; background:#2e4538; opacity:.55; }
+  .c06-5-attr { position:absolute; z-index:10; left:190px; top:854px; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:#6b5a42; }
+  .c06-5-footer { position:absolute; z-index:10; left:96px; right:96px; bottom:80px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:#6b5a42;
+  }
+  .c06-5-footer .barline { flex:1; height:1px; background:#6b5a42; opacity:.35; margin:0 22px; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    
-  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.5"></div>
-  <div class="c-belief-photo left"><img src="../../assets/img/event.jpg" alt="" /><div class="c-belief-photo-wash"></div></div>
-  <div class="zone c-belief copy-right with-photo">
-    <div class="c-belief-badge">
-      <span class="c-belief-index">04</span>
-      <span class="c-belief-tag">YEAR-ROUND WORK</span>
+  <div class="canvas s-light">
+    <div class="c06-5">
+      <div class="c06-5-grid"></div>
+
+      <div class="c06-5-mast"><img src="../../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c06-5-index"><span class="bar"></span>05 &middot; 06</div>
+
+      <div class="c06-5-eyebrow">
+        <span class="num">V.</span>
+        <span class="bar"></span>
+        <span>Investment</span>
+      </div>
+
+      <div class="c06-5-quote-mark">&ldquo;</div>
+
+      <p class="c06-5-body">Northwest Oregon deserves long-term investment in <em>leadership,</em> <em>candidate development,</em> and <em>competitive campaigns.</em></p>
+
+      <div class="c06-5-orn"></div>
+      <div class="c06-5-attr">Our commitment</div>
+
+      <div class="c06-5-footer">
+        <span>Chapter V &middot; Investment</span>
+        <span class="barline"></span>
+        <span>Northwest Oregon PAC</span>
+      </div>
     </div>
-    <div class="c-belief-body">
-      <div class="c-kicker">Slide 5</div>
-      
-      <p class="c-belief-p">We believe political engagement shouldn't end after Election Day.</p><p class="c-belief-p">Building stronger communities is year-round work.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

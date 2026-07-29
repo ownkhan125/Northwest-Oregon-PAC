@@ -11,103 +11,74 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .s13 { position:absolute; inset:0; z-index:5; background:#0f1610; overflow:hidden; }
+  .s13-photo { position:absolute; z-index:1; inset:0; }
+  .s13-photo img { width:100%; height:100%; object-fit:cover; object-position:center 50%; filter:saturate(.75) contrast(1.15) brightness(.55); }
+  .s13-photo::after { content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(90% 60% at 50% 40%, rgba(46,69,56,.3), transparent 70%),
+      linear-gradient(180deg, rgba(10,15,11,.55) 0%, rgba(10,15,11,0) 30%, rgba(10,15,11,.8) 100%);
+  }
+
+  /* Corner brackets */
+  .s13-brk { position:absolute; z-index:8; width:60px; height:60px; border:2px solid rgba(224,214,188,.55); }
+  .s13-brk.tl { top:290px; left:72px; border-right:none; border-bottom:none; }
+  .s13-brk.br { bottom:290px; right:72px; border-left:none; border-top:none; }
+
+  .s13-mast { position:absolute; z-index:12; top:132px; left:96px; }
+  .s13-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  .s13-kick { position:absolute; z-index:10; top:150px; right:96px; font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.7); display:flex; align-items:center; gap:18px; }
+  .s13-kick .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+
+  /* Single centered pull quote */
+  .s13-center { position:absolute; z-index:10; left:96px; right:96px; top:600px; }
+  .s13-lbl { font-family:var(--font-mono); font-size:15px; letter-spacing:.55em; text-transform:uppercase; color:rgba(224,214,188,.7); text-align:center; margin-bottom:56px; }
+  .s13-lbl::before, .s13-lbl::after { content:''; display:inline-block; width:40px; height:1px; background:currentColor; vertical-align:middle; margin:0 20px; }
+  .s13-h { font-family:var(--font-display); font-weight:500; font-size:130px; line-height:.98; letter-spacing:-.03em; color:#f6f2e8; text-shadow:0 6px 32px rgba(0,0,0,.6); text-align:left; }
+  .s13-h em { font-style:italic; font-weight:400; color:#e0d6bc; }
+  .s13-rule { width:200px; height:2px; background:#e0d6bc; margin-top:64px; }
+
+  /* Bottom manifesto tag */
+  .s13-foot { position:absolute; z-index:10; left:96px; right:96px; bottom:150px; }
+  .s13-foot-top { display:flex; align-items:center; justify-content:space-between; padding-bottom:26px; border-bottom:1px solid rgba(224,214,188,.28); margin-bottom:26px; }
+  .s13-foot-top .item { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.7); }
+  .s13-foot-bot { display:flex; align-items:center; justify-content:space-between; }
+  .s13-foot-bot .seal { font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(224,214,188,.5); }
+</style>
 </head>
 <body>
-  <div class="canvas story s-ink">
-    <style>
-        .s13 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 5%, rgba(224,214,188,.18) 0%, transparent 55%),
-            linear-gradient(180deg, #2a2a26 0%, #1a1a17 100%);
-          color:#e0d6bc;
-        }
-        /* Sky grain */
-        .s13::before { content:''; position:absolute; inset:0; opacity:.14; pointer-events:none;
-          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.4  0 0 0 0 0.35  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); mix-blend-mode:screen; }
-        /* Construction stripes at bottom */
-        .s13-barrier { position:absolute; left:0; right:0; bottom:64px; height:70px; z-index:6;
-          background:repeating-linear-gradient(-45deg, #e0d6bc 0 40px, #1a1a17 40px 80px);
-          box-shadow:0 -6px 24px -6px rgba(0,0,0,.6);
-        }
-        .s13-barrier::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:#e0d6bc; box-shadow:0 -2px 0 #1a1a17; }
-        /* Billboard sign */
-        .s13-sign { position:absolute; left:64px; right:64px; top:220px; bottom:200px; z-index:5;
-          background:
-            radial-gradient(120% 90% at 20% 15%, rgba(240,232,206,.98) 0%, rgba(220,208,180,.95) 100%);
-          border:4px solid #1a1a17;
-          box-shadow:0 40px 90px -40px rgba(0,0,0,.7);
-          padding:36px 44px;
-          display:flex; flex-direction:column; justify-content:space-between;
-        }
-        .s13-sign::before, .s13-sign::after {
-          content:''; position:absolute; width:22px; height:22px; border-radius:999px; background:#1a1a17;
-          border:3px solid #e0d6bc;
-        }
-        .s13-sign::before { top:14px; left:14px; }
-        .s13-sign::after { top:14px; right:14px; }
-        .s13-sign .brc { position:absolute; width:22px; height:22px; border-radius:999px; background:#1a1a17; border:3px solid #e0d6bc; }
-        .s13-sign .brc.bl { bottom:14px; left:14px; }
-        .s13-sign .brc.br { bottom:14px; right:14px; }
-        /* Support struts anchoring the sign to the barrier */
-        .s13-strut { position:absolute; bottom:70px; width:20px; height:180px; background:linear-gradient(180deg, rgba(0,0,0,.7), rgba(0,0,0,.9)); z-index:5; }
-        .s13-strut.l { left:150px; }
-        .s13-strut.r { right:150px; }
-        .s13-strut::before, .s13-strut::after { content:''; position:absolute; left:-6px; right:-6px; height:8px; background:rgba(0,0,0,.85); }
-        .s13-strut::before { top:0; }
-        .s13-strut::after { bottom:0; }
-        /* Sign contents */
-        .s13-tag { align-self:flex-start; display:inline-flex; align-items:center; gap:14px;
-          padding:12px 20px; background:#e0d6bc; color:#1a1a17;
-          font-family:var(--font-mono); font-weight:700; font-size:16px; letter-spacing:.42em; text-transform:uppercase;
-          box-shadow:0 6px 0 rgba(0,0,0,.75);
-        }
-        .s13-tag .diamond { display:inline-block; width:12px; height:12px; background:#1a1a17; transform:rotate(45deg); }
-        .s13-body { margin-top:16px; display:flex; flex-direction:column; gap:22px; }
-        .s13-body .kick { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(26,26,23,.6); }
-        .s13-body .head { font-family:var(--font-display); font-weight:500; font-size:74px; line-height:1.02; letter-spacing:-.022em; color:#1a1a17; }
-        .s13-body .head em { font-style:italic; color:#6b5a42; }
-        .s13-meta {
-          margin-top:auto; padding-top:20px; border-top:2px solid rgba(26,26,23,.35);
-          display:grid; grid-template-columns:1fr 1fr; gap:14px 30px;
-          font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(26,26,23,.7);
-        }
-        .s13-meta .k { display:block; color:rgba(26,26,23,.5); font-size:11px; letter-spacing:.4em; margin-bottom:4px; }
-        .s13-meta .v { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; text-transform:none; color:#1a1a17; }
-        /* Top mast */
-        .s13-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; gap:24px; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(234,228,208,.75); }
-        .s13-mast img { height:52px; width:auto; filter:brightness(1.05); }
-        /* Footer bar */
-        .s13-footbar { position:absolute; left:0; right:0; bottom:0; height:64px; z-index:7; background:#1a1a17; display:flex; align-items:center; justify-content:space-between; padding:0 80px; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(234,228,208,.6); }
-      </style>
-        <div class="s13">
-          <div class="s13-mast">
-            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
-            <span>Site 13 · Now Being Built</span>
-          </div>
-          <div class="s13-sign">
-            <span class="brc bl"></span><span class="brc br"></span>
-            <span class="s13-tag"><span class="diamond"></span>Under Construction</span>
-            <div class="s13-body">
-              <span class="kick">— The future, in progress</span>
-              <p class="head">The future of Northwest Oregon belongs to those <em>willing to build it.</em></p>
-            </div>
-            <div class="s13-meta">
-              <div><span class="k">Contractor</span><span class="v">You & your neighbours</span></div>
-              <div><span class="k">Completion</span><span class="v">A generation from now</span></div>
-              <div><span class="k">Permit</span><span class="v">#25045-NWOR</span></div>
-              <div><span class="k">Inspection</span><span class="v">Every election</span></div>
-            </div>
-          </div>
-          <span class="s13-strut l"></span>
-          <span class="s13-strut r"></span>
-          <div class="s13-barrier"></div>
-          <div class="s13-footbar">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas story s-ink on-photo">
+    <div class="s13">
+      <div class="s13-photo"><img src="../assets/img/oregon-roads.png" alt="" /></div>
+
+      <span class="s13-brk tl"></span>
+      <span class="s13-brk br"></span>
+
+      <div class="s13-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="s13-kick"><span class="bar"></span>Manifesto XIII</div>
+
+      <div class="s13-center">
+        <div class="s13-lbl">Northwest Oregon</div>
+        <h1 class="s13-h">The <em>future</em> of Northwest Oregon belongs to those willing to <em>build it.</em></h1>
+        <div class="s13-rule"></div>
+      </div>
+
+      <div class="s13-foot">
+        <div class="s13-foot-top">
+          <span class="item">Build</span>
+          <span class="item">·</span>
+          <span class="item">Lead</span>
+          <span class="item">·</span>
+          <span class="item">Serve</span>
         </div>
-      
-    
+        <div class="s13-foot-bot">
+          <span class="seal">NWOP · 2026</span>
+          <span class="seal">Story XIII</span>
+        </div>
+      </div>
+    </div>
     <div class="grain"></div>
   </div>
 </body>

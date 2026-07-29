@@ -358,9 +358,11 @@ const LearnSection = () => (
           <m.li
             key={item}
             variants={cardReveal}
-            className="border-primary/20 bg-surface hover:border-primary/45 flex items-start gap-4 rounded-2xl border p-5 transition-colors sm:p-6"
+            whileHover={{ y: -6 }}
+            transition={{ type: 'spring', stiffness: 200, damping: 22 }}
+            className="border-primary/20 bg-surface group hover:border-primary hover:bg-primary hover:text-primary-fg hover:shadow-[0_28px_60px_-30px_rgba(46,69,56,0.55)] flex items-start gap-4 rounded-2xl border p-5 transition-[background-color,border-color,color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:p-6"
           >
-            <span className="border-primary/30 bg-surface-alt/40 text-primary mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full border">
+            <span className="border-primary/30 bg-surface-alt/40 text-primary group-hover:border-accent/60 group-hover:bg-primary-fg/10 group-hover:text-accent mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-colors duration-500">
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden>
                 <path
                   d="M5 12l4 4 10-10"
@@ -371,7 +373,7 @@ const LearnSection = () => (
                 />
               </svg>
             </span>
-            <p className="text-foreground/85 text-base leading-relaxed sm:text-lg">{item}</p>
+            <p className="text-foreground/85 group-hover:text-primary-fg/90 text-base leading-relaxed transition-colors duration-500 sm:text-lg">{item}</p>
           </m.li>
         ))}
       </m.ul>

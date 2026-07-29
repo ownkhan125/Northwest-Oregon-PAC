@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Feed 33 · Where do you fit in? — Northwest Oregon PAC</title>
+<title>Feed 33 · Candidate Recruitment Starts Here — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,66 +11,74 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  /* Editorial spec-sheet — sand background, corner brackets, big centered stacked serif.
+     No photo. Ornamental sub-rules and dot markers echo museum-poster ID plate style. */
+  .f33 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(65% 55% at 50% 45%, rgba(246,242,232,.85) 0%, transparent 65%),
+      linear-gradient(180deg, #e6dcc0 0%, #d5c9a8 100%);
+  }
+  /* Corner brackets — chunky editorial */
+  .f33-brackTL { position:absolute; z-index:6; top:96px; left:96px; width:60px; height:60px; border-top:3px solid #2e4538; border-left:3px solid #2e4538; }
+  .f33-brackTR { position:absolute; z-index:6; top:96px; right:96px; width:60px; height:60px; border-top:3px solid #2e4538; border-right:3px solid #2e4538; }
+  .f33-brackBL { position:absolute; z-index:6; bottom:96px; left:96px; width:60px; height:60px; border-bottom:3px solid #2e4538; border-left:3px solid #2e4538; }
+  .f33-brackBR { position:absolute; z-index:6; bottom:96px; right:96px; width:60px; height:60px; border-bottom:3px solid #2e4538; border-right:3px solid #2e4538; }
+  /* Central spec plate */
+  .f33-plate { position:absolute; z-index:10; left:130px; right:130px; top:250px; bottom:250px; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:40px 20px; }
+  /* Mast within plate */
+  .f33-mast img { height:52px; width:auto; }
+  /* Upper rule */
+  .f33-topmark { display:flex; align-items:center; gap:22px; font-family:var(--font-mono); font-size:12px; letter-spacing:.6em; text-transform:uppercase; color:#5a7060; margin-top:10px; }
+  .f33-topmark .bar { width:60px; height:1px; background:currentColor; opacity:.7; }
+  .f33-topmark .dot { width:6px; height:6px; border-radius:50%; background:#2e4538; }
+  /* Big stacked serif */
+  .f33-h1 { text-align:center; font-family:var(--font-display); color:#2e4538; letter-spacing:-.034em; line-height:.88; font-weight:500; }
+  .f33-h1 .l1 { display:block; font-size:130px; }
+  .f33-h1 .l2 { display:block; font-size:130px; font-style:italic; color:#5a7060; margin-top:4px; }
+  .f33-h1 .l3 { display:block; font-size:130px; margin-top:4px; }
+  /* Ornamental base marker */
+  .f33-base { display:flex; align-items:center; gap:22px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060; }
+  .f33-base .bar { width:90px; height:1px; background:currentColor; opacity:.6; }
+  .f33-base .star svg { display:block; }
+  /* Center compass ornament */
+  .f33-compass { display:flex; gap:24px; align-items:center; opacity:.55; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f33 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-          color:#2e4538;
-        }
-        .f33-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f33-mast img { height:56px; width:auto; }
-        .f33-kick { position:absolute; top:180px; left:76px; right:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f33-kick::before { content:'— '; }
-        .f33-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:96px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
-        .f33-head em { font-style:italic; color:#5a7060; }
-        /* Puzzle tile grid */
-        .f33-grid { position:absolute; left:76px; right:76px; top:410px; z-index:5; display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
-        .f33-tile { position:relative; padding:22px 24px 20px; background:rgba(246,242,232,.75); border:1.5px solid rgba(46,69,56,.4); box-shadow:0 20px 40px -22px rgba(46,69,56,.35); }
-        .f33-tile.tall { grid-row:span 2; padding-top:36px; padding-bottom:36px; background:#2e4538; color:#f6f2e8; }
-        .f33-tile.tall::before {
-          content:''; position:absolute; top:0; left:0; right:0; height:6px; background:#e0d6bc;
-        }
-        .f33-tile .n { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.02em; color:rgba(46,69,56,.4); }
-        .f33-tile.tall .n { color:rgba(224,214,188,.5); }
-        .f33-tile .lbl { display:block; margin-top:8px; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f33-tile.tall .lbl { color:rgba(246,242,232,.6); }
-        .f33-tile .w { display:block; margin-top:8px; font-family:var(--font-display); font-weight:500; font-size:34px; line-height:1.02; letter-spacing:-.022em; color:#2e4538; }
-        .f33-tile.tall .w { color:#e0d6bc; font-style:italic; font-size:42px; }
-        .f33-tile svg { display:block; margin-top:12px; width:48px; height:48px; color:#5a7060; }
-        .f33-tile.tall svg { color:#e0d6bc; }
-        /* Bottom manifesto */
-        .f33-mani { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); display:flex; align-items:baseline; justify-content:space-between; gap:22px; }
-        .f33-mani .k { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); flex:none; }
-        .f33-mani .v { flex:1; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:#2e4538; }
-        .f33-mani .v em { font-style:normal; color:#6b5a42; }
-        .f33-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f33">
-          <div class="f33-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Tiles 33 · Where You Fit</span>
-          </div>
-          <span class="f33-kick">Every movement needs people willing to step forward.</span>
-          <h1 class="f33-head">Where do <em>you</em> fit in?</h1>
-          <div class="f33-grid">
-            <div class="f33-tile"><span class="n">01</span><span class="lbl">— Role i.</span><span class="w">Knock doors</span></div>
-            <div class="f33-tile"><span class="n">02</span><span class="lbl">— Role ii.</span><span class="w">Make calls</span></div>
-            <div class="f33-tile tall"><span class="n">03</span><span class="lbl">— Role iii.</span><span class="w">Help at events</span><span class="lbl" style="margin-top:auto">There's a place for you.</span></div>
-            <div class="f33-tile"><span class="n">04</span><span class="lbl">— Role iv.</span><span class="w">Support candidates</span></div>
-            <div class="f33-tile"><span class="n">05</span><span class="lbl">— Role v.</span><span class="w">Share your skills</span></div>
-          </div>
-          <div class="f33-mani"><span class="k">— Join in</span><p class="v">A few hours a month or every week — <em>your time</em> can help strengthen campaigns and communities across Northwest Oregon.</p></div>
-          <div class="f33-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-sand">
+    <div class="f33">
+      <span class="f33-brackTL"></span>
+      <span class="f33-brackTR"></span>
+      <span class="f33-brackBL"></span>
+      <span class="f33-brackBR"></span>
+
+      <div class="f33-plate">
+        <div class="f33-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+
+        <div class="f33-topmark">
+          <span class="bar"></span>
+          <span class="dot"></span>
+          <span class="bar"></span>
         </div>
-      
-    
+
+        <h1 class="f33-h1">
+          <span class="l1">Candidate</span>
+          <span class="l2">Recruitment</span>
+          <span class="l3">Starts Here</span>
+        </h1>
+
+        <div class="f33-base">
+          <span class="bar"></span>
+          <span class="star" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          </span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

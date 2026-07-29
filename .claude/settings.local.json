@@ -207,7 +207,27 @@
       "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/verify-01-07.js)",
       "Bash(rm -f \"C:/Users/General/Documents/GitHub/Northwest Oregon PAC/.claude/skills/playwright-skill/_run-social-posts-check.js\")",
       "Bash(rm -rf \"C:/Users/General/AppData/Local/Temp/nwop-social-posts-check\")",
-      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/overlay-check.js)"
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/overlay-check.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/blog-check.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/blog-inspect.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/blog-check2.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/blog-hittest.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/blog-linkrect.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/blog-final.js)",
+      "Bash(python3 -c \"import sys; print\\(sys.version\\)\")",
+      "Bash(pdftotext -layout \"C:/Users/General/Downloads/NW - SM Calendar \\(3\\).pdf\" \"/tmp/nw-sm-layout.txt\")",
+      "Bash(pdftotext \"C:/Users/General/Downloads/NW - SM Calendar \\(3\\).pdf\" \"/tmp/nw-sm-plain.txt\")",
+      "Bash(where python *)",
+      "Bash(where py *)",
+      "Bash(where node *)",
+      "Bash(npm init *)",
+      "Bash(pdfinfo \"C:/Users/General/Downloads/NW - SM Calendar \\(3\\).pdf\")",
+      "Bash(cygpath -w /tmp/node_modules/pdfjs-dist/legacy/build/pdf.mjs)",
+      "Bash(pdftotext -layout \"/c/Users/General/Downloads/NW - SM Calendar \\(3\\).pdf\" \"/c/Users/General/AppData/Local/Temp/nw-sm-calendar.txt\")",
+      "Bash(SNAPSHOTS=200 node run.js _verify-social-posts-vs-spec.js)",
+      "Bash(SNAPSHOTS=8 node run.js _verify-social-posts-vs-spec.js)",
+      "Bash(SNAPSHOTS=0 node run.js _verify-social-posts-vs-spec.js)",
+      "Bash(PORT=3010 npm run dev)"
     ]
   }
 }

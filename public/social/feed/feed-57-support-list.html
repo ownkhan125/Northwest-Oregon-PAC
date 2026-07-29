@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Feed 57 · Here's what your support makes possible. — Northwest Oregon PAC</title>
+<title>Feed 57 · Here&rsquo;s what your support makes possible. — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,80 +11,126 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  /* Museum poster w/ 3-column capability grid, cream ground, custom seal */
+  .f57 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(90% 70% at 50% 0%, rgba(224,214,188,.7) 0%, transparent 55%),
+      linear-gradient(180deg, #f6f2e8 0%, #ece4cf 100%);
+  }
+  .f57-dots { position:absolute; inset:0; z-index:2; opacity:.14; pointer-events:none;
+    background-image: radial-gradient(#2e4538 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  /* Mast centered top */
+  .f57-mast { position:absolute; z-index:14; top:96px; left:50%; transform:translateX(-50%); }
+  .f57-mast img { height:56px; width:auto; }
+
+  /* Registration + marks in corners */
+  .f57-reg { position:absolute; z-index:8; font-family:var(--font-mono); font-size:22px; color:rgba(46,69,56,.45); }
+  .f57-reg.tl { top:96px; left:96px; }
+  .f57-reg.tr { top:96px; right:96px; }
+  .f57-reg.bl { bottom:96px; left:96px; }
+  .f57-reg.br { bottom:96px; right:96px; }
+
+  /* Eyebrow row — centered under mast */
+  .f57-eyebrow { position:absolute; z-index:10; top:210px; left:0; right:0; display:flex; align-items:center; justify-content:center; gap:22px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.55em; text-transform:uppercase; color:#5a7060; font-weight:600;
+  }
+  .f57-eyebrow .bar { width:60px; height:1px; background:currentColor; opacity:.7; }
+
+  /* Question — headline centered */
+  .f57-q { position:absolute; z-index:10; top:262px; left:96px; right:96px; text-align:center;
+    font-family:var(--font-display); font-weight:500; font-size:80px; line-height:1.02; letter-spacing:-.028em; color:#2e4538;
+  }
+  .f57-q em { font-style:italic; font-weight:400; color:#5a7060; }
+
+  /* Rule */
+  .f57-rule { position:absolute; z-index:10; top:472px; left:50%; transform:translateX(-50%); width:180px; height:2px; background:#2e4538; opacity:.55; }
+
+  /* 3-column capability grid */
+  .f57-grid { position:absolute; z-index:10; left:96px; right:96px; top:534px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; }
+  .f57-col { display:flex; flex-direction:column; align-items:center; text-align:center; gap:22px; padding:28px 14px 32px;
+    border:1.5px solid rgba(46,69,56,.28); background:rgba(255,255,255,.4); border-radius:14px;
+    min-height:280px;
+  }
+  .f57-col .ico { width:64px; height:64px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:#2e4538; color:#f6f2e8; }
+  .f57-col .ico svg { width:32px; height:32px; }
+  .f57-col .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:#6b5a42; font-weight:700; }
+  .f57-col .lbl {
+    font-family:var(--font-display); font-weight:500; font-size:32px; line-height:1.14; letter-spacing:-.014em; color:#2e4538;
+  }
+
+  /* Seal bottom */
+  .f57-seal { position:absolute; z-index:10; bottom:76px; left:50%; transform:translateX(-50%);
+    width:90px; height:90px; display:flex; align-items:center; justify-content:center; border-radius:50%;
+    border:2px solid rgba(46,69,56,.55);
+    color:#2e4538;
+  }
+  .f57-seal svg { display:block; }
+
+  /* Baseline meta rows */
+  .f57-baseline { position:absolute; z-index:10; bottom:52px; left:96px; right:96px; display:flex; justify-content:space-between; padding:0 40px;
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,69,56,.5);
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f57 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-          color:#2e4538;
-        }
-        .f57-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f57-mast img { height:56px; width:auto; }
-        .f57-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
-        .f57-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f57-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1.04; letter-spacing:-.028em; color:#2e4538; max-width:920px; }
-        .f57-head em { display:block; font-style:italic; color:#5a7060; }
-        /* Crate */
-        .f57-crate { position:absolute; left:100px; right:100px; top:420px; height:360px; z-index:5;
-          background:linear-gradient(180deg, #a68558 0%, #6b5124 100%);
-          border:6px solid #3d2f14;
-          box-shadow:0 30px 60px -30px rgba(46,32,19,.6), inset 0 -12px 20px rgba(0,0,0,.3);
-          padding:34px 46px 30px;
-        }
-        .f57-crate::before, .f57-crate::after {
-          content:''; position:absolute; left:0; right:0; height:14px;
-          background:repeating-linear-gradient(90deg, #3d2f14 0 30px, #6b5124 30px 60px);
-        }
-        .f57-crate::before { top:0; }
-        .f57-crate::after { bottom:0; }
-        /* Shipping label — floats above the crate on empty margin */
-        .f57-label { position:absolute; top:-70px; right:60px; padding:10px 20px; background:#f6f2e8; color:#2e4538; border:2px solid #2e4538; font-family:var(--font-mono); font-weight:700; font-size:11px; letter-spacing:.32em; text-transform:uppercase; transform:rotate(3deg); box-shadow:0 10px 20px -6px rgba(0,0,0,.45); z-index:7; white-space:nowrap; }
-        .f57-label .em { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:18px; letter-spacing:-.01em; color:#2e4538; text-transform:none; margin-left:6px; }
-        /* Stencil header */
-        .f57-crate .stencil { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:14px; border-bottom:2px dashed rgba(246,242,232,.65); font-family:var(--font-mono); font-weight:600; font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#f6f2e8; }
-        .f57-crate .stencil .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#f6f2e8; text-transform:none; }
-        /* Items grid */
-        .f57-crate .items { margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px 22px; }
-        .f57-crate .item { padding:12px 14px; background:rgba(246,242,232,.14); border:1px solid rgba(246,242,232,.55); display:flex; align-items:baseline; gap:14px; }
-        .f57-crate .item .n { flex:none; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.65); }
-        .f57-crate .item .lbl { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:26px; letter-spacing:-.01em; color:#f6f2e8; line-height:1; }
-        /* Body */
-        .f57-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; line-height:1.2; letter-spacing:-.015em; color:#2e4538; text-align:center; }
-        .f57-body em { font-style:normal; color:#5a7060; }
-        .f57-tag { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f57-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f57-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f57">
-          <div class="f57-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Crate 57 · Your Support</span>
+  <div class="canvas s-light">
+    <div class="f57">
+      <div class="f57-dots"></div>
+
+      <div class="f57-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+
+      <div class="f57-reg tl">+</div>
+      <div class="f57-reg tr">+</div>
+      <div class="f57-reg bl">+</div>
+      <div class="f57-reg br">+</div>
+
+      <div class="f57-eyebrow"><span class="bar"></span>Your Support &middot; Made Possible<span class="bar"></span></div>
+
+      <h1 class="f57-q">Here&rsquo;s what your support <em>makes possible.</em></h1>
+
+      <div class="f57-rule"></div>
+
+      <div class="f57-grid">
+        <div class="f57-col">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg>
           </div>
-          <span class="f57-kick">Where your support goes</span>
-          <h1 class="f57-head">Here's what your support makes<em>possible.</em></h1>
-          <div class="f57-crate">
-            <span class="f57-label">Ship to Northwest Oregon</span>
-            <div class="stencil"><span>Contents · Case 57</span><span class="em">Handle with care</span><span>Sealed</span></div>
-            <div class="items">
-              <div class="item"><span class="n">01</span><span class="lbl">Campaign literature.</span></div>
-              <div class="item"><span class="n">02</span><span class="lbl">Community events.</span></div>
-              <div class="item"><span class="n">03</span><span class="lbl">Volunteer training.</span></div>
-              <div class="item"><span class="n">04</span><span class="lbl">Voter outreach.</span></div>
-              <div class="item"><span class="n">05</span><span class="lbl">Candidate support.</span></div>
-            </div>
-          </div>
-          <p class="f57-body">Every contribution directly supports the work happening <em>across Northwest Oregon, not somewhere else.</em></p>
-          <div class="f57-tag"><span>Thank you</span><span class="em">— For helping build stronger campaigns and stronger communities.</span></div>
-          <div class="f57-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+          <div class="n">i</div>
+          <div class="lbl">Campaign<br/>communications</div>
         </div>
-      
-    
+        <div class="f57-col">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div class="n">ii</div>
+          <div class="lbl">Candidate<br/>recruitment</div>
+        </div>
+        <div class="f57-col">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18"/><path d="M8 6h6a3 3 0 0 1 0 6H8"/><path d="M8 12h7a3 3 0 0 1 0 6H8"/></svg>
+          </div>
+          <div class="n">iii</div>
+          <div class="lbl">Fundraising</div>
+        </div>
+      </div>
+
+      <div class="f57-seal" aria-hidden="true">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="currentColor">
+          <circle cx="30" cy="30" r="26" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M30 12l2.5 5.8L38.5 19l-4.5 4L35 30 30 27l-5 3 1-7-4.5-4 6-1.2z"/>
+        </svg>
+      </div>
+
+      <div class="f57-baseline">
+        <span>Est. Northwest Oregon</span>
+        <span>Report &middot; No. 57</span>
+      </div>
+    </div>
     <div class="grain"></div>
   </div>
 </body>

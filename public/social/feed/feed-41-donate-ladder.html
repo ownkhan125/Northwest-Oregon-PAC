@@ -11,62 +11,104 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f41 { position:absolute; inset:0; z-index:5; overflow:hidden; }
+  /* Top 42% hero image */
+  .f41-hero { position:absolute; z-index:1; top:0; left:0; right:0; height:44%; overflow:hidden; }
+  .f41-hero img { width:100%; height:100%; object-fit:cover; object-position:center 55%; filter:saturate(.62) contrast(1.22) brightness(.62); }
+  .f41-hero::after { content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(20,30,22,.35) 0%, rgba(20,30,22,.12) 40%, rgba(31,47,38,.55) 78%, #1f2f26 100%),
+      radial-gradient(70% 55% at 25% 20%, rgba(90,112,96,.35) 0%, transparent 70%);
+  }
+  /* Bottom dark forest area */
+  .f41-lower { position:absolute; z-index:2; left:0; right:0; top:44%; bottom:0;
+    background:
+      radial-gradient(90% 70% at 12% 8%, rgba(90,112,96,.32) 0%, transparent 55%),
+      radial-gradient(90% 80% at 100% 105%, rgba(24,34,27,.9) 0%, transparent 55%),
+      linear-gradient(178deg, #1f2f26 0%, #16241c 62%, #0f1a13 100%);
+  }
+  /* Diagonal accent slash through the image */
+  .f41-slash { position:absolute; z-index:3; top:38%; left:-4%; right:-4%; height:8px; background:linear-gradient(90deg, rgba(224,214,188,0), rgba(224,214,188,.35) 20%, rgba(224,214,188,.35) 80%, rgba(224,214,188,0)); transform:rotate(-2deg); }
+  /* Mast */
+  .f41-mast { position:absolute; z-index:12; top:64px; left:96px; }
+  .f41-mast img { height:60px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  /* Star cluster on hero */
+  .f41-stars { position:absolute; z-index:6; top:96px; right:96px; display:grid; grid-template-columns:repeat(5,10px); gap:12px; opacity:.7; }
+  /* Eyebrow */
+  .f41-eyebrow { position:absolute; z-index:10; left:96px; top:200px; display:flex; align-items:center; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.75); }
+  .f41-eyebrow .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  /* Big headline sits below the seam */
+  .f41-head { position:absolute; z-index:10; left:96px; right:96px; top:490px;
+    font-family:var(--font-display); font-weight:500; font-size:66px; line-height:1.06; letter-spacing:-.026em;
+    color:#f6f2e8; text-shadow: 0 6px 30px rgba(0,0,0,.6);
+  }
+  .f41-head em { font-style:italic; font-weight:400; color:#e0d6bc; display:block; margin-top:8px; }
+  /* Amount chips — pushed clear below headline */
+  .f41-amounts { position:absolute; z-index:10; left:96px; right:96px; top:770px; display:flex; align-items:center; gap:18px; }
+  .f41-chip { position:relative; padding:18px 32px; border:1.5px solid rgba(224,214,188,.42); background:rgba(224,214,188,.06); border-radius:999px;
+    font-family:var(--font-display); font-weight:500; font-style:italic; letter-spacing:-.015em; color:#f6f2e8; line-height:1;
+    box-shadow: 0 20px 40px -18px rgba(0,0,0,.7);
+  }
+  .f41-chip.a { font-size:44px; padding:16px 26px; }
+  .f41-chip.b { font-size:50px; padding:18px 30px; background:rgba(224,214,188,.09); }
+  .f41-chip.c { font-size:58px; padding:20px 34px; background:rgba(224,214,188,.12); }
+  .f41-chip.d { font-size:66px; padding:22px 38px; background:rgba(224,214,188,.16); border-color:rgba(224,214,188,.6); }
+  /* CTA button */
+  .f41-cta { position:absolute; z-index:10; left:96px; bottom:88px;
+    display:inline-flex; align-items:center; gap:24px; padding:24px 52px;
+    background:#e0d6bc; color:#1f2f26;
+    font-family:var(--font-mono); font-weight:600; font-size:24px; letter-spacing:.44em; text-transform:uppercase;
+    box-shadow: 0 24px 44px -18px rgba(0,0,0,.7);
+  }
+  .f41-cta .arrow { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:28px; letter-spacing:0; }
+  /* Corner detail: right ornament */
+  .f41-orn { position:absolute; z-index:10; right:96px; bottom:110px; }
+  .f41-orn svg { display:block; opacity:.42; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    <style>
-        .f41 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
-            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
-            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
-          color:#f6f2e8;
-        }
-        .f41-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
-        .f41-mast img { height:56px; width:auto; filter:brightness(1.05); }
-        .f41-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
-        .f41-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f41-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:56px; line-height:1.02; letter-spacing:-.028em; color:#f6f2e8; max-width:920px; }
-        .f41-head em { font-style:italic; color:#e0d6bc; }
-        /* Ascending steps */
-        .f41-stairs { position:absolute; left:76px; right:76px; top:430px; height:340px; z-index:5; display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:14px; align-items:end; }
-        .f41-step { position:relative; background:linear-gradient(180deg, rgba(224,214,188,.14) 0%, rgba(224,214,188,.06) 100%); border:1.5px solid rgba(246,242,232,.5); padding:16px 14px 14px; display:flex; flex-direction:column; gap:8px; box-shadow:0 20px 40px -22px rgba(0,0,0,.5); }
-        .f41-step .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); }
-        .f41-step .amt { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:52px; line-height:1; letter-spacing:-.03em; color:#e0d6bc; }
-        .f41-step .lbl { margin-top:auto; font-family:var(--font-mono); font-size:10px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.6); }
-        .f41-step.s1 { height:180px; }
-        .f41-step.s2 { height:220px; }
-        .f41-step.s3 { height:280px; }
-        .f41-step.s4 { height:340px; background:linear-gradient(180deg, rgba(224,214,188,.28) 0%, rgba(224,214,188,.08) 100%); border-width:2.5px; }
-        /* CTA plate */
-        .f41-cta { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding:16px 22px; background:#e0d6bc; color:#2e4538; display:flex; align-items:center; justify-content:space-between; gap:16px; font-family:var(--font-mono); font-weight:700; font-size:16px; letter-spacing:.44em; text-transform:uppercase; }
-        .f41-cta .em { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f41-sig { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
-        .f41-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        .f41-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
-      </style>
-        <div class="f41">
-          <div class="f41-mast">
-            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
-            <span>Ladder 41 · Donate</span>
-          </div>
-          <span class="f41-kick">Donate</span>
-          <h1 class="f41-head">Every contribution builds a stronger<em>Northwest Oregon.</em></h1>
-          <div class="f41-stairs">
-            <div class="f41-step s1"><span class="n">— Step 01</span><span class="amt">$25</span><span class="lbl">Chip in</span></div>
-            <div class="f41-step s2"><span class="n">— Step 02</span><span class="amt">$100</span><span class="lbl">Take a stand</span></div>
-            <div class="f41-step s3"><span class="n">— Step 03</span><span class="amt">$500</span><span class="lbl">Build the bench</span></div>
-            <div class="f41-step s4"><span class="n">— Step 04</span><span class="amt">$1,000</span><span class="lbl">Anchor the region</span></div>
-          </div>
-          <div class="f41-cta"><span>Donate Today</span><span class="em">— Chip in and help strengthen Northwest Oregon.</span></div>
-          <div class="f41-sig"><span>Every dollar stays here</span><span class="em">— Focused on Northwest Oregon.</span></div>
-          <div class="f41-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
-      
-    
+  <div class="canvas s-forest">
+    <div class="f41">
+      <div class="f41-hero"><img src="../assets/img/community.jpg" alt="" /></div>
+      <div class="f41-lower"></div>
+      <div class="f41-slash"></div>
+
+      <div class="f41-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+
+      <div class="f41-stars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f41-eyebrow"><span class="bar"></span></div>
+
+      <h1 class="f41-head">Every contribution builds a <em>stronger Northwest Oregon.</em></h1>
+
+      <div class="f41-amounts">
+        <div class="f41-chip a">$25</div>
+        <div class="f41-chip b">$100</div>
+        <div class="f41-chip c">$500</div>
+        <div class="f41-chip d">$1,000</div>
+      </div>
+
+      <div class="f41-cta">Donate Today <span class="arrow">↗</span></div>
+
+      <div class="f41-orn" aria-hidden="true">
+        <svg width="120" height="60" viewBox="0 0 120 60" fill="none" stroke="#e0d6bc" stroke-width="1.2">
+          <path d="M0 30 L120 30" opacity=".7"/>
+          <path d="M60 6 L60 54" opacity=".6"/>
+          <circle cx="60" cy="30" r="6" fill="#e0d6bc"/>
+          <circle cx="60" cy="30" r="14" opacity=".6"/>
+          <circle cx="60" cy="30" r="24" opacity=".35"/>
+        </svg>
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

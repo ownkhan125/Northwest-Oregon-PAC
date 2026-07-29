@@ -11,74 +11,82 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f44 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(60% 45% at 15% 10%, rgba(224,214,188,.55) 0%, transparent 60%),
+      radial-gradient(70% 60% at 100% 100%, rgba(107,90,66,.14) 0%, transparent 55%),
+      linear-gradient(180deg, #f8f4ea 0%, #ede4cf 100%);
+  }
+  /* Fine editorial dot grid */
+  .f44-grid { position:absolute; inset:0; z-index:2; opacity:.08; pointer-events:none;
+    background-image: radial-gradient(circle, #2e4538 1px, transparent 1.5px);
+    background-size: 22px 22px;
+  }
+  /* Huge italic quote glyph as background art */
+  .f44-glyph { position:absolute; z-index:3; font-family:var(--font-display); font-style:italic; font-weight:400;
+    font-size:1080px; line-height:.66; color:rgba(90,112,96,.16);
+    left:-90px; top:-160px; pointer-events:none; user-select:none;
+  }
+  /* Small photo tile — editorial aside */
+  .f44-tile { position:absolute; z-index:6; right:96px; top:170px; width:210px; padding:12px 12px 42px; background:#f6f2e8;
+    box-shadow:0 30px 56px -20px rgba(0,0,0,.35), 0 6px 12px rgba(0,0,0,.14);
+    transform:rotate(-3deg);
+    border:1px solid rgba(0,0,0,.06);
+  }
+  .f44-tile .p { position:relative; width:100%; aspect-ratio:1/1; overflow:hidden; background:#0f1a13; }
+  .f44-tile .p img { width:100%; height:100%; object-fit:cover; filter:saturate(.72) contrast(1.14) brightness(.92); }
+  .f44-tile .cap { position:absolute; left:14px; right:14px; bottom:12px; text-align:center; font-family:var(--font-mono); font-size:10px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+  /* Mast */
+  .f44-mast { position:absolute; z-index:12; top:96px; left:96px; }
+  .f44-mast img { height:60px; width:auto; }
+  /* Column rule */
+  .f44-rule { position:absolute; z-index:6; left:96px; top:230px; height:2px; width:180px; background:#2e4538; opacity:.6; }
+  .f44-issue { position:absolute; z-index:6; left:96px; top:250px; display:flex; align-items:center; gap:18px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+  /* Body — two-part typography */
+  .f44-body { position:absolute; z-index:10; left:96px; right:96px; top:350px; }
+  .f44-p1 { font-family:var(--font-display); font-weight:500; font-size:96px; line-height:.98; letter-spacing:-.03em; color:#2e4538; }
+  .f44-p2 { margin-top:34px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:56px; line-height:1.12; letter-spacing:-.015em; color:#5a7060; max-width:900px; padding-top:34px; border-top:1px solid rgba(46,69,56,.35); position:relative; }
+  .f44-p2::before { content:''; position:absolute; left:0; top:-2px; width:120px; height:3px; background:#2e4538; }
+  /* Bottom badge signature */
+  .f44-sig { position:absolute; z-index:10; left:96px; right:96px; bottom:96px; display:flex; align-items:center; justify-content:space-between; }
+  .f44-sig .left { display:flex; align-items:center; gap:16px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:#5a7060; }
+  .f44-sig .left .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+  .f44-sig .right { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:44px; color:#2e4538; letter-spacing:-.02em; line-height:1; }
+  .f44-sig .num { font-family:var(--font-display); font-style:italic; font-weight:400; font-size:96px; color:rgba(46,69,56,.18); letter-spacing:-.02em; line-height:.8; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f44 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(224,214,188,.5) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-          color:#2a2a26;
-        }
-        .f44::before {
-          content:''; position:absolute; inset:0; opacity:.14; pointer-events:none;
-          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.14  0 0 0 0 0.1  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-        }
-        .f44-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f44-mast img { height:56px; width:auto; }
-        /* Newspaper masthead */
-        .f44-paper { position:absolute; top:170px; left:76px; right:76px; z-index:6; padding-bottom:14px; border-bottom:3px double #2a2a26; }
-        .f44-paper .title { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:58px; letter-spacing:-.02em; color:#2a2a26; line-height:1; }
-        .f44-paper .meta { margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        /* Struck headline card */
-        .f44-strike { position:absolute; top:320px; left:76px; right:76px; z-index:5;
-          padding:22px 24px; background:rgba(46,69,56,.05); border:1.5px solid rgba(46,69,56,.35);
-        }
-        .f44-strike::after { content:''; position:absolute; left:24px; right:24px; top:calc(75% - 2px); height:3px; background:#6b5a42; transform:rotate(-.8deg); opacity:.85; }
-        .f44-strike .k { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); position:relative; z-index:2; }
-        .f44-strike .txt { position:relative; z-index:2; margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:52px; line-height:1; letter-spacing:-.028em; color:rgba(46,69,56,.7); }
-        /* Real measures */
-        .f44-measures { position:absolute; left:76px; right:76px; top:520px; z-index:5; padding-top:18px; border-top:1.5px solid rgba(46,69,56,.35); display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
-        .f44-measure { padding:18px 20px; background:rgba(246,242,232,.7); border:1.5px solid rgba(46,69,56,.4); display:flex; flex-direction:column; gap:10px; }
-        .f44-measure .n { font-family:var(--font-display); font-style:italic; font-size:34px; line-height:1; color:rgba(46,69,56,.35); letter-spacing:-.02em; }
-        .f44-measure .k { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f44-measure .v { font-family:var(--font-display); font-weight:500; font-size:32px; line-height:1.02; letter-spacing:-.022em; color:#2e4538; }
-        .f44-measure .v em { font-style:italic; color:#5a7060; }
-        /* Sig */
-        .f44-sig { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:#2e4538; text-align:center; }
-        .f44-sig em { font-style:normal; color:#5a7060; }
-        .f44-tag { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f44-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f44-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f44">
-          <div class="f44-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Correction 44 · How We Measure</span>
-          </div>
-          <div class="f44-paper">
-            <div class="title">The Northwest Front Page</div>
-            <div class="meta"><span>Vol. 44 · No. 01</span><span>How we measure</span><span>Est. 2026</span></div>
-          </div>
-          <div class="f44-strike">
-            <span class="k">— Not this</span>
-            <p class="txt">Headlines · Coverage · Applause</p>
-          </div>
-          <div class="f44-measures">
-            <div class="f44-measure"><span class="n">i.</span><span class="k">— Measure 01</span><span class="v">Stronger <em>communities.</em></span></div>
-            <div class="f44-measure"><span class="n">ii.</span><span class="k">— Measure 02</span><span class="v">Better <em>candidates.</em></span></div>
-            <div class="f44-measure"><span class="n">iii.</span><span class="k">— Measure 03</span><span class="v">More <em>engaged citizens.</em></span></div>
-          </div>
-          <p class="f44-sig">A stronger political organization can make a difference for <em>generations.</em></p>
-          <div class="f44-tag"><span>That's the commitment we're making</span><span class="em">— To Northwest Oregon.</span></div>
-          <div class="f44-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-light">
+    <div class="f44">
+      <div class="f44-grid"></div>
+      <div class="f44-glyph">&ldquo;</div>
+
+      <div class="f44-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+
+      <div class="f44-tile">
+        <div class="p"><img src="../assets/img/community.jpg" alt="" /></div>
+      </div>
+
+      <div class="f44-rule"></div>
+
+      <div class="f44-body">
+        <p class="f44-p1">We don't measure success by headlines.</p>
+        <p class="f44-p2">We measure it by stronger communities, better candidates, and more engaged citizens.</p>
+      </div>
+
+      <div class="f44-sig">
+        <div class="left"><span class="bar"></span></div>
+        <div class="right" aria-hidden="true">
+          <svg width="60" height="14" viewBox="0 0 60 14" fill="none" stroke="#2e4538" stroke-width="1.2">
+            <path d="M0 7 L44 7"/>
+            <path d="M40 2 L52 7 L40 12"/>
+          </svg>
         </div>
-      
-    
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

@@ -11,90 +11,80 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f20 { position:absolute; inset:0; z-index:5; overflow:hidden; background:#0a100c; }
+  /* Off-set full-bleed photo — takes right 60% */
+  .f20-bg { position:absolute; z-index:1; top:0; bottom:0; left:0; right:0; }
+  .f20-bg img { position:absolute; right:-6%; top:0; width:92%; height:100%; object-fit:cover; object-position:50% 55%; filter:saturate(.55) contrast(1.32) brightness(.4); }
+  .f20-bg::after { content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, rgba(6,10,7,.98) 0%, rgba(6,10,7,.85) 22%, rgba(20,30,22,.55) 42%, rgba(20,30,22,.2) 62%, rgba(6,10,7,.85) 100%),
+      radial-gradient(40% 30% at 15% 20%, rgba(90,112,96,.28) 0%, transparent 65%);
+  }
+  /* Fine editorial scanlines */
+  .f20-scan { position:absolute; z-index:2; inset:0; opacity:.06; pointer-events:none;
+    background: repeating-linear-gradient(180deg, transparent 0 4px, rgba(0,0,0,.5) 4px 5px);
+    mix-blend-mode:multiply;
+  }
+  /* Mast + stars */
+  .f20-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .f20-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  .f20-star { position:absolute; z-index:14; top:110px; right:96px; display:flex; gap:12px; opacity:.6; }
+  /* Kicker */
+  .f20-kick { position:absolute; z-index:10; top:230px; left:96px; display:flex; align-items:center; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.65); }
+  .f20-kick .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  /* Giant italic opening quote in background */
+  .f20-glyph { position:absolute; z-index:3; font-family:var(--font-display); font-style:italic; font-weight:400; font-size:820px; line-height:.66; color:rgba(90,112,96,.16); left:-20px; top:280px; pointer-events:none; user-select:none; }
+  /* Left column headline — big cinematic serif */
+  .f20-head { position:absolute; z-index:10; left:96px; right:96px; top:340px;
+    font-family:var(--font-display); font-weight:500; font-size:98px; line-height:.98; letter-spacing:-.03em; color:#f6f2e8;
+    text-shadow: 0 8px 40px rgba(0,0,0,.7); max-width:920px;
+  }
+  /* Separator with tag */
+  .f20-sep { position:absolute; z-index:10; left:96px; top:698px; display:flex; align-items:center; gap:22px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.55); }
+  .f20-sep .bar { width:64px; height:1px; background:currentColor; opacity:.7; }
+  /* Italic pull-quote below */
+  .f20-pull { position:absolute; z-index:10; left:96px; right:96px; top:750px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:54px; line-height:1.1; letter-spacing:-.018em;
+    color:#e0d6bc; max-width:900px; text-shadow: 0 4px 24px rgba(0,0,0,.6);
+  }
+  /* Bottom detail bar */
+  .f20-baseline { position:absolute; z-index:10; left:96px; right:96px; bottom:96px; display:flex; align-items:center; justify-content:space-between; }
+  .f20-baseline .l { display:flex; align-items:center; gap:16px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.55); }
+  .f20-baseline .l .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+  .f20-baseline .stars { display:flex; gap:12px; opacity:.6; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f20 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(224,214,188,.5) 0%, transparent 55%),
-            linear-gradient(180deg, #efe6cd 0%, #cfb87a 100%);
-          color:#2e4538;
-        }
-        .f20::before {
-          content:''; position:absolute; inset:0; opacity:.28; pointer-events:none;
-          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.3 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-          mix-blend-mode:multiply;
-        }
-        .f20-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f20-mast img { height:56px; width:auto; }
-        .f20-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
-        .f20-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        /* Left manifesto column */
-        .f20-manifesto { position:absolute; top:230px; left:76px; width:480px; z-index:6; }
-        .f20-manifesto .head { font-family:var(--font-display); font-weight:500; font-size:64px; line-height:1; letter-spacing:-.028em; color:#2e4538; }
-        .f20-manifesto .head em { display:block; font-style:italic; color:#5a7060; }
-        .f20-manifesto .sub { margin-top:22px; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.24; letter-spacing:-.015em; color:rgba(46,69,56,.85); }
-        /* Right growth-rings */
-        .f20-rings { position:absolute; top:210px; right:60px; width:460px; height:460px; z-index:5; }
-        .f20-rings svg { display:block; width:100%; height:100%; }
-        /* Bottom manifesto strip */
-        .f20-strip { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:18px; border-top:1.5px solid rgba(46,69,56,.4); display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:14px; }
-        .f20-strip .c { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f20-strip .c .em { display:block; margin-top:6px; font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f20-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:#2e4538; text-align:center; }
-        .f20-sig em { font-style:normal; color:#5a7060; }
-        .f20-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f20">
-          <div class="f20-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Rings 20 · Beyond Election Day</span>
-          </div>
-          <span class="f20-kick">Beyond Election Day</span>
-          <div class="f20-manifesto">
-            <h1 class="head">Northwest Oregon deserves<em>more than campaign promises.</em></h1>
-            <p class="sub">It deserves people willing to stay after Election Day.</p>
-          </div>
-          <div class="f20-rings">
-            <svg viewBox="0 0 460 460" fill="none">
-              <!-- Concentric growth rings (irregular for organic feel) -->
-              <circle cx="230" cy="230" r="200" stroke="rgba(46,69,56,.42)" stroke-width="1.4" fill="none"/>
-              <circle cx="232" cy="228" r="164" stroke="rgba(46,69,56,.45)" stroke-width="1.3" fill="none"/>
-              <circle cx="228" cy="232" r="128" stroke="rgba(46,69,56,.5)" stroke-width="1.3" fill="none"/>
-              <circle cx="230" cy="230" r="94" stroke="rgba(46,69,56,.55)" stroke-width="1.4" fill="none"/>
-              <circle cx="232" cy="228" r="62" stroke="rgba(46,69,56,.6)" stroke-width="1.4" fill="none"/>
-              <circle cx="230" cy="230" r="30" fill="#2e4538" stroke="#e0d6bc" stroke-width="1.4"/>
-              <text x="230" y="228" font-family="Source Sans 3" font-size="10" fill="#e0d6bc" text-anchor="middle" letter-spacing="2.5">CORE</text>
-              <text x="230" y="244" font-family="Lora" font-style="italic" font-size="14" fill="#e0d6bc" text-anchor="middle">2026</text>
-              <!-- Ring labels -->
-              <line x1="290" y1="230" x2="360" y2="180" stroke="rgba(46,69,56,.5)" stroke-width="1"/>
-              <text x="290" y="168" font-family="Source Sans 3" font-size="10" fill="#2e4538" letter-spacing="2">STRONGER ORGS</text>
-              <line x1="326" y1="230" x2="400" y2="240" stroke="rgba(46,69,56,.5)" stroke-width="1"/>
-              <text x="316" y="260" font-family="Source Sans 3" font-size="10" fill="#2e4538" letter-spacing="2">MORE CANDIDATES</text>
-              <line x1="358" y1="230" x2="380" y2="310" stroke="rgba(46,69,56,.5)" stroke-width="1"/>
-              <text x="270" y="330" font-family="Source Sans 3" font-size="10" fill="#2e4538" letter-spacing="2">ENGAGED CITIZENS</text>
-              <line x1="230" y1="380" x2="180" y2="410" stroke="rgba(46,69,56,.5)" stroke-width="1"/>
-              <text x="60" y="430" font-family="Source Sans 3" font-size="10" fill="#2e4538" letter-spacing="2">A VOICE, RESTORED</text>
-              <!-- Radial hairlines for growth grain -->
-              <line x1="230" y1="30" x2="230" y2="430" stroke="rgba(46,69,56,.15)" stroke-width="0.8"/>
-              <line x1="30" y1="230" x2="430" y2="230" stroke="rgba(46,69,56,.15)" stroke-width="0.8"/>
-            </svg>
-          </div>
-          <div class="f20-strip">
-            <div class="c">— Ring 01<span class="em">Local orgs</span></div>
-            <div class="c">— Ring 02<span class="em">Qualified candidates</span></div>
-            <div class="c">— Ring 03<span class="em">Engaged citizens</span></div>
-            <div class="c">— Ring 04<span class="em">A voice again</span></div>
-          </div>
-          <p class="f20-sig">Election cycles come and go. <em>Communities remain.</em></p>
-          <div class="f20-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas on-photo">
+    <div class="f20">
+      <div class="f20-bg"><img src="../assets/img/campaign.jpg" alt="" /></div>
+      <div class="f20-scan"></div>
+      <div class="f20-glyph">&ldquo;</div>
+
+      <div class="f20-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f20-star" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f20-kick"><span class="bar"></span></div>
+      <h1 class="f20-head">Northwest Oregon deserves more than campaign promises.</h1>
+      <div class="f20-sep"><span class="bar"></span></div>
+      <p class="f20-pull">It deserves people willing to stay after Election Day.</p>
+
+      <div class="f20-baseline">
+        <div class="l"><span class="bar"></span></div>
+        <div class="stars" aria-hidden="true">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
         </div>
-      
-    
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

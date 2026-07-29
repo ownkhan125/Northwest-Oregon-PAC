@@ -11,113 +11,72 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .s10 { position:absolute; inset:0; z-index:5; background:#101610; overflow:hidden; }
+  .s10-photo { position:absolute; z-index:1; inset:0; }
+  .s10-photo img { width:100%; height:100%; object-fit:cover; object-position:center 55%; filter:saturate(.6) contrast(1.2) brightness(.42); }
+  .s10-photo::after { content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(80% 55% at 50% 50%, transparent 0%, rgba(0,0,0,.55) 90%),
+      linear-gradient(180deg, rgba(20,28,22,.85) 0%, rgba(10,15,11,.6) 40%, rgba(0,0,0,.95) 100%);
+  }
+  .s10-vign { position:absolute; z-index:2; inset:0; box-shadow: inset 0 0 300px rgba(0,0,0,.7); }
+
+  .s10-mast { position:absolute; z-index:12; top:132px; left:96px; }
+  .s10-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 20px rgba(0,0,0,.55)); }
+  .s10-kick { position:absolute; z-index:10; top:150px; right:96px; font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.7); display:flex; align-items:center; gap:18px; }
+  .s10-kick .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+
+  /* Giant italic quote glyph */
+  .s10-glyph { position:absolute; z-index:3; left:60px; top:220px; font-family:var(--font-display); font-style:italic; font-weight:400; font-size:900px; line-height:.7; color:rgba(224,214,188,.06); }
+
+  .s10-stack { position:absolute; z-index:10; left:96px; right:96px; top:640px; display:flex; flex-direction:column; gap:60px; }
+  .s10-line { display:flex; flex-direction:column; gap:20px; }
+  .s10-line .cap { font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.55); display:flex; align-items:center; gap:14px; }
+  .s10-line .cap .bar { width:40px; height:1px; background:currentColor; }
+  .s10-line .h { font-family:var(--font-display); font-weight:500; font-size:110px; line-height:.98; letter-spacing:-.03em; color:#f6f2e8; text-shadow:0 4px 24px rgba(0,0,0,.5); }
+  .s10-line .h em { font-style:italic; font-weight:400; color:#e0d6bc; }
+
+  .s10-rule { position:absolute; z-index:10; left:96px; right:96px; top:1500px; height:1px; background:linear-gradient(90deg, rgba(224,214,188,.5) 0%, transparent 100%); }
+
+  .s10-close { position:absolute; z-index:10; left:96px; right:96px; top:1540px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:60px; line-height:1.08; letter-spacing:-.02em; color:#e0d6bc;
+  }
+
+  .s10-foot { position:absolute; z-index:10; left:96px; right:96px; bottom:150px; display:flex; align-items:center; justify-content:space-between; }
+  .s10-foot .txt { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.55); }
+</style>
 </head>
 <body>
-  <div class="canvas story s-light">
-    <style>
-        .s10 {
-          position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 15%, rgba(244,239,224,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e6d9b7 100%);
-        }
-        .s10-mast { position:absolute; top:76px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,42,20,.6); }
-        .s10-mast img { height:56px; width:auto; }
-        /* Top editorial caption */
-        .s10-lede {
-          position:absolute; top:220px; left:80px; right:80px; z-index:5;
-        }
-        .s10-lede .kick { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,42,20,.55); display:inline-flex; align-items:center; gap:16px; }
-        .s10-lede .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .s10-lede .head { margin-top:20px; font-family:var(--font-display); font-weight:500; font-size:88px; line-height:1.02; letter-spacing:-.022em; color:#2e4538; }
-        .s10-lede .head em { font-style:italic; color:#6b5a42; }
-        /* Filmstrip */
-        .s10-strip {
-          position:absolute; top:640px; left:40px; right:40px; height:520px; z-index:4;
-          background:#111008;
-          padding:56px 20px;
-          transform:rotate(-1.2deg);
-          transform-origin:center center;
-          box-shadow:0 40px 90px -40px rgba(0,0,0,.6);
-        }
-        .s10-strip::before, .s10-strip::after {
-          content:''; position:absolute; left:20px; right:20px; height:26px;
-          background-image: radial-gradient(circle at 20px 13px, #f6f2e8 8px, transparent 8.5px);
-          background-size:52px 26px;
-        }
-        .s10-strip::before { top:12px; }
-        .s10-strip::after { bottom:12px; }
-        .s10-strip .frames {
-          display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; height:100%;
-        }
-        .s10-strip .frame { position:relative; overflow:hidden; background:#000; }
-        .s10-strip .frame img { width:100%; height:100%; object-fit:cover; filter:saturate(.7) contrast(1.2) brightness(.85); }
-        .s10-strip .frame .wash { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.55) 100%); }
-        .s10-strip .frame .lbl { position:absolute; left:14px; bottom:14px; font-family:var(--font-mono); font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:#e0d6bc; }
-        .s10-strip .frame .yr { position:absolute; right:14px; top:14px; font-family:var(--font-display); font-style:italic; font-size:24px; color:#f0efe3; letter-spacing:-.01em; }
-        /* Below-strip commentary */
-        .s10-below {
-          position:absolute; left:80px; right:80px; bottom:190px; z-index:5;
-          padding-top:20px; border-top:1.5px solid rgba(46,42,20,.35);
-          display:flex; align-items:flex-end; justify-content:space-between; gap:24px;
-        }
-        .s10-below .k { font-family:var(--font-mono); font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); }
-        .s10-below .v {
-          font-family:var(--font-display); font-weight:500; font-style:italic; font-size:44px; line-height:1.16; letter-spacing:-.015em; color:#2e4538;
-          max-width:640px;
-        }
-        .s10-below .cornerbadge { font-family:var(--font-display); font-style:italic; font-size:80px; color:rgba(46,69,56,.28); letter-spacing:-.02em; }
-        .s10-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,42,20,.55); }
-      </style>
-        <div class="s10">
-          <div class="s10-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Reel 10 · Field Documentary</span>
-          </div>
+  <div class="canvas story s-ink on-photo">
+    <div class="s10">
+      <div class="s10-photo"><img src="../assets/img/bridge.png" alt="" /></div>
+      <div class="s10-vign"></div>
+      <div class="s10-glyph" aria-hidden="true">"</div>
 
-          <div class="s10-lede">
-            <span class="kick">Frame by frame</span>
-            <h1 class="head">Campaigns <em>come and go.</em></h1>
-          </div>
+      <div class="s10-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="s10-kick"><span class="bar"></span>Chapter X</div>
 
-          <div class="s10-strip">
-            <div class="frames">
-              <div class="frame">
-                <img src="../assets/img/banner.jpg" alt="Then" />
-                <div class="wash"></div>
-                <span class="yr">'22</span>
-                <span class="lbl">— Then</span>
-              </div>
-              <div class="frame">
-                <img src="../assets/img/who-we-are.jpg" alt="Now" />
-                <div class="wash"></div>
-                <span class="yr">'26</span>
-                <span class="lbl">— Now</span>
-              </div>
-              <div class="frame">
-                <img src="../assets/img/hero.jpg" alt="Next" />
-                <div class="wash"></div>
-                <span class="yr">'30</span>
-                <span class="lbl">— Next</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="s10-below">
-            <div>
-              <span class="k">— Strong communities remain</span>
-              <p class="v">That's why we're investing for the long term.</p>
-            </div>
-            <span class="cornerbadge">10.</span>
-          </div>
-
-          <div class="s10-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+      <div class="s10-stack">
+        <div class="s10-line">
+          <div class="cap"><span class="bar"></span>Then</div>
+          <div class="h">Campaigns come <em>and go.</em></div>
         </div>
-      
-    
+        <div class="s10-line">
+          <div class="cap"><span class="bar"></span>Now</div>
+          <div class="h">Strong communities <em>remain.</em></div>
+        </div>
+      </div>
+
+      <div class="s10-rule"></div>
+      <p class="s10-close">That's why we're investing for the long term.</p>
+
+      <div class="s10-foot">
+        <span class="txt">NWOP · Long-Term Investment</span>
+        <span class="txt">2026</span>
+      </div>
+    </div>
     <div class="grain"></div>
   </div>
 </body>

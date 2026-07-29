@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Feed 53 · We are building — Northwest Oregon PAC</title>
+<title>Feed 53 · We are building — For Oregon — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,65 +11,103 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  /* Editorial checklist — sand ground, numbered rows, "FOR OREGON" bottom stamp */
+  .f53 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(60% 40% at 100% 0%, rgba(90,112,96,.15) 0%, transparent 65%),
+      radial-gradient(60% 45% at 0% 100%, rgba(107,90,66,.14) 0%, transparent 60%),
+      linear-gradient(180deg, #f6f2e8 0%, #ece4cf 100%);
+  }
+  .f53-hatch { position:absolute; inset:0; z-index:2; opacity:.05; pointer-events:none;
+    background-image:
+      linear-gradient(90deg, #2e4538 1px, transparent 1px),
+      linear-gradient(180deg, #2e4538 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Mast */
+  .f53-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .f53-mast img { height:56px; width:auto; }
+  .f53-stars { position:absolute; z-index:14; top:110px; right:96px; display:flex; gap:12px; opacity:.6; }
+
+  /* Eyebrow / dossier tag */
+  .f53-tag { position:absolute; z-index:10; top:240px; left:96px; display:flex; align-items:center; gap:18px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,69,56,.55); font-weight:600;
+  }
+  .f53-tag .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+
+  /* Headline */
+  .f53-head { position:absolute; z-index:10; top:280px; left:96px; right:96px;
+    font-family:var(--font-display); font-weight:500; font-size:110px; line-height:.94; letter-spacing:-.035em; color:#2e4538;
+  }
+  .f53-head em { font-style:italic; font-weight:400; color:#5a7060; }
+
+  /* Rule */
+  .f53-rule { position:absolute; z-index:10; top:452px; left:96px; width:100%; height:2px;
+    background:linear-gradient(90deg, #2e4538 0%, #2e4538 60px, rgba(46,69,56,.35) 60px, rgba(46,69,56,.35) 300px, rgba(46,69,56,.08) 300px);
+  }
+
+  /* Numbered list */
+  .f53-list { position:absolute; z-index:10; top:490px; left:96px; right:96px; display:flex; flex-direction:column; }
+  .f53-item { display:flex; align-items:baseline; gap:32px; padding:20px 0; border-bottom:1px solid rgba(46,69,56,.18); }
+  .f53-item:last-child { border-bottom:none; }
+  .f53-item .n {
+    flex:none; width:76px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.32em; text-transform:uppercase; color:#6b5a42; font-weight:700;
+  }
+  .f53-item .lbl {
+    flex:1; font-family:var(--font-display); font-weight:500; font-size:40px; line-height:1.1; letter-spacing:-.018em; color:#2a2a26;
+  }
+  .f53-item.hi .lbl { font-style:italic; font-weight:500; color:#2e4538; }
+
+  /* Bottom stamp: FOR OREGON */
+  .f53-stamp { position:absolute; z-index:10; bottom:82px; right:96px;
+    display:inline-flex; align-items:center; gap:14px;
+    padding:14px 26px 14px 26px;
+    border:2px solid #2e4538;
+    background:rgba(255,255,255,.0);
+    font-family:var(--font-mono); font-size:20px; letter-spacing:.5em; text-transform:uppercase; color:#2e4538; font-weight:700;
+    transform: rotate(-2deg);
+    box-shadow: 0 4px 0 rgba(46,69,56,.14);
+  }
+  .f53-stamp::before { content:''; display:inline-block; width:8px; height:8px; background:#5a7060; border-radius:50%; }
+
+  /* Bottom credit */
+  .f53-credit { position:absolute; z-index:10; bottom:96px; left:96px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,69,56,.5);
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f53 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-          color:#2e4538;
-        }
-        .f53-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f53-mast img { height:56px; width:auto; }
-        .f53-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
-        .f53-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f53-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:96px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
-        .f53-head em { font-style:italic; color:#5a7060; }
-        /* Progress rows */
-        .f53-rows { position:absolute; left:76px; right:76px; top:400px; z-index:5; display:flex; flex-direction:column; gap:12px; }
-        .f53-row { display:grid; grid-template-columns:38px 300px 1fr 44px; gap:20px; align-items:center; padding:12px 18px; background:rgba(246,242,232,.7); border:1.5px solid rgba(46,69,56,.35); }
-        .f53-row .tick { font-family:var(--font-display); font-style:italic; font-size:28px; color:#5a7060; line-height:1; text-align:center; }
-        .f53-row .lbl { font-family:var(--font-display); font-weight:500; font-size:28px; letter-spacing:-.015em; color:#2e4538; }
-        .f53-row .bar { height:10px; background:rgba(46,69,56,.15); position:relative; }
-        .f53-row .bar::after { content:''; position:absolute; left:0; top:0; bottom:0; background:linear-gradient(90deg, #5a7060, #2e4538); width:100%; }
-        .f53-row.b .bar::after { width:82%; }
-        .f53-row.c .bar::after { width:65%; }
-        .f53-row.d .bar::after { width:48%; }
-        .f53-row.e .bar::after { width:32%; }
-        .f53-row .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); text-align:right; }
-        /* Bottom plate */
-        .f53-plate { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding:20px 26px; background:#2e4538; color:#e0d6bc; display:flex; align-items:baseline; justify-content:space-between; gap:16px; }
-        .f53-plate .lbl { font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.7); }
-        .f53-plate .em { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:56px; line-height:1; letter-spacing:-.02em; color:#e0d6bc; }
-        .f53-tag { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f53-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f53-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f53">
-          <div class="f53-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Progress 53 · We Are Building</span>
-          </div>
-          <span class="f53-kick">We are building</span>
-          <h1 class="f53-head">We are <em>building.</em></h1>
-          <div class="f53-rows">
-            <div class="f53-row a"><span class="tick">✓</span><span class="lbl">Stronger candidates</span><span class="bar"></span><span class="n">01</span></div>
-            <div class="f53-row b"><span class="tick">✓</span><span class="lbl">Better organization</span><span class="bar"></span><span class="n">02</span></div>
-            <div class="f53-row c"><span class="tick">✓</span><span class="lbl">More volunteers</span><span class="bar"></span><span class="n">03</span></div>
-            <div class="f53-row d"><span class="tick">✓</span><span class="lbl">Local momentum</span><span class="bar"></span><span class="n">04</span></div>
-            <div class="f53-row e"><span class="tick">✓</span><span class="lbl">A lasting regional voice</span><span class="bar"></span><span class="n">05</span></div>
-          </div>
-          <div class="f53-plate"><span class="lbl">— The work is</span><span class="em">For Oregon.</span></div>
-          <div class="f53-tag"><span>Success measured five years from now</span><span class="em">— That's the work we're committed to.</span></div>
-          <div class="f53-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
-      
-    
+  <div class="canvas s-light">
+    <div class="f53">
+      <div class="f53-hatch"></div>
+
+      <div class="f53-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f53-stars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f53-tag"><span class="bar"></span>Field Report &middot; 2026</div>
+
+      <h1 class="f53-head">We are <em>building</em></h1>
+      <div class="f53-rule"></div>
+
+      <div class="f53-list">
+        <div class="f53-item hi"><span class="n">i</span><span class="lbl">Stronger candidates</span></div>
+        <div class="f53-item"><span class="n">ii</span><span class="lbl">Better organization</span></div>
+        <div class="f53-item hi"><span class="n">iii</span><span class="lbl">More campaign support</span></div>
+        <div class="f53-item"><span class="n">iv</span><span class="lbl">Local momentum</span></div>
+        <div class="f53-item hi"><span class="n">v</span><span class="lbl">A lasting regional voice</span></div>
+      </div>
+
+      <div class="f53-credit">Report &middot; No. 53</div>
+      <div class="f53-stamp">FOR OREGON</div>
+    </div>
     <div class="grain"></div>
   </div>
 </body>

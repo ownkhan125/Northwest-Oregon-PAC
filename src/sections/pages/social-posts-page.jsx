@@ -110,12 +110,17 @@ function Thumbnail({ src, width, height, title }) {
 
 function CardShell({ post, onOpen, aspect, children, footer, thumbSrc, thumbHeight }) {
   return (
-    <m.article variants={cardReveal} className="group h-full">
+    <m.article
+      variants={cardReveal}
+      whileHover={{ y: -6 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 22 }}
+      className="group h-full"
+    >
       <button
         type="button"
         onClick={onOpen}
         aria-label={`Preview ${post.title}`}
-        className="border-border bg-surface hover:border-primary/50 focus-visible:ring-primary/40 relative isolate flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl border text-left transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_36px_70px_-38px_rgba(46,69,56,0.55)] focus-visible:ring-2 focus-visible:outline-none"
+        className="border-border bg-surface hover:border-primary hover:bg-primary hover:text-primary-fg focus-visible:ring-primary/40 relative isolate flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl border text-left transition-[background-color,border-color,color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_28px_60px_-30px_rgba(46,69,56,0.55)] focus-visible:ring-2 focus-visible:outline-none"
       >
         <span className={cn('relative block w-full overflow-hidden', aspect)}>
           <Thumbnail src={thumbSrc} width={1080} height={thumbHeight} title={post.title} />
@@ -152,15 +157,15 @@ function FeedCard({ post, onOpen }) {
       thumbHeight={1080}
       footer={
         <span className="flex flex-1 flex-col gap-2.5 p-5 sm:p-6">
-          <span className="text-foreground/55 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase">
+          <span className="text-foreground/55 group-hover:text-primary-fg/70 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase transition-colors duration-500">
             <span>Feed {String(post.n).padStart(2, '0')}</span>
-            <span aria-hidden className="bg-border h-3 w-px" />
+            <span aria-hidden className="bg-border group-hover:bg-primary-fg/30 h-3 w-px transition-colors duration-500" />
             <span>{post.size}</span>
           </span>
-          <span className="font-display text-foreground group-hover:text-primary text-lg leading-tight font-medium tracking-tight transition-colors sm:text-xl">
+          <span className="font-display text-foreground group-hover:text-primary-fg text-lg leading-tight font-medium tracking-tight transition-colors duration-500 sm:text-xl">
             {post.title}
           </span>
-          <span className="text-foreground/70 line-clamp-2 text-sm">{post.caption}</span>
+          <span className="text-foreground/70 group-hover:text-primary-fg/85 line-clamp-2 text-sm transition-colors duration-500">{post.caption}</span>
         </span>
       }
     />
@@ -177,10 +182,10 @@ function StoryCard({ post, onOpen }) {
       thumbHeight={1920}
       footer={
         <span className="flex flex-1 flex-col gap-2 p-4">
-          <span className="text-foreground/55 font-mono text-[9px] tracking-[0.25em] uppercase">
+          <span className="text-foreground/55 group-hover:text-primary-fg/70 font-mono text-[9px] tracking-[0.25em] uppercase transition-colors duration-500">
             Story {String(post.n).padStart(2, '0')}
           </span>
-          <span className="font-display text-foreground group-hover:text-primary text-sm leading-snug font-medium tracking-tight transition-colors sm:text-base">
+          <span className="font-display text-foreground group-hover:text-primary-fg text-sm leading-snug font-medium tracking-tight transition-colors duration-500 sm:text-base">
             {post.title}
           </span>
         </span>
@@ -199,15 +204,15 @@ function CarouselCard({ post, onOpen }) {
       thumbHeight={1080}
       footer={
         <span className="flex flex-1 flex-col gap-2.5 p-5 sm:p-6">
-          <span className="text-foreground/55 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase">
+          <span className="text-foreground/55 group-hover:text-primary-fg/70 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase transition-colors duration-500">
             <span>Carousel {String(post.n).padStart(2, '0')}</span>
-            <span aria-hidden className="bg-border h-3 w-px" />
+            <span aria-hidden className="bg-border group-hover:bg-primary-fg/30 h-3 w-px transition-colors duration-500" />
             <span>{post.slideCount} slides</span>
           </span>
-          <span className="font-display text-foreground group-hover:text-primary text-lg leading-tight font-medium tracking-tight transition-colors sm:text-xl">
+          <span className="font-display text-foreground group-hover:text-primary-fg text-lg leading-tight font-medium tracking-tight transition-colors duration-500 sm:text-xl">
             {post.title}
           </span>
-          <span className="text-foreground/70 line-clamp-2 text-sm">{post.caption}</span>
+          <span className="text-foreground/70 group-hover:text-primary-fg/85 line-clamp-2 text-sm transition-colors duration-500">{post.caption}</span>
           <span aria-hidden className="mt-1 flex items-center gap-1.5">
             {post.slides.map((s, i) => (
               <span

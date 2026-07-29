@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Story 18 · Communities thrive when neighbours work together. — Northwest Oregon PAC</title>
+<title>Story 18 · Strong leadership and long-term investment. — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,100 +11,83 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .s18 { position:absolute; inset:0; z-index:5; background:#0e1610; overflow:hidden; }
+  .s18-photo { position:absolute; z-index:1; inset:0; }
+  .s18-photo img { width:100%; height:100%; object-fit:cover; object-position:center 60%; filter:saturate(.75) contrast(1.15) brightness(.5); }
+  .s18-photo::after { content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(90% 60% at 50% 30%, rgba(46,69,56,.35), transparent 65%),
+      linear-gradient(180deg, rgba(10,15,11,.4) 0%, rgba(10,15,11,.1) 40%, rgba(10,15,11,.9) 100%);
+  }
+
+  /* upper: two half-cards side-by-side */
+  .s18-mast { position:absolute; z-index:12; top:132px; left:96px; }
+  .s18-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.55)); }
+  .s18-kick { position:absolute; z-index:10; top:150px; right:96px; font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.75); display:flex; align-items:center; gap:18px; }
+  .s18-kick .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+
+  .s18-cards { position:absolute; z-index:10; left:96px; right:96px; top:340px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .s18-card { padding:44px 40px; background:rgba(224,214,188,.08); border:1px solid rgba(224,214,188,.25); backdrop-filter: blur(8px); }
+  .s18-card .lbl { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.7); margin-bottom:26px; }
+  .s18-card .w { font-family:var(--font-display); font-weight:500; font-size:58px; line-height:1.0; letter-spacing:-.02em; color:#f6f2e8; }
+  .s18-card .w em { font-style:italic; font-weight:400; color:#e0d6bc; }
+  .s18-card + .s18-card { transform:translateY(30px); }
+
+  .s18-plus { position:absolute; z-index:11; left:50%; top:466px; transform:translate(-50%, 0); width:56px; height:56px; border:1.5px solid rgba(224,214,188,.6); background:#0e1610; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); color:#e0d6bc; font-size:24px; }
+
+  /* Big equals result */
+  .s18-eq { position:absolute; z-index:10; left:96px; right:96px; top:820px; text-align:center; font-family:var(--font-mono); font-size:22px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.55); }
+  .s18-eq::before, .s18-eq::after { content:''; display:inline-block; width:80px; height:1px; background:currentColor; vertical-align:middle; margin:0 20px; opacity:.6; }
+
+  .s18-result { position:absolute; z-index:10; left:96px; right:96px; top:920px;
+    font-family:var(--font-display); font-weight:500; font-size:132px; line-height:.96; letter-spacing:-.03em; color:#f6f2e8; text-shadow:0 6px 32px rgba(0,0,0,.55);
+  }
+  .s18-result em { font-style:italic; font-weight:400; color:#e0d6bc; }
+
+  .s18-bot { position:absolute; z-index:10; left:96px; right:96px; top:1420px; }
+  .s18-bot .cap { font-family:var(--font-mono); font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.65); display:flex; align-items:center; gap:14px; margin-bottom:32px; }
+  .s18-bot .cap .bar { width:52px; height:1px; background:currentColor; }
+  .s18-bot .h { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:70px; line-height:1.06; letter-spacing:-.02em; color:#e0d6bc; }
+
+  .s18-foot { position:absolute; z-index:10; left:96px; right:96px; bottom:150px; display:flex; align-items:center; justify-content:space-between; padding-top:32px; border-top:1px solid rgba(224,214,188,.22); }
+  .s18-foot .txt { font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(224,214,188,.55); }
+</style>
 </head>
 <body>
-  <div class="canvas story s-sand">
-    <style>
-        .s18 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 15%, rgba(240,224,180,.6) 0%, transparent 55%),
-            linear-gradient(180deg, #e0d6bc 0%, #d7c592 100%);
-          color:#3a2c14;
-        }
-        .s18::before {
-          content:''; position:absolute; inset:0; opacity:.5;
-          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.2  0 0 0 0 0.12  0 0 0 0.32 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-          mix-blend-mode:multiply; pointer-events:none;
-        }
-        .s18-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(58,44,20,.7); }
-        .s18-mast img { height:52px; width:auto; }
-        .s18-kicker { position:absolute; top:200px; left:80px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.42em; text-transform:uppercase; color:rgba(58,44,20,.55); display:inline-flex; align-items:center; gap:16px; }
-        .s18-kicker::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .s18-head { position:absolute; top:250px; left:80px; right:80px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:82px; line-height:1.02; letter-spacing:-.022em; color:#3a2c14; max-width:940px; }
-        .s18-head em { font-style:italic; color:#6b5a42; }
-        /* Loom diagram — a woven grid */
-        .s18-loom { position:absolute; left:80px; right:80px; top:580px; height:640px; z-index:4;
-          background:#f6f2e8;
-          border:1px solid rgba(58,44,20,.35);
-          padding:20px;
-          box-shadow:0 30px 60px -30px rgba(58,44,20,.5);
-        }
-        /* Warp (vertical) threads */
-        .s18-loom::before {
-          content:''; position:absolute; inset:20px;
-          background: repeating-linear-gradient(90deg,
-            #6b5a42 0 4px, transparent 4px 26px,
-            #2e4538 26px 30px, transparent 30px 52px);
-        }
-        /* Weft (horizontal) threads — offset color band pattern */
-        .s18-loom::after {
-          content:''; position:absolute; inset:20px;
-          background: repeating-linear-gradient(0deg,
-            #d7c592 0 6px, #e0d6bc 6px 12px,
-            #c8ac70 12px 20px, #e0d6bc 20px 30px);
-          mix-blend-mode:multiply; opacity:.85;
-        }
-        /* Selvage labels around the loom */
-        .s18-loom .selvage { position:absolute; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(58,44,20,.6); }
-        .s18-loom .selvage.top    { top:-24px; left:20px; right:20px; display:flex; justify-content:space-between; }
-        .s18-loom .selvage.bottom { bottom:-24px; left:20px; right:20px; display:flex; justify-content:space-between; }
-        .s18-loom .selvage.left   { left:-40px; top:20px; bottom:20px; writing-mode:vertical-rl; transform:rotate(180deg); display:flex; align-items:center; justify-content:center; letter-spacing:.36em; }
-        .s18-loom .selvage.right  { right:-40px; top:20px; bottom:20px; writing-mode:vertical-rl; display:flex; align-items:center; justify-content:center; letter-spacing:.36em; }
-        /* Overlaid caption card on the loom */
-        .s18-caption {
-          position:absolute; left:120px; right:120px; top:calc(580px + 260px); z-index:6;
-          background:#f6f2e8; border:1.5px solid #3a2c14; padding:28px 30px;
-          box-shadow:0 26px 60px -30px rgba(58,44,20,.55);
-          transform:rotate(-1deg);
-        }
-        .s18-caption .k { font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(58,44,20,.6); }
-        .s18-caption .v { margin-top:10px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; line-height:1.16; letter-spacing:-.015em; color:#3a2c14; }
-        .s18-swatch { position:absolute; bottom:170px; left:80px; z-index:6; display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(58,44,20,.6); }
-        .s18-swatch .chip { display:inline-block; width:22px; height:22px; border:1px solid rgba(58,44,20,.5); }
-        .s18-swatch .chip.a { background:#6b5a42; }
-        .s18-swatch .chip.b { background:#2e4538; }
-        .s18-swatch .chip.c { background:#c8ac70; }
-        .s18-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(58,44,20,.55); }
-      </style>
-        <div class="s18">
-          <div class="s18-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Weave 18 · Field Textile</span>
-          </div>
-          <span class="s18-kicker">— A study in the warp &amp; weft</span>
-          <h1 class="s18-head">Communities thrive when neighbours work <em>together.</em></h1>
-          <div class="s18-loom">
-            <span class="selvage top"><span>Warp · Values</span><span>Selvage</span></span>
-            <span class="selvage bottom"><span>Weft · Actions</span><span>Loom · Northwest</span></span>
-            <span class="selvage left">Prosperity · Safety · Voice</span>
-            <span class="selvage right">Volunteer · Vote · Show up</span>
-          </div>
-          <div class="s18-caption">
-            <span class="k">— Fig. 18 · Finished cloth</span>
-            <div class="v">That's how lasting change begins.</div>
-          </div>
-          <div class="s18-swatch">
-            <span class="chip a"></span><span>Crimson</span>
-            <span class="chip b"></span><span>Forest</span>
-            <span class="chip c"></span><span>Ochre</span>
-          </div>
-          <div class="s18-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas story s-ink on-photo">
+    <div class="s18">
+      <div class="s18-photo"><img src="../assets/img/hero.jpg" alt="" /></div>
+
+      <div class="s18-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="s18-kick"><span class="bar"></span>The Equation</div>
+
+      <div class="s18-cards">
+        <div class="s18-card">
+          <div class="lbl">Ingredient I</div>
+          <div class="w">Strong <em>leadership</em></div>
         </div>
-      
-    
+        <div class="s18-card">
+          <div class="lbl">Ingredient II</div>
+          <div class="w">Long-term <em>investment</em></div>
+        </div>
+      </div>
+
+      <div class="s18-eq">Equals</div>
+
+      <h1 class="s18-result">Help communities <em>thrive.</em></h1>
+
+      <div class="s18-bot">
+        <div class="cap"><span class="bar"></span>How Lasting Change Begins</div>
+        <p class="h">That's how lasting change begins.</p>
+      </div>
+
+      <div class="s18-foot">
+        <span class="txt">NWOP · A Formula</span>
+        <span class="txt">Vol. XVIII · 2026</span>
+      </div>
+    </div>
     <div class="grain"></div>
   </div>
 </body>

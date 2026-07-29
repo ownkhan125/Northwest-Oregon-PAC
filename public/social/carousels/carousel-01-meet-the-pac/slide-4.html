@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>For Northwest Oregon · 4/7 — Northwest Oregon PAC</title>
+<title>It Takes · 4/7 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,56 +11,72 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c01-4 { position:absolute; inset:0; z-index:5; overflow:hidden; background:#070c09; }
+  .c01-4-bg { position:absolute; inset:0; z-index:1; }
+  .c01-4-bg img { position:absolute; left:0; top:0; width:100%; height:52%; object-fit:cover; object-position:center 30%;
+    filter:saturate(.55) contrast(1.3) brightness(.42); }
+  .c01-4-bg::after { content:''; position:absolute; inset:0; background:
+    linear-gradient(180deg, rgba(6,10,7,.55) 0%, rgba(6,10,7,.35) 30%, rgba(6,10,7,.98) 55%, rgba(6,10,7,1) 100%);
+  }
+  .c01-4-scan { position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.1;
+    background: repeating-linear-gradient(180deg, transparent 0 3px, rgba(0,0,0,.5) 3px 4px);
+    mix-blend-mode:multiply;
+  }
+  .c01-4-mast { position:absolute; z-index:14; top:72px; left:96px; }
+  .c01-4-mast img { height:60px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  .c01-4-stars { position:absolute; z-index:14; top:96px; right:96px; display:flex; gap:14px; opacity:.7; }
+  .c01-4-orn { position:absolute; z-index:10; left:96px; top:400px; display:flex; align-items:center; gap:22px;
+    color:rgba(224,214,188,.75); font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase;
+  }
+  .c01-4-orn .bar { width:64px; height:1px; background:currentColor; opacity:.7; }
+  .c01-4-head { position:absolute; z-index:10; left:96px; right:96px; top:460px;
+    font-family:var(--font-display); font-weight:500; font-size:82px; line-height:1.02; letter-spacing:-.028em;
+    color:#f6f2e8; text-shadow:0 8px 40px rgba(0,0,0,.55);
+  }
+  .c01-4-head em { font-style:italic; font-weight:400; color:#e0d6bc; }
+  .c01-4-lbl { position:absolute; z-index:10; left:96px; top:700px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.6);
+  }
+  .c01-4-list { position:absolute; z-index:10; left:96px; right:96px; top:748px;
+    display:grid; grid-template-columns:1fr 1fr; gap:14px 40px;
+  }
+  .c01-4-list .item { display:flex; align-items:baseline; gap:18px;
+    padding:14px 0 16px; border-top:1px solid rgba(224,214,188,.28);
+    font-family:var(--font-display); font-weight:500; font-size:30px; letter-spacing:-.01em; color:#f6f2e8;
+  }
+  .c01-4-list .item em { font-style:italic; font-weight:400; color:#e0d6bc; }
+  .c01-4-list .item .n { font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; color:rgba(224,214,188,.55); }
+  .c01-4-index { position:absolute; z-index:10; right:96px; bottom:96px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.55);
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light on-photo">
-    
-  <div class="c-checkimg-bg">
-    <img src="../../assets/img/campaign.jpg" alt="" />
-    <div class="c-checkimg-wash "></div>
-    <div class="c-checkimg-stripe"></div>
-  </div>
-  <div class="zone c-checkimg">
-    <div class="c-checkimg-top">
-      <div class="c-kicker">Slide 4</div>
-      <h1 class="display lg">Elections don't become competitive <em>by accident.</em></h1>
-      <p class="c-checkimg-sub">It takes:</p>
+  <div class="canvas on-photo" style="background:#050807;">
+    <div class="c01-4">
+      <div class="c01-4-bg"><img src="../../assets/img/campaign.jpg" alt="" /></div>
+      <div class="c01-4-scan"></div>
+
+      <div class="c01-4-mast"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c01-4-stars" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="c01-4-orn"><span class="bar"></span></div>
+      <h2 class="c01-4-head">Elections don't become competitive by <em>accident.</em></h2>
+      <div class="c01-4-lbl">It takes:</div>
+      <div class="c01-4-list">
+        <div class="item"><span>&middot; Candidate <em>recruitment</em></span></div>
+        <div class="item"><span>&middot; Campaign <em>support</em></span></div>
+        <div class="item"><span>&middot; Local <em>fundraising</em></span></div>
+        <div class="item"><span>&middot; Long-term <em>commitment</em></span></div>
+      </div>
     </div>
-    <ul class="c-checkimg-items">
-      <li>
-            <span class="c-checkimg-num">01</span>
-            <span class="c-checkimg-mark">✓</span>
-            <span class="c-checkimg-txt">Candidate recruitment</span>
-          </li><li>
-            <span class="c-checkimg-num">02</span>
-            <span class="c-checkimg-mark">✓</span>
-            <span class="c-checkimg-txt">Volunteer networks</span>
-          </li><li>
-            <span class="c-checkimg-num">03</span>
-            <span class="c-checkimg-mark">✓</span>
-            <span class="c-checkimg-txt">Community partnerships</span>
-          </li><li>
-            <span class="c-checkimg-num">04</span>
-            <span class="c-checkimg-mark">✓</span>
-            <span class="c-checkimg-txt">Local fundraising</span>
-          </li><li>
-            <span class="c-checkimg-num">05</span>
-            <span class="c-checkimg-mark">✓</span>
-            <span class="c-checkimg-txt">Long-term commitment</span>
-          </li>
-    </ul>
-    
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
+
     <div class="grain"></div>
   </div>
 </body>

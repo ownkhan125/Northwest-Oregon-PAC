@@ -71,12 +71,17 @@ const POSTS = [
 
 function PostCard({ post, index, onOpen }) {
   return (
-    <m.article variants={cardReveal} className="group h-full">
+    <m.article
+      variants={cardReveal}
+      whileHover={{ y: -6 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 22 }}
+      className="group h-full"
+    >
       <button
         type="button"
         onClick={() => onOpen(index)}
         aria-label={`Preview ${post.title}`}
-        className="border-border bg-surface hover:border-primary/50 focus-visible:ring-primary/40 relative isolate flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl border text-left transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_36px_70px_-38px_rgba(46,69,56,0.55)] focus-visible:ring-2 focus-visible:outline-none"
+        className="border-border bg-surface hover:border-primary hover:bg-primary hover:text-primary-fg focus-visible:ring-primary/40 relative isolate flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl border text-left transition-[background-color,border-color,color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_28px_60px_-30px_rgba(46,69,56,0.55)] focus-visible:ring-2 focus-visible:outline-none"
       >
         <span className="relative block aspect-square w-full overflow-hidden">
           <img
@@ -103,12 +108,12 @@ function PostCard({ post, index, onOpen }) {
           </span>
         </span>
         <span className="flex flex-1 flex-col gap-2 p-5 sm:p-6">
-          <span className="text-foreground/55 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase">
+          <span className="text-foreground/55 group-hover:text-primary-fg/70 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase transition-colors duration-500">
             <span>Post {String(index + 1).padStart(2, '0')}</span>
-            <span aria-hidden className="bg-border h-3 w-px" />
+            <span aria-hidden className="bg-border group-hover:bg-primary-fg/30 h-3 w-px transition-colors duration-500" />
             <span>1080 × 1080</span>
           </span>
-          <span className="font-display text-foreground group-hover:text-primary text-lg leading-tight font-medium tracking-tight transition-colors sm:text-xl">
+          <span className="font-display text-foreground group-hover:text-primary-fg text-lg leading-tight font-medium tracking-tight transition-colors duration-500 sm:text-xl">
             {post.title}
           </span>
         </span>

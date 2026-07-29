@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>For Northwest Oregon · 6/7 — Northwest Oregon PAC</title>
+<title>We Want · 6/7 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,53 +11,68 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c01-6 { position:absolute; inset:0; z-index:5; overflow:hidden; background:#070c09; }
+  .c01-6-bg { position:absolute; inset:0; z-index:1; }
+  .c01-6-bg img { width:100%; height:100%; object-fit:cover; object-position:center 40%;
+    filter:saturate(.5) contrast(1.28) brightness(.28); }
+  .c01-6-bg::after { content:''; position:absolute; inset:0; background:
+    radial-gradient(70% 55% at 50% 40%, rgba(20,30,22,.5) 0%, rgba(6,10,7,.95) 80%);
+  }
+  .c01-6-scan { position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.1;
+    background: repeating-linear-gradient(180deg, transparent 0 3px, rgba(0,0,0,.5) 3px 4px);
+    mix-blend-mode:multiply;
+  }
+  .c01-6-mast { position:absolute; z-index:14; top:72px; left:96px; }
+  .c01-6-mast img { height:60px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  .c01-6-stars { position:absolute; z-index:14; top:96px; right:96px; display:flex; gap:14px; opacity:.7; }
+  .c01-6-orn { position:absolute; z-index:10; left:96px; top:290px; display:flex; align-items:center; gap:22px;
+    color:rgba(224,214,188,.75); font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase;
+  }
+  .c01-6-orn .bar { width:64px; height:1px; background:currentColor; opacity:.7; }
+  .c01-6-head { position:absolute; z-index:10; left:96px; right:96px; top:350px;
+    font-family:var(--font-display); font-weight:500; font-size:66px; line-height:1.02; letter-spacing:-.026em;
+    color:#f6f2e8; text-shadow:0 8px 40px rgba(0,0,0,.55);
+  }
+  .c01-6-head em { font-style:italic; font-weight:400; color:#e0d6bc; }
+  .c01-6-list { position:absolute; z-index:10; left:96px; right:96px; top:520px; display:flex; flex-direction:column; gap:0; }
+  .c01-6-list .row { display:flex; align-items:baseline; gap:26px; padding:20px 0;
+    border-top:1px solid rgba(224,214,188,.28);
+    font-family:var(--font-display); font-weight:500; font-size:40px; letter-spacing:-.015em; color:#f6f2e8;
+  }
+  .c01-6-list .row:last-child { border-bottom:1px solid rgba(224,214,188,.28); }
+  .c01-6-list .row em { font-style:italic; font-weight:400; color:#e0d6bc; }
+  .c01-6-list .row .n { font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; color:rgba(224,214,188,.55); min-width:48px; }
+  .c01-6-index { position:absolute; z-index:10; right:96px; bottom:96px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.55);
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    
-  <div class="glow sage" style="width:720px;height:720px;top:-200px;right:-160px;opacity:.5"></div>
-  <div class="glow forest" style="width:820px;height:820px;bottom:-260px;left:-140px;opacity:.5"></div>
-  <div class="zone c-checksolid">
-    <div class="c-checksolid-head">
-      <div class="c-kicker">Slide 6</div>
-      <h1 class="display xl">We want a Northwest <em>Oregon where:</em></h1>
-      
+  <div class="canvas on-photo" style="background:#050807;">
+    <div class="c01-6">
+      <div class="c01-6-bg"><img src="../../assets/img/hero.jpg" alt="" /></div>
+      <div class="c01-6-scan"></div>
+
+      <div class="c01-6-mast"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c01-6-stars" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="c01-6-orn"><span class="bar"></span></div>
+      <h2 class="c01-6-head">We want a Northwest Oregon <em>where:</em></h2>
+
+      <div class="c01-6-list">
+        <div class="row">Communities are <em>heard</em></div>
+        <div class="row">Candidates are <em>supported</em></div>
+        <div class="row">Elections are <em>competitive</em></div>
+        <div class="row">Local voices <em>matter</em></div>
+      </div>
     </div>
-    <ul class="c-checksolid-items">
-      <li>
-            <span class="c-num">01</span>
-            <span class="c-check">✓</span>
-            <span class="c-txt">Communities are heard</span>
-            <span class="c-rule"></span>
-          </li><li>
-            <span class="c-num">02</span>
-            <span class="c-check">✓</span>
-            <span class="c-txt">Candidates are supported</span>
-            <span class="c-rule"></span>
-          </li><li>
-            <span class="c-num">03</span>
-            <span class="c-check">✓</span>
-            <span class="c-txt">Elections are competitive</span>
-            <span class="c-rule"></span>
-          </li><li>
-            <span class="c-num">04</span>
-            <span class="c-check">✓</span>
-            <span class="c-txt">Local voices matter</span>
-            <span class="c-rule"></span>
-          </li>
-    </ul>
-    
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
+
     <div class="grain"></div>
   </div>
 </body>

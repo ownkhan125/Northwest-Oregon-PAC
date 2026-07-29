@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>For Northwest Oregon · 2/7 — Northwest Oregon PAC</title>
+<title>Overlooked · 2/7 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,32 +11,65 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c01-2 { position:absolute; inset:0; z-index:5; overflow:hidden; background:#070c09; }
+  .c01-2-bg { position:absolute; inset:0; z-index:1; }
+  .c01-2-bg img { position:absolute; right:0; top:0; width:60%; height:100%; object-fit:cover;
+    object-position:60% 45%; filter:saturate(.5) contrast(1.28) brightness(.42); }
+  .c01-2-bg::after { content:''; position:absolute; inset:0; background:
+    linear-gradient(90deg, rgba(6,10,7,.98) 0%, rgba(6,10,7,.94) 32%, rgba(20,30,22,.5) 55%, rgba(20,30,22,.15) 75%, rgba(6,10,7,.75) 100%);
+  }
+  .c01-2-scan { position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.09;
+    background: repeating-linear-gradient(180deg, transparent 0 3px, rgba(0,0,0,.5) 3px 4px);
+    mix-blend-mode:multiply;
+  }
+  .c01-2-mast { position:absolute; z-index:14; top:72px; left:96px; }
+  .c01-2-mast img { height:60px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  .c01-2-stars { position:absolute; z-index:14; top:96px; right:96px; display:flex; gap:14px; opacity:.7; }
+  .c01-2-orn { position:absolute; z-index:10; left:96px; top:290px; display:flex; align-items:center; gap:22px;
+    color:rgba(224,214,188,.75); font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase;
+  }
+  .c01-2-orn .bar { width:64px; height:1px; background:currentColor; opacity:.7; }
+  .c01-2-head { position:absolute; z-index:10; left:96px; right:560px; top:360px;
+    font-family:var(--font-display); font-weight:500; font-size:78px; line-height:1.02; letter-spacing:-.028em;
+    color:#f6f2e8; text-shadow: 0 8px 40px rgba(0,0,0,.6);
+  }
+  .c01-2-head em { font-style:italic; font-weight:400; color:#e0d6bc; }
+  .c01-2-sep { position:absolute; z-index:10; left:96px; top:700px; width:120px; height:2px; background:rgba(224,214,188,.55); }
+  .c01-2-body { position:absolute; z-index:10; left:96px; right:520px; top:740px;
+    font-family:var(--font-display); font-weight:400; font-size:28px; line-height:1.45; letter-spacing:-.008em;
+    color:#e0d6bc;
+  }
+  .c01-2-index { position:absolute; z-index:10; right:96px; bottom:96px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.55);
+  }
+  .c01-2-spine { position:absolute; z-index:8; left:56px; top:280px; bottom:180px; width:1px;
+    background:linear-gradient(180deg, rgba(224,214,188,0), rgba(224,214,188,.4) 22%, rgba(224,214,188,.4) 78%, rgba(224,214,188,0));
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest on-photo">
-    
-  <div class="c-mani-bg"><img src="../../assets/img/community.jpg" alt="" /><div class="c-mani-wash "></div></div>
-  <div class="zone c-mani left">
-    <div class="c-kicker">Slide 2</div>
-    <div class="c-mani-body">
-      <h1 class="display lg">Northwest Oregon has too often <em>been overlooked.</em></h1>
-      <p class="c-mani-p  md">Communities across our region have been treated as "uncompetitive," leaving voters with fewer resources, less engagement, and fewer opportunities to build <em>lasting political momentum.</em></p>
+  <div class="canvas on-photo" style="background:#050807;">
+    <div class="c01-2">
+      <div class="c01-2-bg"><img src="../../assets/img/oregon-roads.png" alt="" /></div>
+      <div class="c01-2-scan"></div>
+
+      <div class="c01-2-mast"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c01-2-stars" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="c01-2-spine"></div>
+
+      <div class="c01-2-orn"><span class="bar"></span></div>
+      <h2 class="c01-2-head">Northwest Oregon has too often been <em>overlooked.</em></h2>
+      <div class="c01-2-sep"></div>
+      <p class="c01-2-body">Communities across our region have been treated as &ldquo;uncompetitive,&rdquo; leaving voters with fewer resources, less engagement, and fewer opportunities to build lasting political momentum.</p>
     </div>
-    <div class="c-mani-mark">
-      <span class="c-mani-line"></span>
-      <span class="c-mani-brand">NORTHWEST OREGON PAC</span>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
+
     <div class="grain"></div>
   </div>
 </body>

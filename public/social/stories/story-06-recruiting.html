@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Story 06 · We're recruiting tomorrow's community leaders today. — Northwest Oregon PAC</title>
+<title>Story 06 · Recruiting tomorrow's leaders — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,136 +11,68 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .s06 { position:absolute; inset:0; z-index:5; background:#0e120f; overflow:hidden; }
+  .s06-photo { position:absolute; z-index:1; inset:0; }
+  .s06-photo img { width:100%; height:100%; object-fit:cover; object-position:center 40%; filter:saturate(.7) contrast(1.15) brightness(.5); }
+  .s06-photo::after { content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(10,15,11,.55) 0%, rgba(10,15,11,0) 35%, rgba(10,15,11,.65) 70%, rgba(10,15,11,.95) 100%),
+      radial-gradient(80% 40% at 50% 15%, rgba(46,69,56,.35), transparent 65%);
+  }
+  .s06-mast { position:absolute; z-index:12; top:132px; left:96px; }
+  .s06-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.5)); }
+  .s06-kick { position:absolute; z-index:10; top:150px; right:96px; font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.7); display:flex; align-items:center; gap:18px; }
+  .s06-kick .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+
+  /* diagonal seam */
+  .s06-seam { position:absolute; z-index:2; left:-100px; right:-100px; top:900px; height:2px;
+    background:linear-gradient(90deg, transparent 0%, rgba(224,214,188,.35) 20%, rgba(224,214,188,.35) 80%, transparent 100%);
+    transform:rotate(-3deg);
+  }
+
+  .s06-top { position:absolute; z-index:10; left:96px; right:96px; top:400px; }
+  .s06-cap { font-family:var(--font-mono); font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.7); display:flex; align-items:center; gap:16px; margin-bottom:34px; }
+  .s06-cap .bar { width:56px; height:1px; background:currentColor; }
+  .s06-h { font-family:var(--font-display); font-weight:500; font-size:110px; line-height:.98; letter-spacing:-.025em; color:#f6f2e8; text-shadow:0 6px 32px rgba(0,0,0,.5); }
+  .s06-h em { font-style:italic; font-weight:400; color:#e0d6bc; }
+
+  .s06-bottom { position:absolute; z-index:10; left:96px; right:96px; top:1150px; }
+  .s06-ask { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:150px; line-height:1.0; letter-spacing:-.03em; color:#e0d6bc; text-shadow:0 6px 32px rgba(0,0,0,.5); }
+  .s06-mark { position:absolute; z-index:11; right:96px; top:1180px; font-family:var(--font-display); font-style:italic; font-weight:400; font-size:280px; line-height:.7; color:rgba(224,214,188,.15); }
+
+  .s06-foot { position:absolute; z-index:10; left:96px; right:96px; bottom:150px; display:flex; align-items:center; justify-content:space-between; }
+  .s06-cta { display:flex; align-items:center; gap:20px; font-family:var(--font-display); font-style:italic; font-size:38px; color:#e0d6bc; letter-spacing:-.01em; }
+  .s06-cta .arrow { width:52px; height:1px; background:#e0d6bc; position:relative; }
+  .s06-cta .arrow::after { content:''; position:absolute; right:-1px; top:-4px; width:8px; height:8px; border-right:1.5px solid #e0d6bc; border-top:1.5px solid #e0d6bc; transform:rotate(45deg); }
+  .s06-seal { font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(224,214,188,.5); }
+</style>
 </head>
 <body>
-  <div class="canvas story s-light">
-    <style>
-        .s06 {
-          position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(244,238,220,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e9ddbf 100%);
-          color:#221e14;
-        }
-        /* Very subtle newsprint tint */
-        .s06::before {
-          content:''; position:absolute; inset:0; pointer-events:none; opacity:.06; mix-blend-mode:multiply;
-          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.14  0 0 0 0 0.1  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-        }
-        /* Broadsheet masthead */
-        .s06-masthead {
-          position:absolute; top:80px; left:70px; right:70px; z-index:5;
-          padding-bottom:14px; border-bottom:3px double #221e14;
-        }
-        .s06-masthead .title { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:66px; letter-spacing:-.02em; color:#221e14; line-height:1; }
-        .s06-masthead .meta { margin-top:14px; display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(34,30,20,.6); }
-        /* Dateline row */
-        .s06-dateline {
-          position:absolute; top:224px; left:70px; right:70px; z-index:5;
-          display:flex; align-items:center; justify-content:space-between;
-          font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase;
-          color:rgba(34,30,20,.55);
-        }
-        /* Section kicker */
-        .s06-section {
-          position:absolute; top:280px; left:70px; z-index:5;
-          font-family:var(--font-mono); font-weight:600; font-size:15px; letter-spacing:.5em; text-transform:uppercase;
-          color:#6b5a42;
-          display:inline-flex; align-items:center; gap:14px;
-          padding:8px 14px; border:1.5px solid #6b5a42; background:rgba(255,255,255,.4);
-        }
-        .s06-section .diamond { display:inline-block; width:8px; height:8px; background:#6b5a42; transform:rotate(45deg); }
-        /* Two-column body: giant headline left, kicker + intro right */
-        .s06-body {
-          position:absolute; top:360px; left:70px; right:70px; bottom:340px; z-index:4;
-          display:grid; grid-template-columns:2fr 1px 1fr; gap:34px;
-        }
-        .s06-body .col-rule { background:linear-gradient(180deg, rgba(34,30,20,.35) 0%, rgba(34,30,20,0) 100%); }
-        .s06-headline {
-          font-family:var(--font-display); font-weight:500; font-size:120px; line-height:.96; letter-spacing:-.028em; color:#221e14;
-        }
-        .s06-headline em { font-style:italic; color:#6b5a42; font-weight:500; }
-        .s06-side {
-          display:flex; flex-direction:column; gap:22px;
-          font-family:var(--font-display); font-weight:500;
-        }
-        .s06-side .kick { font-family:var(--font-mono); font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:rgba(34,30,20,.55); }
-        .s06-side .call { font-size:44px; line-height:1.05; letter-spacing:-.018em; color:#221e14; font-style:italic; }
-        .s06-side .call em { font-style:normal; }
-        .s06-side .rule { width:60px; height:1px; background:#221e14; opacity:.55; }
-        .s06-side .desc { font-family:var(--font-sans); font-weight:400; font-size:24px; line-height:1.44; color:rgba(34,30,20,.75); }
-        /* Coupon at bottom — tear-off dashed line + apply block */
-        .s06-coupon {
-          position:absolute; left:70px; right:70px; bottom:130px; z-index:5;
-          padding:26px 32px 30px;
-          border:2px dashed #221e14; background:rgba(255,255,255,.35);
-          display:flex; align-items:center; justify-content:space-between; gap:24px;
-        }
-        .s06-coupon::before {
-          content:'scissors ✂'; position:absolute; top:-14px; left:26px;
-          font-family:var(--font-mono); font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:rgba(34,30,20,.55);
-          background:#f6f2e8; padding:0 8px;
-        }
-        .s06-coupon .col { display:flex; flex-direction:column; gap:8px; }
-        .s06-coupon .col .k { font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(34,30,20,.55); }
-        .s06-coupon .col .v { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; letter-spacing:-.015em; color:#221e14; line-height:1; }
-        .s06-coupon .cta {
-          display:inline-flex; align-items:center; gap:16px;
-          padding:18px 28px;
-          background:#221e14; color:#f6f2e8;
-          font-family:var(--font-mono); font-size:18px; letter-spacing:.36em; text-transform:uppercase; font-weight:600;
-        }
-        .s06-coupon .cta::after { content:'→'; }
-        /* Bottom bar (rail) */
-        .s06-foot { position:absolute; left:70px; right:70px; bottom:64px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(34,30,20,.55); }
-        /* Mast tag in the corner */
-        .s06-corner-tag { position:absolute; top:74px; right:70px; z-index:6; display:inline-flex; align-items:center; gap:12px; padding:8px 14px; border:1px solid rgba(34,30,20,.55); font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(34,30,20,.7); background:rgba(255,255,255,.4); }
-      </style>
-        <div class="s06">
-          <div class="s06-masthead">
-            <div class="title">The Northwest Classified</div>
-            <div class="meta">
-              <span>Vol. 26 · No. 06</span>
-              <span>Community Section · A1</span>
-              <span>Est. 2026</span>
-            </div>
-          </div>
+  <div class="canvas story s-ink on-photo">
+    <div class="s06">
+      <div class="s06-photo"><img src="../assets/img/who-we-are.jpg" alt="" /></div>
+      <div class="s06-seam"></div>
 
-          <div class="s06-corner-tag"><img src="../assets/nwop-logo-dark.png" alt="" style="height:20px;filter:contrast(1.1)" /></div>
+      <div class="s06-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="s06-kick"><span class="bar"></span>Recruitment</div>
 
-          <div class="s06-dateline">
-            <span>Beaverton · Hillsboro · Astoria · Tillamook</span>
-            <span>Filed by the People</span>
-          </div>
+      <div class="s06-top">
+        <div class="s06-cap"><span class="bar"></span>Tomorrow's Leaders · Today</div>
+        <h1 class="s06-h">We're recruiting <em>tomorrow's</em> community leaders today.</h1>
+      </div>
 
-          <span class="s06-section"><span class="diamond"></span>Position Available</span>
+      <div class="s06-mark">?</div>
+      <div class="s06-bottom">
+        <div class="s06-ask">Could it be <em>you?</em></div>
+      </div>
 
-          <div class="s06-body">
-            <h1 class="s06-headline">Could it <em>be you?</em></h1>
-            <div class="col-rule"></div>
-            <div class="s06-side">
-              <span class="kick">— Notice to residents</span>
-              <p class="call">We're recruiting <em>tomorrow's</em> community leaders <em>today.</em></p>
-              <span class="rule"></span>
-              <p class="desc">Open to teachers, veterans, small-business owners, farmers, parents, neighbours — anyone who cares enough to step forward.</p>
-            </div>
-          </div>
-
-          <div class="s06-coupon">
-            <div class="col">
-              <span class="k">Applications open</span>
-              <span class="v">Let's Talk</span>
-            </div>
-            <span class="cta">Reply Today</span>
-          </div>
-
-          <div class="s06-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
-      
-    
+      <div class="s06-foot">
+        <div class="s06-cta">Let's Talk<span class="arrow"></span></div>
+        <span class="s06-seal">NWOP · 2026</span>
+      </div>
+    </div>
     <div class="grain"></div>
   </div>
 </body>

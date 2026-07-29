@@ -11,89 +11,92 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f13 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(60% 45% at 12% 8%, rgba(224,214,188,.55) 0%, transparent 60%),
+      radial-gradient(70% 55% at 100% 100%, rgba(107,90,66,.14) 0%, transparent 55%),
+      linear-gradient(180deg, #f6f2e8 0%, #ece2c8 100%);
+  }
+  /* Editorial hairline grid */
+  .f13-grid { position:absolute; inset:0; z-index:2; opacity:.09; pointer-events:none;
+    background-image:
+      linear-gradient(90deg, #2e4538 1px, transparent 1px),
+      linear-gradient(180deg, #2e4538 1px, transparent 1px);
+    background-size: 90px 90px;
+  }
+  /* Mast + stars */
+  .f13-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .f13-mast img { height:56px; width:auto; }
+  .f13-star { position:absolute; z-index:14; top:110px; right:96px; display:flex; gap:12px; opacity:.6; }
+  /* Section eyebrow */
+  .f13-eyebrow { position:absolute; z-index:10; top:224px; left:96px; display:flex; align-items:center; gap:20px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060;
+  }
+  .f13-eyebrow .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  .f13-eyebrow .n { font-family:var(--font-mono); font-weight:600; }
+  /* Section title (from spec — "Economic Prosperity & Small Business") */
+  .f13-section { position:absolute; z-index:10; top:266px; left:96px; right:96px;
+    font-family:var(--font-display); font-weight:500; font-style:italic; font-size:56px; line-height:1; letter-spacing:-.02em; color:#5a7060;
+  }
+  /* Rule under section */
+  .f13-rule { position:absolute; z-index:10; left:96px; top:352px; height:2px; width:200px; background:#2e4538; opacity:.55; }
+  /* Big display headline */
+  .f13-display { position:absolute; z-index:10; left:96px; right:340px; top:396px;
+    font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1.06; letter-spacing:-.02em; color:#2e4538;
+  }
+  .f13-display em { font-style:italic; font-weight:400; color:#5a7060; }
+  /* Photo tile aside — top right */
+  .f13-tile { position:absolute; z-index:7; right:96px; top:392px; width:220px; padding:12px 12px 44px; background:#faf3d8;
+    box-shadow:0 30px 56px -20px rgba(0,0,0,.35), 0 6px 12px rgba(0,0,0,.14);
+    transform:rotate(3deg);
+    border:1px solid rgba(0,0,0,.06);
+  }
+  .f13-tile .p { position:relative; width:100%; aspect-ratio:1/1; overflow:hidden; background:#0f1a13; }
+  .f13-tile .p img { width:100%; height:100%; object-fit:cover; filter:saturate(.82) contrast(1.08); }
+  .f13-tile .cap { position:absolute; left:12px; right:12px; bottom:14px; text-align:center;
+    font-family:var(--font-mono); font-size:9.5px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,42,20,.5);
+  }
+  /* Footer baseline */
+  .f13-baseline { position:absolute; z-index:10; left:96px; right:96px; bottom:96px; display:flex; align-items:center; justify-content:space-between; padding-top:22px; border-top:1.5px solid rgba(46,69,56,.35); }
+  .f13-baseline .l { display:flex; align-items:center; gap:16px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+  .f13-baseline .l .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+  .f13-baseline .r { display:flex; gap:12px; opacity:.55; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f13 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 10%, rgba(224,214,188,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #efe6cd 0%, #d9c99e 100%);
-          color:#2a2a26;
-        }
-        .f13::before {
-          content:''; position:absolute; inset:0; opacity:.3; pointer-events:none;
-          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.2  0 0 0 0 0.12  0 0 0 0.3 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-          mix-blend-mode:multiply;
-        }
-        .f13-mast { position:absolute; top:56px; left:76px; right:76px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f13-mast img { height:56px; width:auto; }
-        /* Twine loop from top edge into hole */
-        .f13-twine {
-          position:absolute; top:150px; left:calc(50% - 90px); width:180px; height:120px; z-index:5;
-        }
-        .f13-twine svg { width:100%; height:100%; }
-        /* Swing tag body */
-        .f13-tag {
-          position:absolute; top:260px; left:80px; right:80px; bottom:180px; z-index:5;
-          background:
-            radial-gradient(120% 90% at 20% 15%, rgba(224,197,140,.9) 0%, rgba(184,144,86,.85) 100%);
-          border:1.5px solid rgba(58,44,20,.4);
-          box-shadow:0 26px 60px -26px rgba(58,44,20,.5), inset 0 -6px 20px rgba(58,44,20,.15);
-          padding:80px 46px 34px;
-          clip-path:polygon(0 8%, 50% 0, 100% 8%, 100% 100%, 0 100%);
-        }
-        /* Punched hole */
-        .f13-hole {
-          position:absolute; top:12px; left:calc(50% - 22px); width:44px; height:44px; z-index:6;
-          background:radial-gradient(circle at 45% 40%, #a89162 0%, #6b4f24 70%, #4a3a1f 100%);
-          border-radius:999px;
-          box-shadow:inset 0 4px 8px rgba(0,0,0,.5), inset 0 -2px 4px rgba(255,255,255,.15);
-        }
-        /* Tag header rule */
-        .f13-tag .head { display:flex; align-items:baseline; justify-content:space-between; gap:20px; padding-bottom:14px; border-bottom:2px double #3d2f14; font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(58,44,20,.75); }
-        .f13-tag .head .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#3d2f14; text-transform:none; }
-        /* Big serif title */
-        .f13-tag .title { margin-top:26px; font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1.02; letter-spacing:-.028em; color:#3d2f14; text-align:left; }
-        .f13-tag .title em { display:block; margin-top:2px; font-style:italic; color:#5a7060; }
-        .f13-tag .subtitle { margin-top:12px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(58,44,20,.65); }
-        /* Spec block */
-        .f13-tag .spec { margin-top:26px; padding-top:18px; border-top:1.5px dashed rgba(58,44,20,.5); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; line-height:1.28; letter-spacing:-.012em; color:#3d2f14; text-align:left; }
-        .f13-tag .spec em { font-style:normal; color:#5a7060; }
-        /* Price/rev block */
-        .f13-tag .rev { position:absolute; left:46px; right:46px; bottom:30px; padding-top:16px; border-top:1.5px solid rgba(58,44,20,.5); display:flex; align-items:baseline; justify-content:space-between; gap:20px; font-family:var(--font-mono); font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:rgba(58,44,20,.7); }
-        .f13-tag .rev .n { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.02em; color:#3d2f14; text-transform:none; }
-        .f13-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:8; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f13">
-          <div class="f13-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Swing-tag 13 · Made in Northwest Oregon</span>
-          </div>
-          <div class="f13-twine">
-            <svg viewBox="0 0 180 120" fill="none" stroke="#5a4a20" stroke-width="4" stroke-linecap="round">
-              <path d="M40 8 C 40 40, 90 40, 90 80" stroke-dasharray="6 4"/>
-              <path d="M140 8 C 140 40, 90 40, 90 80" stroke-dasharray="6 4"/>
-            </svg>
-          </div>
-          <div class="f13-hole"></div>
-          <div class="f13-tag">
-            <div class="head"><span>Northwest Made</span><span class="em">Fig. 13</span><span>Small business</span></div>
-            <h1 class="title">Economic Prosperity<em>& Small Business</em></h1>
-            <p class="subtitle">— A tag pinned to the region</p>
-            <p class="spec">We support policies that encourage entrepreneurship, strengthen <em>local businesses,</em> reduce unnecessary barriers, and create an environment where innovation and hard work can thrive across Northwest Oregon.</p>
-            <div class="rev">
-              <span>Signed for the region</span>
-              <span class="n">— Northwest Oregon PAC</span>
-            </div>
-          </div>
-          <div class="f13-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-light">
+    <div class="f13">
+      <div class="f13-grid"></div>
+
+      <div class="f13-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f13-star" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f13-eyebrow"><span class="bar"></span></div>
+      <h2 class="f13-section">Economic Prosperity &amp; Small Business</h2>
+      <div class="f13-rule"></div>
+
+      <p class="f13-display">We support policies that encourage entrepreneurship, strengthen local businesses, reduce unnecessary barriers, and create an environment where innovation and <em>hard work</em> can thrive across Northwest Oregon.</p>
+
+      <div class="f13-tile">
+        <div class="p"><img src="../assets/img/community.jpg" alt="" /></div>
+      </div>
+
+      <div class="f13-baseline">
+        <div class="l"><span class="bar"></span></div>
+        <div class="r" aria-hidden="true">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
         </div>
-      
-    
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

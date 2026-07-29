@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Story 08 · Every volunteer makes a difference. — Northwest Oregon PAC</title>
+<title>Story 08 · Every contribution strengthens campaigns. — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,131 +11,54 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .s08 { position:absolute; inset:0; z-index:5; background:#f6f2e8; overflow:hidden; }
+  .s08-photo { position:absolute; z-index:1; left:0; right:0; top:1000px; height:920px; overflow:hidden; }
+  .s08-photo img { width:100%; height:100%; object-fit:cover; object-position:center 40%; filter:saturate(.9) contrast(1.05); }
+  .s08-photo::before { content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(246,242,232,.35) 0%, rgba(46,69,56,.55) 100%);
+  }
+  .s08-photo::after { content:''; position:absolute; left:0; right:0; top:0; height:120px;
+    background:linear-gradient(180deg, #f6f2e8 0%, transparent 100%);
+  }
+  .s08-mast { position:absolute; z-index:12; top:132px; left:96px; }
+  .s08-mast img { height:56px; width:auto; }
+  .s08-kick { position:absolute; z-index:10; top:150px; right:96px; font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,42,20,.65); display:flex; align-items:center; gap:18px; }
+  .s08-kick .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+
+  .s08-top { position:absolute; z-index:10; left:96px; right:96px; top:330px; }
+  .s08-cap { font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5A7060; margin-bottom:32px; display:flex; align-items:center; gap:14px; }
+  .s08-cap .bar { width:52px; height:1px; background:currentColor; }
+  .s08-h { font-family:var(--font-display); font-weight:500; font-size:150px; line-height:.94; letter-spacing:-.03em; color:#2e4538; }
+  .s08-h em { font-style:italic; font-weight:400; color:#5A7060; }
+  .s08-rule { width:120px; height:2px; background:#2e4538; margin-top:56px; }
+
+  .s08-cta-block { position:absolute; z-index:10; left:96px; right:96px; bottom:200px;
+    display:flex; align-items:baseline; justify-content:space-between; padding-top:32px; border-top:1px solid rgba(246,242,232,.35); }
+  .s08-cta { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:64px; letter-spacing:-.02em; color:#f6f2e8; text-shadow:0 4px 22px rgba(0,0,0,.4); }
+  .s08-seal { font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
+</style>
 </head>
 <body>
-  <div class="canvas story s-light">
-    <style>
-        .s08 {
-          position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(90% 60% at 20% 20%, rgba(0,0,0,.14) 0%, transparent 55%),
-            linear-gradient(180deg, #a48a52 0%, #8a7040 100%);
-        }
-        .s08::before {
-          content:''; position:absolute; inset:0; opacity:.5;
-          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0 0.14  0 0 0 0.35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-          mix-blend-mode:multiply;
-          pointer-events:none;
-        }
-        /* Folder tab */
-        .s08-tab {
-          position:absolute; top:110px; left:120px; z-index:5;
-          padding:14px 34px 12px;
-          background:#c8a866;
-          font-family:var(--font-mono); font-size:14px; letter-spacing:.36em; text-transform:uppercase;
-          color:#3d2f14;
-          clip-path:polygon(0 0, 100% 0, 92% 100%, 8% 100%);
-          box-shadow:inset 0 -2px 0 rgba(90,70,20,.4);
-        }
-        /* Manila card sheet */
-        .s08-sheet {
-          position:absolute; top:150px; bottom:130px; left:60px; right:60px; z-index:4;
-          background:
-            radial-gradient(90% 70% at 20% 10%, rgba(255,251,235,.9) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #ebd9a5 100%);
-          border:1px solid rgba(90,70,20,.3);
-          box-shadow:0 40px 90px -40px rgba(60,45,20,.5), inset 0 1px 0 rgba(255,255,255,.5);
-        }
-        /* Case header inside sheet */
-        .s08-caseheader { position:absolute; top:60px; left:64px; right:64px; display:flex; align-items:baseline; justify-content:space-between; gap:24px; font-family:var(--font-mono); font-size:13px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,42,20,.6); }
-        .s08-caseheader .case { color:#2e4538; font-weight:600; }
-        .s08-rule { position:absolute; top:100px; left:64px; right:64px; height:1px; background:repeating-linear-gradient(90deg, rgba(46,42,20,.5) 0 8px, transparent 8px 14px); }
-        /* Big red "APPROVED" stamp on the sheet */
-        .s08-approved {
-          position:absolute; top:140px; right:80px; z-index:6;
-          border:5px solid #6b5a42; padding:14px 26px 16px; border-radius:6px;
-          transform:rotate(-6deg);
-          font-family:var(--font-mono); font-weight:700; font-size:34px; letter-spacing:.34em; text-transform:uppercase;
-          color:#6b5a42;
-          box-shadow:inset 0 0 0 2px rgba(107,90,66,.2);
-        }
-        .s08-approved small { display:block; margin-top:4px; font-size:11px; letter-spacing:.36em; color:rgba(107,90,66,.9); }
-        /* Field grid */
-        .s08-fields {
-          position:absolute; top:250px; left:64px; right:64px; display:grid; grid-template-columns:1fr 1fr; row-gap:26px; column-gap:34px;
-        }
-        .s08-fields .row { display:flex; flex-direction:column; gap:6px; padding-bottom:14px; border-bottom:1px solid rgba(46,42,20,.35); }
-        .s08-fields .row .k { font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,42,20,.55); }
-        .s08-fields .row .v { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:32px; letter-spacing:-.015em; color:#2e4538; line-height:1.05; }
-        /* Statement */
-        .s08-statement {
-          position:absolute; left:64px; right:64px; bottom:140px;
-          padding-top:26px; border-top:2px solid rgba(46,42,20,.55);
-        }
-        .s08-statement .k { font-family:var(--font-mono); font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,42,20,.55); }
-        .s08-statement .v {
-          margin-top:14px;
-          font-family:var(--font-display); font-weight:500; font-size:64px; line-height:1.02; letter-spacing:-.02em; color:#2e4538;
-        }
-        .s08-statement .v em { font-style:italic; color:#6b5a42; font-weight:500; }
-        .s08-statement .lines { margin-top:20px; display:flex; flex-direction:column; gap:6px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:34px; color:rgba(46,42,20,.75); line-height:1.24; }
-        /* Signature line */
-        .s08-signline { position:absolute; left:64px; right:64px; bottom:70px; display:flex; align-items:baseline; justify-content:space-between; gap:16px; font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,42,20,.6); }
-        .s08-signline .sig { flex:1; height:1px; background:rgba(46,42,20,.5); margin:0 14px; }
-        /* Corner paperclip */
-        .s08-clip { position:absolute; top:80px; right:180px; z-index:6; }
-        /* Bottom rail (outside folder) */
-        .s08-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(255,240,210,.8); }
-        .s08-mast-mini { position:absolute; top:76px; right:70px; z-index:6; display:flex; align-items:center; gap:14px; padding:8px 16px; background:rgba(0,0,0,.28); font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; text-transform:uppercase; color:#f6f2e8; }
-        .s08-mast-mini img { height:24px; width:auto; filter:brightness(1.1); }
-      </style>
-        <div class="s08">
-          <span class="s08-tab">Personnel · Case 08</span>
-          <div class="s08-mast-mini"><img src="../assets/nwop-logo-light.png" alt="" />Northwest Oregon PAC</div>
+  <div class="canvas story s-sand on-photo">
+    <div class="s08">
+      <div class="s08-photo"><img src="../assets/img/event.jpg" alt="" /></div>
 
-          <div class="s08-sheet">
-            <div class="s08-caseheader">
-              <span class="case">FILE №26-VOL-08</span>
-              <span>The Volunteer Dossier · Classified for the People</span>
-            </div>
-            <div class="s08-rule"></div>
+      <div class="s08-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="s08-kick"><span class="bar"></span>Every Volunteer</div>
 
-            <svg class="s08-clip" width="46" height="120" viewBox="0 0 46 120" fill="none" stroke="#6b5a42" stroke-width="4">
-              <path d="M12 10 v70 a11 11 0 0 0 22 0 v-45 a7 7 0 0 0 -14 0 v40" />
-            </svg>
+      <div class="s08-top">
+        <div class="s08-cap"><span class="bar"></span>Contribution Report</div>
+        <h1 class="s08-h">Every <em>contribution</em> strengthens campaigns.</h1>
+        <div class="s08-rule"></div>
+      </div>
 
-            <span class="s08-approved">Approved<small>No experience required</small></span>
-
-            <div class="s08-fields">
-              <div class="row"><span class="k">Applicant</span><span class="v">You</span></div>
-              <div class="row"><span class="k">Position</span><span class="v">Volunteer</span></div>
-              <div class="row"><span class="k">District</span><span class="v">Northwest Oregon</span></div>
-              <div class="row"><span class="k">Commitment</span><span class="v">Any hours available</span></div>
-            </div>
-
-            <div class="s08-statement">
-              <span class="k">— Statement of finding</span>
-              <div class="v">Every volunteer makes a <em>difference.</em></div>
-              <div class="lines">
-                <span>No experience required.</span>
-                <span>Just a willingness to serve.</span>
-              </div>
-            </div>
-
-            <div class="s08-signline">
-              <span>Signed</span>
-              <span class="sig"></span>
-              <span>Date · 2026</span>
-            </div>
-          </div>
-
-          <div class="s08-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
-      
-    
+      <div class="s08-cta-block">
+        <span class="s08-cta">Support Northwest Oregon.</span>
+        <span class="s08-seal">NWOP · 2026</span>
+      </div>
+    </div>
     <div class="grain"></div>
   </div>
 </body>

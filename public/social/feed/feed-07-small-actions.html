@@ -11,96 +11,91 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f07 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(60% 45% at 78% 12%, rgba(224,214,188,.55) 0%, transparent 60%),
+      radial-gradient(70% 55% at 5% 100%, rgba(107,90,66,.2) 0%, transparent 55%),
+      linear-gradient(180deg, #f6f2e8 0%, #e7ddc7 100%);
+  }
+  /* Cross-hatch background pattern */
+  .f07-hatch { position:absolute; inset:0; z-index:2; opacity:.08; pointer-events:none;
+    background-image:
+      linear-gradient(45deg, #2e4538 1px, transparent 1px),
+      linear-gradient(-45deg, #2e4538 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  /* Mast top-left */
+  .f07-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .f07-mast img { height:60px; width:auto; }
+  /* Kicker under mast */
+  .f07-kick { position:absolute; z-index:12; top:220px; left:96px; display:flex; align-items:center; gap:18px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060; }
+  .f07-kick .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  /* Polaroid stack — pinned to top-right, well above headline */
+  .f07-stack { position:absolute; z-index:6; top:88px; right:76px; width:280px; height:340px; }
+  .f07-stack .card { position:absolute; padding:10px 10px 32px; background:#faf3d8;
+    box-shadow:0 30px 60px -22px rgba(46,42,20,.42), 0 6px 14px rgba(46,42,20,.18);
+    border:1px solid rgba(46,42,20,.08);
+  }
+  .f07-stack .card .p { position:relative; width:100%; aspect-ratio:1/1; overflow:hidden; background:#0f1a13; }
+  .f07-stack .card .p img { width:100%; height:100%; object-fit:cover; filter:saturate(.75) contrast(1.15) brightness(.9); }
+  .f07-stack .c1 { top:0; right:130px; width:150px; transform:rotate(-6deg); z-index:5; }
+  .f07-stack .c2 { top:60px; right:0; width:170px; transform:rotate(5deg); z-index:6; }
+  .f07-stack .c3 { top:170px; right:90px; width:140px; transform:rotate(-2deg); z-index:7; }
+  /* Headline — full width, positioned below the polaroid stack */
+  .f07-h1 { position:absolute; z-index:10; left:96px; right:96px; top:490px;
+    font-family:var(--font-display); font-weight:500; font-size:110px; line-height:.94; letter-spacing:-.032em; color:#2e4538;
+  }
+  .f07-h1 .b { display:block; font-style:italic; font-weight:400; color:#5a7060; }
+  /* Rule below headline */
+  .f07-rule { position:absolute; z-index:10; left:96px; top:730px; height:2px; width:180px; background:#2e4538; opacity:.6; }
+  /* Subhead */
+  .f07-sub { position:absolute; z-index:10; left:96px; right:96px; top:762px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:46px; line-height:1.14; letter-spacing:-.02em; color:#2e4538;
+  }
+  .f07-sub em { font-style:normal; font-weight:500; color:#5a7060; }
+  /* Bottom signature */
+  .f07-sig { position:absolute; z-index:10; left:96px; right:96px; bottom:96px; display:flex; align-items:center; justify-content:space-between; }
+  .f07-sig .l { display:flex; align-items:center; gap:16px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+  .f07-sig .l .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+  .f07-sig .stars { display:flex; gap:12px; opacity:.6; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f07 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 20% 5%, rgba(224,214,188,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e2d4a8 100%);
-          color:#2e4538;
-        }
-        .f07-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f07-mast img { height:56px; width:auto; }
-        /* Editorial title top-right */
-        .f07-title { position:absolute; top:180px; left:76px; right:76px; z-index:6; display:flex; align-items:flex-end; justify-content:space-between; gap:22px; }
-        .f07-title .kick { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
-        .f07-title .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f07-title .h { font-family:var(--font-display); font-weight:500; font-size:92px; line-height:.98; letter-spacing:-.028em; color:#2e4538; text-align:right; }
-        .f07-title .h em { display:block; font-style:italic; color:#5a7060; }
-        /* Balance beam */
-        .f07-scale { position:absolute; left:76px; right:76px; top:420px; height:360px; z-index:5; }
-        .f07-scale .fulcrum { position:absolute; left:calc(50% - 12px); top:40px; width:24px; height:210px; background:linear-gradient(180deg, #2e4538 0%, #1c2b23 100%); border-radius:2px; z-index:1; }
-        .f07-scale .beam {
-          position:absolute; left:6%; right:6%; top:46px; height:6px; background:#2e4538; border-radius:3px;
-          transform:rotate(-3deg); transform-origin:center;
-          box-shadow:0 6px 14px -6px rgba(46,69,56,.5);
-          z-index:2;
-        }
-        .f07-scale .pan {
-          position:absolute; top:120px;
-          width:280px; padding:20px 22px;
-          background:#f6f2e8; border:1.5px solid rgba(46,69,56,.4);
-          box-shadow:0 20px 40px -22px rgba(46,69,56,.4);
-          z-index:4;
-        }
-        .f07-scale .pan.left { left:10px; transform:translateY(-6px) rotate(-3deg); transform-origin:top center; }
-        .f07-scale .pan.right { right:10px; transform:translateY(30px) rotate(-3deg); transform-origin:top center; }
-        .f07-scale .pan::before { content:''; position:absolute; left:calc(50% - 1px); top:-74px; width:2px; height:74px; background:rgba(46,69,56,.5); z-index:0; }
-        .f07-scale .pan .lbl { font-family:var(--font-mono); font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.55); margin-bottom:10px; }
-        .f07-scale .pan.right .lbl { color:rgba(46,69,56,.6); }
-        .f07-scale .pan .stack { display:flex; flex-direction:column; gap:6px; }
-        .f07-scale .pan .stack .chip {
-          padding:8px 12px; background:rgba(46,69,56,.08); border:1px solid rgba(46,69,56,.35);
-          font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; text-transform:uppercase; color:#2e4538; text-align:center;
-        }
-        .f07-scale .pan.right .big {
-          font-family:var(--font-display); font-weight:500; font-style:italic; font-size:36px;
-          line-height:1.02; letter-spacing:-.015em; color:#2e4538; text-align:center; padding:8px 6px;
-        }
-        .f07-scale .pan.right .big em { font-style:normal; color:#5a7060; }
-        /* Legend under scale */
-        .f07-legend { position:absolute; left:76px; right:76px; bottom:160px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); display:flex; align-items:baseline; justify-content:space-between; gap:22px; }
-        .f07-legend .k { font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.55); flex:none; }
-        .f07-legend .v { flex:1; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; line-height:1.22; letter-spacing:-.012em; color:#2e4538; text-align:right; }
-        .f07-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f07">
-          <div class="f07-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Figure 07 · The Balance</span>
-          </div>
-          <div class="f07-title">
-            <span class="kick">Together we build</span>
-            <h1 class="h">Small Actions.<em>Big Impact.</em></h1>
-          </div>
-          <div class="f07-scale">
-            <div class="beam"></div>
-            <div class="fulcrum"></div>
-            <div class="pan left">
-              <span class="lbl">— Small actions</span>
-              <div class="stack">
-                <span class="chip">Every conversation</span>
-                <span class="chip">Every volunteer</span>
-                <span class="chip">Every donation</span>
-                <span class="chip">Every supporter</span>
-              </div>
-            </div>
-            <div class="pan right">
-              <span class="lbl">— Big impact</span>
-              <div class="big">Stronger <em>campaigns.</em></div>
-              <div class="big">Stronger <em>communities.</em></div>
-            </div>
-          </div>
-          <div class="f07-legend"><span class="k">— Thank you</span><span class="v">For helping shape Northwest Oregon's future.</span></div>
-          <div class="f07-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-light">
+    <div class="f07">
+      <div class="f07-hatch"></div>
+
+      <div class="f07-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+
+      <div class="f07-stack">
+        <div class="card c1"><div class="p"><img src="../assets/img/event.jpg" alt="" /></div></div>
+        <div class="card c2"><div class="p"><img src="../assets/img/community.jpg" alt="" /></div></div>
+        <div class="card c3"><div class="p"><img src="../assets/img/campaign.jpg" alt="" /></div></div>
+      </div>
+
+      <div class="f07-kick"><span class="bar"></span></div>
+
+      <h1 class="f07-h1">
+        <span>Small Actions.</span>
+        <span class="b">Big Impact.</span>
+      </h1>
+
+      <div class="f07-rule"></div>
+
+      <p class="f07-sub">Every <em>Contribution Matters.</em></p>
+
+      <div class="f07-sig">
+        <div class="l"><span class="bar"></span></div>
+        <div class="stars" aria-hidden="true">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
         </div>
-      
-    
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

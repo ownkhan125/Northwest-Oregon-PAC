@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Story 25 · Randall Fryer — Northwest Oregon PAC</title>
+<title>Story 25 · "Randall Fryer" — Backed BY Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,75 +11,74 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .s25 { position:absolute; inset:0; z-index:5; background:#e0d6bc; overflow:hidden; }
+  .s25-bg { position:absolute; z-index:1; inset:0;
+    background:linear-gradient(180deg, #e6dcc2 0%, #d0c4a2 100%);
+  }
+
+  /* Full-frame candidate portrait cutout upper */
+  .s25-portrait-wrap { position:absolute; z-index:2; top:280px; left:0; right:0; height:1180px; overflow:hidden; }
+  .s25-portrait-wrap img { width:100%; height:100%; object-fit:cover; object-position:center 20%; filter:saturate(.9) contrast(1.05); }
+  .s25-portrait-wrap::after { content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(224,214,188,.15) 0%, rgba(224,214,188,0) 30%, rgba(224,214,188,.6) 88%, #e0d6bc 100%);
+  }
+  .s25-portrait-wrap::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:#2e4538; z-index:3; }
+
+  .s25-mast { position:absolute; z-index:12; top:132px; left:96px; }
+  .s25-mast img { height:56px; width:auto; }
+  .s25-kick { position:absolute; z-index:10; top:150px; right:96px; font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,42,20,.7); display:flex; align-items:center; gap:18px; }
+  .s25-kick .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+
+  /* Name plate — signature ID stamp over portrait bottom */
+  .s25-name { position:absolute; z-index:10; left:96px; right:96px; top:1180px;
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .s25-quotename { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:180px; line-height:.92; letter-spacing:-.035em; color:#2e4538; text-shadow: 0 4px 24px rgba(255,255,255,.25); }
+
+  /* Backed BY stamp */
+  .s25-backed { position:absolute; z-index:10; left:96px; right:96px; top:1440px;
+    padding-top:36px; border-top:2px solid #2e4538; display:flex; flex-direction:column; gap:14px;
+  }
+  .s25-backed .by { font-family:var(--font-mono); font-size:20px; letter-spacing:.55em; text-transform:uppercase; color:#6B5A42; display:flex; align-items:center; gap:16px; }
+  .s25-backed .by .bar { width:52px; height:1px; background:currentColor; }
+  .s25-backed .pac { font-family:var(--font-display); font-weight:600; font-size:88px; line-height:.98; letter-spacing:-.02em; color:#2e4538; text-transform:none; }
+
+  .s25-tag { position:absolute; z-index:10; left:96px; right:96px; bottom:230px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:44px; line-height:1.14; letter-spacing:-.01em; color:#5A7060;
+  }
+
+  .s25-foot { position:absolute; z-index:10; left:96px; right:96px; bottom:150px; display:flex; align-items:center; justify-content:space-between; padding-top:22px; border-top:1px solid rgba(46,42,20,.28); }
+  .s25-foot .txt { font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+</style>
 </head>
 <body>
-  <div class="canvas story s-ink">
-    <style>
-        .s25 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(240,220,180,.32) 0%, transparent 55%),
-            linear-gradient(178deg, #2a3a30 0%, #101815 100%);
-          color:#f6f2e8;
-        }
-        .s25::before {
-          content:''; position:absolute; inset:0; opacity:.5;
-          background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0 0.14  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-          mix-blend-mode:multiply;
-        }
-        /* Radial rays behind portrait */
-        .s25-rays { position:absolute; top:280px; left:50%; width:920px; height:920px; z-index:2; transform:translateX(-50%); pointer-events:none; opacity:.35;
-          background:
-            repeating-conic-gradient(from 0deg at 50% 50%, rgba(246,236,201,.8) 0deg, rgba(246,236,201,.8) 6deg, transparent 6deg, transparent 20deg);
-          mask-image:radial-gradient(circle at center, transparent 26%, black 27%, black 60%, transparent 62%);
-          -webkit-mask-image:radial-gradient(circle at center, transparent 26%, black 27%, black 60%, transparent 62%);
-        }
-        .s25-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(246,236,201,.75); }
-        .s25-mast img { height:52px; width:auto; filter:brightness(1.1); }
-        .s25-tag { position:absolute; top:200px; left:0; right:0; text-align:center; z-index:6; font-family:var(--font-mono); font-weight:700; font-size:22px; letter-spacing:.54em; text-transform:uppercase; color:#e0d6bc; }
-        .s25-tag::before, .s25-tag::after { content:'—'; margin:0 24px; opacity:.7; }
-        .s25-brand { position:absolute; top:250px; left:0; right:0; text-align:center; z-index:6; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:44px; letter-spacing:-.02em; color:#f6f2e8; }
-        /* Portrait frame */
-        .s25-portrait {
-          position:absolute; top:340px; left:50%; transform:translateX(-50%); z-index:5;
-          width:520px; height:520px; border-radius:999px; overflow:hidden;
-          border:6px solid #f6f2e8;
-          box-shadow:0 30px 60px -22px rgba(0,0,0,.7), 0 0 0 14px rgba(107,90,66,.55);
-        }
-        .s25-portrait img { width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:saturate(.85) contrast(1.15) brightness(.95); }
-        .s25-name {
-          position:absolute; left:0; right:0; top:900px; z-index:6; text-align:center;
-          font-family:var(--font-display); font-weight:500; font-size:150px; line-height:.92; letter-spacing:-.028em; color:#f6f2e8;
-          text-shadow:0 4px 24px rgba(0,0,0,.55);
-        }
-        .s25-name em { font-style:italic; color:#e0d6bc; }
-        .s25-underline { position:absolute; left:50%; top:1080px; transform:translateX(-50%); z-index:6; width:340px; height:3px; background:#e0d6bc; box-shadow:0 0 24px rgba(244,215,143,.4); }
-        .s25-cta { position:absolute; left:80px; right:80px; bottom:210px; z-index:6; padding:18px 28px; background:#f6f2e8; color:#2a3a30; display:flex; align-items:center; justify-content:space-between; gap:16px; font-family:var(--font-mono); font-size:14px; letter-spacing:.42em; text-transform:uppercase; }
-        .s25-cta .em { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2a3a30; text-transform:none; }
-        .s25-fine { position:absolute; left:0; right:0; bottom:150px; z-index:6; text-align:center; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,236,201,.65); }
-        .s25-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,236,201,.55); }
-      </style>
-        <div class="s25">
-          <div class="s25-rays"></div>
-          <div class="s25-mast">
-            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
-            <span>Card 25 · Endorsement Poster</span>
-          </div>
-          <div class="s25-tag">Backed by</div>
-          <div class="s25-brand">Northwest Oregon PAC</div>
-          <div class="s25-portrait">
-            <img src="../assets/img/randall-fryer.jpg" alt="Randall Fryer" />
-          </div>
-          <div class="s25-name">"Randall <em>Fryer"</em></div>
-          <div class="s25-underline"></div>
-          <div class="s25-cta"><span>Working to strengthen</span><span class="em">— Northwest Oregon</span></div>
-          <div class="s25-fine">— Steady · Practical · Community-focused —</div>
-          <div class="s25-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
-      
-    
+  <div class="canvas story s-sand on-photo">
+    <div class="s25">
+      <div class="s25-bg"></div>
+      <div class="s25-portrait-wrap"><img src="../assets/img/randall-fryer.jpg" alt="Randall Fryer" /></div>
+
+      <div class="s25-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="s25-kick"><span class="bar"></span>Endorsement · XXV</div>
+
+      <div class="s25-name">
+        <div class="s25-quotename">"Randall Fryer"</div>
+      </div>
+
+      <div class="s25-backed">
+        <div class="by"><span class="bar"></span>Backed BY</div>
+        <div class="pac">NORTHWEST OREGON PAC</div>
+      </div>
+
+      <p class="s25-tag">Working to strengthen Northwest Oregon.</p>
+
+      <div class="s25-foot">
+        <span class="txt">Endorsement File · 2026</span>
+        <span class="txt">NWOP</span>
+      </div>
+    </div>
     <div class="grain"></div>
   </div>
 </body>

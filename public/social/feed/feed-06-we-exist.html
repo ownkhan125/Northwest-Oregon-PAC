@@ -11,71 +11,102 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f06 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(60% 45% at 88% 12%, rgba(224,214,188,.55) 0%, transparent 60%),
+      linear-gradient(180deg, #f4ecd1 0%, #dfd0a3 100%);
+  }
+  /* Diagonal red-white-blue ribbon accent through center */
+  .f06-ribbon { position:absolute; z-index:3; top:0; bottom:0; left:0; right:0; pointer-events:none; }
+  .f06-ribbon::before {
+    content:''; position:absolute; top:-100px; left:-100px; right:-100px; height:110px;
+    background:#2e4538; transform:rotate(-16deg); transform-origin:top left;
+    top:520px;
+    box-shadow:0 24px 60px -30px rgba(46,69,56,.4);
+  }
+  .f06-ribbon::after {
+    content:''; position:absolute; top:640px; left:-100px; right:-100px; height:8px;
+    background:#6b5a42; transform:rotate(-16deg); transform-origin:top left;
+  }
+  /* Manifesto stripes on left edge (american flag nod, muted) */
+  .f06-stripes { position:absolute; z-index:2; left:0; top:0; bottom:0; width:16px;
+    background:repeating-linear-gradient(180deg, #2e4538 0 40px, transparent 40px 80px);
+    opacity:.7;
+  }
+  /* Mast + stars */
+  .f06-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .f06-mast img { height:60px; width:auto; }
+  .f06-star { position:absolute; z-index:14; top:110px; right:96px; display:flex; gap:12px; opacity:.65; }
+  /* Corner registration marks (all 4) */
+  .f06-reg { position:absolute; z-index:6; width:34px; height:34px; }
+  .f06-reg::before, .f06-reg::after { content:''; position:absolute; background:rgba(46,69,56,.45); }
+  .f06-reg::before { left:16px; top:0; width:2px; height:34px; }
+  .f06-reg::after  { top:16px; left:0; width:34px; height:2px; }
+  .f06-reg.tl { top:200px; left:96px; }
+  .f06-reg.tr { top:200px; right:96px; }
+  .f06-reg.bl { bottom:200px; left:96px; }
+  .f06-reg.br { bottom:200px; right:96px; }
+  /* Massive stacked poster title */
+  .f06-title { position:absolute; z-index:12; left:96px; right:96px; top:280px;
+    font-family:var(--font-display); font-weight:600; font-size:158px; line-height:.86; letter-spacing:-.038em; color:#2e4538;
+  }
+  .f06-title .r1 { display:block; }
+  .f06-title .r2 { display:block; font-weight:500; color:#2e4538; }
+  .f06-title .r3 { display:block; font-style:italic; font-weight:400; color:#f4ecd1;
+    text-shadow: 0 2px 0 rgba(46,69,56,.6);
+    letter-spacing:-.03em;
+    margin-top:12px;
+  }
+  .f06-title .r4 { display:block; font-style:italic; font-weight:400; color:#f4ecd1;
+    text-shadow: 0 2px 0 rgba(46,69,56,.6);
+    letter-spacing:-.03em;
+  }
+  /* Baseline signature row */
+  .f06-base { position:absolute; z-index:14; left:96px; right:96px; bottom:96px; padding-top:22px; border-top:1.5px solid rgba(46,69,56,.5);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .f06-base .l, .f06-base .r { display:flex; align-items:center; gap:16px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
+  .f06-base .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+  .f06-base .r { gap:6px; opacity:.6; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    <style>
-        .f06 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 20% 10%, rgba(90,112,96,.5) 0%, transparent 55%),
-            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
-            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
-          color:#f6f2e8;
-        }
-        .f06-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
-        .f06-mast img { height:56px; width:auto; filter:brightness(1.05); }
-        /* Ceremonial preamble */
-        .f06-preamble { position:absolute; top:180px; left:76px; right:76px; z-index:6; padding-bottom:16px; border-bottom:1.5px solid rgba(246,242,232,.35); display:flex; align-items:baseline; justify-content:space-between; gap:22px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.65); }
-        .f06-preamble .em { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        /* Big statement */
-        .f06-title { position:absolute; top:250px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:96px; line-height:.98; letter-spacing:-.028em; color:#f6f2e8; max-width:900px; }
-        .f06-title em { font-style:italic; color:#e0d6bc; display:block; }
-        /* Three numbered inscription rules */
-        .f06-clauses { position:absolute; left:76px; right:76px; bottom:200px; z-index:6; display:flex; flex-direction:column; gap:22px; }
-        .f06-clauses .clause { display:flex; align-items:baseline; gap:24px; padding-bottom:16px; border-bottom:1px solid rgba(246,242,232,.28); }
-        .f06-clauses .clause .n { flex:none; width:56px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); }
-        .f06-clauses .clause .txt { flex:1; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:30px; line-height:1.16; letter-spacing:-.015em; color:rgba(246,242,232,.94); }
-        .f06-clauses .clause .txt em { font-style:normal; color:#e0d6bc; }
-        /* Wax seal — icon on top, label centered beneath with tight gap */
-        .f06-seal {
-          position:absolute; right:76px; top:170px; z-index:7;
-          width:132px; height:132px; border-radius:999px;
-          background:radial-gradient(circle at 32% 30%, #e0d6bc 0%, #6b5a42 90%);
-          border:3px solid rgba(224,214,188,.75);
-          display:flex; align-items:center; justify-content:center; flex-direction:column;
-          gap:6px;
-          color:#2e4538; font-family:var(--font-mono); font-size:10px; letter-spacing:.32em; text-transform:uppercase;
-          transform:rotate(-8deg);
-          box-shadow:0 20px 40px -18px rgba(0,0,0,.5), inset 0 -6px 12px rgba(0,0,0,.2);
-        }
-        .f06-seal .icon { font-family:var(--font-display); font-style:italic; font-size:28px; line-height:1; }
-        .f06-seal .lbl { padding-top:4px; border-top:1px solid rgba(46,69,56,.35); }
-        /* Signed footer */
-        .f06-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.6); }
-        .f06-sig .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        .f06-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
-      </style>
-        <div class="f06">
-          <div class="f06-mast">
-            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
-            <span>Charter 06 · Our Mission</span>
-          </div>
-          <div class="f06-preamble"><span>The Charter</span><span class="em">Signed by the region</span><span>No. 06</span></div>
-          <h1 class="f06-title">We Exist For<em>NorthWest Oregon</em></h1>
-          <div class="f06-seal"><span class="icon">☘</span><span class="lbl">Est. 2026</span></div>
-          <div class="f06-clauses">
-            <div class="clause"><span class="n">01</span><span class="txt">We believe every voter deserves a <em>meaningful choice.</em></span></div>
-            <div class="clause"><span class="n">02</span><span class="txt">That's why Northwest Oregon PAC works to strengthen campaigns, recruit leaders, organize volunteers, and support <em>candidates prepared to serve.</em></span></div>
-            <div class="clause"><span class="n">03</span><span class="txt">Building a stronger region starts long <em>before Election Day.</em></span></div>
-          </div>
-          <div class="f06-sig"><span>Learn more at our website</span><span class="em">— northwestoregon.com</span></div>
-          <div class="f06-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-sand">
+    <div class="f06">
+      <div class="f06-stripes"></div>
+      <div class="f06-ribbon"></div>
+
+      <span class="f06-reg tl"></span>
+      <span class="f06-reg tr"></span>
+      <span class="f06-reg bl"></span>
+      <span class="f06-reg br"></span>
+
+      <div class="f06-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f06-star" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <h1 class="f06-title">
+        <span class="r1">We</span>
+        <span class="r2">Exist For</span>
+        <span class="r3">NorthWest</span>
+        <span class="r4">Oregon</span>
+      </h1>
+
+      <div class="f06-base">
+        <div class="l"><span class="bar"></span></div>
+        <div class="r" aria-hidden="true">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
         </div>
-      
-    
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

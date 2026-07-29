@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Feed 22 · Northwest Oregon has always been powered by innovation. — Northwest Oregon PAC</title>
+<title>Feed 22 · Powered by innovation — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,117 +11,111 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f22 { position:absolute; inset:0; z-index:5; overflow:hidden; background:#f6f2e8; }
+  /* Top photo panel — 52% */
+  .f22-photo { position:absolute; z-index:1; top:0; left:0; right:0; height:52%; overflow:hidden; }
+  .f22-photo img { width:100%; height:100%; object-fit:cover; object-position:50% 45%; filter:saturate(.7) contrast(1.15) brightness(.8); }
+  .f22-photo::after { content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(20,30,22,.15) 0%, transparent 30%, rgba(246,242,232,.4) 90%, #f6f2e8 100%);
+  }
+  /* Bottom light panel */
+  .f22-lower { position:absolute; z-index:2; top:48%; left:0; right:0; bottom:0;
+    background:
+      radial-gradient(60% 55% at 0% 100%, rgba(224,214,188,.5) 0%, transparent 60%),
+      linear-gradient(180deg, #f6f2e8 0%, #ece2c8 100%);
+  }
+  /* Diagonal seam */
+  .f22-seam { position:absolute; z-index:4; left:-4%; right:-4%; top:52%; height:2px; background:rgba(46,69,56,.7); transform:rotate(-1.2deg); }
+  /* Blueprint hairline on lower panel */
+  .f22-blueprint { position:absolute; z-index:3; top:52%; left:0; right:0; bottom:0; opacity:.07; pointer-events:none;
+    background-image:
+      linear-gradient(90deg, #2e4538 1px, transparent 1px),
+      linear-gradient(180deg, #2e4538 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  /* Mast on photo (light) */
+  .f22-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .f22-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.5)); }
+  .f22-star { position:absolute; z-index:14; top:110px; right:96px; display:flex; gap:12px; opacity:.7; }
+  /* Kicker on photo */
+  .f22-kick { position:absolute; z-index:10; top:230px; left:96px; display:flex; align-items:center; gap:20px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(246,242,232,.85);
+  }
+  .f22-kick .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  /* Big headline on photo — bottom-anchored inside photo panel */
+  .f22-h1 { position:absolute; z-index:10; left:96px; right:96px; top:320px;
+    font-family:var(--font-display); font-weight:500; font-size:88px; line-height:.98; letter-spacing:-.03em; color:#f6f2e8;
+    text-shadow: 0 8px 40px rgba(0,0,0,.65); max-width:900px;
+  }
+  .f22-h1 em { font-style:italic; font-weight:400; color:#e0d6bc; }
+  /* Body paragraph on light lower panel */
+  .f22-body { position:absolute; z-index:10; left:96px; right:96px; top:640px;
+    font-family:var(--font-display); font-weight:500; font-size:38px; line-height:1.24; letter-spacing:-.013em; color:#2e4538;
+  }
+  .f22-body em { font-style:italic; font-weight:400; color:#5a7060; }
+  /* Icon strip — hydropower / forestry / agriculture / tech */
+  .f22-strip { position:absolute; z-index:10; left:96px; right:96px; bottom:180px; display:flex; justify-content:space-between; align-items:center; gap:20px; padding-top:22px; border-top:1.5px solid rgba(46,69,56,.35); }
+  .f22-strip .cell { display:flex; align-items:center; justify-content:center; width:64px; height:64px; border:1px solid rgba(46,69,56,.32); border-radius:50%; background:rgba(46,69,56,.05); }
+  .f22-strip .cell svg { width:36px; height:36px; color:#2e4538; opacity:.85; }
+  /* Baseline */
+  .f22-baseline { position:absolute; z-index:10; left:96px; right:96px; bottom:96px; display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6);
+  }
+  .f22-baseline .stars { display:flex; gap:12px; opacity:.55; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    <style>
-        .f22 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
-            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
-            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
-          color:#f6f2e8;
-        }
-        .f22-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
-        .f22-mast img { height:56px; width:auto; filter:brightness(1.05); }
-        .f22-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
-        .f22-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f22-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:64px; line-height:1.02; letter-spacing:-.028em; color:#f6f2e8; max-width:900px; }
-        .f22-head em { display:block; font-style:italic; color:#e0d6bc; }
-        /* Panoramic collage strip — five industry vignettes side-by-side */
-        .f22-collage { position:absolute; left:76px; right:76px; top:500px; height:200px; z-index:5;
-          display:grid; grid-template-columns:1fr 1fr 1fr 1fr 1fr; gap:8px;
-          border-top:1.5px solid rgba(224,214,188,.55); padding-top:20px;
-        }
-        .f22-panel { position:relative; border:1px solid rgba(224,214,188,.35); background:rgba(224,214,188,.06); overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; padding:14px 8px; text-align:center; }
-        .f22-panel svg { width:64px; height:64px; color:#e0d6bc; opacity:.85; }
-        .f22-panel .lbl { margin-top:8px; font-family:var(--font-mono); font-size:9px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
-        .f22-panel .name { margin-top:4px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:18px; line-height:1.1; letter-spacing:-.012em; color:#e0d6bc; }
-        /* Body strip */
-        .f22-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(224,214,188,.35); font-family:var(--font-display); font-weight:500; font-size:24px; line-height:1.28; letter-spacing:-.012em; color:rgba(246,242,232,.94); max-width:920px; }
-        .f22-body em { font-style:italic; color:#e0d6bc; }
-        .f22-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:flex; align-items:baseline; justify-content:space-between; }
-        .f22-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        .f22-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
-      </style>
-        <div class="f22">
-          <div class="f22-mast">
-            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
-            <span>Timeline 22 · A Resilient Future</span>
-          </div>
-          <span class="f22-kick">A resilient future</span>
-          <h1 class="f22-head">Northwest Oregon has always been<em>powered by innovation.</em></h1>
-          <div class="f22-collage">
-            <div class="f22-panel">
-              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 46 L30 46 L30 20 L58 20 L58 46 L58 54 L6 54 Z" fill="currentColor" fill-opacity=".08"/>
-                <path d="M6 46 L30 46 L30 20 L58 20 L58 46"/>
-                <path d="M6 54 L58 54"/>
-                <path d="M14 46 L14 40 M22 46 L22 40 M40 46 L40 32 M48 46 L48 32"/>
-                <path d="M6 54 Q16 60 26 54 T46 54 T66 54" opacity=".6"/>
-              </svg>
-              <span class="lbl">— Panel 01</span>
-              <span class="name">Hydropower</span>
-            </div>
-            <div class="f22-panel">
-              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 54 L14 42 L20 42 L14 30 L20 30 L14 18 L26 18 L20 6 L32 6 L26 18 L38 18 L32 30 L38 30 L32 42 L38 42 L32 54 Z" fill="currentColor" fill-opacity=".12"/>
-                <path d="M44 54 L38 46 L44 46 L38 36 L44 36 L38 26 L48 26 L44 18 L54 18 L48 26 L58 26 L52 36 L58 36 L52 46 L58 46 L52 54 Z" fill="currentColor" fill-opacity=".08"/>
-                <line x1="26" y1="54" x2="26" y2="60" opacity=".5"/>
-                <line x1="48" y1="54" x2="48" y2="60" opacity=".5"/>
-              </svg>
-              <span class="lbl">— Panel 02</span>
-              <span class="name">Forestry</span>
-            </div>
-            <div class="f22-panel">
-              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 54 L58 54" />
-                <path d="M6 48 Q32 42 58 48" opacity=".6"/>
-                <path d="M6 42 Q32 36 58 42" opacity=".4"/>
-                <path d="M14 42 L18 26 L22 42 M28 42 L32 22 L36 42 M42 42 L46 28 L50 42"/>
-                <circle cx="18" cy="20" r="3" opacity=".6"/>
-                <circle cx="32" cy="16" r="3" opacity=".6"/>
-                <circle cx="46" cy="22" r="3" opacity=".6"/>
-              </svg>
-              <span class="lbl">— Panel 03</span>
-              <span class="name">Agriculture</span>
-            </div>
-            <div class="f22-panel">
-              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 54 L58 54"/>
-                <path d="M12 54 L12 30 L26 30 L26 54" fill="currentColor" fill-opacity=".08"/>
-                <path d="M26 54 L26 20 L44 20 L44 54" fill="currentColor" fill-opacity=".12"/>
-                <path d="M44 54 L44 32 L54 32 L54 54"/>
-                <rect x="16" y="36" width="4" height="4" opacity=".6"/>
-                <rect x="30" y="28" width="4" height="4" opacity=".6"/>
-                <rect x="36" y="28" width="4" height="4" opacity=".6"/>
-                <path d="M30 12 L36 6 L42 12" opacity=".6"/>
-                <line x1="36" y1="6" x2="36" y2="20" opacity=".6"/>
-              </svg>
-              <span class="lbl">— Panel 04</span>
-              <span class="name">Manufacturing</span>
-            </div>
-            <div class="f22-panel">
-              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="10" y="14" width="44" height="30" rx="2" fill="currentColor" fill-opacity=".08"/>
-                <path d="M10 40 L54 40"/>
-                <path d="M22 50 L42 50 M32 44 L32 50"/>
-                <circle cx="32" cy="28" r="6" opacity=".6"/>
-                <path d="M32 22 L32 12 M32 34 L32 40 M26 28 L18 28 M38 28 L46 28"/>
-              </svg>
-              <span class="lbl">— Panel 05</span>
-              <span class="name">Emerging tech</span>
-            </div>
-          </div>
-          <p class="f22-body">From hydropower and forestry to agriculture, manufacturing, and emerging technologies, our region succeeds when we build on the resources that make <em>Oregon unique.</em></p>
-          <div class="f22-sig"><span>Balanced decisions</span><span class="em">— A resilient future.</span></div>
-          <div class="f22-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-light">
+    <div class="f22">
+      <div class="f22-photo"><img src="../assets/img/bridge.png" alt="" /></div>
+      <div class="f22-lower"></div>
+      <div class="f22-blueprint"></div>
+      <div class="f22-seam"></div>
+
+      <div class="f22-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f22-star" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f22-kick"><span class="bar"></span></div>
+
+      <h1 class="f22-h1">Northwest Oregon has always been powered by <em>innovation.</em></h1>
+
+      <p class="f22-body">From hydropower and forestry to agriculture, manufacturing, and emerging technologies, our region succeeds when we build on the resources that make <em>Oregon unique.</em></p>
+
+      <div class="f22-strip" aria-hidden="true">
+        <div class="cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18 C7 14 10 18 14 14 C18 10 21 14 21 14"/><path d="M3 22 C7 18 10 22 14 18 C18 14 21 18 21 18"/></svg>
         </div>
-      
-    
+        <div class="cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 L18 12 h-3 L20 20 H4 L9 12 H6 z"/><path d="M12 20 v2"/></svg>
+        </div>
+        <div class="cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20 v-6 c0-3 3-5 8-5 s8 2 8 5 v6"/><path d="M4 20 h16"/><path d="M12 4 v5"/><path d="M9 6 c0 2 3 3 3 3 s3-1 3-3"/></svg>
+        </div>
+        <div class="cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M8 10 h8 M8 14 h5"/></svg>
+        </div>
+        <div class="cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 3 v3 M12 18 v3 M3 12 h3 M18 12 h3 M5 5 l2 2 M17 17 l2 2 M5 19 l2-2 M17 7 l2-2"/></svg>
+        </div>
+      </div>
+
+      <div class="f22-baseline">
+        <span>—</span>
+        <div class="stars" aria-hidden="true">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        </div>
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

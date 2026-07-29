@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Feed 24 · We're building the foundation for Northwest Oregon's future. — Northwest Oregon PAC</title>
+<title>Feed 24 · Building the foundation — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,112 +11,115 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f24 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(60% 45% at 10% 12%, rgba(224,214,188,.55) 0%, transparent 60%),
+      radial-gradient(70% 60% at 100% 100%, rgba(107,90,66,.16) 0%, transparent 55%),
+      linear-gradient(180deg, #f6f2e8 0%, #ece2c8 100%);
+  }
+  /* Registration marks - corners */
+  .f24-reg { position:absolute; z-index:6; width:22px; height:22px; color:#2e4538; opacity:.55; }
+  .f24-reg::before, .f24-reg::after { content:''; position:absolute; background:currentColor; }
+  .f24-reg::before { left:50%; top:0; bottom:0; width:1.5px; margin-left:-.75px; }
+  .f24-reg::after  { top:50%; left:0; right:0; height:1.5px; margin-top:-.75px; }
+  .f24-reg.tl { top:60px; left:60px; }
+  .f24-reg.tr { top:60px; right:60px; }
+  .f24-reg.bl { bottom:60px; left:60px; }
+  .f24-reg.br { bottom:60px; right:60px; }
+  /* Mast */
+  .f24-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .f24-mast img { height:56px; width:auto; }
+  .f24-star { position:absolute; z-index:14; top:110px; right:96px; display:flex; gap:12px; opacity:.6; }
+  /* Kicker */
+  .f24-kick { position:absolute; z-index:10; top:230px; left:96px; display:flex; align-items:center; gap:20px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060;
+  }
+  .f24-kick .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  /* Big display headline */
+  .f24-h1 { position:absolute; z-index:10; left:96px; right:96px; top:284px;
+    font-family:var(--font-display); font-weight:500; font-size:78px; line-height:.98; letter-spacing:-.028em; color:#2e4538;
+  }
+  .f24-h1 em { font-style:italic; font-weight:400; color:#5a7060; }
+  /* Sub kicker */
+  .f24-sub { position:absolute; z-index:10; left:96px; top:530px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060;
+  }
+  /* Rule */
+  .f24-rule { position:absolute; z-index:10; left:96px; right:96px; top:570px; height:2px; background:rgba(46,69,56,.5); }
+  /* Checklist */
+  .f24-list { position:absolute; z-index:10; left:96px; right:96px; top:600px; display:flex; flex-direction:column; }
+  .f24-item { display:flex; align-items:center; gap:32px; padding:16px 0; border-bottom:1px solid rgba(46,69,56,.22); }
+  .f24-item:last-child { border-bottom:none; }
+  .f24-item .roman { flex:none; width:64px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; color:#5a7060; letter-spacing:.02em;
+  }
+  .f24-item .mark { flex:none; width:36px; height:36px; display:flex; align-items:center; justify-content:center; border:1.5px solid #2e4538; color:#2e4538; border-radius:50%; font-family:var(--font-mono); font-weight:600; font-size:16px; }
+  .f24-item .txt { flex:1;
+    font-family:var(--font-display); font-weight:500; font-size:36px; line-height:1.14; letter-spacing:-.014em; color:#2e4538;
+  }
+  /* Baseline */
+  .f24-baseline { position:absolute; z-index:10; left:96px; right:96px; bottom:96px; display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55);
+  }
+  .f24-baseline .stars { display:flex; gap:12px; opacity:.55; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f24 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(224,214,188,.5) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-          color:#2e4538;
-        }
-        .f24-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f24-mast img { height:56px; width:auto; }
-        .f24-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
-        .f24-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f24-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1.04; letter-spacing:-.028em; color:#2e4538; max-width:920px; }
-        .f24-head em { display:block; font-style:italic; color:#5a7060; }
-        /* Roundtable planning scene */
-        .f24-table { position:absolute; left:76px; right:76px; top:440px; height:220px; z-index:5; }
-        .f24-table svg { display:block; width:100%; height:100%; }
-        /* Exists list */
-        .f24-list { position:absolute; left:76px; right:76px; top:670px; z-index:6; padding-top:14px; border-top:1.5px solid rgba(46,69,56,.35); }
-        .f24-list .lead { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:22px; letter-spacing:-.012em; color:#2e4538; margin-bottom:12px; }
-        .f24-list .grid { display:grid; grid-template-columns:1fr 1fr; gap:10px 30px; }
-        .f24-list .item { display:flex; align-items:baseline; gap:14px; padding-bottom:8px; border-bottom:1px dashed rgba(46,69,56,.35); font-family:var(--font-display); font-weight:500; font-size:22px; line-height:1.14; letter-spacing:-.015em; color:#2e4538; }
-        .f24-list .item .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-        .f24-list .item em { font-style:italic; color:#5a7060; }
-        .f24-sig { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; gap:20px; padding-top:14px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f24-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f24-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f24">
-          <div class="f24-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Plan 24 · Foundation</span>
-          </div>
-          <span class="f24-kick">Our long-term vision</span>
-          <h1 class="f24-head">We're building the foundation for<em>Northwest Oregon's future.</em></h1>
-          <div class="f24-table">
-            <svg viewBox="0 0 900 220" fill="none" stroke="#2e4538" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Table -->
-              <ellipse cx="450" cy="150" rx="330" ry="42" fill="#5a7060" fill-opacity=".12"/>
-              <ellipse cx="450" cy="150" rx="330" ry="42"/>
-              <ellipse cx="450" cy="150" rx="270" ry="32" opacity=".5"/>
-              <!-- Notes on the table -->
-              <rect x="330" y="140" width="60" height="20" opacity=".55" fill="#5a7060" fill-opacity=".2"/>
-              <rect x="410" y="138" width="80" height="24" opacity=".55" fill="#5a7060" fill-opacity=".2"/>
-              <rect x="510" y="142" width="52" height="18" opacity=".55" fill="#5a7060" fill-opacity=".2"/>
-              <!-- People around the table (heads + shoulders) -->
-              <!-- back row -->
-              <g fill="#5a7060" fill-opacity=".18">
-                <circle cx="260" cy="66" r="18"/>
-                <path d="M232 128 L232 100 C 232 88 246 82 260 82 C 274 82 288 88 288 100 L 288 128"/>
-                <circle cx="360" cy="52" r="20"/>
-                <path d="M328 116 L328 88 C 328 74 344 68 360 68 C 376 68 392 74 392 88 L 392 116"/>
-                <circle cx="450" cy="46" r="22"/>
-                <path d="M416 114 L416 82 C 416 68 432 60 450 60 C 468 60 484 68 484 82 L 484 114"/>
-                <circle cx="540" cy="52" r="20"/>
-                <path d="M508 116 L508 88 C 508 74 524 68 540 68 C 556 68 572 74 572 88 L 572 116"/>
-                <circle cx="640" cy="66" r="18"/>
-                <path d="M612 128 L612 100 C 612 88 626 82 640 82 C 654 82 668 88 668 100 L 668 128"/>
-              </g>
-              <g stroke="#2e4538" stroke-width="1.8" fill="none">
-                <circle cx="260" cy="66" r="18"/>
-                <path d="M232 128 L232 100 C 232 88 246 82 260 82 C 274 82 288 88 288 100 L 288 128"/>
-                <circle cx="360" cy="52" r="20"/>
-                <path d="M328 116 L328 88 C 328 74 344 68 360 68 C 376 68 392 74 392 88 L 392 116"/>
-                <circle cx="450" cy="46" r="22"/>
-                <path d="M416 114 L416 82 C 416 68 432 60 450 60 C 468 60 484 68 484 82 L 484 114"/>
-                <circle cx="540" cy="52" r="20"/>
-                <path d="M508 116 L508 88 C 508 74 524 68 540 68 C 556 68 572 74 572 88 L 572 116"/>
-                <circle cx="640" cy="66" r="18"/>
-                <path d="M612 128 L612 100 C 612 88 626 82 640 82 C 654 82 668 88 668 100 L 668 128"/>
-              </g>
-              <!-- side seats -->
-              <g fill="#5a7060" fill-opacity=".18">
-                <circle cx="150" cy="120" r="16"/>
-                <path d="M126 176 L126 150 C 126 140 138 134 150 134 C 162 134 174 140 174 150 L 174 176"/>
-                <circle cx="750" cy="120" r="16"/>
-                <path d="M726 176 L726 150 C 726 140 738 134 750 134 C 762 134 774 140 774 150 L 774 176"/>
-              </g>
-              <g stroke="#2e4538" stroke-width="1.8" fill="none">
-                <circle cx="150" cy="120" r="16"/>
-                <path d="M126 176 L126 150 C 126 140 138 134 150 134 C 162 134 174 140 174 150 L 174 176"/>
-                <circle cx="750" cy="120" r="16"/>
-                <path d="M726 176 L726 150 C 726 140 738 134 750 134 C 762 134 774 140 774 150 L 774 176"/>
-              </g>
-              <!-- Ground line -->
-              <line x1="0" y1="210" x2="900" y2="210" stroke-dasharray="6 6" opacity="0.5"/>
-            </svg>
-          </div>
-          <div class="f24-list">
-            <p class="lead">Northwest Oregon PAC exists to</p>
-            <div class="grid">
-              <div class="item"><span class="n">01</span><em>Recruit</em> leaders</div>
-              <div class="item"><span class="n">02</span><em>Strengthen</em> campaigns</div>
-              <div class="item"><span class="n">03</span><em>Provide</em> strategic messaging</div>
-              <div class="item"><span class="n">04</span><em>Support</em> long-term electoral success</div>
-            </div>
-          </div>
-          <div class="f24-sig"><span>Long-term investment</span><span class="em">— Not election-season attention.</span></div>
-          <div class="f24-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
+  <div class="canvas s-sand">
+    <div class="f24">
+      <span class="f24-reg tl"></span>
+      <span class="f24-reg tr"></span>
+      <span class="f24-reg bl"></span>
+      <span class="f24-reg br"></span>
 
+      <div class="f24-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f24-star" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f24-kick"><span class="bar"></span></div>
+
+      <h1 class="f24-h1">We're building the foundation for <em>Northwest Oregon's</em> future.</h1>
+
+      <div class="f24-sub">Northwest Oregon PAC exists to</div>
+      <div class="f24-rule"></div>
+
+      <div class="f24-list">
+        <div class="f24-item">
+          <span class="roman">I.</span>
+          <span class="mark">+</span>
+          <span class="txt">Recruit leaders</span>
+        </div>
+        <div class="f24-item">
+          <span class="roman">II.</span>
+          <span class="mark">+</span>
+          <span class="txt">Strengthen campaigns</span>
+        </div>
+        <div class="f24-item">
+          <span class="roman">III.</span>
+          <span class="mark">+</span>
+          <span class="txt">Provide strategic messaging</span>
+        </div>
+        <div class="f24-item">
+          <span class="roman">IV.</span>
+          <span class="mark">+</span>
+          <span class="txt">Support long-term electoral success</span>
+        </div>
+      </div>
+
+      <div class="f24-baseline">
+        <span>—</span>
+        <div class="stars" aria-hidden="true">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        </div>
+      </div>
+    </div>
 
     <div class="grain"></div>
   </div>

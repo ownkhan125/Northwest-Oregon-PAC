@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Why Local Elections Matter · 5/5 — Northwest Oregon PAC</title>
+<title>Better communities begin with local leadership · 5/5 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,40 +11,93 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c07-5 { position:absolute; inset:0; z-index:5; overflow:hidden; }
+  .c07-5-bg { position:absolute; inset:0; z-index:1; }
+  .c07-5-bg img { width:100%; height:100%; object-fit:cover; object-position:center 40%;
+    filter:saturate(.5) contrast(1.3) brightness(.38);
+  }
+  .c07-5-bg::after { content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(20,30,24,.9) 0%, rgba(20,30,24,.4) 45%, rgba(6,10,7,.94) 100%);
+  }
+  .c07-5-hatch { position:absolute; inset:0; z-index:2; opacity:.05; pointer-events:none;
+    background-image:
+      linear-gradient(90deg, #e0d6bc 1px, transparent 1px),
+      linear-gradient(180deg, #e0d6bc 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .c07-5-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .c07-5-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.7)); }
+  .c07-5-index { position:absolute; z-index:14; top:112px; right:96px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.6);
+    display:flex; align-items:center; gap:14px;
+  }
+  .c07-5-index .bar { width:38px; height:1px; background:currentColor; opacity:.7; }
+  .c07-5-spine { position:absolute; z-index:8; left:96px; top:230px; bottom:200px; width:1px;
+    background:linear-gradient(180deg, rgba(224,214,188,0), rgba(224,214,188,.5) 20%, rgba(224,214,188,.5) 80%, rgba(224,214,188,0));
+  }
+  .c07-5-kicker { position:absolute; z-index:10; left:140px; top:280px;
+    font-family:var(--font-mono); font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.75);
+    display:flex; align-items:center; gap:18px;
+  }
+  .c07-5-kicker .slash { color:rgba(224,214,188,.35); }
+  .c07-5-title { position:absolute; z-index:10; left:140px; right:120px; top:360px;
+    font-family:var(--font-display); font-weight:500; font-size:96px; line-height:.98; letter-spacing:-.03em; color:#f6f2e8;
+    text-shadow: 0 6px 30px rgba(0,0,0,.6);
+  }
+  .c07-5-title em { display:block; font-style:italic; font-weight:400; color:#e0d6bc; margin-top:6px; }
+  .c07-5-orn { position:absolute; z-index:10; left:140px; top:686px; width:200px; height:2px; background:#e0d6bc; opacity:.6; }
+  .c07-5-cta { position:absolute; z-index:10; left:140px; right:120px; top:716px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:38px; line-height:1.24; color:#e0d6bc; letter-spacing:-.012em;
+  }
+  .c07-5-url { position:absolute; z-index:10; left:140px; right:120px; top:830px;
+    font-family:var(--font-mono); font-size:22px; letter-spacing:.28em; text-transform:uppercase; color:#f6f2e8;
+    padding-top:16px; border-top:1px solid rgba(224,214,188,.4);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .c07-5-url .l { font-family:var(--font-mono); font-size:11px; letter-spacing:.5em; color:rgba(224,214,188,.55); }
+  .c07-5-footer { position:absolute; z-index:10; left:96px; right:96px; bottom:96px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(224,214,188,.6);
+  }
+  .c07-5-footer .barline { flex:1; height:1px; background:currentColor; opacity:.35; margin:0 22px; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light on-photo">
-    
-  <div class="c-close-bg"><img src="../../assets/img/hero.jpg" alt="" /><div class="c-close-wash"></div></div>
-  <div class="zone c-close">
-    <div class="c-kicker">Slide 5</div>
-    <div class="c-close-body">
-      <h1 class="display lg">Better communities begin with <em>local leadership.</em></h1>
-      <p class="c-close-sub">Join Northwest Oregon PAC and help build a stronger future.</p>
-      <div class="c-close-items">
-        <div class="c-close-item">
-          <span class="n">01</span>
-          <span class="lbl">northwestoregon.com</span>
-          <span class="arrow">→</span>
-        </div></div>
-      
+  <div class="canvas s-forest on-photo" style="background:#0a100c;">
+    <div class="c07-5">
+      <div class="c07-5-bg"><img src="../../assets/img/bridge.png" alt="" /></div>
+      <div class="c07-5-hatch"></div>
+
+      <div class="c07-5-mast"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c07-5-index"><span class="bar"></span>05 / 05</div>
+
+      <div class="c07-5-spine"></div>
+
+      <div class="c07-5-kicker">
+        <span>Coda</span>
+        <span class="slash">//</span>
+        <span>Get Involved</span>
+      </div>
+
+      <h1 class="c07-5-title">Better communities begin with local <em>leadership.</em></h1>
+
+      <div class="c07-5-orn"></div>
+      <p class="c07-5-cta">Join Northwest Oregon PAC and help build a stronger future.</p>
+
+      <div class="c07-5-url">
+        <span class="l">Visit</span>
+        <span>northwestoregon.com</span>
+      </div>
+
+      <div class="c07-5-footer">
+        <span>Dispatch 07 // Local</span>
+        <span class="barline"></span>
+        <span>Northwest Oregon PAC</span>
+      </div>
     </div>
-    <div class="c-close-flag">
-      <span class="stripe s1"></span>
-      <span class="stripe s2"></span>
-      <span class="stripe s3"></span>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

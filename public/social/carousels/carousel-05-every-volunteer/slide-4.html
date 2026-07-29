@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Every Volunteer Makes a Difference · 4/5 — Northwest Oregon PAC</title>
+<title>Campaigns Need Resources · 4/5 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,32 +11,59 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c05-4 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(80% 55% at 15% 12%, rgba(90,112,96,.28) 0%, transparent 60%),
+      linear-gradient(178deg, #16211a 0%, #0a100c 100%);
+  }
+  .c05-4-scan { position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.08;
+    background: repeating-linear-gradient(180deg, transparent 0 3px, rgba(255,255,255,.4) 3px 4px);
+    mix-blend-mode:overlay;
+  }
+  .c05-4-frame { position:absolute; z-index:6; inset:80px; border:2px solid rgba(224,214,188,.28); }
+  .c05-4-frame-inner { position:absolute; z-index:6; inset:110px; border:1px solid rgba(224,214,188,.14); }
+  .c05-4-num { position:absolute; z-index:3; right:130px; top:150px;
+    font-family:var(--font-display); font-style:italic; font-weight:400; font-size:320px; line-height:.85; letter-spacing:-.04em;
+    color:rgba(224,214,188,.09);
+  }
+  .c05-4-eyebrow { position:absolute; z-index:10; left:130px; right:130px; top:250px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.55em; text-transform:uppercase; color:rgba(224,214,188,.65);
+  }
+  .c05-4-title { position:absolute; z-index:10; left:130px; right:130px; top:400px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:170px; line-height:.94; letter-spacing:-.03em;
+    color:#f6f2e8; text-shadow:0 8px 40px rgba(0,0,0,.55);
+  }
+  .c05-4-title .strong { font-style:normal; font-weight:600; color:#e0d6bc; }
+  .c05-4-rule { position:absolute; z-index:10; left:130px; top:770px; width:220px; height:3px; background:rgba(224,214,188,.55); }
+  .c05-4-mast { position:absolute; z-index:14; bottom:130px; right:130px; }
+  .c05-4-mast img { height:52px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  .c05-4-stars { position:absolute; z-index:14; bottom:150px; left:130px; display:flex; gap:14px; opacity:.7; }
+  .c05-4-cap { position:absolute; z-index:14; bottom:160px; left:50%; transform:translateX(-50%);
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.5);
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest on-photo">
-    
-  <div class="c-mani-bg"><img src="../../assets/img/event.jpg" alt="" /><div class="c-mani-wash "></div></div>
-  <div class="zone c-mani center">
-    <div class="c-kicker">Slide 4</div>
-    <div class="c-mani-body">
-      
-      <p class="c-mani-p lead lg">Every campaign is powered by <em>neighbours helping neighbours.</em></p><p class="c-mani-p  lg">Not because <em>they're paid.</em></p><p class="c-mani-p  lg">Because <em>they care.</em></p>
+  <div class="canvas s-ink">
+    <div class="c05-4">
+      <div class="c05-4-scan"></div>
+      <div class="c05-4-frame"></div>
+      <div class="c05-4-frame-inner"></div>
+      <div class="c05-4-num">04</div>
+
+      <h2 class="c05-4-title">Campaigns need <span class="strong">resources.</span></h2>
+      <div class="c05-4-rule"></div>
+
+      <div class="c05-4-stars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+      <div class="c05-4-mast"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
     </div>
-    <div class="c-mani-mark">
-      <span class="c-mani-line"></span>
-      <span class="c-mani-brand">NORTHWEST OREGON PAC</span>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
+
     <div class="grain"></div>
   </div>
 </body>

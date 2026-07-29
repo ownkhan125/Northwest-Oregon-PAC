@@ -7,7 +7,7 @@ import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { home, pac } from '@/data/pac'
-import heroBackdrop from '@/assets/images/Bridge-7.png'
+import heroBackdrop from '@/assets/images/Oregon-5.png'
 
 export default function Hero() {
   const root = useRef(null)
@@ -35,7 +35,7 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[68%_center] opacity-95 contrast-[1.06] saturate-[1.08] sm:object-[72%_center] lg:object-center dark:opacity-55 dark:brightness-90"
+          className="object-cover object-[48%_center] opacity-95 contrast-[1.05] saturate-[1.08] sm:object-[52%_center] lg:object-center dark:opacity-55 dark:brightness-90"
         />
       </div>
 
@@ -54,7 +54,7 @@ export default function Hero() {
           Copy stacks over the top half, image reveals below. */}
       <div
         aria-hidden
-        className="from-background via-background/88 to-background/40 pointer-events-none absolute inset-0 -z-20 bg-gradient-to-b sm:hidden"
+        className="from-background/95 via-background/72 to-background/25 pointer-events-none absolute inset-0 -z-20 bg-gradient-to-b sm:hidden"
       />
       {/* Layer 4b — tablet readability wash, left → right.
           Copy extends closer to the right edge on tablet widths, so the

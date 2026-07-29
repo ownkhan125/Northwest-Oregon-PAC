@@ -11,10 +11,12 @@ function BlogCard({ post, featured = false }) {
   return (
     <m.article
       variants={featured ? fadeUp : cardReveal}
+      whileHover={{ y: -6 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 22 }}
       className={
         featured
-          ? 'border-border bg-surface group focus-within:ring-primary/40 relative isolate flex cursor-pointer flex-col overflow-hidden rounded-3xl border transition-colors hover:border-primary/40 focus-within:ring-2 lg:flex-row'
-          : 'border-border bg-surface group focus-within:ring-primary/40 relative isolate flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border transition-colors hover:border-primary/40 focus-within:ring-2'
+          ? 'border-border bg-surface group focus-within:ring-primary/40 relative isolate flex cursor-pointer flex-col overflow-hidden rounded-3xl border transition-[background-color,border-color,color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-primary hover:bg-primary hover:text-primary-fg hover:shadow-[0_28px_60px_-30px_rgba(46,69,56,0.55)] focus-within:ring-2 lg:flex-row'
+          : 'border-border bg-surface group focus-within:ring-primary/40 relative isolate flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border transition-[background-color,border-color,color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-primary hover:bg-primary hover:text-primary-fg hover:shadow-[0_28px_60px_-30px_rgba(46,69,56,0.55)] focus-within:ring-2'
       }
     >
       <div
@@ -50,32 +52,27 @@ function BlogCard({ post, featured = false }) {
             : 'flex flex-1 flex-col gap-4 p-6 sm:p-7'
         }
       >
-        <div className="text-foreground/60 flex flex-wrap items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase">
+        <div className="text-foreground/60 group-hover:text-primary-fg/70 flex flex-wrap items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase transition-colors duration-500">
           <span>{formatBlogDate(post.date)}</span>
-          <span aria-hidden className="bg-border h-3 w-px" />
+          <span aria-hidden className="bg-border group-hover:bg-primary-fg/30 h-3 w-px transition-colors duration-500" />
           <span>{post.readingMinutes} min read</span>
         </div>
 
         <h3
           className={
             featured
-              ? 'font-display text-foreground text-3xl leading-tight font-medium tracking-tight sm:text-4xl md:text-5xl'
-              : 'font-display text-foreground text-xl leading-tight font-medium tracking-tight sm:text-2xl'
+              ? 'font-display text-foreground group-hover:text-primary-fg text-3xl leading-tight font-medium tracking-tight transition-colors duration-500 sm:text-4xl md:text-5xl'
+              : 'font-display text-foreground group-hover:text-primary-fg text-xl leading-tight font-medium tracking-tight transition-colors duration-500 sm:text-2xl'
           }
         >
-          <Link
-            href={href}
-            className="group-hover:text-primary transition-colors before:absolute before:inset-0 before:z-10 before:content-[''] focus-visible:outline-none"
-          >
-            {post.title}
-          </Link>
+          {post.title}
         </h3>
 
         <p
           className={
             featured
-              ? 'text-foreground/80 text-base sm:text-lg'
-              : 'text-foreground/75 text-sm sm:text-base'
+              ? 'text-foreground/80 group-hover:text-primary-fg/85 text-base transition-colors duration-500 sm:text-lg'
+              : 'text-foreground/75 group-hover:text-primary-fg/85 text-sm transition-colors duration-500 sm:text-base'
           }
         >
           {post.excerpt}
@@ -88,10 +85,10 @@ function BlogCard({ post, featured = false }) {
               : 'mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-3 pt-2'
           }
         >
-          <span className="text-muted text-xs">By {post.author}</span>
+          <span className="text-muted group-hover:text-primary-fg/70 text-xs transition-colors duration-500">By {post.author}</span>
           <span
             aria-hidden
-            className="text-primary inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors group-hover:text-highlight"
+            className="text-primary group-hover:text-accent inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors duration-500"
           >
             Read article
             <svg
@@ -110,6 +107,14 @@ function BlogCard({ post, featured = false }) {
           </span>
         </div>
       </div>
+
+      <Link
+        href={href}
+        aria-label={`Read article: ${post.title}`}
+        className="focus-visible:ring-primary/40 absolute inset-0 z-20 rounded-3xl focus-visible:ring-2 focus-visible:outline-none"
+      >
+        <span className="sr-only">{post.title}</span>
+      </Link>
     </m.article>
   )
 }

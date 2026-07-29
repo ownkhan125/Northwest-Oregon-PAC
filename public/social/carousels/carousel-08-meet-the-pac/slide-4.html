@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Meet Northwest Oregon PAC · 4/5 — Northwest Oregon PAC</title>
+<title>We invest in the future · 4/5 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,35 +11,85 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c08-4 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(70% 55% at 15% 10%, rgba(224,214,188,.85) 0%, transparent 60%),
+      radial-gradient(80% 70% at 100% 108%, rgba(107,90,66,.22) 0%, transparent 60%),
+      linear-gradient(180deg, #eae0c6 0%, #d4c8a7 100%);
+  }
+  .c08-4-grid { position:absolute; z-index:2; inset:0; pointer-events:none; opacity:.05;
+    background-image:
+      linear-gradient(90deg, #2e4538 1px, transparent 1px),
+      linear-gradient(180deg, #2e4538 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .c08-4-mark { position:absolute; z-index:6; width:24px; height:24px; }
+  .c08-4-mark::before, .c08-4-mark::after { content:''; position:absolute; background:#6b5a42; }
+  .c08-4-mark::before { left:11px; top:0; width:2px; height:24px; }
+  .c08-4-mark::after  { top:11px; left:0; width:24px; height:2px; }
+  .c08-4-mark.tl { top:56px; left:56px; }
+  .c08-4-mark.tr { top:56px; right:56px; }
+  .c08-4-mark.bl { bottom:56px; left:56px; }
+  .c08-4-mark.br { bottom:56px; right:56px; }
+  .c08-4-mast { position:absolute; z-index:12; top:96px; left:120px; }
+  .c08-4-mast img { height:56px; width:auto; }
+  .c08-4-plate { position:absolute; z-index:12; top:110px; right:120px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.45em; text-transform:uppercase; color:#6b5a42;
+    padding:8px 14px; border:1px solid #6b5a42;
+  }
+  .c08-4-eyebrow { position:absolute; z-index:10; top:260px; left:120px; display:flex; align-items:center; gap:20px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060;
+  }
+  .c08-4-eyebrow .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  .c08-4-title { position:absolute; z-index:10; left:120px; right:400px; top:340px;
+    font-family:var(--font-display); font-weight:500; font-size:106px; line-height:.96; letter-spacing:-.03em; color:#2e4538;
+  }
+  .c08-4-title em { font-style:italic; font-weight:400; color:#6b5a42; }
+  /* Vertical photo panel on right */
+  .c08-4-photo { position:absolute; z-index:6; top:340px; right:120px; width:280px; height:420px; overflow:hidden;
+    border:1px solid rgba(46,69,56,.35); box-shadow:0 26px 50px -22px rgba(46,42,20,.5);
+    transform:rotate(-1.2deg);
+  }
+  .c08-4-photo img { width:100%; height:100%; object-fit:cover; filter:saturate(.7) contrast(1.16) sepia(.06); }
+  .c08-4-orn { position:absolute; z-index:10; left:120px; top:640px; width:200px; height:2px; background:#2e4538; opacity:.55; }
+  .c08-4-body { position:absolute; z-index:10; left:120px; right:120px; top:670px;
+    font-family:var(--font-display); font-style:italic; font-weight:400; font-size:34px; line-height:1.32; color:#3a4d3f; letter-spacing:-.008em;
+    max-width:820px;
+  }
+  .c08-4-footer { position:absolute; z-index:10; left:120px; right:120px; bottom:100px;
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.45em; text-transform:uppercase; color:#6b5a42;
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    
-  <div class="c-num-frame">
-    <div class="c-num-left">
-      <div class="c-num-kicker">Slide 4 · We invest in the future.</div>
-      <div class="c-num-figure">3</div>
-      <div class="c-num-tag">WE INVEST IN THE FUTURE</div>
-    </div>
-    <div class="c-num-right">
-      <div class="c-num-photo"><img src="../../assets/img/bridge.png" alt="" /><div class="c-num-photo-wash"></div></div>
-      <div class="c-num-copy">
-        <h1 class="display xxl">We invest in <em>the future.</em></h1>
-        <p class="c-num-p">Our mission extends beyond one election. We're building lasting political infrastructure that benefits Northwest Oregon for years to come.</p>
-        
+  <div class="canvas s-sand">
+    <div class="c08-4">
+      <div class="c08-4-grid"></div>
+
+      <span class="c08-4-mark tl"></span>
+      <span class="c08-4-mark tr"></span>
+      <span class="c08-4-mark bl"></span>
+      <span class="c08-4-mark br"></span>
+
+      <div class="c08-4-mast"><img src="../../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c08-4-plate">04 / 05</div>
+
+      <div class="c08-4-eyebrow"><span class="bar"></span>Exhibition 04 &middot; Future</div>
+
+      <div class="c08-4-photo"><img src="../../assets/img/event.jpg" alt="" /></div>
+
+      <h1 class="c08-4-title">We invest in the <em>future.</em></h1>
+      <div class="c08-4-orn"></div>
+      <p class="c08-4-body">Our mission extends beyond one election. We're building lasting political infrastructure that benefits Northwest Oregon for years to come.</p>
+
+      <div class="c08-4-footer">
+        <span>Exhibition 08</span>
+        <span>Meet the PAC</span>
       </div>
     </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Where Does Your Donation Go? · 7/7 — Northwest Oregon PAC</title>
+<title>Support Northwest Oregon PAC · 7/7 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,50 +11,72 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c03-7 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(80% 55% at 20% 15%, rgba(224,214,188,.75) 0%, transparent 60%),
+      linear-gradient(180deg, #e0d6bc 0%, #cbbc99 100%);
+  }
+  .c03-7-hatch { position:absolute; inset:0; z-index:2; opacity:.06; pointer-events:none;
+    background-image: linear-gradient(45deg, #6b5a42 1px, transparent 1px), linear-gradient(-45deg, #6b5a42 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .c03-7-frame { position:absolute; z-index:6; inset:80px; border:2px solid rgba(46,69,56,.55); }
+  .c03-7-frame-inner { position:absolute; z-index:6; inset:110px; border:1px solid rgba(46,69,56,.32); }
+  .c03-7-mast { position:absolute; z-index:14; top:130px; left:130px; }
+  .c03-7-mast img { height:52px; width:auto; }
+  .c03-7-stars { position:absolute; z-index:14; top:144px; right:130px; display:flex; gap:14px; opacity:.7; }
+  .c03-7-seal { position:absolute; z-index:8; left:50%; top:290px; transform:translateX(-50%);
+    width:200px; height:200px; border-radius:50%; border:3px solid #2e4538;
+    display:flex; align-items:center; justify-content:center; color:#2e4538;
+    background:rgba(224,214,188,.4);
+  }
+  .c03-7-seal::before { content:''; position:absolute; inset:14px; border-radius:50%; border:1px dashed rgba(46,69,56,.5); }
+  .c03-7-seal svg { width:70px; height:70px; }
+  .c03-7-eyebrow { position:absolute; z-index:10; left:96px; right:96px; top:540px; display:flex; align-items:center; justify-content:center; gap:22px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#6b5a42;
+  }
+  .c03-7-eyebrow .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  .c03-7-title { position:absolute; z-index:10; left:96px; right:96px; top:600px; text-align:center;
+    font-family:var(--font-display); font-weight:500; font-size:96px; line-height:.98; letter-spacing:-.03em; color:#2e4538;
+  }
+  .c03-7-title em { font-style:italic; font-weight:400; color:#6b5a42; display:block; }
+  .c03-7-tagword { position:absolute; z-index:10; left:96px; right:96px; top:820px; text-align:center;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:44px; color:#2e4538; letter-spacing:-.014em;
+  }
+  .c03-7-rule { position:absolute; z-index:10; left:50%; top:790px; transform:translateX(-50%); width:200px; height:2px; background:#2e4538; opacity:.55; }
+  .c03-7-cap { position:absolute; z-index:10; left:130px; bottom:130px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,69,56,.65);
+  }
+  .c03-7-index { position:absolute; z-index:10; right:130px; bottom:130px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,69,56,.65);
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light on-photo">
-    
-  <div class="c-close-bg"><img src="../../assets/img/banner.jpg" alt="" /><div class="c-close-wash"></div></div>
-  <div class="zone c-close">
-    <div class="c-kicker">Support</div>
-    <div class="c-close-body">
-      <h1 class="display xl">Support Northwest <em>Oregon PAC</em></h1>
-      <p class="c-close-sub">Every gift, no matter the size, moves the mission forward.</p>
-      <div class="c-close-items">
-        <div class="c-close-item">
-          <span class="n">01</span>
-          <span class="lbl">Donate</span>
-          <span class="arrow">→</span>
-        </div>
-        <div class="c-close-item">
-          <span class="n">02</span>
-          <span class="lbl">Volunteer</span>
-          <span class="arrow">→</span>
-        </div>
-        <div class="c-close-item">
-          <span class="n">03</span>
-          <span class="lbl">Stay Connected</span>
-          <span class="arrow">→</span>
-        </div></div>
-      <div class="c-close-footer">northwestoregon.com</div>
+  <div class="canvas s-sand">
+    <div class="c03-7">
+      <div class="c03-7-hatch"></div>
+      <div class="c03-7-frame"></div>
+      <div class="c03-7-frame-inner"></div>
+
+      <div class="c03-7-mast"><img src="../../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c03-7-stars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="c03-7-seal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="c03-7-eyebrow"><span class="bar"></span><span class="bar"></span></div>
+      <h2 class="c03-7-title">Support<em>Northwest Oregon PAC</em></h2>
+      <div class="c03-7-rule"></div>
     </div>
-    <div class="c-close-flag">
-      <span class="stripe s1"></span>
-      <span class="stripe s2"></span>
-      <span class="stripe s3"></span>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
+
     <div class="grain"></div>
   </div>
 </body>

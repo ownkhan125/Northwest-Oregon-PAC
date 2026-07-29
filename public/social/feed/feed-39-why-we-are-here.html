@@ -11,45 +11,97 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f39 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.45) 0%, transparent 55%),
+      radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
+      linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
+    color:#f6f2e8;
+  }
+  /* Faint blueprint grid */
+  .f39-grid { position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.09;
+    background-image:
+      linear-gradient(90deg, #f6f2e8 1px, transparent 1px),
+      linear-gradient(180deg, #f6f2e8 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  /* Mast */
+  .f39-mast { position:absolute; z-index:10; top:96px; left:96px; }
+  .f39-mast img { height:56px; width:auto; filter:brightness(1.05); }
+  .f39-stars { position:absolute; z-index:10; top:112px; right:96px; display:flex; gap:14px; opacity:.55; }
+  /* Editorial kicker (mono all caps) */
+  .f39-kick { position:absolute; z-index:10; top:250px; left:96px; right:96px;
+    display:flex; align-items:center; gap:22px;
+    font-family:var(--font-mono); font-size:15px; letter-spacing:.55em; text-transform:uppercase; color:#e0d6bc;
+    padding-bottom:22px; border-bottom:1.5px solid rgba(224,214,188,.4);
+  }
+  .f39-kick .bar { flex:1; height:1px; background:currentColor; opacity:.35; }
+  .f39-kick .idx { font-size:12px; letter-spacing:.4em; color:rgba(246,242,232,.5); }
+  /* Big serif eyebrow */
+  .f39-eyebrow { position:absolute; z-index:10; top:340px; left:96px; right:96px;
+    font-family:var(--font-display); font-weight:500; font-size:150px; line-height:.92; letter-spacing:-.035em; color:#f6f2e8;
+  }
+  /* Magazine two-column body */
+  .f39-cols { position:absolute; z-index:10; left:96px; right:96px; top:640px; bottom:200px;
+    display:grid; grid-template-columns: 1fr 1px 1fr; gap:44px;
+  }
+  .f39-vrule { background:linear-gradient(180deg, rgba(224,214,188,0), rgba(224,214,188,.4) 20%, rgba(224,214,188,.4) 80%, rgba(224,214,188,0)); }
+  .f39-body { font-family:var(--font-display); font-weight:500; font-size:34px; line-height:1.24; letter-spacing:-.01em; color:#f6f2e8; }
+  .f39-body .drop { float:left; font-family:var(--font-display); font-weight:600; font-style:normal; font-size:118px; line-height:.82; padding:8px 14px 0 0; color:#e0d6bc; }
+  .f39-body-tail { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:30px; line-height:1.32; color:#e0d6bc; align-self:end; }
+  .f39-body-tail::before { content:''; display:block; width:60px; height:2px; background:#e0d6bc; margin-bottom:22px; opacity:.7; }
+  /* Foot */
+  .f39-foot { position:absolute; z-index:10; left:96px; right:96px; bottom:96px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.5em; text-transform:uppercase; color:rgba(246,242,232,.55);
+    padding-top:22px; border-top:1px solid rgba(246,242,232,.25);
+  }
+  .f39-foot .arr { display:inline-block; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    <style>
-        .f39 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
-            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
-            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
-          color:#f6f2e8;
-        }
-        .f39-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
-        .f39-mast img { height:56px; width:auto; filter:brightness(1.05); }
-        .f39-preamble { position:absolute; top:180px; left:76px; right:76px; z-index:6; padding-bottom:14px; border-bottom:1.5px solid rgba(246,242,232,.35); display:flex; align-items:baseline; justify-content:space-between; gap:22px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.65); }
-        .f39-preamble .em { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        .f39-title { position:absolute; top:290px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:110px; line-height:1; letter-spacing:-.028em; color:#f6f2e8; }
-        .f39-title em { display:block; font-style:italic; color:#e0d6bc; }
-        .f39-body { position:absolute; left:76px; right:76px; bottom:210px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); font-family:var(--font-display); font-weight:500; font-size:34px; line-height:1.16; letter-spacing:-.015em; color:#f6f2e8; max-width:920px; }
-        .f39-body em { font-style:italic; color:#e0d6bc; }
-        .f39-sig { position:absolute; left:76px; right:76px; bottom:118px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
-        .f39-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        .f39-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
-      </style>
-        <div class="f39">
-          <div class="f39-mast">
-            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
-            <span>Preamble 39 · Why We Are Here</span>
-          </div>
-          <div class="f39-preamble"><span>The Charter</span><span class="em">A preamble</span><span>No. 39</span></div>
-          <h1 class="f39-title">Why We<em>Are Here.</em></h1>
-          <p class="f39-body">Northwest Oregon should never <em>lose its voice</em> simply because others decided the region was too difficult to compete for.</p>
-          <div class="f39-sig"><span>No community should be conceded</span><span class="em">— Before voters have a real choice.</span></div>
-          <div class="f39-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-forest">
+    <div class="f39">
+      <div class="f39-grid"></div>
+
+      <div class="f39-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f39-stars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f39-kick"><span class="bar"></span></div>
+
+      <h1 class="f39-eyebrow">WHY WE<br/>ARE HERE</h1>
+
+      <div class="f39-cols">
+        <p class="f39-body"><span class="drop">N</span>orthwest Oregon should never lose its voice simply because others decided the region was too difficult to compete for.</p>
+        <div class="f39-vrule"></div>
+        <div class="f39-body-tail" aria-hidden="true">
+          <svg width="180" height="180" viewBox="0 0 180 180" fill="none" stroke="#e0d6bc" stroke-width="1.2" opacity=".85">
+            <circle cx="90" cy="90" r="82"/>
+            <circle cx="90" cy="90" r="66" opacity=".55"/>
+            <path d="M90 20 L92 74 L146 76 L96 92 L142 138 L90 100 L38 140 L84 92 L34 76 L88 74 Z" fill="#e0d6bc" opacity=".16"/>
+            <circle cx="90" cy="90" r="6" fill="#e0d6bc"/>
+          </svg>
         </div>
-      
-    
+      </div>
+
+      <div class="f39-foot">
+        <span class="stars" aria-hidden="true" style="display:flex; gap:12px; opacity:.6;">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        </span>
+        <span class="arr">
+          <svg width="60" height="10" viewBox="0 0 60 10" fill="none" stroke="#e0d6bc" stroke-width="1"><path d="M0 5 L50 5"/><path d="M46 1 L54 5 L46 9"/></svg>
+        </span>
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

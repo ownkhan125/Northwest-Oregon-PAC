@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>THIS MOVEMENT BELONGS TO NORTHWEST OREGON. · 1/4 — Northwest Oregon PAC</title>
+<title>Building Strong Campaigns Together · 1/4 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,36 +11,88 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c10-1 { position:absolute; inset:0; z-index:5; overflow:hidden; }
+  .c10-1-bg { position:absolute; inset:0; z-index:1; }
+  .c10-1-bg img { width:100%; height:100%; object-fit:cover; object-position:center 45%;
+    filter:saturate(.5) contrast(1.35) brightness(.42);
+  }
+  .c10-1-bg::after { content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(72% 55% at 20% 22%, rgba(90,112,96,.32) 0%, transparent 65%),
+      radial-gradient(90% 80% at 100% 100%, rgba(6,10,7,.94) 0%, transparent 60%),
+      linear-gradient(178deg, rgba(28,42,34,.5) 0%, rgba(14,20,16,.7) 55%, rgba(6,10,7,.98) 100%);
+  }
+  .c10-1-scan { position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.09;
+    background: repeating-linear-gradient(180deg, transparent 0 3px, rgba(0,0,0,.5) 3px 4px);
+  }
+  /* Film strip perforations at bottom edge */
+  .c10-1-film { position:absolute; z-index:6; bottom:60px; left:0; right:0; height:32px;
+    background:
+      linear-gradient(90deg, transparent 0, transparent 100%),
+      repeating-linear-gradient(90deg, #0a100c 0 26px, transparent 26px 46px);
+    border-top:1px solid rgba(224,214,188,.28);
+    border-bottom:1px solid rgba(224,214,188,.28);
+  }
+  .c10-1-film::before { content:''; position:absolute; inset:6px 0;
+    background:repeating-linear-gradient(90deg, rgba(224,214,188,.18) 0 22px, transparent 22px 44px);
+  }
+  .c10-1-mast { position:absolute; z-index:14; top:80px; left:96px; }
+  .c10-1-mast img { height:60px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.7)); }
+  .c10-1-serial { position:absolute; z-index:14; top:100px; right:96px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.65);
+    display:flex; align-items:center; gap:14px;
+  }
+  .c10-1-serial .bar { width:40px; height:1px; background:currentColor; opacity:.7; }
+  /* Bracket kicker */
+  .c10-1-kick { position:absolute; z-index:10; left:96px; top:260px;
+    font-family:var(--font-mono); font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.8);
+    display:flex; align-items:center; gap:16px;
+  }
+  .c10-1-kick .brk { color:rgba(224,214,188,.5); font-family:var(--font-display); font-size:22px; }
+  /* Huge poster stack */
+  .c10-1-word { position:absolute; z-index:10; left:96px; right:80px;
+    font-family:var(--font-display); font-weight:500; letter-spacing:-.036em; line-height:.88; color:#f6f2e8;
+    text-shadow: 0 8px 40px rgba(0,0,0,.55);
+  }
+  .c10-1-w1 { top:340px; font-size:132px; }
+  .c10-1-w2 { top:490px; font-size:132px; font-style:italic; font-weight:400; color:#e0d6bc; }
+  .c10-1-w3 { top:640px; font-size:132px; }
+  .c10-1-orn { position:absolute; z-index:10; left:96px; top:820px; width:200px; height:2px; background:#e0d6bc; opacity:.75; }
+  .c10-1-cta { position:absolute; z-index:10; left:96px; right:96px; top:848px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:44px; line-height:1.16; letter-spacing:-.018em; color:#e0d6bc;
+  }
+  .c10-1-tag { position:absolute; z-index:10; left:96px; bottom:120px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.6);
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-ink on-photo">
-    
-  <div class="c-cover-bg">
-    <img src="../../assets/img/banner.jpg" alt="" />
-    <div class="c-cover-wash deep"></div>
-    <div class="c-cover-vignette"></div>
-  </div>
-  <div class="zone c-cover">
-    <div class="c-cover-top">
-      <div class="c-kicker">Slide 1 · A movement</div>
-      <span class="c-cover-brand">Northwest Oregon PAC · 2026</span>
+  <div class="canvas on-photo" style="background:#0a100c;">
+    <div class="c10-1">
+      <div class="c10-1-bg"><img src="../../assets/img/banner.jpg" alt="" /></div>
+      <div class="c10-1-scan"></div>
+
+      <div class="c10-1-mast"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c10-1-serial"><span class="bar"></span>REEL 10 &middot; 01/04</div>
+
+      <div class="c10-1-kick">
+        <span class="brk">[</span>
+        <span>Final Reel</span>
+        <span class="brk">]</span>
+      </div>
+
+      <h1 class="c10-1-word c10-1-w1">Building Strong</h1>
+      <div class="c10-1-word c10-1-w2">Campaigns</div>
+      <div class="c10-1-word c10-1-w3">Together</div>
+
+      <div class="c10-1-orn"></div>
+      <p class="c10-1-cta">Northwest Oregon's Future Starts Here.</p>
+
+      <div class="c10-1-tag">The Movement // Reel 10</div>
+      <div class="c10-1-film"></div>
     </div>
-    <div class="c-cover-body">
-      <h1 class="display xl">THIS MOVEMENT BELONGS <em>TO NORTHWEST OREGON.</em></h1>
-      
-      <div class="c-cover-hairline"></div>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

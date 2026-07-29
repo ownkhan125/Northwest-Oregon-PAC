@@ -11,106 +11,70 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  /* Documentary poster — top half is a cinematic community/campaign photo (banded, not full bleed);
+     bottom half is a cream editorial plate with a big serif sentence.
+     A firm horizontal seam separates the two zones — no text over the photo. */
+  .f36 { position:absolute; inset:0; z-index:5; overflow:hidden; background:#f6f2e8; }
+  /* Top photo band — occupies top ~48% */
+  .f36-photo { position:absolute; z-index:2; top:0; left:0; right:0; height:520px; overflow:hidden; }
+  .f36-photo img { width:100%; height:100%; object-fit:cover; object-position:center 45%; filter:saturate(.7) contrast(1.2) brightness(.8); }
+  .f36-photo::after { content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(60% 45% at 20% 20%, rgba(90,112,96,.32) 0%, transparent 65%),
+      linear-gradient(180deg, rgba(20,30,22,.5) 0%, rgba(20,30,22,.15) 30%, rgba(20,30,22,.28) 100%);
+  }
+  /* Photo top-left mast */
+  .f36-mast { position:absolute; z-index:14; top:64px; left:80px; }
+  .f36-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.5)); }
+  /* Stars top-right on photo */
+  .f36-stars { position:absolute; z-index:14; top:80px; right:80px; display:grid; grid-template-columns:repeat(5,10px); gap:12px; opacity:.7; }
+  /* Seam between panels */
+  .f36-seam { position:absolute; z-index:6; left:0; right:0; top:520px; height:6px; background:#0a100c; }
+  .f36-seam::before { content:''; position:absolute; left:0; right:0; top:6px; height:2px; background:linear-gradient(90deg, transparent, rgba(46,69,56,.5), transparent); }
+  /* Bottom sand plate */
+  .f36-plate { position:absolute; z-index:5; left:0; right:0; top:528px; bottom:0; padding:70px 96px 96px; display:flex; flex-direction:column; }
+  /* Kicker line */
+  .f36-kick { display:flex; align-items:center; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060; margin-bottom:34px; }
+  .f36-kick .bar { width:60px; height:1px; background:currentColor; opacity:.7; }
+  /* Big serif sentence */
+  .f36-h1 { font-family:var(--font-display); font-weight:500; font-size:80px; line-height:.98; letter-spacing:-.026em; color:#2e4538; max-width:100%; }
+  .f36-h1 em { font-style:italic; color:#5a7060; }
+  /* Bottom detail row */
+  .f36-bot { margin-top:auto; display:flex; align-items:center; gap:22px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+  .f36-bot .bar { flex:1; height:1px; background:currentColor; opacity:.5; }
+  .f36-bot .star svg { display:block; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f36 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-          color:#2e4538;
-        }
-        .f36-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f36-mast img { height:56px; width:auto; }
-        .f36-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
-        .f36-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f36-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:56px; line-height:1.06; letter-spacing:-.028em; color:#2e4538; max-width:920px; }
-        .f36-head em { display:block; font-style:italic; color:#5a7060; }
-        /* Meeting scene SVG */
-        .f36-chain { position:absolute; left:76px; right:76px; top:460px; height:220px; z-index:5; }
-        .f36-chain svg { display:block; width:100%; height:100%; overflow:visible; }
-        /* Manifesto below */
-        .f36-mani { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:#2e4538; max-width:920px; }
-        .f36-mani em { font-style:normal; color:#6b5a42; }
-        .f36-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f36-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f36-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f36">
-          <div class="f36-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Chapter 36 · Strong Leadership</span>
-          </div>
-          <span class="f36-kick">Strong communities</span>
-          <h1 class="f36-head">Strong Communities Begin with<em>Strong Leadership.</em></h1>
-          <div class="f36-chain">
-            <svg viewBox="0 0 900 180" fill="none" stroke="#2e4538" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Meeting visual: business owners & civic leaders with PAC candidates -->
-              <!-- Left group: business owners -->
-              <g fill="#5a7060" fill-opacity=".15">
-                <circle cx="90" cy="52" r="22"/>
-                <path d="M52 176 L52 112 C 52 96 68 86 90 86 C 112 86 128 96 128 112 L 128 176"/>
-                <circle cx="180" cy="60" r="20"/>
-                <path d="M146 176 L146 118 C 146 104 160 96 180 96 C 200 96 214 104 214 118 L 214 176"/>
-              </g>
-              <g stroke="#2e4538" stroke-width="1.8" fill="none">
-                <circle cx="90" cy="52" r="22"/>
-                <path d="M52 176 L52 112 C 52 96 68 86 90 86 C 112 86 128 96 128 112 L 128 176"/>
-                <circle cx="180" cy="60" r="20"/>
-                <path d="M146 176 L146 118 C 146 104 160 96 180 96 C 200 96 214 104 214 118 L 214 176"/>
-              </g>
-              <text x="132" y="14" font-family="Source Sans 3" font-size="11" fill="rgba(46,69,56,.6)" text-anchor="middle" stroke="none" letter-spacing="2.5">BUSINESS OWNERS</text>
-              <!-- Center: handshake / meeting -->
-              <g stroke="#2e4538" stroke-width="1.8" fill="none">
-                <path d="M280 130 L360 130" stroke-dasharray="5 4"/>
-                <circle cx="330" cy="130" r="6" fill="#5a7060" fill-opacity=".2"/>
-                <circle cx="330" cy="130" r="6"/>
-                <path d="M360 130 L440 130" stroke-dasharray="5 4"/>
-                <path d="M440 130 L520 130" stroke-dasharray="5 4"/>
-                <path d="M520 130 L600 130" stroke-dasharray="5 4"/>
-              </g>
-              <!-- Middle group: PAC leadership + candidates -->
-              <g fill="#5a7060" fill-opacity=".18">
-                <circle cx="380" cy="46" r="24"/>
-                <path d="M340 176 L340 108 C 340 92 356 82 380 82 C 404 82 420 92 420 108 L 420 176"/>
-                <circle cx="470" cy="52" r="22"/>
-                <path d="M432 176 L432 112 C 432 96 448 86 470 86 C 492 86 508 96 508 112 L 508 176"/>
-              </g>
-              <g stroke="#2e4538" stroke-width="1.8" fill="none">
-                <circle cx="380" cy="46" r="24"/>
-                <path d="M340 176 L340 108 C 340 92 356 82 380 82 C 404 82 420 92 420 108 L 420 176"/>
-                <circle cx="470" cy="52" r="22"/>
-                <path d="M432 176 L432 112 C 432 96 448 86 470 86 C 492 86 508 96 508 112 L 508 176"/>
-              </g>
-              <text x="424" y="14" font-family="Source Sans 3" font-size="11" fill="rgba(46,69,56,.6)" text-anchor="middle" stroke="none" letter-spacing="2.5">PAC LEADERSHIP</text>
-              <!-- Right group: civic leaders -->
-              <g fill="#5a7060" fill-opacity=".15">
-                <circle cx="700" cy="60" r="20"/>
-                <path d="M666 176 L666 118 C 666 104 680 96 700 96 C 720 96 734 104 734 118 L 734 176"/>
-                <circle cx="800" cy="52" r="22"/>
-                <path d="M762 176 L762 112 C 762 96 778 86 800 86 C 822 86 838 96 838 112 L 838 176"/>
-              </g>
-              <g stroke="#2e4538" stroke-width="1.8" fill="none">
-                <circle cx="700" cy="60" r="20"/>
-                <path d="M666 176 L666 118 C 666 104 680 96 700 96 C 720 96 734 104 734 118 L 734 176"/>
-                <circle cx="800" cy="52" r="22"/>
-                <path d="M762 176 L762 112 C 762 96 778 86 800 86 C 822 86 838 96 838 112 L 838 176"/>
-              </g>
-              <text x="750" y="14" font-family="Source Sans 3" font-size="11" fill="rgba(46,69,56,.6)" text-anchor="middle" stroke="none" letter-spacing="2.5">CIVIC LEADERS</text>
-              <!-- Ground line -->
-              <line x1="0" y1="176" x2="900" y2="176" stroke-dasharray="6 6" opacity="0.5"/>
-            </svg>
-          </div>
-          <p class="f36-mani">Northwest Oregon's future depends on leaders willing to serve and supporters willing to invest in strong campaigns. <em>Together, we're building lasting political infrastructure</em> that strengthens our region election after election.</p>
-          <div class="f36-sig"><span>Election after election</span><span class="em">— Building lasting infrastructure.</span></div>
-          <div class="f36-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-light">
+    <div class="f36">
+      <div class="f36-photo"><img src="../assets/img/campaign.jpg" alt="" /></div>
+      <div class="f36-seam"></div>
+
+      <div class="f36-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f36-stars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f36-plate">
+        <div class="f36-kick"><span class="bar"></span></div>
+        <h1 class="f36-h1">Strong Communities <em>Begin with</em> Strong Leadership.</h1>
+        <div class="f36-bot">
+          <span class="bar"></span>
+          <span class="star" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          </span>
+          <span class="bar"></span>
         </div>
-      
-    
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

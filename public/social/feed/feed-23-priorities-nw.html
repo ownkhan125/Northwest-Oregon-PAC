@@ -11,69 +11,88 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f23 { position:absolute; inset:0; z-index:5; overflow:hidden; background:#efe8d5; }
+  /* Left photo pane — full-height cropped Oregon community */
+  .f23-photo { position:absolute; z-index:2; top:0; bottom:0; left:0; width:44%; overflow:hidden; }
+  .f23-photo img { width:100%; height:100%; object-fit:cover; object-position:35% 40%; filter:saturate(.68) contrast(1.2) brightness(.78); }
+  .f23-photo::after { content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, rgba(31,47,38,.35) 0%, transparent 40%, transparent 65%, rgba(239,232,213,.4) 100%),
+      linear-gradient(180deg, rgba(20,30,22,.55) 0%, rgba(20,30,22,.15) 30%, rgba(20,30,22,.55) 100%);
+  }
+  /* Torn / hand-drawn edge between photo and text */
+  .f23-tear { position:absolute; z-index:4; top:0; bottom:0; left:44%; width:16px; transform:translateX(-8px);
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='1080' viewBox='0 0 16 1080'><path d='M8 0 L10 40 L6 90 L11 150 L5 220 L9 290 L7 360 L10 430 L6 500 L9 570 L7 640 L10 710 L6 780 L9 850 L7 920 L10 990 L8 1080' stroke='%23efe8d5' stroke-width='4' fill='none' opacity='.9'/></svg>") repeat-y center;
+  }
+  /* Photo overlay — small label + kicker on photo */
+  .f23-photo-label { position:absolute; z-index:6; left:56px; top:96px; }
+  .f23-photo-label img { height:60px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  /* Right editorial column */
+  .f23-col { position:absolute; z-index:5; top:120px; right:80px; bottom:120px; left:calc(44% + 60px); display:flex; flex-direction:column; }
+  .f23-eyebrow { display:flex; align-items:center; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:#5a7060; }
+  .f23-eyebrow .bar { width:52px; height:1px; background:currentColor; opacity:.75; }
+  .f23-head { margin-top:24px; font-family:var(--font-display); font-weight:500; font-size:64px; line-height:1; letter-spacing:-.024em; color:#2e4538; }
+  .f23-sub { margin-top:22px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:32px; line-height:1.22; letter-spacing:-.015em; color:#5a7060; }
+  .f23-orn { margin-top:34px; height:2px; width:80px; background:#2e4538; opacity:.5; }
+  .f23-list { margin-top:30px; display:flex; flex-direction:column; gap:22px; }
+  .f23-item { display:flex; align-items:center; gap:22px; padding:14px 0; border-bottom:1px solid rgba(46,69,56,.16); }
+  .f23-item:last-child { border-bottom:none; }
+  .f23-item .n { flex:none; width:44px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; letter-spacing:-.01em; color:#5a7060; text-align:right; }
+  .f23-item .ico { flex:none; width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#2e4538; opacity:.75; }
+  .f23-item .ico svg { width:38px; height:38px; }
+  .f23-item .txt { flex:1; font-family:var(--font-display); font-weight:500; font-size:26px; line-height:1.2; letter-spacing:-.008em; color:#2e4538; }
+  /* Ghost numeral */
+  .f23-num { position:absolute; z-index:3; font-family:var(--font-display); font-style:italic; font-weight:400; font-size:640px; line-height:.8; color:rgba(46,69,56,.06); right:-40px; bottom:-120px; pointer-events:none; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f23 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f0e6cd 0%, #d6c493 100%);
-          color:#2e4538;
-        }
-        .f23-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f23-mast img { height:56px; width:auto; }
-        .f23-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
-        .f23-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f23-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:56px; line-height:1.02; letter-spacing:-.028em; color:#2e4538; max-width:920px; }
-        .f23-head em { font-style:italic; color:#5a7060; }
-        /* Compass center */
-        .f23-compass { position:absolute; left:calc(50% - 200px); top:400px; width:400px; height:400px; z-index:5; }
-        .f23-compass svg { display:block; width:100%; height:100%; }
-        /* Priority label overlays around compass — pushed outward */
-        .f23-lbl { position:absolute; z-index:6; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
-        .f23-lbl .em { display:block; margin-top:6px; font-family:var(--font-display); font-style:italic; font-size:20px; letter-spacing:-.01em; color:#2e4538; text-transform:none; line-height:1.14; }
-        .f23-lbl.n { top:360px; left:calc(50% - 110px); width:220px; text-align:center; }
-        .f23-lbl.ne { top:440px; right:44px; width:200px; text-align:left; }
-        .f23-lbl.se { top:750px; right:44px; width:200px; text-align:left; }
-        .f23-lbl.sw { top:750px; left:44px; width:200px; text-align:right; }
-        .f23-lbl.nw { top:440px; left:44px; width:200px; text-align:right; }
-        /* Footer */
-        .f23-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f23">
-          <div class="f23-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Compass 23 · Priorities Shaped Here</span>
+  <div class="canvas s-light">
+    <div class="f23">
+      <div class="f23-photo"><img src="../assets/img/community.jpg" alt="" /></div>
+      <div class="f23-tear"></div>
+
+      <div class="f23-photo-label">
+        <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
+      </div>
+
+      <div class="f23-col">
+        <div class="f23-eyebrow"><span class="bar"></span></div>
+        <h1 class="f23-head">Our priorities aren't chosen in Salem.</h1>
+        <p class="f23-sub">They're shaped by conversations across Northwest Oregon.</p>
+        <div class="f23-orn"></div>
+
+        <div class="f23-list">
+          <div class="f23-item">
+            <span class="n">i.</span>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-8h6v8"/></svg></span>
+            <span class="txt">Supporting local businesses</span>
           </div>
-          <span class="f23-kick">Our priorities aren't chosen in Salem.</span>
-          <h1 class="f23-head">They're shaped by conversations across<em>Northwest Oregon.</em></h1>
-          <div class="f23-compass">
-            <svg viewBox="0 0 400 400" fill="none" stroke="#2e4538" stroke-width="1.4">
-              <circle cx="200" cy="200" r="180" opacity="0.35"/>
-              <circle cx="200" cy="200" r="140" opacity="0.4"/>
-              <circle cx="200" cy="200" r="100" opacity="0.5"/>
-              <circle cx="200" cy="200" r="14" fill="#2e4538"/>
-              <!-- Star points -->
-              <path d="M200 40 L212 190 L360 200 L212 210 L200 360 L188 210 L40 200 L188 190 Z" fill="#5a7060" fill-opacity=".22" stroke="#2e4538" stroke-width="1.6"/>
-              <text x="200" y="26" font-family="Source Sans 3" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">N</text>
-              <text x="384" y="204" font-family="Source Sans 3" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">E</text>
-              <text x="200" y="384" font-family="Source Sans 3" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">S</text>
-              <text x="16" y="204" font-family="Source Sans 3" font-size="10" fill="#2e4538" text-anchor="middle" stroke="none" letter-spacing="3">W</text>
-            </svg>
+          <div class="f23-item">
+            <span class="n">ii.</span>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="12" rx="1"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><path d="M12 12v3"/></svg></span>
+            <span class="txt">Responsible public spending</span>
           </div>
-          <span class="f23-lbl n">— i.<span class="em">Supporting local businesses</span></span>
-          <span class="f23-lbl ne">— ii.<span class="em">Responsible public spending</span></span>
-          <span class="f23-lbl se">— iii.<span class="em">Safe communities</span></span>
-          <span class="f23-lbl sw">— iv.<span class="em">Preparing students for tomorrow</span></span>
-          <span class="f23-lbl nw">— v.<span class="em">Affordable, dependable energy</span></span>
-          <div class="f23-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
+          <div class="f23-item">
+            <span class="n">iii.</span>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5v7c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3z"/></svg></span>
+            <span class="txt">Safe communities</span>
+          </div>
+          <div class="f23-item">
+            <span class="n">iv.</span>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V9l8-5 8 5v10"/><path d="M2 22h20"/><path d="M9 22v-6h6v6"/></svg></span>
+            <span class="txt">Preparing students for tomorrow</span>
+          </div>
+          <div class="f23-item">
+            <span class="n">v.</span>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+            <span class="txt">Affordable, dependable energy</span>
           </div>
         </div>
-      
-    
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

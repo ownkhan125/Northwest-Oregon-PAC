@@ -11,105 +11,112 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .s15 { position:absolute; inset:0; z-index:5; overflow:hidden; background:#0a100c; }
+  /* Photo backdrop, deep grade */
+  .s15-bg { position:absolute; z-index:1; inset:0; }
+  .s15-bg img { width:100%; height:100%; object-fit:cover; object-position:center 50%; filter:saturate(.5) contrast(1.32) brightness(.32) blur(1px); }
+  /* Cinematic 3-layer wash */
+  .s15-wash { position:absolute; z-index:2; inset:0;
+    background:
+      radial-gradient(60% 40% at 50% 22%, rgba(90,112,96,.45) 0%, transparent 70%),
+      radial-gradient(90% 70% at 50% 100%, rgba(20,30,22,.9) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(31,47,38,.65) 0%, rgba(20,30,22,.3) 45%, rgba(6,10,7,.98) 100%);
+  }
+  /* Faint scanlines */
+  .s15-scan { position:absolute; z-index:3; inset:0; pointer-events:none; opacity:.08;
+    background: repeating-linear-gradient(180deg, transparent 0 4px, rgba(0,0,0,.5) 4px 5px);
+    mix-blend-mode:multiply;
+  }
+  /* Registration marks in corners */
+  .s15-mark { position:absolute; z-index:8; width:22px; height:22px; }
+  .s15-mark::before, .s15-mark::after { content:''; position:absolute; background:rgba(224,214,188,.55); }
+  .s15-mark::before { left:10px; top:0; width:2px; height:22px; }
+  .s15-mark::after  { top:10px; left:0; width:22px; height:2px; }
+  .s15-mark.tl { top:96px; left:72px; }
+  .s15-mark.tr { top:96px; right:72px; }
+  .s15-mark.bl { bottom:96px; left:72px; }
+  .s15-mark.br { bottom:96px; right:72px; }
+  /* Mast */
+  .s15-mast { position:absolute; z-index:12; top:132px; left:96px; }
+  .s15-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.7)); }
+  /* Star cluster upper right */
+  .s15-stars { position:absolute; z-index:8; top:150px; right:120px; display:grid; grid-template-columns:repeat(3,10px); gap:12px; opacity:.7; }
+  /* Vertical brand rule (right spine) */
+  .s15-spine { position:absolute; z-index:6; right:48px; top:220px; bottom:220px; width:1px; background:linear-gradient(180deg, rgba(224,214,188,0), rgba(224,214,188,.4) 20%, rgba(224,214,188,.4) 80%, rgba(224,214,188,0)); }
+  /* Top kicker mono label */
+  .s15-kicker { position:absolute; z-index:10; left:96px; top:340px; display:flex; align-items:center; gap:22px; font-family:var(--font-mono); font-size:20px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.65); }
+  .s15-kicker .bar { width:64px; height:1px; background:currentColor; opacity:.7; }
+  /* Big italic quote glyph in background */
+  .s15-glyph { position:absolute; z-index:3; font-family:var(--font-display); font-style:italic; font-weight:400; font-size:1200px; line-height:.68; color:rgba(224,214,188,.045); right:-260px; top:200px; pointer-events:none; }
+  /* Main question — top-center huge */
+  .s15-q { position:absolute; z-index:10; left:96px; right:96px; top:460px;
+    font-family:var(--font-display); font-weight:500; font-size:132px; line-height:.98; letter-spacing:-.03em;
+    color:#f6f2e8; text-shadow: 0 8px 40px rgba(0,0,0,.65);
+  }
+  .s15-q em { font-style:italic; font-weight:400; color:#e0d6bc; }
+  /* Diagonal accent line */
+  .s15-diag { position:absolute; z-index:6; left:96px; top:1020px; right:96px; height:1px; background:linear-gradient(90deg, rgba(224,214,188,.55) 0%, transparent 50%); }
+  /* Center CTA — as a premium form field mock */
+  .s15-mid { position:absolute; z-index:10; left:96px; right:96px; top:1130px; display:flex; flex-direction:column; gap:26px; }
+  .s15-mid .lbl { font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.7); }
+  .s15-mid .field { padding:44px 56px; background:rgba(224,214,188,.06); border:1.5px solid rgba(224,214,188,.4); border-radius:16px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:66px; letter-spacing:-.015em; color:rgba(246,242,232,.85);
+    display:flex; align-items:center; gap:24px;
+    box-shadow: inset 0 0 40px rgba(0,0,0,.35), 0 40px 60px -30px rgba(0,0,0,.7);
+  }
+  .s15-mid .field .cursor { display:inline-block; width:3px; height:60px; background:rgba(224,214,188,.7); margin-left:6px; animation: none; }
+  /* Bottom badge grid */
+  .s15-bottom { position:absolute; z-index:10; left:96px; right:96px; bottom:160px; display:flex; align-items:center; justify-content:space-between; }
+  .s15-bottom .left { display:flex; align-items:center; gap:16px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.55); }
+  .s15-bottom .left .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+  .s15-bottom .swipe { display:flex; align-items:center; gap:14px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:40px; color:#e0d6bc; letter-spacing:-.02em; }
+  .s15-bottom .swipe svg { display:block; }
+  /* Ghost giant numeral */
+  .s15-num { position:absolute; z-index:3; font-family:var(--font-display); font-style:italic; font-weight:400; font-size:1300px; line-height:.7; color:rgba(224,214,188,.05); left:-120px; bottom:-360px; pointer-events:none; }
+</style>
 </head>
 <body>
-  <div class="canvas story s-ink">
-    <style>
-        .s15 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(90% 60% at 50% 30%, rgba(224,214,188,.24) 0%, transparent 55%),
-            radial-gradient(120% 100% at 50% 100%, rgba(14,22,17,.95) 0%, transparent 65%),
-            linear-gradient(178deg, #2e4538 0%, #101815 100%);
-          color:#f6f2e8;
-        }
-        /* Velvet pleats — forest stripe pattern */
-        .s15::before {
-          content:''; position:absolute; inset:0; pointer-events:none;
-          background:
-            repeating-linear-gradient(90deg, rgba(28,43,35,.6) 0 40px, rgba(90,112,96,.2) 40px 80px, rgba(28,43,35,.6) 80px 120px);
-          mix-blend-mode:multiply; opacity:.55;
-        }
-        .s15::after {
-          content:''; position:absolute; inset:0; pointer-events:none;
-          background:radial-gradient(60% 45% at 50% 42%, rgba(224,214,188,.22) 0%, rgba(224,214,188,0) 55%);
-        }
-        /* Left + right pleated curtain frame — forest velvet */
-        .s15-curtain {
-          position:absolute; top:0; bottom:0; width:26%; z-index:3;
-          background:
-            repeating-linear-gradient(90deg, rgba(14,22,17,.9) 0 30px, rgba(28,43,35,.7) 30px 60px);
-          box-shadow:inset 0 0 60px rgba(14,22,17,.75);
-        }
-        .s15-curtain.l { left:0; border-right:2px solid rgba(224,214,188,.18); }
-        .s15-curtain.r { right:0; border-left:2px solid rgba(224,214,188,.18); }
-        /* Gold rope tie-back */
-        .s15-rope { position:absolute; z-index:5; }
-        .s15-rope.l { top:calc(50% - 40px); left:26%; }
-        .s15-rope.r { top:calc(50% - 40px); right:26%; transform:scaleX(-1); }
-        /* Spotlight pool */
-        .s15-spot {
-          position:absolute; top:280px; left:50%; transform:translateX(-50%);
-          width:660px; height:660px; z-index:4; pointer-events:none;
-          background:radial-gradient(50% 50% at 50% 50%, rgba(255,240,190,.22) 0%, rgba(255,240,190,0) 55%);
-          filter:blur(6px);
-        }
-        /* Mast */
-        .s15-mast { position:absolute; top:80px; left:80px; right:80px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.36em; text-transform:uppercase; color:rgba(246,236,201,.75); }
-        .s15-mast img { height:54px; width:auto; filter:brightness(1.1); }
-        /* Program card */
-        .s15-card {
-          position:absolute; top:280px; left:26%; right:26%; z-index:5;
-          padding:44px 44px 40px;
-          background:#f6f2e8;
-          color:#2a2a26;
-          box-shadow:0 40px 90px -30px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.6);
-          transform:rotate(-1.2deg);
-        }
-        .s15-card::before { content:''; position:absolute; top:14px; left:14px; right:14px; bottom:14px; border:1px double #2a2a26; pointer-events:none; }
-        .s15-card .header { display:flex; align-items:baseline; justify-content:space-between; gap:16px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(58,26,18,.65); }
-        .s15-card .header .no { font-family:var(--font-display); font-style:italic; font-size:20px; letter-spacing:-.01em; color:#2a2a26; text-transform:none; }
-        .s15-card .rule { margin:18px 0 26px; height:2px; background:#2a2a26; }
-        .s15-card .kick { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(58,26,18,.65); }
-        .s15-card .q { margin-top:12px; font-family:var(--font-display); font-weight:500; font-size:76px; line-height:1.02; letter-spacing:-.022em; color:#2a2a26; }
-        .s15-card .q em { font-style:italic; color:#6b5a42; }
-        .s15-card .sub { margin-top:22px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; color:#2a2a26; letter-spacing:-.012em; }
-        /* Yellow tape note */
-        .s15-note {
-          position:absolute; right:52px; bottom:260px; z-index:8;
-          transform:rotate(4deg);
-          background:#faf4d8; color:#4b3a20;
-          font-family:var(--font-mono); font-size:11px; letter-spacing:.28em; text-transform:uppercase;
-          padding:12px 20px 14px; box-shadow:0 10px 24px -12px rgba(0,0,0,.55); max-width:280px;
-        }
-        .s15-note::before, .s15-note::after { content:''; position:absolute; top:-10px; width:70px; height:18px; background:rgba(200,180,120,.5); }
-        .s15-note::before { left:18px; transform:rotate(-4deg); }
-        .s15-note::after  { right:18px; transform:rotate(6deg); }
-        /* Footer */
-        .s15-foot { position:absolute; left:80px; right:80px; bottom:70px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,236,201,.55); }
-      </style>
-        <div class="s15">
-          <div class="s15-curtain l"></div>
-          <div class="s15-curtain r"></div>
-          <div class="s15-spot"></div>
-          <div class="s15-mast">
-            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
-            <span>Program 15 · The Floor is Yours</span>
-          </div>
-          <div class="s15-card">
-            <div class="header"><span>The Northwest Program</span><span class="no">Act 15</span></div>
-            <div class="rule"></div>
-            <span class="kick">— The question to the audience</span>
-            <div class="q">What issue matters most in your <em>community?</em></div>
-            <div class="sub">Tell us below.</div>
-          </div>
-          <div class="s15-note">Overlay Instagram<br />ask sticker here</div>
-          <div class="s15-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas story s-ink on-photo">
+    <div class="s15">
+      <div class="s15-bg"><img src="../assets/img/community.jpg" alt="" /></div>
+      <div class="s15-wash"></div>
+      <div class="s15-scan"></div>
+
+      <span class="s15-mark tl"></span>
+      <span class="s15-mark tr"></span>
+      <span class="s15-mark bl"></span>
+      <span class="s15-mark br"></span>
+
+      <div class="s15-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+
+      <div class="s15-stars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="s15-spine"></div>
+
+      <div class="s15-kicker"><span class="bar"></span></div>
+
+      <h1 class="s15-q">What issue matters most in your <em>community?</em></h1>
+
+      <div class="s15-diag"></div>
+
+      <div class="s15-mid">
+        <div class="field">Tell us below<span class="cursor"></span></div>
+      </div>
+
+      <div class="s15-bottom">
+        <div class="left"><span class="bar"></span></div>
+        <div class="swipe" aria-hidden="true">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#e0d6bc" stroke-width="1.6"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg>
         </div>
-      
-    
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Feed 21 · Affordable energy isn't just an economic issue. — Northwest Oregon PAC</title>
+<title>Feed 21 · Affordable energy — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,81 +11,92 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f21 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(60% 45% at 15% 8%, rgba(90,112,96,.4) 0%, transparent 60%),
+      radial-gradient(70% 60% at 100% 100%, rgba(24,34,27,.9) 0%, transparent 60%),
+      linear-gradient(178deg, #2a3d33 0%, #1a2820 60%, #0f1913 100%);
+  }
+  /* Fine blueprint grid overlay */
+  .f21-grid { position:absolute; inset:0; z-index:2; opacity:.06; pointer-events:none;
+    background-image:
+      linear-gradient(90deg, #e0d6bc 1px, transparent 1px),
+      linear-gradient(180deg, #e0d6bc 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  /* Mast + stars */
+  .f21-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .f21-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  .f21-star { position:absolute; z-index:14; top:110px; right:96px; display:flex; gap:12px; opacity:.6; }
+  /* Kicker */
+  .f21-kick { position:absolute; z-index:10; top:230px; left:96px; display:flex; align-items:center; gap:20px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.7);
+  }
+  .f21-kick .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  /* Big energy icon lockup — top right */
+  .f21-icon { position:absolute; z-index:6; right:96px; top:280px; width:180px; height:180px; display:flex; align-items:center; justify-content:center;
+    border:1.5px solid rgba(224,214,188,.35); border-radius:50%; background:rgba(224,214,188,.05);
+  }
+  .f21-icon svg { width:96px; height:96px; color:#e0d6bc; }
+  /* Block A — big headline */
+  .f21-block-a { position:absolute; z-index:10; left:96px; right:340px; top:310px;
+    font-family:var(--font-display); font-weight:500; font-size:64px; line-height:1.08; letter-spacing:-.025em; color:#f6f2e8;
+  }
+  .f21-block-a em { font-style:italic; font-weight:400; color:#e0d6bc; }
+  /* Divider rule with metric detail */
+  .f21-divider { position:absolute; z-index:10; left:96px; right:96px; top:730px; display:flex; align-items:center; gap:22px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.5);
+  }
+  .f21-divider .line { flex:1; height:1px; background:rgba(224,214,188,.35); }
+  /* Block B — italic pull statement */
+  .f21-block-b { position:absolute; z-index:10; left:96px; right:96px; top:790px;
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:52px; line-height:1.14; letter-spacing:-.018em; color:#e0d6bc;
+  }
+  /* Baseline */
+  .f21-baseline { position:absolute; z-index:10; left:96px; right:96px; bottom:96px; display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.5);
+  }
+  .f21-baseline .stars { display:flex; gap:12px; opacity:.6; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f21 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(224,214,188,.5) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-          color:#2a2a26;
-        }
-        .f21-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f21-mast img { height:56px; width:auto; }
-        /* Statement paper */
-        .f21-bill { position:absolute; top:170px; bottom:130px; left:80px; right:80px; z-index:5;
-          background:#f9f4de; border:1.5px solid rgba(46,69,56,.4);
-          box-shadow:0 30px 60px -30px rgba(46,69,56,.4);
-          padding:34px 40px 30px;
-          display:flex; flex-direction:column;
-        }
-        .f21-bill .header { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:14px; border-bottom:2px solid #2e4538; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f21-bill .header .em { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f21-bill .to { margin-top:20px; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f21-bill .to .n { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f21-bill .kick { margin-top:20px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
-        .f21-bill .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f21-bill .head { margin-top:10px; font-family:var(--font-display); font-weight:500; font-size:64px; line-height:1; letter-spacing:-.028em; color:#2e4538; }
-        .f21-bill .head em { font-style:italic; color:#5a7060; }
-        .f21-bill .sub { margin-top:12px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; letter-spacing:-.012em; color:rgba(46,69,56,.85); }
-        /* Line items */
-        .f21-bill .items { margin-top:22px; display:flex; flex-direction:column; gap:12px; }
-        .f21-bill .item { display:grid; grid-template-columns:44px 1fr auto; gap:14px; align-items:baseline; padding-bottom:10px; border-bottom:1px dashed rgba(46,69,56,.4); font-family:var(--font-display); font-weight:500; font-size:22px; letter-spacing:-.012em; color:#2e4538; }
-        .f21-bill .item .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-        .f21-bill .item .k { font-style:italic; }
-        .f21-bill .item .k em { font-style:normal; color:#6b5a42; }
-        .f21-bill .item .v { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
-        /* Total */
-        .f21-bill .total { margin-top:auto; padding-top:16px; border-top:2px double #2e4538; display:flex; align-items:baseline; justify-content:space-between; gap:14px; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
-        .f21-bill .total .em { font-family:var(--font-display); font-style:italic; font-size:24px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        /* Paid stamp */
-        .f21-stamp {
-          position:absolute; top:190px; right:40px; z-index:7;
-          border:3px solid #5a7060; padding:10px 20px; border-radius:4px;
-          transform:rotate(-6deg);
-          font-family:var(--font-mono); font-weight:700; font-size:18px; letter-spacing:.36em; text-transform:uppercase;
-          color:#5a7060;
-        }
-        .f21-stamp small { display:block; margin-top:2px; font-size:9px; letter-spacing:.4em; color:rgba(90,112,96,.85); }
-        .f21-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f21">
-          <div class="f21-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Statement 21 · Affordable Energy</span>
-          </div>
-          <div class="f21-bill">
-            <div class="header"><span>The Northwest Statement</span><span class="em">Affordable Energy</span><span>No. 21</span></div>
-            <div class="to"><span>Billed to</span><span class="n">Every household in Northwest Oregon</span></div>
-            <span class="kick">Family issue, not just economic</span>
-            <h1 class="head">Affordable energy isn't just an <em>economic issue.</em></h1>
-            <p class="sub">It's a family issue. When utility bills rise, every household feels it.</p>
-            <div class="items">
-              <div class="item"><span class="n">01</span><span class="k">Affordability <em>— monthly bills that stay manageable</em></span><span class="v">— Required</span></div>
-              <div class="item"><span class="n">02</span><span class="k">Reliability <em>— lights on, businesses open</em></span><span class="v">— Required</span></div>
-              <div class="item"><span class="n">03</span><span class="k">Long-term resilience <em>— practical policy</em></span><span class="v">— Required</span></div>
-            </div>
-            <div class="total"><span>Total due to Oregon families</span><span class="em">— Both affordability and reliability.</span></div>
-          </div>
-          <span class="f21-stamp">Paid attention<small>— By Northwest Oregon PAC —</small></span>
-          <div class="f21-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-forest">
+    <div class="f21">
+      <div class="f21-grid"></div>
+
+      <div class="f21-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f21-star" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f21-kick"><span class="bar"></span></div>
+
+      <div class="f21-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+          <path d="M13 2 L4 14 h7 L10 22 L20 10 h-7 z"/>
+        </svg>
+      </div>
+
+      <p class="f21-block-a">Affordable energy isn't just an economic issue. It's a family issue. When utility bills rise, <em>every household feels it.</em></p>
+
+      <div class="f21-divider"><span class="line"></span></div>
+
+      <p class="f21-block-b">Oregon can protect both affordability and reliability.</p>
+
+      <div class="f21-baseline">
+        <span>—</span>
+        <div class="stars" aria-hidden="true">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
         </div>
-      
-    
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>WHAT WE BELIEVE · 3/6 — Northwest Oregon PAC</title>
+<title>Local leadership matters · 3/6 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,33 +11,86 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c06-3 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(65% 55% at 12% 12%, rgba(224,214,188,.75) 0%, transparent 60%),
+      radial-gradient(70% 65% at 100% 108%, rgba(107,90,66,.14) 0%, transparent 60%),
+      linear-gradient(178deg, #f6f2e8 0%, #ebe3ce 100%);
+  }
+  .c06-3-grid { position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.05;
+    background-image:
+      linear-gradient(90deg, #2e4538 1px, transparent 1px),
+      linear-gradient(180deg, #2e4538 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .c06-3-mast { position:absolute; z-index:12; top:96px; left:96px; }
+  .c06-3-mast img { height:52px; width:auto; }
+  .c06-3-index { position:absolute; z-index:12; top:112px; right:96px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060;
+    display:flex; align-items:center; gap:14px;
+  }
+  .c06-3-index .bar { width:38px; height:1px; background:#5a7060; opacity:.7; }
+  .c06-3-eyebrow { position:absolute; z-index:10; top:250px; left:96px; display:flex; align-items:baseline; gap:20px;
+    font-family:var(--font-mono); font-size:16px; letter-spacing:.55em; text-transform:uppercase; color:#5a7060;
+  }
+  .c06-3-eyebrow .num { font-size:14px; letter-spacing:.4em; color:#6b5a42; opacity:.85; }
+  .c06-3-eyebrow .bar { width:62px; height:1px; background:#5a7060; opacity:.7; }
+  .c06-3-title { position:absolute; z-index:10; left:96px; right:520px; top:340px;
+    font-family:var(--font-display); font-weight:500; font-size:78px; line-height:1.02; letter-spacing:-.028em; color:#2e4538;
+  }
+  .c06-3-title em { font-style:italic; font-weight:400; color:#5a7060; }
+  .c06-3-orn { position:absolute; z-index:10; left:96px; top:700px; width:200px; height:2px; background:#2e4538; opacity:.55; }
+  .c06-3-body { position:absolute; z-index:10; left:96px; right:520px; top:730px;
+    font-family:var(--font-display); font-style:italic; font-weight:400; font-size:30px; line-height:1.35; color:#3a4d3f; letter-spacing:-.008em;
+  }
+  .c06-3-tile { position:absolute; z-index:8; right:96px; top:300px; width:360px;
+    padding:14px 14px 46px; background:#faf3d8;
+    box-shadow:0 30px 62px -22px rgba(46,42,20,.42);
+    transform:rotate(2.2deg); border:1px solid rgba(46,42,20,.08);
+  }
+  .c06-3-tile .p { position:relative; width:100%; aspect-ratio:1/1; overflow:hidden; background:#0f1a13; }
+  .c06-3-tile .p img { width:100%; height:100%; object-fit:cover; filter:saturate(.7) contrast(1.14); }
+  .c06-3-tile .cap { position:absolute; bottom:12px; left:14px; right:14px;
+    font-family:var(--font-mono); font-size:10px; letter-spacing:.4em; text-transform:uppercase; color:#6b5a42;
+  }
+  .c06-3-footer { position:absolute; z-index:10; left:96px; right:96px; bottom:80px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:#6b5a42;
+  }
+  .c06-3-footer .barline { flex:1; height:1px; background:#6b5a42; opacity:.35; margin:0 22px; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    
-  <div class="glow sage" style="width:820px;height:820px;top:-260px;right:-140px;opacity:.5"></div>
-  <div class="c-belief-photo right"><img src="../../assets/img/community.jpg" alt="" /><div class="c-belief-photo-wash"></div></div>
-  <div class="zone c-belief copy-left with-photo">
-    <div class="c-belief-badge">
-      <span class="c-belief-index">02</span>
-      <span class="c-belief-tag">ON LEADERSHIP</span>
+  <div class="canvas s-light">
+    <div class="c06-3">
+      <div class="c06-3-grid"></div>
+
+      <div class="c06-3-mast"><img src="../../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c06-3-index"><span class="bar"></span>03 &middot; 06</div>
+
+      <div class="c06-3-eyebrow">
+        <span class="num">III.</span>
+        <span class="bar"></span>
+        <span>Principle</span>
+      </div>
+
+      <div class="c06-3-tile">
+        <div class="p"><img src="../../assets/img/community.jpg" alt="" /></div>
+        <div class="cap">III &middot; Local</div>
+      </div>
+
+      <h1 class="c06-3-title">We believe local <em>leadership</em> matters.</h1>
+      <div class="c06-3-orn"></div>
+      <p class="c06-3-body">The people who know a community best are the people who live there, work there, and raise their families there.</p>
+
+      <div class="c06-3-footer">
+        <span>Chapter III &middot; Leadership</span>
+        <span class="barline"></span>
+        <span>Northwest Oregon PAC</span>
+      </div>
     </div>
-    <div class="c-belief-body">
-      <div class="c-kicker">Slide 3</div>
-      <h1 class="display xl">We believe local <em>leadership matters.</em></h1>
-      <p class="c-belief-p">The people who know a community best are the people who live there, work there, and raise their families there.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
     <div class="grain"></div>
   </div>
 </body>

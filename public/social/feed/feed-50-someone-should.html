@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Feed 50 · "Someone should do something" might be the person who should run. — Northwest Oregon PAC</title>
+<title>Feed 50 · Someone should do something. — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,55 +11,84 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f50 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(70% 55% at 8% 8%, rgba(224,214,188,.55) 0%, transparent 60%),
+      radial-gradient(70% 55% at 100% 100%, rgba(107,90,66,.14) 0%, transparent 55%),
+      linear-gradient(180deg, #f6f2e8 0%, #ede4cf 100%);
+  }
+  /* Vertical faint rules — editorial baseline grid */
+  .f50-rules { position:absolute; z-index:2; inset:0; pointer-events:none; opacity:.09;
+    background-image: linear-gradient(90deg, #2e4538 1px, transparent 1px);
+    background-size: 90px 100%;
+  }
+  /* Mast */
+  .f50-mast { position:absolute; z-index:12; top:96px; left:96px; }
+  .f50-mast img { height:56px; width:auto; }
+  .f50-star { position:absolute; z-index:12; top:112px; right:96px; display:flex; gap:12px; opacity:.55; }
+  /* Eyebrow — mono LEADERSHIP */
+  .f50-eyebrow { position:absolute; z-index:10; top:250px; left:96px; right:96px;
+    padding-bottom:22px; border-bottom:2px solid #2e4538;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-mono); font-size:15px; letter-spacing:.6em; text-transform:uppercase; color:#2e4538;
+  }
+  .f50-eyebrow .bar { flex:1; height:1px; background:currentColor; opacity:.45; margin:0 22px; }
+  /* Big italic serif quote */
+  .f50-quote { position:absolute; z-index:10; left:96px; right:96px; top:370px;
+    font-family:var(--font-display); font-weight:500; font-size:70px; line-height:1.06; letter-spacing:-.022em; color:#2e4538;
+  }
+  .f50-quote em { font-style:italic; font-weight:400; color:#5a7060; }
+  .f50-quote .oq, .f50-quote .cq { font-family:var(--font-display); font-style:italic; color:rgba(46,69,56,.35); }
+  /* Attribution dash */
+  .f50-attrib { position:absolute; z-index:10; left:96px; right:96px; top:calc(370px + 460px);
+    display:flex; align-items:center; gap:20px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060;
+  }
+  .f50-attrib .bar { width:80px; height:2px; background:#5a7060; opacity:.6; }
+  /* CTA — mono text (NOT a button) at bottom */
+  .f50-cta { position:absolute; z-index:10; left:96px; right:96px; bottom:96px;
+    padding-top:26px; border-top:1px solid rgba(46,69,56,.35);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .f50-cta .lbl {
+    font-family:var(--font-mono); font-weight:600; font-size:22px; letter-spacing:.55em; text-transform:uppercase; color:#2e4538;
+  }
+  .f50-cta .lbl::before { content:''; display:inline-block; width:44px; height:2px; background:#2e4538; vertical-align:middle; margin-right:22px; }
+  .f50-cta .arrow svg { display:block; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f50 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-          color:#2e4538;
-        }
-        .f50-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f50-mast img { height:56px; width:auto; }
-        .f50-section { position:absolute; top:180px; left:76px; right:76px; z-index:6; display:flex; align-items:center; gap:22px; font-family:var(--font-mono); font-weight:600; font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:#6b5a42; }
-        .f50-section .rule { flex:1; height:1px; background:currentColor; opacity:.5; }
-        /* First voice */
-        .f50-said { position:absolute; top:250px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-style:italic; font-weight:400; font-size:32px; letter-spacing:-.02em; color:rgba(46,69,56,.55); }
-        .f50-quote { position:absolute; top:310px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:76px; line-height:1.02; letter-spacing:-.028em; color:#2e4538; }
-        .f50-quote em { font-style:italic; color:#5a7060; }
-        /* Reveal separator */
-        .f50-mirror { position:absolute; left:76px; right:76px; top:620px; z-index:5; height:2px; background:linear-gradient(90deg, transparent, #2e4538 20%, #2e4538 80%, transparent); }
-        .f50-mirror::before { content:'⟨ the reveal ⟩'; position:absolute; left:50%; transform:translateX(-50%); top:-14px; padding:0 22px; background:#f0e8cf; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:#6b5a42; }
-        /* The answer — reads right-side up, editorial italic */
-        .f50-reflect { position:absolute; top:660px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:60px; line-height:1.02; letter-spacing:-.028em; color:#5a7060; text-align:center; }
-        /* CTA plate */
-        .f50-cta { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding:16px 22px; background:#2e4538; color:#e0d6bc; display:flex; align-items:center; justify-content:space-between; gap:16px; font-family:var(--font-mono); font-weight:700; font-size:16px; letter-spacing:.44em; text-transform:uppercase; }
-        .f50-cta .em { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; letter-spacing:-.01em; color:#f6f2e8; text-transform:none; }
-        .f50-tag { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f50-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f50-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f50">
-          <div class="f50-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Mirror 50 · Leadership</span>
-          </div>
-          <div class="f50-section"><span>Leadership</span><span class="rule"></span><span>No. 50</span></div>
-          <p class="f50-said">— The person saying,</p>
-          <h1 class="f50-quote">"Someone should do something" might be the <em>person who should run.</em></h1>
-          <div class="f50-mirror"></div>
-          <p class="f50-reflect">— might be <em style="font-style:normal;color:#2e4538;">you.</em></p>
-          <div class="f50-cta"><span>Start the conversation</span><span class="em">— Exploring a campaign begins with a conversation, not a commitment.</span></div>
-          <div class="f50-tag"><span>Northwest Oregon needs capable residents</span><span class="em">— Ready to serve.</span></div>
-          <div class="f50-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
-      
-    
+  <div class="canvas s-light">
+    <div class="f50">
+      <div class="f50-rules"></div>
+
+      <div class="f50-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f50-star" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f50-eyebrow">
+        <span>LEADERSHIP</span>
+        <span class="bar"></span>
+        <span aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        </span>
+      </div>
+
+      <p class="f50-quote">The person saying, <em>&ldquo;Someone should do something&rdquo;</em> might be the person who should run.</p>
+
+      <div class="f50-cta">
+        <span class="lbl">START THE CONVERSATION</span>
+        <span class="arrow" aria-hidden="true">
+          <svg width="80" height="14" viewBox="0 0 80 14" fill="none" stroke="#2e4538" stroke-width="1.4"><path d="M0 7 L68 7"/><path d="M62 2 L72 7 L62 12"/></svg>
+        </span>
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

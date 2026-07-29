@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Feed 37 · Stay informed. Stay involved. — Northwest Oregon PAC</title>
+<title>Feed 37 · Stay informed. Stay connected. Stay updated. — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,111 +11,103 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  /* Three-part manifesto — "Stay informed. / Stay connected. / Stay updated." stacked huge upper 2/3,
+     descriptive paragraph as a hairline-framed block below, icon strip at bottom (Facebook / Website / Email)
+     with labels — the labels come DIRECTLY from the PDF spec line "Facebook · Website · Email Updates". */
+  .f37 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(70% 55% at 25% 20%, rgba(90,112,96,.35) 0%, transparent 60%),
+      radial-gradient(60% 45% at 80% 85%, rgba(107,90,66,.25) 0%, transparent 65%),
+      linear-gradient(180deg, #253a2e 0%, #1a2820 100%);
+  }
+  /* Mast top-left */
+  .f37-mast { position:absolute; z-index:14; top:64px; left:96px; }
+  .f37-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.5)); }
+  /* Star cluster top-right */
+  .f37-stars { position:absolute; z-index:14; top:80px; right:96px; display:grid; grid-template-columns:repeat(5,10px); gap:12px; opacity:.65; }
+  /* Kicker line under mast */
+  .f37-kick { position:absolute; z-index:12; left:96px; top:212px; display:flex; align-items:center; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.72); }
+  .f37-kick .bar { width:60px; height:1px; background:currentColor; opacity:.6; }
+  /* Three-line manifesto */
+  .f37-manifesto { position:absolute; z-index:10; left:96px; right:96px; top:260px; font-family:var(--font-display); color:#f6f2e8; letter-spacing:-.032em; line-height:.98; }
+  .f37-manifesto .l { display:block; font-weight:500; font-size:104px; }
+  .f37-manifesto .l em { font-style:italic; color:#e0d6bc; font-weight:500; }
+  .f37-manifesto .l + .l { margin-top:6px; }
+  /* Description block, hairline framed */
+  .f37-desc { position:absolute; z-index:10; left:96px; right:96px; top:640px; padding:24px 0 0; border-top:1px solid rgba(224,214,188,.4);
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.36; letter-spacing:-.008em; color:rgba(246,242,232,.92);
+    max-width:820px;
+  }
+  /* Icon strip */
+  .f37-strip { position:absolute; z-index:10; left:96px; right:96px; bottom:120px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:0;
+    border-top:1px solid rgba(224,214,188,.4);
+    padding-top:36px;
+  }
+  .f37-cell { display:flex; flex-direction:column; align-items:center; gap:16px; position:relative; padding:0 20px; }
+  .f37-cell + .f37-cell::before { content:''; position:absolute; left:0; top:6px; bottom:6px; width:1px; background:rgba(224,214,188,.28); }
+  .f37-cell .ico { width:52px; height:52px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(224,214,188,.4); border-radius:50%; }
+  .f37-cell .ico svg { display:block; }
+  .f37-cell .lbl { font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.85); text-align:center; }
+  /* Bottom-most tiny detail row */
+  .f37-baseline { position:absolute; z-index:12; left:0; right:0; bottom:56px; text-align:center; display:flex; justify-content:center; gap:14px; opacity:.5; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    <style>
-        .f37 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
-            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
-            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
-          color:#f6f2e8;
-        }
-        .f37-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
-        .f37-mast img { height:56px; width:auto; filter:brightness(1.05); }
-        /* Left: title */
-        .f37-title { position:absolute; top:190px; left:76px; width:520px; z-index:6; display:flex; flex-direction:column; gap:20px; }
-        .f37-title .kick { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
-        .f37-title .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f37-title .head { font-family:var(--font-display); font-weight:500; font-size:80px; line-height:.98; letter-spacing:-.028em; color:#f6f2e8; }
-        .f37-title .head em { display:block; font-style:italic; color:#e0d6bc; }
-        .f37-title .sub { font-family:var(--font-display); font-style:italic; font-weight:500; font-size:24px; line-height:1.22; letter-spacing:-.015em; color:rgba(246,242,232,.85); max-width:440px; }
-        /* Right: dial */
-        .f37-dial { position:absolute; top:190px; right:70px; width:400px; height:400px; z-index:5; }
-        .f37-dial svg { display:block; width:100%; height:100%; }
-        /* Bottom channel bands */
-        .f37-bands { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:18px; border-top:1.5px solid rgba(246,242,232,.35); display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
-        .f37-band { padding:14px 18px; background:rgba(224,214,188,.06); border:1px solid rgba(246,242,232,.35); display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.65); }
-        .f37-band .icon { flex:none; display:grid; place-items:center; width:38px; height:38px; border-radius:999px; border:1px solid rgba(224,214,188,.45); background:rgba(224,214,188,.08); color:#e0d6bc; }
-        .f37-band .icon svg { width:18px; height:18px; }
-        .f37-band .text { display:flex; flex-direction:column; gap:2px; }
-        .f37-band .lbl { font-size:10px; letter-spacing:.4em; color:rgba(246,242,232,.55); }
-        .f37-band .em { font-family:var(--font-display); font-style:italic; font-size:20px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        .f37-sig { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.6); }
-        .f37-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        .f37-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
-      </style>
-        <div class="f37">
-          <div class="f37-mast">
-            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
-            <span>Dial 37 · Stay Connected</span>
+  <div class="canvas s-forest">
+    <div class="f37">
+      <div class="f37-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+
+      <div class="f37-stars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f37-kick"><span class="bar"></span></div>
+
+      <h1 class="f37-manifesto">
+        <span class="l">Stay <em>informed.</em></span>
+        <span class="l">Stay <em>connected.</em></span>
+        <span class="l">Stay <em>updated.</em></span>
+      </h1>
+
+      <p class="f37-desc">Follow Northwest Oregon PAC for candidate updates, local events, campaign news, and the issues shaping our communities.</p>
+
+      <div class="f37-strip">
+        <div class="f37-cell">
+          <div class="ico" aria-hidden="true">
+            <!-- Facebook -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e0d6bc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </div>
-          <div class="f37-title">
-            <span class="kick">Stay connected</span>
-            <h1 class="head">Stay informed.<em>Stay involved.</em></h1>
-            <p class="sub">Follow Northwest Oregon PAC for candidate updates, local events, campaign news, and the issues shaping our communities.</p>
-          </div>
-          <div class="f37-dial">
-            <svg viewBox="0 0 400 400" fill="none">
-              <!-- Outer dial frame -->
-              <circle cx="200" cy="200" r="180" stroke="#e0d6bc" stroke-width="2" fill="rgba(224,214,188,.06)"/>
-              <circle cx="200" cy="200" r="150" stroke="#e0d6bc" stroke-width="1" opacity="0.6"/>
-              <!-- Tick marks -->
-              <g stroke="#e0d6bc" stroke-width="1.4">
-                <line x1="200" y1="26" x2="200" y2="46"/>
-                <line x1="374" y1="200" x2="354" y2="200"/>
-                <line x1="200" y1="374" x2="200" y2="354"/>
-                <line x1="26" y1="200" x2="46" y2="200"/>
-              </g>
-              <!-- Small ticks -->
-              <g stroke="#e0d6bc" stroke-width="1" opacity="0.5">
-                <line x1="286" y1="60" x2="278" y2="76"/>
-                <line x1="340" y1="114" x2="324" y2="122"/>
-                <line x1="340" y1="286" x2="324" y2="278"/>
-                <line x1="286" y1="340" x2="278" y2="324"/>
-                <line x1="114" y1="340" x2="122" y2="324"/>
-                <line x1="60" y1="286" x2="76" y2="278"/>
-                <line x1="60" y1="114" x2="76" y2="122"/>
-                <line x1="114" y1="60" x2="122" y2="76"/>
-              </g>
-              <!-- Needle -->
-              <line x1="200" y1="200" x2="290" y2="120" stroke="#e0d6bc" stroke-width="3" stroke-linecap="round"/>
-              <circle cx="200" cy="200" r="14" fill="#e0d6bc"/>
-              <circle cx="200" cy="200" r="6" fill="#2e4538"/>
-              <!-- Center label -->
-              <text x="200" y="252" font-family="Source Sans 3" font-size="11" fill="#e0d6bc" text-anchor="middle" letter-spacing="3">FREQUENCY</text>
-              <text x="200" y="278" font-family="Lora" font-style="italic" font-size="24" fill="#e0d6bc" text-anchor="middle">the region</text>
-            </svg>
-          </div>
-          <div class="f37-bands">
-            <div class="f37-band">
-              <span class="icon" aria-hidden>
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.87v-6.98H7.9V12h2.5V9.8c0-2.47 1.47-3.83 3.72-3.83 1.08 0 2.2.19 2.2.19v2.42H15.1c-1.22 0-1.6.76-1.6 1.54V12h2.72l-.44 2.89h-2.28v6.98A10 10 0 0 0 22 12Z"/></svg>
-              </span>
-              <span class="text"><span class="lbl">— Ch. i.</span><span class="em">Facebook</span></span>
-            </div>
-            <div class="f37-band">
-              <span class="icon" aria-hidden>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.8 3.8 6 3.8 9s-1.3 6.2-3.8 9c-2.5-2.8-3.8-6-3.8-9s1.3-6.2 3.8-9Z"/></svg>
-              </span>
-              <span class="text"><span class="lbl">— Ch. ii.</span><span class="em">Website</span></span>
-            </div>
-            <div class="f37-band">
-              <span class="icon" aria-hidden>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-              </span>
-              <span class="text"><span class="lbl">— Ch. iii.</span><span class="em">Email Updates</span></span>
-            </div>
-          </div>
-          <div class="f37-sig"><span>Change starts with staying informed</span><span class="em">— Moving forward, together.</span></div>
-          <div class="f37-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+          <div class="lbl">Facebook</div>
         </div>
-      
-    
+        <div class="f37-cell">
+          <div class="ico" aria-hidden="true">
+            <!-- Website / globe -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e0d6bc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="lbl">Website</div>
+        </div>
+        <div class="f37-cell">
+          <div class="ico" aria-hidden="true">
+            <!-- Envelope -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e0d6bc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="lbl">Email Updates</div>
+        </div>
+      </div>
+
+      <div class="f37-baseline" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

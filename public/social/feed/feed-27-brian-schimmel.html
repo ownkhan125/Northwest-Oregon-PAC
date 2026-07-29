@@ -11,62 +11,91 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f27 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(60% 45% at 12% 12%, rgba(224,214,188,.65) 0%, transparent 60%),
+      linear-gradient(180deg, #f8f4ea 0%, #ede4cf 100%);
+  }
+  /* Right portrait pane — vertical crop, cinematic grade */
+  .f27-portrait { position:absolute; z-index:3; top:80px; bottom:80px; right:80px; width:440px; overflow:hidden;
+    box-shadow: 0 40px 90px -40px rgba(46,42,20,.5);
+    border-radius:4px;
+  }
+  .f27-portrait img { width:100%; height:100%; object-fit:cover; object-position:center 25%; filter:saturate(.78) contrast(1.15) brightness(.94); }
+  .f27-portrait::after { content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,30,22,.05) 0%, rgba(20,30,22,.25) 65%, rgba(10,16,12,.7) 100%);
+  }
+  /* Portrait bottom band with signature name */
+  .f27-name-band { position:absolute; z-index:4; left:0; right:0; bottom:0; padding:22px 20px 24px; color:#e0d6bc;
+    background:linear-gradient(180deg, rgba(6,10,7,0) 0%, rgba(6,10,7,.86) 55%, rgba(6,10,7,.95) 100%);
+    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; letter-spacing:-.015em; text-align:center; line-height:1;
+  }
+  .f27-name-band em { display:block; margin-top:4px; font-family:var(--font-mono); font-style:normal; font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.75); }
+  /* Portrait corner marks */
+  .f27-portrait::before {
+    content:''; position:absolute; z-index:5; top:12px; left:12px; width:20px; height:20px;
+    border-top:2px solid rgba(224,214,188,.75); border-left:2px solid rgba(224,214,188,.75);
+  }
+  .f27-portrait .cornerBR {
+    position:absolute; z-index:5; bottom:12px; right:12px; width:20px; height:20px;
+    border-bottom:2px solid rgba(224,214,188,.75); border-right:2px solid rgba(224,214,188,.75);
+  }
+  /* Left editorial column */
+  .f27-col { position:absolute; z-index:5; top:96px; left:96px; bottom:96px; right:560px; display:flex; flex-direction:column; }
+  .f27-mast img { height:56px; width:auto; }
+  .f27-kick { margin-top:130px; display:flex; align-items:center; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060; }
+  .f27-kick .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  .f27-pre { margin-top:22px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; letter-spacing:-.015em; color:#5a7060; }
+  .f27-h1 { margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:96px; line-height:.94; letter-spacing:-.03em; color:#2e4538; }
+  .f27-office { margin-top:26px; display:inline-flex; align-items:center; padding:12px 20px; border:1.5px solid rgba(46,69,56,.5); border-radius:999px; align-self:flex-start;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.36em; text-transform:uppercase; color:#2e4538; background:rgba(46,69,56,.04);
+  }
+  .f27-rule { margin-top:30px; height:2px; width:120px; background:#2e4538; opacity:.5; }
+  .f27-bio { margin-top:24px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:30px; line-height:1.28; letter-spacing:-.01em; color:#2e4538; max-width:460px; }
+  .f27-bio em { font-style:normal; color:#5a7060; }
+  /* Bottom bar */
+  .f27-sig { margin-top:auto; display:flex; align-items:center; gap:16px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+  .f27-sig .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
+  .f27-sig .stars { margin-left:auto; display:flex; gap:12px; opacity:.5; }
+  /* Diagonal accent line between columns */
+  .f27-accent { position:absolute; z-index:4; top:120px; bottom:120px; right:544px; width:1px; background:linear-gradient(180deg, rgba(46,69,56,0), rgba(46,69,56,.5) 20%, rgba(46,69,56,.5) 80%, rgba(46,69,56,0)); }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f27 { position:absolute; inset:0; z-index:10; overflow:hidden; background:#f6f2e8; color:#2e4538; }
-        /* Left duotone portrait */
-        .f27-portrait { position:absolute; top:0; bottom:0; left:0; width:52%; z-index:2; overflow:hidden; background:#1c2b23; }
-        .f27-portrait img { width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:grayscale(1) contrast(1.15) brightness(.85); mix-blend-mode:multiply; }
-        .f27-portrait::before { content:''; position:absolute; inset:0; background:linear-gradient(178deg, #2e4538 0%, #1c2b23 100%); z-index:1; }
-        .f27-portrait::after { content:''; position:absolute; inset:0; background:linear-gradient(178deg, transparent 0%, rgba(28,43,35,.55) 100%); }
-        .f27-portrait img { position:relative; z-index:2; }
-        /* Portrait tag — pushed down out of the mast row */
-        .f27-tag {
-          position:absolute; top:220px; left:40px; z-index:4;
-          padding:10px 16px; background:rgba(224,214,188,.15); border:1px solid rgba(224,214,188,.5);
-          font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:#f6f2e8;
-          backdrop-filter:blur(4px);
-        }
-        /* Right column */
-        .f27-col { position:absolute; top:0; bottom:0; right:0; width:48%; z-index:3; padding:56px 60px 56px 50px; display:flex; flex-direction:column; }
-        .f27-col .mast { display:flex; align-items:center; justify-content:space-between; gap:18px; padding-bottom:16px; border-bottom:1.5px solid rgba(46,69,56,.35); font-family:var(--font-mono); font-size:11px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f27-col .mast img { height:34px; width:auto; flex:none; }
-        .f27-col .kick { margin-top:32px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
-        .f27-col .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f27-col .name { margin-top:14px; font-family:var(--font-display); font-weight:500; font-size:80px; line-height:.98; letter-spacing:-.028em; color:#2e4538; }
-        .f27-col .name em { display:block; font-style:italic; color:#5a7060; }
-        .f27-col .office { margin-top:20px; padding-top:14px; border-top:1px solid rgba(46,69,56,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.65); }
-        .f27-col .bio { margin-top:24px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.22; letter-spacing:-.015em; color:#2e4538; max-width:380px; }
-        .f27-col .bio em { font-style:normal; color:#6b5a42; }
-        .f27-col .cta { margin-top:auto; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f27-col .cta .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f27-foot { position:absolute; left:76px; right:76px; bottom:22px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.5); }
-      </style>
-        <div class="f27">
-          <div class="f27-portrait">
-            <img src="../assets/img/brian-schimmel.jpg" alt="Brian Schimmel" />
-          </div>
-          <span class="f27-tag">Candidate · 2026</span>
-          <div class="f27-col">
-            <div class="mast">
-              <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-              <span>Spread 27</span>
-            </div>
-            <span class="kick">Meet the candidate</span>
-            <h1 class="name">Brian<em>Schimmel</em></h1>
-            <div class="office">— Candidate for Oregon House District 29</div>
-            <p class="bio">Focused on practical <em>leadership,</em> local priorities, and serving the people of District 29.</p>
-            <div class="cta"><span>Learn more</span><span class="em">— Follow the campaign</span></div>
-          </div>
-          <div class="f27-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-light">
+    <div class="f27">
+      <div class="f27-portrait">
+        <img src="../assets/img/brian-schimmel.jpg" alt="" />
+        <span class="cornerBR"></span>
+        <div class="f27-name-band">
+          Brian Schimmel
+          <em>Candidate · 2026</em>
         </div>
-      
-    
+      </div>
+
+      <div class="f27-accent"></div>
+
+      <div class="f27-col">
+        <div class="f27-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+        <div class="f27-kick"><span class="bar"></span></div>
+        <div class="f27-pre">Meet</div>
+        <h1 class="f27-h1">Brian<br/>Schimmel</h1>
+        <div class="f27-office">Oregon House District 29</div>
+        <div class="f27-rule"></div>
+        <p class="f27-bio">Focused on <em>practical leadership,</em> local priorities, and serving the people of District 29.</p>
+        <div class="f27-sig">
+          <span class="bar"></span>
+          <span class="stars" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

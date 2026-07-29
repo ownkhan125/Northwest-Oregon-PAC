@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Where Does Your Donation Go? · 5/7 — Northwest Oregon PAC</title>
+<title>Every Contribution · 5/7 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,35 +11,62 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c03-5 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(80% 55% at 20% 15%, rgba(224,214,188,.75) 0%, transparent 60%),
+      linear-gradient(180deg, #e0d6bc 0%, #cbbc99 100%);
+  }
+  .c03-5-hatch { position:absolute; inset:0; z-index:2; opacity:.06; pointer-events:none;
+    background-image: linear-gradient(45deg, #6b5a42 1px, transparent 1px), linear-gradient(-45deg, #6b5a42 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .c03-5-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .c03-5-mast img { height:56px; width:auto; }
+  .c03-5-stars { position:absolute; z-index:14; top:110px; right:96px; display:flex; gap:14px; opacity:.6; }
+  .c03-5-eyebrow { position:absolute; z-index:10; left:96px; top:290px; display:flex; align-items:center; gap:22px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#6b5a42;
+  }
+  .c03-5-eyebrow .dot { width:8px; height:8px; border-radius:50%; background:currentColor; }
+  .c03-5-title { position:absolute; z-index:10; left:96px; right:96px; top:360px;
+    font-family:var(--font-display); font-weight:500; font-size:132px; line-height:.94; letter-spacing:-.032em; color:#2e4538;
+  }
+  .c03-5-title em { font-style:italic; font-weight:400; color:#6b5a42; }
+  .c03-5-sep { position:absolute; z-index:10; left:96px; top:640px; width:180px; height:2px; background:#2e4538; opacity:.55; }
+  .c03-5-body { position:absolute; z-index:10; left:96px; right:96px; top:690px;
+    font-family:var(--font-display); font-weight:400; font-size:38px; line-height:1.35; letter-spacing:-.01em; color:#2e4538;
+  }
+  .c03-5-body em { font-style:italic; font-weight:500; color:#2e4538; }
+  .c03-5-chips { position:absolute; z-index:10; left:96px; right:96px; bottom:170px; display:flex; gap:20px; align-items:baseline; }
+  .c03-5-chips .chip { padding:14px 24px; border:2px solid #2e4538; border-radius:100px; font-family:var(--font-display); font-weight:500; font-size:34px; color:#2e4538; letter-spacing:-.01em; }
+  .c03-5-chips .sep { font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; color:rgba(46,69,56,.5); }
+  .c03-5-cap { position:absolute; z-index:10; left:96px; bottom:96px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,69,56,.65);
+  }
+  .c03-5-index { position:absolute; z-index:10; right:96px; bottom:96px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,69,56,.65);
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    
-  <div class="c-num-frame">
-    <div class="c-num-left">
-      <div class="c-num-kicker">Slide 5</div>
-      <div class="c-num-figure">4</div>
-      <div class="c-num-tag">INVESTING IN LONG-TERM SUCCESS</div>
-    </div>
-    <div class="c-num-right">
-      <div class="c-num-photo"><img src="../../assets/img/bridge.png" alt="" /><div class="c-num-photo-wash"></div></div>
-      <div class="c-num-copy">
-        <h1 class="display xl">Investing in <em>Long-Term Success</em></h1>
-        <p class="c-num-p">We're building political infrastructure that continues long after one election cycle ends.</p>
-        <div class="c-num-footer">Step 04 · of the mission</div>
+  <div class="canvas s-sand">
+    <div class="c03-5">
+      <div class="c03-5-hatch"></div>
+
+      <div class="c03-5-mast"><img src="../../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c03-5-stars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
       </div>
+
+      <div class="c03-5-eyebrow"><span class="dot"></span></div>
+      <h2 class="c03-5-title">Every contribution <em>matters.</em></h2>
+      <div class="c03-5-sep"></div>
+      <p class="c03-5-body">Whether you give $25 or $1,000, you're helping build stronger campaigns and stronger communities throughout Northwest Oregon.</p>
     </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
+
     <div class="grain"></div>
   </div>
 </body>

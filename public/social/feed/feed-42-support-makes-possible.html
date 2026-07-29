@@ -11,65 +11,99 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  .f42 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(60% 45% at 92% 12%, rgba(224,214,188,.5) 0%, transparent 60%),
+      linear-gradient(180deg, #e6dcc4 0%, #d4c8a7 100%);
+  }
+  /* Fine cross-hatch background pattern */
+  .f42-hatch { position:absolute; inset:0; z-index:2; opacity:.06; pointer-events:none;
+    background-image:
+      linear-gradient(45deg, #2e4538 1px, transparent 1px),
+      linear-gradient(-45deg, #2e4538 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  /* Corner brackets */
+  .f42-bracket { position:absolute; z-index:6; width:32px; height:32px; }
+  .f42-bracket::before, .f42-bracket::after { content:''; position:absolute; background:#2e4538; opacity:.72; }
+  .f42-bracket.tl::before { left:0; top:0; width:2px; height:32px; }
+  .f42-bracket.tl::after  { top:0; left:0; width:32px; height:2px; }
+  .f42-bracket.tl { top:56px; left:56px; }
+  .f42-bracket.br::before { right:0; bottom:0; width:2px; height:32px; }
+  .f42-bracket.br::after  { bottom:0; right:0; width:32px; height:2px; }
+  .f42-bracket.br { bottom:56px; right:56px; }
+  /* Mast + stars */
+  .f42-mast { position:absolute; z-index:14; top:96px; left:96px; }
+  .f42-mast img { height:56px; width:auto; }
+  .f42-star { position:absolute; z-index:14; top:110px; right:96px; display:flex; gap:12px; opacity:.6; }
+  /* Kicker */
+  .f42-kick { position:absolute; z-index:10; top:230px; left:96px; display:flex; align-items:center; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060; }
+  .f42-kick .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
+  /* Big question — takes upper third */
+  .f42-q { position:absolute; z-index:10; left:96px; right:96px; top:290px;
+    font-family:var(--font-display); font-weight:500; font-size:106px; line-height:.96; letter-spacing:-.03em; color:#2e4538;
+  }
+  .f42-q em { font-style:italic; font-weight:400; color:#5a7060; }
+  /* Horizontal rule under question */
+  .f42-rule { position:absolute; z-index:10; left:96px; top:540px; height:2px; width:200px; background:#2e4538; opacity:.55; }
+  /* Capability grid — 3+2 asymmetric layout */
+  .f42-grid { position:absolute; z-index:10; left:96px; right:96px; top:600px; bottom:140px; display:grid; grid-template-columns:1.4fr 1fr 1fr; grid-template-rows:1fr 1fr; gap:20px; }
+  .f42-card { position:relative; padding:24px 26px; background:rgba(46,69,56,.06); border:1.5px solid rgba(46,69,56,.28); border-radius:14px; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; }
+  .f42-card.big { grid-column:1; grid-row:1 / span 2; background:linear-gradient(178deg, rgba(46,69,56,.08), rgba(46,69,56,.14)); }
+  .f42-card .n { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+  .f42-card .lbl { font-family:var(--font-display); font-weight:500; font-size:38px; line-height:1.06; letter-spacing:-.015em; color:#2e4538; }
+  .f42-card.big .lbl { font-size:60px; line-height:1; }
+  .f42-card .lbl em { font-style:italic; font-weight:400; color:#5a7060; }
+  .f42-card .ico { position:absolute; right:20px; bottom:16px; color:rgba(46,69,56,.28); }
+  .f42-card .ico svg { width:56px; height:56px; }
+  .f42-card.big .ico svg { width:120px; height:120px; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    <style>
-        .f42 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
-            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-          color:#2e4538;
-        }
-        .f42-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
-        .f42-mast img { height:56px; width:auto; }
-        /* Recipe card */
-        .f42-card { position:absolute; top:170px; bottom:130px; left:80px; right:80px; z-index:5;
-          background:#faf3d8; border:1.5px solid rgba(46,69,56,.4);
-          box-shadow:0 30px 60px -30px rgba(46,69,56,.4);
-          padding:30px 40px 28px;
-          display:flex; flex-direction:column;
-        }
-        .f42-card .header { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:14px; border-bottom:2px solid #2e4538; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
-        .f42-card .header .em { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f42-card .head { margin-top:22px; font-family:var(--font-display); font-weight:500; font-size:62px; line-height:1; letter-spacing:-.028em; color:#2e4538; }
-        .f42-card .head em { font-style:italic; color:#5a7060; }
-        .f42-card .yields { margin-top:16px; padding-top:12px; border-top:1px dashed rgba(46,69,56,.5); display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
-        .f42-card .yields .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f42-card .ingredients { margin-top:18px; display:flex; flex-direction:column; gap:12px; }
-        .f42-card .ing { display:grid; grid-template-columns:44px 1fr; gap:24px; align-items:baseline; padding-bottom:10px; border-bottom:1px solid rgba(46,69,56,.3); }
-        .f42-card .ing .n { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-        .f42-card .ing .item { font-family:var(--font-display); font-weight:500; font-size:26px; line-height:1.14; letter-spacing:-.015em; color:#2e4538; }
-        .f42-card .ing .item em { font-style:italic; color:#6b5a42; }
-        .f42-card .signoff { margin-top:auto; padding-top:14px; border-top:1.5px solid #2e4538; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f42-card .signoff .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-        .f42-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      </style>
-        <div class="f42">
-          <div class="f42-mast">
-            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-            <span>Recipe 42 · Your Support</span>
-          </div>
-          <div class="f42-card">
-            <div class="header"><span>The Northwest Recipe</span><span class="em">Your support</span><span>No. 42</span></div>
-            <h1 class="head">What does your support make <em>possible?</em></h1>
-            <div class="yields"><span>— Yields</span><span class="em">Stronger campaigns · Stronger communities</span></div>
-            <div class="ingredients">
-              <div class="ing"><span class="n">01</span><span class="item">Candidate <em>recruitment</em></span></div>
-              <div class="ing"><span class="n">02</span><span class="item">Campaign <em>support</em></span></div>
-              <div class="ing"><span class="n">03</span><span class="item"><em>Fundraising</em></span></div>
-              <div class="ing"><span class="n">04</span><span class="item">Strategic <em>messaging</em></span></div>
-              <div class="ing"><span class="n">05</span><span class="item">Leadership <em>development</em></span></div>
-            </div>
-            <div class="signoff"><span>Together, we're building the foundation</span><span class="em">— Be part of the movement.</span></div>
-          </div>
-          <div class="f42-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
+  <div class="canvas s-sand">
+    <div class="f42">
+      <div class="f42-hatch"></div>
+
+      <span class="f42-bracket tl"></span>
+      <span class="f42-bracket br"></span>
+
+      <div class="f42-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="f42-star" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f42-kick"><span class="bar"></span></div>
+      <h1 class="f42-q">What does your support make <em>possible?</em></h1>
+      <div class="f42-rule"></div>
+
+      <div class="f42-grid">
+        <div class="f42-card big">
+          <div><div class="n">01</div><div class="lbl">Candidate <em>recruitment</em></div></div>
+          <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-5 4-8 8-8s8 3 8 8"/><path d="M12 14 v6"/></svg></div>
         </div>
-      
-    
+        <div class="f42-card">
+          <div><div class="n">02</div><div class="lbl">Campaign <em>support</em></div></div>
+          <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20 L4 8 L14 4 L14 20 z"/><path d="M14 8 L20 8 L20 20"/></svg></div>
+        </div>
+        <div class="f42-card">
+          <div><div class="n">03</div><div class="lbl"><em>Fundraising</em></div></div>
+          <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="12" rx="1"/><circle cx="12" cy="13" r="3"/><path d="M5 10 L7 10 M17 10 L19 10 M5 16 L7 16 M17 16 L19 16"/></svg></div>
+        </div>
+        <div class="f42-card">
+          <div><div class="n">04</div><div class="lbl">Strategic <em>messaging</em></div></div>
+          <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 5 L21 5 L21 17 L14 17 L11 21 L11 17 L3 17 z"/></svg></div>
+        </div>
+        <div class="f42-card">
+          <div><div class="n">05</div><div class="lbl">Leadership <em>development</em></div></div>
+          <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20 L12 6 L20 20 z"/><path d="M8 15 L16 15"/></svg></div>
+        </div>
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

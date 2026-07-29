@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Feed 34 · Campaigns work when people gather. — Northwest Oregon PAC</title>
+<title>Feed 34 · Campaign Events That Matter — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,80 +11,77 @@
 <link rel="stylesheet" href="../assets/social.css" />
 <link rel="stylesheet" href="../assets/templates.css" />
 <link rel="stylesheet" href="../assets/carousels.css" />
+
+<style>
+  /* Theater-poster / event-poster composition — photo mounted center as a tall panel with cream frame,
+     poster-style vertical stacked type above and below the panel, ornamental double-rule frame,
+     small tickets/coordinates row at bottom for texture. */
+  .f34 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(80% 60% at 50% 40%, rgba(107,90,66,.28) 0%, transparent 65%),
+      linear-gradient(180deg, #1f1a12 0%, #14100a 100%);
+  }
+  /* Outer double frame */
+  .f34-frame1 { position:absolute; z-index:5; top:60px; left:60px; right:60px; bottom:60px; border:1px solid rgba(224,214,188,.28); }
+  .f34-frame2 { position:absolute; z-index:5; top:72px; left:72px; right:72px; bottom:72px; border:1px solid rgba(224,214,188,.16); }
+  /* Mast top-center */
+  .f34-mast { position:absolute; z-index:14; top:100px; left:50%; transform:translateX(-50%); }
+  .f34-mast img { height:50px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.6)); }
+  /* Upper mono row */
+  .f34-mono-top { position:absolute; z-index:12; left:0; right:0; top:180px; text-align:center; font-family:var(--font-mono); font-size:12px; letter-spacing:.6em; text-transform:uppercase; color:rgba(224,214,188,.55); display:flex; justify-content:center; align-items:center; gap:22px; }
+  .f34-mono-top .bar { width:70px; height:1px; background:currentColor; opacity:.5; }
+  .f34-mono-top .dot { width:5px; height:5px; border-radius:50%; background:#e0d6bc; opacity:.7; }
+  /* Big top word */
+  .f34-top-word { position:absolute; z-index:12; left:0; right:0; top:216px; text-align:center; font-family:var(--font-display); font-weight:500; font-size:130px; color:#f6f2e8; letter-spacing:-.03em; line-height:.94; text-shadow:0 6px 30px rgba(0,0,0,.6); }
+  .f34-top-word em { font-style:italic; color:#e0d6bc; }
+  /* Center image panel — narrow vertical stripe */
+  .f34-panel { position:absolute; z-index:8; left:50%; transform:translateX(-50%); top:392px; width:440px; height:340px; overflow:hidden;
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.75), inset 0 0 0 8px #f6f2e8, inset 0 0 0 10px rgba(46,42,20,.35);
+  }
+  .f34-panel img { width:100%; height:100%; object-fit:cover; object-position:center 45%; filter:saturate(.75) contrast(1.18) brightness(.86); }
+  .f34-panel::after { content:''; position:absolute; inset:10px; background:linear-gradient(180deg, rgba(20,30,22,.05) 0%, rgba(20,30,22,.25) 60%, rgba(6,10,7,.55) 100%); pointer-events:none; }
+  /* Ornament divider under panel */
+  .f34-divider { position:absolute; z-index:12; left:0; right:0; top:770px; text-align:center; }
+  .f34-divider svg { display:inline-block; opacity:.7; }
+  /* Bottom stacked type */
+  .f34-bot-word { position:absolute; z-index:12; left:0; right:0; top:812px; text-align:center; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:100px; color:#e0d6bc; letter-spacing:-.028em; line-height:.94; text-shadow:0 6px 30px rgba(0,0,0,.6); }
+  /* Lowest mono coordinates */
+  .f34-mono-bot { position:absolute; z-index:12; left:0; right:0; bottom:130px; text-align:center; font-family:var(--font-mono); font-size:12px; letter-spacing:.6em; text-transform:uppercase; color:rgba(224,214,188,.55); display:flex; justify-content:center; align-items:center; gap:22px; }
+  .f34-mono-bot .bar { width:80px; height:1px; background:currentColor; opacity:.5; }
+  .f34-mono-bot .dot { width:5px; height:5px; border-radius:50%; background:#e0d6bc; opacity:.7; }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    <style>
-        .f34 { position:absolute; inset:0; z-index:10; overflow:hidden;
-          background:
-            radial-gradient(120% 90% at 20% 5%, rgba(90,112,96,.5) 0%, transparent 55%),
-            radial-gradient(90% 80% at 100% 100%, rgba(14,22,17,.9) 0%, transparent 55%),
-            linear-gradient(178deg, #2e4538 0%, #1c2b23 60%, #10170f 100%);
-          color:#f6f2e8;
-        }
-        .f34-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(246,242,232,.7); }
-        .f34-mast img { height:56px; width:auto; filter:brightness(1.05); }
-        .f34-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
-        .f34-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f34-head { position:absolute; top:220px; left:76px; right:520px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:66px; line-height:1.02; letter-spacing:-.028em; color:#f6f2e8; }
-        .f34-head em { display:block; font-style:italic; color:#e0d6bc; }
-        /* Seating diagram right */
-        .f34-plan { position:absolute; top:210px; right:76px; width:440px; height:440px; z-index:5; }
-        .f34-plan svg { display:block; width:100%; height:100%; }
-        /* Three lines meta */
-        .f34-lines { position:absolute; left:76px; right:76px; bottom:220px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(246,242,232,.35); display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
-        .f34-lines .l { padding:14px 16px; background:rgba(224,214,188,.06); border:1px solid rgba(246,242,232,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.65); text-align:center; }
-        .f34-lines .l .em { display:block; margin-top:6px; font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
-        .f34-sig { position:absolute; left:76px; right:76px; bottom:150px; z-index:6; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:rgba(246,242,232,.9); text-align:center; }
-        .f34-sig em { font-style:normal; color:#e0d6bc; }
-        .f34-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
-      </style>
-        <div class="f34">
-          <div class="f34-mast">
-            <img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" />
-            <span>Plan 34 · Community Events</span>
-          </div>
-          <span class="f34-kick">Community events</span>
-          <h1 class="f34-head">Campaigns work when<em>people gather.</em></h1>
-          <div class="f34-plan">
-            <svg viewBox="0 0 440 440" fill="none">
-              <!-- Round table -->
-              <circle cx="220" cy="220" r="120" fill="rgba(224,214,188,.14)" stroke="#e0d6bc" stroke-width="2"/>
-              <text x="220" y="216" font-family="Source Sans 3" font-size="11" fill="#e0d6bc" text-anchor="middle" letter-spacing="3">THE TABLE</text>
-              <text x="220" y="240" font-family="Lora" font-style="italic" font-size="20" fill="#e0d6bc" text-anchor="middle">community</text>
-              <!-- 8 chairs around table -->
-              <g fill="rgba(224,214,188,.9)" stroke="#e0d6bc" stroke-width="1.5">
-                <rect x="204" y="60" width="32" height="24" rx="4"/>
-                <rect x="322" y="94" width="32" height="24" rx="4" transform="rotate(45 338 106)"/>
-                <rect x="366" y="204" width="32" height="24" rx="4" transform="rotate(90 382 216)"/>
-                <rect x="322" y="322" width="32" height="24" rx="4" transform="rotate(-45 338 334)"/>
-                <rect x="204" y="356" width="32" height="24" rx="4"/>
-                <rect x="86" y="322" width="32" height="24" rx="4" transform="rotate(45 102 334)"/>
-                <rect x="42" y="204" width="32" height="24" rx="4" transform="rotate(90 58 216)"/>
-                <rect x="86" y="94" width="32" height="24" rx="4" transform="rotate(-45 102 106)"/>
-              </g>
-              <!-- Radial connection lines -->
-              <g stroke="rgba(224,214,188,.4)" stroke-width="1" stroke-dasharray="4 4">
-                <line x1="220" y1="220" x2="220" y2="60"/>
-                <line x1="220" y1="220" x2="380" y2="220"/>
-                <line x1="220" y1="220" x2="220" y2="380"/>
-                <line x1="220" y1="220" x2="60" y2="220"/>
-              </g>
-            </svg>
-          </div>
-          <div class="f34-lines">
-            <div class="l">— Line i.<span class="em">Meet candidates.</span></div>
-            <div class="l">— Line ii.<span class="em">Meet neighbors.</span></div>
-            <div class="l">— Line iii.<span class="em">Join the conversation.</span></div>
-          </div>
-          <p class="f34-sig">The best conversations don't happen online — <em>they happen in our communities.</em></p>
-          <div class="f34-foot">
-            <span>Paid for by Northwest Oregon PAC · #25045</span>
-            <span>northwestoregon.com</span>
-          </div>
-        </div>
-      
-    
+  <div class="canvas on-photo">
+    <div class="f34">
+      <span class="f34-frame1"></span>
+      <span class="f34-frame2"></span>
+
+      <div class="f34-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+
+      <div class="f34-mono-top">
+        <span class="bar"></span>
+        <span class="dot"></span>
+        <span class="bar"></span>
+      </div>
+
+      <h1 class="f34-top-word">Campaign <em>Events</em></h1>
+
+      <div class="f34-panel"><img src="../assets/img/event.jpg" alt="" /></div>
+
+      <div class="f34-divider" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#e0d6bc"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="f34-bot-word">That Matter</div>
+
+      <div class="f34-mono-bot">
+        <span class="bar"></span>
+        <span class="dot"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+
     <div class="grain"></div>
   </div>
 </body>

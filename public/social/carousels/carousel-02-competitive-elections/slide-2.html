@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Competitive Elections Build Better Communities · 2/7 — Northwest Oregon PAC</title>
+<title>When Elections Are Competitive · 2/7 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,33 +11,63 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c02-2 { position:absolute; inset:0; z-index:5; overflow:hidden;
+    background:
+      radial-gradient(60% 45% at 12% 10%, rgba(224,214,188,.6) 0%, transparent 60%),
+      linear-gradient(180deg, #faf5e9 0%, #ede4cf 100%);
+  }
+  .c02-2-hatch { position:absolute; inset:0; z-index:2; opacity:.05; pointer-events:none;
+    background-image: radial-gradient(circle, #2e4538 1px, transparent 1.5px);
+    background-size: 28px 28px;
+  }
+  .c02-2-mast { position:absolute; z-index:14; top:96px; right:96px; }
+  .c02-2-mast img { height:56px; width:auto; }
+  .c02-2-stars { position:absolute; z-index:14; top:110px; left:96px; display:flex; gap:14px; opacity:.6; }
+  .c02-2-toprule { position:absolute; z-index:6; top:220px; left:96px; right:96px; height:2px; background:#2e4538; opacity:.5; }
+  .c02-2-eyebrow { position:absolute; z-index:10; left:96px; top:250px; display:flex; align-items:center; gap:22px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.52em; text-transform:uppercase; color:#5a7060;
+  }
+  .c02-2-eyebrow .n { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:0; color:#2e4538; }
+  .c02-2-num { position:absolute; z-index:10; left:96px; top:340px;
+    font-family:var(--font-display); font-style:italic; font-weight:400; font-size:220px; line-height:.85; letter-spacing:-.04em;
+    color:rgba(46,69,56,.14);
+  }
+  .c02-2-head { position:absolute; z-index:10; left:96px; right:96px; top:420px;
+    font-family:var(--font-display); font-weight:500; font-size:82px; line-height:1; letter-spacing:-.028em; color:#2e4538;
+  }
+  .c02-2-head em { font-style:italic; font-weight:400; color:#5a7060; }
+  .c02-2-sep { position:absolute; z-index:10; left:96px; top:620px; width:140px; height:2px; background:#2e4538; opacity:.55; }
+  .c02-2-body { position:absolute; z-index:10; left:96px; right:200px; top:670px;
+    font-family:var(--font-display); font-weight:400; font-size:34px; line-height:1.4; letter-spacing:-.01em; color:#2e4538;
+  }
+  .c02-2-cap { position:absolute; z-index:10; left:96px; bottom:96px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,69,56,.6);
+  }
+  .c02-2-index { position:absolute; z-index:10; right:96px; bottom:96px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,69,56,.6);
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-forest">
-    
-  <div class="glow sage" style="width:820px;height:820px;top:-260px;left:-140px;opacity:.5"></div>
-  <div class="c-belief-photo left"><img src="../../assets/img/hero.jpg" alt="" /><div class="c-belief-photo-wash"></div></div>
-  <div class="zone c-belief copy-right with-photo">
-    <div class="c-belief-badge">
-      <span class="c-belief-index">01</span>
-      <span class="c-belief-tag">WHEN ELECTIONS ARE COMPETITIVE</span>
+  <div class="canvas s-light">
+    <div class="c02-2">
+      <div class="c02-2-hatch"></div>
+
+      <div class="c02-2-mast"><img src="../../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c02-2-stars" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
+      </div>
+
+      <div class="c02-2-toprule"></div>
+      <h2 class="c02-2-head">When elections are <em>competitive</em></h2>
+      <div class="c02-2-sep"></div>
+      <p class="c02-2-body">Candidates spend more time listening to voters instead of taking support for granted.</p>
     </div>
-    <div class="c-belief-body">
-      <div class="c-kicker">Slide 2 · When elections are competitive</div>
-      
-      <p class="c-belief-p">Candidates spend more time listening to voters instead of taking support for granted.</p>
-    </div>
-  </div>
-    
-  <header class="mast">
-    <div class="brand"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-    <div class="filing">Committee #25045 · Est. 2026</div>
-  </header>
-  <footer class="rail">
-    <span>Paid for by Northwest Oregon PAC #25045</span>
-    <span class="rule"></span>
-    <span class="domain">northwestoregon.com</span>
-  </footer>
+
     <div class="grain"></div>
   </div>
 </body>

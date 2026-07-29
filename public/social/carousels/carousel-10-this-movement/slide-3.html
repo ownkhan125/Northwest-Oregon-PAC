@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>THIS MOVEMENT BELONGS TO NORTHWEST OREGON. · 3/4 — Northwest Oregon PAC</title>
+<title>Every campaign deserves strong support · 3/4 — Northwest Oregon PAC</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,27 +11,78 @@
 <link rel="stylesheet" href="../../assets/social.css" />
 <link rel="stylesheet" href="../../assets/templates.css" />
 <link rel="stylesheet" href="../../assets/carousels.css" />
+
+<style>
+  .c10-3 { position:absolute; inset:0; z-index:5; overflow:hidden; }
+  .c10-3-bg { position:absolute; inset:0; z-index:1; }
+  .c10-3-bg img { width:100%; height:100%; object-fit:cover; object-position:center 55%;
+    filter:saturate(.55) contrast(1.35) brightness(.42);
+  }
+  .c10-3-bg::after { content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(20,30,24,.9) 0%, rgba(20,30,24,.45) 45%, rgba(6,10,7,.96) 100%),
+      radial-gradient(60% 45% at 20% 25%, rgba(90,112,96,.25) 0%, transparent 65%);
+  }
+  .c10-3-scan { position:absolute; inset:0; z-index:2; pointer-events:none; opacity:.08;
+    background: repeating-linear-gradient(180deg, transparent 0 3px, rgba(0,0,0,.5) 3px 4px);
+  }
+  .c10-3-film { position:absolute; z-index:6; bottom:60px; left:0; right:0; height:32px;
+    background:repeating-linear-gradient(90deg, #0a100c 0 26px, transparent 26px 46px);
+    border-top:1px solid rgba(224,214,188,.28);
+    border-bottom:1px solid rgba(224,214,188,.28);
+  }
+  .c10-3-film::before { content:''; position:absolute; inset:6px 0;
+    background:repeating-linear-gradient(90deg, rgba(224,214,188,.18) 0 22px, transparent 22px 44px);
+  }
+  .c10-3-mast { position:absolute; z-index:14; top:80px; left:96px; }
+  .c10-3-mast img { height:60px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.7)); }
+  .c10-3-serial { position:absolute; z-index:14; top:100px; right:96px;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.65);
+    display:flex; align-items:center; gap:14px;
+  }
+  .c10-3-serial .bar { width:40px; height:1px; background:currentColor; opacity:.7; }
+  .c10-3-kick { position:absolute; z-index:10; left:96px; top:260px;
+    font-family:var(--font-mono); font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.8);
+    display:flex; align-items:center; gap:16px;
+  }
+  .c10-3-kick .brk { color:rgba(224,214,188,.5); font-family:var(--font-display); font-size:22px; }
+  .c10-3-title { position:absolute; z-index:10; left:96px; right:96px; top:350px;
+    font-family:var(--font-display); font-weight:500; font-size:130px; line-height:.94; letter-spacing:-.032em; color:#f6f2e8;
+    text-shadow: 0 8px 40px rgba(0,0,0,.6);
+  }
+  .c10-3-title em { display:block; font-style:italic; font-weight:400; color:#e0d6bc; }
+  .c10-3-orn { position:absolute; z-index:10; left:96px; top:790px; width:220px; height:2px; background:#e0d6bc; opacity:.75; }
+  .c10-3-tag { position:absolute; z-index:10; left:96px; top:820px;
+    font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.7);
+  }
+  .c10-3-footer { position:absolute; z-index:10; left:96px; bottom:120px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.6);
+  }
+</style>
 </head>
 <body>
-  <div class="canvas  s-light">
-    
-  <div class="c-duo  vertical">
-    <div class="c-duo-photo">
-      <img src="../../assets/img/event.jpg" alt="" />
-      <div class="c-duo-photo-wash"></div>
-      <span class="c-duo-photo-label">Real change · Real people</span>
-    </div>
-    <div class="c-duo-copy c-duo-copy--sand">
-      <div class="c-duo-inner">
-        <div class="c-kicker">Slide 3</div>
-        
-        <div class="c-duo-body"><p>Real change happens when neighbours work together with a shared purpose and a long-term commitment to their communities.</p></div>
-        
+  <div class="canvas on-photo" style="background:#0a100c;">
+    <div class="c10-3">
+      <div class="c10-3-bg"><img src="../../assets/img/hero.jpg" alt="" /></div>
+      <div class="c10-3-scan"></div>
+
+      <div class="c10-3-mast"><img src="../../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
+      <div class="c10-3-serial"><span class="bar"></span>REEL 10 &middot; 03/04</div>
+
+      <div class="c10-3-kick">
+        <span class="brk">[</span>
+        <span>Scene III &middot; Support</span>
+        <span class="brk">]</span>
       </div>
-      <span class="c-duo-mark">NW · OR</span>
+
+      <h1 class="c10-3-title">Every campaign deserves <em>strong support.</em></h1>
+
+      <div class="c10-3-orn"></div>
+      <div class="c10-3-tag">A movement, not a moment</div>
+
+      <div class="c10-3-footer">The Movement // Reel 10</div>
+      <div class="c10-3-film"></div>
     </div>
-  </div>
-    
     <div class="grain"></div>
   </div>
 </body>
