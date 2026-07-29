@@ -18,18 +18,8 @@
       radial-gradient(60% 45% at 88% 12%, rgba(224,214,188,.55) 0%, transparent 60%),
       linear-gradient(180deg, #f4ecd1 0%, #dfd0a3 100%);
   }
-  /* Diagonal red-white-blue ribbon accent through center */
-  .f06-ribbon { position:absolute; z-index:3; top:0; bottom:0; left:0; right:0; pointer-events:none; }
-  .f06-ribbon::before {
-    content:''; position:absolute; top:-100px; left:-100px; right:-100px; height:110px;
-    background:#2e4538; transform:rotate(-16deg); transform-origin:top left;
-    top:520px;
-    box-shadow:0 24px 60px -30px rgba(46,69,56,.4);
-  }
-  .f06-ribbon::after {
-    content:''; position:absolute; top:640px; left:-100px; right:-100px; height:8px;
-    background:#6b5a42; transform:rotate(-16deg); transform-origin:top left;
-  }
+  /* Subtle ribbon accent — moved BELOW the title, no overlap */
+  .f06-ribbon { position:absolute; z-index:3; left:-100px; right:-100px; bottom:170px; height:8px; background:#6b5a42; opacity:.55; transform:rotate(-3deg); pointer-events:none; }
   /* Manifesto stripes on left edge (american flag nod, muted) */
   .f06-stripes { position:absolute; z-index:2; left:0; top:0; bottom:0; width:16px;
     background:repeating-linear-gradient(180deg, #2e4538 0 40px, transparent 40px 80px);
@@ -54,13 +44,11 @@
   }
   .f06-title .r1 { display:block; }
   .f06-title .r2 { display:block; font-weight:500; color:#2e4538; }
-  .f06-title .r3 { display:block; font-style:italic; font-weight:400; color:#f4ecd1;
-    text-shadow: 0 2px 0 rgba(46,69,56,.6);
+  .f06-title .r3 { display:block; font-style:italic; font-weight:400; color:#5a7060;
     letter-spacing:-.03em;
     margin-top:12px;
   }
-  .f06-title .r4 { display:block; font-style:italic; font-weight:400; color:#f4ecd1;
-    text-shadow: 0 2px 0 rgba(46,69,56,.6);
+  .f06-title .r4 { display:block; font-style:italic; font-weight:400; color:#5a7060;
     letter-spacing:-.03em;
   }
   /* Baseline signature row */

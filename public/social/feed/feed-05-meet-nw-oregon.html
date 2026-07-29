@@ -31,12 +31,14 @@
   .f05-kick { position:absolute; z-index:10; top:240px; left:96px; display:flex; align-items:center; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060; }
   .f05-kick .bar { width:56px; height:1px; background:currentColor; opacity:.75; }
   /* Big italic title top-left */
-  .f05-title { position:absolute; z-index:10; left:96px; right:96px; top:298px;
-    font-family:var(--font-display); font-weight:500; font-size:126px; line-height:.92; letter-spacing:-.036em; color:#2e4538;
+  .f05-title { position:absolute; z-index:10; left:96px; right:96px; top:290px;
+    font-family:var(--font-display); font-weight:500; font-size:104px; line-height:.98; letter-spacing:-.032em; color:#2e4538;
   }
-  .f05-title em { display:block; font-style:italic; font-weight:400; color:#5a7060; margin-top:2px; }
-  /* Bento mosaic photo grid — bottom half */
-  .f05-mosaic { position:absolute; z-index:6; left:96px; right:96px; bottom:200px; top:610px;
+  .f05-title .a { display:block; }
+  .f05-title .b { display:block; font-style:italic; font-weight:400; color:#5a7060; margin-top:6px; }
+  .f05-title .c { display:block; font-style:italic; font-weight:400; color:#5a7060; }
+  /* Bento mosaic photo grid — bottom half, cleared from the title */
+  .f05-mosaic { position:absolute; z-index:6; left:96px; right:96px; bottom:200px; top:680px;
     display:grid; grid-template-columns: 1.5fr 1fr 1fr; grid-template-rows:1fr 1fr; gap:14px;
   }
   .f05-panel { position:relative; overflow:hidden; background:#0f1a13; border-radius:6px;
@@ -70,7 +72,7 @@
       </div>
 
       <div class="f05-kick"><span class="bar"></span></div>
-      <h1 class="f05-title">Meet<em>Northwest Oregon.</em></h1>
+      <h1 class="f05-title"><span class="a">Meet</span><span class="b">Northwest</span><span class="c">Oregon.</span></h1>
 
       <div class="f05-mosaic">
         <div class="f05-panel tall">

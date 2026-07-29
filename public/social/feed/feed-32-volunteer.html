@@ -31,12 +31,12 @@
   /* Corner brackets */
   .f32-brackTL { position:absolute; z-index:6; top:200px; left:80px; width:26px; height:26px; border-top:2px solid rgba(224,214,188,.55); border-left:2px solid rgba(224,214,188,.55); }
   .f32-brackBR { position:absolute; z-index:6; bottom:180px; right:80px; width:26px; height:26px; border-bottom:2px solid rgba(224,214,188,.55); border-right:2px solid rgba(224,214,188,.55); }
-  /* Huge stacked poster type — one word per line */
-  .f32-poster { position:absolute; z-index:10; left:96px; right:96px; top:262px; text-align:center; font-family:var(--font-display); color:#f6f2e8; letter-spacing:-.035em; line-height:.88; text-shadow: 0 10px 40px rgba(0,0,0,.65); }
-  .f32-poster .l1 { display:block; font-weight:500; font-size:150px; }
-  .f32-poster .l2 { display:block; font-weight:500; font-size:130px; margin-top:-4px; color:#e0d6bc; }
-  .f32-poster .l3 { display:block; font-weight:500; font-size:130px; margin-top:-4px; }
-  .f32-poster .l4 { display:block; font-style:italic; font-weight:500; font-size:150px; margin-top:2px; color:#e0d6bc; }
+  /* Huge stacked poster type — one word per line, centered vertically */
+  .f32-poster { position:absolute; z-index:10; left:96px; right:96px; top:50%; transform:translateY(-50%); text-align:center; font-family:var(--font-display); color:#f6f2e8; letter-spacing:-.032em; line-height:.94; text-shadow: 0 10px 40px rgba(0,0,0,.65); }
+  .f32-poster .l1 { display:block; font-weight:500; font-size:128px; }
+  .f32-poster .l2 { display:block; font-weight:500; font-size:110px; color:#e0d6bc; }
+  .f32-poster .l3 { display:block; font-weight:500; font-size:110px; }
+  .f32-poster .l4 { display:block; font-style:italic; font-weight:500; font-size:128px; color:#e0d6bc; }
   /* Bottom hairline centered */
   .f32-rule { position:absolute; z-index:10; left:50%; transform:translateX(-50%); bottom:130px; width:220px; height:1px; background:rgba(224,214,188,.55); }
   .f32-rule::before, .f32-rule::after { content:''; position:absolute; top:50%; width:6px; height:6px; background:#e0d6bc; border-radius:50%; transform:translateY(-50%); }

@@ -179,28 +179,25 @@ export default function Footer() {
           </m.div>
         </div>
 
-        <div className="border-border mt-12 border-t pt-6 sm:pt-7">
+        <div className="border-border mt-12 border-t pt-6 pb-8 sm:pt-7">
           <div className="text-foreground/60 flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] tracking-widest uppercase sm:text-[13px]">
             <span>© {new Date().getFullYear()} {pac.legalName}</span>
-            <span className="bg-border-strong h-3 w-px" />
             <span>{pac.type} · Committee #{pac.pacId}</span>
           </div>
-        </div>
 
-        <div className="border-border mt-6 border-t pt-6 pb-8 space-y-2">
-          <p className="text-foreground/70 text-center text-[13px] leading-relaxed tracking-wide">
-            {pac.disclaimers.paidFor}
-          </p>
-          <p className="text-foreground/70 text-center text-[13px] leading-relaxed tracking-wide">
-            {pac.disclaimers.aiNotice}
-          </p>
-          <p className="text-foreground/55 mt-2 text-center text-[12px] tracking-widest uppercase">
-            {pac.disclaimers.notAuthorized}
-          </p>
-        </div>
+          <div className="mt-6 space-y-2">
+            <p className="text-foreground/70 text-center text-[13px] leading-relaxed tracking-wide">
+              {pac.disclaimers.paidFor}
+            </p>
+            <p className="text-foreground/70 text-center text-[13px] leading-relaxed tracking-wide">
+              {pac.disclaimers.aiNotice}
+            </p>
+            <p className="text-foreground/55 mt-2 text-center text-[12px] tracking-widest uppercase">
+              {pac.disclaimers.notAuthorized}
+            </p>
+          </div>
 
-        <div className="border-border/70 mt-2 border-t pt-5 pb-8">
-          <p className="text-foreground/55 mx-auto max-w-3xl text-center text-[12px] leading-relaxed italic sm:text-[13px]">
+          <p className="text-foreground/55 mx-auto mt-6 max-w-3xl text-center text-[12px] leading-relaxed italic sm:text-[13px]">
             Note: The current Vercel URL is being used for preview purposes. It
             will be replaced with the final live domain once the website is
             deployed.

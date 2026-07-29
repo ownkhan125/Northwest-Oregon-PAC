@@ -17,6 +17,8 @@ const spec = JSON.parse(fs.readFileSync(SPEC_PATH, 'utf8'));
 const norm = (s) =>
   (s || '')
     .replace(/[·•]/g, ' ')
+    .replace(/[“”„]/g, '"')   // curly double → straight
+    .replace(/[‘’‚]/g, "'")   // curly single → straight
     .replace(/[\r\n\t]+/g, ' ')
     .replace(/[.,;:!?"'()\[\]—–\-]/g, '')
     .replace(/\s+/g, ' ')
@@ -25,6 +27,11 @@ const norm = (s) =>
 
 // Word-level tokenizer to catch stray words
 const tokens = (s) => norm(s).split(' ').filter(Boolean);
+
+// Roman numerals used as visual list markers (i. ii. iii. …) — always allowed
+const ROMAN = new Set(['i','ii','iii','iv','v','vi','vii','viii','ix','x','xi','xii','xiii','xiv','xv']);
+// Standalone decoration characters — always allowed
+const DECOR = new Set(['+','$','&','★','↗','↖','↘','↙','→','←','↑','↓','%']);
 
 // Common chrome text words that shouldn't appear (unless in spec)
 const KNOWN_CHROME_WORDS = new Set([
@@ -51,8 +58,14 @@ async function checkOne(page, id, url, imageText, w, h) {
   const extras = [];
   for (const tok of observedTokens) {
     if (specTokens.has(tok)) continue;
-    if (/^\d+$/.test(tok)) continue; // skip pure numbers (chip amounts, etc.)
-    // skip common connector words if they might be part of legit inline UI
+    if (/^\d+$/.test(tok)) continue; // pure numbers (chip amounts, etc.)
+    if (ROMAN.has(tok)) continue;    // list-marker Roman numerals
+    if (DECOR.has(tok)) continue;    // decorative characters
+    if (tok.length === 1) continue;  // single-char stragglers = decoration
+    // Contractions in spec ("we'll", "let's", etc.) sometimes get mis-tokenized
+    // because the browser drops the apostrophe. Try lookup with apostrophe.
+    const withApostrophe = tok.replace(/(.+)(ll|s|t|d|ve|re|m)$/, (_, a, b) => a + "'" + b);
+    if (specTokens.has(withApostrophe)) continue;
     extras.push(tok);
   }
 

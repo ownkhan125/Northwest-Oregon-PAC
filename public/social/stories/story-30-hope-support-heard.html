@@ -13,14 +13,14 @@
 <link rel="stylesheet" href="../assets/carousels.css" />
 
 <style>
-  .s30 { position:absolute; inset:0; z-index:5; background:#2e4538; overflow:hidden; }
-  .s30-photo { position:absolute; z-index:1; inset:0; opacity:.4; }
-  .s30-photo img { width:100%; height:100%; object-fit:cover; object-position:center 55%; filter:saturate(.5) contrast(1.2) brightness(.6); }
+  .s30 { position:absolute; inset:0; z-index:5; background:#1c2b23; overflow:hidden; }
+  .s30-photo { position:absolute; z-index:1; inset:0; opacity:.12; }
+  .s30-photo img { width:100%; height:100%; object-fit:cover; object-position:center 55%; filter:saturate(.35) contrast(1.15) brightness(.35) blur(3px); }
   .s30-wash { position:absolute; z-index:2; inset:0;
     background:
-      radial-gradient(70% 45% at 50% 25%, rgba(90,112,96,.4), transparent 65%),
-      radial-gradient(90% 50% at 50% 100%, rgba(20,32,25,.9), transparent 60%),
-      linear-gradient(180deg, rgba(46,69,56,.65) 0%, rgba(20,32,25,.95) 100%);
+      radial-gradient(70% 45% at 50% 25%, rgba(90,112,96,.28), transparent 70%),
+      radial-gradient(90% 55% at 50% 100%, rgba(15,26,19,.95), transparent 55%),
+      linear-gradient(180deg, rgba(28,43,35,.88) 0%, rgba(15,26,19,.98) 100%);
   }
 
   /* Grid pattern */
@@ -82,8 +82,7 @@
       <span class="s30-brk bl"></span>
       <span class="s30-brk br"></span>
 
-      <div class="s30-mast"><img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" /></div>
-      <div class="s30-kick"><span class="bar"></span>Story · XXX</div>
+      <div class="s30-mast"><img src="../assets/nwop-logo-light.png" alt="" /></div>
 
       <div class="s30-seal" aria-hidden="true">
         <svg viewBox="0 0 200 200">
@@ -94,8 +93,6 @@
             <path d="M55 128l3.3 7.7L67 137l-6.3 5.3L62.4 151 55 146.7 47.6 151l2-8.7L43 137l8.2-1L55 128z" opacity=".85"/>
             <path d="M145 128l3.3 7.7L157 137l-6.3 5.3 1.7 8.7L145 146.7 137.6 151l2-8.7L133 137l8.2-1L145 128z" opacity=".85"/>
           </g>
-          <text x="100" y="115" text-anchor="middle" font-family="Source Sans 3" font-size="11" letter-spacing="3" fill="#e0d6bc" opacity=".85">NWOP</text>
-          <text x="100" y="170" text-anchor="middle" font-family="Source Sans 3" font-size="7" letter-spacing="4" fill="#e0d6bc" opacity=".6">· 2026 ·</text>
         </svg>
       </div>
 
@@ -106,13 +103,10 @@
       <div class="s30-values">Hope <span class="dot">·</span> Support <span class="dot">·</span> Heard</div>
 
       <div class="s30-action">
-        <div class="lbl">Stay Connected</div>
         <div class="row">Follow <span class="dot">·</span> Donate</div>
       </div>
 
       <div class="s30-foot">
-        <span class="txt">NWOP · Together</span>
-        <span class="txt">Story XXX · 2026</span>
       </div>
     </div>
     <div class="grain"></div>

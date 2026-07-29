@@ -31,8 +31,8 @@
   .f34-mono-top { position:absolute; z-index:12; left:0; right:0; top:180px; text-align:center; font-family:var(--font-mono); font-size:12px; letter-spacing:.6em; text-transform:uppercase; color:rgba(224,214,188,.55); display:flex; justify-content:center; align-items:center; gap:22px; }
   .f34-mono-top .bar { width:70px; height:1px; background:currentColor; opacity:.5; }
   .f34-mono-top .dot { width:5px; height:5px; border-radius:50%; background:#e0d6bc; opacity:.7; }
-  /* Big top word */
-  .f34-top-word { position:absolute; z-index:12; left:0; right:0; top:216px; text-align:center; font-family:var(--font-display); font-weight:500; font-size:130px; color:#f6f2e8; letter-spacing:-.03em; line-height:.94; text-shadow:0 6px 30px rgba(0,0,0,.6); }
+  /* Big top word — constrained inside the double-frame border */
+  .f34-top-word { position:absolute; z-index:12; left:120px; right:120px; top:230px; text-align:center; font-family:var(--font-display); font-weight:500; font-size:104px; color:#f6f2e8; letter-spacing:-.03em; line-height:.94; text-shadow:0 6px 30px rgba(0,0,0,.6); }
   .f34-top-word em { font-style:italic; color:#e0d6bc; }
   /* Center image panel — narrow vertical stripe */
   .f34-panel { position:absolute; z-index:8; left:50%; transform:translateX(-50%); top:392px; width:440px; height:340px; overflow:hidden;
@@ -43,8 +43,8 @@
   /* Ornament divider under panel */
   .f34-divider { position:absolute; z-index:12; left:0; right:0; top:770px; text-align:center; }
   .f34-divider svg { display:inline-block; opacity:.7; }
-  /* Bottom stacked type */
-  .f34-bot-word { position:absolute; z-index:12; left:0; right:0; top:812px; text-align:center; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:100px; color:#e0d6bc; letter-spacing:-.028em; line-height:.94; text-shadow:0 6px 30px rgba(0,0,0,.6); }
+  /* Bottom stacked type — matched to top word width */
+  .f34-bot-word { position:absolute; z-index:12; left:120px; right:120px; top:800px; text-align:center; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:88px; color:#e0d6bc; letter-spacing:-.028em; line-height:.94; text-shadow:0 6px 30px rgba(0,0,0,.6); }
   /* Lowest mono coordinates */
   .f34-mono-bot { position:absolute; z-index:12; left:0; right:0; bottom:130px; text-align:center; font-family:var(--font-mono); font-size:12px; letter-spacing:.6em; text-transform:uppercase; color:rgba(224,214,188,.55); display:flex; justify-content:center; align-items:center; gap:22px; }
   .f34-mono-bot .bar { width:80px; height:1px; background:currentColor; opacity:.5; }

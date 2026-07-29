@@ -30,10 +30,11 @@
   .s20-kick { position:absolute; z-index:10; top:150px; right:96px; font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,42,20,.7); display:flex; align-items:center; gap:18px; }
   .s20-kick .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
 
-  /* Architectural blueprint schema */
-  .s20-scheme { position:absolute; z-index:5; left:96px; right:96px; top:320px; height:800px;
+  /* Architectural blueprint schema — centered vertically, generous frame */
+  .s20-scheme { position:absolute; z-index:5; left:96px; right:96px; top:360px; bottom:280px;
     border:1.5px solid rgba(46,69,56,.45);
-    padding:44px 52px;
+    padding:80px 72px;
+    display:flex; flex-direction:column; justify-content:center;
   }
   .s20-scheme .corner { position:absolute; width:12px; height:12px; border:1.5px solid #2e4538; background:#f6f2e8; }
   .s20-scheme .corner.tl { top:-7px; left:-7px; }
@@ -41,7 +42,7 @@
   .s20-scheme .corner.bl { bottom:-7px; left:-7px; }
   .s20-scheme .corner.br { bottom:-7px; right:-7px; }
   .s20-scheme .lbl { font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:#5A7060; margin-bottom:22px; }
-  .s20-scheme .title { font-family:var(--font-display); font-weight:500; font-size:120px; line-height:.96; letter-spacing:-.03em; color:#2e4538; margin-bottom:24px; }
+  .s20-scheme .title { font-family:var(--font-display); font-weight:500; font-size:82px; line-height:1.06; letter-spacing:-.024em; color:#2e4538; }
   .s20-scheme .title em { font-style:italic; font-weight:400; color:#6B5A42; }
   .s20-scheme .divider { display:flex; align-items:center; gap:12px; margin:32px 0; font-family:var(--font-mono); font-size:11px; letter-spacing:.5em; color:rgba(46,42,20,.5); }
   .s20-scheme .divider::before, .s20-scheme .divider::after { content:''; flex:1; height:1px; background:currentColor; }
@@ -64,8 +65,7 @@
       <div class="s20-bg"></div>
       <div class="s20-grid"></div>
 
-      <div class="s20-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-      <div class="s20-kick"><span class="bar"></span>Blueprint · XX</div>
+      <div class="s20-mast"><img src="../assets/nwop-logo-dark.png" alt="" /></div>
 
       <div class="s20-scheme">
         <span class="corner tl"></span>
@@ -73,28 +73,10 @@
         <span class="corner bl"></span>
         <span class="corner br"></span>
 
-        <div class="lbl">Specification · Every Donation</div>
         <div class="title">Every donation helps <em>build</em> long-term political infrastructure across Northwest Oregon.</div>
-        <div class="divider">Foundational Investment</div>
-        <div class="measure">
-          <span>Section A</span>
-          <span>Scale · Regional</span>
-          <span>Horizon · Long-Term</span>
-        </div>
-      </div>
-
-      <p class="s20-note">A durable foundation, one contribution at a time.</p>
-
-      <div class="s20-tag">
-        <span>Recruit</span>
-        <span>Fundraise</span>
-        <span>Communicate</span>
-        <span>Support</span>
       </div>
 
       <div class="s20-foot">
-        <span class="txt">NWOP · Blueprint</span>
-        <span class="txt">Story XX · 2026</span>
       </div>
     </div>
     <div class="grain"></div>

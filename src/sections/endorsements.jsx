@@ -63,8 +63,9 @@ export default function Endorsements() {
           const CardBody = (
             <Card
               className="flex h-full flex-col justify-between overflow-hidden p-0"
-              tilt={hasLink && i % 2 === 0}
-              interactive={hasLink}
+              tilt={i % 2 === 0}
+              interactive
+              pointer={hasLink}
             >
               <div
                 aria-hidden
@@ -81,42 +82,22 @@ export default function Endorsements() {
                 )}
               </div>
               <div className="flex flex-1 flex-col p-7">
-                <h3
-                  className={cn(
-                    'font-display text-foreground text-2xl leading-tight font-medium transition-colors duration-500 sm:text-3xl',
-                    hasLink && 'group-hover:text-primary-fg',
-                  )}
-                >
+                <h3 className="font-display text-foreground group-hover:text-primary-fg text-2xl leading-tight font-medium transition-colors duration-500 sm:text-3xl">
                   {c.name}
                 </h3>
-                <p
-                  className={cn(
-                    'text-foreground/75 mt-2 text-sm transition-colors duration-500 sm:text-base',
-                    hasLink && 'group-hover:text-primary-fg/85',
-                  )}
-                >
+                <p className="text-foreground/75 group-hover:text-primary-fg/85 mt-2 text-sm transition-colors duration-500 sm:text-base">
                   {c.office}
                 </p>
-                <p
-                  className={cn(
-                    'text-foreground/70 mt-4 text-sm leading-relaxed transition-colors duration-500',
-                    hasLink && 'group-hover:text-primary-fg/80',
-                  )}
-                >
+                <p className="text-foreground/70 group-hover:text-primary-fg/80 mt-4 text-sm leading-relaxed transition-colors duration-500">
                   {c.bio}
                 </p>
 
-                <div
-                  className={cn(
-                    'border-primary/15 mt-auto flex items-center justify-between border-t pt-5 transition-colors duration-500',
-                    hasLink && 'group-hover:border-primary-fg/25',
-                  )}
-                >
+                <div className="border-primary/15 group-hover:border-primary-fg/25 mt-auto flex items-center justify-between border-t pt-5 transition-colors duration-500">
                   <span
                     className={
                       hasLink
                         ? 'text-primary group-hover:text-accent inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors duration-500'
-                        : 'text-foreground/60 inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase'
+                        : 'text-foreground/60 group-hover:text-primary-fg/70 inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors duration-500'
                     }
                   >
                     {c.cta}

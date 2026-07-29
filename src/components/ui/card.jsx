@@ -18,8 +18,11 @@ const Card = ({
   hoverGlow: _legacyHoverGlow, // retained in prop list for backwards compat
   tilt = true,
   interactive = true,
+  pointer,
   ...rest
 }) => {
+  // When `pointer` is not explicitly set, mirror `interactive` for backwards compat.
+  const showPointer = pointer ?? interactive
   const ref = useRef(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -57,7 +60,8 @@ const Card = ({
       className={cn(
         'group border-border bg-surface relative isolate overflow-hidden rounded-2xl border transition-[background-color,border-color,color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
         interactive &&
-          'cursor-pointer hover:border-primary hover:bg-primary hover:text-primary-fg hover:shadow-[0_28px_60px_-30px_rgba(46,69,56,0.55)]',
+          'hover:border-primary hover:bg-primary hover:text-primary-fg hover:shadow-[0_28px_60px_-30px_rgba(46,69,56,0.55)]',
+        showPointer && 'cursor-pointer',
         className,
       )}
       {...rest}
@@ -79,6 +83,7 @@ Card.propTypes = {
   hoverGlow: PropTypes.bool,
   tilt: PropTypes.bool,
   interactive: PropTypes.bool,
+  pointer: PropTypes.bool,
 }
 
 export default Card
