@@ -230,7 +230,7 @@ export default function SocialMediaPostsPage() {
     <>
       <PageHeader
         eyebrow="Field notes from our feed"
-        number="04"
+        number="01"
         title="Social Media Posts"
         description="A curated look at the campaign we're building out loud — posts, portraits, and prints made for Northwest Oregon. Tap any card to open the full-size image."
       />

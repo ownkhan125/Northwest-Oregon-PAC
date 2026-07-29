@@ -83,7 +83,7 @@ export default function FaqPage() {
   return (
     <>
       <PageHeader
-        number="09"
+        number="01"
         title="Everything you need to know"
         description="We are here to provide clear answers. If you can’t find what you’re looking for, we’re always happy to hear from you."
         accent="/icons/gavel.svg"

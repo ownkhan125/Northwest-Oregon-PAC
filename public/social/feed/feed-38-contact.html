@@ -13,80 +13,77 @@
 <link rel="stylesheet" href="../assets/carousels.css" />
 </head>
 <body>
-  <div class="canvas s-light">
+  <div class="canvas  s-light">
     <style>
-      .f38 { position:absolute; inset:0; z-index:10; overflow:hidden;
-        background:
-          radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
-          linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
-        color:#2e4538;
-      }
-      .f38::before { content:''; position:absolute; inset:0; opacity:.2; pointer-events:none;
-        background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.18  0 0 0 0 0.1  0 0 0 0.3 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-        mix-blend-mode:multiply; }
-      .f38-mast { position:absolute; top:56px; left:76px; right:76px; z-index:7; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.72); }
-      .f38-mast img { height:56px; width:auto; }
-      /* Kick + huge question mark hero */
-      .f38-kick { position:absolute; top:176px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
-      .f38-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-      /* Massive question mark */
-      /* sized so the glyph terminates above the topic row at y=520; at 520px its dot
-         landed inside card 05 and showed through the 85%-opaque card face */
-      .f38-qmark { position:absolute; top:142px; right:76px; z-index:5; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:400px; line-height:.82; letter-spacing:-.04em; color:#2e4538; text-shadow:0 8px 40px rgba(46,69,56,.28); }
-      /* Two-line title */
-      .f38-head { position:absolute; top:216px; left:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:72px; line-height:.98; letter-spacing:-.028em; color:#2e4538; max-width:640px; }
-      .f38-head .a { display:block; }
-      .f38-head .b { display:block; font-style:italic; color:#5a7060; }
-      .f38-head .rule { display:block; width:110px; height:2px; margin-top:22px; background:#2e4538; }
-      /* Question topics band */
-      .f38-lbl { position:absolute; top:490px; left:76px; z-index:6; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-      .f38-topics { position:absolute; top:520px; left:76px; right:76px; z-index:6; display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; }
-      .f38-topic { padding:14px 12px; background:rgba(246,242,232,.85); border:1px solid rgba(46,69,56,.4); text-align:center; }
-      .f38-topic .n { font-family:var(--font-mono); font-size:10px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-      .f38-topic .w { display:block; margin-top:6px; font-family:var(--font-display); font-style:italic; font-size:20px; letter-spacing:-.01em; color:#2e4538; }
-      /* Contact row */
-      .f38-lbl2 { position:absolute; left:76px; right:76px; bottom:280px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-      .f38-contact { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
-      .f38-c { padding:14px 16px; background:#2e4538; color:#e0d6bc; }
-      .f38-c .n { font-family:var(--font-mono); font-size:10px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.6); }
-      .f38-c .w { display:block; margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:20px; line-height:1.14; letter-spacing:-.012em; color:#f6f2e8; }
-      .f38-c .w em { font-style:italic; color:#e0d6bc; }
-      .f38-sig { position:absolute; left:76px; right:76px; bottom:112px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.65); }
-      .f38-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
-      .f38-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-    </style>
-    <div class="f38">
-      <div class="f38-mast">
-        <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
-        <span>No. 38 · Contact</span>
-      </div>
-      <span class="f38-qmark">?</span>
-      <span class="f38-kick">Reach out directly</span>
-      <h1 class="f38-head">
-        <span class="a">Have a question?</span>
-        <span class="b">Reach the PAC directly.</span>
-        <span class="rule"></span>
-      </h1>
-      <span class="f38-lbl">— Questions about</span>
-      <div class="f38-topics">
-        <div class="f38-topic"><span class="n">01</span><span class="w">Volunteering</span></div>
-        <div class="f38-topic"><span class="n">02</span><span class="w">Candidates</span></div>
-        <div class="f38-topic"><span class="n">03</span><span class="w">Events</span></div>
-        <div class="f38-topic"><span class="n">04</span><span class="w">Donations</span></div>
-        <div class="f38-topic"><span class="n">05</span><span class="w">Running for office</span></div>
-      </div>
-      <span class="f38-lbl2">— Reach the PAC directly</span>
-      <div class="f38-contact">
-        <div class="f38-c"><span class="n">— Email</span><span class="w"><em>info@northwestoregon.com</em></span></div>
-        <div class="f38-c"><span class="n">— Program Director</span><span class="w">Cynthia Sawyer<br/><em>503-490-4139</em></span></div>
-        <div class="f38-c"><span class="n">— Mail</span><span class="w"><em>Beaverton, Oregon 97005</em></span></div>
-      </div>
-      <div class="f38-sig"><span>We want you to know who we are</span><span class="em">— Northwest Oregon residents welcome.</span></div>
-      <div class="f38-foot">
-        <span>Paid for by Northwest Oregon PAC · #25045</span>
-        <span>northwestoregon.com</span>
-      </div>
-    </div>
+        .f38 { position:absolute; inset:0; z-index:10; overflow:hidden;
+          background:
+            radial-gradient(120% 90% at 30% 12%, rgba(240,232,206,.55) 0%, transparent 55%),
+            linear-gradient(180deg, #f6f2e8 0%, #e0d6bc 100%);
+          color:#2e4538;
+        }
+        .f38-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f38-mast img { height:56px; width:auto; }
+        /* Calling card */
+        .f38-card { position:absolute; top:180px; bottom:140px; left:80px; right:80px; z-index:5;
+          background:#faf3d8; border:2px solid #2e4538;
+          box-shadow:0 30px 60px -30px rgba(46,69,56,.5), inset 0 1px 0 rgba(255,255,255,.6);
+          padding:34px 40px 32px;
+          display:flex; flex-direction:column;
+        }
+        .f38-card::before { content:''; position:absolute; inset:12px; border:1px double #2e4538; pointer-events:none; }
+        /* Corner ornaments */
+        .f38-corner { position:absolute; font-family:var(--font-display); font-style:italic; font-size:40px; color:#5a7060; }
+        .f38-corner.tl { top:18px; left:26px; }
+        .f38-corner.tr { top:18px; right:26px; }
+        .f38-corner.bl { bottom:22px; left:26px; }
+        .f38-corner.br { bottom:22px; right:26px; }
+        /* Card header */
+        .f38-card .header { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:14px; border-bottom:2px solid #2e4538; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.7); }
+        .f38-card .header .em { font-family:var(--font-display); font-style:italic; font-size:26px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        /* Titles */
+        .f38-card .kick { margin-top:18px; font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); display:inline-flex; align-items:center; gap:16px; }
+        .f38-card .kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
+        .f38-card .head { margin-top:10px; font-family:var(--font-display); font-weight:500; font-size:66px; line-height:1; letter-spacing:-.028em; color:#2e4538; }
+        .f38-card .sub { margin-top:8px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:32px; letter-spacing:-.015em; color:#5a7060; }
+        /* Contact rows */
+        .f38-card .rows { margin-top:24px; display:flex; flex-direction:column; gap:14px; }
+        .f38-card .row { display:flex; align-items:baseline; gap:20px; padding-bottom:10px; border-bottom:1px dashed rgba(46,69,56,.45); }
+        .f38-card .row .k { flex:none; width:210px; font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f38-card .row .v { flex:1; font-family:var(--font-display); font-weight:500; font-size:24px; line-height:1.14; letter-spacing:-.012em; color:#2e4538; }
+        /* Sign-off */
+        .f38-card .signoff { margin-top:auto; padding-top:14px; border-top:1.5px solid #2e4538; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        .f38-card .signoff .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
+        .f38-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); }
+      </style>
+        <div class="f38">
+          <div class="f38-mast">
+            <img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" />
+            <span>Card 38 · Contact</span>
+          </div>
+          <div class="f38-card">
+            <span class="f38-corner tl">§</span>
+            <span class="f38-corner tr">§</span>
+            <span class="f38-corner bl">§</span>
+            <span class="f38-corner br">§</span>
+            <div class="header"><span>The Northwest Calling Card</span><span class="em">Contact directory</span><span>No. 38</span></div>
+            <span class="kick">Contact</span>
+            <h1 class="head">Have a question?</h1>
+            <p class="sub">Reach the PAC directly.</p>
+            <div class="rows">
+              <div class="row"><span class="k">— General Inquiries</span><span class="v">info@northwestoregon.com</span></div>
+              <div class="row"><span class="k">— Program Director</span><span class="v">Cynthia Sawyer · 503-490-4139</span></div>
+              <div class="row"><span class="k">— Mailing Address</span><span class="v">10700 SW Beaverton-Hillsdale Highway, Suite 212, Beaverton, Oregon 97005</span></div>
+              <div class="row"><span class="k">— Region</span><span class="v">Northwest Oregon · Pacific Time</span></div>
+            </div>
+            <div class="signoff"><span>Reach out directly</span><span class="em">— We want you to know who we are.</span></div>
+          </div>
+          <div class="f38-foot">
+            <span>Paid for by Northwest Oregon PAC · #25045</span>
+            <span>northwestoregon.com</span>
+          </div>
+        </div>
+      
+    
     <div class="grain"></div>
   </div>
 </body>

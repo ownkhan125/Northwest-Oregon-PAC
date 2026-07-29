@@ -26,25 +26,19 @@
         .f22-mast img { height:56px; width:auto; filter:brightness(1.05); }
         .f22-kick { position:absolute; top:180px; left:76px; z-index:6; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:inline-flex; align-items:center; gap:16px; }
         .f22-kick::before { content:''; width:44px; height:1px; background:currentColor; opacity:.55; }
-        .f22-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1.02; letter-spacing:-.028em; color:#f6f2e8; max-width:900px; }
+        .f22-head { position:absolute; top:220px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:64px; line-height:1.02; letter-spacing:-.028em; color:#f6f2e8; max-width:900px; }
         .f22-head em { display:block; font-style:italic; color:#e0d6bc; }
-        /* Timeline strip — pushed lower, more clearance from headline */
-        .f22-timeline { position:absolute; left:76px; right:76px; top:520px; z-index:5; padding-top:24px; border-top:1.5px solid rgba(224,214,188,.55); }
-        /* inset:auto cancels the global .rail{left:96px;right:96px;bottom:80px} in social.css,
-           which otherwise shifts this rail 96px right and 80px up */
-        .f22-timeline .rail { position:relative; inset:auto; display:block; height:150px; }
-        .f22-timeline .rail::before { content:''; position:absolute; left:0; right:0; top:20px; height:1px; background:linear-gradient(90deg, rgba(224,214,188,.6), rgba(224,214,188,.35)); }
-        .f22-timeline .node { position:absolute; top:0; display:flex; flex-direction:column; align-items:center; gap:8px; width:16%; text-align:center; }
-        .f22-timeline .node .dot { width:22px; height:22px; border-radius:999px; background:#e0d6bc; border:3px solid #2e4538; box-shadow:0 4px 8px rgba(0,0,0,.4); }
-        .f22-timeline .node .year { font-family:var(--font-mono); font-size:10px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.5); }
-        .f22-timeline .node .name { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:19px; line-height:1.14; letter-spacing:-.015em; color:#e0d6bc; margin-top:2px; min-height:44px; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 2px; white-space:nowrap; }
-        .f22-timeline .node.n1 { left:0; }
-        .f22-timeline .node.n2 { left:20%; }
-        .f22-timeline .node.n3 { left:40%; }
-        .f22-timeline .node.n4 { left:60%; }
-        .f22-timeline .node.n5 { left:80%; }
+        /* Panoramic collage strip — five industry vignettes side-by-side */
+        .f22-collage { position:absolute; left:76px; right:76px; top:500px; height:200px; z-index:5;
+          display:grid; grid-template-columns:1fr 1fr 1fr 1fr 1fr; gap:8px;
+          border-top:1.5px solid rgba(224,214,188,.55); padding-top:20px;
+        }
+        .f22-panel { position:relative; border:1px solid rgba(224,214,188,.35); background:rgba(224,214,188,.06); overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; padding:14px 8px; text-align:center; }
+        .f22-panel svg { width:64px; height:64px; color:#e0d6bc; opacity:.85; }
+        .f22-panel .lbl { margin-top:8px; font-family:var(--font-mono); font-size:9px; letter-spacing:.32em; text-transform:uppercase; color:rgba(246,242,232,.55); }
+        .f22-panel .name { margin-top:4px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:18px; line-height:1.1; letter-spacing:-.012em; color:#e0d6bc; }
         /* Body strip */
-        .f22-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(224,214,188,.35); font-family:var(--font-display); font-weight:500; font-size:26px; line-height:1.24; letter-spacing:-.012em; color:rgba(246,242,232,.94); max-width:900px; }
+        .f22-body { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(224,214,188,.35); font-family:var(--font-display); font-weight:500; font-size:24px; line-height:1.28; letter-spacing:-.012em; color:rgba(246,242,232,.94); max-width:920px; }
         .f22-body em { font-style:italic; color:#e0d6bc; }
         .f22-sig { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(246,242,232,.55); display:flex; align-items:baseline; justify-content:space-between; }
         .f22-sig .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#e0d6bc; text-transform:none; }
@@ -57,13 +51,66 @@
           </div>
           <span class="f22-kick">A resilient future</span>
           <h1 class="f22-head">Northwest Oregon has always been<em>powered by innovation.</em></h1>
-          <div class="f22-timeline">
-            <div class="rail">
-              <div class="node n1"><span class="dot"></span><span class="year">— Era 01</span><span class="name">Hydropower</span></div>
-              <div class="node n2"><span class="dot"></span><span class="year">— Era 02</span><span class="name">Forestry</span></div>
-              <div class="node n3"><span class="dot"></span><span class="year">— Era 03</span><span class="name">Agriculture</span></div>
-              <div class="node n4"><span class="dot"></span><span class="year">— Era 04</span><span class="name">Manufacturing</span></div>
-              <div class="node n5"><span class="dot"></span><span class="year">— Era 05</span><span class="name">Emerging tech</span></div>
+          <div class="f22-collage">
+            <div class="f22-panel">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 46 L30 46 L30 20 L58 20 L58 46 L58 54 L6 54 Z" fill="currentColor" fill-opacity=".08"/>
+                <path d="M6 46 L30 46 L30 20 L58 20 L58 46"/>
+                <path d="M6 54 L58 54"/>
+                <path d="M14 46 L14 40 M22 46 L22 40 M40 46 L40 32 M48 46 L48 32"/>
+                <path d="M6 54 Q16 60 26 54 T46 54 T66 54" opacity=".6"/>
+              </svg>
+              <span class="lbl">— Panel 01</span>
+              <span class="name">Hydropower</span>
+            </div>
+            <div class="f22-panel">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 54 L14 42 L20 42 L14 30 L20 30 L14 18 L26 18 L20 6 L32 6 L26 18 L38 18 L32 30 L38 30 L32 42 L38 42 L32 54 Z" fill="currentColor" fill-opacity=".12"/>
+                <path d="M44 54 L38 46 L44 46 L38 36 L44 36 L38 26 L48 26 L44 18 L54 18 L48 26 L58 26 L52 36 L58 36 L52 46 L58 46 L52 54 Z" fill="currentColor" fill-opacity=".08"/>
+                <line x1="26" y1="54" x2="26" y2="60" opacity=".5"/>
+                <line x1="48" y1="54" x2="48" y2="60" opacity=".5"/>
+              </svg>
+              <span class="lbl">— Panel 02</span>
+              <span class="name">Forestry</span>
+            </div>
+            <div class="f22-panel">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 54 L58 54" />
+                <path d="M6 48 Q32 42 58 48" opacity=".6"/>
+                <path d="M6 42 Q32 36 58 42" opacity=".4"/>
+                <path d="M14 42 L18 26 L22 42 M28 42 L32 22 L36 42 M42 42 L46 28 L50 42"/>
+                <circle cx="18" cy="20" r="3" opacity=".6"/>
+                <circle cx="32" cy="16" r="3" opacity=".6"/>
+                <circle cx="46" cy="22" r="3" opacity=".6"/>
+              </svg>
+              <span class="lbl">— Panel 03</span>
+              <span class="name">Agriculture</span>
+            </div>
+            <div class="f22-panel">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 54 L58 54"/>
+                <path d="M12 54 L12 30 L26 30 L26 54" fill="currentColor" fill-opacity=".08"/>
+                <path d="M26 54 L26 20 L44 20 L44 54" fill="currentColor" fill-opacity=".12"/>
+                <path d="M44 54 L44 32 L54 32 L54 54"/>
+                <rect x="16" y="36" width="4" height="4" opacity=".6"/>
+                <rect x="30" y="28" width="4" height="4" opacity=".6"/>
+                <rect x="36" y="28" width="4" height="4" opacity=".6"/>
+                <path d="M30 12 L36 6 L42 12" opacity=".6"/>
+                <line x1="36" y1="6" x2="36" y2="20" opacity=".6"/>
+              </svg>
+              <span class="lbl">— Panel 04</span>
+              <span class="name">Manufacturing</span>
+            </div>
+            <div class="f22-panel">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="10" y="14" width="44" height="30" rx="2" fill="currentColor" fill-opacity=".08"/>
+                <path d="M10 40 L54 40"/>
+                <path d="M22 50 L42 50 M32 44 L32 50"/>
+                <circle cx="32" cy="28" r="6" opacity=".6"/>
+                <path d="M32 22 L32 12 M32 34 L32 40 M26 28 L18 28 M38 28 L46 28"/>
+              </svg>
+              <span class="lbl">— Panel 05</span>
+              <span class="name">Emerging tech</span>
             </div>
           </div>
           <p class="f22-body">From hydropower and forestry to agriculture, manufacturing, and emerging technologies, our region succeeds when we build on the resources that make <em>Oregon unique.</em></p>

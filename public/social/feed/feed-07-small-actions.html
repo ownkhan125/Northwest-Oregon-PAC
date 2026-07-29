@@ -30,25 +30,25 @@
         .f07-title .h { font-family:var(--font-display); font-weight:500; font-size:92px; line-height:.98; letter-spacing:-.028em; color:#2e4538; text-align:right; }
         .f07-title .h em { display:block; font-style:italic; color:#5a7060; }
         /* Balance beam */
-        .f07-scale { position:absolute; left:76px; right:76px; top:420px; height:340px; z-index:5; }
-        .f07-scale .fulcrum { position:absolute; left:calc(50% - 12px); top:60px; width:24px; height:190px; background:linear-gradient(180deg, #2e4538 0%, #1c2b23 100%); border-radius:2px; }
+        .f07-scale { position:absolute; left:76px; right:76px; top:420px; height:360px; z-index:5; }
+        .f07-scale .fulcrum { position:absolute; left:calc(50% - 12px); top:40px; width:24px; height:210px; background:linear-gradient(180deg, #2e4538 0%, #1c2b23 100%); border-radius:2px; z-index:1; }
         .f07-scale .beam {
-          position:absolute; left:6%; right:6%; top:66px; height:6px; background:#2e4538; border-radius:3px;
+          position:absolute; left:6%; right:6%; top:46px; height:6px; background:#2e4538; border-radius:3px;
           transform:rotate(-3deg); transform-origin:center;
           box-shadow:0 6px 14px -6px rgba(46,69,56,.5);
+          z-index:2;
         }
         .f07-scale .pan {
-          position:absolute; top:56px;
+          position:absolute; top:120px;
           width:280px; padding:20px 22px;
-          background:rgba(246,242,232,.65); border:1.5px solid rgba(46,69,56,.4);
+          background:#f6f2e8; border:1.5px solid rgba(46,69,56,.4);
           box-shadow:0 20px 40px -22px rgba(46,69,56,.4);
+          z-index:4;
         }
-        /* both pans hang BELOW the beam; the left hangs lower to match the beam's -3deg tilt */
-        .f07-scale .pan.left { left:10px; transform:translateY(66px) rotate(-3deg); transform-origin:top center; }
+        .f07-scale .pan.left { left:10px; transform:translateY(-6px) rotate(-3deg); transform-origin:top center; }
         .f07-scale .pan.right { right:10px; transform:translateY(30px) rotate(-3deg); transform-origin:top center; }
-        .f07-scale .pan::before { content:''; position:absolute; left:calc(50% - 1px); top:-56px; width:2px; height:56px; background:rgba(46,69,56,.5); }
-        /* block, or the margin-bottom below is silently dropped on an inline span */
-        .f07-scale .pan .lbl { display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.55); margin-bottom:10px; }
+        .f07-scale .pan::before { content:''; position:absolute; left:calc(50% - 1px); top:-74px; width:2px; height:74px; background:rgba(46,69,56,.5); z-index:0; }
+        .f07-scale .pan .lbl { font-family:var(--font-mono); font-size:11px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.55); margin-bottom:10px; }
         .f07-scale .pan.right .lbl { color:rgba(46,69,56,.6); }
         .f07-scale .pan .stack { display:flex; flex-direction:column; gap:6px; }
         .f07-scale .pan .stack .chip {

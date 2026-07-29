@@ -118,7 +118,7 @@ export default function ContactPage() {
     <>
       <PageHeader
         eyebrow="CONTACT THE PAC"
-        number="06"
+        number="01"
         title="Let’s start a conversation."
         description={[
           'Contact Northwest Oregon PAC about our work, candidates, policy priorities, upcoming events, contributions, or running for office.',

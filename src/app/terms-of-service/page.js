@@ -84,7 +84,7 @@ export default function Page() {
   return (
     <LegalPage
       eyebrow="Legal"
-      number="08"
+      number="01"
       title="Terms of Service"
       lastUpdated="July 2026"
       intro={`These Terms of Service govern your use of the Northwest Oregon PAC website and services. By using our website or engaging with the PAC, you agree to these Terms. ${pac.disclaimers.paidFor}`}

@@ -7,17 +7,17 @@ import { cardReveal, fadeUp, stagger, EASE } from '@/animations/variants'
 import { formatBlogDate } from '@/data/blogs'
 
 function BlogCard({ post, featured = false }) {
+  const href = `/blogs/${post.slug}`
   return (
     <m.article
       variants={featured ? fadeUp : cardReveal}
       className={
         featured
-          ? 'border-border bg-surface group relative isolate flex flex-col overflow-hidden rounded-3xl border transition-colors hover:border-primary/40 lg:flex-row'
-          : 'border-border bg-surface group relative isolate flex h-full flex-col overflow-hidden rounded-3xl border transition-colors hover:border-primary/40'
+          ? 'border-border bg-surface group focus-within:ring-primary/40 relative isolate flex cursor-pointer flex-col overflow-hidden rounded-3xl border transition-colors hover:border-primary/40 focus-within:ring-2 lg:flex-row'
+          : 'border-border bg-surface group focus-within:ring-primary/40 relative isolate flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border transition-colors hover:border-primary/40 focus-within:ring-2'
       }
     >
-      <Link
-        href={`/blogs/${post.slug}`}
+      <div
         className={
           featured
             ? 'relative block aspect-[16/10] w-full overflow-hidden lg:aspect-auto lg:w-1/2'
@@ -41,7 +41,7 @@ function BlogCard({ post, featured = false }) {
         <span className="border-primary/40 bg-surface/85 text-primary absolute top-4 left-4 rounded-full border px-3 py-1 font-mono text-[10px] tracking-[0.25em] uppercase">
           {post.category}
         </span>
-      </Link>
+      </div>
 
       <div
         className={
@@ -64,8 +64,8 @@ function BlogCard({ post, featured = false }) {
           }
         >
           <Link
-            href={`/blogs/${post.slug}`}
-            className="group-hover:text-primary transition-colors"
+            href={href}
+            className="group-hover:text-primary transition-colors before:absolute before:inset-0 before:z-10 before:content-[''] focus-visible:outline-none"
           >
             {post.title}
           </Link>
@@ -81,11 +81,17 @@ function BlogCard({ post, featured = false }) {
           {post.excerpt}
         </p>
 
-        <div className={featured ? 'mt-2 flex items-center justify-between gap-4' : 'mt-auto pt-2'}>
+        <div
+          className={
+            featured
+              ? 'mt-2 flex flex-wrap items-center justify-between gap-x-6 gap-y-3'
+              : 'mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-3 pt-2'
+          }
+        >
           <span className="text-muted text-xs">By {post.author}</span>
-          <Link
-            href={`/blogs/${post.slug}`}
-            className="text-primary group/link inline-flex cursor-pointer items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors hover:text-highlight"
+          <span
+            aria-hidden
+            className="text-primary inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors group-hover:text-highlight"
           >
             Read article
             <svg
@@ -97,11 +103,11 @@ function BlogCard({ post, featured = false }) {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="transition-transform group-hover/link:translate-x-1"
+              className="transition-transform duration-300 group-hover:translate-x-1"
             >
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>
-          </Link>
+          </span>
         </div>
       </div>
     </m.article>
@@ -115,7 +121,7 @@ export default function BlogsPage({ posts = [] }) {
     <>
       <PageHeader
         eyebrow="Blogs"
-        number="10"
+        number="01"
         title="Field notes from Northwest Oregon."
         description="Working essays on the policy fights, endorsements, and neighborhood-level work that shapes our region. Written by the people doing it."
       />

@@ -22,7 +22,7 @@ export default function EventsPage({ events = [] }) {
   return (
     <>
       <PageHeader
-        number="03"
+        number="01"
         title={hero.heading}
         description={hero.paragraphs}
         accent="/icons/podium.svg"

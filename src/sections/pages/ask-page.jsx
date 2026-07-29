@@ -269,7 +269,7 @@ export default function AskPage() {
     <>
       <PageHeader
         eyebrow="ASK NORTHWEST OREGON PAC"
-        number="02"
+        number="01"
         title="Have a question? Start here."
         description={[
           'Ask us about our mission, policy priorities, supported candidates, campaign support, fundraising, contributions, or the process of running for office.',

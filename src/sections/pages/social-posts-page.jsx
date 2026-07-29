@@ -51,7 +51,64 @@ function SectionMarker({ number, label, size, count }) {
   )
 }
 
-function CardShell({ post, onOpen, aspect, children, footer }) {
+function Thumbnail({ src, width, height, title }) {
+  const wrapRef = useRef(null)
+  const [scale, setScale] = useState(0)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return undefined
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          io.disconnect()
+        }
+      },
+      { rootMargin: '600px 0px' },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return undefined
+    const update = () => setScale(el.clientWidth / width)
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [width])
+
+  return (
+    <span
+      ref={wrapRef}
+      aria-hidden
+      className="bg-surface-alt absolute inset-0 block overflow-hidden"
+    >
+      {visible && scale > 0 && (
+        <iframe
+          src={src}
+          title={title}
+          scrolling="no"
+          loading="lazy"
+          tabIndex={-1}
+          className="pointer-events-none absolute top-0 left-0 border-0 transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045]"
+          style={{
+            width,
+            height,
+            transform: `scale(${scale})`,
+            transformOrigin: 'top left',
+          }}
+        />
+      )}
+    </span>
+  )
+}
+
+function CardShell({ post, onOpen, aspect, children, footer, thumbSrc, thumbHeight }) {
   return (
     <m.article variants={cardReveal} className="group h-full">
       <button
@@ -61,13 +118,7 @@ function CardShell({ post, onOpen, aspect, children, footer }) {
         className="border-border bg-surface hover:border-primary/50 focus-visible:ring-primary/40 relative isolate flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-3xl border text-left transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_36px_70px_-38px_rgba(46,69,56,0.55)] focus-visible:ring-2 focus-visible:outline-none"
       >
         <span className={cn('relative block w-full overflow-hidden', aspect)}>
-          <img
-            src={post.preview}
-            alt={`${post.title} — ${post.size} social graphic`}
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045]"
-          />
+          <Thumbnail src={thumbSrc} width={1080} height={thumbHeight} title={post.title} />
           <span
             aria-hidden
             className="from-ink/45 pointer-events-none absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -97,6 +148,8 @@ function FeedCard({ post, onOpen }) {
       post={post}
       onOpen={onOpen}
       aspect="aspect-square"
+      thumbSrc={post.html}
+      thumbHeight={1080}
       footer={
         <span className="flex flex-1 flex-col gap-2.5 p-5 sm:p-6">
           <span className="text-foreground/55 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase">
@@ -120,6 +173,8 @@ function StoryCard({ post, onOpen }) {
       post={post}
       onOpen={onOpen}
       aspect="aspect-[9/16]"
+      thumbSrc={post.html}
+      thumbHeight={1920}
       footer={
         <span className="flex flex-1 flex-col gap-2 p-4">
           <span className="text-foreground/55 font-mono text-[9px] tracking-[0.25em] uppercase">
@@ -140,6 +195,8 @@ function CarouselCard({ post, onOpen }) {
       post={post}
       onOpen={onOpen}
       aspect="aspect-square"
+      thumbSrc={post.slides[0]}
+      thumbHeight={1080}
       footer={
         <span className="flex flex-1 flex-col gap-2.5 p-5 sm:p-6">
           <span className="text-foreground/55 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase">
@@ -376,9 +433,9 @@ export default function SocialPostsPage() {
     <>
       <PageHeader
         eyebrow="Social"
-        number="11"
+        number="01"
         title="Made to be shared."
-        description={`A complete creative library carrying one consistent voice for Northwest Oregon — ${feedPosts.length} feed posts, ${storyPosts.length} stories, and ${carouselPosts.length} carousels, designed to match the campaign from headline to hairline.`}
+        description="Every post you share helps inform your neighbors, strengthen civic engagement, and support a brighter future for Northwest Oregon. Access our collection of share-ready graphics and messages to make an impact today."
       />
 
       <section className="relative isolate overflow-x-clip pb-24 sm:pb-32">
@@ -425,7 +482,7 @@ export default function SocialPostsPage() {
               whileInView="show"
               viewport={{ once: true, margin: '-8% 0px' }}
             >
-              <SectionMarker number="01" label="Feed posts" size="1080 × 1080" count={visible.feed.length} />
+              <SectionMarker number="02" label="Feed posts" size="1080 × 1080" count={visible.feed.length} />
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {visible.feed.map((post) => (
                   <FeedCard key={post.id} post={post} onOpen={() => setActive(post)} />
@@ -444,7 +501,7 @@ export default function SocialPostsPage() {
               viewport={{ once: true, margin: '-8% 0px' }}
               className={visible.feed.length > 0 ? 'mt-20' : ''}
             >
-              <SectionMarker number="02" label="Story posts" size="1080 × 1920" count={visible.story.length} />
+              <SectionMarker number="03" label="Story posts" size="1080 × 1920" count={visible.story.length} />
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5">
                 {visible.story.map((post) => (
                   <StoryCard key={post.id} post={post} onOpen={() => setActive(post)} />
@@ -464,7 +521,7 @@ export default function SocialPostsPage() {
               className={visible.feed.length > 0 || visible.story.length > 0 ? 'mt-20' : ''}
             >
               <SectionMarker
-                number="03"
+                number="04"
                 label="Carousels"
                 size="1080 × 1080 · 5–7 slides"
                 count={visible.carousel.length}

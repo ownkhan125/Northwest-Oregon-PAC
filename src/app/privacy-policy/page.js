@@ -87,7 +87,7 @@ export default function Page() {
   return (
     <LegalPage
       eyebrow="Legal"
-      number="07"
+      number="01"
       title="Privacy Policy"
       lastUpdated="July 2026"
       intro={

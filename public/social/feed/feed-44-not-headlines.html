@@ -27,22 +27,26 @@
         }
         .f44-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,69,56,.7); }
         .f44-mast img { height:56px; width:auto; }
-        /* Newspaper masthead — small editorial detail */
-        .f44-paper { position:absolute; top:170px; left:76px; right:76px; z-index:6; padding-bottom:12px; border-bottom:3px double #2a2a26; }
-        .f44-paper .meta { display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,69,56,.65); }
-        .f44-paper .meta .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2a2a26; text-transform:none; }
-        /* Primary headline — the title copy */
-        .f44-head { position:absolute; top:240px; left:76px; right:76px; z-index:6; font-family:var(--font-display); font-weight:500; font-size:64px; line-height:1.02; letter-spacing:-.028em; color:#2e4538; max-width:920px; }
-        .f44-head em { font-style:italic; color:#6b5a42; }
+        /* Newspaper masthead */
+        .f44-paper { position:absolute; top:170px; left:76px; right:76px; z-index:6; padding-bottom:14px; border-bottom:3px double #2a2a26; }
+        .f44-paper .title { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:58px; letter-spacing:-.02em; color:#2a2a26; line-height:1; }
+        .f44-paper .meta { margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:var(--font-mono); font-size:12px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,69,56,.6); }
+        /* Struck headline card */
+        .f44-strike { position:absolute; top:320px; left:76px; right:76px; z-index:5;
+          padding:22px 24px; background:rgba(46,69,56,.05); border:1.5px solid rgba(46,69,56,.35);
+        }
+        .f44-strike::after { content:''; position:absolute; left:24px; right:24px; top:calc(75% - 2px); height:3px; background:#6b5a42; transform:rotate(-.8deg); opacity:.85; }
+        .f44-strike .k { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); position:relative; z-index:2; }
+        .f44-strike .txt { position:relative; z-index:2; margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:52px; line-height:1; letter-spacing:-.028em; color:rgba(46,69,56,.7); }
         /* Real measures */
-        .f44-measures { position:absolute; left:76px; right:76px; top:490px; z-index:5; padding-top:20px; border-top:1.5px solid rgba(46,69,56,.4); display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
-        .f44-measure { padding:22px 22px; background:rgba(246,242,232,.78); border:1.5px solid rgba(46,69,56,.4); display:flex; flex-direction:column; gap:10px; position:relative; box-shadow:0 20px 40px -24px rgba(46,69,56,.4); }
-        .f44-measure .n { font-family:var(--font-display); font-style:italic; font-size:36px; line-height:1; color:rgba(46,69,56,.35); letter-spacing:-.02em; }
+        .f44-measures { position:absolute; left:76px; right:76px; top:520px; z-index:5; padding-top:18px; border-top:1.5px solid rgba(46,69,56,.35); display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+        .f44-measure { padding:18px 20px; background:rgba(246,242,232,.7); border:1.5px solid rgba(46,69,56,.4); display:flex; flex-direction:column; gap:10px; }
+        .f44-measure .n { font-family:var(--font-display); font-style:italic; font-size:34px; line-height:1; color:rgba(46,69,56,.35); letter-spacing:-.02em; }
         .f44-measure .k { font-family:var(--font-mono); font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f44-measure .v { margin-top:auto; font-family:var(--font-display); font-weight:500; font-size:30px; line-height:1.04; letter-spacing:-.022em; color:#2e4538; }
+        .f44-measure .v { font-family:var(--font-display); font-weight:500; font-size:32px; line-height:1.02; letter-spacing:-.022em; color:#2e4538; }
         .f44-measure .v em { font-style:italic; color:#5a7060; }
         /* Sig */
-        .f44-sig { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.18; letter-spacing:-.015em; color:#2e4538; text-align:center; }
+        .f44-sig { position:absolute; left:76px; right:76px; bottom:170px; z-index:6; padding-top:16px; border-top:1.5px solid rgba(46,69,56,.35); font-family:var(--font-display); font-style:italic; font-weight:500; font-size:26px; line-height:1.16; letter-spacing:-.015em; color:#2e4538; text-align:center; }
         .f44-sig em { font-style:normal; color:#5a7060; }
         .f44-tag { position:absolute; left:76px; right:76px; bottom:110px; z-index:6; display:flex; align-items:baseline; justify-content:space-between; font-family:var(--font-mono); font-size:12px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
         .f44-tag .em { font-family:var(--font-display); font-style:italic; font-size:22px; letter-spacing:-.01em; color:#2e4538; text-transform:none; }
@@ -54,9 +58,13 @@
             <span>Correction 44 · How We Measure</span>
           </div>
           <div class="f44-paper">
-            <div class="meta"><span>Vol. 44 · No. 01</span><span class="em">The Northwest Front Page</span><span>Est. 2026</span></div>
+            <div class="title">The Northwest Front Page</div>
+            <div class="meta"><span>Vol. 44 · No. 01</span><span>How we measure</span><span>Est. 2026</span></div>
           </div>
-          <h1 class="f44-head">We don't measure success by <em>headlines.</em></h1>
+          <div class="f44-strike">
+            <span class="k">— Not this</span>
+            <p class="txt">Headlines · Coverage · Applause</p>
+          </div>
           <div class="f44-measures">
             <div class="f44-measure"><span class="n">i.</span><span class="k">— Measure 01</span><span class="v">Stronger <em>communities.</em></span></div>
             <div class="f44-measure"><span class="n">ii.</span><span class="k">— Measure 02</span><span class="v">Better <em>candidates.</em></span></div>
@@ -69,8 +77,8 @@
             <span>northwestoregon.com</span>
           </div>
         </div>
-
-
+      
+    
     <div class="grain"></div>
   </div>
 </body>

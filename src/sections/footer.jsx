@@ -22,7 +22,7 @@ const columns = [
     links: [
       { label: 'Donate', href: pac.donateUrl, external: true },
       { label: 'Host an Event', href: '/contact' },
-      { label: 'Social Media Posts', href: '/social-media-posts' },
+      { label: 'Social Posts', href: '/social-posts' },
       { label: 'Contact', href: '/contact' },
       { label: 'FAQs', href: '/faq' },
     ],

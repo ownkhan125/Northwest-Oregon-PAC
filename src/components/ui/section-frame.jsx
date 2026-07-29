@@ -22,11 +22,13 @@ const SectionFrame = ({ id, eyebrow, number, className, bgImage, overlayClassNam
             no vignette. Same coverage left, center, and right so nothing
             reads as darker or lighter than anywhere else. Tuned separately
             for light and dark modes to preserve WCAG contrast without
-            burying the image. */}
+            burying the image. Light mode uses a stronger wash so ink-on-
+            cream body copy stays readable over photographic backdrops;
+            dark mode keeps the softer 58% so the image reads through. */}
         <div
           aria-hidden
           className={cn(
-            'pointer-events-none absolute inset-0 -z-10 bg-background/62 dark:bg-background/58',
+            'pointer-events-none absolute inset-0 -z-10 bg-background/78 dark:bg-background/58',
             overlayClassName,
           )}
         />

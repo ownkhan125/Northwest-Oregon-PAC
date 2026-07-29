@@ -1,0 +1,321 @@
+[
+  {
+    "id": "feed-22-powered-by-innovation",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "rail",
+        "over": 20,
+        "text": "— Era 01Hydropower\n              — Era 0"
+      }
+    ]
+  },
+  {
+    "id": "feed-45-bigger-than-one",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "rail",
+        "over": 20,
+        "text": "'26— This cycle\n              '28— Next "
+      },
+      {
+        "cls": "f45-cycle c4",
+        "over": 20,
+        "text": "∞— And beyond"
+      }
+    ]
+  },
+  {
+    "id": "story-19-volunteer-poll",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "s19-halftone",
+        "over": 40,
+        "text": ""
+      },
+      {
+        "cls": "s19-ribbon",
+        "over": 42,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "story-29-ciatta-thompson",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "s29-path",
+        "over": 40,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-01-meet-the-pac/slide-2",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "",
+        "over": 76,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-01-meet-the-pac/slide-5",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      },
+      {
+        "cls": "glow forest",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-01-meet-the-pac/slide-6",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 200,
+        "text": ""
+      },
+      {
+        "cls": "glow forest",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-02-competitive-elections/slide-2",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-02-competitive-elections/slide-3",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 200,
+        "text": ""
+      },
+      {
+        "cls": "glow forest",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-02-competitive-elections/slide-4",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "",
+        "over": 76,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-03-where-donation-goes/slide-6",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      },
+      {
+        "cls": "glow forest",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-04-next-community-leader/slide-2",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      },
+      {
+        "cls": "glow forest",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-04-next-community-leader/slide-3",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 200,
+        "text": ""
+      },
+      {
+        "cls": "glow forest",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-04-next-community-leader/slide-5",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-05-every-volunteer/slide-4",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "",
+        "over": 76,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-06-what-we-believe/slide-2",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-06-what-we-believe/slide-3",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-06-what-we-believe/slide-4",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 200,
+        "text": ""
+      },
+      {
+        "cls": "glow forest",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-06-what-we-believe/slide-5",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-07-why-local/slide-3",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-07-why-local/slide-4",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      },
+      {
+        "cls": "glow forest",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-09-small-business/slide-2",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      },
+      {
+        "cls": "glow forest",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-09-small-business/slide-3",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "glow sage",
+        "over": 260,
+        "text": ""
+      }
+    ]
+  },
+  {
+    "id": "carousel-10-this-movement/slide-2",
+    "canvasFound": true,
+    "bleeders": [
+      {
+        "cls": "",
+        "over": 76,
+        "text": ""
+      }
+    ]
+  }
+]

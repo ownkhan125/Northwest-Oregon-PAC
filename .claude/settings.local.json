@@ -183,7 +183,31 @@
       "Bash(npx --no-install playwright --version)",
       "Bash(rm -f /tmp/playwright-test-qa.js)",
       "Read(//c/tmp/**)",
-      "Bash(python3 -c \"import tempfile; print\\(tempfile.gettempdir\\(\\)\\)\")"
+      "Bash(python3 -c \"import tempfile; print\\(tempfile.gettempdir\\(\\)\\)\")",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node -e \"console.log\\(require.resolve\\('playwright'\\)\\)\")",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node campaign-social/_build/previews.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node campaign-social/_build/qa-modified.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node campaign-social/_build/qa-all.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node campaign-social/_build/qa-single.js feed-57-support-list)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node campaign-social/_build/qa-app.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node campaign-social/_build/qa-single.js feed-20-more-than-promises)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node campaign-social/_build/qa-single.js feed-22-powered-by-innovation)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node campaign-social/_build/qa-stories.js story-24-brian-schimmel story-25-randall-fryer story-27-mark-norman story-28-barbara-kahl story-10-campaigns-remain)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node campaign-social/_build/qa-stories.js story-10-campaigns-remain)",
+      "Bash(grep *)",
+      "Bash(xargs -n1 basename)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/sweep.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/inspect.js feed/feed-22-powered-by-innovation.html)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/inspect.js feed/feed-45-bigger-than-one.html)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/inspect2.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/verify-pdf.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/app-check.js)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/shot.js feed/feed-01-hero.html)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/shot.js feed/feed-07-small-actions.html)",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/verify-01-07.js)",
+      "Bash(rm -f \"C:/Users/General/Documents/GitHub/Northwest Oregon PAC/.claude/skills/playwright-skill/_run-social-posts-check.js\")",
+      "Bash(rm -rf \"C:/Users/General/AppData/Local/Temp/nwop-social-posts-check\")",
+      "Bash(NODE_PATH=\"./.claude/skills/playwright-skill/node_modules\" node .qa-public-social/overlay-check.js)"
     ]
   }
 }

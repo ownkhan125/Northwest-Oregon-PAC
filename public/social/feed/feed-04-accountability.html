@@ -52,15 +52,13 @@
         .f04-seal .star { font-family:var(--font-display); font-style:italic; font-size:34px; color:#5a7060; }
         .f04-seal .lbl { text-align:center; line-height:1.4; font-weight:500; }
         /* Three pillar columns */
-        /* minmax(0,1fr): plain 1fr floors at min-content, so "Responsibility" widened
-           column 2 and squeezed column 3 until its sub-label wrapped */
-        .f04-pillars { position:absolute; left:52px; right:52px; top:400px; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:0; }
+        .f04-pillars { position:absolute; left:52px; right:52px; top:400px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; }
         .f04-pillars .col { padding:22px 22px; text-align:center; }
         .f04-pillars .col + .col { border-left:1px solid rgba(46,69,56,.4); }
         .f04-pillars .col .no { font-family:var(--font-display); font-style:italic; font-size:38px; color:rgba(46,69,56,.35); letter-spacing:-.02em; }
-        .f04-pillars .col .word { display:block; margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:38px; line-height:1; letter-spacing:-.022em; color:#2e4538; white-space:nowrap; }
+        .f04-pillars .col .word { display:block; margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1; letter-spacing:-.022em; color:#2e4538; }
         .f04-pillars .col .word.italic { font-style:italic; color:#5a7060; }
-        .f04-pillars .col .sub { display:block; margin-top:10px; margin-right:-.36em; font-family:var(--font-mono); font-size:10px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.55); white-space:nowrap; }
+        .f04-pillars .col .sub { display:block; margin-top:10px; font-family:var(--font-mono); font-size:11px; letter-spacing:.36em; text-transform:uppercase; color:rgba(46,69,56,.55); }
         /* Middle statement */
         .f04-mid { position:absolute; left:52px; right:52px; bottom:180px; padding-top:20px; border-top:1.5px solid rgba(46,69,56,.4); display:flex; align-items:baseline; justify-content:space-between; gap:22px; }
         .f04-mid .k { font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(46,69,56,.55); flex:none; }

@@ -16,7 +16,7 @@
   <div class="canvas  s-light">
     <style>
         .f01 { position:absolute; inset:0; z-index:10; display:flex; flex-direction:column; background:#f6f2e8; }
-        .f01-photo { position:relative; flex:0 0 54%; overflow:hidden; background:#0f1a13; }
+        .f01-photo { position:relative; height:60%; overflow:hidden; background:#0f1a13; }
         .f01-photo img { width:100%; height:100%; object-fit:cover; filter:saturate(.72) contrast(1.18) brightness(.86); }
         .f01-photo::after {
           content:''; position:absolute; inset:0;
@@ -26,29 +26,24 @@
         }
         .f01-mast { position:absolute; top:56px; left:76px; right:76px; z-index:6; display:flex; align-items:center; justify-content:space-between; gap:20px; color:#e5dfcc; font-family:var(--font-mono); font-size:18px; letter-spacing:.36em; text-transform:uppercase; text-shadow:0 2px 20px rgba(0,0,0,.5); }
         .f01-mast img { height:66px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.5)); }
-        .f01-mast span { margin-right:-.36em; }
-        .f01-foot span:last-child { margin-right:-.32em; }
         .f01-photo-label { position:absolute; left:76px; bottom:52px; z-index:5; display:flex; align-items:baseline; gap:22px; color:#e5dfcc; text-shadow:0 2px 22px rgba(0,0,0,.55); }
         .f01-photo-label .kick { font-family:var(--font-mono); font-size:16px; letter-spacing:.42em; text-transform:uppercase; opacity:.9; }
         .f01-photo-label .place { font-family:var(--font-display); font-style:italic; font-size:34px; letter-spacing:-.01em; }
-        /* Straddles the photo/page seam — anchored to the seam itself, not a fixed % of the canvas */
         .f01-flag {
-          position:absolute; z-index:7; top:0; right:76px; transform:translateY(-50%);
-          padding:20px 26px 22px; background:#2e4538; color:#f6f2e8;
+          position:absolute; z-index:7; top:60%; right:70px; transform:translateY(-50%);
+          padding:22px 28px 24px; background:#2e4538; color:#f6f2e8;
           font-family:var(--font-display); text-align:center;
           box-shadow:0 20px 46px -18px rgba(0,0,0,.55);
         }
-        .f01-flag .no { display:block; font-size:58px; font-weight:500; font-style:italic; line-height:1; letter-spacing:-.02em; color:#e0d6bc; }
-        /* negative margin cancels the trailing letter-space so the tracked label optically centres */
-        .f01-flag .label { display:block; margin-top:6px; margin-right:-.42em; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.85); }
+        .f01-flag .no { display:block; font-size:64px; font-weight:500; font-style:italic; line-height:1; letter-spacing:-.02em; color:#e0d6bc; }
+        .f01-flag .label { display:block; margin-top:6px; font-family:var(--font-mono); font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:rgba(246,242,232,.85); }
         /* Cream page */
-        .f01-page { position:relative; flex:1 1 auto; min-height:0; padding:48px 76px 118px; display:flex; flex-direction:column; gap:22px; }
-        .f01-page::before { content:''; position:absolute; top:20px; left:76px; right:76px; height:1px; background:linear-gradient(90deg, rgba(46,69,56,.5), rgba(46,69,56,0)); }
-        /* padding-right keeps the issue line clear of the seam flag */
-        .f01-issue { display:flex; align-items:baseline; gap:20px; padding-right:240px; font-family:var(--font-mono); font-size:17px; letter-spacing:.42em; text-transform:uppercase; color:#4b6252; }
-        .f01-issue .em { font-family:var(--font-display); font-style:italic; font-size:34px; letter-spacing:-.02em; color:#2e4538; text-transform:none; }
+        .f01-page { position:relative; flex:1; padding:44px 76px 130px; display:flex; flex-direction:column; gap:26px; }
+        .f01-page::before { content:''; position:absolute; top:16px; left:76px; right:76px; height:1px; background:linear-gradient(90deg, rgba(46,69,56,.5), rgba(46,69,56,0)); }
+        .f01-issue { display:flex; align-items:baseline; gap:20px; font-family:var(--font-mono); font-size:18px; letter-spacing:.42em; text-transform:uppercase; color:#4b6252; }
+        .f01-issue .em { font-family:var(--font-display); font-style:italic; font-size:36px; letter-spacing:-.02em; color:#2e4538; text-transform:none; }
         .f01-issue .rule { display:inline-block; width:44px; height:1px; background:#4b6252; opacity:.6; }
-        .f01-head { font-family:var(--font-display); font-weight:500; font-size:72px; line-height:1.04; letter-spacing:-.022em; color:#2e4538; max-width:900px; }
+        .f01-head { font-family:var(--font-display); font-weight:500; font-size:72px; line-height:1.04; letter-spacing:-.022em; color:#2e4538; max-width:720px; padding-right:20px; }
         .f01-head em { font-style:italic; color:#5a7060; }
         .f01-values {
           margin-top:auto; padding-top:22px; border-top:1.5px solid rgba(46,69,56,.35);
@@ -56,7 +51,7 @@
         }
         .f01-values .v { display:flex; flex-direction:column; gap:4px; }
         .f01-values .v .n { font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.6); }
-        .f01-values .v .w { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:35px; letter-spacing:-.015em; color:#2e4538; line-height:1; }
+        .f01-values .v .w { font-family:var(--font-display); font-weight:500; font-style:italic; font-size:38px; letter-spacing:-.015em; color:#2e4538; line-height:1; }
         .f01-foot { position:absolute; left:76px; right:76px; bottom:56px; z-index:6; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-mono); font-size:14px; letter-spacing:.32em; text-transform:uppercase; color:rgba(46,69,56,.6); }
       </style>
         <div class="f01">
@@ -71,11 +66,11 @@
               <span class="place">A stronger voice.</span>
             </div>
           </div>
+          <div class="f01-flag">
+            <span class="no">01</span>
+            <span class="label">The Manifesto</span>
+          </div>
           <div class="f01-page">
-            <div class="f01-flag">
-              <span class="no">01</span>
-              <span class="label">The Manifesto</span>
-            </div>
             <div class="f01-issue"><span class="em">No. 01</span><span class="rule"></span><span>Northwest Oregon</span></div>
             <h1 class="f01-head">A Stronger Voice for <em>Northwest Oregon.</em></h1>
             <div class="f01-values">
