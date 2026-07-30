@@ -7,7 +7,7 @@ import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { home, pac } from '@/data/pac'
-import heroBackdrop from '@/assets/images/Oregon-5.png'
+import heroBackdrop from '@/assets/images/Bridge-7.png'
 
 export default function Hero() {
   const root = useRef(null)
@@ -54,21 +54,33 @@ export default function Hero() {
           Copy stacks over the top half, image reveals below. */}
       <div
         aria-hidden
-        className="from-background/95 via-background/72 to-background/25 pointer-events-none absolute inset-0 -z-20 bg-gradient-to-b sm:hidden"
+        className="pointer-events-none absolute inset-0 -z-20 sm:hidden"
+        style={{
+          background:
+            'linear-gradient(to bottom, var(--background) 0%, color-mix(in srgb, var(--background) 92%, transparent) 55%, color-mix(in srgb, var(--background) 25%, transparent) 100%)',
+        }}
       />
       {/* Layer 4b — tablet readability wash, left → right.
           Copy extends closer to the right edge on tablet widths, so the
           wash stays strong further across before releasing the image. */}
       <div
         aria-hidden
-        className="from-background via-background/88 to-background/25 pointer-events-none absolute inset-0 -z-20 hidden bg-gradient-to-r sm:block lg:hidden"
+        className="pointer-events-none absolute inset-0 -z-20 hidden sm:block lg:hidden"
+        style={{
+          background:
+            'linear-gradient(to right, var(--background) 0%, color-mix(in srgb, var(--background) 95%, transparent) 55%, color-mix(in srgb, var(--background) 25%, transparent) 100%)',
+        }}
       />
       {/* Layer 4c — desktop readability wash, left → right.
           Full-opacity brand color behind the copy, fading to transparent
           so the skyline stays vivid on the right two-fifths. */}
       <div
         aria-hidden
-        className="from-background via-background/78 pointer-events-none absolute inset-0 -z-20 hidden bg-gradient-to-r to-transparent lg:block"
+        className="pointer-events-none absolute inset-0 -z-20 hidden lg:block"
+        style={{
+          background:
+            'linear-gradient(to right, var(--background) 0%, color-mix(in srgb, var(--background) 92%, transparent) 55%, transparent 100%)',
+        }}
       />
 
       {/* Layer 5 — bottom fade softens the transition into the next

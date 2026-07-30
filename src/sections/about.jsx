@@ -7,7 +7,7 @@ import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { fadeUp, fadeRight, stagger } from '@/animations/variants'
 import { home } from '@/data/pac'
-import whoWeAreImage from '@/assets/images/Who we are.jpg'
+import whoWeAreImage from '@/assets/images/Bridge-5.png'
 
 export default function About() {
   return (
@@ -85,10 +85,10 @@ export default function About() {
           >
             <Image
               src={whoWeAreImage}
-              alt="Northwest Oregon PAC leaders in conversation at a community meeting"
+              alt="Portland skyline at dusk with the Hawthorne Bridge spanning the Willamette River"
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
-              className="object-cover object-center"
+              className="object-cover object-[65%_center]"
             />
             <div
               aria-hidden
