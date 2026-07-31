@@ -7,7 +7,7 @@ import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { fadeUp, fadeRight, stagger } from '@/animations/variants'
 import { home } from '@/data/pac'
-import whoWeAreImage from '@/assets/images/Northwest Oregon picture.png'
+import whoWeAreImage from '@/assets/images/portland-aerial-tram.webp'
 
 export default function About() {
   return (
@@ -85,10 +85,10 @@ export default function About() {
           >
             <Image
               src={whoWeAreImage}
-              alt="Aerial view of downtown Portland, Oregon with the city skyline, historic buildings, and tree-lined streets"
+              alt="Portland Aerial Tram gliding above the Willamette River with the city and mountains in the distance"
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
-              className="object-cover object-center"
+              className="object-cover object-[center_40%]"
             />
             <div
               aria-hidden

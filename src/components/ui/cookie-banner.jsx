@@ -54,7 +54,11 @@ export default function CookieBanner() {
                 This website uses cookies and similar technologies to improve your browsing
                 experience, analyze website traffic, and measure the effectiveness of our outreach.
                 By continuing to use this site, you consent to our use of cookies as described in
-                our Privacy Policy.
+                our{' '}
+                <Link href="/privacy-policy" className="text-primary hover:text-highlight">
+                  Privacy Policy
+                </Link>
+                .
               </p>
             </div>
             <div className="flex shrink-0 flex-wrap items-center gap-3">

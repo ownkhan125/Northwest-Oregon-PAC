@@ -92,6 +92,25 @@ const LegalPage = ({ eyebrow, number, title, lastUpdated, intro, sections }) => 
                           </ul>
                         )
                       }
+                      if (p && Array.isArray(p.segments)) {
+                        return (
+                          <p key={j}>
+                            {p.segments.map((seg, k) =>
+                              typeof seg === 'string' ? (
+                                seg
+                              ) : (
+                                <a
+                                  key={k}
+                                  href={seg.href}
+                                  className="text-primary hover:text-highlight"
+                                >
+                                  {seg.text}
+                                </a>
+                              ),
+                            )}
+                          </p>
+                        )
+                      }
                       return null
                     })}
                   </div>
@@ -129,6 +148,17 @@ LegalPage.propTypes = {
         PropTypes.oneOfType([
           PropTypes.string,
           PropTypes.shape({ list: PropTypes.arrayOf(PropTypes.string).isRequired }),
+          PropTypes.shape({
+            segments: PropTypes.arrayOf(
+              PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.shape({
+                  href: PropTypes.string.isRequired,
+                  text: PropTypes.string.isRequired,
+                }),
+              ]),
+            ).isRequired,
+          }),
         ]),
       ).isRequired,
     }),

@@ -51,7 +51,20 @@ const sections = [
       `HELP. If you experience issues with the messaging program, reply with the keyword HELP for more assistance, or reach out to us directly at ${pac.contact.generalEmail} or ${pac.contact.phone}.`,
       'Carrier liability. Carriers are not liable for delayed or undelivered messages.',
       'Data rates and frequency. As always, message and data rates may apply for messages sent to you from us and to us from you. Message frequency varies.',
-      'Privacy. For privacy-related inquiries, including how we collect, use, retain, and share phone numbers and SMS opt-in data, please refer to our Privacy Policy available at /privacy-policy.',
+      {
+        segments: [
+          'Privacy. For information about how we collect, use, store, retain, and protect your personal information, including phone numbers and SMS consent records, please review our ',
+          { href: '/privacy-policy', text: 'Privacy Policy' },
+          '.',
+        ],
+      },
+    ],
+  },
+  {
+    heading: 'Eligibility and Age Requirements',
+    body: [
+      'This website and the services provided by Northwest Oregon PAC are intended for individuals who are at least 18 years of age or the age of majority in their jurisdiction. By using this website, making a contribution, or opting in to receive communications, you represent that you meet these eligibility requirements.',
+      'If you are under the age of 18, you may browse publicly available information on this website but should not submit personal information, make contributions, or enroll in our email or SMS communications without the involvement of a parent or legal guardian.',
     ],
   },
   {
