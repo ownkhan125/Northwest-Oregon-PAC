@@ -202,7 +202,7 @@ export default function AboutPage() {
                   <a
                     href={c.link}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="border-primary/30 text-primary hover:border-primary hover:bg-surface-alt/60 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs tracking-widest uppercase transition-colors"
                   >
                     {candidatesSection.cta}

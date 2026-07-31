@@ -216,8 +216,8 @@ export const home = {
         name: 'Randall Fryer',
         office: 'Oregon House District 28',
         bio: 'Physician and candidate for the Oregon House of Representatives.',
-        cta: 'Campaign Information Coming Soon',
-        link: '',
+        cta: 'Visit Randall’s Campaign',
+        link: 'https://www.randallfororegon.com/',
       },
     ],
     runForOffice: {
@@ -398,7 +398,7 @@ export const candidates = [
     office: 'House District 28',
     state: 'Oregon',
     year: '2026',
-    link: '',
+    link: 'https://www.randallfororegon.com/',
   },
   {
     slug: 'tammy-for-oregon',
@@ -578,7 +578,7 @@ export const aboutPage = {
         slug: 'randall-fryer',
         name: 'Randall Fryer',
         office: 'Oregon House District 28',
-        link: '',
+        link: 'https://www.randallfororegon.com/',
       },
     ],
   },
