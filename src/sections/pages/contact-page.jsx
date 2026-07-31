@@ -73,7 +73,8 @@ export default function ContactPage() {
     }
 
     const errs = validateContactFields(payload, {
-      phoneKey: null, // Phone accepted as typed; server normalizes to +1 for webhook.
+      phoneKey: 'phone',
+      phoneRequired: false,
       zipKey: 'zip_code',
       zipRequired: true,
     })

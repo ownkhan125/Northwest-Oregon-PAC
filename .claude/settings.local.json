@@ -228,7 +228,8 @@
       "Bash(SNAPSHOTS=8 node run.js _verify-social-posts-vs-spec.js)",
       "Bash(SNAPSHOTS=0 node run.js _verify-social-posts-vs-spec.js)",
       "Bash(PORT=3010 npm run dev)",
-      "Bash(echo \"started with PID $!\")"
+      "Bash(echo \"started with PID $!\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(len\\(d\\)\\); print\\([e.get\\('id'\\) for e in d[:3]]\\)\")"
     ]
   }
 }
