@@ -13,7 +13,7 @@ export default function News() {
       id="statement"
       eyebrow="Where we stand"
       number="05"
-      bgImage={bannerImage.src}
+      bgImage={bannerImage}
     >
       <div className="flex flex-wrap items-end justify-between gap-6">
         <SplitText
