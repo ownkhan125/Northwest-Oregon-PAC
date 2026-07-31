@@ -20,6 +20,7 @@ const columns = [
   {
     title: 'GET INVOLVED',
     links: [
+      { label: 'Guide to Action', href: '/guide-to-action' },
       { label: 'Donate', href: pac.donateUrl, external: true },
       { label: 'Host an Event', href: '/contact' },
       { label: 'Contact', href: '/contact' },

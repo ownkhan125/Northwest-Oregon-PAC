@@ -19,14 +19,9 @@ const lora = Lora({
   display: 'swap',
 })
 
-// The mono slot resolves to Source Sans 3 as well — every `font-mono`
-// utility across the app now renders in the same family as body copy,
-// keeping typography consistent without touching every consumer.
-const sourceSansMono = Source_Sans_3({
-  variable: '--font-mono',
-  subsets: ['latin'],
-  display: 'swap',
-})
+// `--font-mono` aliases to `--font-sans` in globals.css so every
+// `font-mono` utility renders in Source Sans 3 without re-declaring the
+// same @font-face + preload twice.
 
 export const metadata = {
   title: 'Northwest Oregon PAC — Championing prosperity, accountability, and opportunity',
@@ -39,7 +34,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${sourceSans.variable} ${lora.variable} ${sourceSansMono.variable} h-full antialiased`}
+      className={`${sourceSans.variable} ${lora.variable} h-full antialiased`}
     >
       <head>
         <ThemeInit />

@@ -194,6 +194,10 @@ html.dark {
 html {
   background: var(--background);
   color: var(--foreground);
+  /* Mono slot resolves to the sans family — kept as an alias so every
+     `font-mono` utility renders in Source Sans 3 without loading the
+     font a second time. */
+  --font-mono: var(--font-sans);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
