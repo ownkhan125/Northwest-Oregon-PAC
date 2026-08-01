@@ -29,7 +29,7 @@ const SIZE_HINTS = {
   lg: '(min-width: 768px) 270px, (min-width: 640px) 216px, 189px',
 }
 
-const Logo = ({ className, size = 'md' }) => {
+const Logo = ({ className, size = 'md', priority = false }) => {
   const imgCls = SIZE_CLASSES[size] ?? SIZE_CLASSES.md
   const sizeHint = SIZE_HINTS[size] ?? SIZE_HINTS.md
   return (
@@ -42,7 +42,7 @@ const Logo = ({ className, size = 'md' }) => {
       <Image
         src={logoDark}
         alt="Northwest Oregon PAC"
-        priority
+        priority={priority}
         quality={90}
         sizes={sizeHint}
         className={cn('block dark:hidden', imgCls)}
@@ -52,7 +52,7 @@ const Logo = ({ className, size = 'md' }) => {
         src={logoLight}
         alt=""
         aria-hidden
-        priority
+        priority={priority}
         quality={90}
         sizes={sizeHint}
         className={cn('hidden dark:block', imgCls)}
@@ -64,6 +64,10 @@ const Logo = ({ className, size = 'md' }) => {
 Logo.propTypes = {
   className: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  // `priority` should only be true where the logo is above the fold on
+  // first paint — the Navbar. The Footer logo is far below the fold and
+  // preloading it wastes ~15KB of critical-path bandwidth.
+  priority: PropTypes.bool,
 }
 
 export default Logo

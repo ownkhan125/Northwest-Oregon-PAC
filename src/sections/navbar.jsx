@@ -71,7 +71,7 @@ export default function Navbar() {
               : 'border-border/60 bg-surface/50 backdrop-blur',
           )}
         >
-          <Logo />
+          <Logo priority />
 
           <nav
             className="relative hidden items-center gap-1 lg:flex"
