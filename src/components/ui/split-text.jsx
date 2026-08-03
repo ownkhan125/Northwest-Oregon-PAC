@@ -63,8 +63,12 @@ const SplitText = ({
       className={cn('text-balance', className)}
       variants={container}
       {...animateProps}
-      aria-label={text}
     >
+      {/* Screen-reader-only text alternative. Individual chars/words are
+          aria-hidden, so screen readers announce the sentence once via
+          this visually-hidden node. Avoids aria-label on generic-role
+          tags (like <span>), which axe flags as prohibited ARIA. */}
+      <span className="sr-only">{text}</span>
       {units.map((u, i) => {
         if (typeof u === 'string' && /^\s+$/.test(u)) {
           // Render a normal, collapsible space so wrapped lines don't inherit

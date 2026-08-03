@@ -55,7 +55,10 @@ export default function CookieBanner() {
                 experience, analyze website traffic, and measure the effectiveness of our outreach.
                 By continuing to use this site, you consent to our use of cookies as described in
                 our{' '}
-                <Link href="/privacy-policy" className="text-primary hover:text-highlight">
+                <Link
+                  href="/privacy-policy"
+                  className="text-primary hover:text-highlight underline underline-offset-2"
+                >
                   Privacy Policy
                 </Link>
                 .

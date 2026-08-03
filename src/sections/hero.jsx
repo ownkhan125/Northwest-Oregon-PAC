@@ -95,18 +95,15 @@ export default function Hero() {
         className="relative mx-auto w-full max-w-7xl px-5 pb-8 sm:px-8 sm:pb-10 lg:px-12"
       >
         <div className="max-w-4xl">
-          <m.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="border-primary/25 bg-surface text-primary mb-7 inline-flex items-center gap-3 rounded-full border px-4 py-1.5 text-[11px] tracking-[0.28em] uppercase"
+          <div
+            className="hero-anim-badge border-primary/25 bg-surface text-primary mb-7 inline-flex items-center gap-3 rounded-full border px-4 py-1.5 text-[11px] tracking-[0.28em] uppercase"
           >
             <span className="relative grid h-2 w-2 place-items-center">
               <span className="bg-primary absolute inset-0 rounded-full" />
               <span className="pulse-ring bg-primary absolute inset-0 rounded-full" />
             </span>
             {home.hero.eyebrow}
-          </m.div>
+          </div>
 
           <div className="font-display text-foreground text-[12vw] leading-[0.95] font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-[92px]">
             <SplitText
@@ -119,22 +116,16 @@ export default function Hero() {
             />
           </div>
 
-          <m.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.7 }}
-            className="text-foreground/80 mt-8 max-w-2xl space-y-4 text-base sm:text-lg md:text-xl"
+          <div
+            className="hero-anim-copy text-foreground/80 mt-8 max-w-2xl space-y-4 text-base sm:text-lg md:text-xl"
           >
             {home.hero.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-          </m.div>
+          </div>
 
-          <m.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
+          <div
+            className="hero-anim-ctas mt-10 flex flex-wrap items-center gap-4"
           >
             <Button href={pac.donateUrl} size="lg" target="_blank" rel="noopener noreferrer">
               {home.hero.ctas.primary}
@@ -172,13 +163,10 @@ export default function Hero() {
               </span>
               {home.hero.ctas.textLink}
             </Link>
-          </m.div>
+          </div>
 
-          <m.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
-            className="border-primary/15 mt-12 grid max-w-2xl grid-cols-3 gap-x-6 gap-y-6 border-t pt-6 sm:gap-x-10 sm:gap-y-8 md:gap-x-12"
+          <div
+            className="hero-anim-values border-primary/15 mt-12 grid max-w-2xl grid-cols-3 gap-x-6 gap-y-6 border-t pt-6 sm:gap-x-10 sm:gap-y-8 md:gap-x-12"
           >
             {home.hero.values.map((v) => (
               <div key={v.label} className="min-w-0">
@@ -190,7 +178,7 @@ export default function Hero() {
                 </div>
               </div>
             ))}
-          </m.div>
+          </div>
         </div>
       </m.div>
     </section>
