@@ -1,9 +1,11 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import { cn } from '@/lib/cn'
+import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import logoDark from '@/assets/icons/nwop-logo-dark.png'
 import logoLight from '@/assets/icons/nwop-logo-light.png'
 
@@ -32,6 +34,32 @@ const SIZE_HINTS = {
 const Logo = ({ className, size = 'md', priority = false }) => {
   const imgCls = SIZE_CLASSES[size] ?? SIZE_CLASSES.md
   const sizeHint = SIZE_HINTS[size] ?? SIZE_HINTS.md
+
+  // Read the theme directly from the DOM instead of relying on Tailwind's
+  // `dark:*` variants alone. Without this, if the inline ThemeInit script
+  // is ever pre-empted (or a `.dark`/`.light` class flip happens between
+  // script execution and paint), the CSS-only pattern renders the wrong
+  // artwork until the first toggle click "corrects" the class. The layout
+  // effect runs synchronously before paint on mount, and the MutationObserver
+  // keeps the state in lockstep with any subsequent class change (toggle
+  // click, dev-tools edit, external script). `theme=null` on server + first
+  // render matches the SSR output — no hydration warning.
+  const [theme, setTheme] = useState(null)
+  useIsomorphicLayoutEffect(() => {
+    const html = document.documentElement
+    const read = () =>
+      setTheme(html.classList.contains('dark') ? 'dark' : 'light')
+    read()
+    const observer = new MutationObserver(read)
+    observer.observe(html, { attributes: true, attributeFilter: ['class'] })
+    return () => observer.disconnect()
+  }, [])
+
+  const styleFor = (variant) => {
+    if (theme === null) return undefined
+    return { display: theme === variant ? 'block' : 'none' }
+  }
+
   return (
     <Link
       href="/"
@@ -46,6 +74,7 @@ const Logo = ({ className, size = 'md', priority = false }) => {
         quality={90}
         sizes={sizeHint}
         className={cn('block dark:hidden', imgCls)}
+        style={styleFor('light')}
       />
       {/* Light artwork (cream mark + cream text) — for dark backgrounds */}
       <Image
@@ -56,6 +85,7 @@ const Logo = ({ className, size = 'md', priority = false }) => {
         quality={90}
         sizes={sizeHint}
         className={cn('hidden dark:block', imgCls)}
+        style={styleFor('dark')}
       />
     </Link>
   )

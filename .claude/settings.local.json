@@ -261,7 +261,12 @@
       "Bash(LABEL=after-b2 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v3.js\")",
       "Bash(LABEL=after-b3 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v3.js\")",
       "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_JSON=C:/Users/General/AppData/Local/Temp/lh-live-b3-r5.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-inspect.js\")",
-      "Bash(LABEL=after-b4 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v3.js\")"
+      "Bash(LABEL=after-b4 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v3.js\")",
+      "Read(//c/c/Users/General/Documents/GitHub/Northwest Oregon PAC/src/**)",
+      "Read(//c/c/Users/General/Documents/GitHub/Northwest Oregon PAC/**)",
+      "Bash(awk 'NR<50')",
+      "Bash(curl -s http://localhost:3100/)",
+      "Bash(mkdir -p /c/temp)"
     ]
   }
 }
