@@ -1,13 +1,35 @@
 'use client'
 
 import { useRef } from 'react'
-import Image from 'next/image'
+import { getImageProps } from 'next/image'
 import Link from 'next/link'
 import { m, useScroll, useTransform } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import { home, pac } from '@/data/pac'
 import heroBackdrop from '@/assets/images/Bridge-7.png'
+import heroMobile from '@/assets/images/NW Pac Mobile Image.png'
+
+// Art-directed hero backdrop. Bridge-7 is a wide landscape composition
+// that reads well on tablet + desktop; the mobile asset is a portrait
+// crop of the same downtown skyline so nothing important is clipped on
+// narrow viewports. `<picture>` + media-scoped `<source>` guarantees
+// only the matched asset is downloaded per breakpoint.
+const HERO_BREAKPOINT = '(min-width: 640px)' // Tailwind `sm`
+const desktopHero = getImageProps({
+  src: heroBackdrop,
+  alt: '',
+  quality: 85,
+  priority: true,
+  sizes: '100vw',
+})
+const mobileHero = getImageProps({
+  src: heroMobile,
+  alt: '',
+  quality: 85,
+  priority: true,
+  sizes: '100vw',
+})
 
 export default function Hero() {
   const root = useRef(null)
@@ -27,16 +49,19 @@ export default function Hero() {
       <div aria-hidden className="bg-background pointer-events-none absolute inset-0 -z-40" />
 
       {/* Layer 2 — full-bleed backdrop with subtle cinematic grade
-          (contrast + saturation for depth; dark mode dims the frame). */}
+          (contrast + saturation for depth; dark mode dims the frame).
+          Portrait mobile asset below the `sm` breakpoint keeps the
+          skyline composition intact on narrow viewports; landscape
+          desktop asset takes over at `sm` and up. */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 overflow-hidden">
-        <Image
-          src={heroBackdrop}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[48%_center] opacity-95 contrast-[1.05] saturate-[1.08] sm:object-[52%_center] lg:object-center dark:opacity-55 dark:brightness-90"
-        />
+        <picture>
+          <source media={HERO_BREAKPOINT} srcSet={desktopHero.props.srcSet} />
+          <img
+            {...mobileHero.props}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover object-[50%_center] opacity-95 contrast-[1.05] saturate-[1.08] sm:object-[52%_center] lg:object-center dark:opacity-55 dark:brightness-90"
+          />
+        </picture>
       </div>
 
       {/* Layer 3 — cinematic vignette. Subtle radial darkening pulls the
@@ -95,18 +120,15 @@ export default function Hero() {
         className="relative mx-auto w-full max-w-7xl px-5 pb-8 sm:px-8 sm:pb-10 lg:px-12"
       >
         <div className="max-w-4xl">
-          <m.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="border-primary/25 bg-surface text-primary mb-7 inline-flex items-center gap-3 rounded-full border px-4 py-1.5 text-[11px] tracking-[0.28em] uppercase"
+          <div
+            className="hero-anim-badge border-primary/25 bg-surface text-primary mb-7 inline-flex items-center gap-3 rounded-full border px-4 py-1.5 text-[11px] tracking-[0.28em] uppercase"
           >
             <span className="relative grid h-2 w-2 place-items-center">
               <span className="bg-primary absolute inset-0 rounded-full" />
               <span className="pulse-ring bg-primary absolute inset-0 rounded-full" />
             </span>
             {home.hero.eyebrow}
-          </m.div>
+          </div>
 
           <div className="font-display text-foreground text-[12vw] leading-[0.95] font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-[92px]">
             <SplitText
@@ -119,22 +141,16 @@ export default function Hero() {
             />
           </div>
 
-          <m.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.7 }}
-            className="text-foreground/80 mt-8 max-w-2xl space-y-4 text-base sm:text-lg md:text-xl"
+          <div
+            className="hero-anim-copy text-foreground/80 mt-8 max-w-2xl space-y-4 text-base sm:text-lg md:text-xl"
           >
             {home.hero.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-          </m.div>
+          </div>
 
-          <m.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
+          <div
+            className="hero-anim-ctas mt-10 flex flex-wrap items-center gap-4"
           >
             <Button href={pac.donateUrl} size="lg" target="_blank" rel="noopener noreferrer">
               {home.hero.ctas.primary}
@@ -172,13 +188,10 @@ export default function Hero() {
               </span>
               {home.hero.ctas.textLink}
             </Link>
-          </m.div>
+          </div>
 
-          <m.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
-            className="border-primary/15 mt-12 grid max-w-2xl grid-cols-3 gap-x-6 gap-y-6 border-t pt-6 sm:gap-x-10 sm:gap-y-8 md:gap-x-12"
+          <div
+            className="hero-anim-values border-primary/15 mt-12 grid max-w-2xl grid-cols-3 gap-x-6 gap-y-6 border-t pt-6 sm:gap-x-10 sm:gap-y-8 md:gap-x-12"
           >
             {home.hero.values.map((v) => (
               <div key={v.label} className="min-w-0">
@@ -190,7 +203,7 @@ export default function Hero() {
                 </div>
               </div>
             ))}
-          </m.div>
+          </div>
         </div>
       </m.div>
     </section>

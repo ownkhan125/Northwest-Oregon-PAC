@@ -241,7 +241,27 @@
       "Bash(LABEL=after3 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v2.js\")",
       "Bash(NODE_PATH=\"C:/Users/General/Documents/GitHub/Northwest Oregon PAC/.claude/skills/playwright-skill/node_modules\" node *)",
       "Bash(LABEL=before-v3 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v3.js\")",
-      "Bash(LABEL=after-v3 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v3.js\")"
+      "Bash(LABEL=after-v3 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v3.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_URL=https://northwest-oregon-pac.vercel.app/ LH_FORM=mobile LH_OUT=/tmp/lh-live-mobile-2.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-run.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_JSON=C:/Users/General/AppData/Local/Temp/lh-live-mobile-2.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-inspect.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_JSON=C:/Users/General/AppData/Local/Temp/lh-live-mobile-2.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-cls.js\")",
+      "Bash(PORT=3100 npm run start)",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_URL=http://localhost:3100/ LH_FORM=mobile LH_OUT=/tmp/lh-local-prod-mobile.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-run.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_JSON=C:/Users/General/AppData/Local/Temp/lh-local-prod-mobile.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-inspect.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_JSON=C:/Users/General/AppData/Local/Temp/lh-local-prod-mobile.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-cls.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_URL=http://localhost:3100/ LH_FORM=mobile LH_OUT=/tmp/lh-local-prod-mobile-b1.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-run.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_JSON=C:/Users/General/AppData/Local/Temp/lh-local-prod-mobile-b1.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-inspect.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_URL=http://localhost:3100/ LH_FORM=mobile LH_OUT=/tmp/lh-local-prod-mobile-b1-fresh.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-run.js\")",
+      "Bash(LABEL=after-b1 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v3.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_JSON=C:/Users/General/AppData/Local/Temp/lh-local-prod-mobile-b1-fresh.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-legacy.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_URL=http://localhost:3100/ LH_FORM=mobile LH_OUT=/tmp/lh-b1b-r1.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-run.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_JSON=C:/Users/General/AppData/Local/Temp/lh-b1b-r1.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-legacy.js\")",
+      "Bash(sort -k5 -rn)",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_JSON=C:/Users/General/AppData/Local/Temp/lh-live-post-b1-r3.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-inspect.js\")",
+      "Bash(LABEL=after-b2 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v3.js\")",
+      "Bash(LABEL=after-b3 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v3.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/.claude/skills/playwright-skill/node_modules\" LH_JSON=C:/Users/General/AppData/Local/Temp/lh-live-b3-r5.json node \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\lh-inspect.js\")",
+      "Bash(LABEL=after-b4 node run.js \"C:\\\\Users\\\\General\\\\AppData\\\\Local\\\\Temp\\\\playwright-perf-baseline-v3.js\")"
     ]
   }
 }
