@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { cn } from '@/lib/cn'
 
 const Label = ({ htmlFor, children, required, className }) => (
@@ -12,5 +13,12 @@ const Label = ({ htmlFor, children, required, className }) => (
     {required && <span className="text-primary ml-1">*</span>}
   </label>
 )
+
+Label.propTypes = {
+  htmlFor: PropTypes.string,
+  children: PropTypes.node,
+  required: PropTypes.bool,
+  className: PropTypes.string,
+}
 
 export default Label

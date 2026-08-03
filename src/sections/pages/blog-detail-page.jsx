@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 import { m } from 'motion/react'
 import Breadcrumb from '@/components/ui/breadcrumb'
 import BlogToc from '@/components/ui/blog-toc'
@@ -112,6 +113,10 @@ function ShareButtons({ post }) {
   )
 }
 
+ShareButtons.propTypes = {
+  post: PropTypes.object.isRequired,
+}
+
 function ArticleBody({ body }) {
   return (
     <m.div
@@ -190,6 +195,8 @@ function ArticleBody({ body }) {
   )
 }
 
+ArticleBody.propTypes = { body: PropTypes.array.isRequired }
+
 function PrevNext({ prev, next }) {
   if (!prev && !next) return null
   return (
@@ -230,6 +237,8 @@ function PrevNext({ prev, next }) {
     </nav>
   )
 }
+
+PrevNext.propTypes = { prev: PropTypes.object, next: PropTypes.object }
 
 function RelatedArticles({ items }) {
   if (!items?.length) return null
@@ -301,6 +310,8 @@ function RelatedArticles({ items }) {
     </section>
   )
 }
+
+RelatedArticles.propTypes = { items: PropTypes.array }
 
 export default function BlogDetailPage({ post, prev, next, related }) {
   const toc = tocFromBody(post.body)
@@ -395,3 +406,9 @@ export default function BlogDetailPage({ post, prev, next, related }) {
   )
 }
 
+BlogDetailPage.propTypes = {
+  post: PropTypes.object.isRequired,
+  prev: PropTypes.object,
+  next: PropTypes.object,
+  related: PropTypes.array,
+}

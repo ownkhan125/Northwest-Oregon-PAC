@@ -2,6 +2,7 @@
 
 import { forwardRef, useRef } from 'react'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 import { m, useMotionValue, useSpring, useTransform } from 'motion/react'
 import { cn } from '@/lib/cn'
 
@@ -144,5 +145,19 @@ const Button = forwardRef(function Button(
     </m.button>
   )
 })
+
+Button.propTypes = {
+  variant: PropTypes.oneOf(['primary', 'secondary', 'ghost']),
+  size: PropTypes.oneOf(['md', 'lg', 'xl']),
+  className: PropTypes.string,
+  children: PropTypes.node,
+  icon: PropTypes.node,
+  magnetic: PropTypes.bool,
+  href: PropTypes.string,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  onClick: PropTypes.func,
+  target: PropTypes.string,
+  rel: PropTypes.string,
+}
 
 export default Button

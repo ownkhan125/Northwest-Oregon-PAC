@@ -1,5 +1,6 @@
 'use client'
 
+import PropTypes from 'prop-types'
 import { cn } from '@/lib/cn'
 
 const Marquee = ({ items, className, separator = '—' }) => {
@@ -22,6 +23,12 @@ const Marquee = ({ items, className, separator = '—' }) => {
       </div>
     </div>
   )
+}
+
+Marquee.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  className: PropTypes.string,
+  separator: PropTypes.node,
 }
 
 export default Marquee

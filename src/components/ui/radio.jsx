@@ -1,5 +1,7 @@
 'use client'
 
+import PropTypes from 'prop-types'
+
 const Radio = ({ label, id, name, value, required, ...rest }) => {
   const inputId = id ?? `${name}-${value}`
   return (
@@ -25,6 +27,14 @@ const Radio = ({ label, id, name, value, required, ...rest }) => {
       <span className="leading-snug">{label}</span>
     </label>
   )
+}
+
+Radio.propTypes = {
+  label: PropTypes.node,
+  id: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  required: PropTypes.bool,
 }
 
 export default Radio

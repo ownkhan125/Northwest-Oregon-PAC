@@ -1,5 +1,6 @@
 'use client'
 
+import PropTypes from 'prop-types'
 import Image from 'next/image'
 import SectionMarker from '@/components/ui/section-marker'
 import { cn } from '@/lib/cn'
@@ -67,6 +68,24 @@ const SectionFrame = ({ id, eyebrow, number, className, bgImage, overlayClassNam
       </div>
     </section>
   )
+}
+
+SectionFrame.propTypes = {
+  id: PropTypes.string,
+  eyebrow: PropTypes.string,
+  number: PropTypes.string,
+  className: PropTypes.string,
+  // Accept either a next/image StaticImageData object or a raw URL string.
+  bgImage: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      width: PropTypes.number,
+      height: PropTypes.number,
+    }),
+  ]),
+  overlayClassName: PropTypes.string,
+  children: PropTypes.node,
 }
 
 export default SectionFrame

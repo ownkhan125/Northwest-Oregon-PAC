@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 import { cn } from '@/lib/cn'
 import logoDark from '@/assets/icons/nwop-logo-dark.png'
 import logoLight from '@/assets/icons/nwop-logo-light.png'
@@ -58,6 +59,15 @@ const Logo = ({ className, size = 'md', priority = false }) => {
       />
     </Link>
   )
+}
+
+Logo.propTypes = {
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  // `priority` should only be true where the logo is above the fold on
+  // first paint — the Navbar. The Footer logo is far below the fold and
+  // preloading it wastes ~15KB of critical-path bandwidth.
+  priority: PropTypes.bool,
 }
 
 export default Logo

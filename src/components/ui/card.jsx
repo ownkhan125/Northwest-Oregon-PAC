@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import PropTypes from 'prop-types'
 import { m, useMotionValue, useSpring, useTransform } from 'motion/react'
 import { cn } from '@/lib/cn'
 
@@ -74,6 +75,15 @@ const Card = ({
       <div className="relative z-10 flex h-full flex-col">{children}</div>
     </m.div>
   )
+}
+
+Card.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+  hoverGlow: PropTypes.bool,
+  tilt: PropTypes.bool,
+  interactive: PropTypes.bool,
+  pointer: PropTypes.bool,
 }
 
 export default Card

@@ -1,6 +1,7 @@
 'use client'
 
 import { Children, useEffect, useRef, useState } from 'react'
+import PropTypes from 'prop-types'
 import { AnimatePresence, m } from 'motion/react'
 import Label from '@/components/ui/label'
 import { cn } from '@/lib/cn'
@@ -235,6 +236,18 @@ const Select = ({
       </div>
     </div>
   )
+}
+
+Select.propTypes = {
+  label: PropTypes.node,
+  name: PropTypes.string,
+  required: PropTypes.bool,
+  defaultValue: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  id: PropTypes.string,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
 }
 
 export default Select
