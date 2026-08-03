@@ -4,8 +4,12 @@ import { useState } from 'react'
 import { m } from 'motion/react'
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 
-// Applies the initial theme synchronously (before hydration) to avoid a flash.
-// Included in the app layout so it runs once at page load.
+// Applies the initial theme synchronously (before body renders) so
+// Tailwind's `dark:*` utilities have the right class to key off on the
+// first paint. Rendered as a plain <script> tag (not next/script), since
+// `next/script` with strategy=beforeInteractive queues inline scripts
+// into __next_s and defers execution until after hydration — the exact
+// opposite of what we need for a pre-paint class toggle.
 export const ThemeInit = () => (
   <script
     dangerouslySetInnerHTML={{
