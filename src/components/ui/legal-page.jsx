@@ -1,6 +1,5 @@
 'use client'
 
-import PropTypes from 'prop-types'
 import { m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
@@ -133,36 +132,6 @@ const LegalPage = ({ eyebrow, number, title, lastUpdated, intro, sections }) => 
       </section>
     </>
   )
-}
-
-LegalPage.propTypes = {
-  eyebrow: PropTypes.string,
-  number: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  lastUpdated: PropTypes.string.isRequired,
-  intro: PropTypes.string,
-  sections: PropTypes.arrayOf(
-    PropTypes.shape({
-      heading: PropTypes.string.isRequired,
-      body: PropTypes.arrayOf(
-        PropTypes.oneOfType([
-          PropTypes.string,
-          PropTypes.shape({ list: PropTypes.arrayOf(PropTypes.string).isRequired }),
-          PropTypes.shape({
-            segments: PropTypes.arrayOf(
-              PropTypes.oneOfType([
-                PropTypes.string,
-                PropTypes.shape({
-                  href: PropTypes.string.isRequired,
-                  text: PropTypes.string.isRequired,
-                }),
-              ]),
-            ).isRequired,
-          }),
-        ]),
-      ).isRequired,
-    }),
-  ).isRequired,
 }
 
 export default LegalPage

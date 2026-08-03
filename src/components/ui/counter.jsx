@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import PropTypes from 'prop-types'
 import { animate, useInView, useReducedMotion } from 'motion/react'
 import { EASE } from '@/animations/variants'
 
@@ -58,19 +57,6 @@ const Counter = ({
       {text}
     </span>
   )
-}
-
-Counter.propTypes = {
-  value: PropTypes.number.isRequired,
-  prefix: PropTypes.string,
-  suffix: PropTypes.string,
-  decimals: PropTypes.number,
-  useGrouping: PropTypes.bool,
-  duration: PropTypes.number,
-  delay: PropTypes.number,
-  format: PropTypes.func,
-  className: PropTypes.string,
-  ariaLabel: PropTypes.string,
 }
 
 export default Counter

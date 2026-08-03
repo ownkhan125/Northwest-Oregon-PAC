@@ -1,7 +1,6 @@
 'use client'
 
 import { forwardRef } from 'react'
-import PropTypes from 'prop-types'
 import Label from '@/components/ui/label'
 import { cn } from '@/lib/cn'
 import { BASE_FIELD } from '@/lib/form'
@@ -30,14 +29,5 @@ const Textarea = forwardRef(function Textarea(
     </div>
   )
 })
-
-Textarea.propTypes = {
-  className: PropTypes.string,
-  required: PropTypes.bool,
-  label: PropTypes.node,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  rows: PropTypes.number,
-}
 
 export default Textarea

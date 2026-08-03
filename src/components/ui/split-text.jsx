@@ -1,7 +1,6 @@
 'use client'
 
 import { useMemo } from 'react'
-import PropTypes from 'prop-types'
 import { m } from 'motion/react'
 import { cn } from '@/lib/cn'
 import { EASE } from '@/animations/variants'
@@ -123,19 +122,6 @@ const SplitText = ({
       })}
     </MotionTag>
   )
-}
-
-SplitText.propTypes = {
-  text: PropTypes.string.isRequired,
-  as: PropTypes.string,
-  className: PropTypes.string,
-  charClassName: PropTypes.string,
-  delay: PropTypes.number,
-  staggerChildren: PropTypes.number,
-  duration: PropTypes.number,
-  by: PropTypes.oneOf(['char', 'word']),
-  once: PropTypes.bool,
-  inView: PropTypes.bool,
 }
 
 export default SplitText

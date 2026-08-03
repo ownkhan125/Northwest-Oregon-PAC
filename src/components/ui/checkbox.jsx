@@ -1,6 +1,5 @@
 'use client'
 
-import PropTypes from 'prop-types'
 import { cn } from '@/lib/cn'
 
 const Checkbox = ({ label, id, name, required, disabled, ...rest }) => {
@@ -57,14 +56,6 @@ const Checkbox = ({ label, id, name, required, disabled, ...rest }) => {
       </span>
     </label>
   )
-}
-
-Checkbox.propTypes = {
-  label: PropTypes.node,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  required: PropTypes.bool,
-  disabled: PropTypes.bool,
 }
 
 export default Checkbox

@@ -1,6 +1,5 @@
 'use client'
 
-import PropTypes from 'prop-types'
 import { m } from 'motion/react'
 import SplitText from '@/components/ui/split-text'
 import CivicIcon from '@/components/ui/civic-icon'
@@ -85,16 +84,6 @@ const PageHeader = ({ eyebrow, title, description, number, align = 'left', accen
       </div>
     </section>
   )
-}
-
-PageHeader.propTypes = {
-  eyebrow: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-  number: PropTypes.string,
-  align: PropTypes.oneOf(['left', 'center']),
-  accent: PropTypes.string,
-  action: PropTypes.node,
 }
 
 export default PageHeader

@@ -1,6 +1,5 @@
 'use client'
 
-import PropTypes from 'prop-types'
 import Button from '@/components/ui/button'
 
 const RouteError = ({ error, reset }) => {
@@ -29,11 +28,6 @@ const RouteError = ({ error, reset }) => {
       </div>
     </section>
   )
-}
-
-RouteError.propTypes = {
-  error: PropTypes.object,
-  reset: PropTypes.func,
 }
 
 export default RouteError

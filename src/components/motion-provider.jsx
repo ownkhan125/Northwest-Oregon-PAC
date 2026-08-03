@@ -1,6 +1,5 @@
 'use client'
 
-import PropTypes from 'prop-types'
 import { LazyMotion, MotionConfig, domAnimation } from 'motion/react'
 
 const MotionProvider = ({ children }) => (
@@ -8,9 +7,5 @@ const MotionProvider = ({ children }) => (
     <MotionConfig reducedMotion="user">{children}</MotionConfig>
   </LazyMotion>
 )
-
-MotionProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-}
 
 export default MotionProvider

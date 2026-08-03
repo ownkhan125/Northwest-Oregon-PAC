@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import PropTypes from 'prop-types'
 import { cn } from '@/lib/cn'
 
 export default function Breadcrumb({ items, className }) {
@@ -35,12 +34,3 @@ export default function Breadcrumb({ items, className }) {
   )
 }
 
-Breadcrumb.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      href: PropTypes.string,
-    }),
-  ).isRequired,
-  className: PropTypes.string,
-}

@@ -1,7 +1,6 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import { AnimatePresence, m } from 'motion/react'
 import { cn } from '@/lib/cn'
 
@@ -163,12 +162,3 @@ export default function BlogToc({ items }) {
   )
 }
 
-BlogToc.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-      level: PropTypes.oneOf([2, 3]).isRequired,
-    }),
-  ).isRequired,
-}

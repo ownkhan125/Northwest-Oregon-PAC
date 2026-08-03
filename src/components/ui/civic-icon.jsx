@@ -1,6 +1,5 @@
 'use client'
 
-import PropTypes from 'prop-types'
 import { forwardRef } from 'react'
 
 const CivicIcon = forwardRef(function CivicIcon({ src, className = '', style, ...rest }, ref) {
@@ -26,11 +25,5 @@ const CivicIcon = forwardRef(function CivicIcon({ src, className = '', style, ..
     />
   )
 })
-
-CivicIcon.propTypes = {
-  src: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
 
 export default CivicIcon

@@ -1,6 +1,5 @@
 'use client'
 
-import PropTypes from 'prop-types'
 import { m } from 'motion/react'
 import { cn } from '@/lib/cn'
 import { EASE_SOFT } from '@/animations/variants'
@@ -40,12 +39,6 @@ const SectionMarker = ({ number, eyebrow, className }) => {
       </m.div>
     </div>
   )
-}
-
-SectionMarker.propTypes = {
-  number: PropTypes.string,
-  eyebrow: PropTypes.string,
-  className: PropTypes.string,
 }
 
 export default SectionMarker
