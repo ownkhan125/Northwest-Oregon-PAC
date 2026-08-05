@@ -57,7 +57,7 @@ export default function Endorsements() {
         viewport={{ once: true, margin: '-15% 0px' }}
         className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
       >
-        {home.endorsements.candidates.map((c, i) => {
+        {home.endorsements.candidates.filter((c) => !c.hidden).map((c, i) => {
           const portrait = CANDIDATE_PORTRAITS[c.slug]
           const hasLink = Boolean(c.link)
           const CardBody = (

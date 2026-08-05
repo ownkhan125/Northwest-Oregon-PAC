@@ -5,7 +5,12 @@ import Link from 'next/link'
 import { m, AnimatePresence } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import { cardReveal, stagger, EASE } from '@/animations/variants'
-import { feedPosts, storyPosts, carouselPosts, socialTags } from '@/data/social-posts'
+import {
+  feedPosts as allFeedPosts,
+  storyPosts as allStoryPosts,
+  carouselPosts as allCarouselPosts,
+  socialTags,
+} from '@/data/social-posts'
 import { pac } from '@/data/pac'
 import { cn } from '@/lib/cn'
 
@@ -15,6 +20,11 @@ const FORMATS = [
   { key: 'story', label: 'Stories' },
   { key: 'carousel', label: 'Carousels' },
 ]
+
+const notHidden = (p) => !p.hidden
+const feedPosts = allFeedPosts.filter(notHidden)
+const storyPosts = allStoryPosts.filter(notHidden)
+const carouselPosts = allCarouselPosts.filter(notHidden)
 
 const ALL_POSTS = { feed: feedPosts, story: storyPosts, carousel: carouselPosts }
 
