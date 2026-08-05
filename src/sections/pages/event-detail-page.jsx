@@ -261,14 +261,14 @@ export default function EventDetailPage({ event }) {
                         name="firstName"
                         required
                         autoComplete="given-name"
-                        placeholder="Barbara"
+                        placeholder="Jane"
                       />
                       <Input
                         label="Last name"
                         name="lastName"
                         required
                         autoComplete="family-name"
-                        placeholder="Kahl"
+                        placeholder="Doe"
                       />
                     </div>
                     <Input

@@ -276,6 +276,7 @@ export const feedPosts = [
   },
   {
     "id": "feed-28-barbara-kahl",
+    "hidden": true,
     "n": 28,
     "tag": "Candidates",
     "title": "Meet Dr. Barbara Kahl",
@@ -879,6 +880,7 @@ export const storyPosts = [
   },
   {
     "id": "story-28-barbara-kahl",
+    "hidden": true,
     "n": 28,
     "tag": "Candidates",
     "title": "Have you met Barbara Kahl?",

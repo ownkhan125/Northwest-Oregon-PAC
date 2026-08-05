@@ -185,7 +185,7 @@ export default function AboutPage() {
           viewport={{ once: true, margin: '-15% 0px' }}
           className="mt-14 divide-forest/15 border-primary/15 divide-y rounded-2xl border"
         >
-          {candidatesSection.list.map((c) => (
+          {candidatesSection.list.filter((c) => !c.hidden).map((c) => (
             <m.li
               key={c.slug}
               variants={fadeUp}

@@ -197,6 +197,7 @@ export const home = {
       },
       {
         slug: 'barbara-kahl',
+        hidden: true,
         name: 'Dr. Barbara Kahl',
         office: 'U.S. House · Oregon’s 1st Congressional District',
         bio: 'Veterinarian, community leader, and candidate for Congress representing communities across Northwest Oregon.',
@@ -378,6 +379,7 @@ export const candidates = [
   },
   {
     slug: 'barbara-kahl',
+    hidden: true,
     name: 'Barbara Kahl',
     office: 'Congressional District 1',
     state: 'Oregon',
@@ -564,6 +566,7 @@ export const aboutPage = {
       },
       {
         slug: 'barbara-kahl',
+        hidden: true,
         name: 'Dr. Barbara Kahl',
         office: 'U.S. House · Oregon’s 1st Congressional District',
         link: 'https://www.drkahlforcongress.com/',
