@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { m } from 'motion/react'
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
+import { getResolvedTheme } from '@/lib/resolved-theme'
 
 // Applies the initial theme synchronously (before body renders) so
 // Tailwind's `dark:*` utilities have the right class to key off on the
@@ -10,10 +11,19 @@ import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 // `next/script` with strategy=beforeInteractive queues inline scripts
 // into __next_s and defers execution until after hydration — the exact
 // opposite of what we need for a pre-paint class toggle.
+//
+// The stored value is strictly validated: an unrecognized value (a
+// leftover from an older schema, a hand-edited localStorage entry) used
+// to be applied verbatim as a class, leaving <html> with neither `.dark`
+// nor `.light`. In that state the CSS still resolved to dark on OS-dark
+// machines via the `prefers-color-scheme` media query, but the logo —
+// which keyed off the class — showed the light-background artwork on the
+// dark background until the second toggle click. Explicitly falling back
+// to the OS preference guarantees exactly one of `dark`/`light` is set.
 export const ThemeInit = () => (
   <script
     dangerouslySetInnerHTML={{
-      __html: `(function(){try{var s=localStorage.getItem('nwop-theme');var p=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';var t=s||p;var r=document.documentElement;r.classList.remove('light','dark');r.classList.add(t);}catch(e){}})();`,
+      __html: `(function(){try{var s=localStorage.getItem('nwop-theme');var p=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';var t=(s==='dark'||s==='light')?s:p;var r=document.documentElement;r.classList.remove('light','dark');r.classList.add(t);}catch(e){}})();`,
     }}
   />
 )
@@ -22,19 +32,34 @@ export default function ThemeToggle({ className = '' }) {
   const [mounted, setMounted] = useState(false)
   const [theme, setTheme] = useState('light')
 
-  // Sync the toggle's icon to the real DOM class before the first paint so
-  // the button is never showing the wrong icon by the time the user can click.
+  // Sync the toggle's icon to the RESOLVED theme (see resolved-theme.js) —
+  // not just the class — so the icon and click direction stay consistent
+  // with what the browser is actually painting, even in the edge case
+  // where `<html>` momentarily has no theme class.
   useIsomorphicLayoutEffect(() => {
-    const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-    setTheme(current)
+    const html = document.documentElement
+    const sync = () => setTheme(getResolvedTheme(html))
+    sync()
     setMounted(true)
+    const observer = new MutationObserver(sync)
+    observer.observe(html, { attributes: true, attributeFilter: ['class'] })
+    const mql = window.matchMedia('(prefers-color-scheme: dark)')
+    mql.addEventListener('change', sync)
+    return () => {
+      observer.disconnect()
+      mql.removeEventListener('change', sync)
+    }
   }, [])
 
   const toggle = () => {
-    // Read the DOM at click time — the source of truth — so a stale React
-    // state (pre-hydration or otherwise) can't cause a two-click desync.
+    // Read the RESOLVED theme (class OR media query) so the first click
+    // actually flips whatever the user is currently seeing. Reading only
+    // the class was the source of the "first click only updates the logo"
+    // bug: when no class was set and OS-dark was applying dark via CSS,
+    // the click read `light` and re-added `dark` — a no-op for the page
+    // background, but a flip for the class-keyed logo.
     const root = document.documentElement
-    const current = root.classList.contains('dark') ? 'dark' : 'light'
+    const current = getResolvedTheme(root)
     const next = current === 'dark' ? 'light' : 'dark'
     root.classList.remove('light', 'dark')
     root.classList.add(next)

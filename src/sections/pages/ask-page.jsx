@@ -188,7 +188,6 @@ function AskForm() {
           checked={smsUpdates}
           onChange={(e) => setSmsUpdates(e.target.checked)}
           disabled={!hasPhone}
-          required={hasPhone}
         />
         <Checkbox
           name="sms_promo"
@@ -196,7 +195,6 @@ function AskForm() {
           checked={smsPromo}
           onChange={(e) => setSmsPromo(e.target.checked)}
           disabled={!hasPhone}
-          required={hasPhone}
         />
       </div>
 

@@ -307,7 +307,6 @@ export default function ContactPage() {
                         checked={smsUpdates}
                         onChange={(e) => setSmsUpdates(e.target.checked)}
                         disabled={!hasPhone}
-                        required={hasPhone}
                       />
                       <Checkbox
                         name="sms_promo"
@@ -315,7 +314,6 @@ export default function ContactPage() {
                         checked={smsPromo}
                         onChange={(e) => setSmsPromo(e.target.checked)}
                         disabled={!hasPhone}
-                        required={hasPhone}
                       />
                     </div>
 
@@ -348,6 +346,21 @@ export default function ContactPage() {
                       <Button type="submit" size="lg" disabled={submitting}>
                         {submitting ? 'Sending…' : 'Send message'}
                       </Button>
+                    </div>
+
+                    <div className="border-primary/15 flex flex-wrap items-center gap-x-6 gap-y-2 border-t pt-5 text-[13px]">
+                      <a
+                        href="/privacy-policy"
+                        className="text-primary hover:text-highlight transition-colors"
+                      >
+                        Privacy Policy
+                      </a>
+                      <a
+                        href="/terms-of-service"
+                        className="text-primary hover:text-highlight transition-colors"
+                      >
+                        Terms &amp; Conditions
+                      </a>
                     </div>
                   </form>
                 )}
