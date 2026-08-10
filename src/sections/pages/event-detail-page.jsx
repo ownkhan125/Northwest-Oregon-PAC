@@ -306,7 +306,6 @@ export default function EventDetailPage({ event }) {
                         checked={smsUpdates}
                         onChange={(e) => setSmsUpdates(e.target.checked)}
                         disabled={!hasPhone}
-                        required={hasPhone}
                       />
                       <Checkbox
                         name="sms_promo"
@@ -314,7 +313,6 @@ export default function EventDetailPage({ event }) {
                         checked={smsPromo}
                         onChange={(e) => setSmsPromo(e.target.checked)}
                         disabled={!hasPhone}
-                        required={hasPhone}
                       />
                     </div>
 

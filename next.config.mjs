@@ -8,9 +8,9 @@ const nextConfig = {
     // WebP: 20–30%, with no perceptible quality loss at web sizes.
     formats: ['image/avif', 'image/webp'],
     // Match the two qualities used across the app — silences the runtime
-    // "quality 90 not in images.qualities" warning and pre-generates only
+    // "quality X not in images.qualities" warning and pre-generates only
     // what we actually serve.
-    qualities: [75, 90],
+    qualities: [75, 85],
     // Optimized images are content-addressed via a fingerprint — safe to
     // cache aggressively at the CDN.
     minimumCacheTTL: 31536000, // 1 year

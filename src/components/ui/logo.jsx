@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import { cn } from '@/lib/cn'
+import { getResolvedTheme } from '@/lib/resolved-theme'
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import logoDark from '@/assets/icons/nwop-logo-dark.png'
 import logoLight from '@/assets/icons/nwop-logo-light.png'
@@ -35,24 +36,31 @@ const Logo = ({ className, size = 'md', priority = false }) => {
   const imgCls = SIZE_CLASSES[size] ?? SIZE_CLASSES.md
   const sizeHint = SIZE_HINTS[size] ?? SIZE_HINTS.md
 
-  // Read the theme directly from the DOM instead of relying on Tailwind's
-  // `dark:*` variants alone. Without this, if the inline ThemeInit script
-  // is ever pre-empted (or a `.dark`/`.light` class flip happens between
-  // script execution and paint), the CSS-only pattern renders the wrong
-  // artwork until the first toggle click "corrects" the class. The layout
-  // effect runs synchronously before paint on mount, and the MutationObserver
-  // keeps the state in lockstep with any subsequent class change (toggle
-  // click, dev-tools edit, external script). `theme=null` on server + first
-  // render matches the SSR output — no hydration warning.
+  // Sync artwork visibility to the RESOLVED theme (see resolved-theme.js).
+  // Checking only `.dark`/`.light` misses the case where the CSS falls back
+  // to `@media (prefers-color-scheme: dark)` because no class is set —
+  // which happens if ThemeInit is blocked, an extension strips inline
+  // scripts, or a bad localStorage value is skipped. In that case the
+  // page paints dark but the logo would otherwise stay on the dark
+  // (green-on-cream) artwork and desync until the second toggle click.
+  //
+  // The MutationObserver + matchMedia listener keep the state in lockstep
+  // with any subsequent change (toggle click, OS-level theme flip, dev-
+  // tools edit). `theme=null` on server + first render matches the SSR
+  // output — no hydration warning.
   const [theme, setTheme] = useState(null)
   useIsomorphicLayoutEffect(() => {
     const html = document.documentElement
-    const read = () =>
-      setTheme(html.classList.contains('dark') ? 'dark' : 'light')
+    const read = () => setTheme(getResolvedTheme(html))
     read()
     const observer = new MutationObserver(read)
     observer.observe(html, { attributes: true, attributeFilter: ['class'] })
-    return () => observer.disconnect()
+    const mql = window.matchMedia('(prefers-color-scheme: dark)')
+    mql.addEventListener('change', read)
+    return () => {
+      observer.disconnect()
+      mql.removeEventListener('change', read)
+    }
   }, [])
 
   const styleFor = (variant) => {
@@ -71,7 +79,7 @@ const Logo = ({ className, size = 'md', priority = false }) => {
         src={logoDark}
         alt="Northwest Oregon PAC"
         priority={priority}
-        quality={90}
+        quality={75}
         sizes={sizeHint}
         className={cn('block dark:hidden', imgCls)}
         style={styleFor('light')}
@@ -82,7 +90,7 @@ const Logo = ({ className, size = 'md', priority = false }) => {
         alt=""
         aria-hidden
         priority={priority}
-        quality={90}
+        quality={75}
         sizes={sizeHint}
         className={cn('hidden dark:block', imgCls)}
         style={styleFor('dark')}
