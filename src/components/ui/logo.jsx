@@ -79,7 +79,7 @@ const Logo = ({ className, size = 'md', priority = false }) => {
         src={logoDark}
         alt="Northwest Oregon PAC"
         priority={priority}
-        quality={90}
+        quality={75}
         sizes={sizeHint}
         className={cn('block dark:hidden', imgCls)}
         style={styleFor('light')}
@@ -90,7 +90,7 @@ const Logo = ({ className, size = 'md', priority = false }) => {
         alt=""
         aria-hidden
         priority={priority}
-        quality={90}
+        quality={75}
         sizes={sizeHint}
         className={cn('hidden dark:block', imgCls)}
         style={styleFor('dark')}

@@ -26,7 +26,7 @@ const desktopHero = getImageProps({
 const mobileHero = getImageProps({
   src: heroMobile,
   alt: '',
-  quality: 85,
+  quality: 75,
   priority: true,
   sizes: '100vw',
 })

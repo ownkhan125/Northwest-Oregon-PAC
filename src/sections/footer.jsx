@@ -182,7 +182,7 @@ export default function Footer() {
 
         <div className="border-border mt-12 border-t pt-6 pb-8 sm:pt-7">
           <div className="text-foreground/60 flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] tracking-widest uppercase sm:text-[13px]">
-            <span>© {new Date().getFullYear()} {pac.legalName}</span>
+            <span suppressHydrationWarning>© {new Date().getFullYear()} {pac.legalName}</span>
             <span>{pac.type} · Committee #{pac.pacId}</span>
           </div>
 

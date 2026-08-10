@@ -267,7 +267,8 @@
       "Bash(awk 'NR<50')",
       "Bash(curl -s http://localhost:3100/)",
       "Bash(mkdir -p /c/temp)",
-      "Bash(awk 'match\\($0, /<head>/\\){h=1} h==1{print; if\\(match\\($0,\"</head>\"\\)\\){exit}}')"
+      "Bash(awk 'match\\($0, /<head>/\\){h=1} h==1{print; if\\(match\\($0,\"</head>\"\\)\\){exit}}')",
+      "Bash(tasklist)"
     ]
   }
 }
