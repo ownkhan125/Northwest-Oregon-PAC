@@ -3,88 +3,31 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Story 23 · Small businesses. Strong families. Thriving communities. — Northwest Oregon PAC</title>
-
+<title>Small businesses — Northwest Oregon PAC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../assets/social.css" />
-<link rel="stylesheet" href="../assets/templates.css" />
-<link rel="stylesheet" href="../assets/carousels.css" />
-
 <style>
-  .s23 { position:absolute; inset:0; z-index:5; background:#f6f2e8; overflow:hidden; }
-  .s23-bg { position:absolute; z-index:1; inset:0;
-    background:linear-gradient(180deg, #f6f2e8 0%, #e8dfc4 100%);
-  }
-  .s23-mast { position:absolute; z-index:12; top:132px; left:96px; }
-  .s23-mast img { height:56px; width:auto; }
-  .s23-kick { position:absolute; z-index:10; top:150px; right:96px; font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(46,42,20,.7); display:flex; align-items:center; gap:18px; }
-  .s23-kick .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
-
-  /* 3 stacked polaroid-photo cards with words */
-  .s23-tiles { position:absolute; z-index:8; left:96px; right:96px; top:320px; display:flex; flex-direction:column; gap:26px; }
-  .s23-tile { display:grid; grid-template-columns:190px 1fr; align-items:center; gap:36px; padding:26px 32px; background:#faf3d8;
-    box-shadow: 0 30px 60px -25px rgba(46,42,20,.32);
-    border:1px solid rgba(46,42,20,.14);
-    transform:rotate(-.6deg);
-  }
-  .s23-tile:nth-child(2) { transform:rotate(.8deg); }
-  .s23-tile:nth-child(3) { transform:rotate(-.4deg); }
-  .s23-tile .photo { width:190px; height:190px; overflow:hidden; border-radius:2px; background:#2e4538; }
-  .s23-tile .photo img { width:100%; height:100%; object-fit:cover; }
-  .s23-tile .content { display:flex; flex-direction:column; gap:10px; }
-  .s23-tile .lbl { font-family:var(--font-mono); font-size:13px; letter-spacing:.44em; text-transform:uppercase; color:#6B5A42; }
-  .s23-tile .w { font-family:var(--font-display); font-weight:500; font-size:82px; line-height:.94; letter-spacing:-.025em; color:#2e4538; }
-  .s23-tile .w em { font-style:italic; font-weight:400; color:#5A7060; }
-
-  /* Bottom manifesto */
-  .s23-bot { position:absolute; z-index:10; left:96px; right:96px; top:1180px; padding-top:52px; border-top:2px solid #2e4538; }
-  .s23-cap { font-family:var(--font-mono); font-size:15px; letter-spacing:.5em; text-transform:uppercase; color:#6B5A42; margin-bottom:32px; display:flex; align-items:center; gap:14px; }
-  .s23-cap .bar { width:52px; height:1px; background:currentColor; }
-  .s23-h { font-family:var(--font-display); font-weight:500; font-size:132px; line-height:.96; letter-spacing:-.028em; color:#2e4538; }
-  .s23-h em { font-style:italic; font-weight:400; color:#5A7060; }
-
-  .s23-foot { position:absolute; z-index:10; left:96px; right:96px; bottom:150px; display:flex; align-items:center; justify-content:space-between; }
-  .s23-foot .txt { font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(46,42,20,.55); }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1080px;height:1920px;background:#2a2a26;overflow:hidden;}
+  .post{position:relative;width:1080px;height:1920px;overflow:hidden;background:#2a2a26;
+    font-family:'Source Sans 3',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;}
+  .post p{margin:0;}
 </style>
 </head>
 <body>
-  <div class="canvas story s-sand">
-    <div class="s23">
-      <div class="s23-bg"></div>
-
-      <div class="s23-mast"><img src="../assets/nwop-logo-dark.png" alt="" /></div>
-
-      <div class="s23-tiles">
-        <div class="s23-tile">
-          <div class="photo"><img src="../assets/img/community.jpg" alt="" /></div>
-          <div class="content">
-            <span class="w">Small <em>businesses.</em></span>
-          </div>
-        </div>
-        <div class="s23-tile">
-          <div class="photo"><img src="../assets/img/hero.jpg" alt="" /></div>
-          <div class="content">
-            <span class="w">Strong <em>families.</em></span>
-          </div>
-        </div>
-        <div class="s23-tile">
-          <div class="photo"><img src="../assets/img/who-we-are.jpg" alt="" /></div>
-          <div class="content">
-            <span class="w">Thriving <em>communities.</em></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="s23-bot">
-        <h1 class="s23-h">That's worth <em>protecting.</em></h1>
-      </div>
-
-      <div class="s23-foot">
-      </div>
-    </div>
-    <div class="grain"></div>
-  </div>
+<div class="post">
+<div style="position:absolute;left:0px;top:0px;width:1080px;height:1920px;background:rgba(78,96,81,1);"></div>
+<div style="position:absolute;left:0px;top:0px;width:1080px;height:845px;background:linear-gradient(155.1deg, rgba(143,154,134,1.0) 0.0%, rgba(67,82,74,1.0) 60.0%, rgba(43,43,39,1.0) 100.0%);opacity:1;"></div>
+<img src="../posts/img/31_2974.jpg" alt="" style="position:absolute;left:0px;top:0px;width:1080px;height:845px;object-fit:cover;opacity:1;">
+<div style="position:absolute;left:0px;top:0px;width:1080px;height:430px;background:linear-gradient(180.0deg, rgba(42,42,38,0.85) 0.0%, rgba(42,42,38,0.0) 100.0%);opacity:1;"></div>
+<div style="position:absolute;left:0px;top:845px;width:1080px;height:1075px;background:rgba(78,96,81,1);"></div>
+<div style="position:absolute;left:0px;top:841px;width:1080px;height:4px;background:rgba(224,214,188,1);"></div>
+<img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" style="position:absolute;left:88px;top:100px;width:162px;height:48px;object-fit:contain;object-position:left center;">
+<div style="position:absolute;left:88px;top:930px;width:767px;height:104px;display:flex;flex-direction:column;justify-content:flex-start;overflow:visible;"><p style="font-family:'Lora', Georgia, serif;font-size:92.0px;font-weight:700;color:rgba(241,238,228,1.0);letter-spacing:0px;line-height:104.0px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">Small businesses.</p></div>
+<div style="position:absolute;left:88px;top:1034px;width:696px;height:104px;display:flex;flex-direction:column;justify-content:flex-start;overflow:visible;"><p style="font-family:'Lora', Georgia, serif;font-size:92.0px;font-weight:700;color:rgba(241,238,228,1.0);letter-spacing:0px;line-height:104.0px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">Strong families.</p></div>
+<div style="position:absolute;left:88px;top:1131px;width:642px;height:208px;display:flex;flex-direction:column;justify-content:flex-start;overflow:visible;"><p style="font-family:'Lora', Georgia, serif;font-size:92.0px;font-weight:700;color:rgba(224,214,188,1.0);letter-spacing:0px;line-height:104.0px;text-align:left;white-space:pre-wrap;font-style:normal;text-transform:none;margin:0;">Thriving communities.</p></div>
+<div style="position:absolute;left:88px;top:1500px;width:441px;height:58px;display:flex;flex-direction:column;justify-content:flex-start;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:44.0px;font-weight:400;color:rgba(241,238,228,1.0);letter-spacing:0px;line-height:58.0px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">That's worth protecting.</p></div>
+</div>
 </body>
 </html>

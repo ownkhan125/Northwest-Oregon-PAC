@@ -8,6 +8,7 @@ import SplitText from '@/components/ui/split-text'
 import Input from '@/components/ui/input'
 import Checkbox from '@/components/ui/checkbox'
 import { A2P_SMS_UPDATES_LABEL, A2P_SMS_PROMO_LABEL } from '@/lib/form-constants'
+import SmsDisclaimer from '@/components/ui/sms-disclaimer'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { formatEventDate, formatEventTime } from '@/lib/event-format'
 import { validateContactFields } from '@/lib/form'
@@ -314,6 +315,7 @@ export default function EventDetailPage({ event }) {
                         onChange={(e) => setSmsPromo(e.target.checked)}
                         disabled={!hasPhone}
                       />
+                      <SmsDisclaimer />
                     </div>
 
                     {status === 'error' && errorMsg && (

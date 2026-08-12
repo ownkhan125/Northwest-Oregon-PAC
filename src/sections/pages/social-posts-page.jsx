@@ -162,9 +162,9 @@ function FeedCard({ post, onOpen }) {
     <CardShell
       post={post}
       onOpen={onOpen}
-      aspect="aspect-square"
+      aspect="aspect-[4/5]"
       thumbSrc={post.html}
-      thumbHeight={1080}
+      thumbHeight={1350}
       footer={
         <span className="flex flex-1 flex-col gap-2.5 p-5 sm:p-6">
           <span className="text-foreground/55 group-hover:text-primary-fg/70 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase transition-colors duration-500">
@@ -209,9 +209,9 @@ function CarouselCard({ post, onOpen }) {
     <CardShell
       post={post}
       onOpen={onOpen}
-      aspect="aspect-square"
+      aspect="aspect-[1080/1110]"
       thumbSrc={post.slides[0]}
-      thumbHeight={1080}
+      thumbHeight={1110}
       footer={
         <span className="flex flex-1 flex-col gap-2.5 p-5 sm:p-6">
           <span className="text-foreground/55 group-hover:text-primary-fg/70 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase transition-colors duration-500">
@@ -291,7 +291,7 @@ function Lightbox({ post, onClose }) {
   const isCarousel = post.format === 'carousel'
   const [slide, setSlide] = useState(0)
   const width = 1080
-  const height = post.format === 'story' ? 1920 : 1080
+  const height = post.format === 'story' ? 1920 : post.format === 'carousel' ? 1110 : 1350
   const src = isCarousel ? post.slides[slide] : post.html
 
   useEffect(() => {
@@ -497,7 +497,7 @@ export default function SocialPostsPage() {
               whileInView="show"
               viewport={{ once: true, margin: '-8% 0px' }}
             >
-              <SectionMarker number="02" label="Feed posts" size="1080 × 1080" count={visible.feed.length} />
+              <SectionMarker number="02" label="Feed posts" size="1080 × 1350" count={visible.feed.length} />
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {visible.feed.map((post) => (
                   <FeedCard key={post.id} post={post} onOpen={() => setActive(post)} />
@@ -538,7 +538,7 @@ export default function SocialPostsPage() {
               <SectionMarker
                 number="04"
                 label="Carousels"
-                size="1080 × 1080 · 5–7 slides"
+                size="1080 × 1110 · slides"
                 count={visible.carousel.length}
               />
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

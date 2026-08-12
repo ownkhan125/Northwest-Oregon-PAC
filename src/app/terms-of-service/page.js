@@ -46,7 +46,7 @@ const sections = [
   {
     heading: 'SMS messaging program',
     body: [
-      'Program name and description. Northwest Oregon PAC operates an SMS messaging program that delivers campaign updates, event reminders, fundraising requests, donation drives, and other communications you have opted in to receive.',
+      'Program name and description. Northwest Oregon PAC operates an SMS messaging program that delivers campaign updates, candidate information, policy updates, fundraising requests, donation drives, and other communications you have expressly opted in to receive.',
       'Opt-out (STOP). You can cancel the SMS service at any time. Simply text STOP to the shortcode or long code from which you received the message. After you send STOP, we will send you a confirmation and no further messages will be sent until you re-enroll.',
       `HELP. If you experience issues with the messaging program, reply with the keyword HELP for more assistance, or reach out to us directly at ${pac.contact.generalEmail} or ${pac.contact.phone}.`,
       'Carrier liability. Carriers are not liable for delayed or undelivered messages.',
@@ -58,6 +58,7 @@ const sections = [
           '.',
         ],
       },
+      'Compliance. Northwest Oregon PAC’s SMS messaging program is operated in accordance with applicable carrier requirements, industry standards, and applicable federal and state laws and regulations.',
     ],
   },
   {

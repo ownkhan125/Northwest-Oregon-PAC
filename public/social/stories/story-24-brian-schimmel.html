@@ -3,77 +3,36 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Story 24 · Meet Brian Schimmel — Northwest Oregon PAC</title>
-
+<title>Brian Schimmel — Northwest Oregon PAC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../assets/social.css" />
-<link rel="stylesheet" href="../assets/templates.css" />
-<link rel="stylesheet" href="../assets/carousels.css" />
-
 <style>
-  .s24 { position:absolute; inset:0; z-index:5; background:#0d1310; overflow:hidden; }
-  .s24-portrait { position:absolute; z-index:1; inset:0; }
-  .s24-portrait img { width:100%; height:100%; object-fit:cover; object-position:center 25%; filter:saturate(.92) contrast(1.08); }
-  .s24-portrait::after { content:''; position:absolute; inset:0;
-    background:
-      linear-gradient(180deg, rgba(13,19,16,.5) 0%, rgba(13,19,16,0) 30%, rgba(13,19,16,.5) 62%, rgba(13,19,16,.95) 100%);
-  }
-
-  .s24-mast { position:absolute; z-index:12; top:132px; left:96px; }
-  .s24-mast img { height:56px; width:auto; filter:drop-shadow(0 2px 22px rgba(0,0,0,.55)); }
-  .s24-kick { position:absolute; z-index:10; top:150px; right:96px; font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.75); display:flex; align-items:center; gap:18px; }
-  .s24-kick .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
-
-  /* Candidate frame — subtle top-left ID card */
-  .s24-idcard { position:absolute; z-index:8; top:280px; left:72px; padding:20px 26px;
-    border:1.5px solid rgba(224,214,188,.55); background:rgba(13,19,16,.5); backdrop-filter: blur(6px);
-    font-family:var(--font-mono); font-size:12px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.75);
-    display:flex; align-items:center; gap:16px;
-  }
-  .s24-idcard .dot { width:8px; height:8px; border-radius:50%; background:#e0d6bc; }
-
-  /* Bottom half text */
-  .s24-block { position:absolute; z-index:10; left:96px; right:96px; top:1200px; }
-  .s24-lbl { font-family:var(--font-mono); font-size:16px; letter-spacing:.5em; text-transform:uppercase; color:rgba(224,214,188,.7); display:flex; align-items:center; gap:16px; margin-bottom:32px; }
-  .s24-lbl .bar { width:52px; height:1px; background:currentColor; }
-  .s24-name { font-family:var(--font-display); font-weight:500; font-size:130px; line-height:.94; letter-spacing:-.03em; color:#f6f2e8; text-shadow:0 6px 32px rgba(0,0,0,.5); }
-  .s24-name em { font-style:italic; font-weight:400; color:#e0d6bc; }
-  .s24-dot { font-style:italic; }
-  .s24-role { font-family:var(--font-display); font-style:italic; font-weight:400; font-size:44px; line-height:1.14; letter-spacing:-.01em; color:#e0d6bc; margin-top:20px; }
-  .s24-rule { width:120px; height:2px; background:#e0d6bc; margin:36px 0 28px; }
-  .s24-list { display:flex; flex-direction:column; gap:14px; }
-  .s24-list .item { display:flex; align-items:baseline; gap:16px; font-family:var(--font-display); font-weight:500; font-size:38px; letter-spacing:-.015em; color:#f6f2e8; }
-  .s24-list .item .dash { font-family:var(--font-mono); color:#e0d6bc; font-size:22px; }
-  .s24-list .item em { font-style:italic; font-weight:400; color:#e0d6bc; }
-
-  .s24-foot { position:absolute; z-index:10; left:96px; right:96px; bottom:132px; display:flex; align-items:center; justify-content:space-between; padding-top:26px; border-top:1px solid rgba(224,214,188,.28); }
-  .s24-foot .txt { font-family:var(--font-mono); font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:rgba(224,214,188,.65); }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1080px;height:1920px;background:#2a2a26;overflow:hidden;}
+  .post{position:relative;width:1080px;height:1920px;overflow:hidden;background:#2a2a26;
+    font-family:'Source Sans 3',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;}
+  .post p{margin:0;}
 </style>
 </head>
 <body>
-  <div class="canvas story s-ink on-photo">
-    <div class="s24">
-      <div class="s24-portrait"><img src="../assets/img/brian-schimmel.jpg" alt="Brian Schimmel" /></div>
-
-      <div class="s24-mast"><img src="../assets/nwop-logo-light.png" alt="" /></div>
-
-      <div class="s24-block">
-        <h1 class="s24-name">Meet Brian <em>Schimmel.</em></h1>
-        <p class="s24-role">Candidate for Oregon House District 29</p>
-        <div class="s24-rule"></div>
-        <div class="s24-list">
-          <div class="item"><span class="dash">-</span>Committed to <em>service.</em></div>
-          <div class="item"><span class="dash">-</span>Committed to the <em>community.</em></div>
-          <div class="item"><span class="dash">-</span>Committed to <em>Northwest Oregon.</em></div>
-        </div>
-      </div>
-
-      <div class="s24-foot">
-      </div>
-    </div>
-    <div class="grain"></div>
-  </div>
+<div class="post">
+<div style="position:absolute;left:0px;top:0px;width:1080px;height:1920px;background:rgba(78,96,81,1);"></div>
+<img src="../posts/img/31_2995.jpg" alt="" style="position:absolute;left:0px;top:0px;width:1080px;height:1075px;object-fit:cover;opacity:1;">
+<div style="position:absolute;left:0px;top:0px;width:1080px;height:430px;background:linear-gradient(180.0deg, rgba(42,42,38,0.5) 0.0%, rgba(42,42,38,0.0) 100.0%);opacity:1;"></div>
+<div style="position:absolute;left:0px;top:1075px;width:1080px;height:845px;background:rgba(78,96,81,1);"></div>
+<div style="position:absolute;left:0px;top:1071px;width:1080px;height:4px;background:rgba(224,214,188,1);"></div>
+<img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" style="position:absolute;left:88px;top:100px;width:162px;height:48px;object-fit:contain;object-position:left center;">
+<div style="position:absolute;left:88px;top:1175px;width:84px;height:46px;display:flex;flex-direction:column;justify-content:flex-start;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:32.0px;font-weight:700;color:rgba(224,214,188,1.0);letter-spacing:2.0px;line-height:45.56800079345703px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">MEET</p></div>
+<div style="position:absolute;left:88px;top:1221px;width:764px;height:108px;display:flex;flex-direction:column;justify-content:flex-start;overflow:visible;"><p style="font-family:'Lora', Georgia, serif;font-size:100.0px;font-weight:700;color:rgba(241,238,228,1.0);letter-spacing:0px;line-height:108.0px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">Brian Schimmel</p></div>
+<div style="position:absolute;left:88px;top:1347px;width:904px;height:57px;display:flex;flex-direction:column;justify-content:flex-start;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:40.0px;font-weight:400;color:rgba(241,238,228,0.92);letter-spacing:0px;line-height:56.959999084472656px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">Candidate for Oregon House District 29</p></div>
+<div style="position:absolute;left:88px;top:1454px;width:13px;height:13px;background:rgba(224,214,188,1);"></div>
+<div style="position:absolute;left:121px;top:1435px;width:340px;height:51px;display:flex;flex-direction:column;justify-content:flex-start;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:36.0px;font-weight:600;color:rgba(241,238,228,1.0);letter-spacing:0px;line-height:51.263999938964844px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">Committed to service.</p></div>
+<div style="position:absolute;left:88px;top:1517px;width:13px;height:13px;background:rgba(224,214,188,1);"></div>
+<div style="position:absolute;left:121px;top:1498px;width:464px;height:51px;display:flex;flex-direction:column;justify-content:flex-start;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:36.0px;font-weight:600;color:rgba(241,238,228,1.0);letter-spacing:0px;line-height:51.263999938964844px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">Committed to the community.</p></div>
+<div style="position:absolute;left:88px;top:1580px;width:13px;height:13px;background:rgba(224,214,188,1);"></div>
+<div style="position:absolute;left:121px;top:1561px;width:514px;height:51px;display:flex;flex-direction:column;justify-content:flex-start;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:36.0px;font-weight:600;color:rgba(241,238,228,1.0);letter-spacing:0px;line-height:51.263999938964844px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">Committed to Northwest Oregon.</p></div>
+<div style="position:absolute;left:88px;top:1627px;width:411px;height:37px;display:flex;flex-direction:column;justify-content:flex-start;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:26.0px;font-weight:700;color:rgba(224,214,188,1.0);letter-spacing:1.0px;line-height:37.02400207519531px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">Backed by Northwest Oregon PAC</p></div>
+</div>
 </body>
 </html>
