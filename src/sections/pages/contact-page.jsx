@@ -12,6 +12,7 @@ import Select from '@/components/ui/select'
 import { EASE } from '@/animations/variants'
 import { pac } from '@/data/pac'
 import { A2P_SMS_UPDATES_LABEL, A2P_SMS_PROMO_LABEL } from '@/lib/form-constants'
+import SmsDisclaimer from '@/components/ui/sms-disclaimer'
 import { validateContactFields } from '@/lib/form'
 import { formatPhoneInput } from '@/lib/phone'
 
@@ -315,6 +316,7 @@ export default function ContactPage() {
                         onChange={(e) => setSmsPromo(e.target.checked)}
                         disabled={!hasPhone}
                       />
+                      <SmsDisclaimer />
                     </div>
 
                     {status === 'error' && (

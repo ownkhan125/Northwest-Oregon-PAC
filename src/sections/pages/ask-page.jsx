@@ -12,6 +12,7 @@ import Checkbox from '@/components/ui/checkbox'
 import { EASE } from '@/animations/variants'
 import { pac } from '@/data/pac'
 import { ISSUE_CATEGORIES, A2P_SMS_UPDATES_LABEL, A2P_SMS_PROMO_LABEL } from '@/lib/form-constants'
+import SmsDisclaimer from '@/components/ui/sms-disclaimer'
 import { validateContactFields } from '@/lib/form'
 import { formatPhoneInput } from '@/lib/phone'
 
@@ -196,6 +197,7 @@ function AskForm() {
           onChange={(e) => setSmsPromo(e.target.checked)}
           disabled={!hasPhone}
         />
+        <SmsDisclaimer />
       </div>
 
       <div className="flex flex-col items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
