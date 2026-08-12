@@ -6,9 +6,7 @@ import { m } from 'motion/react'
 import Button from '@/components/ui/button'
 import SplitText from '@/components/ui/split-text'
 import Input from '@/components/ui/input'
-import Checkbox from '@/components/ui/checkbox'
-import { A2P_SMS_UPDATES_LABEL, A2P_SMS_PROMO_LABEL } from '@/lib/form-constants'
-import SmsDisclaimer from '@/components/ui/sms-disclaimer'
+import SmsOptIn from '@/components/ui/sms-optin'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { formatEventDate, formatEventTime } from '@/lib/event-format'
 import { validateContactFields } from '@/lib/form'
@@ -29,15 +27,13 @@ export default function EventDetailPage({ event }) {
   const [errorMsg, setErrorMsg] = useState('')
   const [fieldErrors, setFieldErrors] = useState({})
   const [phone, setPhone] = useState('')
-  const [smsUpdates, setSmsUpdates] = useState(false)
-  const [smsPromo, setSmsPromo] = useState(false)
+  const [smsOptin, setSmsOptin] = useState(false)
   const submitted = status === 'success'
   const hasPhone = phone.trim().length > 0
 
   useEffect(() => {
     if (!hasPhone) {
-      setSmsUpdates(false)
-      setSmsPromo(false)
+      setSmsOptin(false)
     }
   }, [hasPhone])
 
@@ -65,8 +61,8 @@ export default function EventDetailPage({ event }) {
       eventDate,
       eventTime,
       eventCategory,
-      sms_updates: smsUpdates ? 'Yes' : 'No',
-      sms_promo: smsPromo ? 'Yes' : 'No',
+      sms_updates: smsOptin ? 'Yes' : 'No',
+      sms_promo: smsOptin ? 'Yes' : 'No',
     }
 
     const errs = validateContactFields(payload, {
@@ -301,21 +297,11 @@ export default function EventDetailPage({ event }) {
                           Enter a phone number above to opt in to SMS messages.
                         </p>
                       )}
-                      <Checkbox
-                        name="sms_updates"
-                        label={A2P_SMS_UPDATES_LABEL}
-                        checked={smsUpdates}
-                        onChange={(e) => setSmsUpdates(e.target.checked)}
+                      <SmsOptIn
+                        checked={smsOptin}
+                        onChange={(e) => setSmsOptin(e.target.checked)}
                         disabled={!hasPhone}
                       />
-                      <Checkbox
-                        name="sms_promo"
-                        label={A2P_SMS_PROMO_LABEL}
-                        checked={smsPromo}
-                        onChange={(e) => setSmsPromo(e.target.checked)}
-                        disabled={!hasPhone}
-                      />
-                      <SmsDisclaimer />
                     </div>
 
                     {status === 'error' && errorMsg && (
