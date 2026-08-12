@@ -6,9 +6,9 @@ const path = require('path');
 const { PNG } = require('pngjs');
 const pixelmatch = require('pixelmatch').default || require('pixelmatch');
 
-const BASE = '/tmp/perf-baseline';
-const AFTER = '/tmp/perf-after';
-const DIFF = '/tmp/perf-diff';
+const BASE = 'C:\\tmp\\perf-baseline';
+const AFTER = 'C:\\tmp\\perf-after';
+const DIFF = 'C:\\tmp\\perf-diff';
 fs.mkdirSync(DIFF, { recursive: true });
 
 const files = fs.readdirSync(BASE).filter((f) => f.endsWith('.png'));
@@ -19,7 +19,7 @@ for (const f of files) {
   const b = PNG.sync.read(fs.readFileSync(path.join(AFTER, f)));
   if (a.width !== b.width || a.height !== b.height) {
     console.log(`DIMENSION MISMATCH: ${f} baseline=${a.width}x${a.height} after=${b.width}x${b.height}`);
-    results.push({ file: f, mismatch: 'dimension' });
+    results.push({ file: f, mismatch: 'dimension', pct: 'n/a' });
     continue;
   }
   const diff = new PNG({ width: a.width, height: a.height });
@@ -38,7 +38,11 @@ results.sort((r1, r2) => (parseFloat(r2.pct) || 0) - (parseFloat(r1.pct) || 0));
 console.log('Pixel diff report (threshold 0.15, ignore anti-aliasing)');
 console.log('='.repeat(60));
 for (const r of results) {
-  console.log(`${r.file}: ${r.pct}% diff (${r.diffPixels}/${r.totalPixels} px)`);
+  if (r.mismatch) {
+    console.log(`${r.file}: DIMENSION MISMATCH`);
+  } else {
+    console.log(`${r.file}: ${r.pct}% diff (${r.diffPixels}/${r.totalPixels} px)`);
+  }
 }
 console.log('='.repeat(60));
 console.log(`Average diff: ${(totalPct / results.length).toFixed(3)}%`);

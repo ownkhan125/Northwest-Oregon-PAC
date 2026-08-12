@@ -87,6 +87,7 @@ export default function About() {
               src={whoWeAreImage}
               alt="Portland Aerial Tram gliding above the Willamette River with the city and mountains in the distance"
               fill
+              quality={70}
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover object-[center_40%]"
             />
