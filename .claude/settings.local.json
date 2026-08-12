@@ -268,7 +268,10 @@
       "Bash(curl -s http://localhost:3100/)",
       "Bash(mkdir -p /c/temp)",
       "Bash(awk 'match\\($0, /<head>/\\){h=1} h==1{print; if\\(match\\($0,\"</head>\"\\)\\){exit}}')",
-      "Bash(tasklist)"
+      "Bash(tasklist)",
+      "Bash(file /c/Users/General/Documents/GitHub/\"Northwest Oregon PAC\"/src/assets/images/*.png)",
+      "Bash(PORT=3100 npx next start -p 3100)",
+      "Bash(npx --yes lighthouse http://localhost:3100 --preset=perf --form-factor=mobile --output=json --output-path=/c/tmp/lighthouse-after.json --quiet --chrome-flags=\"--headless=new\")"
     ]
   }
 }
