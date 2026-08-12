@@ -7,12 +7,10 @@ import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import Input from '@/components/ui/input'
 import Textarea from '@/components/ui/textarea'
-import Checkbox from '@/components/ui/checkbox'
 import Select from '@/components/ui/select'
 import { EASE } from '@/animations/variants'
 import { pac } from '@/data/pac'
-import { A2P_SMS_UPDATES_LABEL, A2P_SMS_PROMO_LABEL } from '@/lib/form-constants'
-import SmsDisclaimer from '@/components/ui/sms-disclaimer'
+import SmsOptIn from '@/components/ui/sms-optin'
 import { validateContactFields } from '@/lib/form'
 import { formatPhoneInput } from '@/lib/phone'
 
@@ -33,14 +31,12 @@ export default function ContactPage() {
   const [errorMessage, setErrorMessage] = useState('')
   const [fieldErrors, setFieldErrors] = useState({})
   const [phone, setPhone] = useState('')
-  const [smsUpdates, setSmsUpdates] = useState(false)
-  const [smsPromo, setSmsPromo] = useState(false)
+  const [smsOptin, setSmsOptin] = useState(false)
   const hasPhone = phone.trim().length > 0
 
   useEffect(() => {
     if (!hasPhone) {
-      setSmsUpdates(false)
-      setSmsPromo(false)
+      setSmsOptin(false)
     }
   }, [hasPhone])
 
@@ -69,8 +65,8 @@ export default function ContactPage() {
       zip_code: String(fd.get('zip_code') || '').trim(),
       help_topic: String(fd.get('help_topic') || '').trim(),
       message: String(fd.get('message') || '').trim(),
-      sms_updates: smsUpdates ? 'Yes' : 'No',
-      sms_promo: smsPromo ? 'Yes' : 'No',
+      sms_updates: smsOptin ? 'Yes' : 'No',
+      sms_promo: smsOptin ? 'Yes' : 'No',
     }
 
     const errs = validateContactFields(payload, {
@@ -105,8 +101,7 @@ export default function ContactPage() {
       setStatus('success')
       form.reset()
       setPhone('')
-      setSmsUpdates(false)
-      setSmsPromo(false)
+      setSmsOptin(false)
     } catch {
       setErrorMessage('Network error. Please try again.')
       setStatus('error')
@@ -302,21 +297,11 @@ export default function ContactPage() {
                           Enter a phone number above to opt in to SMS messages.
                         </p>
                       )}
-                      <Checkbox
-                        name="sms_updates"
-                        label={A2P_SMS_UPDATES_LABEL}
-                        checked={smsUpdates}
-                        onChange={(e) => setSmsUpdates(e.target.checked)}
+                      <SmsOptIn
+                        checked={smsOptin}
+                        onChange={(e) => setSmsOptin(e.target.checked)}
                         disabled={!hasPhone}
                       />
-                      <Checkbox
-                        name="sms_promo"
-                        label={A2P_SMS_PROMO_LABEL}
-                        checked={smsPromo}
-                        onChange={(e) => setSmsPromo(e.target.checked)}
-                        disabled={!hasPhone}
-                      />
-                      <SmsDisclaimer />
                     </div>
 
                     {status === 'error' && (
