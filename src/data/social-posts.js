@@ -1,1102 +1,1079 @@
 // Northwest Oregon PAC — social post gallery content.
+// Generated from Figma (file W6hYGzhNXnfDI2g6Hh7xlZ) via the REST API.
 // Each post's `html` (and carousel `slides[]`) is the single source of truth;
 // the /social-posts index renders those files directly as scaled iframes so
 // thumbnails never drift from the opened version.
 
 export const feedPosts = [
   {
-    "id": "feed-01-hero",
+    "id": "feed-01-a-stronger-voice-for-northwest-oregon",
     "n": 1,
-    "tag": "Introduction",
+    "tag": "Issues",
     "title": "A Stronger Voice for Northwest Oregon",
-    "caption": "Northwest Oregon deserves leaders who listen, communities that thrive, and policies that put people first.\n\nNorthwest Oregon PAC exists to support…",
+    "caption": "Prosperity • Accountability • Opportunity",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-01-hero.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-01-a-stronger-voice-for-northwest-oregon.html?v=fig2026"
   },
   {
-    "id": "feed-02-region-voice",
+    "id": "feed-02-our-region-our-voice",
     "n": 2,
     "tag": "Introduction",
-    "title": "Our Region. Our Voice.",
-    "caption": "For too long, many Northwest Oregon communities have felt overlooked during election season.\n\nWe believe every community deserves competitive candi…",
+    "title": "Our Region. Our Voice",
+    "caption": "Hillsboro · Forest Grove · Astoria · Tillamook · Columbia County",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-02-region-voice.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-02-our-region-our-voice.html?v=fig2026"
   },
   {
-    "id": "feed-03-prosperity",
+    "id": "feed-03-prosperity-starts-here",
     "n": 3,
     "tag": "Issues",
-    "title": "Prosperity Starts Here.",
-    "caption": "Strong communities begin with strong local economies.\n\nWhen small businesses succeed, families benefit.\n\nWhen entrepreneurs grow, communities grow.…",
+    "title": "Prosperity Starts Here",
+    "caption": "Prosperity Starts Here.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-03-prosperity.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-03-prosperity-starts-here.html?v=fig2026"
   },
   {
-    "id": "feed-04-accountability",
+    "id": "feed-04-accountability-matters",
     "n": 4,
-    "tag": "Issues",
-    "title": "Accountability Matters.",
-    "caption": "We believe transparency, responsible spending, and measurable results help build public trust.\n\nGood government isn't about bigger government. It's…",
+    "tag": "Values",
+    "title": "Accountability Matters",
+    "caption": "Accountability Matters.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-04-accountability.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-04-accountability-matters.html?v=fig2026"
   },
   {
-    "id": "feed-05-meet-nw-oregon",
+    "id": "feed-05-meet-northwest-oregon",
     "n": 5,
     "tag": "Introduction",
-    "title": "Meet Northwest Oregon.",
-    "caption": "Our region is more than a place on the map.\n\nIt's working families. Small businesses. Farmers. Teachers. Veterans. Students. Volunteers. Communitie…",
+    "title": "Meet Northwest Oregon",
+    "caption": "Meet Northwest Oregon.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-05-meet-nw-oregon.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-05-meet-northwest-oregon.html?v=fig2026"
   },
   {
-    "id": "feed-06-we-exist",
+    "id": "feed-06-we-exist-for-northwest-oregon",
     "n": 6,
     "tag": "Introduction",
-    "title": "We Exist For NorthWest Oregon",
-    "caption": "We believe every voter deserves a meaningful choice.\n\nThat's why Northwest Oregon PAC works to strengthen campaigns, recruit leaders, organize volu…",
+    "title": "We Exist For Northwest Oregon",
+    "caption": "",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-06-we-exist.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-06-we-exist-for-northwest-oregon.html?v=fig2026"
   },
   {
-    "id": "feed-07-small-actions",
+    "id": "feed-07-small-actions-big-impact",
     "n": 7,
     "tag": "Get involved",
-    "title": "Small Actions. Big Impact.",
-    "caption": "Every conversation. Every volunteer. Every donation. Every supporter.\n\nTogether, these small actions create stronger campaigns and stronger communi…",
+    "title": "Small Actions. Big Impact",
+    "caption": "Small Actions. Big Impact.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-07-small-actions.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-07-small-actions-big-impact.html?v=fig2026"
   },
   {
-    "id": "feed-08-building-tomorrow",
+    "id": "feed-08-building-tomorrow-starting-today",
     "n": 8,
-    "tag": "Introduction",
-    "title": "Building Tomorrow. Starting Today.",
-    "caption": "Strong political organizations aren't built overnight.\n\nThey grow through relationships, trust, community involvement, and people willing to step f…",
+    "tag": "Vision",
+    "title": "Building Tomorrow. Starting Today",
+    "caption": "Building Tomorrow. Starting Today.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-08-building-tomorrow.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-08-building-tomorrow-starting-today.html?v=fig2026"
   },
   {
-    "id": "feed-09-what-matters",
+    "id": "feed-09-northwest-oregon-what-matters-most",
     "n": 9,
     "tag": "Values",
-    "title": "What Matters Most?",
-    "caption": "Every community has different priorities.\n\nWe want to hear yours.\n\nWhich issue matters most?\n\n✔ Public Safety\n✔ Small Business\n✔ Education\n✔ Afford…",
+    "title": "Northwest Oregon. What Matters Most?",
+    "caption": "Government Accountability",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-09-what-matters.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-09-northwest-oregon-what-matters-most.html?v=fig2026"
   },
   {
-    "id": "feed-10-economic-opportunity",
+    "id": "feed-10-economic-opportunity-isn-t-created-by-go",
     "n": 10,
-    "tag": "Beliefs",
-    "title": "Economic opportunity isn't created by government",
-    "caption": "A thriving economy starts with people who are willing to build, invest, and create opportunity.\n\nNorthwest Oregon PAC believes families and small b…",
+    "tag": "Issues",
+    "title": "Economic opportunity isn't created by government,",
+    "caption": "it is created by the people willing to work hard, take risks, and build something meaningful. Our job is to remove barriers so they can succeed.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-10-economic-opportunity.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-10-economic-opportunity-isn-t-created-by-go.html?v=fig2026"
   },
   {
-    "id": "feed-11-responsible-government",
+    "id": "feed-11-responsible-government-starts-with-respo",
     "n": 11,
     "tag": "Beliefs",
-    "title": "Responsible government starts with responsible stewardship.",
-    "caption": "Public trust grows when government is transparent, accountable, and focused on delivering results.\n\nNorthwest Oregon PAC believes every public doll…",
+    "title": "Responsible government starts with responsible stewardship",
+    "caption": "Every taxpayer deserves transparency, measurable results, and confidence that public dollars are being spent wisely.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-11-responsible-government.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-11-responsible-government-starts-with-respo.html?v=fig2026"
   },
   {
-    "id": "feed-12-future-belongs",
+    "id": "feed-12-the-future-belongs-to-those-who-lead",
     "n": 12,
-    "tag": "Get involved",
-    "title": "The Future Belongs to Those Who Show Up.",
-    "caption": "Communities become stronger when people participate.\n\nWhether it's volunteering, supporting a candidate, attending an event, or simply staying info…",
+    "tag": "Vision",
+    "title": "The Future Belongs to Those Who Lead",
+    "caption": "The Future Belongs to Those Who Lead.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-12-future-belongs.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-12-the-future-belongs-to-those-who-lead.html?v=fig2026"
   },
   {
-    "id": "feed-13-prosperity-policy",
+    "id": "feed-13-economic-prosperity-small-business",
     "n": 13,
     "tag": "Issues",
     "title": "Economic Prosperity & Small Business",
-    "caption": "Strong communities are built by local business owners, skilled workers, entrepreneurs, farmers, and families who invest in their communities every…",
+    "caption": "We support policies that encourage entrepreneurship, strengthen local businesses, reduce unnecessary barriers, and create an environment where innovation and hard work can thrive across Northwest Oregon.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-13-prosperity-policy.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-13-economic-prosperity-small-business.html?v=fig2026"
   },
   {
-    "id": "feed-14-safe-neighborhoods",
+    "id": "feed-14-safe-neighborhoods-give-children-room-to",
     "n": 14,
     "tag": "Issues",
-    "title": "Safe neighborhoods give children room to dream.",
-    "caption": "People should feel safe where they live, work, and raise their families.\n\nWe believe public safety isn't just about responding to crime, it's about…",
+    "title": "Safe neighborhoods give children room to dream, families peace of mind, and local businesses the confidence to grow. Public safety is where opportunity begins",
+    "caption": "Safe neighborhoods give children room to dream, families peace of mind, and local businesses the confidence to grow. Public safety is where opportunity begins.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-14-safe-neighborhoods.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-14-safe-neighborhoods-give-children-room-to.html?v=fig2026"
   },
   {
-    "id": "feed-15-something-bigger",
+    "id": "feed-15-be-part-of-something-bigger-for-oregon",
     "n": 15,
     "tag": "Get involved",
     "title": "Be Part of Something Bigger for Oregon",
-    "caption": "Northwest Oregon's future belongs to the people who choose to participate.\n\nVolunteer. Support a candidate. Attend an event. Start a conversation.…",
+    "caption": "",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-15-something-bigger.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-15-be-part-of-something-bigger-for-oregon.html?v=fig2026"
   },
   {
-    "id": "feed-16-practical-solutions",
+    "id": "feed-16-northwest-oregon",
     "n": 16,
-    "tag": "Issues",
-    "title": "Practical solutions for public safety",
-    "caption": "Every family deserves to feel confident walking through their neighborhood.\n\nEvery business deserves customers who feel comfortable visiting.\n\nEver…",
+    "tag": "Vision",
+    "title": "Northwest Oregon",
+    "caption": "We support practical solutions that help law enforcement, first responders, and local communities work together to reduce crime, improve public spaces, and keep Northwest Oregon a place where families and businesses can grow.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-16-practical-solutions.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-16-northwest-oregon.html?v=fig2026"
   },
   {
-    "id": "feed-17-education-workforce",
+    "id": "feed-17-education-workforce-development",
     "n": 17,
     "tag": "Issues",
     "title": "Education & Workforce Development",
-    "caption": "Northwest Oregon's students need classrooms that inspire learning, career pathways that reflect today's economy, and the skills to succeed wherever…",
+    "caption": "Preparing today's students for tomorrow's opportunities",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-17-education-workforce.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-17-education-workforce-development.html?v=fig2026"
   },
   {
-    "id": "feed-18-worth-fighting-for",
+    "id": "feed-18-northwest",
     "n": 18,
-    "tag": "Beliefs",
-    "title": "Northwest Oregon is worth fighting for.",
-    "caption": "For years, Northwest Oregon has been treated like an afterthought.\n\nWhen races are considered \"unwinnable,\" investment disappears. Volunteers disap…",
+    "tag": "Vision",
+    "title": "Northwest",
+    "caption": "Oregon is worth fighting for.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-18-worth-fighting-for.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-18-northwest.html?v=fig2026"
   },
   {
-    "id": "feed-19-every-dollar-here",
+    "id": "feed-19-every-dollar-raised-here-helps-build-cam",
     "n": 19,
     "tag": "Support",
-    "title": "Every dollar raised here...",
-    "caption": "This PAC wasn't created to send resources somewhere else.\n\nIt was created to keep them here.\n\nEvery contribution, endorsement, and conversation hel…",
+    "title": "Every dollar raised here helps build campaigns here",
+    "caption": "Every dollar raised here helps build campaigns here.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-19-every-dollar-here.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-19-every-dollar-raised-here-helps-build-cam.html?v=fig2026"
   },
   {
-    "id": "feed-20-more-than-promises",
+    "id": "feed-20-northwest-oregon-deserves-more-than-camp",
     "n": 20,
-    "tag": "Beliefs",
-    "title": "Northwest Oregon deserves more than campaign promises.",
-    "caption": "Election cycles come and go. Communities remain.\n\nThat's why our work isn't measured only by wins on Election Night.\n\nIt's measured by stronger loc…",
+    "tag": "Values",
+    "title": "Northwest Oregon deserves more than campaign promises",
+    "caption": "Northwest Oregon deserves more than campaign promises.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-20-more-than-promises.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-20-northwest-oregon-deserves-more-than-camp.html?v=fig2026"
   },
   {
-    "id": "feed-21-affordable-energy",
+    "id": "feed-21-affordable-energy-isn-t-just-an-economic",
     "n": 21,
     "tag": "Issues",
-    "title": "Affordable energy isn't just an economic issue.",
-    "caption": "Energy touches nearly every part of our daily lives, from heating our homes to keeping small businesses open.\n\nNorthwest Oregon PAC believes famili…",
+    "title": "Affordable energy isn't just an economic issue. It's a family issue. When utility bills rise, every household feels it. Oregon can protect both affordability and reliability",
+    "caption": "Affordable energy isn't just an economic issue. It's a family issue. When utility bills rise, every household feels it. Oregon can protect both affordability and reliability.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-21-affordable-energy.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-21-affordable-energy-isn-t-just-an-economic.html?v=fig2026"
   },
   {
-    "id": "feed-22-powered-by-innovation",
+    "id": "feed-22-northwest-oregon-has-always-been-powered",
     "n": 22,
     "tag": "Issues",
-    "title": "Northwest Oregon has always been powered by innovation.",
-    "caption": "Northwest Oregon's strength has always come from its ability to adapt.\n\nOur communities have never relied on a single industry or a single solution…",
+    "title": "Northwest Oregon has always been powered by innovation",
+    "caption": "From hydropower and forestry to agriculture, manufacturing, and emerging technologies, our region succeeds when we build on the resources that make Oregon unique.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-22-powered-by-innovation.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-22-northwest-oregon-has-always-been-powered.html?v=fig2026"
   },
   {
-    "id": "feed-23-priorities-nw",
+    "id": "feed-23-our-priorities-aren-t-chosen-in-salem",
     "n": 23,
-    "tag": "Issues",
-    "title": "Our priorities aren't chosen in Salem.",
-    "caption": "Every priority we champion begins with listening.\n\nThe issues facing Astoria aren't always the same as those in Hillsboro or Tillamook—but across N…",
+    "tag": "Values",
+    "title": "Our priorities aren't chosen in Salem",
+    "caption": "Our priorities aren't chosen in Salem.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-23-priorities-nw.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-23-our-priorities-aren-t-chosen-in-salem.html?v=fig2026"
   },
   {
-    "id": "feed-24-foundation",
+    "id": "feed-24-we-re-building-the-foundation-for-northw",
     "n": 24,
-    "tag": "About",
-    "title": "We're building the foundation for Northwest Oregon's future.",
-    "caption": "Campaigns begin and end. Communities don't.\n\nThat's why Northwest Oregon PAC was created with a long-term vision: to develop leaders, support compe…",
+    "tag": "Vision",
+    "title": "We're building the foundation for Northwest Oregon's future",
+    "caption": "We're building the foundation for Northwest Oregon's future.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-24-foundation.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-24-we-re-building-the-foundation-for-northw.html?v=fig2026"
   },
   {
-    "id": "feed-25-candidates-intro",
+    "id": "feed-25-candidates-standing-up-for-northwest-ore",
     "n": 25,
-    "tag": "Candidates",
-    "title": "Candidates standing up for Northwest Oregon.",
-    "caption": "Leadership is about earning trust, solving problems, and showing up for your community.\n\nOver the coming weeks, we'll introduce the candidates we'r…",
+    "tag": "Vision",
+    "title": "Candidates standing up for Northwest Oregon",
+    "caption": "Candidates standing up for Northwest Oregon.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-25-candidates-intro.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-25-candidates-standing-up-for-northwest-ore.html?v=fig2026"
   },
   {
     "id": "feed-26-mark-norman",
     "n": 26,
     "tag": "Candidates",
-    "title": "The candidate. Mark Norman.",
-    "caption": "We're proud to support Mark Norman because he understands responsibility, leadership, and the importance of putting community first.\n\nGet to know M…",
+    "title": "Mark Norman",
+    "caption": "Oregon House District 27",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-26-mark-norman.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-26-mark-norman.html?v=fig2026"
   },
   {
     "id": "feed-27-brian-schimmel",
     "n": 27,
     "tag": "Candidates",
-    "title": "Meet Brian Schimmel",
-    "caption": "Communities deserve leaders who listen first, work hard, and stay connected to the people they represent. Brian Schimmel is committed to bringing t…",
+    "title": "Brian Schimmel",
+    "caption": "Focused on practical leadership, local priorities, and serving the people of District 29.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-27-brian-schimmel.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-27-brian-schimmel.html?v=fig2026"
   },
   {
-    "id": "feed-28-barbara-kahl",
-    "hidden": true,
+    "id": "feed-28-ciatta-thompson",
     "n": 28,
     "tag": "Candidates",
-    "title": "Meet Dr. Barbara Kahl",
-    "caption": "Dr. Barbara Kahl is committed to serving Northwest Oregon with practical leadership and a focus on the issues that matter most to local communities…",
+    "title": "Ciatta Thompson",
+    "caption": "Committed to practical leadership, stronger communities, and putting the people of District 33 first.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-28-barbara-kahl.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-28-ciatta-thompson.html?v=fig2026"
   },
   {
-    "id": "feed-29-ciatta-thompson",
+    "id": "feed-29-randall-fryer",
     "n": 29,
     "tag": "Candidates",
-    "title": "Ciatta Thompson",
-    "caption": "We're proud to support Ciatta Thompson for Oregon House District 33 and her commitment to building a stronger future for Northwest Oregon.\n\nLearn m…",
+    "title": "Randall Fryer",
+    "caption": "Bringing decades of professional experience and a commitment to thoughtful, community- focused leadership.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-29-ciatta-thompson.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-29-randall-fryer.html?v=fig2026"
   },
   {
-    "id": "feed-30-randall-fryer",
+    "id": "feed-30-run-for-office",
     "n": 30,
     "tag": "Candidates",
-    "title": "Randall Fryer",
-    "caption": "Good leadership starts with integrity, experience, and a willingness to serve.\n\nWe're proud to support Randall Fryer as he runs for Oregon House Di…",
+    "title": "Run for office",
+    "caption": "Northwest Oregon needs good leaders.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-30-randall-fryer.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-30-run-for-office.html?v=fig2026"
   },
   {
-    "id": "feed-31-run-for-office",
+    "id": "feed-31-support-northwest-oregon-s-future",
     "n": 31,
-    "tag": "Get involved",
-    "title": "Northwest Oregon needs good leaders. Run for office.",
-    "caption": "The next great leader doesn't always come from politics.\n\nSometimes they're a teacher, veteran, business owner, healthcare professional, farmer, or…",
-    "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-31-run-for-office.html?v=ms53qnqy"
-  },
-  {
-    "id": "feed-32-volunteer",
-    "n": 32,
     "tag": "Support",
-    "title": "Support Northwest Oregon's Future.",
-    "caption": "Join us and be part of the movement and donate for Oregon's future.\n\n#NorthwestOregonPAC #GetInvolved #Grassroots #CommunityLeadership #Election2026",
+    "title": "Support Northwest Oregon's Future",
+    "caption": "Paid for by Northwest Oregon PAC #25045.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-32-volunteer.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-31-support-northwest-oregon-s-future.html?v=fig2026"
   },
   {
-    "id": "feed-33-where-you-fit",
+    "id": "feed-32-here",
+    "n": 32,
+    "tag": "Candidates",
+    "title": "Here",
+    "caption": "Candidate Recruitment Starts",
+    "format": "feed",
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-32-here.html?v=fig2026"
+  },
+  {
+    "id": "feed-33-campaign-events-that-matter",
     "n": 33,
-    "tag": "Get involved",
-    "title": "Where do you fit in?",
-    "caption": "Whether you have a few hours a month or want to get involved every week, your time can help strengthen campaigns and communities across Northwest O…",
+    "tag": "Vision",
+    "title": "Campaign Events That Matter",
+    "caption": "",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-33-where-you-fit.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-33-campaign-events-that-matter.html?v=fig2026"
   },
   {
-    "id": "feed-34-campaigns-gather",
+    "id": "feed-34-meet-the-candidates",
     "n": 34,
-    "tag": "Get involved",
-    "title": "Campaigns work when people gather.",
-    "caption": "The best conversations don't happen online, they happen in our communities.\n\nJoin us at upcoming meet-and-greets, volunteer nights, community discu…",
+    "tag": "Candidates",
+    "title": "Meet the Candidates",
+    "caption": "",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-34-campaigns-gather.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-34-meet-the-candidates.html?v=fig2026"
   },
   {
-    "id": "feed-35-host-meetup",
+    "id": "feed-35-strong-communities-begin-with-strong-lea",
     "n": 35,
-    "tag": "Get involved",
-    "title": "Host a meet-up.",
-    "caption": "One conversation can inspire an entire neighborhood.\n\nWhether it's a living room gathering, a local business, or a community space, hosting an even…",
+    "tag": "Vision",
+    "title": "Strong Communities Begin with Strong Leadership",
+    "caption": "Strong Communities Begin with Strong Leadership.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-35-host-meetup.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-35-strong-communities-begin-with-strong-lea.html?v=fig2026"
   },
   {
-    "id": "feed-36-not-one-candidate",
+    "id": "feed-36-stay-informed",
     "n": 36,
-    "tag": "Introduction",
-    "title": "Strong Communities Begin with Strong Leadership.",
-    "caption": "Northwest Oregon's future depends on leaders willing to serve and supporters willing to invest in strong campaigns.\n\nTogether, we're building lasti…",
+    "tag": "Get involved",
+    "title": "Stay informed",
+    "caption": "",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-36-not-one-candidate.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-36-stay-informed.html?v=fig2026"
   },
   {
-    "id": "feed-37-stay-informed",
+    "id": "feed-37-have-a-question-reach-the-pac-directly",
     "n": 37,
     "tag": "Get involved",
-    "title": "Stay informed. Stay involved.",
-    "caption": "Change starts with staying informed.\n\nFollow Northwest Oregon PAC for campaign updates, community events, candidate announcements, and opportunitie…",
+    "title": "Have a question? Reach the PAC directly",
+    "caption": "10700 SW Beaverton-Hillsdale Highway, Suite 212, Beaverton, Oregon 97005",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-37-stay-informed.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-37-have-a-question-reach-the-pac-directly.html?v=fig2026"
   },
   {
-    "id": "feed-38-contact",
+    "id": "feed-38-real",
     "n": 38,
-    "tag": "About",
-    "title": "Have a question? Reach the PAC directly.",
-    "caption": "Questions about candidates, fundraising, campaign support, or running for office?\n\nReach out directly. We want Northwest Oregon residents to know w…",
+    "tag": "Vision",
+    "title": "real",
+    "caption": "Northwest Oregon should never lose its voice simply because others decided the region was too difficult to compete for. No community should be conceded before voters have a",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-38-contact.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-38-real.html?v=fig2026"
   },
   {
-    "id": "feed-39-why-we-are-here",
+    "id": "feed-39-invest-in-northwest-oregon",
     "n": 39,
-    "tag": "Beliefs",
-    "title": "Why We Are Here",
-    "caption": "We believe in restoring political competition, support credible candidates, and give practical voters across Northwest Oregon a lasting regional vo…",
+    "tag": "Support",
+    "title": "Invest in Northwest Oregon",
+    "caption": "Every contribution helps strengthen local campaigns, recruit future leaders, support grassroots volunteers, and expand our reach across the region.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-39-why-we-are-here.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-39-invest-in-northwest-oregon.html?v=fig2026"
   },
   {
-    "id": "feed-40-invest",
+    "id": "feed-40-every-contribution-builds-a-stronger-nor",
     "n": 40,
     "tag": "Support",
-    "title": "Invest in Northwest Oregon.",
-    "caption": "Your contribution helps us support candidates, organize volunteers, communicate with voters, and continue building the long-term infrastructure Nor…",
+    "title": "Every contribution builds a stronger Northwest Oregon",
+    "caption": "Every contribution builds a stronger Northwest Oregon.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-40-invest.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-40-every-contribution-builds-a-stronger-nor.html?v=fig2026"
   },
   {
-    "id": "feed-41-donate-ladder",
+    "id": "feed-41-what-does-your-support-make-possible",
     "n": 41,
-    "tag": "Support",
-    "title": "Every contribution builds a stronger Northwest Oregon.",
-    "caption": "Every dollar stays focused on Northwest Oregon, supporting candidates, organizing volunteers, and reaching voters across our region.\n\nWhether it's…",
-    "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-41-donate-ladder.html?v=ms53qnqy"
-  },
-  {
-    "id": "feed-42-support-makes-possible",
-    "n": 42,
-    "tag": "Support",
+    "tag": "Candidates",
     "title": "What does your support make possible?",
-    "caption": "Together, we're building the foundation for stronger campaigns and stronger communities across Northwest Oregon.\n\nBe part of the movement.\n\n#Northw…",
+    "caption": "Candidate recruitment",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-42-support-makes-possible.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-41-what-does-your-support-make-possible.html?v=fig2026"
   },
   {
-    "id": "feed-43-not-boardrooms",
+    "id": "feed-42-strong-campaigns",
+    "n": 42,
+    "tag": "Vision",
+    "title": "STRONG CAMPAIGNS",
+    "caption": "Northwest Oregon PAC helps qualified candidates build campaigns that can compete.",
+    "format": "feed",
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-42-strong-campaigns.html?v=fig2026"
+  },
+  {
+    "id": "feed-43-we-don-t-measure-success-by-headlines",
     "n": 43,
-    "tag": "Support",
-    "title": "Strong Campaigns Are Built With Strong Support.",
-    "caption": "Running for office requires more than determination.\n\nIt requires resources.\n\nStrategy.\n\nCommunications.\n\nCommunity support.\n\nNorthwest Oregon PAC…",
+    "tag": "Values",
+    "title": "We don't measure success by headlines",
+    "caption": "A stronger political organization can make a difference for generations.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-43-not-boardrooms.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-43-we-don-t-measure-success-by-headlines.html?v=fig2026"
   },
   {
-    "id": "feed-44-not-headlines",
+    "id": "feed-44-this-is-bigger-than-one-election",
     "n": 44,
-    "tag": "Beliefs",
-    "title": "We don't measure success by headlines.",
-    "caption": "One election can make a difference.\n\nA stronger political organization can make a difference for generations.\n\nThat's the commitment we're making t…",
+    "tag": "Vision",
+    "title": "This is bigger than one election",
+    "caption": "Every candidate has the opportunity to compete",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-44-not-headlines.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-44-this-is-bigger-than-one-election.html?v=fig2026"
   },
   {
-    "id": "feed-45-bigger-than-one",
+    "id": "feed-45-raised-here-invested-here",
     "n": 45,
-    "tag": "Beliefs",
-    "title": "This is bigger than one election.",
-    "caption": "Northwest Oregon PAC was created with a long-term vision.\n\nTo recruit leaders. Support campaigns. Grow volunteers. Strengthen communities.\n\nAnd ens…",
+    "tag": "Support",
+    "title": "Raised here. Invested here",
+    "caption": "Local contributions help Northwest Oregon candidates organize, communicate, and compete. Local support gives credible candidates the tools to build stronger campaigns. Help strengthen the region.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-45-bigger-than-one.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-45-raised-here-invested-here.html?v=fig2026"
   },
   {
-    "id": "feed-46-raised-invested",
+    "id": "feed-46-every-voter-deserves-a",
     "n": 46,
-    "tag": "Support",
-    "title": "Raised here. Invested here.",
-    "caption": "Northwest Oregon should not have to wait for outside organizations to decide our races matter. Local support gives credible candidates the tools to…",
+    "tag": "Beliefs",
+    "title": "Every voter deserves a",
+    "caption": "decided before the first ballot is cast. Political competition encourages candidates to listen, explain their positions, and earn voters' trust. No Northwest Oregon district should be",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-46-raised-invested.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-46-every-voter-deserves-a.html?v=fig2026"
   },
   {
-    "id": "feed-47-real-choice",
+    "id": "feed-47-a-credible-candidate-should-never-have-t",
     "n": 47,
-    "tag": "Beliefs",
-    "title": "Every voter deserves a real choice.",
-    "caption": "Political competition encourages candidates to listen, explain their positions, and earn voters' trust.\n\nNo Northwest Oregon district should be wri…",
+    "tag": "Vision",
+    "title": "A credible candidate should never have to build alone",
+    "caption": "That is the infrastructure Northwest Oregon PAC is building.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-47-real-choice.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-47-a-credible-candidate-should-never-have-t.html?v=fig2026"
   },
   {
-    "id": "feed-48-not-alone",
+    "id": "feed-48-let-builders-build",
     "n": 48,
-    "tag": "About",
-    "title": "A credible candidate should never have to build alone.",
-    "caption": "Running a serious campaign takes more than determination. It takes organization, resources, and people willing to help.\n\nThat is the infrastructure…",
+    "tag": "Vision",
+    "title": "Let builders build",
+    "caption": "Northwest Oregon succeeds when entrepreneurs can start, hire, invest, and grow without unnecessary barriers. Local employers create jobs, support families, and keep communities moving. Public policy should make it easier, not harder, for responsible businesses to succeed.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-48-not-alone.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-48-let-builders-build.html?v=fig2026"
   },
   {
-    "id": "feed-49-let-builders-build",
+    "id": "feed-49-the-person-saying-someone-should-do-some",
     "n": 49,
-    "tag": "Issues",
-    "title": "Let builders build.",
-    "caption": "Local employers create jobs, support families, and keep communities moving.\n\nPublic policy should make it easier, not harder, or responsible busine…",
+    "tag": "Get involved",
+    "title": "The person saying, \"Someone should do something\" might be the person who",
+    "caption": "START THE CONVERSATION",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-49-let-builders-build.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-49-the-person-saying-someone-should-do-some.html?v=fig2026"
   },
   {
-    "id": "feed-50-someone-should",
+    "id": "feed-50-campaigns-come-and-go-but-communities-re",
     "n": 50,
-    "tag": "Get involved",
-    "title": "\"Someone should do something\" might be the person who should run.",
-    "caption": "Northwest Oregon needs capable residents who understand their communities and are ready to serve.\n\nExploring a campaign begins with a conversation,…",
+    "tag": "Values",
+    "title": "Campaigns come and go, but communities remain",
+    "caption": "Our communities deserve more than attention every four years.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-50-someone-should.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-50-campaigns-come-and-go-but-communities-re.html?v=fig2026"
   },
   {
-    "id": "feed-51-every-four-years",
+    "id": "feed-51-someone-s",
     "n": 51,
-    "tag": "Beliefs",
-    "title": "Our communities deserve more than attention every four years.",
-    "caption": "Campaigns come and go, but communities remain. Northwest Oregon deserves leaders who stay engaged long after the votes are counted.\n\n#NorthwestOreg…",
+    "tag": "Vision",
+    "title": "someone's",
+    "caption": "Supporting local business is supporting Northwest Oregon.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-51-every-four-years.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-51-someone-s.html?v=fig2026"
   },
   {
-    "id": "feed-52-open-sign",
+    "id": "feed-52-we-are-building",
     "n": 52,
-    "tag": "Issues",
-    "title": "Every \"Open\" sign represents someone's dream.",
-    "caption": "When local businesses succeed, they create jobs, strengthen neighborhoods, and invest back into the communities they call home.\n\nSupporting local b…",
-    "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-52-open-sign.html?v=ms53qnqy"
-  },
-  {
-    "id": "feed-53-we-are-building",
-    "n": 53,
-    "tag": "About",
+    "tag": "Vision",
     "title": "We are building",
-    "caption": "Success is measured by what Northwest Oregon looks like five years from now.\n\nThat's the work we're committed to.\n\n#NorthwestOregonPAC #Grassroots…",
+    "caption": "More campaign support",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-53-we-are-building.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-52-we-are-building.html?v=fig2026"
   },
   {
-    "id": "feed-54-deserves-to-compete",
+    "id": "feed-53-northwest-oregon-deserves-to-compete",
+    "n": 53,
+    "tag": "Values",
+    "title": "Northwest Oregon deserves to compete",
+    "caption": "We're working to ensure Northwest Oregon communities always have candidates, conversations, and real choices.",
+    "format": "feed",
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-53-northwest-oregon-deserves-to-compete.html?v=fig2026"
+  },
+  {
+    "id": "feed-54-support-the-leaders-shaping-northwest-or",
     "n": 54,
-    "tag": "Beliefs",
-    "title": "Northwest Oregon deserves to compete.",
-    "caption": "We're working to ensure Northwest Oregon communities always have candidates, conversations, and real choices.\n\nJoin us in this movement.\n\n#Northwes…",
+    "tag": "Candidates",
+    "title": "Support the leaders shaping Northwest Oregon's future",
+    "caption": "Everyone has something valuable to contribute. Every contribution strengthens campaigns, messaging, and candidate recruitment.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-54-deserves-to-compete.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-54-support-the-leaders-shaping-northwest-or.html?v=fig2026"
   },
   {
-    "id": "feed-55-more-than-vote",
+    "id": "feed-55-we-are-building-beyond-election-day",
     "n": 55,
-    "tag": "Get involved",
-    "title": "Your community needs more than your vote.",
-    "caption": "Whether you volunteer once a month or once a week, your involvement helps strengthen campaigns and connect communities.\n\nEveryone has something val…",
+    "tag": "Vision",
+    "title": "We are building beyond Election Day",
+    "caption": "More candidates · More campaign support · Stronger campaigns · A lasting regional voice",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-55-more-than-vote.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-55-we-are-building-beyond-election-day.html?v=fig2026"
   },
   {
-    "id": "feed-56-beyond-election-day",
+    "id": "feed-56-here-s-what-your-support-makes-possible",
     "n": 56,
-    "tag": "About",
-    "title": "We are building beyond Election Day.",
-    "caption": "One election cannot build everything Northwest Oregon needs.\n\nOur goal is long-term: develop candidates, organize supporters, strengthen outreach,…",
+    "tag": "Vision",
+    "title": "Here's what your support makes possible",
+    "caption": "Here's what your support makes possible.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-56-beyond-election-day.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-56-here-s-what-your-support-makes-possible.html?v=fig2026"
   },
   {
-    "id": "feed-57-support-list",
+    "id": "feed-57-this-is-our-promise",
     "n": 57,
-    "tag": "Support",
-    "title": "Here's what your support makes possible.",
-    "caption": "Every contribution directly supports the work happening across Northwest Oregon, not somewhere else.\n\nThank you for helping build stronger campaign…",
+    "tag": "Values",
+    "title": "This is our promise",
+    "caption": "We'll keep recruiting.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-57-support-list.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-57-this-is-our-promise.html?v=fig2026"
   },
   {
-    "id": "feed-58-our-promise",
+    "id": "feed-58-will-this-make-our-communities",
     "n": 58,
-    "tag": "About",
-    "title": "This is our promise.",
-    "caption": "Northwest Oregon PAC was founded with a long-term commitment, to strengthen our region, support principled candidates, and ensure our communities a…",
+    "tag": "Vision",
+    "title": "Will this make our communities",
+    "caption": "Every decision we make is guided by one question. If the answer is yes, we'll fight for it.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-58-our-promise.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-58-will-this-make-our-communities.html?v=fig2026"
   },
   {
-    "id": "feed-59-comes-first",
+    "id": "feed-59-the-decisions-we-make-today-shape-the-op",
     "n": 59,
-    "tag": "Beliefs",
-    "title": "Northwest Oregon comes first.",
-    "caption": "Our focus has never been on headlines or politics for politics' sake. It's about strengthening Northwest Oregon through practical leadership, compe…",
+    "tag": "Vision",
+    "title": "The decisions we make today shape the opportunities our children inherit tomorrow",
+    "caption": "The decisions we make today shape the opportunities our children inherit tomorrow.",
     "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-59-comes-first.html?v=ms53qnqy"
-  },
-  {
-    "id": "feed-60-decisions-today",
-    "n": 60,
-    "tag": "Beliefs",
-    "title": "The decisions we make today shape the opportunities our children inherit tomorrow.",
-    "caption": "Every policy, every campaign, and every volunteer effort should leave the next generation with more opportunity than the last.\n\nThat's the future w…",
-    "format": "feed",
-    "size": "1080 × 1080",
-    "html": "/social/feed/feed-60-decisions-today.html?v=ms53qnqy"
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-59-the-decisions-we-make-today-shape-the-op.html?v=fig2026"
   }
 ]
 
 export const storyPosts = [
   {
-    "id": "story-01-attention",
+    "id": "story-01-we-re-building-something-that-lasts",
     "n": 1,
-    "tag": "Introduction",
-    "title": "Attention every four years.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "We're building something that lasts",
+    "caption": "We're building something that lasts.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-01-attention.html?v=ms53qnqy"
+    "html": "/social/stories/story-01-we-re-building-something-that-lasts.html?v=fig2026"
   },
   {
-    "id": "story-02-your-future",
+    "id": "story-02-your-community-your-voice-your-future",
     "n": 2,
-    "tag": "Get involved",
-    "title": "Your future.",
-    "caption": "",
+    "tag": "Introduction",
+    "title": "Your community. Your voice. Your future",
+    "caption": "Your community. Your voice. Your future.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-02-your-future.html?v=ms53qnqy"
+    "html": "/social/stories/story-02-your-community-your-voice-your-future.html?v=fig2026"
   },
   {
-    "id": "story-03-voted-poll",
+    "id": "story-03-have-you-voted-in-a-local-election-recen",
     "n": 3,
-    "tag": "Get involved",
+    "tag": "Vision",
     "title": "Have you voted in a local election recently?",
     "caption": "",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-03-voted-poll.html?v=ms53qnqy"
+    "html": "/social/stories/story-03-have-you-voted-in-a-local-election-recen.html?v=fig2026"
   },
   {
-    "id": "story-04-strong-communities",
+    "id": "story-04-strong-campaigns-don-t-happen-by-chance",
     "n": 4,
-    "tag": "Get involved",
-    "title": "Strong communities don't happen by chance.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "Strong campaigns don't happen by chance",
+    "caption": "Strong campaigns don't happen by chance.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-04-strong-communities.html?v=ms53qnqy"
+    "html": "/social/stories/story-04-strong-campaigns-don-t-happen-by-chance.html?v=fig2026"
   },
   {
-    "id": "story-05-every-dollar",
+    "id": "story-05-every-dollar-raised-stays-focused-on-str",
     "n": 5,
-    "tag": "Support",
-    "title": "Every dollar raised.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "Every dollar raised stays focused on strengthening Northwest Oregon",
+    "caption": "Every dollar raised stays focused on strengthening Northwest Oregon.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-05-every-dollar.html?v=ms53qnqy"
+    "html": "/social/stories/story-05-every-dollar-raised-stays-focused-on-str.html?v=fig2026"
   },
   {
-    "id": "story-06-recruiting",
+    "id": "story-06-could-it-be-you",
     "n": 6,
-    "tag": "Candidates",
-    "title": "We're recruiting tomorrow's community leaders today.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "Could it be you?",
+    "caption": "We're recruiting tomorrow's community leaders today.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-06-recruiting.html?v=ms53qnqy"
+    "html": "/social/stories/story-06-could-it-be-you.html?v=fig2026"
   },
   {
     "id": "story-07-hope-support-heard",
     "n": 7,
-    "tag": "Values",
-    "title": "Hope. Support. Heard.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "Hope. Support. Heard",
+    "caption": "Hope. Support. Heard.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-07-hope-support-heard.html?v=ms53qnqy"
+    "html": "/social/stories/story-07-hope-support-heard.html?v=fig2026"
   },
   {
-    "id": "story-08-every-volunteer",
+    "id": "story-08-every-contribution-strengthens-campaigns",
     "n": 8,
-    "tag": "Get involved",
-    "title": "Every volunteer makes a difference.",
-    "caption": "",
+    "tag": "Support",
+    "title": "Every contribution strengthens campaigns",
+    "caption": "Every contribution strengthens campaigns.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-08-every-volunteer.html?v=ms53qnqy"
+    "html": "/social/stories/story-08-every-contribution-strengthens-campaigns.html?v=fig2026"
   },
   {
-    "id": "story-09-issue-poll",
+    "id": "story-09-what-s-most-important-for-northwest-oreg",
     "n": 9,
-    "tag": "Values",
+    "tag": "Vision",
     "title": "What's most important for Northwest Oregon?",
     "caption": "",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-09-issue-poll.html?v=ms53qnqy"
+    "html": "/social/stories/story-09-what-s-most-important-for-northwest-oreg.html?v=fig2026"
   },
   {
-    "id": "story-10-campaigns-remain",
+    "id": "story-10-campaigns-come-and-go-strong-communities",
     "n": 10,
-    "tag": "Beliefs",
-    "title": "Campaigns come and go. Strong communities remain.",
-    "caption": "",
-    "format": "story",
-    "size": "1080 × 1920",
-    "html": "/social/stories/story-10-campaigns-remain.html?v=ms53qnqy"
-  },
-  {
-    "id": "story-11-one-conversation",
-    "n": 11,
-    "tag": "Get involved",
-    "title": "One conversation can change a campaign.",
-    "caption": "",
-    "format": "story",
-    "size": "1080 × 1920",
-    "html": "/social/stories/story-11-one-conversation.html?v=ms53qnqy"
-  },
-  {
-    "id": "story-12-leadership-listening",
-    "n": 12,
     "tag": "Values",
-    "title": "Leadership starts with listening.",
-    "caption": "",
+    "title": "Campaigns come and go. Strong communities remain",
+    "caption": "That's why we're investing for the long term.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-12-leadership-listening.html?v=ms53qnqy"
+    "html": "/social/stories/story-10-campaigns-come-and-go-strong-communities.html?v=fig2026"
   },
   {
-    "id": "story-13-future-belongs",
+    "id": "story-11-one-conversation-can-change-a-campaign",
+    "n": 11,
+    "tag": "Vision",
+    "title": "One conversation can change a campaign",
+    "caption": "One leader, one campaign can inspire a community.",
+    "format": "story",
+    "size": "1080 × 1920",
+    "html": "/social/stories/story-11-one-conversation-can-change-a-campaign.html?v=fig2026"
+  },
+  {
+    "id": "story-12-leadership-starts-with-listening",
+    "n": 12,
+    "tag": "Vision",
+    "title": "Leadership starts with listening",
+    "caption": "Leadership starts with listening.",
+    "format": "story",
+    "size": "1080 × 1920",
+    "html": "/social/stories/story-12-leadership-starts-with-listening.html?v=fig2026"
+  },
+  {
+    "id": "story-13-the-future-of-northwest-oregon-belongs-t",
     "n": 13,
-    "tag": "Introduction",
-    "title": "The future of Northwest Oregon belongs to those willing to build it.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "The future of Northwest Oregon belongs to those willing to build it",
+    "caption": "The future of Northwest Oregon belongs to those willing to build it.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-13-future-belongs.html?v=ms53qnqy"
+    "html": "/social/stories/story-13-the-future-of-northwest-oregon-belongs-t.html?v=fig2026"
   },
   {
-    "id": "story-14-every-town",
+    "id": "story-14-we-believe-every-town-deserves-a-voice",
     "n": 14,
     "tag": "Beliefs",
-    "title": "We believe every town deserves a voice.",
-    "caption": "",
+    "title": "We believe every town deserves a voice",
+    "caption": "We believe every town deserves a voice.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-14-every-town.html?v=ms53qnqy"
+    "html": "/social/stories/story-14-we-believe-every-town-deserves-a-voice.html?v=fig2026"
   },
   {
-    "id": "story-15-issue-question",
+    "id": "story-15-what-issue-matters-most-in-your-communit",
     "n": 15,
     "tag": "Values",
     "title": "What issue matters most in your community?",
     "caption": "",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-15-issue-question.html?v=ms53qnqy"
+    "html": "/social/stories/story-15-what-issue-matters-most-in-your-communit.html?v=fig2026"
   },
   {
-    "id": "story-16-supporting-local",
+    "id": "story-16-supporting-local-candidates",
     "n": 16,
-    "tag": "Introduction",
-    "title": "Supporting local candidates.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "Supporting local candidates",
+    "caption": "Supporting local candidates.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-16-supporting-local.html?v=ms53qnqy"
+    "html": "/social/stories/story-16-supporting-local-candidates.html?v=fig2026"
   },
   {
-    "id": "story-17-dont-need-office",
+    "id": "story-17-you-don-t-have-to-run-for-office-to-make",
     "n": 17,
-    "tag": "Get involved",
-    "title": "You don't have to run for office to make a difference.",
-    "caption": "",
+    "tag": "Candidates",
+    "title": "You don't have to run for office to make a difference",
+    "caption": "You don't have to run for office to make a difference.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-17-dont-need-office.html?v=ms53qnqy"
+    "html": "/social/stories/story-17-you-don-t-have-to-run-for-office-to-make.html?v=fig2026"
   },
   {
-    "id": "story-18-neighbours-thrive",
+    "id": "story-18-strong-leadership-and-long-term-investme",
     "n": 18,
-    "tag": "Introduction",
-    "title": "Communities thrive when neighbours work together.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "Strong leadership and long-term investment help communities thrive",
+    "caption": "Strong leadership and long-term investment help communities thrive.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-18-neighbours-thrive.html?v=ms53qnqy"
+    "html": "/social/stories/story-18-strong-leadership-and-long-term-investme.html?v=fig2026"
   },
   {
-    "id": "story-19-volunteer-poll",
+    "id": "story-19-would-you-consider-supporting-a-local-ca",
     "n": 19,
-    "tag": "Get involved",
-    "title": "Would you volunteer for a local campaign?",
+    "tag": "Vision",
+    "title": "Would you consider supporting a local candidate?",
     "caption": "",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-19-volunteer-poll.html?v=ms53qnqy"
+    "html": "/social/stories/story-19-would-you-consider-supporting-a-local-ca.html?v=fig2026"
   },
   {
-    "id": "story-20-every-donation",
+    "id": "story-20-every-donation-helps-build-long-term-pol",
     "n": 20,
-    "tag": "Support",
-    "title": "Every donation helps build long-term political infrastructure across Northwest Oregon.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "Every donation helps build long-term political infrastructure across Northwest Oregon",
+    "caption": "Every donation helps build long-term political infrastructure across Northwest Oregon.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-20-every-donation.html?v=ms53qnqy"
+    "html": "/social/stories/story-20-every-donation-helps-build-long-term-pol.html?v=fig2026"
   },
   {
-    "id": "story-21-leadership-not-titles",
+    "id": "story-21-leadership-isn-t-about-titles",
     "n": 21,
-    "tag": "Values",
-    "title": "Leadership isn't about titles.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "Leadership isn't about titles",
+    "caption": "Leadership isn't about titles.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-21-leadership-not-titles.html?v=ms53qnqy"
+    "html": "/social/stories/story-21-leadership-isn-t-about-titles.html?v=fig2026"
   },
   {
-    "id": "story-22-worth-investing",
+    "id": "story-22-northwest-oregon-is-worth-investing-in",
     "n": 22,
-    "tag": "Support",
-    "title": "Northwest Oregon is worth investing in.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "Northwest Oregon is worth investing in",
+    "caption": "Northwest Oregon is worth investing in.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-22-worth-investing.html?v=ms53qnqy"
+    "html": "/social/stories/story-22-northwest-oregon-is-worth-investing-in.html?v=fig2026"
   },
   {
     "id": "story-23-small-businesses",
     "n": 23,
     "tag": "Issues",
-    "title": "Small businesses. Strong families. Thriving communities.",
-    "caption": "",
+    "title": "Small businesses",
+    "caption": "Thriving communities.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-23-small-businesses.html?v=ms53qnqy"
+    "html": "/social/stories/story-23-small-businesses.html?v=fig2026"
   },
   {
     "id": "story-24-brian-schimmel",
     "n": 24,
     "tag": "Candidates",
-    "title": "Meet Brian Schimmel.",
-    "caption": "",
+    "title": "Brian Schimmel",
+    "caption": "Candidate for Oregon House District 29",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-24-brian-schimmel.html?v=ms53qnqy"
+    "html": "/social/stories/story-24-brian-schimmel.html?v=fig2026"
   },
   {
     "id": "story-25-randall-fryer",
     "n": 25,
     "tag": "Candidates",
     "title": "Randall Fryer",
-    "caption": "",
+    "caption": "Oregon House District 28",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-25-randall-fryer.html?v=ms53qnqy"
+    "html": "/social/stories/story-25-randall-fryer.html?v=fig2026"
   },
   {
-    "id": "story-26-run-question",
+    "id": "story-26-would-you-ever-consider-running-for-loca",
     "n": 26,
     "tag": "Candidates",
     "title": "Would you ever consider running for local office?",
-    "caption": "",
+    "caption": "Tell us why or why not.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-26-run-question.html?v=ms53qnqy"
+    "html": "/social/stories/story-26-would-you-ever-consider-running-for-loca.html?v=fig2026"
   },
   {
     "id": "story-27-mark-norman",
     "n": 27,
     "tag": "Candidates",
-    "title": "Northwest Oregon PAC proudly supports Mark Norman.",
-    "caption": "",
+    "title": "Mark Norman",
+    "caption": "Because stronger communities deserve dedicated representation.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-27-mark-norman.html?v=ms53qnqy"
+    "html": "/social/stories/story-27-mark-norman.html?v=fig2026"
   },
   {
-    "id": "story-28-barbara-kahl",
-    "hidden": true,
+    "id": "story-28-ciatta-thompson",
     "n": 28,
     "tag": "Candidates",
-    "title": "Have you met Barbara Kahl?",
-    "caption": "",
+    "title": "Ciatta Thompson",
+    "caption": "Every contribution helps strengthen campaigns.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-28-barbara-kahl.html?v=ms53qnqy"
+    "html": "/social/stories/story-28-ciatta-thompson.html?v=fig2026"
   },
   {
-    "id": "story-29-ciatta-thompson",
+    "id": "story-29-together-we-re-building-a-stronger-north",
     "n": 29,
-    "tag": "Candidates",
-    "title": "Every volunteer strengthens a campaign.",
-    "caption": "",
+    "tag": "Vision",
+    "title": "Together, we're building a stronger Northwest Oregon",
+    "caption": "Together, we're building a stronger Northwest Oregon.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-29-ciatta-thompson.html?v=ms53qnqy"
-  },
-  {
-    "id": "story-30-hope-support-heard",
-    "n": 30,
-    "tag": "Values",
-    "title": "Hope · Support · Heard",
-    "caption": "",
-    "format": "story",
-    "size": "1080 × 1920",
-    "html": "/social/stories/story-30-hope-support-heard.html?v=ms53qnqy"
+    "html": "/social/stories/story-29-together-we-re-building-a-stronger-north.html?v=fig2026"
   }
 ]
 
 export const carouselPosts = [
   {
-    "id": "carousel-01-meet-the-pac",
+    "id": "carousel-01-building-strong-campaigns-together",
     "n": 1,
-    "tag": "Introduction",
-    "title": "For Northwest Oregon",
-    "caption": "Northwest Oregon PAC was created because too many communities across our region have been overlooked and underinvested in. We believe every voter deserves real choices, every community deserves to be heard, and every credible candidate deserves the opportunity to compete.\n\nWe're building a stronger future for Northwest Oregon.\n\n#NorthwestOregonPAC #NorthwestOregon #GrassrootsLeadership #Election2026",
+    "tag": "Vision",
+    "title": "Building strong campaigns together",
+    "caption": "Building strong campaigns together.",
     "format": "carousel",
-    "size": "1080 × 1080",
-    "slideCount": 7,
+    "size": "1080 × 1110",
+    "slideCount": 4,
     "slides": [
-      "/social/carousels/carousel-01-meet-the-pac/slide-1.html?v=ms53qnqy",
-      "/social/carousels/carousel-01-meet-the-pac/slide-2.html?v=ms53qnqy",
-      "/social/carousels/carousel-01-meet-the-pac/slide-3.html?v=ms53qnqy",
-      "/social/carousels/carousel-01-meet-the-pac/slide-4.html?v=ms53qnqy",
-      "/social/carousels/carousel-01-meet-the-pac/slide-5.html?v=ms53qnqy",
-      "/social/carousels/carousel-01-meet-the-pac/slide-6.html?v=ms53qnqy",
-      "/social/carousels/carousel-01-meet-the-pac/slide-7.html?v=ms53qnqy"
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-04.html?v=fig2026"
     ]
   },
   {
-    "id": "carousel-02-competitive-elections",
+    "id": "carousel-02-small-business-drives-northwest-oregon",
     "n": 2,
     "tag": "Issues",
-    "title": "Competitive Elections Build Better Communities",
-    "caption": "Healthy democracy depends on competitive elections. When candidates earn support instead of expecting it, communities benefit through stronger ideas, greater accountability, and more engaged voters.\n\nNorthwest Oregon deserves elections where every community has a voice and every voter has a meaningful choice.\n\n#CompetitiveElections #NorthwestOregonPAC #NorthwestOregon #Election2026",
+    "title": "Small business drives Northwest Oregon",
+    "caption": "Small business drives Northwest Oregon.",
     "format": "carousel",
-    "size": "1080 × 1080",
-    "slideCount": 7,
+    "size": "1080 × 1110",
+    "slideCount": 4,
     "slides": [
-      "/social/carousels/carousel-02-competitive-elections/slide-1.html?v=ms53qnqy",
-      "/social/carousels/carousel-02-competitive-elections/slide-2.html?v=ms53qnqy",
-      "/social/carousels/carousel-02-competitive-elections/slide-3.html?v=ms53qnqy",
-      "/social/carousels/carousel-02-competitive-elections/slide-4.html?v=ms53qnqy",
-      "/social/carousels/carousel-02-competitive-elections/slide-5.html?v=ms53qnqy",
-      "/social/carousels/carousel-02-competitive-elections/slide-6.html?v=ms53qnqy",
-      "/social/carousels/carousel-02-competitive-elections/slide-7.html?v=ms53qnqy"
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-04.html?v=fig2026"
     ]
   },
   {
-    "id": "carousel-03-where-donation-goes",
+    "id": "carousel-03-meet-northwest-oregon-pac",
     "n": 3,
-    "tag": "Support",
-    "title": "Where Does Your Donation Go?",
-    "caption": "Every contribution to Northwest Oregon PAC helps strengthen the foundation for long-term success. From recruiting candidates and organizing volunteers to supporting voter outreach and campaign communications, your investment stays focused on Northwest Oregon.\n\nTogether, we're building lasting political infrastructure that serves our communities, not just during election season, but every year.\n\nMake your contribution today and help strengthen Northwest Oregon.\n\n#DonateLocal #NorthwestOregonPAC #GrassrootsSupport #NorthwestOregon #Election2026 #SupportLocalLeadership",
-    "format": "carousel",
-    "size": "1080 × 1080",
-    "slideCount": 7,
-    "slides": [
-      "/social/carousels/carousel-03-where-donation-goes/slide-1.html?v=ms53qnqy",
-      "/social/carousels/carousel-03-where-donation-goes/slide-2.html?v=ms53qnqy",
-      "/social/carousels/carousel-03-where-donation-goes/slide-3.html?v=ms53qnqy",
-      "/social/carousels/carousel-03-where-donation-goes/slide-4.html?v=ms53qnqy",
-      "/social/carousels/carousel-03-where-donation-goes/slide-5.html?v=ms53qnqy",
-      "/social/carousels/carousel-03-where-donation-goes/slide-6.html?v=ms53qnqy",
-      "/social/carousels/carousel-03-where-donation-goes/slide-7.html?v=ms53qnqy"
-    ]
-  },
-  {
-    "id": "carousel-04-next-community-leader",
-    "n": 4,
-    "tag": "Candidates",
-    "title": "Could You Be the Next Community Leader?",
-    "caption": "If you've ever thought, \"Someone should step up,\" maybe it's time to have a conversation. Running for office starts with listening, not with paperwork.\n\nKnow someone who would make a great local leader? Tag them below.\n\n#NorthwestOregonPAC #RunForOffice #Leadership #CommunityLeadership #NorthwestOregon #Election2026 #ServeYourCommunity #FutureLeaders",
-    "format": "carousel",
-    "size": "1080 × 1080",
-    "slideCount": 6,
-    "slides": [
-      "/social/carousels/carousel-04-next-community-leader/slide-1.html?v=ms53qnqy",
-      "/social/carousels/carousel-04-next-community-leader/slide-2.html?v=ms53qnqy",
-      "/social/carousels/carousel-04-next-community-leader/slide-3.html?v=ms53qnqy",
-      "/social/carousels/carousel-04-next-community-leader/slide-4.html?v=ms53qnqy",
-      "/social/carousels/carousel-04-next-community-leader/slide-5.html?v=ms53qnqy",
-      "/social/carousels/carousel-04-next-community-leader/slide-6.html?v=ms53qnqy"
-    ]
-  },
-  {
-    "id": "carousel-05-every-volunteer",
-    "n": 5,
-    "tag": "Get involved",
-    "title": "Every Volunteer Makes a Difference",
-    "caption": "Whether you can help for one afternoon or one season, there's a place for you.\n\nSend us a message to learn how you can get involved.\n\n#Volunteer #NorthwestOregonPAC #Grassroots #CommunityLeadership #Election2026",
-    "format": "carousel",
-    "size": "1080 × 1080",
-    "slideCount": 5,
-    "slides": [
-      "/social/carousels/carousel-05-every-volunteer/slide-1.html?v=ms53qnqy",
-      "/social/carousels/carousel-05-every-volunteer/slide-2.html?v=ms53qnqy",
-      "/social/carousels/carousel-05-every-volunteer/slide-3.html?v=ms53qnqy",
-      "/social/carousels/carousel-05-every-volunteer/slide-4.html?v=ms53qnqy",
-      "/social/carousels/carousel-05-every-volunteer/slide-5.html?v=ms53qnqy"
-    ]
-  },
-  {
-    "id": "carousel-06-what-we-believe",
-    "n": 6,
-    "tag": "Beliefs",
-    "title": "WHAT WE BELIEVE",
-    "caption": "Everything Northwest Oregon PAC does is rooted in one goal: strengthening our region through principled leadership, community involvement, and long-term investment in competitive local elections.\n\nOur mission isn't just about winning campaigns—it's about building stronger communities for years to come.\n\nWhich of these principles resonates with you the most? Tell us in the comments.\n\n#NorthwestOregonPAC #NorthwestOregon",
-    "format": "carousel",
-    "size": "1080 × 1080",
-    "slideCount": 6,
-    "slides": [
-      "/social/carousels/carousel-06-what-we-believe/slide-1.html?v=ms53qnqy",
-      "/social/carousels/carousel-06-what-we-believe/slide-2.html?v=ms53qnqy",
-      "/social/carousels/carousel-06-what-we-believe/slide-3.html?v=ms53qnqy",
-      "/social/carousels/carousel-06-what-we-believe/slide-4.html?v=ms53qnqy",
-      "/social/carousels/carousel-06-what-we-believe/slide-5.html?v=ms53qnqy",
-      "/social/carousels/carousel-06-what-we-believe/slide-6.html?v=ms53qnqy"
-    ]
-  },
-  {
-    "id": "carousel-07-why-local",
-    "n": 7,
-    "tag": "Beliefs",
-    "title": "Why Local Elections Matter",
-    "caption": "The elections that shape our daily lives often receive the least attention. We're working to change that by building stronger local campaigns, supporting principled candidates, and encouraging more people to get involved across Northwest Oregon.\n\nShare this with someone who believes local leadership matters.\n\n#NorthwestOregonPAC #LocalLeadership #CommunityFirst #Election2026",
-    "format": "carousel",
-    "size": "1080 × 1080",
-    "slideCount": 5,
-    "slides": [
-      "/social/carousels/carousel-07-why-local/slide-1.html?v=ms53qnqy",
-      "/social/carousels/carousel-07-why-local/slide-2.html?v=ms53qnqy",
-      "/social/carousels/carousel-07-why-local/slide-3.html?v=ms53qnqy",
-      "/social/carousels/carousel-07-why-local/slide-4.html?v=ms53qnqy",
-      "/social/carousels/carousel-07-why-local/slide-5.html?v=ms53qnqy"
-    ]
-  },
-  {
-    "id": "carousel-08-meet-the-pac",
-    "n": 8,
-    "tag": "About",
+    "tag": "Introduction",
     "title": "Meet Northwest Oregon PAC",
-    "caption": "Northwest Oregon PAC is focused on one mission: helping our region build stronger candidates, stronger campaigns, and stronger communities. Everything we do is centered on creating lasting opportunities for Northwest Oregon, not just during election season, but every day.\n\n#NorthwestOregonPAC #NorthwestOregon #CommunityLeadership",
+    "caption": "Meet Northwest Oregon PAC.",
     "format": "carousel",
-    "size": "1080 × 1080",
+    "size": "1080 × 1110",
     "slideCount": 5,
     "slides": [
-      "/social/carousels/carousel-08-meet-the-pac/slide-1.html?v=ms53qnqy",
-      "/social/carousels/carousel-08-meet-the-pac/slide-2.html?v=ms53qnqy",
-      "/social/carousels/carousel-08-meet-the-pac/slide-3.html?v=ms53qnqy",
-      "/social/carousels/carousel-08-meet-the-pac/slide-4.html?v=ms53qnqy",
-      "/social/carousels/carousel-08-meet-the-pac/slide-5.html?v=ms53qnqy"
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-05.html?v=fig2026"
     ]
   },
   {
-    "id": "carousel-09-small-business",
+    "id": "carousel-04-why-local-elections-matter",
+    "n": 4,
+    "tag": "Vision",
+    "title": "Why local elections matter",
+    "caption": "Why local elections matter.",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 5,
+    "slides": [
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-05.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-05-what-we-believe",
+    "n": 5,
+    "tag": "Beliefs",
+    "title": "What we believe",
+    "caption": "The principles that guide Northwest Oregon PAC.",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 6,
+    "slides": [
+      "/social/carousels/carousel-05-what-we-believe/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-05-what-we-believe/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-05-what-we-believe/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-05-what-we-believe/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-05-what-we-believe/slide-05.html?v=fig2026",
+      "/social/carousels/carousel-05-what-we-believe/slide-06.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-06-strong-campaigns-require-strong-support",
+    "n": 6,
+    "tag": "Vision",
+    "title": "Strong campaigns require strong support",
+    "caption": "Strong campaigns require strong support.",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 5,
+    "slides": [
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-05.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-07-could-you-be-the-next-leader",
+    "n": 7,
+    "tag": "Vision",
+    "title": "Could you be the next leader?",
+    "caption": "",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 6,
+    "slides": [
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-05.html?v=fig2026",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-06.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-08-where-your-donation-goes",
+    "n": 8,
+    "tag": "Vision",
+    "title": "Where your donation goes",
+    "caption": "",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 5,
+    "slides": [
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-05.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-09-competitive-elections",
     "n": 9,
     "tag": "Issues",
-    "title": "Small Business Drives Northwest Oregon",
-    "caption": "Our communities are stronger when entrepreneurs, family-owned businesses, and local employers have the opportunity to succeed. Supporting economic opportunity means supporting Northwest Oregon's future.\n\n#SupportLocal #NorthwestOregonPAC #SmallBusiness #EconomicOpportunity #NorthwestOregon #CommunityGrowth #ShopLocal",
+    "title": "Competitive elections",
+    "caption": "Competitive elections build better communities.",
     "format": "carousel",
-    "size": "1080 × 1080",
-    "slideCount": 4,
+    "size": "1080 × 1110",
+    "slideCount": 7,
     "slides": [
-      "/social/carousels/carousel-09-small-business/slide-1.html?v=ms53qnqy",
-      "/social/carousels/carousel-09-small-business/slide-2.html?v=ms53qnqy",
-      "/social/carousels/carousel-09-small-business/slide-3.html?v=ms53qnqy",
-      "/social/carousels/carousel-09-small-business/slide-4.html?v=ms53qnqy"
+      "/social/carousels/carousel-09-competitive-elections/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-09-competitive-elections/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-09-competitive-elections/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-09-competitive-elections/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-09-competitive-elections/slide-05.html?v=fig2026",
+      "/social/carousels/carousel-09-competitive-elections/slide-06.html?v=fig2026",
+      "/social/carousels/carousel-09-competitive-elections/slide-07.html?v=fig2026"
     ]
   },
   {
-    "id": "carousel-10-this-movement",
+    "id": "carousel-10-why-we-exist",
     "n": 10,
-    "tag": "Introduction",
-    "title": "THIS MOVEMENT BELONGS TO NORTHWEST OREGON.",
-    "caption": "Northwest Oregon PAC isn't built by one person or one campaign. It's built by people who believe our communities deserve a stronger voice, competitive elections, and leaders who are invested in the region's future.\n\nEvery action matters, and there's a place for everyone in this movement.\n\nFollow us, get involved, and help build what's next.\n\n#NorthwestOregonPAC #NorthwestOregon #GetInvolved #Grassroots #Leadership #Election2026 #CommunityFirst #PoliticalAction",
+    "tag": "Values",
+    "title": "Why we exist",
+    "caption": "Learn why our work matters.",
     "format": "carousel",
-    "size": "1080 × 1080",
-    "slideCount": 4,
+    "size": "1080 × 1110",
+    "slideCount": 7,
     "slides": [
-      "/social/carousels/carousel-10-this-movement/slide-1.html?v=ms53qnqy",
-      "/social/carousels/carousel-10-this-movement/slide-2.html?v=ms53qnqy",
-      "/social/carousels/carousel-10-this-movement/slide-3.html?v=ms53qnqy",
-      "/social/carousels/carousel-10-this-movement/slide-4.html?v=ms53qnqy"
+      "/social/carousels/carousel-10-why-we-exist/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-05.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-06.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-07.html?v=fig2026"
     ]
   }
 ]
 
 export const socialTags = [
-  'Introduction',
-  'Values',
-  'Issues',
-  'Candidates',
-  'Get involved',
-  'Support',
-  'Beliefs',
-  'About',
+  "Introduction",
+  "Values",
+  "Beliefs",
+  "Issues",
+  "Candidates",
+  "Get involved",
+  "Support",
+  "Vision"
 ]

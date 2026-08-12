@@ -3,100 +3,33 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1080" />
-<title>Feed 27 · Meet Brian Schimmel — Northwest Oregon PAC</title>
-
+<title>Brian Schimmel — Northwest Oregon PAC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../assets/social.css" />
-<link rel="stylesheet" href="../assets/templates.css" />
-<link rel="stylesheet" href="../assets/carousels.css" />
-
 <style>
-  .f27 { position:absolute; inset:0; z-index:5; overflow:hidden;
-    background:
-      radial-gradient(60% 45% at 12% 12%, rgba(224,214,188,.65) 0%, transparent 60%),
-      linear-gradient(180deg, #f8f4ea 0%, #ede4cf 100%);
-  }
-  /* Right portrait pane — vertical crop, cinematic grade */
-  .f27-portrait { position:absolute; z-index:3; top:80px; bottom:80px; right:80px; width:440px; overflow:hidden;
-    box-shadow: 0 40px 90px -40px rgba(46,42,20,.5);
-    border-radius:4px;
-  }
-  .f27-portrait img { width:100%; height:100%; object-fit:cover; object-position:center 25%; filter:saturate(.78) contrast(1.15) brightness(.94); }
-  .f27-portrait::after { content:''; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(20,30,22,.05) 0%, rgba(20,30,22,.25) 65%, rgba(10,16,12,.7) 100%);
-  }
-  /* Portrait bottom band with signature name */
-  .f27-name-band { position:absolute; z-index:4; left:0; right:0; bottom:0; padding:22px 20px 24px; color:#e0d6bc;
-    background:linear-gradient(180deg, rgba(6,10,7,0) 0%, rgba(6,10,7,.86) 55%, rgba(6,10,7,.95) 100%);
-    font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; letter-spacing:-.015em; text-align:center; line-height:1;
-  }
-  .f27-name-band em { display:block; margin-top:4px; font-family:var(--font-mono); font-style:normal; font-size:11px; letter-spacing:.44em; text-transform:uppercase; color:rgba(224,214,188,.75); }
-  /* Portrait corner marks */
-  .f27-portrait::before {
-    content:''; position:absolute; z-index:5; top:12px; left:12px; width:20px; height:20px;
-    border-top:2px solid rgba(224,214,188,.75); border-left:2px solid rgba(224,214,188,.75);
-  }
-  .f27-portrait .cornerBR {
-    position:absolute; z-index:5; bottom:12px; right:12px; width:20px; height:20px;
-    border-bottom:2px solid rgba(224,214,188,.75); border-right:2px solid rgba(224,214,188,.75);
-  }
-  /* Left editorial column */
-  .f27-col { position:absolute; z-index:5; top:96px; left:96px; bottom:96px; right:560px; display:flex; flex-direction:column; }
-  .f27-mast img { height:56px; width:auto; }
-  .f27-kick { margin-top:130px; display:flex; align-items:center; gap:20px; font-family:var(--font-mono); font-size:14px; letter-spacing:.5em; text-transform:uppercase; color:#5a7060; }
-  .f27-kick .bar { width:56px; height:1px; background:currentColor; opacity:.7; }
-  .f27-pre { margin-top:22px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:36px; letter-spacing:-.015em; color:#5a7060; }
-  .f27-h1 { margin-top:6px; font-family:var(--font-display); font-weight:500; font-size:96px; line-height:.94; letter-spacing:-.03em; color:#2e4538; }
-  .f27-office { margin-top:26px; display:inline-flex; align-items:center; padding:12px 20px; border:1.5px solid rgba(46,69,56,.5); border-radius:999px; align-self:flex-start;
-    font-family:var(--font-mono); font-size:14px; letter-spacing:.36em; text-transform:uppercase; color:#2e4538; background:rgba(46,69,56,.04);
-  }
-  .f27-rule { margin-top:30px; height:2px; width:120px; background:#2e4538; opacity:.5; }
-  .f27-bio { margin-top:24px; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:30px; line-height:1.28; letter-spacing:-.01em; color:#2e4538; max-width:460px; }
-  .f27-bio em { font-style:normal; color:#5a7060; }
-  /* Bottom bar */
-  .f27-sig { margin-top:auto; display:flex; align-items:center; gap:16px; font-family:var(--font-mono); font-size:14px; letter-spacing:.44em; text-transform:uppercase; color:rgba(46,69,56,.55); }
-  .f27-sig .bar { width:52px; height:1px; background:currentColor; opacity:.7; }
-  .f27-sig .stars { margin-left:auto; display:flex; gap:12px; opacity:.5; }
-  /* Diagonal accent line between columns */
-  .f27-accent { position:absolute; z-index:4; top:120px; bottom:120px; right:544px; width:1px; background:linear-gradient(180deg, rgba(46,69,56,0), rgba(46,69,56,.5) 20%, rgba(46,69,56,.5) 80%, rgba(46,69,56,0)); }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1080px;height:1349px;background:#2a2a26;overflow:hidden;}
+  .post{position:relative;width:1080px;height:1349px;overflow:hidden;background:rgba(78,96,81,1);
+    font-family:'Source Sans 3',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;}
+  .post p{margin:0;}
 </style>
 </head>
 <body>
-  <div class="canvas s-light">
-    <div class="f27">
-      <div class="f27-portrait">
-        <img src="../assets/img/brian-schimmel.jpg" alt="" />
-        <span class="cornerBR"></span>
-        <div class="f27-name-band">
-          Brian Schimmel
-          <em>Candidate · 2026</em>
-        </div>
-      </div>
-
-      <div class="f27-accent"></div>
-
-      <div class="f27-col">
-        <div class="f27-mast"><img src="../assets/nwop-logo-dark.png" alt="Northwest Oregon PAC" /></div>
-        <div class="f27-kick"><span class="bar"></span></div>
-        <div class="f27-pre">Meet</div>
-        <h1 class="f27-h1">Brian<br/>Schimmel</h1>
-        <div class="f27-office">Oregon House District 29</div>
-        <div class="f27-rule"></div>
-        <p class="f27-bio">Focused on <em>practical leadership,</em> local priorities, and serving the people of District 29.</p>
-        <div class="f27-sig">
-          <span class="bar"></span>
-          <span class="stars" aria-hidden="true">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="#2e4538"><path d="M12 2l2.9 6.7L22 10l-5.5 4.6L18.2 22 12 18.3 5.8 22l1.7-7.4L2 10l7.1-1.3L12 2z"/></svg>
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <div class="grain"></div>
-  </div>
+<div class="post">
+<div style="position:absolute;left:0px;top:0px;width:1080px;height:1350px;background:rgba(78,96,81,1);border-radius:6.0px;"></div>
+<img src="../posts/img/8_7430.jpg" alt="" style="position:absolute;left:620px;top:0px;width:460px;height:1350px;object-fit:cover;opacity:1;">
+<div style="position:absolute;left:620px;top:0px;width:130px;height:1350px;background:linear-gradient(90.0deg, rgba(78,96,81,1.0) 0.0%, rgba(78,96,81,0.0) 100.0%);opacity:1;"></div>
+<img src="../assets/nwop-logo-light.png" alt="Northwest Oregon PAC" style="position:absolute;left:88px;top:88px;width:162px;height:48px;object-fit:contain;object-position:left center;">
+<div style="position:absolute;left:88px;top:553px;width:447px;height:108px;display:flex;flex-direction:column;justify-content:center;overflow:visible;"><p style="font-family:'Lora', Georgia, serif;font-size:24.0px;font-weight:400;color:rgba(241,238,228,1.0);letter-spacing:0px;line-height:36.0px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">Focused on practical leadership, local
+priorities, and serving the people of
+District 29.</p></div>
+<div style="position:absolute;left:88px;top:854px;width:452px;height:81px;background:rgba(224,214,188,1);"></div>
+<div style="position:absolute;left:116px;top:870px;width:291px;height:49px;display:flex;flex-direction:column;justify-content:center;overflow:visible;"><p style="font-family:'Lora', Georgia, serif;font-size:38.0px;font-weight:700;color:rgba(42,42,38,1.0);letter-spacing:0px;line-height:48.63999938964844px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">Brian Schimmel</p></div>
+<div style="position:absolute;left:118px;top:989px;width:376px;height:31px;display:flex;flex-direction:column;justify-content:center;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:22.0px;font-weight:700;color:rgba(241,238,228,1.0);letter-spacing:0px;line-height:31.328001022338867px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">Candidate for Oregon House District 29</p></div>
+<div style="position:absolute;left:88px;top:1084px;width:373px;height:34px;display:flex;flex-direction:column;justify-content:center;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:24.0px;font-weight:700;color:rgba(241,238,228,0.72);letter-spacing:5.0px;line-height:34.176002502441406px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">NORTHWEST OREGON PAC</p></div>
+<div style="position:absolute;left:88px;top:247px;width:395px;height:156px;display:flex;flex-direction:column;justify-content:center;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:78.0px;font-weight:700;color:rgba(224,214,188,1.0);letter-spacing:-2.5999999046325684px;line-height:78.0px;text-align:left;white-space:pre-wrap;font-style:normal;text-transform:uppercase;margin:0;">The candidate.</p></div>
+<div style="position:absolute;left:449px;top:0px;width:280px;height:840px;display:flex;flex-direction:column;justify-content:center;opacity:0.550000011920929;overflow:visible;"><p style="font-family:'Lora', Georgia, serif;font-size:156.0px;font-weight:700;color:rgba(60,74,64,1.0);letter-spacing:-6.0px;line-height:260.0px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0;">SCHIMMEL</p></div>
+</div>
 </body>
 </html>
