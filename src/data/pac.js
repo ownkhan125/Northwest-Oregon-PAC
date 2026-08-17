@@ -28,7 +28,7 @@ export const pac = {
     name: 'Cynthia Sawyer',
     role: 'Program Director',
     email: 'info@northwestoregon.com',
-    phone: '503-490-4139',
+    phone: '+1 971-521-6173',
     // After-hours contact
     afterHoursName: 'Christina Buehler',
     afterHoursPhone: '1-503-330-7496',
