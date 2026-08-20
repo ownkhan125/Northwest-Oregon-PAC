@@ -325,16 +325,16 @@ function Lightbox({ post, onClose }) {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.98 }}
         transition={{ duration: 0.45, ease: EASE }}
-        className="flex max-h-full flex-col items-center gap-4"
+        className="flex max-h-full flex-col items-center gap-4 overflow-y-auto overscroll-contain"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex w-full items-center justify-between gap-4">
-          <div className="min-w-0">
+        <div className="flex w-full items-start justify-between gap-4">
+          <div className="min-w-0 flex-1">
             <div className="text-sand/70 font-mono text-[10px] tracking-[0.28em] uppercase">
               {post.tag} · {post.size}
               {isCarousel && ` · Slide ${slide + 1}/${post.slideCount}`}
             </div>
-            <div className="font-display text-cream truncate text-lg font-medium tracking-tight sm:text-xl">
+            <div className="font-display text-cream line-clamp-2 max-w-[52ch] text-base leading-snug font-medium tracking-tight break-words sm:text-xl">
               {post.title}
             </div>
           </div>
