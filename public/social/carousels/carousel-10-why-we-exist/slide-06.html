@@ -2,21 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=1080" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>We want a Northwest Oregon where: — Northwest Oregon PAC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet" />
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
-  html,body{width:1080px;height:1080px;background:#2a2a26;overflow:hidden;}
+  html,body{height:100%;background:#2a2a26;overflow:hidden;}
+  body{margin:0;}
+  .stage{position:fixed;top:50%;left:50%;width:1080px;height:1080px;transform:translate(-50%,-50%) scale(var(--s,1));transform-origin:center center;}
   .post{position:relative;width:1080px;height:1080px;overflow:hidden;background:rgba(42,42,38,1);
     font-family:'Source Sans 3',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;}
   .post p{margin:0;}
 </style>
 </head>
 <body>
-<div class="post">
+<div class="stage"><div class="post">
 <div style="position:absolute;left:0px;top:0px;width:1080px;height:1080px;background:rgba(42,42,38,1);"></div>
 <div style="position:absolute;left:0px;top:0px;width:1080px;height:470px;background:linear-gradient(150deg, rgba(47,47,43,1) 0%, rgba(47,47,43,1) 1.9%, rgba(58,58,52,1) 1.9%, rgba(58,58,52,1) 3.8%);"></div>
 <img src="../../posts/img/25_2253.jpg" alt="" style="position:absolute;left:0px;top:0px;width:1080px;height:470px;object-fit:cover;">
@@ -34,6 +36,7 @@
 <div style="position:absolute;left:152px;top:785px;width:304px;height:40px;display:flex;flex-direction:column;justify-content:center;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:28px;font-weight:600;color:rgba(42,42,38,1);letter-spacing:0px;line-height:39.87200164794922px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0">Elections are competitive</p></div>
 <img src="../../posts/img/25_2284.svg" alt="" style="position:absolute;left:88px;top:852px;width:42px;height:42px;">
 <div style="position:absolute;left:152px;top:853px;width:232px;height:40px;display:flex;flex-direction:column;justify-content:center;overflow:visible;"><p style="font-family:'Source Sans 3', system-ui, sans-serif;font-size:28px;font-weight:600;color:rgba(42,42,38,1);letter-spacing:0px;line-height:39.87200164794922px;text-align:left;white-space:pre;font-style:normal;text-transform:none;margin:0">Local voices matter</p></div>
-</div>
+</div></div>
+<script>(function(){var W=1080,H=1080,s=document.querySelector('.stage');function f(){var iw=innerWidth,ih=innerHeight,exact=Math.abs(iw-W)<2&&Math.abs(ih-H)<2;if(window.self!==window.top||exact){s.style.setProperty('--s',Math.min(iw/W,ih/H));return;}var p=Math.max(24,Math.min(iw,ih)*0.05);s.style.setProperty('--s',Math.min((iw-2*p)/W,(ih-2*p)/H));}f();addEventListener('resize',f);})();</script>
 </body>
 </html>
