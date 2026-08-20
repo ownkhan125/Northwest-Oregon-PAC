@@ -334,7 +334,7 @@ function Lightbox({ post, onClose }) {
               {post.tag} · {post.size}
               {isCarousel && ` · Slide ${slide + 1}/${post.slideCount}`}
             </div>
-            <div className="font-display text-cream line-clamp-2 max-w-[52ch] text-base leading-snug font-medium tracking-tight break-words sm:text-xl">
+            <div className="font-display text-cream max-w-[52ch] text-base leading-snug font-medium tracking-tight break-words sm:text-xl">
               {post.title}
             </div>
           </div>
