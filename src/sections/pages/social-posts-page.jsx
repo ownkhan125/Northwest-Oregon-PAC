@@ -370,7 +370,7 @@ function Lightbox({ post, onClose }) {
               type="button"
               onClick={() => setSlide((s) => s - 1)}
               aria-label="Previous slide"
-              className="bg-cream text-ink absolute top-1/2 -left-3 grid h-11 w-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full shadow-xl transition-transform hover:scale-105 sm:-left-5"
+              className="bg-cream/95 text-ink absolute top-1/2 left-3 z-10 grid h-11 w-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full shadow-xl transition-transform hover:scale-105 sm:left-4"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 18l-6-6 6-6" />
@@ -382,7 +382,7 @@ function Lightbox({ post, onClose }) {
               type="button"
               onClick={() => setSlide((s) => s + 1)}
               aria-label="Next slide"
-              className="bg-cream text-ink absolute top-1/2 -right-3 grid h-11 w-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full shadow-xl transition-transform hover:scale-105 sm:-right-5"
+              className="bg-cream/95 text-ink absolute top-1/2 right-3 z-10 grid h-11 w-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full shadow-xl transition-transform hover:scale-105 sm:right-4"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9 6l6 6-6 6" />
