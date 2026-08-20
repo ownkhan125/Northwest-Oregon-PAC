@@ -63,7 +63,7 @@ export const feedPosts = [
     "caption": "",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-06-we-exist-for-northwest-oregon.html?v=fig2026"
+    "html": "/social/feed/feed-06-we-exist-for-northwest-oregon.html?v=fig2026b"
   },
   {
     "id": "feed-07-small-actions-big-impact",
@@ -343,7 +343,7 @@ export const feedPosts = [
     "caption": "",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-34-meet-the-candidates.html?v=fig2026"
+    "html": "/social/feed/feed-34-meet-the-candidates.html?v=fig2026b"
   },
   {
     "id": "feed-35-strong-communities-begin-with-strong-lea",
