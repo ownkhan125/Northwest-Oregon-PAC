@@ -433,6 +433,25 @@ export default function SocialPostsPage() {
   )
   const total = visible.feed.length + visible.story.length + visible.carousel.length
 
+  // Keep the viewport anchored to the filter bar when a filter changes.
+  // Without this, switching to a filter with fewer results shrinks the page
+  // and the browser clamps the old scroll position down to the footer.
+  const sectionRef = useRef(null)
+  const scrollToFilters = () => {
+    const el = sectionRef.current
+    if (!el) return
+    const y = el.getBoundingClientRect().top + window.scrollY - 100
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
+  }
+  const chooseFormat = (key) => {
+    setFormat(key)
+    scrollToFilters()
+  }
+  const chooseTag = (key) => {
+    setTag(key)
+    scrollToFilters()
+  }
+
   const tagCounts = useMemo(() => {
     const counts = { all: feedPosts.length + storyPosts.length + carouselPosts.length }
     for (const t of socialTags) {
@@ -453,7 +472,7 @@ export default function SocialPostsPage() {
         description="Every post you share helps inform your neighbors, strengthen civic engagement, and support a brighter future for Northwest Oregon. Access our collection of share-ready graphics and messages to make an impact today."
       />
 
-      <section className="relative isolate overflow-x-clip pb-24 sm:pb-32">
+      <section ref={sectionRef} className="relative isolate overflow-x-clip pb-24 sm:pb-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           {/* Filter bar */}
           <m.div
@@ -467,7 +486,7 @@ export default function SocialPostsPage() {
                 Format
               </span>
               {FORMATS.map((f) => (
-                <FilterPill key={f.key} active={format === f.key} onClick={() => setFormat(f.key)}>
+                <FilterPill key={f.key} active={format === f.key} onClick={() => chooseFormat(f.key)}>
                   {f.label}
                 </FilterPill>
               ))}
@@ -477,11 +496,11 @@ export default function SocialPostsPage() {
               <span className="text-highlight mr-1 hidden font-mono text-[10px] tracking-[0.3em] uppercase lg:block">
                 Topic
               </span>
-              <FilterPill active={tag === 'all'} onClick={() => setTag('all')}>
+              <FilterPill active={tag === 'all'} onClick={() => chooseTag('all')}>
                 All · {tagCounts.all}
               </FilterPill>
               {socialTags.map((t) => (
-                <FilterPill key={t} active={tag === t} onClick={() => setTag(t)}>
+                <FilterPill key={t} active={tag === t} onClick={() => chooseTag(t)}>
                   {t} · {tagCounts[t]}
                 </FilterPill>
               ))}
