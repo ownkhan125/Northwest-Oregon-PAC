@@ -892,144 +892,27 @@ export const storyPosts = [
 
 export const carouselPosts = [
   {
-    "id": "carousel-01-building-strong-campaigns-together",
+    "id": "carousel-10-why-we-exist",
     "n": 1,
-    "tag": "Vision",
-    "title": "Building strong campaigns together",
-    "caption": "Building strong campaigns together.",
+    "tag": "Values",
+    "title": "Why we exist",
+    "caption": "Learn why our work matters.",
     "format": "carousel",
     "size": "1080 × 1110",
-    "slideCount": 4,
+    "slideCount": 7,
     "slides": [
-      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-04.html?v=fig2026"
-    ]
-  },
-  {
-    "id": "carousel-02-small-business-drives-northwest-oregon",
-    "n": 2,
-    "tag": "Issues",
-    "title": "Small business drives Northwest Oregon",
-    "caption": "Small business drives Northwest Oregon.",
-    "format": "carousel",
-    "size": "1080 × 1110",
-    "slideCount": 4,
-    "slides": [
-      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-04.html?v=fig2026"
-    ]
-  },
-  {
-    "id": "carousel-03-meet-northwest-oregon-pac",
-    "n": 3,
-    "tag": "Introduction",
-    "title": "Meet Northwest Oregon PAC",
-    "caption": "Meet Northwest Oregon PAC.",
-    "format": "carousel",
-    "size": "1080 × 1110",
-    "slideCount": 5,
-    "slides": [
-      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-05.html?v=fig2026"
-    ]
-  },
-  {
-    "id": "carousel-04-why-local-elections-matter",
-    "n": 4,
-    "tag": "Vision",
-    "title": "Why local elections matter",
-    "caption": "Why local elections matter.",
-    "format": "carousel",
-    "size": "1080 × 1110",
-    "slideCount": 5,
-    "slides": [
-      "/social/carousels/carousel-04-why-local-elections-matter/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-04-why-local-elections-matter/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-04-why-local-elections-matter/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-04-why-local-elections-matter/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-04-why-local-elections-matter/slide-05.html?v=fig2026"
-    ]
-  },
-  {
-    "id": "carousel-05-what-we-believe",
-    "n": 5,
-    "tag": "Beliefs",
-    "title": "What we believe",
-    "caption": "The principles that guide Northwest Oregon PAC.",
-    "format": "carousel",
-    "size": "1080 × 1110",
-    "slideCount": 6,
-    "slides": [
-      "/social/carousels/carousel-05-what-we-believe/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-05-what-we-believe/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-05-what-we-believe/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-05-what-we-believe/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-05-what-we-believe/slide-05.html?v=fig2026",
-      "/social/carousels/carousel-05-what-we-believe/slide-06.html?v=fig2026"
-    ]
-  },
-  {
-    "id": "carousel-06-strong-campaigns-require-strong-support",
-    "n": 6,
-    "tag": "Vision",
-    "title": "Strong campaigns require strong support",
-    "caption": "Strong campaigns require strong support.",
-    "format": "carousel",
-    "size": "1080 × 1110",
-    "slideCount": 5,
-    "slides": [
-      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-05.html?v=fig2026"
-    ]
-  },
-  {
-    "id": "carousel-07-could-you-be-the-next-leader",
-    "n": 7,
-    "tag": "Vision",
-    "title": "Could you be the next leader?",
-    "caption": "",
-    "format": "carousel",
-    "size": "1080 × 1110",
-    "slideCount": 6,
-    "slides": [
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-05.html?v=fig2026",
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-06.html?v=fig2026"
-    ]
-  },
-  {
-    "id": "carousel-08-where-your-donation-goes",
-    "n": 8,
-    "tag": "Vision",
-    "title": "Where your donation goes",
-    "caption": "",
-    "format": "carousel",
-    "size": "1080 × 1110",
-    "slideCount": 5,
-    "slides": [
-      "/social/carousels/carousel-08-where-your-donation-goes/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-08-where-your-donation-goes/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-08-where-your-donation-goes/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-08-where-your-donation-goes/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-08-where-your-donation-goes/slide-05.html?v=fig2026"
+      "/social/carousels/carousel-10-why-we-exist/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-05.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-06.html?v=fig2026",
+      "/social/carousels/carousel-10-why-we-exist/slide-07.html?v=fig2026"
     ]
   },
   {
     "id": "carousel-09-competitive-elections",
-    "n": 9,
+    "n": 2,
     "tag": "Issues",
     "title": "Competitive elections",
     "caption": "Competitive elections build better communities.",
@@ -1047,22 +930,139 @@ export const carouselPosts = [
     ]
   },
   {
-    "id": "carousel-10-why-we-exist",
-    "n": 10,
-    "tag": "Values",
-    "title": "Why we exist",
-    "caption": "Learn why our work matters.",
+    "id": "carousel-08-where-your-donation-goes",
+    "n": 3,
+    "tag": "Vision",
+    "title": "Where your donation goes",
+    "caption": "",
     "format": "carousel",
     "size": "1080 × 1110",
-    "slideCount": 7,
+    "slideCount": 5,
     "slides": [
-      "/social/carousels/carousel-10-why-we-exist/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-05.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-06.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-07.html?v=fig2026"
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-05.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-07-could-you-be-the-next-leader",
+    "n": 4,
+    "tag": "Vision",
+    "title": "Could you be the next leader?",
+    "caption": "",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 6,
+    "slides": [
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-05.html?v=fig2026",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-06.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-06-strong-campaigns-require-strong-support",
+    "n": 5,
+    "tag": "Vision",
+    "title": "Strong campaigns require strong support",
+    "caption": "Strong campaigns require strong support.",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 5,
+    "slides": [
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-05.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-05-what-we-believe",
+    "n": 6,
+    "tag": "Beliefs",
+    "title": "What we believe",
+    "caption": "The principles that guide Northwest Oregon PAC.",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 6,
+    "slides": [
+      "/social/carousels/carousel-05-what-we-believe/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-05-what-we-believe/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-05-what-we-believe/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-05-what-we-believe/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-05-what-we-believe/slide-05.html?v=fig2026",
+      "/social/carousels/carousel-05-what-we-believe/slide-06.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-04-why-local-elections-matter",
+    "n": 7,
+    "tag": "Vision",
+    "title": "Why local elections matter",
+    "caption": "Why local elections matter.",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 5,
+    "slides": [
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-05.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-03-meet-northwest-oregon-pac",
+    "n": 8,
+    "tag": "Introduction",
+    "title": "Meet Northwest Oregon PAC",
+    "caption": "Meet Northwest Oregon PAC.",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 5,
+    "slides": [
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-04.html?v=fig2026",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-05.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-02-small-business-drives-northwest-oregon",
+    "n": 9,
+    "tag": "Issues",
+    "title": "Small business drives Northwest Oregon",
+    "caption": "Small business drives Northwest Oregon.",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 4,
+    "slides": [
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-04.html?v=fig2026"
+    ]
+  },
+  {
+    "id": "carousel-01-building-strong-campaigns-together",
+    "n": 10,
+    "tag": "Vision",
+    "title": "Building strong campaigns together",
+    "caption": "Building strong campaigns together.",
+    "format": "carousel",
+    "size": "1080 × 1110",
+    "slideCount": 4,
+    "slides": [
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-01.html?v=fig2026",
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-02.html?v=fig2026",
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-03.html?v=fig2026",
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-04.html?v=fig2026"
     ]
   }
 ]
