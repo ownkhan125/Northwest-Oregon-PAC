@@ -370,7 +370,7 @@ export const feedPosts = [
     "n": 37,
     "tag": "Get involved",
     "title": "Have a question? Reach the PAC directly",
-    "caption": "10700 SW Beaverton-Hillsdale Highway, Suite 212, Beaverton, Oregon 97005",
+    "caption": "c/o Maddie Viens, PO Box 95, Bend, OR 97709",
     "format": "feed",
     "size": "1080 × 1350",
     "html": "/social/feed/feed-37-have-a-question-reach-the-pac-directly.html?v=fig2026"
