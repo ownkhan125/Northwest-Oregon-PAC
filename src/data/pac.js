@@ -32,11 +32,11 @@ export const pac = {
     // After-hours contact
     afterHoursName: 'Christina Buehler',
     afterHoursPhone: '1-503-330-7496',
-    mailingAddress: '10700 SW Beaverton-Hillsdale Highway, Suite 212, Beaverton, Oregon 97005',
+    mailingAddress: 'c/o Maddie Viens, PO Box 95, Bend, OR 97709',
     mailingAddressLines: [
-      '10700 SW Beaverton-Hillsdale Highway',
-      'Suite 212',
-      'Beaverton, Oregon 97005',
+      'c/o Maddie Viens',
+      'PO Box 95',
+      'Bend, OR 97709',
     ],
     preferredAreaCodes: ['503', '971'],
   },
