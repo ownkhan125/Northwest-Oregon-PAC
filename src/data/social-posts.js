@@ -1,5 +1,5 @@
 // Northwest Oregon PAC — social post gallery content.
-// Generated from Figma (file W6hYGzhNXnfDI2g6Hh7xlZ) via the REST API.
+// Generated from Figma (file Fvi3GNNIUZVf9aNlQBHHup) via the REST API.
 // Each post's `html` (and carousel `slides[]`) is the single source of truth;
 // the /social-posts index renders those files directly as scaled iframes so
 // thumbnails never drift from the opened version.
@@ -13,7 +13,7 @@ export const feedPosts = [
     "caption": "Prosperity • Accountability • Opportunity",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-01-a-stronger-voice-for-northwest-oregon.html?v=fig2026"
+    "html": "/social/feed/feed-01-a-stronger-voice-for-northwest-oregon.html?v=fig2026c"
   },
   {
     "id": "feed-02-our-region-our-voice",
@@ -23,7 +23,7 @@ export const feedPosts = [
     "caption": "Hillsboro · Forest Grove · Astoria · Tillamook · Columbia County",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-02-our-region-our-voice.html?v=fig2026"
+    "html": "/social/feed/feed-02-our-region-our-voice.html?v=fig2026c"
   },
   {
     "id": "feed-03-prosperity-starts-here",
@@ -33,7 +33,7 @@ export const feedPosts = [
     "caption": "Prosperity Starts Here.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-03-prosperity-starts-here.html?v=fig2026"
+    "html": "/social/feed/feed-03-prosperity-starts-here.html?v=fig2026c"
   },
   {
     "id": "feed-04-accountability-matters",
@@ -43,7 +43,7 @@ export const feedPosts = [
     "caption": "Accountability Matters.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-04-accountability-matters.html?v=fig2026"
+    "html": "/social/feed/feed-04-accountability-matters.html?v=fig2026c"
   },
   {
     "id": "feed-05-meet-northwest-oregon",
@@ -53,7 +53,7 @@ export const feedPosts = [
     "caption": "Meet Northwest Oregon.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-05-meet-northwest-oregon.html?v=fig2026"
+    "html": "/social/feed/feed-05-meet-northwest-oregon.html?v=fig2026c"
   },
   {
     "id": "feed-06-we-exist-for-northwest-oregon",
@@ -63,7 +63,7 @@ export const feedPosts = [
     "caption": "",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-06-we-exist-for-northwest-oregon.html?v=fig2026b"
+    "html": "/social/feed/feed-06-we-exist-for-northwest-oregon.html?v=fig2026c"
   },
   {
     "id": "feed-07-small-actions-big-impact",
@@ -73,7 +73,7 @@ export const feedPosts = [
     "caption": "Small Actions. Big Impact.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-07-small-actions-big-impact.html?v=fig2026"
+    "html": "/social/feed/feed-07-small-actions-big-impact.html?v=fig2026c"
   },
   {
     "id": "feed-08-building-tomorrow-starting-today",
@@ -83,7 +83,7 @@ export const feedPosts = [
     "caption": "Building Tomorrow. Starting Today.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-08-building-tomorrow-starting-today.html?v=fig2026"
+    "html": "/social/feed/feed-08-building-tomorrow-starting-today.html?v=fig2026c"
   },
   {
     "id": "feed-09-northwest-oregon-what-matters-most",
@@ -93,7 +93,7 @@ export const feedPosts = [
     "caption": "Government Accountability",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-09-northwest-oregon-what-matters-most.html?v=fig2026"
+    "html": "/social/feed/feed-09-northwest-oregon-what-matters-most.html?v=fig2026c"
   },
   {
     "id": "feed-10-economic-opportunity-isn-t-created-by-go",
@@ -103,7 +103,7 @@ export const feedPosts = [
     "caption": "it is created by the people willing to work hard, take risks, and build something meaningful. Our job is to remove barriers so they can succeed.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-10-economic-opportunity-isn-t-created-by-go.html?v=fig2026"
+    "html": "/social/feed/feed-10-economic-opportunity-isn-t-created-by-go.html?v=fig2026c"
   },
   {
     "id": "feed-11-responsible-government-starts-with-respo",
@@ -113,7 +113,7 @@ export const feedPosts = [
     "caption": "Every taxpayer deserves transparency, measurable results, and confidence that public dollars are being spent wisely.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-11-responsible-government-starts-with-respo.html?v=fig2026"
+    "html": "/social/feed/feed-11-responsible-government-starts-with-respo.html?v=fig2026c"
   },
   {
     "id": "feed-12-the-future-belongs-to-those-who-lead",
@@ -123,7 +123,7 @@ export const feedPosts = [
     "caption": "The Future Belongs to Those Who Lead.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-12-the-future-belongs-to-those-who-lead.html?v=fig2026"
+    "html": "/social/feed/feed-12-the-future-belongs-to-those-who-lead.html?v=fig2026c"
   },
   {
     "id": "feed-13-economic-prosperity-small-business",
@@ -133,7 +133,7 @@ export const feedPosts = [
     "caption": "We support policies that encourage entrepreneurship, strengthen local businesses, reduce unnecessary barriers, and create an environment where innovation and hard work can thrive across Northwest Oregon.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-13-economic-prosperity-small-business.html?v=fig2026"
+    "html": "/social/feed/feed-13-economic-prosperity-small-business.html?v=fig2026c"
   },
   {
     "id": "feed-14-safe-neighborhoods-give-children-room-to",
@@ -143,7 +143,7 @@ export const feedPosts = [
     "caption": "Safe neighborhoods give children room to dream, families peace of mind, and local businesses the confidence to grow. Public safety is where opportunity begins.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-14-safe-neighborhoods-give-children-room-to.html?v=fig2026"
+    "html": "/social/feed/feed-14-safe-neighborhoods-give-children-room-to.html?v=fig2026c"
   },
   {
     "id": "feed-15-be-part-of-something-bigger-for-oregon",
@@ -153,7 +153,7 @@ export const feedPosts = [
     "caption": "",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-15-be-part-of-something-bigger-for-oregon.html?v=fig2026"
+    "html": "/social/feed/feed-15-be-part-of-something-bigger-for-oregon.html?v=fig2026c"
   },
   {
     "id": "feed-16-northwest-oregon",
@@ -163,7 +163,7 @@ export const feedPosts = [
     "caption": "We support practical solutions that help law enforcement, first responders, and local communities work together to reduce crime, improve public spaces, and keep Northwest Oregon a place where families and businesses can grow.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-16-northwest-oregon.html?v=fig2026"
+    "html": "/social/feed/feed-16-northwest-oregon.html?v=fig2026c"
   },
   {
     "id": "feed-17-education-workforce-development",
@@ -173,7 +173,7 @@ export const feedPosts = [
     "caption": "Preparing today's students for tomorrow's opportunities",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-17-education-workforce-development.html?v=fig2026"
+    "html": "/social/feed/feed-17-education-workforce-development.html?v=fig2026c"
   },
   {
     "id": "feed-18-northwest",
@@ -183,7 +183,7 @@ export const feedPosts = [
     "caption": "Oregon is worth fighting for.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-18-northwest.html?v=fig2026"
+    "html": "/social/feed/feed-18-northwest.html?v=fig2026c"
   },
   {
     "id": "feed-19-every-dollar-raised-here-helps-build-cam",
@@ -193,7 +193,7 @@ export const feedPosts = [
     "caption": "Every dollar raised here helps build campaigns here.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-19-every-dollar-raised-here-helps-build-cam.html?v=fig2026"
+    "html": "/social/feed/feed-19-every-dollar-raised-here-helps-build-cam.html?v=fig2026c"
   },
   {
     "id": "feed-20-northwest-oregon-deserves-more-than-camp",
@@ -203,7 +203,7 @@ export const feedPosts = [
     "caption": "Northwest Oregon deserves more than campaign promises.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-20-northwest-oregon-deserves-more-than-camp.html?v=fig2026"
+    "html": "/social/feed/feed-20-northwest-oregon-deserves-more-than-camp.html?v=fig2026c"
   },
   {
     "id": "feed-21-affordable-energy-isn-t-just-an-economic",
@@ -213,7 +213,7 @@ export const feedPosts = [
     "caption": "Affordable energy isn't just an economic issue. It's a family issue. When utility bills rise, every household feels it. Oregon can protect both affordability and reliability.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-21-affordable-energy-isn-t-just-an-economic.html?v=fig2026"
+    "html": "/social/feed/feed-21-affordable-energy-isn-t-just-an-economic.html?v=fig2026c"
   },
   {
     "id": "feed-22-northwest-oregon-has-always-been-powered",
@@ -223,7 +223,7 @@ export const feedPosts = [
     "caption": "From hydropower and forestry to agriculture, manufacturing, and emerging technologies, our region succeeds when we build on the resources that make Oregon unique.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-22-northwest-oregon-has-always-been-powered.html?v=fig2026"
+    "html": "/social/feed/feed-22-northwest-oregon-has-always-been-powered.html?v=fig2026c"
   },
   {
     "id": "feed-23-our-priorities-aren-t-chosen-in-salem",
@@ -233,7 +233,7 @@ export const feedPosts = [
     "caption": "Our priorities aren't chosen in Salem.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-23-our-priorities-aren-t-chosen-in-salem.html?v=fig2026"
+    "html": "/social/feed/feed-23-our-priorities-aren-t-chosen-in-salem.html?v=fig2026c"
   },
   {
     "id": "feed-24-we-re-building-the-foundation-for-northw",
@@ -243,7 +243,7 @@ export const feedPosts = [
     "caption": "We're building the foundation for Northwest Oregon's future.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-24-we-re-building-the-foundation-for-northw.html?v=fig2026"
+    "html": "/social/feed/feed-24-we-re-building-the-foundation-for-northw.html?v=fig2026c"
   },
   {
     "id": "feed-25-candidates-standing-up-for-northwest-ore",
@@ -253,7 +253,7 @@ export const feedPosts = [
     "caption": "Candidates standing up for Northwest Oregon.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-25-candidates-standing-up-for-northwest-ore.html?v=fig2026"
+    "html": "/social/feed/feed-25-candidates-standing-up-for-northwest-ore.html?v=fig2026c"
   },
   {
     "id": "feed-26-mark-norman",
@@ -263,7 +263,7 @@ export const feedPosts = [
     "caption": "Oregon House District 27",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-26-mark-norman.html?v=fig2026"
+    "html": "/social/feed/feed-26-mark-norman.html?v=fig2026c"
   },
   {
     "id": "feed-27-brian-schimmel",
@@ -273,7 +273,7 @@ export const feedPosts = [
     "caption": "Focused on practical leadership, local priorities, and serving the people of District 29.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-27-brian-schimmel.html?v=fig2026"
+    "html": "/social/feed/feed-27-brian-schimmel.html?v=fig2026c"
   },
   {
     "id": "feed-28-ciatta-thompson",
@@ -283,7 +283,7 @@ export const feedPosts = [
     "caption": "Committed to practical leadership, stronger communities, and putting the people of District 33 first.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-28-ciatta-thompson.html?v=fig2026"
+    "html": "/social/feed/feed-28-ciatta-thompson.html?v=fig2026c"
   },
   {
     "id": "feed-29-randall-fryer",
@@ -293,7 +293,7 @@ export const feedPosts = [
     "caption": "Bringing decades of professional experience and a commitment to thoughtful, community- focused leadership.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-29-randall-fryer.html?v=fig2026"
+    "html": "/social/feed/feed-29-randall-fryer.html?v=fig2026c"
   },
   {
     "id": "feed-30-run-for-office",
@@ -303,7 +303,7 @@ export const feedPosts = [
     "caption": "Northwest Oregon needs good leaders.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-30-run-for-office.html?v=fig2026"
+    "html": "/social/feed/feed-30-run-for-office.html?v=fig2026c"
   },
   {
     "id": "feed-31-support-northwest-oregon-s-future",
@@ -313,7 +313,7 @@ export const feedPosts = [
     "caption": "Paid for by Northwest Oregon PAC #25045.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-31-support-northwest-oregon-s-future.html?v=fig2026"
+    "html": "/social/feed/feed-31-support-northwest-oregon-s-future.html?v=fig2026c"
   },
   {
     "id": "feed-32-here",
@@ -323,17 +323,17 @@ export const feedPosts = [
     "caption": "Candidate Recruitment Starts",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-32-here.html?v=fig2026"
+    "html": "/social/feed/feed-32-here.html?v=fig2026c"
   },
   {
-    "id": "feed-33-campaign-events-that-matter",
+    "id": "feed-33-why-is-healthcare-so-expensive-in-oregon",
     "n": 33,
-    "tag": "Vision",
-    "title": "Campaign Events That Matter",
-    "caption": "",
+    "tag": "Issues",
+    "title": "Why Is Healthcare So Expensive in Oregon?",
+    "caption": "For many families, the cost of coverage keeps moving in the wrong direction.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-33-campaign-events-that-matter.html?v=fig2026"
+    "html": "/social/feed/feed-33-why-is-healthcare-so-expensive-in-oregon.html?v=fig2026c"
   },
   {
     "id": "feed-34-meet-the-candidates",
@@ -343,7 +343,7 @@ export const feedPosts = [
     "caption": "",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-34-meet-the-candidates.html?v=fig2026b"
+    "html": "/social/feed/feed-34-meet-the-candidates.html?v=fig2026c"
   },
   {
     "id": "feed-35-strong-communities-begin-with-strong-lea",
@@ -353,7 +353,7 @@ export const feedPosts = [
     "caption": "Strong Communities Begin with Strong Leadership.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-35-strong-communities-begin-with-strong-lea.html?v=fig2026"
+    "html": "/social/feed/feed-35-strong-communities-begin-with-strong-lea.html?v=fig2026c"
   },
   {
     "id": "feed-36-stay-informed",
@@ -363,7 +363,7 @@ export const feedPosts = [
     "caption": "",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-36-stay-informed.html?v=fig2026"
+    "html": "/social/feed/feed-36-stay-informed.html?v=fig2026c"
   },
   {
     "id": "feed-37-have-a-question-reach-the-pac-directly",
@@ -373,7 +373,7 @@ export const feedPosts = [
     "caption": "c/o Maddie Viens, PO Box 95, Bend, OR 97709",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-37-have-a-question-reach-the-pac-directly.html?v=fig2026"
+    "html": "/social/feed/feed-37-have-a-question-reach-the-pac-directly.html?v=fig2026c"
   },
   {
     "id": "feed-38-real",
@@ -383,7 +383,7 @@ export const feedPosts = [
     "caption": "Northwest Oregon should never lose its voice simply because others decided the region was too difficult to compete for. No community should be conceded before voters have a",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-38-real.html?v=fig2026"
+    "html": "/social/feed/feed-38-real.html?v=fig2026c"
   },
   {
     "id": "feed-39-invest-in-northwest-oregon",
@@ -393,7 +393,7 @@ export const feedPosts = [
     "caption": "Every contribution helps strengthen local campaigns, recruit future leaders, support grassroots volunteers, and expand our reach across the region.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-39-invest-in-northwest-oregon.html?v=fig2026"
+    "html": "/social/feed/feed-39-invest-in-northwest-oregon.html?v=fig2026c"
   },
   {
     "id": "feed-40-every-contribution-builds-a-stronger-nor",
@@ -403,7 +403,7 @@ export const feedPosts = [
     "caption": "Every contribution builds a stronger Northwest Oregon.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-40-every-contribution-builds-a-stronger-nor.html?v=fig2026"
+    "html": "/social/feed/feed-40-every-contribution-builds-a-stronger-nor.html?v=fig2026c"
   },
   {
     "id": "feed-41-what-does-your-support-make-possible",
@@ -413,7 +413,7 @@ export const feedPosts = [
     "caption": "Candidate recruitment",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-41-what-does-your-support-make-possible.html?v=fig2026"
+    "html": "/social/feed/feed-41-what-does-your-support-make-possible.html?v=fig2026c"
   },
   {
     "id": "feed-42-strong-campaigns",
@@ -423,7 +423,7 @@ export const feedPosts = [
     "caption": "Northwest Oregon PAC helps qualified candidates build campaigns that can compete.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-42-strong-campaigns.html?v=fig2026"
+    "html": "/social/feed/feed-42-strong-campaigns.html?v=fig2026c"
   },
   {
     "id": "feed-43-we-don-t-measure-success-by-headlines",
@@ -433,7 +433,7 @@ export const feedPosts = [
     "caption": "A stronger political organization can make a difference for generations.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-43-we-don-t-measure-success-by-headlines.html?v=fig2026"
+    "html": "/social/feed/feed-43-we-don-t-measure-success-by-headlines.html?v=fig2026c"
   },
   {
     "id": "feed-44-this-is-bigger-than-one-election",
@@ -443,7 +443,7 @@ export const feedPosts = [
     "caption": "Every candidate has the opportunity to compete",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-44-this-is-bigger-than-one-election.html?v=fig2026"
+    "html": "/social/feed/feed-44-this-is-bigger-than-one-election.html?v=fig2026c"
   },
   {
     "id": "feed-45-raised-here-invested-here",
@@ -453,7 +453,7 @@ export const feedPosts = [
     "caption": "Local contributions help Northwest Oregon candidates organize, communicate, and compete. Local support gives credible candidates the tools to build stronger campaigns. Help strengthen the region.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-45-raised-here-invested-here.html?v=fig2026"
+    "html": "/social/feed/feed-45-raised-here-invested-here.html?v=fig2026c"
   },
   {
     "id": "feed-46-every-voter-deserves-a",
@@ -463,7 +463,7 @@ export const feedPosts = [
     "caption": "decided before the first ballot is cast. Political competition encourages candidates to listen, explain their positions, and earn voters' trust. No Northwest Oregon district should be",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-46-every-voter-deserves-a.html?v=fig2026"
+    "html": "/social/feed/feed-46-every-voter-deserves-a.html?v=fig2026c"
   },
   {
     "id": "feed-47-a-credible-candidate-should-never-have-t",
@@ -473,7 +473,7 @@ export const feedPosts = [
     "caption": "That is the infrastructure Northwest Oregon PAC is building.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-47-a-credible-candidate-should-never-have-t.html?v=fig2026"
+    "html": "/social/feed/feed-47-a-credible-candidate-should-never-have-t.html?v=fig2026c"
   },
   {
     "id": "feed-48-let-builders-build",
@@ -483,7 +483,7 @@ export const feedPosts = [
     "caption": "Northwest Oregon succeeds when entrepreneurs can start, hire, invest, and grow without unnecessary barriers. Local employers create jobs, support families, and keep communities moving. Public policy should make it easier, not harder, for responsible businesses to succeed.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-48-let-builders-build.html?v=fig2026"
+    "html": "/social/feed/feed-48-let-builders-build.html?v=fig2026c"
   },
   {
     "id": "feed-49-the-person-saying-someone-should-do-some",
@@ -493,7 +493,7 @@ export const feedPosts = [
     "caption": "START THE CONVERSATION",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-49-the-person-saying-someone-should-do-some.html?v=fig2026"
+    "html": "/social/feed/feed-49-the-person-saying-someone-should-do-some.html?v=fig2026c"
   },
   {
     "id": "feed-50-campaigns-come-and-go-but-communities-re",
@@ -503,7 +503,7 @@ export const feedPosts = [
     "caption": "Our communities deserve more than attention every four years.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-50-campaigns-come-and-go-but-communities-re.html?v=fig2026"
+    "html": "/social/feed/feed-50-campaigns-come-and-go-but-communities-re.html?v=fig2026c"
   },
   {
     "id": "feed-51-someone-s",
@@ -513,7 +513,7 @@ export const feedPosts = [
     "caption": "Supporting local business is supporting Northwest Oregon.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-51-someone-s.html?v=fig2026"
+    "html": "/social/feed/feed-51-someone-s.html?v=fig2026c"
   },
   {
     "id": "feed-52-we-are-building",
@@ -523,7 +523,7 @@ export const feedPosts = [
     "caption": "More campaign support",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-52-we-are-building.html?v=fig2026"
+    "html": "/social/feed/feed-52-we-are-building.html?v=fig2026c"
   },
   {
     "id": "feed-53-northwest-oregon-deserves-to-compete",
@@ -533,7 +533,7 @@ export const feedPosts = [
     "caption": "We're working to ensure Northwest Oregon communities always have candidates, conversations, and real choices.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-53-northwest-oregon-deserves-to-compete.html?v=fig2026"
+    "html": "/social/feed/feed-53-northwest-oregon-deserves-to-compete.html?v=fig2026c"
   },
   {
     "id": "feed-54-support-the-leaders-shaping-northwest-or",
@@ -543,7 +543,7 @@ export const feedPosts = [
     "caption": "Everyone has something valuable to contribute. Every contribution strengthens campaigns, messaging, and candidate recruitment.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-54-support-the-leaders-shaping-northwest-or.html?v=fig2026"
+    "html": "/social/feed/feed-54-support-the-leaders-shaping-northwest-or.html?v=fig2026c"
   },
   {
     "id": "feed-55-we-are-building-beyond-election-day",
@@ -553,7 +553,7 @@ export const feedPosts = [
     "caption": "More candidates · More campaign support · Stronger campaigns · A lasting regional voice",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-55-we-are-building-beyond-election-day.html?v=fig2026"
+    "html": "/social/feed/feed-55-we-are-building-beyond-election-day.html?v=fig2026c"
   },
   {
     "id": "feed-56-here-s-what-your-support-makes-possible",
@@ -563,7 +563,7 @@ export const feedPosts = [
     "caption": "Here's what your support makes possible.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-56-here-s-what-your-support-makes-possible.html?v=fig2026"
+    "html": "/social/feed/feed-56-here-s-what-your-support-makes-possible.html?v=fig2026c"
   },
   {
     "id": "feed-57-this-is-our-promise",
@@ -573,7 +573,7 @@ export const feedPosts = [
     "caption": "We'll keep recruiting.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-57-this-is-our-promise.html?v=fig2026"
+    "html": "/social/feed/feed-57-this-is-our-promise.html?v=fig2026c"
   },
   {
     "id": "feed-58-will-this-make-our-communities",
@@ -583,7 +583,7 @@ export const feedPosts = [
     "caption": "Every decision we make is guided by one question. If the answer is yes, we'll fight for it.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-58-will-this-make-our-communities.html?v=fig2026"
+    "html": "/social/feed/feed-58-will-this-make-our-communities.html?v=fig2026c"
   },
   {
     "id": "feed-59-the-decisions-we-make-today-shape-the-op",
@@ -593,7 +593,17 @@ export const feedPosts = [
     "caption": "The decisions we make today shape the opportunities our children inherit tomorrow.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-59-the-decisions-we-make-today-shape-the-op.html?v=fig2026"
+    "html": "/social/feed/feed-59-the-decisions-we-make-today-shape-the-op.html?v=fig2026c"
+  },
+  {
+    "id": "feed-60-not-every-tax-burden-is-felt-equally",
+    "n": 60,
+    "tag": "Issues",
+    "title": "Not Every Tax Burden Is Felt Equally.",
+    "caption": "Fees and added costs can hit families and people on fixed incomes the hardest. Northwest Oregon deserves a more affordable future.",
+    "format": "feed",
+    "size": "1080 × 1350",
+    "html": "/social/feed/feed-60-not-every-tax-burden-is-felt-equally.html?v=fig2026c"
   }
 ]
 
@@ -606,7 +616,7 @@ export const storyPosts = [
     "caption": "We're building something that lasts.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-01-we-re-building-something-that-lasts.html?v=fig2026"
+    "html": "/social/stories/story-01-we-re-building-something-that-lasts.html?v=fig2026c"
   },
   {
     "id": "story-02-your-community-your-voice-your-future",
@@ -616,7 +626,7 @@ export const storyPosts = [
     "caption": "Your community. Your voice. Your future.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-02-your-community-your-voice-your-future.html?v=fig2026"
+    "html": "/social/stories/story-02-your-community-your-voice-your-future.html?v=fig2026c"
   },
   {
     "id": "story-03-have-you-voted-in-a-local-election-recen",
@@ -626,7 +636,7 @@ export const storyPosts = [
     "caption": "",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-03-have-you-voted-in-a-local-election-recen.html?v=fig2026"
+    "html": "/social/stories/story-03-have-you-voted-in-a-local-election-recen.html?v=fig2026c"
   },
   {
     "id": "story-04-strong-campaigns-don-t-happen-by-chance",
@@ -636,7 +646,7 @@ export const storyPosts = [
     "caption": "Strong campaigns don't happen by chance.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-04-strong-campaigns-don-t-happen-by-chance.html?v=fig2026"
+    "html": "/social/stories/story-04-strong-campaigns-don-t-happen-by-chance.html?v=fig2026c"
   },
   {
     "id": "story-05-every-dollar-raised-stays-focused-on-str",
@@ -646,7 +656,7 @@ export const storyPosts = [
     "caption": "Every dollar raised stays focused on strengthening Northwest Oregon.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-05-every-dollar-raised-stays-focused-on-str.html?v=fig2026"
+    "html": "/social/stories/story-05-every-dollar-raised-stays-focused-on-str.html?v=fig2026c"
   },
   {
     "id": "story-06-could-it-be-you",
@@ -656,7 +666,7 @@ export const storyPosts = [
     "caption": "We're recruiting tomorrow's community leaders today.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-06-could-it-be-you.html?v=fig2026"
+    "html": "/social/stories/story-06-could-it-be-you.html?v=fig2026c"
   },
   {
     "id": "story-07-hope-support-heard",
@@ -666,7 +676,7 @@ export const storyPosts = [
     "caption": "Hope. Support. Heard.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-07-hope-support-heard.html?v=fig2026"
+    "html": "/social/stories/story-07-hope-support-heard.html?v=fig2026c"
   },
   {
     "id": "story-08-every-contribution-strengthens-campaigns",
@@ -676,7 +686,7 @@ export const storyPosts = [
     "caption": "Every contribution strengthens campaigns.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-08-every-contribution-strengthens-campaigns.html?v=fig2026"
+    "html": "/social/stories/story-08-every-contribution-strengthens-campaigns.html?v=fig2026c"
   },
   {
     "id": "story-09-what-s-most-important-for-northwest-oreg",
@@ -686,7 +696,7 @@ export const storyPosts = [
     "caption": "",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-09-what-s-most-important-for-northwest-oreg.html?v=fig2026"
+    "html": "/social/stories/story-09-what-s-most-important-for-northwest-oreg.html?v=fig2026c"
   },
   {
     "id": "story-10-campaigns-come-and-go-strong-communities",
@@ -696,7 +706,7 @@ export const storyPosts = [
     "caption": "That's why we're investing for the long term.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-10-campaigns-come-and-go-strong-communities.html?v=fig2026"
+    "html": "/social/stories/story-10-campaigns-come-and-go-strong-communities.html?v=fig2026c"
   },
   {
     "id": "story-11-one-conversation-can-change-a-campaign",
@@ -706,7 +716,7 @@ export const storyPosts = [
     "caption": "One leader, one campaign can inspire a community.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-11-one-conversation-can-change-a-campaign.html?v=fig2026"
+    "html": "/social/stories/story-11-one-conversation-can-change-a-campaign.html?v=fig2026c"
   },
   {
     "id": "story-12-leadership-starts-with-listening",
@@ -716,7 +726,7 @@ export const storyPosts = [
     "caption": "Leadership starts with listening.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-12-leadership-starts-with-listening.html?v=fig2026"
+    "html": "/social/stories/story-12-leadership-starts-with-listening.html?v=fig2026c"
   },
   {
     "id": "story-13-the-future-of-northwest-oregon-belongs-t",
@@ -726,7 +736,7 @@ export const storyPosts = [
     "caption": "The future of Northwest Oregon belongs to those willing to build it.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-13-the-future-of-northwest-oregon-belongs-t.html?v=fig2026"
+    "html": "/social/stories/story-13-the-future-of-northwest-oregon-belongs-t.html?v=fig2026c"
   },
   {
     "id": "story-14-we-believe-every-town-deserves-a-voice",
@@ -736,7 +746,7 @@ export const storyPosts = [
     "caption": "We believe every town deserves a voice.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-14-we-believe-every-town-deserves-a-voice.html?v=fig2026"
+    "html": "/social/stories/story-14-we-believe-every-town-deserves-a-voice.html?v=fig2026c"
   },
   {
     "id": "story-15-what-issue-matters-most-in-your-communit",
@@ -746,7 +756,7 @@ export const storyPosts = [
     "caption": "",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-15-what-issue-matters-most-in-your-communit.html?v=fig2026"
+    "html": "/social/stories/story-15-what-issue-matters-most-in-your-communit.html?v=fig2026c"
   },
   {
     "id": "story-16-supporting-local-candidates",
@@ -756,7 +766,7 @@ export const storyPosts = [
     "caption": "Supporting local candidates.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-16-supporting-local-candidates.html?v=fig2026"
+    "html": "/social/stories/story-16-supporting-local-candidates.html?v=fig2026c"
   },
   {
     "id": "story-17-you-don-t-have-to-run-for-office-to-make",
@@ -766,7 +776,7 @@ export const storyPosts = [
     "caption": "You don't have to run for office to make a difference.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-17-you-don-t-have-to-run-for-office-to-make.html?v=fig2026"
+    "html": "/social/stories/story-17-you-don-t-have-to-run-for-office-to-make.html?v=fig2026c"
   },
   {
     "id": "story-18-strong-leadership-and-long-term-investme",
@@ -776,7 +786,7 @@ export const storyPosts = [
     "caption": "Strong leadership and long-term investment help communities thrive.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-18-strong-leadership-and-long-term-investme.html?v=fig2026"
+    "html": "/social/stories/story-18-strong-leadership-and-long-term-investme.html?v=fig2026c"
   },
   {
     "id": "story-19-would-you-consider-supporting-a-local-ca",
@@ -786,7 +796,7 @@ export const storyPosts = [
     "caption": "",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-19-would-you-consider-supporting-a-local-ca.html?v=fig2026"
+    "html": "/social/stories/story-19-would-you-consider-supporting-a-local-ca.html?v=fig2026c"
   },
   {
     "id": "story-20-every-donation-helps-build-long-term-pol",
@@ -796,7 +806,7 @@ export const storyPosts = [
     "caption": "Every donation helps build long-term political infrastructure across Northwest Oregon.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-20-every-donation-helps-build-long-term-pol.html?v=fig2026"
+    "html": "/social/stories/story-20-every-donation-helps-build-long-term-pol.html?v=fig2026c"
   },
   {
     "id": "story-21-leadership-isn-t-about-titles",
@@ -806,7 +816,7 @@ export const storyPosts = [
     "caption": "Leadership isn't about titles.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-21-leadership-isn-t-about-titles.html?v=fig2026"
+    "html": "/social/stories/story-21-leadership-isn-t-about-titles.html?v=fig2026c"
   },
   {
     "id": "story-22-northwest-oregon-is-worth-investing-in",
@@ -816,7 +826,7 @@ export const storyPosts = [
     "caption": "Northwest Oregon is worth investing in.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-22-northwest-oregon-is-worth-investing-in.html?v=fig2026"
+    "html": "/social/stories/story-22-northwest-oregon-is-worth-investing-in.html?v=fig2026c"
   },
   {
     "id": "story-23-small-businesses",
@@ -826,7 +836,7 @@ export const storyPosts = [
     "caption": "Thriving communities.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-23-small-businesses.html?v=fig2026"
+    "html": "/social/stories/story-23-small-businesses.html?v=fig2026c"
   },
   {
     "id": "story-24-brian-schimmel",
@@ -836,7 +846,7 @@ export const storyPosts = [
     "caption": "Candidate for Oregon House District 29",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-24-brian-schimmel.html?v=fig2026"
+    "html": "/social/stories/story-24-brian-schimmel.html?v=fig2026c"
   },
   {
     "id": "story-25-randall-fryer",
@@ -846,7 +856,7 @@ export const storyPosts = [
     "caption": "Oregon House District 28",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-25-randall-fryer.html?v=fig2026"
+    "html": "/social/stories/story-25-randall-fryer.html?v=fig2026c"
   },
   {
     "id": "story-26-would-you-ever-consider-running-for-loca",
@@ -856,7 +866,7 @@ export const storyPosts = [
     "caption": "Tell us why or why not.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-26-would-you-ever-consider-running-for-loca.html?v=fig2026"
+    "html": "/social/stories/story-26-would-you-ever-consider-running-for-loca.html?v=fig2026c"
   },
   {
     "id": "story-27-mark-norman",
@@ -866,7 +876,7 @@ export const storyPosts = [
     "caption": "Because stronger communities deserve dedicated representation.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-27-mark-norman.html?v=fig2026"
+    "html": "/social/stories/story-27-mark-norman.html?v=fig2026c"
   },
   {
     "id": "story-28-ciatta-thompson",
@@ -876,7 +886,7 @@ export const storyPosts = [
     "caption": "Every contribution helps strengthen campaigns.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-28-ciatta-thompson.html?v=fig2026"
+    "html": "/social/stories/story-28-ciatta-thompson.html?v=fig2026c"
   },
   {
     "id": "story-29-together-we-re-building-a-stronger-north",
@@ -886,7 +896,17 @@ export const storyPosts = [
     "caption": "Together, we're building a stronger Northwest Oregon.",
     "format": "story",
     "size": "1080 × 1920",
-    "html": "/social/stories/story-29-together-we-re-building-a-stronger-north.html?v=fig2026"
+    "html": "/social/stories/story-29-together-we-re-building-a-stronger-north.html?v=fig2026c"
+  },
+  {
+    "id": "story-30-stay-in-the-know",
+    "n": 30,
+    "tag": "Get involved",
+    "title": "Stay in the know.",
+    "caption": "Want Northwest Oregon PAC updates delivered directly to you?",
+    "format": "story",
+    "size": "1080 × 1920",
+    "html": "/social/stories/story-30-stay-in-the-know.html?v=fig2026c"
   }
 ]
 
@@ -901,13 +921,13 @@ export const carouselPosts = [
     "size": "1080 × 1110",
     "slideCount": 7,
     "slides": [
-      "/social/carousels/carousel-10-why-we-exist/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-05.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-06.html?v=fig2026",
-      "/social/carousels/carousel-10-why-we-exist/slide-07.html?v=fig2026"
+      "/social/carousels/carousel-10-why-we-exist/slide-01.html?v=fig2026c",
+      "/social/carousels/carousel-10-why-we-exist/slide-02.html?v=fig2026c",
+      "/social/carousels/carousel-10-why-we-exist/slide-03.html?v=fig2026c",
+      "/social/carousels/carousel-10-why-we-exist/slide-04.html?v=fig2026c",
+      "/social/carousels/carousel-10-why-we-exist/slide-05.html?v=fig2026c",
+      "/social/carousels/carousel-10-why-we-exist/slide-06.html?v=fig2026c",
+      "/social/carousels/carousel-10-why-we-exist/slide-07.html?v=fig2026c"
     ]
   },
   {
@@ -920,13 +940,13 @@ export const carouselPosts = [
     "size": "1080 × 1110",
     "slideCount": 7,
     "slides": [
-      "/social/carousels/carousel-09-competitive-elections/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-09-competitive-elections/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-09-competitive-elections/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-09-competitive-elections/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-09-competitive-elections/slide-05.html?v=fig2026",
-      "/social/carousels/carousel-09-competitive-elections/slide-06.html?v=fig2026",
-      "/social/carousels/carousel-09-competitive-elections/slide-07.html?v=fig2026"
+      "/social/carousels/carousel-09-competitive-elections/slide-01.html?v=fig2026c",
+      "/social/carousels/carousel-09-competitive-elections/slide-02.html?v=fig2026c",
+      "/social/carousels/carousel-09-competitive-elections/slide-03.html?v=fig2026c",
+      "/social/carousels/carousel-09-competitive-elections/slide-04.html?v=fig2026c",
+      "/social/carousels/carousel-09-competitive-elections/slide-05.html?v=fig2026c",
+      "/social/carousels/carousel-09-competitive-elections/slide-06.html?v=fig2026c",
+      "/social/carousels/carousel-09-competitive-elections/slide-07.html?v=fig2026c"
     ]
   },
   {
@@ -939,11 +959,11 @@ export const carouselPosts = [
     "size": "1080 × 1110",
     "slideCount": 5,
     "slides": [
-      "/social/carousels/carousel-08-where-your-donation-goes/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-08-where-your-donation-goes/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-08-where-your-donation-goes/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-08-where-your-donation-goes/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-08-where-your-donation-goes/slide-05.html?v=fig2026"
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-01.html?v=fig2026c",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-02.html?v=fig2026c",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-03.html?v=fig2026c",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-04.html?v=fig2026c",
+      "/social/carousels/carousel-08-where-your-donation-goes/slide-05.html?v=fig2026c"
     ]
   },
   {
@@ -956,12 +976,12 @@ export const carouselPosts = [
     "size": "1080 × 1110",
     "slideCount": 6,
     "slides": [
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-05.html?v=fig2026",
-      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-06.html?v=fig2026"
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-01.html?v=fig2026c",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-02.html?v=fig2026c",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-03.html?v=fig2026c",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-04.html?v=fig2026c",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-05.html?v=fig2026c",
+      "/social/carousels/carousel-07-could-you-be-the-next-leader/slide-06.html?v=fig2026c"
     ]
   },
   {
@@ -974,11 +994,11 @@ export const carouselPosts = [
     "size": "1080 × 1110",
     "slideCount": 5,
     "slides": [
-      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-05.html?v=fig2026"
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-01.html?v=fig2026c",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-02.html?v=fig2026c",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-03.html?v=fig2026c",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-04.html?v=fig2026c",
+      "/social/carousels/carousel-06-strong-campaigns-require-strong-support/slide-05.html?v=fig2026c"
     ]
   },
   {
@@ -991,12 +1011,12 @@ export const carouselPosts = [
     "size": "1080 × 1110",
     "slideCount": 6,
     "slides": [
-      "/social/carousels/carousel-05-what-we-believe/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-05-what-we-believe/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-05-what-we-believe/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-05-what-we-believe/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-05-what-we-believe/slide-05.html?v=fig2026",
-      "/social/carousels/carousel-05-what-we-believe/slide-06.html?v=fig2026"
+      "/social/carousels/carousel-05-what-we-believe/slide-01.html?v=fig2026c",
+      "/social/carousels/carousel-05-what-we-believe/slide-02.html?v=fig2026c",
+      "/social/carousels/carousel-05-what-we-believe/slide-03.html?v=fig2026c",
+      "/social/carousels/carousel-05-what-we-believe/slide-04.html?v=fig2026c",
+      "/social/carousels/carousel-05-what-we-believe/slide-05.html?v=fig2026c",
+      "/social/carousels/carousel-05-what-we-believe/slide-06.html?v=fig2026c"
     ]
   },
   {
@@ -1009,11 +1029,11 @@ export const carouselPosts = [
     "size": "1080 × 1110",
     "slideCount": 5,
     "slides": [
-      "/social/carousels/carousel-04-why-local-elections-matter/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-04-why-local-elections-matter/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-04-why-local-elections-matter/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-04-why-local-elections-matter/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-04-why-local-elections-matter/slide-05.html?v=fig2026"
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-01.html?v=fig2026c",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-02.html?v=fig2026c",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-03.html?v=fig2026c",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-04.html?v=fig2026c",
+      "/social/carousels/carousel-04-why-local-elections-matter/slide-05.html?v=fig2026c"
     ]
   },
   {
@@ -1026,11 +1046,11 @@ export const carouselPosts = [
     "size": "1080 × 1110",
     "slideCount": 5,
     "slides": [
-      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-04.html?v=fig2026",
-      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-05.html?v=fig2026"
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-01.html?v=fig2026c",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-02.html?v=fig2026c",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-03.html?v=fig2026c",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-04.html?v=fig2026c",
+      "/social/carousels/carousel-03-meet-northwest-oregon-pac/slide-05.html?v=fig2026c"
     ]
   },
   {
@@ -1043,10 +1063,10 @@ export const carouselPosts = [
     "size": "1080 × 1110",
     "slideCount": 4,
     "slides": [
-      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-04.html?v=fig2026"
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-01.html?v=fig2026c",
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-02.html?v=fig2026c",
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-03.html?v=fig2026c",
+      "/social/carousels/carousel-02-small-business-drives-northwest-oregon/slide-04.html?v=fig2026c"
     ]
   },
   {
@@ -1059,10 +1079,10 @@ export const carouselPosts = [
     "size": "1080 × 1110",
     "slideCount": 4,
     "slides": [
-      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-01.html?v=fig2026",
-      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-02.html?v=fig2026",
-      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-03.html?v=fig2026",
-      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-04.html?v=fig2026"
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-01.html?v=fig2026c",
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-02.html?v=fig2026c",
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-03.html?v=fig2026c",
+      "/social/carousels/carousel-01-building-strong-campaigns-together/slide-04.html?v=fig2026c"
     ]
   }
 ]
