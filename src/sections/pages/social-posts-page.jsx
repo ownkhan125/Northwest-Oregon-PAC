@@ -445,6 +445,12 @@ export default function SocialPostsPage() {
   }
   const chooseFormat = (key) => {
     setFormat(key)
+    // If the active topic has nothing in the new format, fall back to All so
+    // switching format never leaves a selected-but-empty topic (no dead ends).
+    if (tag !== 'all') {
+      const pools = key === 'all' ? Object.values(ALL_POSTS) : [ALL_POSTS[key]]
+      if (!pools.some((posts) => posts.some((p) => p.tag === tag))) setTag('all')
+    }
     scrollToFilters()
   }
   const chooseTag = (key) => {
@@ -452,16 +458,16 @@ export default function SocialPostsPage() {
     scrollToFilters()
   }
 
+  // Topic counts scoped to the chosen format — so "Vision · 5" under Carousels
+  // reflects only carousels, and topics with no posts in that format read 0.
   const tagCounts = useMemo(() => {
-    const counts = { all: feedPosts.length + storyPosts.length + carouselPosts.length }
+    const pools = format === 'all' ? Object.values(ALL_POSTS) : [ALL_POSTS[format]]
+    const counts = { all: pools.reduce((a, posts) => a + posts.length, 0) }
     for (const t of socialTags) {
-      counts[t] = Object.values(ALL_POSTS).reduce(
-        (a, posts) => a + posts.filter((p) => p.tag === t).length,
-        0,
-      )
+      counts[t] = pools.reduce((a, posts) => a + posts.filter((p) => p.tag === t).length, 0)
     }
     return counts
-  }, [])
+  }, [format])
 
   return (
     <>
@@ -499,11 +505,13 @@ export default function SocialPostsPage() {
               <FilterPill active={tag === 'all'} onClick={() => chooseTag('all')}>
                 All · {tagCounts.all}
               </FilterPill>
-              {socialTags.map((t) => (
-                <FilterPill key={t} active={tag === t} onClick={() => chooseTag(t)}>
-                  {t} · {tagCounts[t]}
-                </FilterPill>
-              ))}
+              {socialTags
+                .filter((t) => tagCounts[t] > 0)
+                .map((t) => (
+                  <FilterPill key={t} active={tag === t} onClick={() => chooseTag(t)}>
+                    {t} · {tagCounts[t]}
+                  </FilterPill>
+                ))}
             </div>
           </m.div>
 
