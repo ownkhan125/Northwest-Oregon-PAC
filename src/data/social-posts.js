@@ -20,10 +20,10 @@ export const feedPosts = [
     "n": 2,
     "tag": "Introduction",
     "title": "Our Region. Our Voice",
-    "caption": "Hillsboro · Forest Grove · Astoria · Tillamook · Columbia County",
+    "caption": "Metro · Columbia County · Astoria · Tillamook",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-02-our-region-our-voice.html?v=fig2026c"
+    "html": "/social/feed/feed-02-our-region-our-voice.html?v=fig2026d"
   },
   {
     "id": "feed-03-prosperity-starts-here",
@@ -253,7 +253,7 @@ export const feedPosts = [
     "caption": "Candidates standing up for Northwest Oregon.",
     "format": "feed",
     "size": "1080 × 1350",
-    "html": "/social/feed/feed-25-candidates-standing-up-for-northwest-ore.html?v=fig2026c"
+    "html": "/social/feed/feed-25-candidates-standing-up-for-northwest-ore.html?v=fig2026d"
   },
   {
     "id": "feed-26-mark-norman",
