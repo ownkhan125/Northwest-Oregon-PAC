@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Source_Sans_3, Lora } from 'next/font/google'
 import MotionProvider from '@/components/motion-provider'
 import Navbar from '@/sections/navbar'
@@ -5,6 +6,7 @@ import Footer from '@/sections/footer'
 import LinesBackground from '@/components/ui/lines-background'
 import { ThemeInit } from '@/components/ui/theme-toggle'
 import CookieBanner from '@/components/ui/cookie-banner'
+import { MetaPixel } from '@/components/analytics/MetaPixel'
 import './globals.css'
 
 const sourceSans = Source_Sans_3({
@@ -40,6 +42,9 @@ export default function RootLayout({ children }) {
         <ThemeInit />
       </head>
       <body className="text-foreground relative flex min-h-full flex-col overflow-x-hidden">
+        <Suspense fallback={null}>
+          <MetaPixel />
+        </Suspense>
         <LinesBackground />
         <MotionProvider>
           <Navbar />
