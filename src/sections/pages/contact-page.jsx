@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import SplitText from '@/components/ui/split-text'
@@ -13,6 +13,15 @@ import { pac } from '@/data/pac'
 import SmsOptIn from '@/components/ui/sms-optin'
 import { validateContactFields } from '@/lib/form'
 import { formatPhoneInput } from '@/lib/phone'
+import {
+  newEventId,
+  trackContactComplete,
+  trackFormError,
+  trackFormStart,
+  trackLead,
+} from '@/lib/analytics/meta'
+
+const FORM_NAME = 'contact'
 
 const HELP_TOPIC_OPTIONS = [
   'General inquiry',
@@ -39,6 +48,15 @@ export default function ContactPage() {
       setSmsOptin(false)
     }
   }, [hasPhone])
+
+  // Latched so FormStart fires once per fill, not once per keystroke.
+  const formStarted = useRef(false)
+
+  const handleFirstInteraction = () => {
+    if (formStarted.current) return
+    formStarted.current = true
+    trackFormStart({ form_name: FORM_NAME })
+  }
 
   const clearFieldError = (name) => {
     setFieldErrors((prev) => {
@@ -96,15 +114,26 @@ export default function ContactPage() {
       if (!res.ok || !data.ok) {
         setErrorMessage(data.error || 'Something went wrong. Please try again.')
         setStatus('error')
+        trackFormError({ form_name: FORM_NAME })
         return
       }
       setStatus('success')
+
+      // Fired only after a 2xx — a failed submission is not a lead. Both
+      // calls share one eventId so a future Conversions API event for the
+      // same submission dedupes against this one.
+      const eventId = newEventId()
+      trackLead({ form_name: FORM_NAME }, eventId)
+      trackContactComplete({ form_name: FORM_NAME }, eventId)
+
       form.reset()
       setPhone('')
       setSmsOptin(false)
+      formStarted.current = false
     } catch {
       setErrorMessage('Network error. Please try again.')
       setStatus('error')
+      trackFormError({ form_name: FORM_NAME })
     }
   }
 
@@ -212,7 +241,12 @@ export default function ContactPage() {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  <form
+                    onSubmit={handleSubmit}
+                    onFocus={handleFirstInteraction}
+                    onChange={handleFirstInteraction}
+                    className="space-y-5"
+                  >
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                       <Input
                         label="First name"

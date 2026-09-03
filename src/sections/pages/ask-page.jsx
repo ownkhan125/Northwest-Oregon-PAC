@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import SplitText from '@/components/ui/split-text'
@@ -14,6 +14,15 @@ import { ISSUE_CATEGORIES } from '@/lib/form-constants'
 import SmsOptIn from '@/components/ui/sms-optin'
 import { validateContactFields } from '@/lib/form'
 import { formatPhoneInput } from '@/lib/phone'
+import {
+  newEventId,
+  trackAskComplete,
+  trackFormError,
+  trackFormStart,
+  trackLead,
+} from '@/lib/analytics/meta'
+
+const FORM_NAME = 'ask_pac'
 
 function AskForm() {
   const [status, setStatus] = useState('idle') // idle | loading | success | error
@@ -28,6 +37,15 @@ function AskForm() {
       setSmsOptin(false)
     }
   }, [hasPhone])
+
+  // Latched so FormStart fires once per fill, not once per keystroke.
+  const formStarted = useRef(false)
+
+  const handleFirstInteraction = () => {
+    if (formStarted.current) return
+    formStarted.current = true
+    trackFormStart({ form_name: FORM_NAME })
+  }
 
   const clearFieldError = (name) => {
     setFieldErrors((prev) => {
@@ -85,20 +103,35 @@ function AskForm() {
       if (!res.ok || !result.ok) {
         setErrorMsg(result.error || 'Something went wrong. Please try again in a moment.')
         setStatus('error')
+        trackFormError({ form_name: FORM_NAME })
         return
       }
       setStatus('success')
+
+      // Fired only after a 2xx. Both calls share one eventId so a future
+      // Conversions API event for the same submission dedupes against it.
+      const eventId = newEventId()
+      trackLead({ form_name: FORM_NAME }, eventId)
+      trackAskComplete({ form_name: FORM_NAME }, eventId)
+
       form.reset()
       setPhone('')
       setSmsOptin(false)
+      formStarted.current = false
     } catch {
       setStatus('error')
       setErrorMsg('Network error. Please check your connection and try again.')
+      trackFormError({ form_name: FORM_NAME })
     }
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5">
+    <form
+      onSubmit={onSubmit}
+      onFocus={handleFirstInteraction}
+      onChange={handleFirstInteraction}
+      className="space-y-5"
+    >
       <Input label="Full name" name="name" required autoComplete="name" />
 
       <Input
