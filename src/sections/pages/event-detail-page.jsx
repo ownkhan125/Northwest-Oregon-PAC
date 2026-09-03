@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { m } from 'motion/react'
 import Button from '@/components/ui/button'
@@ -11,6 +11,15 @@ import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { formatEventDate, formatEventTime } from '@/lib/event-format'
 import { validateContactFields } from '@/lib/form'
 import { formatPhoneInput } from '@/lib/phone'
+import {
+  newEventId,
+  trackEventRSVPComplete,
+  trackFormError,
+  trackFormStart,
+  trackLead,
+} from '@/lib/analytics/meta'
+
+const FORM_NAME = 'event_rsvp'
 
 export default function EventDetailPage({ event }) {
   const dateLabel = formatEventDate(event, { long: true })
@@ -36,6 +45,15 @@ export default function EventDetailPage({ event }) {
       setSmsOptin(false)
     }
   }, [hasPhone])
+
+  // Latched so FormStart fires once per fill, not once per keystroke.
+  const formStarted = useRef(false)
+
+  const handleFirstInteraction = () => {
+    if (formStarted.current) return
+    formStarted.current = true
+    trackFormStart({ form_name: FORM_NAME, event_name: eventName })
+  }
 
   const clearFieldError = (name) => {
     setFieldErrors((prev) => {
@@ -89,12 +107,22 @@ export default function EventDetailPage({ event }) {
       if (!res.ok || !result.ok) {
         setErrorMsg(result.error || 'Something went wrong. Please try again in a moment.')
         setStatus('error')
+        trackFormError({ form_name: FORM_NAME, event_name: eventName })
         return
       }
       setStatus('success')
+
+      // Fired only after a 2xx. Both calls share one eventId so a future
+      // Conversions API event for the same RSVP dedupes against it.
+      const eventId = newEventId()
+      trackLead({ form_name: FORM_NAME }, eventId)
+      trackEventRSVPComplete({ form_name: FORM_NAME, event_name: eventName }, eventId)
+
+      formStarted.current = false
     } catch {
       setStatus('error')
       setErrorMsg('Network error. Please check your connection and try again.')
+      trackFormError({ form_name: FORM_NAME, event_name: eventName })
     }
   }
   return (
@@ -251,7 +279,12 @@ export default function EventDetailPage({ event }) {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={onSubmit} className="mt-7 space-y-4">
+                  <form
+                    onSubmit={onSubmit}
+                    onFocus={handleFirstInteraction}
+                    onChange={handleFirstInteraction}
+                    className="mt-7 space-y-4"
+                  >
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <Input
                         label="First name"

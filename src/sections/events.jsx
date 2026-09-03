@@ -45,6 +45,9 @@ export default function Events({ events = [] }) {
             size="lg"
             target="_blank"
             rel="noopener noreferrer"
+            data-cta-name={home.campaignsCta.ctas.primary}
+            data-cta-location="campaigns_cta"
+            data-cta-kind="donate"
           >
             {home.campaignsCta.ctas.primary}
           </Button>
@@ -142,7 +145,11 @@ export default function Events({ events = [] }) {
                       stroke="currentColor"
                       strokeWidth="2"
                     >
-                      <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                      <path
+                        d="M5 12h14M13 5l7 7-7 7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </span>
                 </Link>
