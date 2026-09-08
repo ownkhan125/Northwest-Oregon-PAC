@@ -6,6 +6,14 @@ import SplitText from '@/components/ui/split-text'
 import Card from '@/components/ui/card'
 import { cardReveal, stagger } from '@/animations/variants'
 import { home } from '@/data/pac'
+import TrackOnMount from '@/components/analytics/track-on-mount'
+
+// Stable object literal — a value rebuilt each render would re-fire the
+// mount event.
+const PRIORITIES_PARAMS = {
+  content_category: 'issues',
+  content_name: 'priorities',
+}
 
 const icons = {
   '01': (
@@ -63,6 +71,7 @@ const icons = {
 export default function Priorities() {
   return (
     <SectionFrame id="priorities" eyebrow="Our issues" number="02">
+      <TrackOnMount event="PrioritiesView" params={PRIORITIES_PARAMS} />
       <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <SplitText

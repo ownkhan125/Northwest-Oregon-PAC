@@ -152,7 +152,15 @@ export default function Hero() {
           <div
             className="hero-anim-ctas mt-10 flex flex-wrap items-center gap-4"
           >
-            <Button href={pac.donateUrl} size="lg" target="_blank" rel="noopener noreferrer">
+            <Button
+              href={pac.donateUrl}
+              size="lg"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta-name={home.hero.ctas.primary}
+              data-cta-location="hero"
+              data-cta-kind="donate"
+            >
               {home.hero.ctas.primary}
               <svg
                 width="16"
@@ -167,7 +175,13 @@ export default function Hero() {
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </Button>
-            <Button href="/#candidates" variant="secondary" size="lg">
+            <Button
+              href="/#candidates"
+              variant="secondary"
+              size="lg"
+              data-cta-name={home.hero.ctas.secondary}
+              data-cta-location="hero"
+            >
               {home.hero.ctas.secondary}
             </Button>
             <Link

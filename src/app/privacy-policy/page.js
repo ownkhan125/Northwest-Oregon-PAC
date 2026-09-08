@@ -35,8 +35,9 @@ const sections = [
   {
     heading: 'How we share your information',
     body: [
-      'We share information with trusted service providers (such as email service providers, donation processors, website analytics providers, and advertising platforms like Meta) only as necessary to operate and improve our website, communicate with supporters, measure campaign effectiveness, and comply with applicable law.',
+      'We may disclose personal information to trusted service providers that perform services on our behalf, such as website hosting, email delivery, donation processing, analytics, and advertising services, and where disclosure is required by applicable law.',
       'We do not sell your personal information.',
+      'No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Text messaging originator opt-in data and consent will not be shared with third parties, except aggregators and service providers necessary to deliver the text messaging service or where required by law.',
     ],
   },
   {

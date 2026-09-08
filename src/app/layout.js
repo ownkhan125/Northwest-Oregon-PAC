@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { Source_Sans_3, Lora } from 'next/font/google'
 import MotionProvider from '@/components/motion-provider'
 import Navbar from '@/sections/navbar'
@@ -6,7 +5,9 @@ import Footer from '@/sections/footer'
 import LinesBackground from '@/components/ui/lines-background'
 import { ThemeInit } from '@/components/ui/theme-toggle'
 import CookieBanner from '@/components/ui/cookie-banner'
-import { MetaPixel } from '@/components/analytics/MetaPixel'
+import MetaPixelHead from '@/components/analytics/meta-pixel-head'
+import MetaPixel from '@/components/analytics/meta-pixel'
+import SiteAnalytics from '@/components/analytics/site-analytics'
 import './globals.css'
 
 const sourceSans = Source_Sans_3({
@@ -40,11 +41,14 @@ export default function RootLayout({ children }) {
     >
       <head>
         <ThemeInit />
+        {/* Server component — puts fbq() in <head> before hydration. */}
+        <MetaPixelHead />
       </head>
       <body className="text-foreground relative flex min-h-full flex-col overflow-x-hidden">
-        <Suspense fallback={null}>
-          <MetaPixel />
-        </Suspense>
+        {/* <noscript> beacon + PageView/ViewContent on every route change. */}
+        <MetaPixel />
+        {/* Scroll depth, dwell time, and delegated link-click tracking. */}
+        <SiteAnalytics />
         <LinesBackground />
         <MotionProvider>
           <Navbar />

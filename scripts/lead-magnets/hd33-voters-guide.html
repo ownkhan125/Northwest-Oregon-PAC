@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>HD33 Voters Guide — Portland: Are We Getting Results?</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ---------- Design tokens (mirrors the site) ---------- */
+      :root {
+        --ink: #2a2a26;
+        --cream: #f6f2e8;
+        --sand: #e0d6bc;
+        --forest: #2e4538;
+        --sage: #5a7060;
+        --brown: #6b5a42;
+      }
+
+      /* ---------- Print sheet ---------- */
+      @page {
+        size: Letter;
+        margin: 0;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--ink);
+        color: var(--cream);
+        font-family: 'Inter', system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page {
+        position: relative;
+        width: 8.5in;
+        height: 11in;
+        overflow: hidden;
+        padding: 0.9in 0.85in 0.75in;
+        background: var(--ink);
+        page-break-after: always;
+        break-after: page;
+      }
+      .page:last-child { page-break-after: auto; }
+
+      /* ---------- Typography ---------- */
+      .display, h1, h2, h3, h4 {
+        font-family: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: var(--cream);
+      }
+      h1 { font-size: 44pt; line-height: 1.02; margin: 0; }
+      h2 { font-size: 26pt; line-height: 1.08; margin: 0 0 14pt; }
+      h3 { font-size: 15pt; line-height: 1.15; margin: 0 0 8pt; color: var(--sand); font-weight: 600; }
+      h4 { font-size: 11pt; letter-spacing: 0.24em; text-transform: uppercase; margin: 0 0 6pt; color: var(--sand); }
+      p  { font-size: 11pt; line-height: 1.6; margin: 0 0 10pt; color: rgba(246, 242, 232, 0.9); }
+      .lede { font-size: 12.5pt; line-height: 1.55; color: rgba(246, 242, 232, 0.95); }
+      .eyebrow {
+        font-size: 8.5pt; letter-spacing: 0.28em; text-transform: uppercase;
+        color: var(--sand); font-weight: 600;
+      }
+      .small { font-size: 9pt; color: rgba(246, 242, 232, 0.7); line-height: 1.5; }
+      .tiny  { font-size: 8pt;  color: rgba(246, 242, 232, 0.55); }
+
+      strong { color: var(--cream); font-weight: 600; }
+      em { font-style: italic; color: var(--sand); }
+      a { color: var(--sand); text-decoration-color: rgba(224, 214, 188, 0.5); }
+
+      /* ---------- Components ---------- */
+      .pill {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 5px 12px; border-radius: 999px;
+        border: 1px solid rgba(224, 214, 188, 0.4);
+        background: rgba(46, 69, 56, 0.6);
+        color: var(--sand);
+        font-size: 8.5pt; letter-spacing: 0.28em; text-transform: uppercase;
+      }
+      .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--sand); }
+      .accent-bar {
+        display: block; height: 3px; width: 44px; border-radius: 2px;
+        background: var(--sand); margin: 12px 0 20px;
+      }
+      .rule { border: 0; border-top: 1px solid rgba(224, 214, 188, 0.18); margin: 18px 0; }
+
+      .grid-2 {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+      }
+      .card {
+        border: 1px solid rgba(224, 214, 188, 0.25);
+        background: rgba(46, 69, 56, 0.5);
+        border-radius: 14px;
+        padding: 18px 20px;
+      }
+      .card h3 { color: var(--cream); font-size: 14pt; margin-bottom: 4pt; }
+      .card .who { font-size: 9pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 10pt; }
+      .card p { font-size: 10.5pt; }
+      .list { padding: 0; margin: 8pt 0 0; list-style: none; }
+      .list li {
+        position: relative; padding-left: 18px; font-size: 10.5pt;
+        color: rgba(246, 242, 232, 0.9); margin-bottom: 5pt; line-height: 1.5;
+      }
+      .list li::before {
+        content: ''; position: absolute; left: 0; top: 8px;
+        width: 8px; height: 8px; border-radius: 999px;
+        border: 1.5px solid var(--sand); background: transparent;
+      }
+      .quote {
+        border-left: 3px solid var(--sand);
+        padding: 10px 0 10px 16px;
+        margin: 14px 0;
+        color: var(--cream);
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 14pt;
+        line-height: 1.35;
+      }
+      .callout {
+        border: 1px solid rgba(224, 214, 188, 0.25);
+        background: rgba(224, 214, 188, 0.06);
+        border-radius: 14px;
+        padding: 16px 18px;
+        margin-top: 14px;
+      }
+      .callout .eyebrow { margin-bottom: 6px; }
+      .callout p { font-size: 11pt; color: var(--cream); margin: 0; }
+
+      .footer {
+        position: absolute; left: 0.85in; right: 0.85in; bottom: 0.55in;
+        display: flex; justify-content: space-between; align-items: baseline;
+        font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase;
+        color: rgba(246, 242, 232, 0.45);
+      }
+      .footer .brand { font-weight: 600; letter-spacing: 0.18em; color: rgba(224, 214, 188, 0.7); }
+
+      /* ---------- Cover page ---------- */
+      .cover {
+        display: flex; flex-direction: column; justify-content: space-between;
+        background:
+          radial-gradient(ellipse at 8% 15%, rgba(90, 112, 96, 0.18), transparent 55%),
+          radial-gradient(ellipse at 92% 85%, rgba(46, 69, 56, 0.55), transparent 55%),
+          var(--ink);
+      }
+      .cover .top { display: flex; justify-content: space-between; align-items: flex-start; }
+      .cover .stamp {
+        font-family: 'Fraunces', Georgia, serif; font-size: 10.5pt; letter-spacing: 0.22em;
+        text-transform: uppercase; color: var(--sand);
+      }
+      .cover h1 { font-size: 54pt; line-height: 0.98; max-width: 6.2in; }
+      .cover .title-underline { height: 4px; width: 90px; background: var(--sand); border-radius: 2px; margin: 22px 0 26px; }
+      .cover .sub { font-family: 'Fraunces', Georgia, serif; font-size: 17pt; line-height: 1.28; color: rgba(246, 242, 232, 0.92); max-width: 6.2in; }
+      .cover .neighborhoods { font-size: 9.5pt; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(224, 214, 188, 0.85); margin-top: 20px; }
+      .cover .cover-cta {
+        display: inline-block; padding: 12px 22px; border-radius: 999px;
+        background: var(--sand); color: var(--ink);
+        font-size: 9.5pt; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;
+      }
+      .cover .presented {
+        font-size: 9pt; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(224, 214, 188, 0.85);
+      }
+      .cover .legal { font-size: 8pt; color: rgba(246, 242, 232, 0.5); margin-top: 6px; }
+
+      /* ---------- Compact modifier (page 2 fits a dense two-column spread) ---------- */
+      .page.compact { padding: 0.7in 0.75in 0.7in; }
+      .page.compact h2 { font-size: 22pt; line-height: 1.08; margin: 0 0 10pt; }
+      .page.compact .accent-bar { margin: 10px 0 14px; }
+      .page.compact .lede { font-size: 11.5pt; line-height: 1.5; }
+      .page.compact .grid-2 { gap: 16px; margin-top: 14px !important; }
+      .page.compact .card { padding: 14px 16px; border-radius: 12px; }
+      .page.compact .card h3 { font-size: 12.5pt; line-height: 1.2; margin-bottom: 4pt; }
+      .page.compact .card .who { font-size: 8.5pt; margin-bottom: 8pt; }
+      .page.compact .card p { font-size: 9.75pt; line-height: 1.45; margin-bottom: 7pt; }
+      .page.compact .quote { font-size: 12pt; line-height: 1.3; margin: 10px 0; padding: 6px 0 6px 12px; }
+      .page.compact .eyebrow { font-size: 8pt; }
+      .page.compact .list { margin-top: 6pt; }
+      .page.compact .list li { font-size: 9.75pt; line-height: 1.4; margin-bottom: 3pt; padding-left: 16px; }
+      .page.compact .list li::before { top: 6px; width: 7px; height: 7px; }
+      .page.compact .callout { padding: 12px 14px; margin-top: 12px; border-radius: 12px; }
+      .page.compact .callout p { font-size: 10pt; line-height: 1.45; }
+      .page.compact .footer { bottom: 0.4in; left: 0.75in; right: 0.75in; }
+    </style>
+  </head>
+  <body>
+    <!-- ============================ COVER ============================ -->
+    <section class="page cover">
+      <div class="top">
+        <div>
+          <div class="stamp">Northwest Oregon PAC</div>
+          <div class="stamp" style="opacity:.75">Voters Guide</div>
+        </div>
+        <div class="pill"><span class="dot"></span>Free • HD33 • 2026</div>
+      </div>
+
+      <div>
+        <h1>Portland:<br />Are We Getting Results?</h1>
+        <div class="title-underline"></div>
+        <div class="sub">
+          Ciatta Thompson vs Shannon Jones Isadore — A District 33 election
+          guide to public safety, addiction, homelessness &amp; accountability.
+        </div>
+
+        <div class="neighborhoods">
+          Downtown &bull; Northwest Portland &bull; Pearl &bull; Linnton &bull; Cathedral Park &bull; Forest Park
+        </div>
+        <p class="small" style="margin-top:16px;">General Election &bull; November 3, 2026</p>
+
+        <div style="margin-top:28px;">
+          <span class="cover-cta">Look at the record. Look at the results. Then decide.</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="presented">Presented by Northwest Oregon PAC</div>
+        <p class="legal">
+          Paid for by Northwest Oregon PAC #25045. Not authorized by any candidate committee.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 2 ============================ -->
+    <section class="page compact">
+      <h4>Two Candidates. One District.</h4>
+      <h2>One Already Serves in Salem.<br />The Other Says Portland Deserves a Different Result.</h2>
+      <span class="accent-bar"></span>
+
+      <p class="lede">
+        District 33 includes neighborhoods that experience Portland&rsquo;s biggest policy debates
+        firsthand — from public safety and addiction to homelessness, housing costs and downtown
+        recovery. The candidates come to those problems from very different places.
+      </p>
+
+      <div class="grid-2" style="margin-top:20px;">
+        <div class="card">
+          <div class="who">Ciatta Thompson</div>
+          <h3>She Works Downtown. She Sees the Consequences.</h3>
+          <p>
+            Thompson is a working-class Portlander and hotel manager who spent roughly two decades
+            voting Democratic.<sup>[1]</sup>
+          </p>
+          <p>
+            Working downtown changed how she viewed Portland&rsquo;s policies. Seeing addiction,
+            untreated mental illness, crime, rising costs and struggling businesses firsthand led
+            her to question whether policies she once supported were actually producing results.
+          </p>
+          <p>In 2025, she joined the Republican Party. But her campaign&rsquo;s message isn&rsquo;t
+            simply Republican vs Democrat.</p>
+          <div class="quote">&ldquo;Portland over party. Results over politics.&rdquo;</div>
+          <div class="eyebrow" style="margin-top:12px;">Her priorities include</div>
+          <ul class="list">
+            <li>More police and firefighters</li>
+            <li>Treatment for addiction and serious mental illness</li>
+            <li>Lower costs for working families</li>
+            <li>Audits and measurable government outcomes</li>
+            <li>Accountability for homelessness spending</li>
+            <li>A stronger local economy<sup>[1][2]</sup></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="who">Shannon Jones Isadore</div>
+          <h3>She&rsquo;s Already in Salem. What Does Her Record Show?</h3>
+          <p>
+            Isadore is a U.S. Marine veteran, family psychotherapist, business owner and founder of
+            Oregon Change Clinic.<sup>[3][4]</sup>
+          </p>
+          <p>
+            She was appointed to represent House District 33 in September 2024 and subsequently won
+            election.<sup>[3]</sup>
+          </p>
+          <p>
+            Her campaign highlights accomplishments including funding for the James Beard Market,
+            St. Johns cohousing and Hoyt Arboretum, along with legislation concerning critical
+            energy infrastructure and Moda Center renovations.<sup>[4]</sup>
+          </p>
+          <p>Those are accomplishments voters can evaluate.</p>
+          <div class="callout">
+            <div class="eyebrow">HD33 residents should evaluate</div>
+            <p>
+              What changed on the streets and in the neighborhoods they experience every day?
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <span class="brand">Northwest Oregon PAC</span>
+        <span>HD33 Voters Guide &bull; Page 2</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 3 ============================ -->
+    <section class="page">
+      <h4>Issue 1 — Needles Near Schools</h4>
+      <h2>The Walk to School Shouldn&rsquo;t<br />Include Needles.</h2>
+      <span class="accent-bar"></span>
+
+      <p class="lede">
+        For years, Portland neighbors pushed lawmakers to restrict mobile syringe-service programs
+        near schools. In 2026, SB 1573 proposed prohibiting mobile or temporary syringe-service
+        locations within 2,000 feet of a school or licensed childcare facility.<sup>[5]</sup>
+      </p>
+      <p>
+        Isadore was among the bill&rsquo;s listed sponsors.<sup>[5]</sup> But the proposal never
+        became law.<sup>[5][6]</sup> It remained in committee after a March 6 attempt to withdraw
+        it failed 11&ndash;17.
+      </p>
+
+      <div class="grid-2" style="margin-top:12px;">
+        <div class="card">
+          <div class="who">Ciatta Thompson</div>
+          <p>
+            Thompson argues that creating a buffer around schools is a start, but doesn&rsquo;t
+            solve the underlying addiction.
+          </p>
+          <div class="quote">&ldquo;What changes at 1,001 feet?&rdquo;</div>
+          <p>
+            Move the service farther away and the immediate school area may change. But the
+            addiction doesn&rsquo;t. Her position is that Oregon should measure success through
+            <strong>treatment, recovery and stability</strong>, not simply the number of services
+            delivered.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="who">Shannon Jones Isadore</div>
+          <p>
+            Isadore did put her name on SB 1573. That&rsquo;s part of the record. So is the
+            outcome:
+          </p>
+          <div class="quote">The Legislature didn&rsquo;t pass it.</div>
+          <p>
+            After the state proposal failed, Multnomah County acted locally. In June 2026, county
+            commissioners unanimously approved a restriction prohibiting mobile syringe distribution
+            within 1,000 feet of K&ndash;12 schools.<sup>[6]</sup> The restriction took effect for
+            enforcement August 24.<sup>[7]</sup>
+          </p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="eyebrow">The question for voters</div>
+        <p>
+          Is supporting legislation enough, or should representation be measured by what actually
+          gets done?
+        </p>
+      </div>
+
+      <div class="footer">
+        <span class="brand">Northwest Oregon PAC</span>
+        <span>HD33 Voters Guide &bull; Page 3</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 4 ============================ -->
+    <section class="page">
+      <h4>Issue 2 — The Pearl Shelter Fight</h4>
+      <h2>The Pearl Said No.<br />Who Was Listening?</h2>
+      <span class="accent-bar"></span>
+
+      <p class="lede">
+        In 2025, the City of Portland leased 1435 NW Northrup Street for a low-barrier overnight
+        shelter in the Pearl District. Residents and businesses raised concerns about the location,
+        safety and neighborhood impacts. The shelter subsequently became the subject of litigation
+        and was later slated for closure.<sup>[8]</sup>
+      </p>
+
+      <div class="card" style="margin-top:12px;">
+        <div class="who">Ciatta Thompson</div>
+        <p>
+          This is central to Thompson&rsquo;s campaign argument. She says Portland needs treatment
+          and mental-health capacity, but taxpayers should no longer write blank checks to programs
+          that cannot demonstrate results.
+        </p>
+        <div class="eyebrow" style="margin-top:14px;">Her approach calls for</div>
+        <ul class="list">
+          <li>Treatment.</li>
+          <li>Accountability.</li>
+          <li>Audits.</li>
+          <li>Measurable outcomes.</li>
+          <li>And consequences when publicly funded programs repeatedly fail.</li>
+        </ul>
+      </div>
+
+      <div class="callout">
+        <div class="eyebrow">Question</div>
+        <p>
+          When a neighborhood in your district is fighting City Hall, should its state
+          representative be visibly in the fight?
+        </p>
+      </div>
+
+      <div class="footer">
+        <span class="brand">Northwest Oregon PAC</span>
+        <span>HD33 Voters Guide &bull; Page 4</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 5 ============================ -->
+    <section class="page">
+      <h4>Issue 3 — Addiction &amp; Mental Health</h4>
+      <h2>Are We Treating Addiction<br />or Managing It?</h2>
+      <span class="accent-bar"></span>
+
+      <p class="lede">
+        Syringe-service programs are considered a public-health intervention intended to reduce
+        infectious-disease transmission and connect people with other services. Multnomah County
+        itself recognizes that evidence while also adopting its new school-buffer
+        restriction.<sup>[6][7]</sup>
+      </p>
+      <p>The political disagreement is over what happens <em>after</em> immediate harm is reduced.</p>
+
+      <div class="grid-2" style="margin-top:12px;">
+        <div class="card">
+          <div class="who">Ciatta Thompson</div>
+          <div class="quote">Compassion should lead toward recovery.</div>
+          <p>
+            She supports expanded treatment capacity through public-private partnerships and wants
+            programs receiving taxpayer money evaluated using measurable outcomes.<sup>[2]</sup>
+          </p>
+          <p>For Thompson, success isn&rsquo;t activity. It&rsquo;s people reaching stability.</p>
+        </div>
+        <div class="card">
+          <div class="who">Shannon Jones Isadore</div>
+          <p>Isadore brings direct professional experience to this debate.</p>
+          <p>
+            She is a family psychotherapist and founded Oregon Change Clinic, which provides
+            behavioral-health and addiction services.<sup>[3][4]</sup>
+          </p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="eyebrow">Voters need to understand</div>
+        <p>
+          If structure and accountability matter inside a treatment program, why shouldn&rsquo;t
+          taxpayers expect the same standards from Portland&rsquo;s broader response to addiction
+          and homelessness?
+        </p>
+      </div>
+
+      <div class="footer">
+        <span class="brand">Northwest Oregon PAC</span>
+        <span>HD33 Voters Guide &bull; Page 5</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 6 ============================ -->
+    <section class="page">
+      <h4>Issue 4 — Homelessness Spending</h4>
+      <h2>Where Does the Money Go?</h2>
+      <span class="accent-bar"></span>
+
+      <p class="lede">
+        In October 2024, Multnomah County announced <strong>$1.1 million</strong> in
+        opioid-settlement funding for Oregon Change Clinic to lease a 50-bed stabilization facility.
+      </p>
+      <p>That happened about a month after Isadore was appointed to the Legislature.</p>
+
+      <div class="card" style="margin-top:16px;">
+        <div class="who">Ciatta&rsquo;s Position</div>
+        <p>
+          Government programs receiving public money should be audited and required to show
+          results.<sup>[1][2]</sup>
+        </p>
+        <div class="quote">Taxpayers should be able to ask one simple question: What did we get for the money?</div>
+      </div>
+
+      <div class="footer">
+        <span class="brand">Northwest Oregon PAC</span>
+        <span>HD33 Voters Guide &bull; Page 6</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 7 ============================ -->
+    <section class="page">
+      <h4>The Record in Salem</h4>
+      <h2>What Has Isadore Focused On<br />in Salem?</h2>
+      <span class="accent-bar"></span>
+
+      <p class="lede">Isadore&rsquo;s record includes funding for local projects. It also includes support for:</p>
+
+      <ul class="list">
+        <li><strong>HB 2995</strong> &ndash; reparations task force</li>
+        <li><strong>HR 3</strong> &ndash; Black Drag Resolution, which she co-chief-sponsored</li>
+        <li><strong>SB 1098</strong> &ndash; restrictions on removing certain books from schools and libraries</li>
+        <li><strong>HB 4138</strong> &ndash; restrictions on law-enforcement officers wearing facial coverings</li>
+      </ul>
+
+      <p style="margin-top:14pt;">Those are real legislative choices. But while those issues received attention:</p>
+      <ul class="list">
+        <li>The state school needle-buffer bill failed.<sup>[5][6]</sup></li>
+        <li>The Pearl shelter fight continued.<sup>[8]</sup></li>
+        <li>Addiction and street disorder remained daily concerns.</li>
+      </ul>
+
+      <div class="callout">
+        <div class="eyebrow">The question isn&rsquo;t whether those other issues matter</div>
+        <p>It&rsquo;s what District 33 needed its representative focused on <strong>most</strong>.</p>
+      </div>
+
+      <div class="footer">
+        <span class="brand">Northwest Oregon PAC</span>
+        <span>HD33 Voters Guide &bull; Page 7</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 8 ============================ -->
+    <section class="page">
+      <h4>Issue 5 — Affordability</h4>
+      <h2>Can Working People<br />Still Afford Portland?</h2>
+      <span class="accent-bar"></span>
+
+      <p class="lede">People who show up for work every day are feeling the pressure.</p>
+
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin: 8pt 0 18pt;">
+        <span class="pill" style="letter-spacing:.18em;">Housing</span>
+        <span class="pill" style="letter-spacing:.18em;">Childcare</span>
+        <span class="pill" style="letter-spacing:.18em;">Taxes</span>
+        <span class="pill" style="letter-spacing:.18em;">Transportation</span>
+        <span class="pill" style="letter-spacing:.18em;">Everyday bills</span>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="who">Ciatta Thompson</div>
+          <p>Thompson works in a downtown hotel.<sup>[1]</sup></p>
+          <p>
+            Her focus is on <strong>lowering costs</strong> for people who still have to show up
+            for the morning shift, night shift and everything in between.
+          </p>
+          <p>She talks about: taxes, childcare, housing, jobs.<sup>[1][2]</sup></p>
+        </div>
+        <div class="card">
+          <div class="who">Shannon Jones Isadore</div>
+          <p>
+            Isadore spent years working in finance and now serves as vice chair of the House
+            Economic Development, Small Business and Trade Committee.<sup>[3]</sup>
+          </p>
+          <p>She talks about downtown revitalization and economic development.<sup>[3][4]</sup></p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="eyebrow">The test is simple</div>
+        <p>
+          Is Portland becoming safer and more affordable for the people who live and work here?
+        </p>
+      </div>
+
+      <div class="footer">
+        <span class="brand">Northwest Oregon PAC</span>
+        <span>HD33 Voters Guide &bull; Page 8</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 9 ============================ -->
+    <section class="page">
+      <h4>Frame the Race</h4>
+      <h2>This Race Isn&rsquo;t Simply<br />Red vs. Blue.</h2>
+      <span class="accent-bar"></span>
+
+      <p class="lede">It&rsquo;s <strong>status quo</strong> vs. a <strong>demand for different results</strong>.</p>
+
+      <div class="grid-2" style="margin-top:12px;">
+        <div class="card">
+          <div class="who">Shannon Jones Isadore</div>
+          <p>Is the incumbent.</p>
+          <p>
+            She brings military service, behavioral-health experience, business experience and a
+            legislative record that includes public investments and infrastructure
+            initiatives.<sup>[3][4]</sup>
+          </p>
+        </div>
+        <div class="card">
+          <div class="who">Ciatta Thompson</div>
+          <p>Is the challenger.</p>
+          <p>
+            She spent years voting Democratic before deciding that Portland&rsquo;s results
+            required a different approach.
+          </p>
+          <p>Her campaign asks voters to look beyond party labels and judge government on:</p>
+          <ul class="list">
+            <li>Safety</li>
+            <li>Recovery</li>
+            <li>Affordability</li>
+            <li>Accountability</li>
+            <li>Results<sup>[1][2]</sup></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="rule" />
+
+      <div class="callout">
+        <div class="eyebrow">That&rsquo;s the choice</div>
+        <p>
+          Not whether one candidate cares about Portland and the other doesn&rsquo;t. It&rsquo;s
+          whether Portland should continue its current approach or demand a different standard for
+          success.
+        </p>
+      </div>
+
+      <div class="footer">
+        <span class="brand">Northwest Oregon PAC</span>
+        <span>HD33 Voters Guide &bull; Page 9</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 10 ============================ -->
+    <section class="page">
+      <h4>The Choice for District 33</h4>
+      <h2>District 33 Lives With the Results.</h2>
+      <span class="accent-bar"></span>
+
+      <div class="grid-2" style="margin-top:6px;">
+        <div class="card">
+          <div class="who">Ciatta Thompson</div>
+          <p>A former Democrat. Works downtown. Not a career politician.</p>
+          <p>She says Portland doesn&rsquo;t need another explanation for why things aren&rsquo;t working.</p>
+          <div class="eyebrow" style="margin-top:12px;">She wants</div>
+          <ul class="list">
+            <li>Police capacity</li>
+            <li>Real treatment</li>
+            <li>Government accountability</li>
+            <li>Lower costs</li>
+            <li>Programs that prove they work</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="who">Shannon Jones Isadore</div>
+          <p>A Marine veteran. Therapist. Clinic owner. Current state representative.</p>
+          <p>
+            She brings treatment experience and a legislative record that includes funding for
+            local projects. She also represents District 33 while many of its biggest livability
+            fights remain unresolved.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:18px;">
+        <div class="eyebrow">Decide which standard Portland should accept for the next two years</div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px 8px; margin-top:8px;">
+          <span class="pill" style="letter-spacing:.16em;">Needles near schools</span>
+          <span class="pill" style="letter-spacing:.16em;">Addiction on the street</span>
+          <span class="pill" style="letter-spacing:.16em;">Shelter fights</span>
+          <span class="pill" style="letter-spacing:.16em;">Empty storefronts</span>
+          <span class="pill" style="letter-spacing:.16em;">Rising costs</span>
+          <span class="pill" style="letter-spacing:.16em;">Millions spent</span>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:16px;">
+        Learn more about Ciatta Thompson at
+        <a href="https://www.ciattathompson.com/">ciattathompson.com</a>.
+      </p>
+
+      <hr class="rule" />
+
+      <h4>Sources &amp; References</h4>
+      <ol style="padding-left: 18px; margin: 0;">
+        <li class="small" style="margin-bottom:4pt;">Ciatta Thompson for HD33 — Official Campaign Website</li>
+        <li class="small" style="margin-bottom:4pt;">Ciatta Thompson for HD33 — Policy</li>
+        <li class="small" style="margin-bottom:4pt;">Oregon Legislature — Representative Shannon Isadore</li>
+        <li class="small" style="margin-bottom:4pt;">Shannon Jones Isadore Campaign — Official Campaign Website / Legislative Record</li>
+        <li class="small" style="margin-bottom:4pt;">Oregon Legislative Information System — SB 1573 (2026)</li>
+        <li class="small" style="margin-bottom:4pt;">Multnomah County — June 25, 2026 Mobile Syringe Service Ordinance</li>
+        <li class="small" style="margin-bottom:4pt;">Multnomah County — Syringe Service Restrictions Near Schools</li>
+        <li class="small" style="margin-bottom:4pt;">OPB / Willamette Week — Northrup Shelter Coverage, 2026</li>
+      </ol>
+
+      <p class="tiny" style="margin-top:14px;">
+        Paid for by Northwest Oregon PAC #25045. Not authorized by any candidate committee.
+      </p>
+
+      <div class="footer">
+        <span class="brand">Northwest Oregon PAC</span>
+        <span>HD33 Voters Guide &bull; Page 10</span>
+      </div>
+    </section>
+  </body>
+</html>

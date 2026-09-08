@@ -40,7 +40,15 @@ export default function Donate() {
           className="relative mx-auto mt-10 max-w-3xl text-center"
         >
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Button href={pac.donateUrl} size="lg" target="_blank" rel="noopener noreferrer">
+            <Button
+              href={pac.donateUrl}
+              size="lg"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta-name="See ways to give"
+              data-cta-location="donate_section"
+              data-cta-kind="donate"
+            >
               See ways to give
               <svg
                 width="16"
@@ -55,7 +63,13 @@ export default function Donate() {
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </Button>
-            <Button href="/contact" variant="secondary" size="lg">
+            <Button
+              href="/contact"
+              variant="secondary"
+              size="lg"
+              data-cta-name="Contact the PAC"
+              data-cta-location="donate_section"
+            >
               Contact the PAC
             </Button>
           </div>

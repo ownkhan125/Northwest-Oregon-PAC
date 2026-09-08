@@ -162,9 +162,9 @@ function FeedCard({ post, onOpen }) {
     <CardShell
       post={post}
       onOpen={onOpen}
-      aspect="aspect-square"
+      aspect="aspect-[4/5]"
       thumbSrc={post.html}
-      thumbHeight={1080}
+      thumbHeight={1350}
       footer={
         <span className="flex flex-1 flex-col gap-2.5 p-5 sm:p-6">
           <span className="text-foreground/55 group-hover:text-primary-fg/70 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase transition-colors duration-500">
@@ -209,9 +209,9 @@ function CarouselCard({ post, onOpen }) {
     <CardShell
       post={post}
       onOpen={onOpen}
-      aspect="aspect-square"
+      aspect="aspect-[1080/1110]"
       thumbSrc={post.slides[0]}
-      thumbHeight={1080}
+      thumbHeight={1110}
       footer={
         <span className="flex flex-1 flex-col gap-2.5 p-5 sm:p-6">
           <span className="text-foreground/55 group-hover:text-primary-fg/70 flex items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase transition-colors duration-500">
@@ -291,7 +291,7 @@ function Lightbox({ post, onClose }) {
   const isCarousel = post.format === 'carousel'
   const [slide, setSlide] = useState(0)
   const width = 1080
-  const height = post.format === 'story' ? 1920 : 1080
+  const height = post.format === 'story' ? 1920 : post.format === 'carousel' ? 1110 : 1350
   const src = isCarousel ? post.slides[slide] : post.html
 
   useEffect(() => {
@@ -325,16 +325,16 @@ function Lightbox({ post, onClose }) {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.98 }}
         transition={{ duration: 0.45, ease: EASE }}
-        className="flex max-h-full flex-col items-center gap-4"
+        className="flex max-h-full flex-col items-center gap-4 overflow-y-auto overscroll-contain"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex w-full items-center justify-between gap-4">
-          <div className="min-w-0">
+        <div className="flex w-full items-start justify-between gap-4">
+          <div className="min-w-0 flex-1">
             <div className="text-sand/70 font-mono text-[10px] tracking-[0.28em] uppercase">
               {post.tag} · {post.size}
               {isCarousel && ` · Slide ${slide + 1}/${post.slideCount}`}
             </div>
-            <div className="font-display text-cream truncate text-lg font-medium tracking-tight sm:text-xl">
+            <div className="font-display text-cream max-w-[52ch] text-base leading-snug font-medium tracking-tight break-words sm:text-xl">
               {post.title}
             </div>
           </div>
@@ -370,7 +370,7 @@ function Lightbox({ post, onClose }) {
               type="button"
               onClick={() => setSlide((s) => s - 1)}
               aria-label="Previous slide"
-              className="bg-cream text-ink absolute top-1/2 -left-3 grid h-11 w-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full shadow-xl transition-transform hover:scale-105 sm:-left-5"
+              className="bg-cream/95 text-ink absolute top-1/2 left-3 z-10 grid h-11 w-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full shadow-xl transition-transform hover:scale-105 sm:left-4"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 18l-6-6 6-6" />
@@ -382,7 +382,7 @@ function Lightbox({ post, onClose }) {
               type="button"
               onClick={() => setSlide((s) => s + 1)}
               aria-label="Next slide"
-              className="bg-cream text-ink absolute top-1/2 -right-3 grid h-11 w-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full shadow-xl transition-transform hover:scale-105 sm:-right-5"
+              className="bg-cream/95 text-ink absolute top-1/2 right-3 z-10 grid h-11 w-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full shadow-xl transition-transform hover:scale-105 sm:right-4"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9 6l6 6-6 6" />
@@ -433,16 +433,41 @@ export default function SocialPostsPage() {
   )
   const total = visible.feed.length + visible.story.length + visible.carousel.length
 
+  // Keep the viewport anchored to the filter bar when a filter changes.
+  // Without this, switching to a filter with fewer results shrinks the page
+  // and the browser clamps the old scroll position down to the footer.
+  const sectionRef = useRef(null)
+  const scrollToFilters = () => {
+    const el = sectionRef.current
+    if (!el) return
+    const y = el.getBoundingClientRect().top + window.scrollY - 100
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
+  }
+  const chooseFormat = (key) => {
+    setFormat(key)
+    // If the active topic has nothing in the new format, fall back to All so
+    // switching format never leaves a selected-but-empty topic (no dead ends).
+    if (tag !== 'all') {
+      const pools = key === 'all' ? Object.values(ALL_POSTS) : [ALL_POSTS[key]]
+      if (!pools.some((posts) => posts.some((p) => p.tag === tag))) setTag('all')
+    }
+    scrollToFilters()
+  }
+  const chooseTag = (key) => {
+    setTag(key)
+    scrollToFilters()
+  }
+
+  // Topic counts scoped to the chosen format — so "Vision · 5" under Carousels
+  // reflects only carousels, and topics with no posts in that format read 0.
   const tagCounts = useMemo(() => {
-    const counts = { all: feedPosts.length + storyPosts.length + carouselPosts.length }
+    const pools = format === 'all' ? Object.values(ALL_POSTS) : [ALL_POSTS[format]]
+    const counts = { all: pools.reduce((a, posts) => a + posts.length, 0) }
     for (const t of socialTags) {
-      counts[t] = Object.values(ALL_POSTS).reduce(
-        (a, posts) => a + posts.filter((p) => p.tag === t).length,
-        0,
-      )
+      counts[t] = pools.reduce((a, posts) => a + posts.filter((p) => p.tag === t).length, 0)
     }
     return counts
-  }, [])
+  }, [format])
 
   return (
     <>
@@ -453,7 +478,7 @@ export default function SocialPostsPage() {
         description="Every post you share helps inform your neighbors, strengthen civic engagement, and support a brighter future for Northwest Oregon. Access our collection of share-ready graphics and messages to make an impact today."
       />
 
-      <section className="relative isolate overflow-x-clip pb-24 sm:pb-32">
+      <section ref={sectionRef} className="relative isolate overflow-x-clip pb-24 sm:pb-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           {/* Filter bar */}
           <m.div
@@ -467,7 +492,7 @@ export default function SocialPostsPage() {
                 Format
               </span>
               {FORMATS.map((f) => (
-                <FilterPill key={f.key} active={format === f.key} onClick={() => setFormat(f.key)}>
+                <FilterPill key={f.key} active={format === f.key} onClick={() => chooseFormat(f.key)}>
                   {f.label}
                 </FilterPill>
               ))}
@@ -477,14 +502,16 @@ export default function SocialPostsPage() {
               <span className="text-highlight mr-1 hidden font-mono text-[10px] tracking-[0.3em] uppercase lg:block">
                 Topic
               </span>
-              <FilterPill active={tag === 'all'} onClick={() => setTag('all')}>
+              <FilterPill active={tag === 'all'} onClick={() => chooseTag('all')}>
                 All · {tagCounts.all}
               </FilterPill>
-              {socialTags.map((t) => (
-                <FilterPill key={t} active={tag === t} onClick={() => setTag(t)}>
-                  {t} · {tagCounts[t]}
-                </FilterPill>
-              ))}
+              {socialTags
+                .filter((t) => tagCounts[t] > 0)
+                .map((t) => (
+                  <FilterPill key={t} active={tag === t} onClick={() => chooseTag(t)}>
+                    {t} · {tagCounts[t]}
+                  </FilterPill>
+                ))}
             </div>
           </m.div>
 
@@ -497,7 +524,7 @@ export default function SocialPostsPage() {
               whileInView="show"
               viewport={{ once: true, margin: '-8% 0px' }}
             >
-              <SectionMarker number="02" label="Feed posts" size="1080 × 1080" count={visible.feed.length} />
+              <SectionMarker number="02" label="Feed posts" size="1080 × 1350" count={visible.feed.length} />
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {visible.feed.map((post) => (
                   <FeedCard key={post.id} post={post} onOpen={() => setActive(post)} />
@@ -538,7 +565,7 @@ export default function SocialPostsPage() {
               <SectionMarker
                 number="04"
                 label="Carousels"
-                size="1080 × 1080 · 5–7 slides"
+                size="1080 × 1110 · slides"
                 count={visible.carousel.length}
               />
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

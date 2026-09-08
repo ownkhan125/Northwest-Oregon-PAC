@@ -146,6 +146,9 @@ export default function Navbar() {
               size="md"
               target="_blank"
               rel="noopener noreferrer"
+              data-cta-name="Donate"
+              data-cta-location="header"
+              data-cta-kind="donate"
             >
               Donate
               <svg
@@ -220,9 +223,7 @@ export default function Navbar() {
                       onClick={() => setOpen(false)}
                       className={cn(
                         'font-display group relative flex items-center gap-4 py-1 text-4xl font-medium transition-colors duration-300 sm:text-5xl',
-                        active
-                          ? 'text-primary'
-                          : 'text-foreground hover:text-primary',
+                        active ? 'text-primary' : 'text-foreground hover:text-primary',
                       )}
                     >
                       <span
@@ -253,6 +254,9 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
+                  data-cta-name="Donate Now"
+                  data-cta-location="mobile_menu"
+                  data-cta-kind="donate"
                 >
                   Donate Now
                 </Button>

@@ -14,7 +14,7 @@ const EXPECTED = [
   'info@northwestoregon.com',
   'PROGRAM DIRECTOR',
   'Cynthia Sawyer',
-  '503-490-4139',
+  '+1 971-521-6173',
   'MAILING ADDRESS',
   '10700 SW Beaverton-Hillsdale Highway',
   'Suite 212',

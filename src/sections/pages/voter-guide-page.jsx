@@ -9,6 +9,23 @@ import Input from '@/components/ui/input'
 import { fadeUp, stagger, cardReveal, EASE } from '@/animations/variants'
 import { cn } from '@/lib/cn'
 import { pac } from '@/data/pac'
+import TrackOnMount from '@/components/analytics/track-on-mount'
+import {
+  newEventId,
+  trackFormError,
+  trackFormStart,
+  trackLead,
+  trackNewsletterSignup,
+} from '@/lib/analytics/meta'
+
+const FORM_NAME = 'guide_to_action'
+
+// Stable object literal — a value rebuilt each render would re-fire the
+// mount event.
+const VOTER_INFO_PARAMS = {
+  content_category: 'voter_info',
+  content_name: 'guide_to_action',
+}
 
 /* ------------------------------------------------------------------
    Conversion form — LEFT UNTOUCHED (fields, validation, webhook,
@@ -42,6 +59,15 @@ const ConversionForm = ({ compact = false }) => {
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle') // idle | loading | success | error
 
+  // Latched so FormStart fires once per fill, not once per keystroke.
+  const formStarted = useRef(false)
+
+  const handleFirstInteraction = () => {
+    if (formStarted.current) return
+    formStarted.current = true
+    trackFormStart({ form_name: FORM_NAME })
+  }
+
   const onChange = (e) => {
     const { name, value } = e.target
     setValues((v) => ({ ...v, [name]: value }))
@@ -72,15 +98,26 @@ const ConversionForm = ({ compact = false }) => {
       })
       if (!res.ok) throw new Error('submission_failed')
       setStatus('success')
+
+      // Fired before the redirect so the events leave the page with it.
+      // Both share one eventId for Conversions API deduplication.
+      const eventId = newEventId()
+      trackLead({ form_name: FORM_NAME }, eventId)
+      trackNewsletterSignup({ form_name: FORM_NAME }, eventId)
+
+      formStarted.current = false
       router.push('/thank-you')
     } catch {
       setStatus('error')
+      trackFormError({ form_name: FORM_NAME })
     }
   }
 
   return (
     <form
       onSubmit={onSubmit}
+      onFocus={handleFirstInteraction}
+      onChange={handleFirstInteraction}
       noValidate
       data-form-state={status}
       className={cn(
@@ -454,6 +491,7 @@ const LegalStrip = () => (
 export default function VoterGuidePage() {
   return (
     <>
+      <TrackOnMount event="VoterInfoView" params={VOTER_INFO_PARAMS} />
       <Hero />
       <LearnSection />
       <FooterNote />
