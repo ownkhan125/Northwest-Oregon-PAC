@@ -276,15 +276,6 @@ const GuideForm = () => {
 ------------------------------------------------------------------ */
 const Hero = () => (
   <section className="text-foreground relative isolate overflow-x-clip pt-28 pb-16 sm:pt-32 sm:pb-20">
-    <div
-      aria-hidden
-      className="bg-highlight/18 pointer-events-none absolute top-1/4 -left-32 -z-10 h-[55vmin] w-[55vmin] rounded-full blur-3xl"
-    />
-    <div
-      aria-hidden
-      className="bg-primary/15 pointer-events-none absolute -right-24 bottom-0 -z-10 h-[45vmin] w-[45vmin] rounded-full blur-3xl"
-    />
-
     <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:px-12">
       <div className="lg:col-span-7">
         <m.div
@@ -579,9 +570,11 @@ const IssuesSection = () => (
               /* Filled-panel hover: the whole row becomes a fixed forest
                  (#2E4538) card on hover, regardless of theme. Icon chip,
                  eyebrow, body, and question text flip via group-hover:*
-                 with the site's standard 500ms easing. */
+                 with the site's standard 500ms easing. Row dividers stay
+                 continuously visible — adjacent rows' borders are never
+                 hidden by the hover state. */
               'group hover:bg-forest hover:text-cream relative isolate flex cursor-pointer items-start gap-5 px-4 py-6 transition-[background-color,border-color,color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_28px_60px_-30px_rgba(46,69,56,0.55)] sm:gap-6 sm:px-6 sm:py-7',
-              i > 0 && 'border-border group-hover:border-transparent border-t',
+              i > 0 && 'border-border border-t',
             )}
             onClick={scrollToForm}
             onKeyDown={(e) => {
@@ -655,12 +648,12 @@ const CiattaCard = () => (
     <Card className="flex h-full flex-col overflow-hidden p-0" tilt interactive>
       <div className="border-primary/15 bg-surface-alt/70 group-hover:border-primary-fg/20 relative aspect-[440/330] w-full overflow-hidden border-b transition-colors duration-500">
         <Image
-          src="/images/funnels/ciatta-vs-isadore/thompson-portrait.jpg"
+          src="/images/funnels/ciatta-vs-isadore/ciatta.png"
           alt="Ciatta Thompson"
           fill
           sizes="(min-width: 1024px) 560px, (min-width: 640px) 90vw, 100vw"
           quality={85}
-          className="object-cover object-[center_25%]"
+          className="object-contain object-bottom"
         />
       </div>
       <div className="flex flex-1 flex-col p-8 sm:p-10">
@@ -735,12 +728,12 @@ const IsadoreCard = () => (
     <Card className="flex h-full flex-col overflow-hidden p-0" tilt={false} interactive>
       <div className="border-primary/15 bg-surface-alt/70 group-hover:border-primary-fg/20 relative aspect-[440/330] w-full overflow-hidden border-b transition-colors duration-500">
         <Image
-          src="/images/funnels/ciatta-vs-isadore/isadore-portrait.webp"
+          src="/images/funnels/ciatta-vs-isadore/shannon.png"
           alt="Shannon Jones Isadore"
           fill
           sizes="(min-width: 1024px) 560px, (min-width: 640px) 90vw, 100vw"
           quality={85}
-          className="object-cover object-[center_20%]"
+          className="object-contain object-bottom"
         />
       </div>
       <div className="flex flex-1 flex-col p-8 sm:p-10">
