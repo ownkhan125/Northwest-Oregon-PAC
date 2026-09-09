@@ -645,18 +645,18 @@ const CiattaCard = () => (
     aria-label="Visit Ciatta Thompson's campaign website"
     className="group block h-full"
   >
-    <Card className="flex h-full flex-col overflow-hidden p-0" tilt interactive>
-      <div className="border-primary/15 bg-surface-alt/70 group-hover:border-primary-fg/20 relative aspect-[440/330] w-full overflow-hidden border-b transition-colors duration-500">
+    <Card className="flex h-full flex-col overflow-hidden p-4 sm:p-5" tilt interactive>
+      <div className="border-primary/15 group-hover:border-primary-fg/20 relative aspect-[440/330] w-full overflow-hidden rounded-2xl border bg-transparent transition-colors duration-500">
         <Image
           src="/images/funnels/ciatta-vs-isadore/ciatta.png"
           alt="Ciatta Thompson"
           fill
           sizes="(min-width: 1024px) 560px, (min-width: 640px) 90vw, 100vw"
           quality={85}
-          className="object-contain object-bottom"
+          className="object-cover object-top"
         />
       </div>
-      <div className="flex flex-1 flex-col p-8 sm:p-10">
+      <div className="flex flex-1 flex-col px-2 pt-6 pb-2 sm:px-3 sm:pt-8">
         <h3 className="font-display text-foreground group-hover:text-primary-fg text-3xl leading-tight font-medium transition-colors duration-500">
           Ciatta Thompson
         </h3>
@@ -693,50 +693,49 @@ const CiattaCard = () => (
             &ldquo;Portland over party. Results over politics.&rdquo;
           </p>
         </div>
-
-        <div className="border-primary/15 group-hover:border-primary-fg/25 mt-auto flex items-center justify-between border-t pt-6 transition-colors duration-500">
-          <span className="text-primary group-hover:text-accent inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors duration-500">
-            Visit Ciatta&rsquo;s campaign
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transition-transform group-hover:translate-x-1"
-              aria-hidden
-            >
-              <path d="M7 17L17 7M9 7h8v8" />
-            </svg>
-          </span>
-        </div>
       </div>
     </Card>
   </a>
 )
 
 const IsadoreCard = () => (
-  <button
-    type="button"
-    onClick={scrollToForm}
-    aria-label="See Shannon Jones Isadore's record — jump to the guide request form"
-    className="group block h-full w-full cursor-pointer text-left"
+  <div
+    /* Local CSS-variable overrides pin the card's rest palette to a
+       fixed dark scheme (ink surface, cream text, sand accents) so it
+       matches the design regardless of the site's light/dark toggle.
+       `--primary-fg` is set to cream so every `group-hover:text-primary-fg`
+       inside resolves to cream on the brown hover panel (high contrast).
+       The `hover:!bg-brown …` classes on the Card still win at hover
+       time via !important, so the hover swap itself is untouched. */
+    style={{
+      '--foreground': 'var(--cream)',
+      '--surface': 'var(--ink)',
+      '--surface-alt': 'rgba(107, 90, 66, 0.35)',
+      '--primary': 'var(--sand)',
+      '--primary-fg': 'var(--cream)',
+      '--accent': 'var(--sand)',
+      '--highlight': 'var(--sand)',
+      '--border': 'rgba(224, 214, 188, 0.18)',
+    }}
+    className="group block h-full w-full text-left"
   >
-    <Card className="flex h-full flex-col overflow-hidden p-0" tilt={false} interactive>
-      <div className="border-primary/15 bg-surface-alt/70 group-hover:border-primary-fg/20 relative aspect-[440/330] w-full overflow-hidden border-b transition-colors duration-500">
+    <Card
+      className="hover:!bg-brown hover:!border-brown hover:!text-cream hover:!shadow-[0_28px_60px_-30px_rgba(107,90,66,0.55)] flex h-full flex-col overflow-hidden p-4 sm:p-5"
+      tilt={false}
+      interactive
+      pointer={false}
+    >
+      <div className="border-primary/15 group-hover:border-primary-fg/20 relative aspect-[440/330] w-full overflow-hidden rounded-2xl border bg-transparent transition-colors duration-500">
         <Image
           src="/images/funnels/ciatta-vs-isadore/shannon.png"
           alt="Shannon Jones Isadore"
           fill
           sizes="(min-width: 1024px) 560px, (min-width: 640px) 90vw, 100vw"
           quality={85}
-          className="object-contain object-bottom"
+          className="object-cover object-top"
         />
       </div>
-      <div className="flex flex-1 flex-col p-8 sm:p-10">
+      <div className="flex flex-1 flex-col px-2 pt-6 pb-2 sm:px-3 sm:pt-8">
         <h3 className="font-display text-foreground group-hover:text-primary-fg text-3xl leading-tight font-medium transition-colors duration-500">
           Shannon Jones Isadore
         </h3>
@@ -752,35 +751,15 @@ const IsadoreCard = () => (
           Center renovations.
         </p>
 
-        <div className="border-primary/15 group-hover:border-primary-fg/25 mt-8 border-t pt-6 transition-colors duration-500">
+        <div className="border-primary/15 group-hover:border-primary-fg/25 mt-auto border-t pt-6 transition-colors duration-500">
           <p className="text-foreground/85 group-hover:text-primary-fg/85 text-[15px] leading-relaxed transition-colors duration-500">
             She has a record in Salem. The guide looks at that record, and the issues still
             facing District 33.
           </p>
         </div>
-
-        <div className="border-primary/15 group-hover:border-primary-fg/25 mt-auto flex items-center justify-between border-t pt-6 transition-colors duration-500">
-          <span className="text-primary group-hover:text-accent inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase transition-colors duration-500">
-            See her record
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transition-transform group-hover:translate-x-1"
-              aria-hidden
-            >
-              <path d="M5 12h14M13 5l7 7-7 7" />
-            </svg>
-          </span>
-        </div>
       </div>
     </Card>
-  </button>
+  </div>
 )
 
 const CandidateSection = () => (
