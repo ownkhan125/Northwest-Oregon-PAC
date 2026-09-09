@@ -94,6 +94,17 @@
         border-radius: 14px;
         padding: 18px 20px;
       }
+      /* Shannon Jones Isadore uses the brown palette (#6b5a42) as her
+         accent color, so every card labeled with her name switches to a
+         brown-tinted surface and border. Applied via the `.card--shannon`
+         modifier — the base .card styling is otherwise unchanged. */
+      .card.card--shannon {
+        border: 1px solid rgba(107, 90, 66, 0.55);
+        background: rgba(107, 90, 66, 0.42);
+      }
+      .card.card--shannon .who {
+        color: #d8c9a8;
+      }
       .card h3 { color: var(--cream); font-size: 14pt; margin-bottom: 4pt; }
       .card .who { font-size: 9pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 10pt; }
       .card p { font-size: 10.5pt; }
@@ -179,6 +190,15 @@
       .page.compact .callout { padding: 12px 14px; margin-top: 12px; border-radius: 12px; }
       .page.compact .callout p { font-size: 10pt; line-height: 1.45; }
       .page.compact .footer { bottom: 0.4in; left: 0.75in; right: 0.75in; }
+
+      /* Extra tightening for pages that also carry the sources/references
+         block after their body content (e.g. page 10). Shrinks the ol
+         line-height + gap so the numbered list plus the legal disclaimer
+         still sit comfortably above the footer. */
+      .page.compact .rule { margin: 12px 0; }
+      .page.compact h4 + ol { margin-top: 4pt; }
+      .page.compact ol > li.small { margin-bottom: 2pt !important; line-height: 1.35; font-size: 8.5pt; }
+      .page.compact p.tiny { font-size: 7.5pt; line-height: 1.35; margin-top: 8pt; }
     </style>
   </head>
   <body>
@@ -257,7 +277,7 @@
           </ul>
         </div>
 
-        <div class="card">
+        <div class="card card--shannon">
           <div class="who">Shannon Jones Isadore</div>
           <h3>She&rsquo;s Already in Salem. What Does Her Record Show?</h3>
           <p>
@@ -322,7 +342,7 @@
           </p>
         </div>
 
-        <div class="card">
+        <div class="card card--shannon">
           <div class="who">Shannon Jones Isadore</div>
           <p>
             Isadore did put her name on SB 1573. That&rsquo;s part of the record. So is the
@@ -420,7 +440,7 @@
           </p>
           <p>For Thompson, success isn&rsquo;t activity. It&rsquo;s people reaching stability.</p>
         </div>
-        <div class="card">
+        <div class="card card--shannon">
           <div class="who">Shannon Jones Isadore</div>
           <p>Isadore brings direct professional experience to this debate.</p>
           <p>
@@ -531,7 +551,7 @@
           </p>
           <p>She talks about: taxes, childcare, housing, jobs.<sup>[1][2]</sup></p>
         </div>
-        <div class="card">
+        <div class="card card--shannon">
           <div class="who">Shannon Jones Isadore</div>
           <p>
             Isadore spent years working in finance and now serves as vice chair of the House
@@ -563,7 +583,7 @@
       <p class="lede">It&rsquo;s <strong>status quo</strong> vs. a <strong>demand for different results</strong>.</p>
 
       <div class="grid-2" style="margin-top:12px;">
-        <div class="card">
+        <div class="card card--shannon">
           <div class="who">Shannon Jones Isadore</div>
           <p>Is the incumbent.</p>
           <p>
@@ -608,7 +628,7 @@
     </section>
 
     <!-- ============================ PAGE 10 ============================ -->
-    <section class="page">
+    <section class="page compact">
       <h4>The Choice for District 33</h4>
       <h2>District 33 Lives With the Results.</h2>
       <span class="accent-bar"></span>
@@ -627,7 +647,7 @@
             <li>Programs that prove they work</li>
           </ul>
         </div>
-        <div class="card">
+        <div class="card card--shannon">
           <div class="who">Shannon Jones Isadore</div>
           <p>A Marine veteran. Therapist. Clinic owner. Current state representative.</p>
           <p>
