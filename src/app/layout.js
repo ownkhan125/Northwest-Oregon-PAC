@@ -42,6 +42,7 @@ export default function RootLayout({ children }) {
       <head>
         <ThemeInit />
         {/* Server component — puts fbq() in <head> before hydration. */}
+        {/* Server component — puts fbq() in <head> before hydration. */}
         <MetaPixelHead />
       </head>
       <body className="text-foreground relative flex min-h-full flex-col overflow-x-hidden">
