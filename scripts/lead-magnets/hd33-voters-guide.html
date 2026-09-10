@@ -79,11 +79,12 @@
         font-size: 8.5pt; letter-spacing: 0.28em; text-transform: uppercase;
       }
       .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--sand); }
-      .accent-bar {
-        display: block; height: 3px; width: 44px; border-radius: 2px;
-        background: var(--sand); margin: 12px 0 20px;
-      }
-      .rule { border: 0; border-top: 1px solid rgba(224, 214, 188, 0.18); margin: 18px 0; }
+      /* Decorative rules removed per design update — the short sand
+         accent-bar under each h2, the cover title-underline, and the
+         hr.rule between sections. Set to display:none so no residual
+         empty space is left in the page flow. */
+      .accent-bar { display: none; }
+      .rule       { display: none; }
 
       .grid-2 {
         display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
@@ -159,7 +160,7 @@
         text-transform: uppercase; color: var(--sand);
       }
       .cover h1 { font-size: 54pt; line-height: 0.98; max-width: 6.2in; }
-      .cover .title-underline { height: 4px; width: 90px; background: var(--sand); border-radius: 2px; margin: 22px 0 26px; }
+      .cover .title-underline { display: none; }
       .cover .sub { font-family: 'Fraunces', Georgia, serif; font-size: 17pt; line-height: 1.28; color: rgba(246, 242, 232, 0.92); max-width: 6.2in; }
       .cover .neighborhoods { font-size: 9.5pt; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(224, 214, 188, 0.85); margin-top: 20px; }
       .cover .cover-cta {

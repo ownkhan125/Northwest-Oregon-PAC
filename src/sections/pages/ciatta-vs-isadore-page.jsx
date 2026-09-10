@@ -162,10 +162,7 @@ const GuideForm = () => {
     >
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label
-            htmlFor="firstName"
-            className="text-foreground mb-2 block text-sm font-medium"
-          >
+          <label htmlFor="firstName" className="text-foreground mb-2 block text-sm font-medium">
             First Name<span className="text-primary ml-0.5">*</span>
           </label>
           <Input
@@ -219,7 +216,7 @@ const GuideForm = () => {
       {status === 'error' && (
         <div
           role="alert"
-          className="border-red-500/40 bg-red-500/10 text-red-700 mt-5 rounded-xl border p-4 text-sm dark:text-red-300"
+          className="mt-5 rounded-xl border border-red-500/40 bg-red-500/10 p-4 text-sm text-red-700 dark:text-red-300"
         >
           Something went wrong sending your info. Please try again in a moment.
         </div>
@@ -230,7 +227,7 @@ const GuideForm = () => {
           type="submit"
           size="lg"
           variant="primary"
-          className="w-full tracking-[0.14em] uppercase whitespace-nowrap"
+          className="w-full tracking-[0.14em] whitespace-nowrap uppercase"
           data-testid="funnel-submit"
         >
           {status === 'loading' ? (
@@ -363,8 +360,8 @@ const Hero = () => (
           transition={{ delay: 1.4, duration: 0.6 }}
           className="text-foreground/65 mt-5 max-w-xl text-sm leading-relaxed"
         >
-          Free download • Concise issue breakdown • Based on candidate positions, public records
-          and published reporting
+          Free download • Concise issue breakdown • Based on candidate positions, public records and
+          published reporting
         </m.p>
       </div>
 
@@ -664,8 +661,8 @@ const CiattaCard = () => (
           NW Portland resident. Hotel manager. Former Democrat. Political newcomer.
         </p>
         <p className="text-foreground/85 group-hover:text-primary-fg/85 mt-5 text-[15px] leading-relaxed transition-colors duration-500">
-          Thompson says years of working downtown changed the way she looked at
-          Portland&rsquo;s policies.
+          Thompson says years of working downtown changed the way she looked at Portland&rsquo;s
+          policies.
         </p>
 
         <p className="text-foreground group-hover:text-primary-fg mt-6 text-sm font-semibold tracking-wide transition-colors duration-500">
@@ -720,7 +717,7 @@ const IsadoreCard = () => (
     className="group block h-full w-full text-left"
   >
     <Card
-      className="hover:!bg-brown hover:!border-brown hover:!text-cream hover:!shadow-[0_28px_60px_-30px_rgba(107,90,66,0.55)] flex h-full flex-col overflow-hidden p-4 sm:p-5"
+      className="hover:!bg-brown hover:!border-brown hover:!text-cream flex h-full flex-col overflow-hidden p-4 hover:!shadow-[0_28px_60px_-30px_rgba(107,90,66,0.55)] sm:p-5"
       tilt={false}
       interactive
       pointer={false}
@@ -746,15 +743,15 @@ const IsadoreCard = () => (
           Isadore was appointed to the Oregon House in 2024 and later won election.
         </p>
         <p className="text-foreground/80 group-hover:text-primary-fg/80 mt-4 text-[15px] leading-relaxed transition-colors duration-500">
-          Her campaign points to investments and accomplishments including the James Beard
-          Market, St. Johns cohousing, Hoyt Arboretum, critical-energy infrastructure, and Moda
-          Center renovations.
+          Her campaign points to investments and accomplishments including the James Beard Market,
+          St. Johns cohousing, Hoyt Arboretum, critical-energy infrastructure, and Moda Center
+          renovations.
         </p>
 
         <div className="border-primary/15 group-hover:border-primary-fg/25 mt-auto border-t pt-6 transition-colors duration-500">
           <p className="text-foreground/85 group-hover:text-primary-fg/85 text-[15px] leading-relaxed transition-colors duration-500">
-            She has a record in Salem. The guide looks at that record, and the issues still
-            facing District 33.
+            She has a record in Salem. The guide looks at that record, and the issues still facing
+            District 33.
           </p>
         </div>
       </div>
@@ -792,32 +789,50 @@ const CandidateSection = () => (
 
 /* ------------------------------------------------------------------
    5. "WHAT CHANGES AT 1,001 FEET?" — copy left over Ciatta backdrop.
-   Uses a theme-aware overlay so the image blends with the page in
-   either mode (fading to cream in light, ink in dark).
+   Fixed dark treatment: full-opacity portrait sits at the right edge,
+   a left→right ink gradient anchors the copy column on a dark surface
+   so the section reads consistently in both light and dark modes.
+   Local CSS-variable overrides pin text/accents to the cream/sand
+   palette so `text-foreground` and `text-primary` resolve correctly
+   on top of the dark backdrop regardless of site theme.
 ------------------------------------------------------------------ */
 const ThousandFeetSection = () => (
-  <section className="text-foreground relative isolate overflow-hidden py-20 sm:py-24">
+  <section
+    style={{
+      '--foreground': 'var(--cream)',
+      '--primary': 'var(--sand)',
+      '--surface': 'var(--ink)',
+      '--border': 'rgba(224, 214, 188, 0.25)',
+    }}
+    className="text-foreground relative isolate overflow-hidden bg-[#2a2a26] py-20 sm:py-24"
+  >
     <div className="absolute inset-0 -z-10">
+      {/* Portrait sits on the right edge at its natural aspect —
+         `object-contain object-right` scales the 1:1 source to
+         section height with width:auto, so it never stretches or
+         distorts. Mobile / tablet keep object-cover so the frame
+         still fills the narrow container. */}
       <Image
         src="/images/funnels/ciatta-vs-isadore/thompson-hero.jpg"
         alt=""
         fill
         sizes="100vw"
         quality={85}
-        className="object-cover object-[70%_20%] opacity-60 dark:opacity-40"
+        className="object-cover object-[55%_22%] sm:object-[65%_20%] lg:object-contain lg:object-right"
       />
+      {/* Single smooth left→right gradient: strongest ink on the left
+         where the copy sits, easing continuously to a subtle ink cast
+         (~25%) on the right so the portrait shows through clearly but
+         still has a uniform dark tint matching the reference. */}
       <div
         aria-hidden
-        className="from-background via-background/90 to-background/40 absolute inset-0 bg-gradient-to-r"
-      />
-      <div
-        aria-hidden
-        className="from-background/70 to-background/0 absolute inset-0 bg-gradient-to-t"
+        // className="absolute inset-0 bg-gradient-to-r from-[#2a2a26] via-[#2a2a26]/100 via-60% to-[#2a2a26]/50 to-100%"
+        className="absolute inset-0 bg-gradient-to-b from-[#2a2a26]/100 via-[#2a2a26]/60 via-60% to-[#2a2a26]/20 to-100% lg:bg-gradient-to-r lg:from-[#2a2a26] lg:via-[#2a2a26]/100 lg:via-60% lg:to-[#2a2a26]/50 lg:to-100%"
       />
     </div>
 
-    <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:px-12">
-      <div className="max-w-xl">
+    <div className="mx-auto grid max-w-6xl grid-cols-1 gap-2 px-5 sm:px-8 lg:grid-cols-[70%_30%] lg:px-12">
+      <div className="max-w-full">
         <SplitText
           as="h2"
           by="word"
@@ -851,10 +866,10 @@ const ThousandFeetSection = () => (
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-10% 0px' }}
-          className="border-primary/25 bg-surface/80 mt-8 rounded-2xl border p-6 backdrop-blur-sm"
+          className="border-primary/25 bg-surface/80 mt-8 rounded-2xl border p-7 backdrop-blur-sm sm:p-8"
         >
           <p className="text-primary text-sm tracking-wide uppercase">Then she asked:</p>
-          <p className="font-display text-foreground mt-3 text-xl leading-snug sm:text-2xl">
+          <p className="font-display text-foreground mt-4 text-xl leading-snug sm:text-2xl">
             &ldquo;What changes at 1,001 feet? The same addiction. The same fentanyl. The same
             discarded needles. Moving the problem isn&rsquo;t solving the problem.&rdquo;
           </p>
@@ -942,31 +957,31 @@ const GuideBook = () => (
     <div className="border-forest/60 relative aspect-[421/551] rounded-[18px] border bg-gradient-to-br from-[#2E4538] to-[#1a2621] p-8 text-[#F6F2E8] shadow-[0_50px_100px_-40px_rgba(0,0,0,0.55)] dark:shadow-[0_50px_100px_-40px_rgba(0,0,0,0.9)]">
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-[#E0D6BC]/85 text-[11px] font-semibold tracking-[0.28em] uppercase">
+          <p className="text-[11px] font-semibold tracking-[0.28em] text-[#E0D6BC]/85 uppercase">
             Oregon House District 33
           </p>
-          <p className="text-[#E0D6BC]/60 mt-1 text-[11px] tracking-[0.28em] uppercase">
+          <p className="mt-1 text-[11px] tracking-[0.28em] text-[#E0D6BC]/60 uppercase">
             Voters Guide
           </p>
         </div>
-        <span className="border-[#E0D6BC]/30 bg-[#E0D6BC]/10 text-[#E0D6BC] rounded-full border px-3 py-1 text-[10px] font-semibold tracking-[0.22em] uppercase">
+        <span className="rounded-full border border-[#E0D6BC]/30 bg-[#E0D6BC]/10 px-3 py-1 text-[10px] font-semibold tracking-[0.22em] text-[#E0D6BC] uppercase">
           Free
         </span>
       </div>
 
-      <h3 className="font-display text-[#F6F2E8] mt-16 text-4xl leading-[1.05] font-medium sm:text-5xl">
+      <h3 className="font-display mt-16 text-4xl leading-[1.05] font-medium text-[#F6F2E8] sm:text-5xl">
         HD33 Voters Guide
       </h3>
-      <span className="bg-[#E0D6BC] mt-4 block h-[3px] w-12 rounded-full" />
-      <p className="text-[#F6F2E8]/80 mt-5 text-sm leading-relaxed">
+      <span className="mt-4 block h-[3px] w-12 rounded-full bg-[#E0D6BC]" />
+      <p className="mt-5 text-sm leading-relaxed text-[#F6F2E8]/80">
         See what happened. See where the candidates stand. Decide for yourself.
       </p>
 
-      <div className="border-[#E0D6BC]/15 absolute right-8 bottom-8 left-8 border-t pt-5">
-        <p className="text-[#F6F2E8]/75 text-[11px] leading-relaxed">
+      <div className="absolute right-8 bottom-8 left-8 border-t border-[#E0D6BC]/15 pt-5">
+        <p className="text-[11px] leading-relaxed text-[#F6F2E8]/75">
           Downtown • Northwest Portland • Pearl • Linnton • Cathedral Park • Forest Park
         </p>
-        <p className="text-[#E0D6BC]/85 mt-2 text-[11px] tracking-wide">
+        <p className="mt-2 text-[11px] tracking-wide text-[#E0D6BC]/85">
           General Election • November 3, 2026
         </p>
       </div>
@@ -1051,7 +1066,7 @@ const GuideCoversSection = () => (
 ------------------------------------------------------------------ */
 const SocialPairSection = () => (
   <section className="text-foreground relative isolate overflow-x-clip py-16 sm:py-20">
-    <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 px-5 sm:px-8 sm:grid-cols-2 lg:px-12">
+    <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 px-5 sm:grid-cols-2 sm:px-8 lg:px-12">
       {[
         {
           src: '/images/funnels/ciatta-vs-isadore/social-record-needles.png',
@@ -1194,7 +1209,7 @@ const FinalCta = () => (
           <Button
             onClick={scrollToForm}
             size="lg"
-            className="!bg-primary-fg !text-primary !border-primary-fg hover:!opacity-90 tracking-[0.14em] uppercase"
+            className="!bg-primary-fg !text-primary !border-primary-fg tracking-[0.14em] uppercase hover:!opacity-90"
             icon={<ArrowRight className="h-4 w-4" />}
           >
             Get the Free HD33 Voters Guide
