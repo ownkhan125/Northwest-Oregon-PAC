@@ -197,12 +197,6 @@ export default function Footer() {
               {pac.disclaimers.notAuthorized}
             </p>
           </div>
-
-          <p className="text-foreground/55 mx-auto mt-6 max-w-3xl text-center text-[12px] leading-relaxed italic sm:text-[13px]">
-            Note: The current Vercel URL is being used for preview purposes. It
-            will be replaced with the final live domain once the website is
-            deployed.
-          </p>
         </div>
       </div>
     </footer>
