@@ -278,7 +278,9 @@
       "Bash(command -v node)",
       "Bash(pdftotext -layout '/c/Users/General/Downloads/Ciatta thompson vs Shannon - NW LM_FUNNEL #2.pdf' '/c/Users/General/AppData/Local/Temp/nw-lm2.txt')",
       "Bash(pdfinfo '/c/Users/General/Documents/GitHub/Northwest Oregon PAC/public/downloads/hd33-voters-guide.pdf')",
-      "Bash(xxd)"
+      "Bash(xxd)",
+      "Bash(ls -la vercel.json)",
+      "Bash(ls -la .env*)"
     ]
   }
 }
