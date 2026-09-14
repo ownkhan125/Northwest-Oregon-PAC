@@ -1,5 +1,6 @@
 import { Source_Sans_3, Lora } from 'next/font/google'
 import MotionProvider from '@/components/motion-provider'
+import CartProvider from '@/components/shop/cart-provider'
 import Navbar from '@/sections/navbar'
 import Footer from '@/sections/footer'
 import LinesBackground from '@/components/ui/lines-background'
@@ -52,10 +53,12 @@ export default function RootLayout({ children }) {
         <SiteAnalytics />
         <LinesBackground />
         <MotionProvider>
-          <Navbar />
-          <main className="flex flex-1 flex-col">{children}</main>
-          <Footer />
-          <CookieBanner />
+          <CartProvider>
+            <Navbar />
+            <main className="flex flex-1 flex-col">{children}</main>
+            <Footer />
+            <CookieBanner />
+          </CartProvider>
         </MotionProvider>
       </body>
     </html>
