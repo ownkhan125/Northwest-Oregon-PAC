@@ -14,6 +14,9 @@ import capImage from '@/assets/images/shop/cap-mockup.png'
 import mugImage from '@/assets/images/shop/mug-mockup.png'
 import teeImage from '@/assets/images/shop/tee-mockup.png'
 
+// Per-line quantity cap, shared by the cart UI and the checkout API.
+export const MAX_LINE_QTY = 10
+
 const APPAREL_SIZES = ['XS', 'S', 'M', 'L', 'XL', '2XL']
 
 export const products = [

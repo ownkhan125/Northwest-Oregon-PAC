@@ -6,266 +6,75 @@ import Image from 'next/image'
 import { m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import Button from '@/components/ui/button'
-import Input from '@/components/ui/input'
-import Select from '@/components/ui/select'
-import SplitText from '@/components/ui/split-text'
 import { useCart, SHIPPING_COST } from '@/components/shop/cart-provider'
 import { EASE } from '@/animations/variants'
-import { isValidUSZip, US_ZIP_ERROR } from '@/lib/form'
 import { formatPrice } from '@/data/products'
-import { US_STATES } from '@/data/us-states'
 
-const REQUIRED_FIELDS = {
-  firstName: 'First name is required.',
-  lastName: 'Last name is required.',
-  email: 'Email address is required.',
-  address1: 'Street address is required.',
-  city: 'City is required.',
-  state: 'Select a state.',
-  zip: 'ZIP code is required.',
-}
+const STEPS = [
+  {
+    title: 'Review your order',
+    body: 'Check the items, sizes, and quantities below. You can still edit your cart.',
+  },
+  {
+    title: 'Pay securely with Stripe',
+    body: 'You’ll enter your email, shipping address, and card on Stripe’s hosted checkout. We never see your card number.',
+  },
+  {
+    title: 'Get your receipt',
+    body: 'Stripe emails a receipt right away. Orders ship from Northwest Oregon within 3–5 business days.',
+  },
+]
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-// Client-side only — there is no order backend yet. Same shape as the
-// validators in lib/form so a real submit can reuse it.
-function validateCheckout(payload) {
-  const errors = {}
-  for (const [key, message] of Object.entries(REQUIRED_FIELDS)) {
-    if (!payload[key]) errors[key] = message
-  }
-  if (payload.email && !EMAIL_RE.test(payload.email)) {
-    errors.email = 'Enter a valid email address.'
-  }
-  if (payload.zip && !isValidUSZip(payload.zip)) {
-    errors.zip = US_ZIP_ERROR
-  }
-  return errors
-}
-
-const newOrderNumber = () => `NWOP-${Date.now().toString(36).toUpperCase().slice(-6)}`
-
-const SectionLabel = ({ number, children }) => (
-  <div className="text-highlight flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase">
-    <span className="text-primary">{number}</span>
-    <span className="bg-highlight/40 h-px w-8" />
-    <span>{children}</span>
-  </div>
-)
-
-const SummaryLines = ({ lines }) => (
-  <ul className="divide-border divide-y">
-    {lines.map(({ key, product, option, qty, lineTotal }) => (
-      <li key={key} className="flex items-center gap-4 py-4">
-        <span className="border-primary/20 bg-surface-alt/60 relative block h-14 w-14 shrink-0 overflow-hidden rounded-xl border">
-          <Image
-            src={product.image}
-            alt={product.imageAlt}
-            fill
-            quality={70}
-            sizes="56px"
-            className="object-cover"
-          />
-        </span>
-        <div className="min-w-0 flex-1">
-          <div className="text-foreground truncate text-sm font-medium">{product.name}</div>
-          <div className="text-foreground/65 text-xs">
-            {option ? `${product.options?.label}: ${option} · ` : ''}Qty {qty}
-          </div>
-        </div>
-        <span className="text-foreground text-sm font-medium">{formatPrice(lineTotal)}</span>
-      </li>
-    ))}
-  </ul>
-)
-
-const Totals = ({ subtotal, shipping, total }) => (
-  <>
-    <dl className="border-border mt-2 space-y-3 border-t pt-5 text-sm">
-      <div className="flex items-center justify-between">
-        <dt className="text-foreground/70">Subtotal</dt>
-        <dd className="text-foreground font-medium">{formatPrice(subtotal)}</dd>
-      </div>
-      <div className="flex items-center justify-between">
-        <dt className="text-foreground/70">Shipping</dt>
-        <dd className="text-foreground font-medium">
-          {shipping === 0 ? 'Free' : formatPrice(shipping)}
-        </dd>
-      </div>
-    </dl>
-    <div className="border-border mt-5 flex items-baseline justify-between border-t pt-5">
-      <span className="text-foreground/70 text-sm">Total</span>
-      <span className="font-display text-foreground text-3xl font-medium tracking-tight">
-        {formatPrice(total)}
-      </span>
-    </div>
-  </>
-)
-
-const CheckMark = () => (
-  <m.svg
-    viewBox="0 0 48 48"
-    className="h-12 w-12"
+const LockIcon = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
     fill="none"
-    initial={{ scale: 0.5, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
-    transition={{ duration: 0.7, ease: EASE, delay: 0.15 }}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
-    <m.circle
-      cx="24"
-      cy="24"
-      r="22"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      className="text-primary/40"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
-    />
-    <m.path
-      d="M15 24.5l6 6 12-13"
-      stroke="currentColor"
-      strokeWidth="2.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="text-primary"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration: 0.6, ease: EASE, delay: 0.7 }}
-    />
-  </m.svg>
-)
-
-const Confirmation = ({ order }) => (
-  <section className="relative isolate overflow-x-clip pt-24 pb-24 sm:pt-28 sm:pb-32 lg:pt-32">
-    <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-      <div className="mx-auto max-w-3xl text-center">
-        <div className="text-primary mb-6 flex justify-center">
-          <CheckMark />
-        </div>
-        <SplitText
-          as="h1"
-          by="word"
-          inView={false}
-          text="Order placed."
-          className="font-display text-foreground text-5xl leading-[1.05] font-medium tracking-tight sm:text-6xl"
-        />
-        <m.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="text-foreground/80 mt-6 text-base leading-relaxed sm:text-lg"
-        >
-          Thanks, {order.firstName}. Your order number is{' '}
-          <span className="text-primary font-medium">{order.number}</span>. We&rsquo;ll send a
-          confirmation to {order.email} once the order ships.
-        </m.p>
-        <m.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="border-primary/25 bg-surface-alt/60 text-foreground/75 mx-auto mt-6 inline-block rounded-full border px-4 py-2 text-xs"
-        >
-          Preview checkout — no payment was collected and nothing will ship.
-        </m.p>
-      </div>
-
-      <m.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.1, duration: 0.7, ease: EASE }}
-        className="border-primary/25 bg-surface mx-auto mt-12 max-w-2xl rounded-3xl border p-7 sm:p-8"
-      >
-        <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-          Order summary
-        </div>
-        <div className="mt-4">
-          <SummaryLines lines={order.lines} />
-        </div>
-        <Totals subtotal={order.subtotal} shipping={order.shipping} total={order.total} />
-        <div className="border-border mt-6 border-t pt-6 text-sm">
-          <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-            Shipping to
-          </div>
-          <address className="text-foreground/80 mt-3 not-italic">
-            {order.firstName} {order.lastName}
-            <br />
-            {order.address1}
-            {order.address2 && (
-              <>
-                <br />
-                {order.address2}
-              </>
-            )}
-            <br />
-            {order.city}, {order.state} {order.zip}
-          </address>
-        </div>
-      </m.div>
-
-      <div className="mt-10 flex flex-wrap justify-center gap-3">
-        <Button href="/shop" size="lg">
-          Continue shopping
-        </Button>
-        <Button href="/" size="lg" variant="secondary">
-          Back to home
-        </Button>
-      </div>
-    </div>
-  </section>
+    <rect x="5" y="11" width="14" height="10" rx="2" />
+    <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+  </svg>
 )
 
 export default function CheckoutPage() {
-  const { hydrated, lines, subtotal, clearCart } = useCart()
-  const [fieldErrors, setFieldErrors] = useState({})
-  const [order, setOrder] = useState(null)
+  const { hydrated, lines, subtotal } = useCart()
+  const [status, setStatus] = useState('idle') // idle | redirecting | error
+  const [errorMessage, setErrorMessage] = useState('')
 
   const shipping = SHIPPING_COST
   const total = subtotal + shipping
+  const redirecting = status === 'redirecting'
 
-  const clearFieldError = (name) => {
-    setFieldErrors((prev) => {
-      if (!prev[name]) return prev
-      const next = { ...prev }
-      delete next[name]
-      return next
-    })
-  }
-
-  const onSubmit = (e) => {
-    e.preventDefault()
-    const form = e.currentTarget
-    const data = new FormData(form)
-    const payload = Object.fromEntries(
-      ['firstName', 'lastName', 'email', 'address1', 'address2', 'city', 'state', 'zip'].map(
-        (k) => [k, String(data.get(k) ?? '').trim()],
-      ),
-    )
-
-    const errs = validateCheckout(payload)
-    if (Object.keys(errs).length > 0) {
-      setFieldErrors(errs)
-      const firstBad = Object.keys(errs)[0]
-      form.querySelector(`[name="${firstBad}"], #${firstBad}`)?.focus()
-      return
+  async function startCheckout() {
+    if (redirecting || lines.length === 0) return
+    setStatus('redirecting')
+    setErrorMessage('')
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: lines.map(({ id, option, qty }) => ({ id, option, qty })),
+        }),
+      })
+      const result = await res.json().catch(() => ({}))
+      if (!res.ok || !result.ok || !result.url) {
+        setErrorMessage(result.error || 'Something went wrong. Please try again in a moment.')
+        setStatus('error')
+        return
+      }
+      window.location.assign(result.url)
+    } catch (err) {
+      console.error('[CheckoutPage]:', err)
+      setErrorMessage('Network error. Please check your connection and try again.')
+      setStatus('error')
     }
-    setFieldErrors({})
-
-    // Snapshot before clearing — the confirmation renders from this, not the
-    // (now empty) cart.
-    setOrder({
-      ...payload,
-      number: newOrderNumber(),
-      lines,
-      subtotal,
-      shipping,
-      total,
-    })
-    clearCart()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
-
-  if (order) return <Confirmation order={order} />
 
   return (
     <>
@@ -273,7 +82,7 @@ export default function CheckoutPage() {
         eyebrow="Checkout"
         number="02"
         title="Almost there."
-        description="Tell us where to send it. Payment isn't live yet — this is a preview of the checkout flow, so nothing is charged."
+        description="Review your order, then continue to Stripe to enter your shipping details and pay."
       />
 
       <section className="relative isolate overflow-x-clip pb-24 sm:pb-32">
@@ -302,136 +111,75 @@ export default function CheckoutPage() {
           {lines.length > 0 && (
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-7">
-                <form onSubmit={onSubmit} noValidate className="space-y-12">
-                  <div>
-                    <SectionLabel number="01">Contact</SectionLabel>
-                    <div className="mt-6 space-y-5">
-                      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                        <Input
-                          label="First name"
-                          name="firstName"
-                          required
-                          autoComplete="given-name"
-                          error={fieldErrors.firstName}
-                          onChange={() => clearFieldError('firstName')}
+                <div className="flex items-center justify-between">
+                  <div className="text-highlight flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase">
+                    <span className="text-primary">01</span>
+                    <span className="bg-highlight/40 h-px w-8" />
+                    <span>Your order</span>
+                  </div>
+                  <Link
+                    href="/cart"
+                    className="text-primary hover:text-highlight text-xs underline underline-offset-4 transition-colors"
+                  >
+                    Edit cart
+                  </Link>
+                </div>
+
+                <ul className="border-border mt-6 border-t">
+                  {lines.map(({ key, product, option, qty, lineTotal }) => (
+                    <li
+                      key={key}
+                      className="border-border flex items-center gap-5 border-b py-5 sm:gap-6"
+                    >
+                      <span className="border-primary/20 bg-surface-alt/60 relative block h-20 w-20 shrink-0 overflow-hidden rounded-2xl border sm:h-24 sm:w-24">
+                        <Image
+                          src={product.image}
+                          alt={product.imageAlt}
+                          fill
+                          quality={70}
+                          sizes="96px"
+                          className="object-cover"
                         />
-                        <Input
-                          label="Last name"
-                          name="lastName"
-                          required
-                          autoComplete="family-name"
-                          error={fieldErrors.lastName}
-                          onChange={() => clearFieldError('lastName')}
-                        />
-                      </div>
-                      <Input
-                        label="Email address"
-                        name="email"
-                        type="email"
-                        required
-                        autoComplete="email"
-                        error={fieldErrors.email}
-                        onChange={() => clearFieldError('email')}
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <SectionLabel number="02">Shipping address</SectionLabel>
-                    <div className="mt-6 space-y-5">
-                      <Input
-                        label="Street address"
-                        name="address1"
-                        required
-                        autoComplete="address-line1"
-                        error={fieldErrors.address1}
-                        onChange={() => clearFieldError('address1')}
-                      />
-                      <Input
-                        label="Apt, suite, etc. — optional"
-                        name="address2"
-                        autoComplete="address-line2"
-                      />
-                      <div className="grid grid-cols-1 gap-5 sm:grid-cols-6">
-                        <div className="sm:col-span-3">
-                          <Input
-                            label="City"
-                            name="city"
-                            required
-                            autoComplete="address-level2"
-                            error={fieldErrors.city}
-                            onChange={() => clearFieldError('city')}
-                          />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-foreground/60 font-mono text-[10px] tracking-[0.25em] uppercase">
+                          {product.category}
                         </div>
-                        <div className="sm:col-span-2">
-                          <Select
-                            label="State"
-                            name="state"
-                            required
-                            defaultValue="OR"
-                            placeholder="State"
-                            onChange={() => clearFieldError('state')}
-                          >
-                            {US_STATES.map((s) => (
-                              <option key={s.code} value={s.code}>
-                                {s.name}
-                              </option>
-                            ))}
-                          </Select>
-                          {fieldErrors.state && (
-                            <p role="alert" className="mt-1.5 text-xs text-red-600">
-                              {fieldErrors.state}
-                            </p>
-                          )}
+                        <div className="font-display text-foreground mt-1 text-lg leading-tight font-medium tracking-tight sm:text-xl">
+                          {product.name}
                         </div>
-                        <div className="sm:col-span-1">
-                          <Input
-                            label="ZIP"
-                            name="zip"
-                            required
-                            inputMode="numeric"
-                            maxLength={5}
-                            autoComplete="postal-code"
-                            placeholder="97005"
-                            error={fieldErrors.zip}
-                            onChange={() => clearFieldError('zip')}
-                          />
+                        <div className="text-foreground/70 mt-1 text-sm">
+                          {option ? `${product.options?.label}: ${option} · ` : ''}Qty {qty} ·{' '}
+                          {formatPrice(product.price)} each
                         </div>
                       </div>
-                    </div>
-                  </div>
+                      <span className="font-display text-foreground text-xl font-medium tracking-tight">
+                        {formatPrice(lineTotal)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
 
-                  <div>
-                    <SectionLabel number="03">Payment</SectionLabel>
-                    <div className="border-primary/25 bg-surface-alt/50 mt-6 rounded-2xl border p-6">
-                      <div className="text-foreground font-medium">
-                        Payment isn&rsquo;t live yet.
-                      </div>
-                      <p className="text-foreground/75 mt-2 text-sm leading-relaxed">
-                        This is a preview of the checkout flow. No card details are collected and no
-                        charge is made when you place the order. Card and PayPal payment will appear
-                        here once the store goes live.
-                      </p>
-                    </div>
+                <div className="mt-12">
+                  <div className="text-highlight flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase">
+                    <span className="text-primary">02</span>
+                    <span className="bg-highlight/40 h-px w-8" />
+                    <span>How it works</span>
                   </div>
-
-                  <div className="border-primary/15 flex flex-col items-start justify-between gap-4 border-t pt-6 sm:flex-row sm:items-center">
-                    <p className="text-foreground/70 max-w-md text-[13px] leading-relaxed">
-                      By placing your order, you agree to our{' '}
-                      <Link href="/privacy-policy" className="text-primary hover:text-highlight">
-                        Privacy Policy
-                      </Link>{' '}
-                      and{' '}
-                      <Link href="/terms-of-service" className="text-primary hover:text-highlight">
-                        Terms of Service
-                      </Link>
-                      .
-                    </p>
-                    <Button type="submit" size="lg">
-                      Place order · {formatPrice(total)}
-                    </Button>
-                  </div>
-                </form>
+                  <ol className="border-primary/15 bg-primary/[0.02] mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border sm:grid-cols-3">
+                    {STEPS.map((step, i) => (
+                      <li key={step.title} className="bg-surface/80 p-5">
+                        <div className="text-primary font-display text-2xl font-medium">
+                          0{i + 1}
+                        </div>
+                        <div className="text-foreground mt-2 text-sm font-medium">{step.title}</div>
+                        <p className="text-foreground/70 mt-1 text-xs leading-relaxed">
+                          {step.body}
+                        </p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
               </div>
 
               <div className="lg:col-span-5">
@@ -441,21 +189,67 @@ export default function CheckoutPage() {
                   transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
                   className="border-primary/25 bg-surface sticky top-28 rounded-3xl border p-7 sm:p-8"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
-                      Order summary
+                  <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
+                    Order summary
+                  </div>
+
+                  <dl className="mt-6 space-y-3 text-sm">
+                    <div className="flex items-center justify-between">
+                      <dt className="text-foreground/70">Subtotal</dt>
+                      <dd className="text-foreground font-medium">{formatPrice(subtotal)}</dd>
                     </div>
-                    <Link
-                      href="/cart"
-                      className="text-primary hover:text-highlight text-xs underline underline-offset-4 transition-colors"
+                    <div className="flex items-center justify-between">
+                      <dt className="text-foreground/70">Shipping</dt>
+                      <dd className="text-foreground font-medium">
+                        {shipping === 0 ? 'Free' : formatPrice(shipping)}
+                      </dd>
+                    </div>
+                  </dl>
+                  <div className="border-border mt-6 flex items-baseline justify-between border-t pt-6">
+                    <span className="text-foreground/70 text-sm">Total</span>
+                    <span className="font-display text-foreground text-3xl font-medium tracking-tight">
+                      {formatPrice(total)}
+                    </span>
+                  </div>
+
+                  {status === 'error' && (
+                    <div
+                      role="alert"
+                      className="border-primary/30 bg-surface-alt/60 text-foreground mt-6 rounded-2xl border px-4 py-3 text-sm"
                     >
-                      Edit cart
+                      {errorMessage}
+                    </div>
+                  )}
+
+                  <div className="mt-6">
+                    <Button
+                      type="button"
+                      size="lg"
+                      onClick={startCheckout}
+                      disabled={redirecting}
+                      className="w-full"
+                      icon={<LockIcon />}
+                    >
+                      {redirecting ? 'Taking you to Stripe…' : 'Continue to secure payment'}
+                    </Button>
+                  </div>
+
+                  <p className="text-foreground/70 mt-5 text-[13px] leading-relaxed">
+                    Payments are processed by Stripe. By continuing you agree to our{' '}
+                    <Link href="/privacy-policy" className="text-primary hover:text-highlight">
+                      Privacy Policy
+                    </Link>{' '}
+                    and{' '}
+                    <Link href="/terms-of-service" className="text-primary hover:text-highlight">
+                      Terms of Service
                     </Link>
-                  </div>
-                  <div className="mt-2">
-                    <SummaryLines lines={lines} />
-                  </div>
-                  <Totals subtotal={subtotal} shipping={shipping} total={total} />
+                    .
+                  </p>
+
+                  <ul className="text-foreground/65 mt-6 space-y-2 text-xs">
+                    <li>Ships from Northwest Oregon within 3–5 business days.</li>
+                    <li>Proceeds support candidate recruitment and campaign support.</li>
+                  </ul>
                 </m.div>
               </div>
             </div>
