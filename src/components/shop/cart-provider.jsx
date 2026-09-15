@@ -2,10 +2,10 @@
 
 import { createContext, useContext, useMemo, useSyncExternalStore } from 'react'
 import PropTypes from 'prop-types'
-import { getProductById } from '@/data/products'
+import { getProductById, MAX_LINE_QTY } from '@/data/products'
 
 const STORAGE_KEY = 'nwop-cart'
-export const MAX_LINE_QTY = 10
+export { MAX_LINE_QTY }
 
 // Shipping is free for every order until a real carrier integration exists.
 export const SHIPPING_COST = 0
