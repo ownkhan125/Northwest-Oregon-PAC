@@ -7,12 +7,8 @@ import { getProductById } from '@/data/products'
 const STORAGE_KEY = 'nwop-cart'
 export const MAX_LINE_QTY = 10
 
-// Flat-rate shipping until a real carrier integration exists.
-export const SHIPPING_RATES = {
-  standard: { id: 'standard', label: 'Standard', detail: '5–7 business days', price: 6 },
-  expedited: { id: 'expedited', label: 'Expedited', detail: '2–3 business days', price: 18 },
-}
-export const FREE_SHIPPING_THRESHOLD = 75
+// Shipping is free for every order until a real carrier integration exists.
+export const SHIPPING_COST = 0
 
 // A cart line is keyed by product + chosen option so "Tee / M" and "Tee / L"
 // are separate rows.
@@ -156,19 +152,6 @@ export function useCart() {
   const ctx = useContext(CartContext)
   if (!ctx) throw new Error('useCart must be used within <CartProvider>')
   return ctx
-}
-
-/**
- * Shipping cost for a given subtotal and rate — free standard shipping
- * above the threshold, expedited always charged.
- * @param {number} subtotal
- * @param {'standard' | 'expedited'} rateId
- * @returns {number}
- */
-export function shippingFor(subtotal, rateId = 'standard') {
-  const rate = SHIPPING_RATES[rateId] ?? SHIPPING_RATES.standard
-  if (rate.id === 'standard' && subtotal >= FREE_SHIPPING_THRESHOLD) return 0
-  return rate.price
 }
 
 export default CartProvider

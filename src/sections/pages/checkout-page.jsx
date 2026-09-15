@@ -8,9 +8,8 @@ import PageHeader from '@/components/ui/page-header'
 import Button from '@/components/ui/button'
 import Input from '@/components/ui/input'
 import Select from '@/components/ui/select'
-import Radio from '@/components/ui/radio'
 import SplitText from '@/components/ui/split-text'
-import { useCart, shippingFor, SHIPPING_RATES } from '@/components/shop/cart-provider'
+import { useCart, SHIPPING_COST } from '@/components/shop/cart-provider'
 import { EASE } from '@/animations/variants'
 import { isValidUSZip, US_ZIP_ERROR } from '@/lib/form'
 import { formatPrice } from '@/data/products'
@@ -80,7 +79,7 @@ const SummaryLines = ({ lines }) => (
   </ul>
 )
 
-const Totals = ({ subtotal, shipping, total, rateLabel }) => (
+const Totals = ({ subtotal, shipping, total }) => (
   <>
     <dl className="border-border mt-2 space-y-3 border-t pt-5 text-sm">
       <div className="flex items-center justify-between">
@@ -88,7 +87,7 @@ const Totals = ({ subtotal, shipping, total, rateLabel }) => (
         <dd className="text-foreground font-medium">{formatPrice(subtotal)}</dd>
       </div>
       <div className="flex items-center justify-between">
-        <dt className="text-foreground/70">{rateLabel} shipping</dt>
+        <dt className="text-foreground/70">Shipping</dt>
         <dd className="text-foreground font-medium">
           {shipping === 0 ? 'Free' : formatPrice(shipping)}
         </dd>
@@ -183,12 +182,7 @@ const Confirmation = ({ order }) => (
         <div className="mt-4">
           <SummaryLines lines={order.lines} />
         </div>
-        <Totals
-          subtotal={order.subtotal}
-          shipping={order.shipping}
-          total={order.total}
-          rateLabel={order.rateLabel}
-        />
+        <Totals subtotal={order.subtotal} shipping={order.shipping} total={order.total} />
         <div className="border-border mt-6 border-t pt-6 text-sm">
           <div className="text-highlight font-mono text-[10px] tracking-[0.3em] uppercase">
             Shipping to
@@ -223,13 +217,11 @@ const Confirmation = ({ order }) => (
 
 export default function CheckoutPage() {
   const { hydrated, lines, subtotal, clearCart } = useCart()
-  const [rateId, setRateId] = useState('standard')
   const [fieldErrors, setFieldErrors] = useState({})
   const [order, setOrder] = useState(null)
 
-  const shipping = shippingFor(subtotal, rateId)
+  const shipping = SHIPPING_COST
   const total = subtotal + shipping
-  const rateLabel = SHIPPING_RATES[rateId].label
 
   const clearFieldError = (name) => {
     setFieldErrors((prev) => {
@@ -268,7 +260,6 @@ export default function CheckoutPage() {
       subtotal,
       shipping,
       total,
-      rateLabel,
     })
     clearCart()
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -411,40 +402,7 @@ export default function CheckoutPage() {
                   </div>
 
                   <div>
-                    <SectionLabel number="03">Shipping method</SectionLabel>
-                    <div className="border-primary/15 bg-primary/[0.02] mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border">
-                      {Object.values(SHIPPING_RATES).map((rate) => {
-                        const cost = shippingFor(subtotal, rate.id)
-                        return (
-                          <div
-                            key={rate.id}
-                            className="bg-surface/80 flex items-center justify-between gap-4 p-5"
-                          >
-                            <Radio
-                              name="shippingMethod"
-                              value={rate.id}
-                              checked={rateId === rate.id}
-                              onChange={() => setRateId(rate.id)}
-                              label={
-                                <span>
-                                  <span className="text-foreground font-medium">{rate.label}</span>
-                                  <span className="text-foreground/60 block text-xs">
-                                    {rate.detail}
-                                  </span>
-                                </span>
-                              }
-                            />
-                            <span className="text-foreground text-sm font-medium">
-                              {cost === 0 ? 'Free' : formatPrice(cost)}
-                            </span>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
-
-                  <div>
-                    <SectionLabel number="04">Payment</SectionLabel>
+                    <SectionLabel number="03">Payment</SectionLabel>
                     <div className="border-primary/25 bg-surface-alt/50 mt-6 rounded-2xl border p-6">
                       <div className="text-foreground font-medium">
                         Payment isn&rsquo;t live yet.
@@ -497,12 +455,7 @@ export default function CheckoutPage() {
                   <div className="mt-2">
                     <SummaryLines lines={lines} />
                   </div>
-                  <Totals
-                    subtotal={subtotal}
-                    shipping={shipping}
-                    total={total}
-                    rateLabel={rateLabel}
-                  />
+                  <Totals subtotal={subtotal} shipping={shipping} total={total} />
                 </m.div>
               </div>
             </div>

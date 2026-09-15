@@ -5,12 +5,7 @@ import Image from 'next/image'
 import { AnimatePresence, m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import Button from '@/components/ui/button'
-import {
-  useCart,
-  shippingFor,
-  MAX_LINE_QTY,
-  FREE_SHIPPING_THRESHOLD,
-} from '@/components/shop/cart-provider'
+import { useCart, MAX_LINE_QTY, SHIPPING_COST } from '@/components/shop/cart-provider'
 import { EASE } from '@/animations/variants'
 import { formatPrice } from '@/data/products'
 
@@ -32,9 +27,8 @@ const ArrowIcon = () => (
 export default function CartPage() {
   const { hydrated, lines, count, subtotal, updateQty, removeItem, clearCart } = useCart()
 
-  const shipping = shippingFor(subtotal, 'standard')
+  const shipping = SHIPPING_COST
   const total = subtotal + shipping
-  const untilFree = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal)
 
   return (
     <>
@@ -42,7 +36,7 @@ export default function CartPage() {
         eyebrow="Cart"
         number="01"
         title="Your cart."
-        description="Review what you've picked out. Shipping is calculated at checkout — standard shipping is free on orders over $75."
+        description="Review what you've picked out. Shipping is free on every order."
       />
 
       <section className="relative isolate overflow-x-clip pb-24 sm:pb-32">
@@ -235,21 +229,15 @@ export default function CartPage() {
                       <dd className="text-foreground font-medium">{formatPrice(subtotal)}</dd>
                     </div>
                     <div className="flex items-center justify-between">
-                      <dt className="text-foreground/70">Standard shipping</dt>
+                      <dt className="text-foreground/70">Shipping</dt>
                       <dd className="text-foreground font-medium">
                         {shipping === 0 ? 'Free' : formatPrice(shipping)}
                       </dd>
                     </div>
                   </dl>
 
-                  {untilFree > 0 && (
-                    <p className="text-foreground/65 mt-4 text-xs">
-                      Add {formatPrice(untilFree)} more for free standard shipping.
-                    </p>
-                  )}
-
                   <div className="border-border mt-6 flex items-baseline justify-between border-t pt-6">
-                    <span className="text-foreground/70 text-sm">Estimated total</span>
+                    <span className="text-foreground/70 text-sm">Total</span>
                     <span className="font-display text-foreground text-3xl font-medium tracking-tight">
                       {formatPrice(total)}
                     </span>
