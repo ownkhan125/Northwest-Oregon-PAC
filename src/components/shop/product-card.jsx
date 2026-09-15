@@ -1,10 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import PropTypes from 'prop-types'
 import { m } from 'motion/react'
 import Card from '@/components/ui/card'
-import CivicIcon from '@/components/ui/civic-icon'
 import { cardReveal } from '@/animations/variants'
 import { cn } from '@/lib/cn'
 import { formatPrice } from '@/data/products'
@@ -14,19 +14,21 @@ import { formatPrice } from '@/data/products'
  * provided an add-to-cart button is layered above that link.
  */
 const ProductCard = ({ product, inCart = false, onAdd }) => {
-  const { id, name, category, price, description, icon, badge, inStock } = product
+  const { id, name, category, price, description, image, imageAlt, badge, inStock } = product
   const href = `/shop/${id}`
 
   return (
     <m.div variants={cardReveal} className="h-full">
       <Card tilt={false} className="h-full rounded-3xl">
-        <div className="bg-surface-alt/60 group-hover:bg-primary-fg/10 relative aspect-[4/3] w-full overflow-hidden transition-colors duration-500">
-          <div className="text-primary group-hover:text-primary-fg absolute inset-0 grid place-items-center transition-colors duration-500">
-            <CivicIcon
-              src={icon}
-              className="h-24 w-24 transition-transform duration-[900ms] ease-out group-hover:scale-[1.08] sm:h-28 sm:w-28"
-            />
-          </div>
+        <div className="bg-surface-alt/60 relative aspect-[4/3] w-full overflow-hidden">
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            quality={75}
+            sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
+          />
           {badge && (
             <span className="border-primary/40 bg-surface/85 text-primary absolute top-4 left-4 rounded-full border px-3 py-1 font-mono text-[10px] tracking-[0.25em] uppercase">
               {badge}
@@ -130,7 +132,9 @@ export const productShape = PropTypes.shape({
     label: PropTypes.string.isRequired,
     values: PropTypes.arrayOf(PropTypes.string).isRequired,
   }),
-  icon: PropTypes.string.isRequired,
+  // Static image import ({ src, width, height, blurDataURL }) or a plain URL.
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
+  imageAlt: PropTypes.string.isRequired,
   badge: PropTypes.string,
   inStock: PropTypes.bool.isRequired,
 })

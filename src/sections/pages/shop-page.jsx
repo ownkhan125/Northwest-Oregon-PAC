@@ -6,6 +6,7 @@ import { AnimatePresence, m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import ProductCard from '@/components/shop/product-card'
 import { useCart } from '@/components/shop/cart-provider'
+import { useToast } from '@/components/ui/toast'
 import { stagger, EASE } from '@/animations/variants'
 import { cn } from '@/lib/cn'
 import { products, formatPrice, PRODUCT_CATEGORIES } from '@/data/products'
@@ -17,6 +18,7 @@ const defaultOption = (product) => product.options?.values?.[0] ?? null
 export default function ShopPage() {
   const [category, setCategory] = useState('All')
   const { count: cartCount, subtotal: cartTotal, addItem, qtyOf } = useCart()
+  const { toast } = useToast()
 
   const visible = useMemo(
     () => (category === 'All' ? products : products.filter((p) => p.category === category)),
@@ -25,7 +27,15 @@ export default function ShopPage() {
 
   const addToCart = (id) => {
     const product = products.find((p) => p.id === id)
-    if (product) addItem(id, defaultOption(product), 1)
+    if (!product) return
+    const option = defaultOption(product)
+    addItem(id, option, 1)
+    toast({
+      eyebrow: 'Added to cart',
+      title: product.name,
+      description: option ? `${product.options.label}: ${option}` : undefined,
+      action: { label: 'View cart', href: '/cart' },
+    })
   }
 
   return (
@@ -145,7 +155,7 @@ export default function ShopPage() {
                 Outfitting a whole campaign?
               </h2>
               <p className="text-foreground/75 mt-3 max-w-xl text-sm sm:text-base">
-                We can print signs, tees, and banners at volume for candidates and community groups.
+                We can produce tees, caps, and mugs at volume for candidates and community groups.
                 Tell us what you need and we&rsquo;ll send a quote.
               </p>
             </div>

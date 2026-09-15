@@ -2,22 +2,35 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import PropTypes from 'prop-types'
 import { AnimatePresence, m } from 'motion/react'
 import Button from '@/components/ui/button'
 import Breadcrumb from '@/components/ui/breadcrumb'
-import CivicIcon from '@/components/ui/civic-icon'
 import SplitText from '@/components/ui/split-text'
 import ProductCard, { productShape } from '@/components/shop/product-card'
 import { useCart, MAX_LINE_QTY } from '@/components/shop/cart-provider'
+import { useToast } from '@/components/ui/toast'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { cn } from '@/lib/cn'
 import { formatPrice } from '@/data/products'
 
 export default function ShopDetailPage({ product, related = [] }) {
-  const { name, category, price, description, details, features, options, icon, badge, inStock } =
-    product
+  const {
+    name,
+    category,
+    price,
+    description,
+    details,
+    features,
+    options,
+    image,
+    imageAlt,
+    badge,
+    inStock,
+  } = product
   const { addItem, qtyOf } = useCart()
+  const { toast } = useToast()
 
   const [option, setOption] = useState(options?.values?.[0] ?? null)
   const [qty, setQty] = useState(1)
@@ -33,6 +46,12 @@ export default function ShopDetailPage({ product, related = [] }) {
     if (!canAdd) return
     addItem(product.id, option, qty)
     setAdded(true)
+    toast({
+      eyebrow: 'Added to cart',
+      title: `${qty} × ${name}`,
+      description: option ? `${options.label}: ${option}` : undefined,
+      action: { label: 'View cart', href: '/cart' },
+    })
   }
 
   return (
@@ -88,11 +107,17 @@ export default function ShopDetailPage({ product, related = [] }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
-                className="border-primary/25 bg-surface-alt/60 text-primary relative aspect-[4/3] w-full overflow-hidden rounded-3xl border"
+                className="border-primary/25 bg-surface-alt/60 relative aspect-[4/3] w-full overflow-hidden rounded-3xl border"
               >
-                <div className="absolute inset-0 grid place-items-center">
-                  <CivicIcon src={icon} className="h-40 w-40 sm:h-52 sm:w-52 lg:h-64 lg:w-64" />
-                </div>
+                <Image
+                  src={image}
+                  alt={imageAlt}
+                  fill
+                  priority
+                  quality={85}
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                  className="object-cover"
+                />
                 {badge && (
                   <span className="border-primary/40 bg-surface/85 text-primary absolute top-5 left-5 rounded-full border px-3 py-1 font-mono text-[10px] tracking-[0.25em] uppercase">
                     {badge}

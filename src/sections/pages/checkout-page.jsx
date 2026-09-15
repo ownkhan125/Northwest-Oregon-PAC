@@ -2,13 +2,13 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import Button from '@/components/ui/button'
 import Input from '@/components/ui/input'
 import Select from '@/components/ui/select'
 import Radio from '@/components/ui/radio'
-import CivicIcon from '@/components/ui/civic-icon'
 import SplitText from '@/components/ui/split-text'
 import { useCart, shippingFor, SHIPPING_RATES } from '@/components/shop/cart-provider'
 import { EASE } from '@/animations/variants'
@@ -58,8 +58,15 @@ const SummaryLines = ({ lines }) => (
   <ul className="divide-border divide-y">
     {lines.map(({ key, product, option, qty, lineTotal }) => (
       <li key={key} className="flex items-center gap-4 py-4">
-        <span className="border-primary/20 bg-surface-alt/60 text-primary grid h-14 w-14 shrink-0 place-items-center rounded-xl border">
-          <CivicIcon src={product.icon} className="h-7 w-7" />
+        <span className="border-primary/20 bg-surface-alt/60 relative block h-14 w-14 shrink-0 overflow-hidden rounded-xl border">
+          <Image
+            src={product.image}
+            alt={product.imageAlt}
+            fill
+            quality={70}
+            sizes="56px"
+            className="object-cover"
+          />
         </span>
         <div className="min-w-0 flex-1">
           <div className="text-foreground truncate text-sm font-medium">{product.name}</div>

@@ -1,10 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { AnimatePresence, m } from 'motion/react'
 import PageHeader from '@/components/ui/page-header'
 import Button from '@/components/ui/button'
-import CivicIcon from '@/components/ui/civic-icon'
 import {
   useCart,
   shippingFor,
@@ -63,8 +63,7 @@ export default function CartPage() {
                 Your cart is empty.
               </h2>
               <p className="text-foreground/75 mx-auto mt-4 max-w-xl">
-                Yard signs, tees, stickers, and more — every purchase funds the work across
-                Northwest Oregon.
+                Logo tees, caps, and mugs — every purchase funds the work across Northwest Oregon.
               </p>
               <div className="mt-10 flex flex-wrap justify-center gap-3">
                 <Button href="/shop" size="lg" icon={<ArrowIcon />}>
@@ -109,9 +108,16 @@ export default function CartPage() {
                         <Link
                           href={`/shop/${product.id}`}
                           aria-label={`View ${product.name}`}
-                          className="border-primary/20 bg-surface-alt/60 text-primary hover:border-primary/60 grid h-20 w-20 shrink-0 place-items-center rounded-2xl border transition-colors sm:h-24 sm:w-24"
+                          className="border-primary/20 bg-surface-alt/60 hover:border-primary/60 relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl border transition-colors sm:h-24 sm:w-24"
                         >
-                          <CivicIcon src={product.icon} className="h-10 w-10 sm:h-12 sm:w-12" />
+                          <Image
+                            src={product.image}
+                            alt={product.imageAlt}
+                            fill
+                            quality={70}
+                            sizes="96px"
+                            className="object-cover"
+                          />
                         </Link>
 
                         <div className="min-w-0">
