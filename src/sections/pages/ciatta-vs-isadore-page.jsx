@@ -1236,7 +1236,9 @@ const FinalCta = () => (
 const LegalStrip = () => (
   <div className="border-border text-foreground border-t py-8">
     <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-5 text-center sm:px-8 lg:px-12">
-      <p className="text-foreground/60 text-[11px] leading-relaxed">{pac.disclaimers.paidFor}</p>
+      <p className="text-foreground/60 text-[11px] leading-relaxed">
+        Paid for by Friends of Ciatta Thompson, PAC.
+      </p>
       <p className="text-foreground/45 text-[10px] tracking-widest uppercase">
         {pac.disclaimers.notAuthorized}
       </p>

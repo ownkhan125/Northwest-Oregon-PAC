@@ -140,9 +140,14 @@
 
       .footer {
         position: absolute; left: 0.85in; right: 0.85in; bottom: 0.55in;
-        display: flex; justify-content: space-between; align-items: baseline;
+        display: flex; flex-direction: column; gap: 5pt;
         font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase;
         color: rgba(246, 242, 232, 0.45);
+      }
+      .footer .footer-row { display: flex; justify-content: space-between; align-items: baseline; }
+      .footer .footer-legal {
+        text-align: center; font-size: 7pt; letter-spacing: 0.18em;
+        color: rgba(246, 242, 232, 0.4);
       }
       .footer .brand { font-weight: 600; letter-spacing: 0.18em; color: rgba(224, 214, 188, 0.7); }
 
@@ -234,7 +239,7 @@
       <div>
         <div class="presented">Presented by Northwest Oregon PAC</div>
         <p class="legal">
-          Paid for by Northwest Oregon PAC #25045. Not authorized by any candidate committee.
+          Paid for by Friends of Ciatta Thompson, PAC. Not authorized by any candidate committee.
         </p>
       </div>
     </section>
@@ -305,8 +310,11 @@
       </div>
 
       <div class="footer">
-        <span class="brand">Northwest Oregon PAC</span>
-        <span>HD33 Voters Guide &bull; Page 2</span>
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>HD33 Voters Guide &bull; Page 2</span>
+        </div>
+        <span class="footer-legal">Paid for by Friends of Ciatta Thompson, PAC</span>
       </div>
     </section>
 
@@ -368,8 +376,11 @@
       </div>
 
       <div class="footer">
-        <span class="brand">Northwest Oregon PAC</span>
-        <span>HD33 Voters Guide &bull; Page 3</span>
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>HD33 Voters Guide &bull; Page 3</span>
+        </div>
+        <span class="footer-legal">Paid for by Friends of Ciatta Thompson, PAC</span>
       </div>
     </section>
 
@@ -412,8 +423,11 @@
       </div>
 
       <div class="footer">
-        <span class="brand">Northwest Oregon PAC</span>
-        <span>HD33 Voters Guide &bull; Page 4</span>
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>HD33 Voters Guide &bull; Page 4</span>
+        </div>
+        <span class="footer-legal">Paid for by Friends of Ciatta Thompson, PAC</span>
       </div>
     </section>
 
@@ -461,8 +475,11 @@
       </div>
 
       <div class="footer">
-        <span class="brand">Northwest Oregon PAC</span>
-        <span>HD33 Voters Guide &bull; Page 5</span>
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>HD33 Voters Guide &bull; Page 5</span>
+        </div>
+        <span class="footer-legal">Paid for by Friends of Ciatta Thompson, PAC</span>
       </div>
     </section>
 
@@ -488,8 +505,11 @@
       </div>
 
       <div class="footer">
-        <span class="brand">Northwest Oregon PAC</span>
-        <span>HD33 Voters Guide &bull; Page 6</span>
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>HD33 Voters Guide &bull; Page 6</span>
+        </div>
+        <span class="footer-legal">Paid for by Friends of Ciatta Thompson, PAC</span>
       </div>
     </section>
 
@@ -521,8 +541,11 @@
       </div>
 
       <div class="footer">
-        <span class="brand">Northwest Oregon PAC</span>
-        <span>HD33 Voters Guide &bull; Page 7</span>
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>HD33 Voters Guide &bull; Page 7</span>
+        </div>
+        <span class="footer-legal">Paid for by Friends of Ciatta Thompson, PAC</span>
       </div>
     </section>
 
@@ -570,8 +593,11 @@
       </div>
 
       <div class="footer">
-        <span class="brand">Northwest Oregon PAC</span>
-        <span>HD33 Voters Guide &bull; Page 8</span>
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>HD33 Voters Guide &bull; Page 8</span>
+        </div>
+        <span class="footer-legal">Paid for by Friends of Ciatta Thompson, PAC</span>
       </div>
     </section>
 
@@ -623,8 +649,11 @@
       </div>
 
       <div class="footer">
-        <span class="brand">Northwest Oregon PAC</span>
-        <span>HD33 Voters Guide &bull; Page 9</span>
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>HD33 Voters Guide &bull; Page 9</span>
+        </div>
+        <span class="footer-legal">Paid for by Friends of Ciatta Thompson, PAC</span>
       </div>
     </section>
 
@@ -691,12 +720,15 @@
       </ol>
 
       <p class="tiny" style="margin-top:14px;">
-        Paid for by Northwest Oregon PAC #25045. Not authorized by any candidate committee.
+        Paid for by Friends of Ciatta Thompson, PAC. Not authorized by any candidate committee.
       </p>
 
       <div class="footer">
-        <span class="brand">Northwest Oregon PAC</span>
-        <span>HD33 Voters Guide &bull; Page 10</span>
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>HD33 Voters Guide &bull; Page 10</span>
+        </div>
+        <span class="footer-legal">Paid for by Friends of Ciatta Thompson, PAC</span>
       </div>
     </section>
   </body>
