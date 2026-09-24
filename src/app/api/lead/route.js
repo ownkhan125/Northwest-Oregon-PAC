@@ -6,10 +6,14 @@ const DEFAULT_WEBHOOK_URL =
 // Per-funnel webhook routing. Sources that appear here send to a dedicated
 // GHL trigger so each funnel gets its own tagging / email sequence.
 const HD33_SOURCE = 'ciatta-thompson-vs-shannon-jones-isadore'
+const HD27_SOURCE = 'mark-norman-vs-tammy-carpenter'
 
 const pickWebhook = (source) => {
   if (source === HD33_SOURCE && process.env.GHL_HD33_WEBHOOK) {
     return { url: process.env.GHL_HD33_WEBHOOK, funnel: 'hd33' }
+  }
+  if (source === HD27_SOURCE && process.env.GHL_HD27_WEBHOOK) {
+    return { url: process.env.GHL_HD27_WEBHOOK, funnel: 'hd27' }
   }
   return { url: process.env.GHL_CONTACT_WEBHOOK || DEFAULT_WEBHOOK_URL, funnel: 'default' }
 }
