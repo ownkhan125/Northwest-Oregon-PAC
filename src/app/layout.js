@@ -1,10 +1,12 @@
 import { Source_Sans_3, Lora } from 'next/font/google'
 import MotionProvider from '@/components/motion-provider'
+import CartProvider from '@/components/shop/cart-provider'
 import Navbar from '@/sections/navbar'
 import Footer from '@/sections/footer'
 import LinesBackground from '@/components/ui/lines-background'
 import { ThemeInit } from '@/components/ui/theme-toggle'
 import CookieBanner from '@/components/ui/cookie-banner'
+import ToastProvider from '@/components/ui/toast'
 import MetaPixelHead from '@/components/analytics/meta-pixel-head'
 import MetaPixel from '@/components/analytics/meta-pixel'
 import SiteAnalytics from '@/components/analytics/site-analytics'
@@ -52,10 +54,14 @@ export default function RootLayout({ children }) {
         <SiteAnalytics />
         <LinesBackground />
         <MotionProvider>
-          <Navbar />
-          <main className="flex flex-1 flex-col">{children}</main>
-          <Footer />
-          <CookieBanner />
+          <ToastProvider>
+            <CartProvider>
+              <Navbar />
+              <main className="flex flex-1 flex-col">{children}</main>
+              <Footer />
+              <CookieBanner />
+            </CartProvider>
+          </ToastProvider>
         </MotionProvider>
       </body>
     </html>

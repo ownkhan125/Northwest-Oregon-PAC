@@ -7,6 +7,7 @@ import { AnimatePresence, m, useMotionValueEvent, useScroll } from 'motion/react
 import Logo from '@/components/ui/logo'
 import Button from '@/components/ui/button'
 import ThemeToggle from '@/components/ui/theme-toggle'
+import CartButton from '@/components/shop/cart-button'
 import { pac } from '@/data/pac'
 import { cn } from '@/lib/cn'
 
@@ -140,6 +141,7 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-2 lg:flex">
             <ThemeToggle />
+            <CartButton />
             <Button
               href={pac.donateUrl}
               variant="primary"
@@ -168,6 +170,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2 lg:hidden">
             <ThemeToggle />
+            <CartButton onClick={() => setOpen(false)} />
             <button
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? 'Close menu' : 'Open menu'}

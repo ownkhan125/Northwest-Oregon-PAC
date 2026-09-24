@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Oregon House District 27: 2026 Voter Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<!--
+  HD27 lead magnet — Mark Norman vs. Tammy Carpenter.
+  Copy is verbatim from "LM_FUNNEL - MN & TC Comparison - updated.docx".
+  Rendered to public/downloads/hd27-voters-guide.pdf by render.mjs.
+-->
+<style>
+  :root {
+    --sand: #e0d6bc;
+    --cream: #f6f2e8;
+    --forest: #2e4538;
+    --forest-deep: #1a2621;
+    --brown: #6b5a42;
+    --ink: #2a2a26;
+    --muted: #5d5a50;
+    --rule: rgba(107, 90, 66, 0.25);
+    --warn: #8a3b2a;
+  }
+  @page { size: 8.5in 11in; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #999; }
+  body {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    color: var(--ink);
+    font-size: 10.5pt;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  h1, h2, h3, .display { font-family: 'Lora', Georgia, serif; font-weight: 600; margin: 0; }
+  p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  sup { font-size: 0.62em; color: var(--brown); font-weight: 600; }
+
+  .page {
+    position: relative;
+    width: 8.5in;
+    height: 11in;
+    overflow: hidden;
+    background: var(--cream);
+    padding: 0.62in 0.66in 0.9in;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  @media screen { .page { margin: 0 auto 24px; box-shadow: 0 10px 40px rgba(0,0,0,.25); } }
+
+  .folio {
+    position: absolute;
+    left: 0.66in; right: 0.66in; bottom: 0.36in;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--rule);
+    padding-top: 8px;
+    font-size: 7.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .folio b { color: var(--forest); font-weight: 700; }
+
+  .eyebrow {
+    font-size: 8pt; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--brown);
+  }
+  .kicker {
+    display: inline-block;
+    font-size: 7.5pt; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--cream); background: var(--forest);
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .h-page { font-size: 25pt; line-height: 1.1; color: var(--forest); margin-top: 10px; }
+  .h-sub { font-size: 13.5pt; line-height: 1.3; color: var(--ink); margin-top: 8px; font-weight: 500; }
+  .lede { font-size: 11.5pt; color: var(--ink); margin-top: 12px; }
+  .muted { color: var(--muted); }
+  .rule { height: 3px; width: 44px; background: var(--sand); border-radius: 2px; margin: 14px 0; }
+
+  /* Side-by-side comparison columns */
+  .versus { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  .col {
+    border-radius: 14px; padding: 16px 18px 18px;
+    border: 1px solid var(--rule);
+  }
+  .col.mn { background: #fff; border-top: 5px solid var(--forest); }
+  .col.tc { background: #ece6d6; border-top: 5px solid var(--brown); }
+  .col .who { font-size: 7.5pt; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; }
+  .col.mn .who { color: var(--forest); }
+  .col.tc .who { color: var(--brown); }
+  .col h3 { font-size: 12.5pt; line-height: 1.25; margin-top: 6px; color: var(--ink); }
+  .col p { margin-top: 8px; }
+  .col ul { margin-top: 8px; }
+  .col li { position: relative; padding-left: 16px; margin-top: 4px; }
+  .col li::before {
+    content: ''; position: absolute; left: 2px; top: 0.55em; width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor; opacity: 0.55;
+  }
+  .col.mn li::before { background: var(--forest); opacity: 1; }
+  .col.tc li::before { background: var(--brown); opacity: 1; }
+
+  .callout {
+    margin-top: 16px; border-radius: 14px; padding: 16px 20px;
+    background: var(--forest); color: var(--cream);
+  }
+  .callout .eyebrow { color: var(--sand); }
+  .callout .display { font-size: 14pt; line-height: 1.3; margin-top: 6px; color: var(--cream); }
+  .callout p + p { margin-top: 6px; }
+
+  .note {
+    margin-top: 14px; border-left: 4px solid var(--brown); background: #ece6d6;
+    padding: 10px 14px; border-radius: 0 10px 10px 0; font-size: 9.5pt;
+  }
+  .note b { color: var(--brown); }
+
+  .quote-line {
+    font-family: 'Lora', Georgia, serif; font-style: italic; font-weight: 500;
+    font-size: 14pt; line-height: 1.35; color: var(--forest);
+    border-left: 3px solid var(--sand); padding-left: 14px; margin-top: 14px;
+  }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    background: linear-gradient(160deg, var(--forest) 0%, var(--forest-deep) 100%);
+    color: var(--cream);
+    padding: 0.7in 0.7in 0.6in;
+  }
+  .cover .eyebrow { color: var(--sand); }
+  .cover h1 { font-size: 40pt; line-height: 1.02; color: var(--cream); margin-top: 18px; }
+  .cover .names { font-size: 21pt; color: var(--sand); margin-top: 18px; font-family: 'Lora', serif; font-weight: 500; }
+  .cover .sub { font-size: 12.5pt; color: rgba(246,242,232,.85); margin-top: 8px; }
+  .cover .issues {
+    margin-top: 22px; display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .cover .issues span {
+    border: 1px solid rgba(224,214,188,.35); background: rgba(224,214,188,.08);
+    border-radius: 999px; padding: 4px 11px; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--sand);
+  }
+  .cover .photo {
+    position: absolute; right: 0.7in; top: 4.05in; width: 2.7in; height: 3.4in;
+    border-radius: 16px; overflow: hidden; border: 1px solid rgba(224,214,188,.3);
+    box-shadow: 0 30px 60px -25px rgba(0,0,0,.6);
+  }
+  .cover .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+  .cover .photo figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 12px 8px;
+    background: linear-gradient(to top, rgba(26,38,33,.92), rgba(26,38,33,0));
+    font-size: 8pt; letter-spacing: .14em; text-transform: uppercase; color: var(--sand);
+  }
+  .cover .headline {
+    position: absolute; left: 0.7in; top: 4.15in; width: 3.5in;
+  }
+  .cover .headline .display { font-size: 19pt; line-height: 1.15; color: var(--cream); }
+  .cover .headline p { margin-top: 12px; font-size: 11pt; color: rgba(246,242,232,.82); }
+  .cover .bottom {
+    position: absolute; left: 0.7in; right: 0.7in; bottom: 0.55in;
+    border-top: 1px solid rgba(224,214,188,.22); padding-top: 12px;
+    font-size: 9pt; color: rgba(246,242,232,.8);
+  }
+  .cover .bottom .date { color: var(--sand); letter-spacing: .16em; text-transform: uppercase; font-weight: 700; font-size: 8.5pt; }
+  .cover .bottom .row { display: flex; justify-content: space-between; margin-top: 10px; font-size: 8pt; }
+
+  /* ---------- Comparison table ---------- */
+  table.cmp { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 14px; font-size: 9.4pt; }
+  table.cmp th {
+    text-align: left; padding: 8px 10px; font-size: 7.5pt; letter-spacing: .2em; text-transform: uppercase;
+  }
+  table.cmp th.mn { background: var(--forest); color: var(--cream); border-radius: 10px 0 0 0; }
+  table.cmp th.tc { background: var(--brown); color: var(--cream); border-radius: 0 10px 0 0; }
+  table.cmp th.issue { background: transparent; color: var(--muted); }
+  table.cmp td { padding: 7px 10px; vertical-align: top; border-bottom: 1px solid var(--rule); line-height: 1.35; }
+  table.cmp td.issue { font-family: 'Lora', serif; font-weight: 600; color: var(--ink); width: 17%; }
+  table.cmp td.mn { background: #fff; width: 38%; }
+  table.cmp td.tc { background: #ece6d6; }
+
+  .ask { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+  .ask div {
+    background: #fff; border: 1px solid var(--rule); border-radius: 12px; padding: 10px 12px;
+    font-family: 'Lora', serif; font-weight: 600; font-size: 10.5pt; color: var(--forest);
+  }
+  .ask div span { display: block; font-family: 'Source Sans 3'; font-size: 7.5pt; letter-spacing: .2em; color: var(--brown); margin-bottom: 4px; }
+
+  /* ---------- Stats (healthcare) ---------- */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+  .stat { background: #fff; border: 1px solid var(--rule); border-radius: 12px; padding: 12px; }
+  .stat .n { font-family: 'Lora', serif; font-weight: 700; font-size: 20pt; line-height: 1; color: var(--forest); }
+  .stat .l { font-size: 8.8pt; margin-top: 6px; color: var(--ink); line-height: 1.3; }
+
+  /* ---------- Checklist ---------- */
+  .checks li {
+    display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--rule);
+    font-size: 10.5pt;
+  }
+  .checks li:last-child { border-bottom: 0; }
+  .checks .tick {
+    flex: 0 0 18px; height: 18px; border-radius: 50%; background: var(--forest); color: var(--cream);
+    display: grid; place-items: center; font-size: 10px; font-weight: 700; margin-top: 1px;
+  }
+
+  /* ---------- DSA grid ---------- */
+  .dsa { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .dsa div { background: #ece6d6; border-radius: 12px; padding: 10px 12px; font-size: 9.3pt; line-height: 1.4; }
+  .dsa b { display: block; font-size: 7.5pt; letter-spacing: .2em; text-transform: uppercase; color: var(--brown); margin-bottom: 4px; }
+  .dsa .wide { grid-column: 1 / -1; }
+
+  .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .cta {
+    display: block; text-decoration: none; border-radius: 12px; padding: 11px 14px;
+    font-weight: 700; font-size: 9pt; letter-spacing: .12em; text-transform: uppercase;
+  }
+  .cta.primary { background: var(--forest); color: var(--cream); }
+  .cta.secondary { background: #fff; color: var(--forest); border: 1px solid var(--forest); }
+  .cta small { display: block; font-weight: 500; letter-spacing: .02em; text-transform: none; font-size: 8.5pt; margin-top: 3px; opacity: .8; }
+
+  .sources li { padding: 6px 0; border-bottom: 1px solid var(--rule); font-size: 9.5pt; display: flex; gap: 10px; }
+  .sources li b { color: var(--brown); min-width: 22px; }
+</style>
+</head>
+<body>
+
+<!-- =============================== PAGE 1 — COVER =============================== -->
+<section class="page cover">
+  <p class="eyebrow">Oregon House District 27 • 2026 Voter Guide</p>
+  <h1>Oregon House District 27: 2026 Voter Guide</h1>
+  <p class="names">Mark Norman &amp; Tammy Carpenter</p>
+  <p class="sub">A Side-by-Side Look at the Candidates and the Issues</p>
+  <div class="issues">
+    <span>Taxes</span><span>Healthcare</span><span>Housing</span><span>Education</span><span>Public Safety</span><span>Economic Growth</span>
+  </div>
+
+  <div class="headline">
+    <p class="display">More government requires more taxpayer funding.</p>
+    <p>Compare what each candidate proposes and how those proposals would be funded.</p>
+  </div>
+
+  <figure class="photo" style="margin:0">
+    <img src="../../public/images/funnels/norman-vs-carpenter/mark-norman.jpg" alt="Mark Norman" />
+    <figcaption>Mark Norman</figcaption>
+  </figure>
+
+  <div class="bottom">
+    <p class="date">General Election • November 3, 2026<sup style="color:var(--sand)">[6]</sup></p>
+    <p style="margin-top:6px">Beaverton • West Slope • Cedar Hills • Cedar Mill • Washington County</p>
+    <div class="row">
+      <span>Presented by Northwest Oregon PAC</span>
+      <span>Paid for by Friends of Mark Norman PAC #24927</span>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== PAGE 2 =============================== -->
+<section class="page">
+  <span class="kicker">Election Day: November 3, 2026</span>
+  <h2 class="h-page">An Open Seat. Two Different Approaches.</h2>
+  <p class="lede">Oregon House District 27 will elect a new representative in November 2026.</p>
+  <p style="margin-top:8px">The candidates (Mark Norman and Tammy Carpenter) bring different professional backgrounds, and significantly different ideas about taxes, healthcare, housing, education, public safety, and government&rsquo;s role in Oregon&rsquo;s economy.</p>
+
+  <h3 class="display" style="font-size:16pt;margin-top:12px;color:var(--ink)">Meet the Candidates</h3>
+
+  <div class="versus">
+    <div class="col mn">
+      <p class="who">Mark Norman</p>
+      <h3>Navy Veteran • Veterinarian • Small-Business Owner</h3>
+      <p>Norman&rsquo;s background includes decades of military service, veterinary medicine and small-business experience.</p>
+      <p>His approach starts with a simple principle:</p>
+      <p class="display" style="font-size:11pt;color:var(--forest);font-weight:600">Government should live within its means and prove that what it spends actually works.</p>
+      <p><b>Norman wants to:</b></p>
+      <ul>
+        <li>Control state spending</li>
+        <li>Oppose unnecessary taxes and fees</li>
+        <li>Reduce barriers to housing</li>
+        <li>Support small businesses and jobs</li>
+        <li>Focus schools on academic achievement</li>
+        <li>Strengthen public safety</li>
+        <li>Demand measurable results from government programs</li>
+      </ul>
+      <p class="muted" style="font-size:9.3pt">His campaign emphasizes affordability, education and government accountability.<sup>[1]</sup></p>
+    </div>
+    <div class="col tc">
+      <p class="who">Tammy Carpenter</p>
+      <h3>Beaverton School Board Member • Democratic Socialist • DSA Member</h3>
+      <p>Carpenter identifies herself as a democratic socialist. She joined Democratic Socialists of America in 2016 and describes DSA as her political home.<sup>[2]</sup></p>
+      <p>Her published agenda would expand government spending, financing or regulation across several major areas:</p>
+      <ul>
+        <li><b>Healthcare:</b> Statewide government run healthcare</li>
+        <li><b>Housing:</b> Statewide renter regulation and social housing</li>
+        <li><b>Education:</b> Massive taxpayer investment across preschool, K&ndash;12 and higher education</li>
+        <li><b>Childcare:</b> Expanded government-funded childcare programs</li>
+        <li><b>Energy/Transportation:</b> Major state spending on transit and Green New Deal policies</li>
+      </ul>
+      <p>For these, additional tax revenue is required for financing.</p>
+      <p style="font-size:9.3pt">Carpenter says Oregon should &ldquo;tax the rich&rdquo; and says major corporations such as Nike and Intel should pay more to finance government services.<sup>[2][7]</sup></p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p class="eyebrow">The Financing Question</p>
+    <p class="display">How much additional government spending would these commitments require, and how would Oregon raise the money?</p>
+  </div>
+
+  <div class="folio"><span><b>HD27</b> 2026 Voter Guide</span><span>Paid for by Friends of Mark Norman PAC #24927</span><span>02</span></div>
+</section>
+
+<!-- =============================== PAGE 3 =============================== -->
+<section class="page">
+  <p class="eyebrow">Side by Side</p>
+  <h2 class="h-page">More Government Programs Require More Taxpayer Funding.</h2>
+  <p class="lede" style="font-size:10.5pt">The candidates begin from substantially different assumptions about what state government should do and how it should pay for those responsibilities.</p>
+
+  <table class="cmp">
+    <thead>
+      <tr><th class="issue">Issue</th><th class="mn">Mark Norman</th><th class="tc">Tammy Carpenter</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="issue">Taxes</td><td class="mn">Oppose unnecessary tax/fee increases and control spending</td><td class="tc">Higher taxes on wealthy Oregonians to finance expanded government programs</td></tr>
+      <tr><td class="issue">Healthcare</td><td class="mn">Opposes Oregon government-run healthcare</td><td class="tc">Statewide government-financed universal healthcare requiring substantial government financing</td></tr>
+      <tr><td class="issue">Housing</td><td class="mn">Reduce barriers so more housing can be built</td><td class="tc">Statewide renter regulation + taxpayer-funded social housing</td></tr>
+      <tr><td class="issue">Education</td><td class="mn">Fundamentals, standards and measurable results</td><td class="tc">Massive taxpayer investment on education</td></tr>
+      <tr><td class="issue">Public Safety/ICE</td><td class="mn">Law enforcement + treatment + accountability</td><td class="tc">Sanctuary protections + &ldquo;Abolish ICE&rdquo;</td></tr>
+      <tr><td class="issue">Data Centers</td><td class="mn">Keep Oregon competitive for investment</td><td class="tc">Three-year moratorium on data-center expansion</td></tr>
+      <tr><td class="issue">Government</td><td class="mn">Limited, accountable and measured by results</td><td class="tc">Democratic socialist approach involving greater government spending/regulation across major sectors</td></tr>
+      <tr><td class="issue">Childcare</td><td class="mn">&mdash;</td><td class="tc">Expanded government-funded childcare programs. Carpenter says she plans to introduce a wealth tax to fund childcare and schools</td></tr>
+    </tbody>
+  </table>
+
+  <p class="display" style="font-size:13pt;margin-top:16px;color:var(--ink)">Voters must ask:</p>
+  <div class="ask">
+    <div><span>01</span>What would each proposal cost?</div>
+    <div><span>02</span>How would it be financed?</div>
+    <div><span>03</span>What responsibilities should government assume?</div>
+  </div>
+  <p class="muted" style="margin-top:12px;font-size:8.8pt">Candidate positions are based primarily on the candidates&rsquo; own published platforms.</p>
+
+  <div class="folio"><span><b>HD27</b> 2026 Voter Guide</span><span>Paid for by Friends of Mark Norman PAC #24927</span><span>03</span></div>
+</section>
+
+<!-- =============================== PAGE 4 =============================== -->
+<section class="page">
+  <p class="eyebrow">Taxes &amp; Spending</p>
+  <h2 class="h-page">Expanding Government Programs Requires Money.</h2>
+
+  <div class="versus" style="margin-top:20px">
+    <div class="col mn">
+      <p class="who">Mark Norman</p>
+      <h3 style="font-size:15pt">Control spending before asking taxpayers for more.</h3>
+      <p>Norman says tax reduction is his number one priority.<sup>[1]</sup></p>
+      <p><b>He wants to:</b></p>
+      <ul>
+        <li>Control state spending</li>
+        <li>Oppose unnecessary tax and fee increases</li>
+        <li>Demand measurable results from government programs</li>
+        <li>Reduce policies that drive up everyday costs</li>
+        <li>Help small businesses remain viable</li>
+        <li>Let families keep more of what they earn<sup>[1]</sup></li>
+      </ul>
+      <p style="margin-top:14px"><b>His argument is simple:</b></p>
+      <p class="quote-line" style="font-size:12pt">If Oregon is already becoming harder to afford, adding new taxes and fees isn&rsquo;t the answer.</p>
+    </div>
+    <div class="col tc">
+      <p class="who">Tammy Carpenter</p>
+      <h3 style="font-size:15pt">Expand government. Increase taxes on wealthy Oregonians.</h3>
+      <p>Carpenter proposes additional government spending or intervention in healthcare, education, childcare, housing, transportation and other areas.</p>
+      <p>She explicitly calls on the Legislature to tax the rich. Her education platform also says companies should pay more.<sup>[2][7]</sup></p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:22px">
+    <p class="eyebrow">The Main Question Is How the Math Works.</p>
+    <p class="display">New or expanded government programs require funding.</p>
+  </div>
+
+  <div class="folio"><span><b>HD27</b> 2026 Voter Guide</span><span>Paid for by Friends of Mark Norman PAC #24927</span><span>04</span></div>
+</section>
+
+<!-- =============================== PAGE 5 =============================== -->
+<section class="page">
+  <p class="eyebrow">Healthcare</p>
+  <h2 class="h-page">&ldquo;Free at the Point of Service&rdquo; Still Has a Cost.</h2>
+  <p class="h-sub">Government-financed healthcare still has to be financed.</p>
+
+  <p style="margin-top:12px">Carpenter supports moving Oregon toward a statewide Universal Health Plan.</p>
+  <p style="margin-top:6px">Her campaign describes a comprehensive system covering Oregonians without copays and making healthcare free at the point of service<sup>[8]</sup> but this government-run healthcare system would require a financing mechanism to pay for the cost of care.</p>
+  <p style="margin-top:10px"><b>Oregon&rsquo;s Universal Health Plan Governance Board has examined financing concepts including:</b><sup>[3]</sup></p>
+
+  <div class="stats">
+    <div class="stat"><p class="n">10.1%</p><p class="l">Proposed Healthcare Personal Income Tax</p></div>
+    <div class="stat"><p class="n">9.6%</p><p class="l">Proposed Employer Payroll Tax</p></div>
+    <div class="stat"><p class="n">+3.0<small style="font-size:10pt"> pts</small></p><p class="l">Proposed Corporate Income Tax increase</p></div>
+    <div class="stat"><p class="n">+0.10<small style="font-size:10pt"> pts</small></p><p class="l">Proposed Corporate Activity Tax increase</p></div>
+  </div>
+
+  <p class="note"><b>Important:</b> These are financing concepts examined by Oregon&rsquo;s Universal Health Plan Governance Board. They are not currently imposed taxes and are not Tammy Carpenter&rsquo;s personal tax proposal.<sup>[3][4]</sup></p>
+
+  <div class="versus">
+    <div class="col mn">
+      <p class="who">Mark Norman</p>
+      <h3>Norman rejects a government-run healthcare system.</h3>
+      <p>He favors reforms centered on affordability, access, transparency, patient choice and provider support. His campaign explicitly says he does not support a government-run single-payer system for Oregon.</p>
+    </div>
+    <div class="col tc">
+      <p class="who">Tammy Carpenter</p>
+      <h3>Carpenter wants Oregon to move in the opposite direction.</h3>
+      <p>Her campaign says Oregon should pass a Universal Health Plan and make medicine free at the point of service.<sup>[8]</sup> A statewide universal healthcare system would require substantial government financing.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>The danger is calling healthcare &ldquo;free&rdquo; while ignoring the taxes required to pay for it.</p>
+    <p class="display">There is no free healthcare. There is only a decision about who pays.</p>
+  </div>
+
+  <div class="folio"><span><b>HD27</b> 2026 Voter Guide</span><span>Paid for by Friends of Mark Norman PAC #24927</span><span>05</span></div>
+</section>
+
+<!-- =============================== PAGE 6 =============================== -->
+<section class="page">
+  <p class="eyebrow">Housing</p>
+  <h2 class="h-page">Oregon Already Regulates Rent. Tammy Carpenter Wants Government to Go Further.</h2>
+  <p class="lede">Housing affordability is a serious problem.</p>
+  <p style="margin-top:4px">But more government control is not automatically more affordable housing.</p>
+
+  <div class="versus">
+    <div class="col tc">
+      <p class="who">Tammy Carpenter</p>
+      <h3>Greater government involvement and regulation</h3>
+      <p>Carpenter supports taking statewide a Renters&rsquo; Bill of Rights that includes six months&rsquo; notice for rent increases, additional eviction restrictions, legal representation in eviction proceedings and linking rent costs to minimum wage. Her campaign also promotes statewide rent control.<sup>[2][8]</sup></p>
+      <p><b>And she doesn&rsquo;t stop there.</b></p>
+      <p>She has also advocated government-run social housing, including cooperative and city/county-managed housing.<sup>[7]</sup> That would increase government&rsquo;s role in both housing regulation and housing provision.</p>
+    </div>
+    <div class="col mn">
+      <p class="who">Mark Norman</p>
+      <h3>Reduce the cost and barriers to building</h3>
+      <p>Norman emphasizes reducing barriers that make housing more expensive or difficult to construct.<sup>[1]</sup></p>
+      <p>His approach relies more heavily on increasing housing production rather than expanding government involvement in housing.</p>
+    </div>
+  </div>
+
+  <p class="display" style="font-size:13pt;margin-top:18px;color:var(--ink)">The risk is straightforward:</p>
+  <ul class="checks" style="margin-top:6px">
+    <li><span class="tick">!</span>More restrictions can increase pressure on housing providers.</li>
+    <li><span class="tick">!</span>Government-managed housing puts taxpayers on the hook.</li>
+    <li><span class="tick">!</span>Policies that discourage private investment can make it harder, not easier, to add the housing Oregon desperately needs.</li>
+  </ul>
+
+  <div class="callout">
+    <p class="eyebrow">The Policy Difference</p>
+    <p class="display">Build more housing or put more housing decisions in government&rsquo;s hands?</p>
+  </div>
+
+  <div class="folio"><span><b>HD27</b> 2026 Voter Guide</span><span>Paid for by Friends of Mark Norman PAC #24927</span><span>06</span></div>
+</section>
+
+<!-- =============================== PAGE 7 =============================== -->
+<section class="page">
+  <p class="eyebrow">Education &amp; Childcare</p>
+  <h2 class="h-page">Education and Childcare: How Much Should Government Provide?</h2>
+  <p class="lede">Both candidates identify education as important.</p>
+  <p style="margin-top:4px">Their disagreement concerns spending, structure and results.</p>
+
+  <div class="versus" style="margin-top:20px">
+    <div class="col mn">
+      <p class="who">Mark Norman</p>
+      <p><b>Norman emphasizes:</b></p>
+      <ul>
+        <li>Reading</li>
+        <li>Math</li>
+        <li>Science</li>
+        <li>Career readiness</li>
+        <li>Academic standards</li>
+        <li>Parent involvement</li>
+        <li>Student achievement</li>
+      </ul>
+      <p class="quote-line" style="font-size:13pt">His benchmark: Are students learning?</p>
+    </div>
+    <div class="col tc">
+      <p class="who">Tammy Carpenter</p>
+      <p>Carpenter calls for massive taxpayer investment across preschool, K&ndash;12, community colleges, public universities and trade schools. She is in favor of greater government-run education and childcare but the question remains the same. <b>Who pays?</b></p>
+      <p>She has also discussed a wealth tax as a financing source for childcare and schools.<sup>[7]</sup> But what measurable results should taxpayers expect?</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:22px">
+    <p class="eyebrow">Spending and Outcomes Are Different Measures.</p>
+    <p>The policy question is</p>
+    <p class="display">How much additional investment is needed?</p>
+  </div>
+
+  <div class="folio"><span><b>HD27</b> 2026 Voter Guide</span><span>Paid for by Friends of Mark Norman PAC #24927</span><span>07</span></div>
+</section>
+
+<!-- =============================== PAGE 8 =============================== -->
+<section class="page">
+  <p class="eyebrow">Public Safety &amp; Immigration</p>
+  <h2 class="h-page">Public Safety, Immigration and the DSA Question</h2>
+
+  <div class="versus" style="margin-top:20px">
+    <div class="col mn">
+      <p class="who">Mark Norman</p>
+      <p><b>Norman supports:</b></p>
+      <ul>
+        <li>Recruiting and retaining qualified officers</li>
+        <li>Fully funded public safety</li>
+        <li>Holding offenders accountable</li>
+        <li>Community policing</li>
+        <li>Behavioral-health partnerships</li>
+        <li>Addiction treatment<sup>[1]</sup></li>
+      </ul>
+    </div>
+    <div class="col tc">
+      <p class="who">Tammy Carpenter</p>
+      <p>Carpenter supports Oregon&rsquo;s Sanctuary Promise Act.</p>
+      <p>Her published immigration platform concludes with:</p>
+      <p class="display" style="font-size:18pt;color:var(--brown);margin-top:8px">&ldquo;ABOLISH ICE!&rdquo;<sup>[2]</sup></p>
+      <p>Carpenter also identifies herself as a DSA member and describes DSA as her political home.<sup>[2]</sup></p>
+    </div>
+  </div>
+
+  <p style="margin-top:18px">National DSA&rsquo;s program separately advocates major changes to policing and incarceration, including redirecting police funding as steps toward police and prison abolition.</p>
+  <p class="note">That is what the organization advocates, but Tammy Carpenter&rsquo;s own positions and DSA&rsquo;s national positions should not be treated as interchangeable.</p>
+
+  <div class="folio"><span><b>HD27</b> 2026 Voter Guide</span><span>Paid for by Friends of Mark Norman PAC #24927</span><span>08</span></div>
+</section>
+
+<!-- =============================== PAGE 9 =============================== -->
+<section class="page">
+  <p class="eyebrow">Jobs &amp; Investment</p>
+  <h2 class="h-page">Jobs and Investment, or a Three-Year Moratorium?</h2>
+  <p class="lede">Washington County is a center of technology and infrastructure investment.</p>
+  <p style="margin-top:4px">Data centers create legitimate questions about electricity, water, land use and tax incentives. Those problems deserve solutions. <b>But Carpenter wants a moratorium.</b></p>
+
+  <div class="versus">
+    <div class="col tc">
+      <p class="who">Tammy Carpenter</p>
+      <p>On August 5, 2026, Carpenter joined Democratic legislators and candidates calling for a three-year moratorium on large-scale data-center development in Oregon.<sup>[5]</sup></p>
+      <p>Her own platform also calls for a moratorium on data-center expansion in Washington County.<sup>[2]</sup></p>
+    </div>
+    <div class="col mn">
+      <p class="who">Mark Norman</p>
+      <p>Norman&rsquo;s economic approach emphasizes keeping Oregon affordable for employers, supporting small businesses and avoiding policies that drive jobs and investment elsewhere.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:14px">The danger of a blanket moratorium is simple: investment can go somewhere else. Oregon can address infrastructure problems without putting up a three-year stop sign for major development.</p>
+  <p class="quote-line">Solve the problems, or shut down the investment?</p>
+
+  <h3 class="display" style="font-size:15pt;margin-top:20px;color:var(--ink)">Five Questions Before You Vote</h3>
+  <ul class="checks" style="margin-top:6px">
+    <li><span class="tick">&#10003;</span>Which candidate&rsquo;s approach to taxes best reflects your household priorities?</li>
+    <li><span class="tick">&#10003;</span>Which healthcare model do you believe is more sustainable?</li>
+    <li><span class="tick">&#10003;</span>How should Oregon increase housing affordability?</li>
+    <li><span class="tick">&#10003;</span>What should schools prioritize to improve student outcomes?</li>
+    <li><span class="tick">&#10003;</span>What balance should Oregon strike between economic development, public services and regulation?</li>
+  </ul>
+  <p class="display" style="font-size:11.5pt;color:var(--forest);margin-top:10px">The differences bring clarity. The decision belongs to District 27 voters.</p>
+
+  <div class="folio"><span><b>HD27</b> 2026 Voter Guide</span><span>Paid for by Friends of Mark Norman PAC #24927</span><span>09</span></div>
+</section>
+
+<!-- =============================== PAGE 10 =============================== -->
+<section class="page">
+  <p class="eyebrow">The DSA Question</p>
+  <h2 class="h-page" style="font-size:22pt">Carpenter Is a DSA Member. What Does National DSA Advocate?</h2>
+  <p style="margin-top:8px">The national DSA program separately advocates policies including:</p>
+
+  <div class="dsa">
+    <div><b>Public Safety &amp; Immigration</b>Police/prison abolition policies • Abolish ICE • Broad legalization and citizenship pathways</div>
+    <div><b>Economy</b>Public ownership of major corporations and essential industries • Aggressive wealth and corporate taxation</div>
+    <div><b>Housing &amp; Healthcare</b>Publicly owned social housing • Universal rent control • Universal healthcare without individual charges</div>
+    <div><b>Federal Government</b>Abolish the Electoral College • Abolish the U.S. Senate • Replace the President and Supreme Court with an executive and judiciary chosen by and subordinate to Congress • Restructure the federal judiciary/Supreme Court under Congress</div>
+  </div>
+  <p class="note"><b>Important distinction:</b> These are positions of the national Democratic Socialists of America. DSA membership alone does not establish that Carpenter personally endorses every national proposal.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:14px;margin-top:14px">
+    <div class="col mn" style="padding:12px 16px">
+      <p class="who">Mark Norman&rsquo;s Published Approach</p>
+      <ul style="margin-top:6px;font-size:9.8pt">
+        <li>Lower taxes and fees.</li>
+        <li>Controlled spending.</li>
+        <li>Private-sector housing growth.</li>
+        <li>Strong public safety.</li>
+        <li>Academic fundamentals.</li>
+        <li>Economic investment.</li>
+        <li>Government measured by results.</li>
+      </ul>
+    </div>
+    <div class="callout" style="margin-top:0;padding:14px 18px">
+      <p>The danger isn&rsquo;t the word &ldquo;socialism.&rdquo;</p>
+      <p class="display" style="font-size:12pt">It&rsquo;s giving government more control while asking taxpayers to finance every new promise.</p>
+      <p style="margin-top:10px;color:var(--sand)">Look beyond the slogans.<br />Ask what it costs.<br />Ask who pays.<br />Ask how much control government gets.</p>
+    </div>
+  </div>
+
+  <p class="display" style="font-size:14pt;color:var(--forest);margin-top:14px;text-align:center">The Choice Belongs to District 27.</p>
+  <div class="cta-row">
+    <a class="cta primary" href="https://www.markfororegon.com/">Learn More About Mark Norman &rarr;<small>markfororegon.com</small></a>
+    <a class="cta secondary" href="https://northwestoregon.com/">Stay Informed About House District 27 &rarr;<small>northwestoregon.com</small></a>
+  </div>
+
+  <p class="muted" style="font-size:8pt;margin-top:10px">Information and candidate positions reviewed as of September 14, 2026. See Sources &amp; References for details.</p>
+
+  <div class="folio"><span><b>HD27</b> 2026 Voter Guide</span><span>Paid for by Friends of Mark Norman PAC #24927</span><span>10</span></div>
+</section>
+
+<!-- =============================== SOURCES =============================== -->
+<section class="page">
+  <p class="eyebrow">HD27</p>
+  <h2 class="h-page">Sources &amp; References</h2>
+  <div class="rule"></div>
+  <ol class="sources" style="list-style:none;padding:0;margin:0">
+    <li><b>[1]</b>Mark Norman for Oregon &ndash; Campaign Website</li>
+    <li><b>[2]</b>Tammy Carpenter for Oregon House District 27 &ndash; &ldquo;What I Stand For&rdquo;</li>
+    <li><b>[3]</b>Oregon Universal Health Plan Governance Board &ndash; March 19, 2026 Presentation</li>
+    <li><b>[4]</b>Oregon Universal Health Plan Governance Board &ndash; 2026 Focus Group Materials</li>
+    <li><b>[5]</b>Tammy Carpenter Campaign</li>
+    <li><b>[6]</b>BallotReady &ndash; Oregon General Election, November 3, 2026</li>
+    <li><b>[7]</b>Oregon House 27th District: Beaverton | Voter Guide 2026</li>
+    <li><b>[8]</b>Tammy Carpenter for Oregon House District 27 &ndash; Campaign</li>
+  </ol>
+
+  <p class="muted" style="font-size:9pt;margin-top:22px">Information and candidate positions reviewed as of September 14, 2026. Candidate positions, campaign materials, websites and policy proposals may change after publication.</p>
+
+  <div style="position:absolute;left:0.66in;right:0.66in;bottom:1.1in;text-align:center">
+    <p class="display" style="font-size:13pt;color:var(--forest)">Presented by Northwest Oregon PAC</p>
+    <p style="margin-top:6px;font-size:10pt;font-weight:700">Paid for by Friends of Mark Norman PAC #24927</p>
+  </div>
+
+  <div class="folio"><span><b>HD27</b> 2026 Voter Guide</span><span>Paid for by Friends of Mark Norman PAC #24927</span><span>11</span></div>
+</section>
+
+</body>
+</html>
