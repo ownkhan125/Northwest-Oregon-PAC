@@ -7,6 +7,7 @@ const DEFAULT_WEBHOOK_URL =
 // GHL trigger so each funnel gets its own tagging / email sequence.
 const HD33_SOURCE = 'ciatta-thompson-vs-shannon-jones-isadore'
 const HD27_SOURCE = 'mark-norman-vs-tammy-carpenter'
+const HD28_SOURCE = 'oregon-house-district-28-comparison'
 
 const pickWebhook = (source) => {
   if (source === HD33_SOURCE && process.env.GHL_HD33_WEBHOOK) {
@@ -14,6 +15,9 @@ const pickWebhook = (source) => {
   }
   if (source === HD27_SOURCE && process.env.GHL_HD27_WEBHOOK) {
     return { url: process.env.GHL_HD27_WEBHOOK, funnel: 'hd27' }
+  }
+  if (source === HD28_SOURCE && process.env.GHL_HD28_WEBHOOK) {
+    return { url: process.env.GHL_HD28_WEBHOOK, funnel: 'hd28' }
   }
   return { url: process.env.GHL_CONTACT_WEBHOOK || DEFAULT_WEBHOOK_URL, funnel: 'default' }
 }

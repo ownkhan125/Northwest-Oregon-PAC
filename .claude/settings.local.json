@@ -280,7 +280,10 @@
       "Bash(pdfinfo '/c/Users/General/Documents/GitHub/Northwest Oregon PAC/public/downloads/hd33-voters-guide.pdf')",
       "Bash(xxd)",
       "Bash(ls -la vercel.json)",
-      "Bash(ls -la .env*)"
+      "Bash(ls -la .env*)",
+      "Bash(mkdir -p \"C:/Users/General/Documents/GitHub/Northwest Oregon PAC/src/app/oregon-house-district-28-comparison/thank-you\")",
+      "Bash(mkdir -p \"C:/Users/General/Documents/GitHub/Northwest Oregon PAC/lead-magnets/hd28\")",
+      "Bash(PORT=3033 npm run dev)"
     ]
   }
 }
