@@ -32,6 +32,10 @@ const VIEW_PARAMS = {
 
 const FRYER_URL = 'https://www.randallfororegon.com/'
 const FRYER_PHOTO = '/images/funnels/oregon-house-district-28-comparison/randall-fryer.webp'
+const FRYER_HEADSHOT =
+  '/images/funnels/oregon-house-district-28-comparison/randall-fryer%20headshot.jpg'
+const GRAYBER_HEADSHOT =
+  '/images/funnels/oregon-house-district-28-comparison/Dacia%20Grayber%20headshot.png'
 
 export const HD28_PAID_FOR = 'Paid for by Randall Fryer For Representative'
 
@@ -502,40 +506,96 @@ const ComparisonSection = () => (
         {...inView}
         className="border-border bg-surface mt-12 overflow-hidden rounded-3xl border shadow-[0_28px_80px_-40px_rgba(0,0,0,0.3)] lg:mt-16"
       >
-        <div className="hidden grid-cols-[200px_1fr_1fr] md:grid">
-          <div />
-          <div className="bg-forest text-cream px-6 py-4 text-[11px] font-semibold tracking-[0.24em] uppercase">
-            Randall Fryer
+        {/* Candidate profile row — editorial-style portrait cards with a
+            color accent bar, candidate name, and short role. Photos are
+            contained (max ~240px) so they read as portraits, not banners. */}
+        <div className="grid grid-cols-2 gap-6 px-5 py-10 sm:gap-10 sm:px-8 sm:py-12 md:gap-14 md:px-12 md:py-14 lg:gap-16 lg:px-16">
+          {[
+            {
+              src: FRYER_HEADSHOT,
+              name: 'Randall Fryer',
+              role: 'Retired Physician',
+              accent: 'bg-primary',
+            },
+            {
+              src: GRAYBER_HEADSHOT,
+              name: 'Dacia Grayber',
+              role: 'State Representative',
+              accent: 'bg-secondary',
+            },
+          ].map((c) => (
+            <div key={c.name} className="flex flex-col items-center text-center">
+              <div className="border-border relative aspect-[4/5] w-full max-w-[240px] overflow-hidden rounded-2xl border shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)]">
+                <Image
+                  src={c.src}
+                  alt={c.name}
+                  fill
+                  sizes="(min-width: 1024px) 240px, (min-width: 640px) 28vw, 40vw"
+                  className="object-cover object-center"
+                />
+              </div>
+              <span className={cn('mt-5 block h-[3px] w-10 rounded-full', c.accent)} />
+              <h3 className="font-display text-foreground mt-4 text-xl leading-tight font-medium sm:text-2xl md:text-3xl">
+                {c.name}
+              </h3>
+              <p className="text-foreground/60 mt-1 text-[10px] font-semibold tracking-[0.14em] uppercase sm:text-[11px] sm:tracking-[0.22em]">
+                {c.role}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Divider between profile row and comparison table */}
+        <div className="border-border border-t" />
+
+        {/* Small candidate anchor strip — repeats the two names as
+            column headers directly above the answer cells so the
+            side-by-side read stays clear as the reader scrolls the
+            profile row out of view. Hidden on mobile where each row
+            already carries inline candidate labels. */}
+        <div className="border-border hidden grid-cols-2 border-b md:grid">
+          <div className="px-6 py-3 md:px-8">
+            <p className="text-primary text-[15px] font-semibold tracking-[0.24em] uppercase">
+              Randall Fryer
+            </p>
           </div>
-          <div className="bg-brown text-cream px-6 py-4 text-[11px] font-semibold tracking-[0.24em] uppercase">
-            Dacia Grayber
+          <div className="bg-surface-alt/25 px-6 py-3 md:px-8">
+            <p className="text-brown dark:text-sand text-[15px] font-semibold tracking-[0.24em] uppercase">
+              Dacia Grayber
+            </p>
           </div>
         </div>
+
+        {/* Comparison rows — true 2-column side-by-side. Each row has an
+            issue label as a full-width section header, then a 2-column
+            grid with Fryer's position on the left (aligned directly under
+            his profile) and Grayber's on the right (with a subtle sand
+            tint that continues her lane from the anchor strip above). */}
         <ul>
-          {comparison.map((row, i) => (
-            <li
-              key={row.issue}
-              className={cn(
-                'grid grid-cols-1 md:grid-cols-[200px_1fr_1fr]',
-                i > 0 && 'border-border border-t',
-              )}
-            >
-              <p className="font-display text-foreground px-6 pt-5 text-lg md:py-5">{row.issue}</p>
-              <div className="px-6 pt-3 md:py-5">
-                <p className="text-primary text-[10px] font-semibold tracking-[0.22em] uppercase md:hidden">
-                  Randall Fryer
-                </p>
-                <p className="text-foreground/90 mt-1 text-[15px] leading-relaxed md:mt-0">
-                  {row.fryer}
+          {comparison.map((row) => (
+            <li key={row.issue} className="border-border border-t">
+              <div className="bg-surface-alt/10 px-6 py-3 md:px-8">
+                <p className="text-foreground/70 text-[13px] font-semibold tracking-[0.24em] uppercase">
+                  {row.issue}
                 </p>
               </div>
-              <div className="bg-surface-alt/30 px-6 pt-3 pb-5 md:py-5">
-                <p className="text-brown dark:text-sand text-[10px] font-semibold tracking-[0.22em] uppercase md:hidden">
-                  Dacia Grayber
-                </p>
-                <p className="text-foreground/90 mt-1 text-[15px] leading-relaxed md:mt-0">
-                  {row.grayber}
-                </p>
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="px-6 pt-4 pb-2 md:px-8 md:py-6">
+                  <p className="text-primary text-[10px] font-semibold tracking-[0.22em] uppercase md:hidden">
+                    Randall Fryer
+                  </p>
+                  <p className="text-foreground/90 mt-1 text-base leading-relaxed md:mt-0 md:text-[17px]">
+                    {row.fryer}
+                  </p>
+                </div>
+                <div className="bg-surface-alt/25 px-6 pt-3 pb-5 md:px-8 md:py-6">
+                  <p className="text-brown dark:text-sand text-[10px] font-semibold tracking-[0.22em] uppercase md:hidden">
+                    Dacia Grayber
+                  </p>
+                  <p className="text-foreground/90 mt-1 text-base leading-relaxed md:mt-0 md:text-[17px]">
+                    {row.grayber}
+                  </p>
+                </div>
               </div>
             </li>
           ))}
