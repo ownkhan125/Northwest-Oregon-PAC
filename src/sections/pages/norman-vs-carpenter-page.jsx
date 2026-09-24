@@ -32,6 +32,7 @@ const VIEW_PARAMS = {
 
 const NORMAN_URL = 'https://www.markfororegon.com/'
 const NORMAN_PHOTO = '/images/funnels/norman-vs-carpenter/mark-norman.jpg'
+const CARPENTER_PHOTO = '/images/funnels/norman-vs-carpenter/tammy-carpenter.webp'
 
 export const HD27_PAID_FOR = 'Paid for by Friends of Mark Norman PAC #24927'
 
@@ -763,25 +764,37 @@ const CarpenterCard = () => (
     className="group block h-full w-full text-left"
   >
     <Card
-      className="hover:!bg-brown hover:!border-brown hover:!text-cream flex h-full flex-col overflow-hidden p-6 hover:!shadow-[0_28px_60px_-30px_rgba(107,90,66,0.55)] sm:p-8"
+      className="hover:!bg-brown hover:!border-brown hover:!text-cream flex h-full flex-col overflow-hidden p-4 hover:!shadow-[0_28px_60px_-30px_rgba(107,90,66,0.55)] sm:p-5"
       tilt={false}
       interactive
       pointer={false}
     >
-      <h3 className="font-display text-foreground group-hover:text-primary-fg text-3xl leading-tight font-medium transition-colors duration-500">
-        Tammy Carpenter
-      </h3>
-      <p className="text-highlight group-hover:text-accent mt-3 text-sm leading-relaxed transition-colors duration-500">
-        Democratic Socialist
-      </p>
-      <p className="text-foreground group-hover:text-primary-fg mt-6 text-sm font-semibold tracking-wide transition-colors duration-500">
-        Her published priorities include:
-      </p>
-      <PriorityList items={carpenterPriorities} />
-      <div className="border-primary/15 group-hover:border-primary-fg/25 mt-auto border-t pt-6 transition-colors duration-500">
-        <p className="font-display text-foreground group-hover:text-primary-fg text-xl leading-snug transition-colors duration-500">
-          The policies are hers. The question is whether District 27 can afford the consequences.
+      <div className="border-primary/15 group-hover:border-primary-fg/20 relative aspect-[440/300] w-full overflow-hidden rounded-2xl border transition-colors duration-500">
+        <Image
+          src={CARPENTER_PHOTO}
+          alt="Tammy Carpenter"
+          fill
+          sizes="(min-width: 1024px) 560px, (min-width: 640px) 90vw, 100vw"
+          quality={85}
+          className="object-cover object-[center_18%]"
+        />
+      </div>
+      <div className="flex flex-1 flex-col px-2 pt-6 pb-2 sm:px-3 sm:pt-8">
+        <h3 className="font-display text-foreground group-hover:text-primary-fg text-3xl leading-tight font-medium transition-colors duration-500">
+          Tammy Carpenter
+        </h3>
+        <p className="text-highlight group-hover:text-accent mt-3 text-sm leading-relaxed transition-colors duration-500">
+          Democratic Socialist
         </p>
+        <p className="text-foreground group-hover:text-primary-fg mt-6 text-sm font-semibold tracking-wide transition-colors duration-500">
+          Her published priorities include:
+        </p>
+        <PriorityList items={carpenterPriorities} />
+        <div className="border-primary/15 group-hover:border-primary-fg/25 mt-auto border-t pt-6 transition-colors duration-500">
+          <p className="font-display text-foreground group-hover:text-primary-fg text-xl leading-snug transition-colors duration-500">
+            The policies are hers. The question is whether District 27 can afford the consequences.
+          </p>
+        </div>
       </div>
     </Card>
   </div>

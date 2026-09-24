@@ -3,17 +3,24 @@ import { NextResponse } from 'next/server'
 const DEFAULT_WEBHOOK_URL =
   'https://services.leadconnectorhq.com/hooks/lNVEVQTfMOSmFULpiivA/webhook-trigger/PuS17zDj5gK7M9YrTqTT'
 
+const HD27_WEBHOOK_URL =
+  'https://services.leadconnectorhq.com/hooks/lNVEVQTfMOSmFULpiivA/webhook-trigger/bfcd39d2-070e-4cd3-8518-66821594f7c1'
+
 // Per-funnel webhook routing. Sources that appear here send to a dedicated
 // GHL trigger so each funnel gets its own tagging / email sequence.
 const HD33_SOURCE = 'ciatta-thompson-vs-shannon-jones-isadore'
 const HD27_SOURCE = 'mark-norman-vs-tammy-carpenter'
+const HD28_SOURCE = 'oregon-house-district-28-comparison'
 
 const pickWebhook = (source) => {
   if (source === HD33_SOURCE && process.env.GHL_HD33_WEBHOOK) {
     return { url: process.env.GHL_HD33_WEBHOOK, funnel: 'hd33' }
   }
-  if (source === HD27_SOURCE && process.env.GHL_HD27_WEBHOOK) {
-    return { url: process.env.GHL_HD27_WEBHOOK, funnel: 'hd27' }
+  if (source === HD27_SOURCE) {
+    return { url: process.env.GHL_HD27_WEBHOOK || HD27_WEBHOOK_URL, funnel: 'hd27' }
+  }
+  if (source === HD28_SOURCE && process.env.GHL_HD28_WEBHOOK) {
+    return { url: process.env.GHL_HD28_WEBHOOK, funnel: 'hd28' }
   }
   return { url: process.env.GHL_CONTACT_WEBHOOK || DEFAULT_WEBHOOK_URL, funnel: 'default' }
 }

@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Oregon House District 28: 2026 Voter Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<!--
+  HD28 lead magnet — Randall Fryer vs. Dacia Grayber.
+  Copy is verbatim from the HD28 Fryer vs. Grayber funnel spec PDF (PART 2).
+  Rendered to public/downloads/hd28-voters-guide.pdf by render.mjs.
+-->
+<style>
+  :root {
+    --sand: #e0d6bc;
+    --cream: #f6f2e8;
+    --forest: #2e4538;
+    --forest-deep: #1a2621;
+    --brown: #6b5a42;
+    --ink: #2a2a26;
+    --muted: #5d5a50;
+    --rule: rgba(107, 90, 66, 0.25);
+    --warn: #8a3b2a;
+  }
+  @page { size: 8.5in 11in; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #999; }
+  body {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    color: var(--ink);
+    font-size: 10.5pt;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  h1, h2, h3, .display { font-family: 'Lora', Georgia, serif; font-weight: 600; margin: 0; }
+  p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  sup { font-size: 0.62em; color: var(--brown); font-weight: 600; }
+
+  .page {
+    position: relative;
+    width: 8.5in;
+    height: 11in;
+    overflow: hidden;
+    background: var(--cream);
+    padding: 0.62in 0.66in 0.9in;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  @media screen { .page { margin: 0 auto 24px; box-shadow: 0 10px 40px rgba(0,0,0,.25); } }
+
+  .folio {
+    position: absolute;
+    left: 0.66in; right: 0.66in; bottom: 0.36in;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--rule);
+    padding-top: 8px;
+    font-size: 7.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .folio b { color: var(--forest); font-weight: 700; }
+
+  .eyebrow {
+    font-size: 8pt; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--brown);
+  }
+  .kicker {
+    display: inline-block;
+    font-size: 7.5pt; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--cream); background: var(--forest);
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .h-page { font-size: 25pt; line-height: 1.1; color: var(--forest); margin-top: 10px; }
+  .h-sub { font-size: 13.5pt; line-height: 1.3; color: var(--ink); margin-top: 8px; font-weight: 500; }
+  .lede { font-size: 11.5pt; color: var(--ink); margin-top: 12px; }
+  .muted { color: var(--muted); }
+  .rule { height: 3px; width: 44px; background: var(--sand); border-radius: 2px; margin: 14px 0; }
+
+  /* Side-by-side comparison columns */
+  .versus { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  .col {
+    border-radius: 14px; padding: 16px 18px 18px;
+    border: 1px solid var(--rule);
+  }
+  .col.rf { background: #fff; border-top: 5px solid var(--forest); }
+  .col.dg { background: #ece6d6; border-top: 5px solid var(--brown); }
+  .col .who { font-size: 7.5pt; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; }
+  .col.rf .who { color: var(--forest); }
+  .col.dg .who { color: var(--brown); }
+  .col h3 { font-size: 12.5pt; line-height: 1.25; margin-top: 6px; color: var(--ink); }
+  .col p { margin-top: 8px; }
+  .col ul { margin-top: 8px; }
+  .col li { position: relative; padding-left: 16px; margin-top: 4px; }
+  .col li::before {
+    content: ''; position: absolute; left: 2px; top: 0.55em; width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor; opacity: 0.55;
+  }
+  .col.rf li::before { background: var(--forest); opacity: 1; }
+  .col.dg li::before { background: var(--brown); opacity: 1; }
+
+  .callout {
+    margin-top: 16px; border-radius: 14px; padding: 16px 20px;
+    background: var(--forest); color: var(--cream);
+  }
+  .callout .eyebrow { color: var(--sand); }
+  .callout .display { font-size: 14pt; line-height: 1.3; margin-top: 6px; color: var(--cream); }
+  .callout p + p { margin-top: 6px; }
+
+  .note {
+    margin-top: 14px; border-left: 4px solid var(--brown); background: #ece6d6;
+    padding: 10px 14px; border-radius: 0 10px 10px 0; font-size: 9.5pt;
+  }
+  .note b { color: var(--brown); }
+
+  .quote-line {
+    font-family: 'Lora', Georgia, serif; font-style: italic; font-weight: 500;
+    font-size: 14pt; line-height: 1.35; color: var(--forest);
+    border-left: 3px solid var(--sand); padding-left: 14px; margin-top: 14px;
+  }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    background: linear-gradient(160deg, var(--forest) 0%, var(--forest-deep) 100%);
+    color: var(--cream);
+    padding: 0.7in 0.7in 0.6in;
+  }
+  .cover .eyebrow { color: var(--sand); }
+  .cover h1 { font-size: 36pt; line-height: 1.02; color: var(--cream); margin-top: 18px; }
+  .cover .names { font-size: 21pt; color: var(--sand); margin-top: 18px; font-family: 'Lora', serif; font-weight: 500; }
+  .cover .sub { font-size: 12pt; color: rgba(246,242,232,.85); margin-top: 8px; max-width: 4.5in; line-height: 1.35; }
+  .cover .issues {
+    margin-top: 22px; display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .cover .issues span {
+    border: 1px solid rgba(224,214,188,.35); background: rgba(224,214,188,.08);
+    border-radius: 999px; padding: 4px 11px; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--sand);
+  }
+  .cover .photo {
+    position: absolute; right: 0.7in; top: 4.05in; width: 2.7in; height: 3.4in;
+    border-radius: 16px; overflow: hidden; border: 1px solid rgba(224,214,188,.3);
+    box-shadow: 0 30px 60px -25px rgba(0,0,0,.6);
+  }
+  .cover .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+  .cover .photo figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 12px 8px;
+    background: linear-gradient(to top, rgba(26,38,33,.92), rgba(26,38,33,0));
+    font-size: 8pt; letter-spacing: .14em; text-transform: uppercase; color: var(--sand);
+  }
+  .cover .headline {
+    position: absolute; left: 0.7in; top: 4.15in; width: 3.5in;
+  }
+  .cover .headline .display { font-size: 18pt; line-height: 1.2; color: var(--cream); }
+  .cover .headline p { margin-top: 12px; font-size: 11pt; color: rgba(246,242,232,.82); }
+  .cover .bottom {
+    position: absolute; left: 0.7in; right: 0.7in; bottom: 0.55in;
+    border-top: 1px solid rgba(224,214,188,.22); padding-top: 12px;
+    font-size: 9pt; color: rgba(246,242,232,.8);
+  }
+  .cover .bottom .date { color: var(--sand); letter-spacing: .16em; text-transform: uppercase; font-weight: 700; font-size: 8.5pt; }
+  .cover .bottom .row { display: flex; justify-content: space-between; margin-top: 10px; font-size: 8pt; }
+
+  /* ---------- Comparison table ---------- */
+  table.cmp { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 14px; font-size: 9.4pt; }
+  table.cmp th {
+    text-align: left; padding: 8px 10px; font-size: 7.5pt; letter-spacing: .2em; text-transform: uppercase;
+  }
+  table.cmp th.rf { background: var(--forest); color: var(--cream); border-radius: 10px 0 0 0; }
+  table.cmp th.dg { background: var(--brown); color: var(--cream); border-radius: 0 10px 0 0; }
+  table.cmp th.issue { background: transparent; color: var(--muted); }
+  table.cmp td { padding: 7px 10px; vertical-align: top; border-bottom: 1px solid var(--rule); line-height: 1.35; }
+  table.cmp td.issue { font-family: 'Lora', serif; font-weight: 600; color: var(--ink); width: 20%; }
+  table.cmp td.rf { background: #fff; width: 38%; }
+  table.cmp td.dg { background: #ece6d6; }
+
+  .ask { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .ask div {
+    background: #fff; border: 1px solid var(--rule); border-radius: 12px; padding: 10px 12px;
+    font-family: 'Lora', serif; font-weight: 600; font-size: 10.5pt; color: var(--forest);
+  }
+  .ask div span { display: block; font-family: 'Source Sans 3'; font-size: 7.5pt; letter-spacing: .2em; color: var(--brown); margin-bottom: 4px; }
+
+  /* ---------- Stats ---------- */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+  .stat { background: #fff; border: 1px solid var(--rule); border-radius: 12px; padding: 12px; }
+  .stat .n { font-family: 'Lora', serif; font-weight: 700; font-size: 20pt; line-height: 1; color: var(--forest); }
+  .stat .l { font-size: 8.8pt; margin-top: 6px; color: var(--ink); line-height: 1.3; }
+
+  /* ---------- Checklist ---------- */
+  .checks li {
+    display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--rule);
+    font-size: 10.5pt;
+  }
+  .checks li:last-child { border-bottom: 0; }
+  .checks .tick {
+    flex: 0 0 18px; height: 18px; border-radius: 50%; background: var(--forest); color: var(--cream);
+    display: grid; place-items: center; font-size: 10px; font-weight: 700; margin-top: 1px;
+  }
+
+  .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .cta {
+    display: block; text-decoration: none; border-radius: 12px; padding: 11px 14px;
+    font-weight: 700; font-size: 9pt; letter-spacing: .12em; text-transform: uppercase;
+  }
+  .cta.primary { background: var(--forest); color: var(--cream); }
+  .cta.secondary { background: #fff; color: var(--forest); border: 1px solid var(--forest); }
+  .cta small { display: block; font-weight: 500; letter-spacing: .02em; text-transform: none; font-size: 8.5pt; margin-top: 3px; opacity: .8; }
+
+  .sources li { padding: 6px 0; border-bottom: 1px solid var(--rule); font-size: 9.5pt; display: flex; gap: 10px; }
+  .sources li b { color: var(--brown); min-width: 22px; }
+  .sources li a { color: var(--forest); text-decoration: none; word-break: break-all; }
+</style>
+</head>
+<body>
+
+<!-- =============================== PAGE 1 — COVER =============================== -->
+<section class="page cover">
+  <p class="eyebrow">Oregon House District 28 • 2026 Voter Guide</p>
+  <h1>Oregon House District 28 &mdash; 2026 Voter Guide</h1>
+  <p class="names">Randall Fryer vs. Dacia Grayber</p>
+  <p class="sub">One Wants Government to Live Within Your Budget. The Other Has a Record of Asking Taxpayers for More.</p>
+  <div class="issues">
+    <span>Taxes</span><span>Transportation</span><span>Schools</span><span>Public Safety</span><span>Healthcare</span><span>Government Spending</span>
+  </div>
+
+  <div class="headline">
+    <p class="display">Look at the Record. Decide Who Deserves Your Vote.</p>
+    <p>Hillsdale &bull; Multnomah Village &bull; Raleigh Hills &bull; Garden Home &bull; SW Portland &bull; PSU &bull; OHSU</p>
+  </div>
+
+  <figure class="photo" style="margin:0">
+    <img src="../../public/images/funnels/oregon-house-district-28-comparison/randall-fryer.webp" alt="Randall Fryer" />
+    <figcaption>Randall Fryer</figcaption>
+  </figure>
+
+  <div class="bottom">
+    <p class="date">General Election &bull; November 3, 2026</p>
+    <div class="row">
+      <span>Presented by Northwest Oregon PAC</span>
+      <span>Paid for by Randall Fryer For Representative</span>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== PAGE 2 =============================== -->
+<section class="page">
+  <span class="kicker">Election Day: November 3, 2026</span>
+  <h2 class="h-page">One Has a Salem Record. The Other Wants Taxpayers Back in the Driver&rsquo;s Seat.</h2>
+
+  <div class="versus">
+    <div class="col rf">
+      <p class="who">Randall Fryer</p>
+      <h3>Retired Physician &bull; Army Medical Corpsman &bull; SW Portland Resident</h3>
+      <p>Randall Fryer is a retired physician who trained in family medicine and later spent years staffing rural and remote emergency departments.<sup>[1]</sup></p>
+      <p>Before medicine, Fryer worked in Fortune 500 software. He also served as an Army medical corpsman and received an honorable discharge.<sup>[1]</sup></p>
+      <p>He&rsquo;s not a career politician. His argument to District 28 is straightforward:</p>
+      <ul>
+        <li>Taxes should reflect what median-income Oregonians can actually afford.</li>
+        <li>Highway tolling should require direct voter approval.</li>
+        <li>Teachers should be trusted to restore order and teach reading, writing, math and reasoning.</li>
+        <li>The people paying the bills should help set the limits.</li>
+      </ul>
+      <p class="quote-line" style="font-size:11pt">Fryer believes the people paying the bills should help set the limits.</p>
+    </div>
+    <div class="col dg">
+      <p class="who">Dacia Grayber</p>
+      <h3>Incumbent State Representative &bull; Firefighter-Paramedic</h3>
+      <p>Grayber has served in the Oregon Legislature since 2021, first representing HD35 and then HD28 following redistricting.<sup>[4]</sup></p>
+      <p>She is a professional firefighter-paramedic and chairs the House Labor and Workforce Development Committee.<sup>[2][4]</sup></p>
+      <p>But an incumbent isn&rsquo;t judged only by a r&eacute;sum&eacute;.</p>
+      <p><b>An incumbent comes with receipts.</b> Grayber&rsquo;s record includes:</p>
+      <ul>
+        <li>Voting <b>Yes on HB 3991</b>, the transportation package later put before voters as Measure 120</li>
+        <li>Advocating expanded education funding</li>
+        <li>Supporting greater healthcare investment</li>
+        <li>Supporting climate-focused and public-transportation infrastructure<sup>[2]</sup></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p class="eyebrow">The Incumbent Test</p>
+    <p class="display">District 28 doesn&rsquo;t have to guess how Grayber would govern. It can examine how she already has.</p>
+  </div>
+
+  <div class="folio"><span><b>HD28</b> 2026 Voter Guide</span><span>Paid for by Randall Fryer For Representative</span><span>02</span></div>
+</section>
+
+<!-- =============================== PAGE 3 =============================== -->
+<section class="page">
+  <p class="eyebrow">Side by Side</p>
+  <h2 class="h-page">Put the Receipts Side by Side.</h2>
+  <p class="lede" style="font-size:10.5pt">The candidates begin from substantially different assumptions about what state government should do and how it should pay for those responsibilities.</p>
+
+  <table class="cmp">
+    <thead>
+      <tr><th class="issue">Issue</th><th class="rf">Randall Fryer</th><th class="dg">Dacia Grayber</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="issue">Taxes</td><td class="rf">Tie taxes to what median-income Oregonians can actually carry.<sup>[1]</sup></td><td class="dg">Voted Yes on HB 3991, which included doubling the statewide transit payroll tax from 0.1% to 0.2%.<sup>[3]</sup></td></tr>
+      <tr><td class="issue">Transportation</td><td class="rf">Prioritize the roads and bridges people actually use. Require direct voter approval before highway tolling.</td><td class="dg">Supports public transportation and climate-focused infrastructure and voted for HB 3991.</td></tr>
+      <tr><td class="issue">Schools</td><td class="rf">Reading. Writing. Math. Critical reasoning. High standards. Teacher judgment.</td><td class="dg">Calls for redefining what is possible in education funding and greater investment.</td></tr>
+      <tr><td class="issue">Government Programs</td><td class="rf">Ask whether programs work before taxpayers are asked for another check.</td><td class="dg">Chief-sponsored a $5 million firefighter-apprenticeship pilot that later received additional funding while evaluation/reporting timelines remained outstanding.</td></tr>
+      <tr><td class="issue">Healthcare</td><td class="rf">A retired physician who has delivered care in family practice and rural and remote emergency departments.</td><td class="dg">Campaign position: &ldquo;Health care is a human right.&rdquo;</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout" style="margin-top:22px">
+    <p class="eyebrow">The Question Voters Face</p>
+    <p class="display">One side asks Salem for more. Fryer asks to see the receipt first.</p>
+  </div>
+
+  <div class="folio"><span><b>HD28</b> 2026 Voter Guide</span><span>Paid for by Randall Fryer For Representative</span><span>03</span></div>
+</section>
+
+<!-- =============================== PAGE 4 =============================== -->
+<section class="page">
+  <p class="eyebrow">Taxes &amp; Transportation</p>
+  <h2 class="h-page">83% of Oregon Voters Said No to Taxes &amp; Transportation.</h2>
+
+  <p style="margin-top:12px">In 2025, the Oregon Legislature passed <b>HB 3991</b> with a <b>$4.3 billion</b> transportation package that increased or added transportation-related taxes and fees.<sup>[3]</sup></p>
+  <p style="margin-top:6px">Among its provisions was an increase in the statewide transit payroll tax from <b>0.1% to 0.2%</b>. Measure 120 also included a six-cent gas-tax increase and higher vehicle registration/title fees.</p>
+
+  <div class="stats">
+    <div class="stat"><p class="n">Yes</p><p class="l">Grayber&rsquo;s vote on HB 3991<sup>[3]</sup></p></div>
+    <div class="stat"><p class="n">83%</p><p class="l">Oregon voters who rejected Measure 120</p></div>
+    <div class="stat"><p class="n">$4.3B</p><p class="l">Transportation-tax package passed by the Legislature</p></div>
+  </div>
+
+  <p style="margin-top:14px">Then Oregon voters got their say.</p>
+  <p class="display" style="font-size:15pt;margin-top:8px;color:var(--forest)">More than 83% rejected Measure 120.</p>
+  <p style="margin-top:6px">The rejection was so decisive that OPB described the result as a blunt message to state leaders to find another way to fund transportation.</p>
+
+  <div class="versus">
+    <div class="col dg">
+      <p class="who">Dacia Grayber</p>
+      <h3>She voted for it.</h3>
+      <p>Her campaign also supports climate-resilient, carbon-neutral infrastructure and public-transportation projects.</p>
+      <p>But after an 83&ndash;17 rejection, voters have already sent Salem a message about this transportation tax package.</p>
+    </div>
+    <div class="col rf">
+      <p class="who">Randall Fryer</p>
+      <h3>Let the people paying have a say.</h3>
+      <p><b>Fryer&rsquo;s position:</b></p>
+      <ul>
+        <li>Base taxes on Oregon median income.</li>
+        <li>Require direct voter approval for highway tolling.</li>
+        <li>Plan transportation around how people actually travel.</li>
+        <li>Fund roads and bridges District 28 residents actually use.</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="quote-line" style="font-size:13pt">The people paying the bill should help set the limit.</p>
+
+  <div class="folio"><span><b>HD28</b> 2026 Voter Guide</span><span>Paid for by Randall Fryer For Representative</span><span>04</span></div>
+</section>
+
+<!-- =============================== PAGE 5 =============================== -->
+<section class="page">
+  <p class="eyebrow">Schools</p>
+  <h2 class="h-page">The Classroom or the Central Office?</h2>
+
+  <p style="margin-top:12px">Portland Public Schools has been serving fewer students. At the same time, compensation and PERS costs have risen and the district has faced repeated rounds of cuts.</p>
+  <p style="margin-top:6px">In 2023, a letter from 16 Democratic legislators questioned how much PPS spending was reaching classrooms vs administration.</p>
+
+  <div class="note">
+    The letter said PPS was putting approximately <b>48% of its budget directly into classrooms</b>, compared with approximately <b>55&ndash;56% in comparable Oregon districts</b>, while approximately <b>6% went to administration versus 2&ndash;3% elsewhere</b>.
+  </div>
+
+  <p style="margin-top:10px"><b>PPS disputed that framing.</b> But enrollment continued falling and budget pressure continued.</p>
+
+  <div class="versus">
+    <div class="col rf">
+      <p class="who">Randall Fryer</p>
+      <p><b>Fryer emphasizes:</b></p>
+      <ul>
+        <li>Reading</li>
+        <li>Writing</li>
+        <li>Math</li>
+        <li>Critical reasoning</li>
+        <li>High graduation standards</li>
+        <li>Teacher professional judgment</li>
+      </ul>
+      <p>His position is that academic fundamentals should remain central and that school funding should not place excessive pressure on median-income households.</p>
+    </div>
+    <div class="col dg">
+      <p class="who">Dacia Grayber</p>
+      <p>Grayber calls for greater investment in education and has argued that Oregon should rethink what is possible in school funding.<sup>[2]</sup></p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p class="eyebrow">Question for Voters</p>
+    <p class="display">Should the next priority be additional investment, stronger academic focus, or some combination of both?</p>
+  </div>
+
+  <div class="folio"><span><b>HD28</b> 2026 Voter Guide</span><span>Paid for by Randall Fryer For Representative</span><span>05</span></div>
+</section>
+
+<!-- =============================== PAGE 6 =============================== -->
+<section class="page">
+  <p class="eyebrow">Government Programs</p>
+  <h2 class="h-page">Fund It. Expand It. Measure It Later?</h2>
+
+  <p style="margin-top:12px">Grayber&rsquo;s firefighter background is real. So is her legislative record.</p>
+  <p style="margin-top:6px">Grayber was a chief sponsor of <b>HB 2294</b>, which created a BOLI pilot program providing grants for firefighter apprenticeship training.<sup>[3][5]</sup> The bill became law in 2023.</p>
+  <p style="margin-top:6px">The records highlight <b>$5 million</b> for the original program, additional subsequent funding, and a required effectiveness-reporting timeline. It also identifies separate firefighter-apprenticeship spending through the Oregon State Fire Marshal.<sup>[6]</sup></p>
+
+  <p class="display" style="font-size:13pt;margin-top:14px;color:var(--ink)">The concern isn&rsquo;t firefighter training.</p>
+  <p style="margin-top:4px">Firefighters need a strong pipeline.</p>
+
+  <p class="quote-line">The concern is whether government should expand spending before taxpayers see the results of what they already funded.</p>
+
+  <div class="versus">
+    <div class="col rf">
+      <p class="who">Randall Fryer</p>
+      <p>Fryer spent years working in emergency departments where resources were limited and decisions had consequences.</p>
+      <p><b>His approach is:</b></p>
+      <p class="display" style="font-size:12pt;color:var(--forest);margin-top:6px">Measure first. Prove it works. Then decide whether taxpayers should spend more.</p>
+    </div>
+    <div class="col dg">
+      <p class="who">Dacia Grayber</p>
+      <p>Her approach on the apprenticeship program raises a different question:</p>
+      <p class="display" style="font-size:12pt;color:var(--ink);margin-top:6px">Why expand a government program before its required evaluation tells taxpayers whether the original investment worked?</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p class="display">&ldquo;A worthy cause does not eliminate the need for accountability.&rdquo;</p>
+  </div>
+
+  <div class="folio"><span><b>HD28</b> 2026 Voter Guide</span><span>Paid for by Randall Fryer For Representative</span><span>06</span></div>
+</section>
+
+<!-- =============================== PAGE 7 =============================== -->
+<section class="page">
+  <p class="eyebrow">Healthcare</p>
+  <h2 class="h-page">Two Different Perspectives on Healthcare.</h2>
+  <p class="lede">House District 28 includes OHSU and a large number of healthcare professionals and professional households.</p>
+
+  <div class="versus" style="margin-top:20px">
+    <div class="col rf">
+      <p class="who">Randall Fryer</p>
+      <p>Fryer practiced family medicine before working in rural and remote emergency departments.<sup>[1]</sup></p>
+      <p>His background gives him direct experience with staffing, patient demand, resource limits, and healthcare delivery.</p>
+      <p>His broader tax position emphasizes what median-income Oregonians can afford.</p>
+    </div>
+    <div class="col dg">
+      <p class="who">Dacia Grayber</p>
+      <p>Grayber&rsquo;s campaign says:</p>
+      <p class="quote-line" style="font-size:12pt;color:var(--brown);border-left-color:var(--brown)">&ldquo;Health care is a human right.&rdquo;</p>
+      <p>But when it comes to the bills, doctors still have to be paid. Hospitals still have to operate. Medication still has to be purchased. Government still has to raise the money.</p>
+    </div>
+  </div>
+
+  <p class="display" style="font-size:13pt;margin-top:18px;color:var(--ink)">By declaring something a right doesn&rsquo;t make its cost disappear.</p>
+
+  <div class="callout">
+    <p class="eyebrow">The Financing Question</p>
+    <p class="display">The danger is promising more healthcare spending without being equally clear about who ultimately pays for it.</p>
+  </div>
+
+  <div class="folio"><span><b>HD28</b> 2026 Voter Guide</span><span>Paid for by Randall Fryer For Representative</span><span>07</span></div>
+</section>
+
+<!-- =============================== PAGE 8 =============================== -->
+<section class="page">
+  <p class="eyebrow">Transportation</p>
+  <h2 class="h-page">Roads, Transit, and Who Decides.</h2>
+  <p class="lede">Transportation is one of the clearest differences between the candidates.</p>
+
+  <div class="versus" style="margin-top:20px">
+    <div class="col rf">
+      <p class="who">Randall Fryer</p>
+      <p><b>Fryer emphasizes:</b></p>
+      <ul>
+        <li>Roads and bridges people actually use</li>
+        <li>Planning based on real travel patterns</li>
+        <li>Direct voter approval before tolling<sup>[1]</sup></li>
+      </ul>
+    </div>
+    <div class="col dg">
+      <p class="who">Dacia Grayber</p>
+      <p><b>Grayber supports:</b></p>
+      <ul>
+        <li>Public transportation</li>
+        <li>Climate-resilient infrastructure</li>
+        <li>Carbon-neutral infrastructure</li>
+        <li>Forward-looking transportation investment<sup>[2]</sup></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:22px">
+    <p class="eyebrow">Question for Voters</p>
+    <p class="display">What balance should Oregon strike between roads, public transit, climate goals, and direct voter control over tolling?</p>
+  </div>
+
+  <div class="folio"><span><b>HD28</b> 2026 Voter Guide</span><span>Paid for by Randall Fryer For Representative</span><span>08</span></div>
+</section>
+
+<!-- =============================== PAGE 9 =============================== -->
+<section class="page">
+  <p class="eyebrow">The Incumbent Test</p>
+  <h2 class="h-page">Grayber Has a Record. Voters Should Use It.</h2>
+
+  <table class="cmp" style="margin-top:18px">
+    <thead>
+      <tr><th class="issue">Area</th><th class="dg" style="border-radius:10px 10px 0 0">Grayber&rsquo;s Legislative Record</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="issue">Transportation</td><td class="dg">A Yes vote on HB 3991.<sup>[3]</sup></td></tr>
+      <tr><td class="issue">Education</td><td class="dg">Support for greater education investment.</td></tr>
+      <tr><td class="issue">Workforce Development</td><td class="dg">Chief sponsorship of the firefighter-apprenticeship program.<sup>[3][5]</sup></td></tr>
+      <tr><td class="issue">Healthcare</td><td class="dg">Support for expanded healthcare access.</td></tr>
+      <tr><td class="issue">Infrastructure</td><td class="dg">Support for climate-focused transportation investment.<sup>[2]</sup></td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="display" style="font-size:16pt;margin-top:18px;color:var(--forest)">Randall Fryer Doesn&rsquo;t Have a Salem Record.</h3>
+  <p style="margin-top:6px"><b>That&rsquo;s precisely his argument.</b></p>
+  <p style="margin-top:6px">He isn&rsquo;t asking voters to reward another legislative r&eacute;sum&eacute;. He&rsquo;s asking them to change the standard:</p>
+
+  <ul class="checks" style="margin-top:8px">
+    <li><span class="tick">&#10003;</span>Can median-income families afford it?</li>
+    <li><span class="tick">&#10003;</span>Does it actually work?</li>
+    <li><span class="tick">&#10003;</span>Did voters approve it?</li>
+    <li><span class="tick">&#10003;</span>Have taxpayers seen the results?</li>
+  </ul>
+
+  <div class="callout">
+    <p class="display">Which approach better matches your expectations for House District 28?</p>
+  </div>
+
+  <div class="folio"><span><b>HD28</b> 2026 Voter Guide</span><span>Paid for by Randall Fryer For Representative</span><span>09</span></div>
+</section>
+
+<!-- =============================== PAGE 10 =============================== -->
+<section class="page">
+  <p class="eyebrow">The Decision</p>
+  <h2 class="h-page">District 28: Check the Receipt.</h2>
+
+  <div class="versus" style="margin-top:18px">
+    <div class="col rf">
+      <p class="who">Randall Fryer</p>
+      <h3>Retired physician &bull; Army medical corpsman &bull; SW Portland resident</h3>
+      <p><b>His priorities are:</b></p>
+      <ul>
+        <li>Taxes tied to median-income affordability</li>
+        <li>Direct voter approval before tolling</li>
+        <li>Academic fundamentals</li>
+        <li>Teacher judgment</li>
+        <li>Roads and bridges</li>
+        <li>Limits on government growth<sup>[1]</sup></li>
+      </ul>
+    </div>
+    <div class="col dg">
+      <p class="who">The Decision Belongs To You</p>
+      <ul class="checks" style="margin-top:8px">
+        <li><span class="tick">&#10003;</span>Review the record.</li>
+        <li><span class="tick">&#10003;</span>Compare the priorities.</li>
+        <li><span class="tick">&#10003;</span>Decide which approach you want representing HD28 in Salem.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta primary" href="https://www.randallfororegon.com/">Learn More About Randall Fryer &rarr;<small>randallfororegon.com</small></a>
+    <a class="cta secondary" href="https://northwestoregon.com/">Stay Informed About House District 28 &rarr;<small>northwestoregon.com</small></a>
+  </div>
+
+  <p class="muted" style="font-size:8pt;margin-top:10px">Information and candidate positions current as of September 9, 2026. See Sources &amp; References for details.</p>
+
+  <div class="folio"><span><b>HD28</b> 2026 Voter Guide</span><span>Paid for by Randall Fryer For Representative</span><span>10</span></div>
+</section>
+
+<!-- =============================== SOURCES =============================== -->
+<section class="page">
+  <p class="eyebrow">HD28</p>
+  <h2 class="h-page">Sources &amp; References</h2>
+  <div class="rule"></div>
+  <ol class="sources" style="list-style:none;padding:0;margin:0">
+    <li><b>[1]</b><span>Randall Fryer, 2026 candidate &mdash; <a href="https://www.randallfororegon.com/">https://www.randallfororegon.com/</a></span></li>
+    <li><b>[2]</b><span>Dacia Grayber &mdash; Campaign Website &mdash; <a href="https://daciafororegon.com/">https://daciafororegon.com/</a></span></li>
+    <li><b>[3]</b><span>Oregon Legislative Information System &mdash; legislative records &mdash; <a href="https://olis.oregonlegislature.gov/">https://olis.oregonlegislature.gov/</a></span></li>
+    <li><b>[4]</b><span>Oregon Legislature &mdash; general legislative records &mdash; <a href="https://www.oregonlegislature.gov/">https://www.oregonlegislature.gov/</a></span></li>
+    <li><b>[5]</b><span>Oregon Bureau of Labor &amp; Industries &mdash; Apprenticeship &mdash; <a href="https://www.oregon.gov/boli/apprenticeship/Pages/default.aspx">https://www.oregon.gov/boli/apprenticeship/Pages/default.aspx</a></span></li>
+    <li><b>[6]</b><span>Oregon State Fire Marshal &mdash; <a href="https://www.oregon.gov/osfm/">https://www.oregon.gov/osfm/</a></span></li>
+  </ol>
+
+  <p class="muted" style="font-size:9pt;margin-top:22px">Information and candidate positions current as of September 9, 2026. Candidate positions, campaign materials, websites and policy proposals may change after publication. Readers are encouraged to review the cited sources and current candidate materials for the most recent information.</p>
+
+  <div style="position:absolute;left:0.66in;right:0.66in;bottom:1.1in;text-align:center">
+    <p class="display" style="font-size:13pt;color:var(--forest)">Presented by Northwest Oregon PAC</p>
+    <p style="margin-top:6px;font-size:10pt;font-weight:700">Paid for by Randall Fryer For Representative</p>
+  </div>
+
+  <div class="folio"><span><b>HD28</b> 2026 Voter Guide</span><span>Paid for by Randall Fryer For Representative</span><span>11</span></div>
+</section>
+
+</body>
+</html>
