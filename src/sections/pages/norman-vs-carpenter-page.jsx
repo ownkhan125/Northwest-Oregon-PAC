@@ -409,14 +409,14 @@ const StakesSection = () => (
             key={s}
             variants={cardReveal}
             className={cn(
-              'group relative border-border bg-surface text-foreground/90 will-change-transform',
+              'group border-border bg-surface text-foreground/90 relative will-change-transform',
               'flex items-start gap-3 overflow-hidden rounded-2xl border px-5 py-4 text-[15px] leading-snug',
               'transition-[transform,border-color,box-shadow,background-color] duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
-              'hover:-translate-y-[1px] hover:border-primary/30 hover:bg-primary/[0.03]',
+              'hover:border-primary/30 hover:bg-primary/[0.03] hover:-translate-y-[1px]',
               'hover:shadow-[0_2px_6px_-2px_rgba(0,0,0,0.08),0_16px_32px_-16px_rgba(0,0,0,0.22)]',
               'dark:hover:bg-primary/[0.06]',
               'dark:hover:shadow-[0_2px_6px_-2px_rgba(0,0,0,0.4),0_20px_40px_-20px_rgba(0,0,0,0.55)]',
-              'focus-within:-translate-y-[1px] focus-within:border-primary/30',
+              'focus-within:border-primary/30 focus-within:-translate-y-[1px]',
             )}
           >
             {/* Editorial accent — a thin primary-toned bar draws down from
@@ -425,9 +425,9 @@ const StakesSection = () => (
             <span
               aria-hidden
               className={cn(
-                'pointer-events-none absolute top-3 bottom-3 left-0 w-[2px] origin-top rounded-r-full bg-primary/70',
+                'bg-primary/70 pointer-events-none absolute top-3 bottom-3 left-0 w-[2px] origin-top rounded-r-full',
                 'scale-y-0 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
-                'group-hover:scale-y-100 group-focus-within:scale-y-100',
+                'group-focus-within:scale-y-100 group-hover:scale-y-100',
               )}
             />
             <span
@@ -603,7 +603,7 @@ const ComparisonSection = () => {
 
       {/* Face-off body */}
       <div className="relative grid grid-cols-1 md:grid-cols-2">
-        <div className="border-l-4 border-l-forest px-6 py-6 md:border-l-0 md:border-t-4 md:border-t-forest md:px-8 md:py-7">
+        <div className="border-l-forest md:border-t-forest border-l-4 px-6 py-6 md:border-t-4 md:border-l-0 md:px-8 md:py-7">
           <div className="flex items-center gap-3">
             <CandidateAvatar src={NORMAN_PHOTO} alt="Mark Norman" tone="norman" />
             <p className="text-primary text-[10px] font-semibold tracking-[0.24em] uppercase">
@@ -615,13 +615,9 @@ const ComparisonSection = () => {
           </p>
         </div>
 
-        <div className="border-l-4 border-l-brown bg-surface-alt/25 px-6 py-6 md:border-l-0 md:border-t-4 md:border-t-brown md:px-8 md:py-7">
+        <div className="border-l-brown bg-surface-alt/25 md:border-t-brown border-l-4 px-6 py-6 md:border-t-4 md:border-l-0 md:px-8 md:py-7">
           <div className="flex items-center gap-3">
-            <CandidateAvatar
-              src={CARPENTER_PHOTO}
-              alt="Tammy Carpenter"
-              tone="carpenter"
-            />
+            <CandidateAvatar src={CARPENTER_PHOTO} alt="Tammy Carpenter" tone="carpenter" />
             <p className="text-brown dark:text-sand text-[10px] font-semibold tracking-[0.24em] uppercase">
               Tammy Carpenter
             </p>
@@ -641,10 +637,7 @@ const ComparisonSection = () => {
   )
 
   return (
-    <section
-      ref={scope}
-      className="text-foreground relative isolate py-16 sm:py-20"
-    >
+    <section ref={scope} className="text-foreground relative isolate py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-12">
         <SplitText
           as="h2"
@@ -657,8 +650,8 @@ const ComparisonSection = () => {
           {...inView}
           className="text-foreground/70 mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed sm:text-lg"
         >
-          Eight issues. Two very different answers. Each card puts their positions
-          face-to-face — so the contrast is impossible to miss.
+          Eight issues. Two very different answers. Each card puts their positions face-to-face — so
+          the contrast is impossible to miss.
         </m.p>
 
         {/* Stack container:
@@ -768,11 +761,16 @@ const ProposalsSection = () => (
               <h3 className="font-display text-foreground group-hover:text-primary-fg mt-3 text-2xl leading-tight font-medium transition-colors duration-500">
                 {p.title}
               </h3>
-              <p className="text-foreground/80 group-hover:text-primary-fg/85 mt-3 text-[15px] leading-relaxed transition-colors duration-500">
+              {/* Body has a min-height at md+ so that when cards land in the
+                  same grid row (which stretches them to equal total height),
+                  the `<dl>` footer's `border-t` starts at the same y across
+                  every card. On mobile (single column) no min-height is
+                  needed — nothing to align to horizontally. */}
+              <p className="text-foreground/80 group-hover:text-primary-fg/85 mt-3 text-[15px] leading-relaxed transition-colors duration-500 md:min-h-[84px] lg:min-h-[108px]">
                 {p.body}
               </p>
               {p.promise && (
-                <dl className="border-border group-hover:border-primary-fg/25 mt-auto space-y-3 border-t pt-5 text-[15px] leading-relaxed transition-colors duration-500">
+                <dl className="border-border group-hover:border-primary-fg/25 mt-0 space-y-3 border-t pt-5 text-[15px] leading-relaxed transition-colors duration-500 md:min-h-[150px] lg:min-h-[180px]">
                   <div>
                     <dt className="text-primary group-hover:text-accent inline font-semibold transition-colors duration-500">
                       The promise:{' '}
@@ -900,7 +898,7 @@ const NormanCard = () => (
           His priorities:
         </p>
         <PriorityList items={normanPriorities} />
-        <p className="text-primary group-hover:text-accent mt-auto inline-flex items-center gap-2 pt-8 text-sm font-semibold tracking-wide transition-colors duration-500">
+        <p className="text-primary group-hover:text-accent mt-auto inline-flex items-center gap-2 pt-4 text-sm font-semibold tracking-wide transition-colors duration-500 sm:pt-6">
           See Norman&rsquo;s published positions
           <ArrowRight className="h-4 w-4" />
         </p>
@@ -1150,13 +1148,13 @@ const FinalCta = () => (
       <m.div
         variants={cardReveal}
         {...inView}
-        className="bg-primary text-primary-fg border-primary rounded-[28px] border px-6 py-14 text-center shadow-[0_40px_100px_-40px_rgba(0,0,0,0.35)] sm:px-10 sm:py-16 md:px-16 md:py-20 dark:shadow-[0_40px_100px_-40px_rgba(0,0,0,0.55)]"
+        className="bg-primary text-primary-fg border-primary rounded-[28px] border px-5 py-10 text-center shadow-[0_40px_100px_-40px_rgba(0,0,0,0.35)] sm:px-10 sm:py-16 md:px-16 md:py-20 dark:shadow-[0_40px_100px_-40px_rgba(0,0,0,0.55)]"
       >
         <SplitText
           as="h2"
           by="word"
           text="Know the Record. Make Your Choice."
-          className="font-display text-primary-fg mx-auto max-w-3xl text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-[56px]"
+          className="font-display text-primary-fg mx-auto max-w-3xl text-3xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-[56px]"
         />
         <m.p
           variants={fadeUp}
@@ -1169,7 +1167,7 @@ const FinalCta = () => (
           <Button
             onClick={scrollToForm}
             size="lg"
-            className="!bg-primary-fg !text-primary !border-primary-fg tracking-[0.14em] uppercase hover:!opacity-90"
+            className="!bg-primary-fg !text-primary !border-primary-fg !px-5 text-[12px] tracking-[0.08em] whitespace-nowrap uppercase hover:!opacity-90 sm:!px-6 sm:text-[15px] sm:tracking-[0.14em]"
             icon={<ArrowRight className="h-4 w-4" />}
           >
             Get the Free HD27 Voter Guide
