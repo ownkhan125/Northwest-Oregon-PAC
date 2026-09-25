@@ -11,6 +11,7 @@ const HD27_WEBHOOK_URL =
 const HD33_SOURCE = 'ciatta-thompson-vs-shannon-jones-isadore'
 const HD27_SOURCE = 'mark-norman-vs-tammy-carpenter'
 const HD28_SOURCE = 'oregon-house-district-28-comparison'
+const CD1_SOURCE = 'barbara-kahl-vs-suzanne-bonamici'
 
 const pickWebhook = (source) => {
   if (source === HD33_SOURCE && process.env.GHL_HD33_WEBHOOK) {
@@ -21,6 +22,9 @@ const pickWebhook = (source) => {
   }
   if (source === HD28_SOURCE && process.env.GHL_HD28_WEBHOOK) {
     return { url: process.env.GHL_HD28_WEBHOOK, funnel: 'hd28' }
+  }
+  if (source === CD1_SOURCE && process.env.GHL_CD1_WEBHOOK) {
+    return { url: process.env.GHL_CD1_WEBHOOK, funnel: 'cd1' }
   }
   return { url: process.env.GHL_CONTACT_WEBHOOK || DEFAULT_WEBHOOK_URL, funnel: 'default' }
 }
