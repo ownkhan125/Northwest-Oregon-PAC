@@ -7,6 +7,7 @@ import Logo from '@/components/ui/logo'
 import CivicIcon from '@/components/ui/civic-icon'
 import { fadeUp, stagger, EASE } from '@/animations/variants'
 import { pac } from '@/data/pac'
+import { KahlLegalStrip } from '@/sections/pages/kahl-vs-bonamici-page'
 
 const columns = [
   {
@@ -60,6 +61,11 @@ export default function Footer() {
     pathname?.startsWith('/thank-you/')
   )
     return null
+
+  // Funnel-scoped legal strips render as the final band inside the footer
+  // so their disclaimer copy reads as part of the footer instead of a
+  // floating bar above it.
+  const isKahlFunnel = pathname === '/barbara-kahl-vs-suzanne-bonamici'
 
   return (
     <footer className="bg-surface-alt border-border relative overflow-hidden border-t pt-20 sm:pt-24">
@@ -199,6 +205,8 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {isKahlFunnel && <KahlLegalStrip />}
     </footer>
   )
 }
