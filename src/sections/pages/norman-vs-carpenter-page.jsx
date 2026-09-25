@@ -31,7 +31,7 @@ const VIEW_PARAMS = {
 }
 
 const NORMAN_URL = 'https://www.markfororegon.com/'
-const NORMAN_PHOTO = '/images/funnels/norman-vs-carpenter/mark-norman.jpg'
+const NORMAN_PHOTO = '/images/funnels/norman-vs-carpenter/mark-norman-1.jpg'
 const CARPENTER_PHOTO = '/images/funnels/norman-vs-carpenter/tammy-carpenter.webp'
 
 export const HD27_PAID_FOR = 'Paid for by Friends of Mark Norman PAC #24927'
@@ -406,9 +406,37 @@ const StakesSection = () => (
           <m.li
             key={s}
             variants={cardReveal}
-            className="border-border bg-surface text-foreground/90 flex items-start gap-3 rounded-2xl border px-5 py-4 text-[15px] leading-snug"
+            className={cn(
+              'group relative border-border bg-surface text-foreground/90 will-change-transform',
+              'flex items-start gap-3 overflow-hidden rounded-2xl border px-5 py-4 text-[15px] leading-snug',
+              'transition-[transform,border-color,box-shadow,background-color] duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
+              'hover:-translate-y-[1px] hover:border-primary/30 hover:bg-primary/[0.03]',
+              'hover:shadow-[0_2px_6px_-2px_rgba(0,0,0,0.08),0_16px_32px_-16px_rgba(0,0,0,0.22)]',
+              'dark:hover:bg-primary/[0.06]',
+              'dark:hover:shadow-[0_2px_6px_-2px_rgba(0,0,0,0.4),0_20px_40px_-20px_rgba(0,0,0,0.55)]',
+              'focus-within:-translate-y-[1px] focus-within:border-primary/30',
+            )}
           >
-            <span className="bg-primary/10 text-primary mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full">
+            {/* Editorial accent — a thin primary-toned bar draws down from
+                the top-left on hover. Absolutely positioned so it cannot
+                shift the pill's content. */}
+            <span
+              aria-hidden
+              className={cn(
+                'pointer-events-none absolute top-3 bottom-3 left-0 w-[2px] origin-top rounded-r-full bg-primary/70',
+                'scale-y-0 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
+                'group-hover:scale-y-100 group-focus-within:scale-y-100',
+              )}
+            />
+            <span
+              className={cn(
+                'bg-primary/10 text-primary mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full',
+                'transition-[background-color,box-shadow] duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
+                'group-hover:bg-primary/20 group-focus-within:bg-primary/20',
+                'group-hover:shadow-[0_0_0_5px_rgba(46,69,56,0.10)] dark:group-hover:shadow-[0_0_0_5px_rgba(224,214,188,0.12)]',
+                'group-focus-within:shadow-[0_0_0_5px_rgba(46,69,56,0.10)] dark:group-focus-within:shadow-[0_0_0_5px_rgba(224,214,188,0.12)]',
+              )}
+            >
               <Check className="h-3 w-3" />
             </span>
             {s}
@@ -475,63 +503,82 @@ const comparison = [
   { issue: 'Childcare', norman: '–', carpenter: 'Expanded government-run childcare programs' },
 ]
 
-const ComparisonSection = () => (
-  <section className="text-foreground relative isolate overflow-x-clip py-16 sm:py-20">
-    <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
-      <SplitText
-        as="h2"
-        by="word"
-        text="Don’t Compare the Promises. Compare What They Could Mean for You."
-        className="font-display text-foreground mx-auto max-w-4xl text-center text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-[52px]"
-      />
+const ComparisonSection = () => {
+  const total = String(comparison.length).padStart(2, '0')
+  return (
+    <section className="text-foreground relative isolate overflow-x-clip py-16 sm:py-20">
+      <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-12">
+        <SplitText
+          as="h2"
+          by="word"
+          text="Don’t Compare the Promises. Compare What They Could Mean for You."
+          className="font-display text-foreground mx-auto max-w-4xl text-center text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-[52px]"
+        />
+        <m.p
+          variants={fadeUp}
+          {...inView}
+          className="text-foreground/70 mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed sm:text-lg"
+        >
+          Eight issues. Two very different answers. Each card puts their positions
+          face-to-face — so the contrast is impossible to miss.
+        </m.p>
 
-      <m.div
-        variants={fadeUp}
-        {...inView}
-        className="border-border bg-surface mt-12 overflow-hidden rounded-3xl border shadow-[0_28px_80px_-40px_rgba(0,0,0,0.3)] lg:mt-16"
-      >
-        <div className="hidden grid-cols-[180px_1fr_1fr] md:grid">
-          <div />
-          <div className="bg-forest text-cream px-6 py-4 text-[11px] font-semibold tracking-[0.24em] uppercase">
-            Mark Norman
-          </div>
-          <div className="bg-brown text-cream px-6 py-4 text-[11px] font-semibold tracking-[0.24em] uppercase">
-            Tammy Carpenter
-          </div>
-        </div>
-        <ul>
+        <m.ol
+          variants={stagger}
+          {...inView}
+          className="mt-12 grid grid-cols-1 gap-4 lg:mt-16 lg:gap-5"
+        >
           {comparison.map((row, i) => (
-            <li
-              key={row.issue}
-              className={cn(
-                'grid grid-cols-1 md:grid-cols-[180px_1fr_1fr]',
-                i > 0 && 'border-border border-t',
-              )}
-            >
-              <p className="font-display text-foreground px-6 pt-5 text-lg md:py-5">{row.issue}</p>
-              <div className="px-6 pt-3 md:py-5">
-                <p className="text-primary text-[10px] font-semibold tracking-[0.22em] uppercase md:hidden">
-                  Mark Norman
-                </p>
-                <p className="text-foreground/90 mt-1 text-[15px] leading-relaxed md:mt-0">
-                  {row.norman}
-                </p>
-              </div>
-              <div className="bg-surface-alt/30 px-6 pt-3 pb-5 md:py-5">
-                <p className="text-brown dark:text-sand text-[10px] font-semibold tracking-[0.22em] uppercase md:hidden">
-                  Tammy Carpenter
-                </p>
-                <p className="text-foreground/90 mt-1 text-[15px] leading-relaxed md:mt-0">
-                  {row.carpenter}
-                </p>
-              </div>
-            </li>
+            <m.li key={row.issue} variants={cardReveal}>
+              <article className="border-border bg-surface relative overflow-hidden rounded-2xl border shadow-[0_20px_60px_-40px_rgba(0,0,0,0.22)]">
+                {/* Ordinal + issue title strip */}
+                <div className="border-border bg-surface-alt/15 flex items-center gap-4 border-b px-6 py-4 md:px-8">
+                  <span className="text-foreground/50 font-mono text-[11px] tracking-[0.22em]">
+                    {String(i + 1).padStart(2, '0')} / {total}
+                  </span>
+                  <span className="bg-border h-3 w-px" />
+                  <h3 className="font-display text-foreground text-xl leading-tight font-medium tracking-tight sm:text-[22px] md:text-2xl">
+                    {row.issue}
+                  </h3>
+                </div>
+
+                {/* Face-off body */}
+                <div className="relative grid grid-cols-1 md:grid-cols-2">
+                  {/* Norman half — forest team accent (left bar on mobile, top bar on desktop) */}
+                  <div className="border-l-4 border-l-forest px-6 py-6 md:border-l-0 md:border-t-4 md:border-t-forest md:px-8 md:py-7">
+                    <p className="text-primary text-[10px] font-semibold tracking-[0.24em] uppercase">
+                      Mark Norman
+                    </p>
+                    <p className="text-foreground/90 mt-2 text-base leading-relaxed md:text-[17px]">
+                      {row.norman}
+                    </p>
+                  </div>
+
+                  {/* Carpenter half — brown team accent, subtle sand tint */}
+                  <div className="border-l-4 border-l-brown bg-surface-alt/25 px-6 py-6 md:border-l-0 md:border-t-4 md:border-t-brown md:px-8 md:py-7">
+                    <p className="text-brown dark:text-sand text-[10px] font-semibold tracking-[0.24em] uppercase">
+                      Tammy Carpenter
+                    </p>
+                    <p className="text-foreground/90 mt-2 text-base leading-relaxed md:text-[17px]">
+                      {row.carpenter}
+                    </p>
+                  </div>
+
+                  {/* Center VS badge — floats on the vertical seam, desktop only */}
+                  <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden -translate-x-1/2 items-center justify-center md:flex">
+                    <span className="bg-surface border-border text-foreground/70 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.22em] uppercase shadow-sm">
+                      vs
+                    </span>
+                  </div>
+                </div>
+              </article>
+            </m.li>
           ))}
-        </ul>
-      </m.div>
-    </div>
-  </section>
-)
+        </m.ol>
+      </div>
+    </section>
+  )
+}
 
 /* ------------------------------------------------------------------
    4. EXPANDING GOVERNMENT PROGRAMS REQUIRES MONEY — six proposals
@@ -680,7 +727,10 @@ const dsaPositions = [
     'Police & incarceration',
     'redirecting police funding as steps toward police and prison abolition',
   ],
-  ['Immigration', 'abolishing ICE and substantially expanding legalization and citizenship pathways'],
+  [
+    'Immigration',
+    'abolishing ICE and substantially expanding legalization and citizenship pathways',
+  ],
   [
     'Economy',
     'public ownership of major corporations and essential industries, along with aggressive wealth taxation',
@@ -930,16 +980,19 @@ const HealthcareSection = () => (
           The financing concepts Oregon&rsquo;s Universal Health Plan Governance Board examined.
         </p>
         <div className="border-border mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border bg-[rgba(224,214,188,0.2)]">
-          {['Personal income tax', 'Employer payroll tax', 'Corporate income tax', 'Corporate activity tax'].map(
-            (label) => (
-              <div key={label} className="bg-[#2a2a26] p-4">
-                <p className="font-display text-primary text-2xl blur-[6px] select-none" aria-hidden>
-                  00.0%
-                </p>
-                <p className="text-foreground/75 mt-1 text-sm">{label}</p>
-              </div>
-            ),
-          )}
+          {[
+            'Personal income tax',
+            'Employer payroll tax',
+            'Corporate income tax',
+            'Corporate activity tax',
+          ].map((label) => (
+            <div key={label} className="bg-[#2a2a26] p-4">
+              <p className="font-display text-primary text-2xl blur-[6px] select-none" aria-hidden>
+                00.0%
+              </p>
+              <p className="text-foreground/75 mt-1 text-sm">{label}</p>
+            </div>
+          ))}
         </div>
         <p className="text-foreground/60 mt-4 text-xs">
           Download the free guide to see the figures and sources.
@@ -1012,7 +1065,10 @@ const FinalCta = () => (
           </Button>
         </m.div>
         <p className="mt-6 text-[13px]">
-          <a href="/privacy-policy" className="text-primary-fg/80 underline-offset-2 hover:underline">
+          <a
+            href="/privacy-policy"
+            className="text-primary-fg/80 underline-offset-2 hover:underline"
+          >
             Privacy Policy
           </a>
           <span className="text-primary-fg/40 mx-2">|</span>
