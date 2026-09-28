@@ -1,9 +1,11 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { m } from 'motion/react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplitText from '@/components/ui/split-text'
 import Button from '@/components/ui/button'
 import Input from '@/components/ui/input'
@@ -407,14 +409,14 @@ const StakesSection = () => (
             key={s}
             variants={cardReveal}
             className={cn(
-              'group relative border-border bg-surface text-foreground/90 will-change-transform',
+              'group border-border bg-surface text-foreground/90 relative will-change-transform',
               'flex items-start gap-3 overflow-hidden rounded-2xl border px-5 py-4 text-[15px] leading-snug',
               'transition-[transform,border-color,box-shadow,background-color] duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
-              'hover:-translate-y-[1px] hover:border-primary/30 hover:bg-primary/[0.03]',
+              'hover:border-primary/30 hover:bg-primary/[0.03] hover:-translate-y-[1px]',
               'hover:shadow-[0_2px_6px_-2px_rgba(0,0,0,0.08),0_16px_32px_-16px_rgba(0,0,0,0.22)]',
               'dark:hover:bg-primary/[0.06]',
               'dark:hover:shadow-[0_2px_6px_-2px_rgba(0,0,0,0.4),0_20px_40px_-20px_rgba(0,0,0,0.55)]',
-              'focus-within:-translate-y-[1px] focus-within:border-primary/30',
+              'focus-within:border-primary/30 focus-within:-translate-y-[1px]',
             )}
           >
             {/* Editorial accent — a thin primary-toned bar draws down from
@@ -423,9 +425,9 @@ const StakesSection = () => (
             <span
               aria-hidden
               className={cn(
-                'pointer-events-none absolute top-3 bottom-3 left-0 w-[2px] origin-top rounded-r-full bg-primary/70',
+                'bg-primary/70 pointer-events-none absolute top-3 bottom-3 left-0 w-[2px] origin-top rounded-r-full',
                 'scale-y-0 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
-                'group-hover:scale-y-100 group-focus-within:scale-y-100',
+                'group-focus-within:scale-y-100 group-hover:scale-y-100',
               )}
             />
             <span
@@ -503,10 +505,139 @@ const comparison = [
   { issue: 'Childcare', norman: '–', carpenter: 'Expanded government-run childcare programs' },
 ]
 
+/* Small circular candidate avatar — sits inline next to each candidate name
+   inside every comparison card, so the reader can see the candidate at a
+   glance without pulling attention away from the copy. */
+const CandidateAvatar = ({ src, alt, tone }) => (
+  <div
+    className={cn(
+      'border-border bg-surface relative h-7 w-7 shrink-0 overflow-hidden rounded-full border ring-2 ring-[var(--surface)] md:h-8 md:w-8',
+      tone === 'norman' ? 'bg-forest/10' : 'bg-brown/10',
+    )}
+  >
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes="(min-width: 768px) 32px, 28px"
+      className={cn(
+        'object-cover',
+        tone === 'norman' ? 'object-[center_20%]' : 'object-[center_25%]',
+      )}
+    />
+  </div>
+)
+
 const ComparisonSection = () => {
+  const scope = useRef(null)
   const total = String(comparison.length).padStart(2, '0')
+
+  /* Sticky-stack scroll animation.
+     Before the reader reaches the section, the cards render as a clean,
+     spaced-out vertical list — no overlaps, no pre-stacking. As the reader
+     scrolls, each card in turn hits the sticky offset near the top of the
+     viewport and holds its position; the next card rises up from below in
+     natural flow and progressively covers it (higher z-index). GSAP only
+     adds the "receding deck" depth to already-stuck cards, so the reader
+     always sees a slim peek of the cards behind the current front.
+     Mobile / reduced-motion: no sticky, no transforms, just the vertical
+     list — identical to how the section rendered before any animation. */
+  useEffect(() => {
+    if (!scope.current) return
+    gsap.registerPlugin(ScrollTrigger)
+    const mm = gsap.matchMedia()
+
+    mm.add('(min-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
+      const cards = gsap.utils.toArray('[data-stack-card]', scope.current)
+      if (cards.length < 2) return
+
+      const RECEDE_Y = 14 // px each receded card sits above the sticky offset
+      const RECEDE_SCALE = 0.035 // scale drop per receded layer
+
+      // For each card past the first, add a scrubbing tween that fires as
+      // that card approaches the top of the viewport. When it does, every
+      // previous card gets pushed one layer further back — cumulatively.
+      cards.forEach((card, i) => {
+        if (i === 0) return
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 55%',
+            end: 'top 15%',
+            scrub: 0.5,
+            invalidateOnRefresh: true,
+          },
+        })
+
+        for (let j = 0; j < i; j++) {
+          const depth = i - j
+          tl.to(
+            cards[j],
+            {
+              y: -depth * RECEDE_Y,
+              scale: 1 - depth * RECEDE_SCALE,
+              ease: 'none',
+            },
+            0,
+          )
+        }
+      })
+    })
+
+    return () => mm.revert()
+  }, [])
+
+  const Card = ({ row, i }) => (
+    <article className="border-border bg-surface relative overflow-hidden rounded-2xl border shadow-[0_20px_60px_-40px_rgba(0,0,0,0.22)]">
+      {/* Ordinal + issue title */}
+      <div className="border-border bg-surface-alt/15 flex items-center gap-4 border-b px-6 py-4 md:px-8">
+        <span className="text-foreground/50 font-mono text-[11px] tracking-[0.22em]">
+          {String(i + 1).padStart(2, '0')} / {total}
+        </span>
+        <span className="bg-border h-3 w-px" />
+        <h3 className="font-display text-foreground text-xl leading-tight font-medium tracking-tight sm:text-[22px] md:text-2xl">
+          {row.issue}
+        </h3>
+      </div>
+
+      {/* Face-off body */}
+      <div className="relative grid grid-cols-1 md:grid-cols-2">
+        <div className="border-l-forest md:border-t-forest border-l-4 px-6 py-6 md:border-t-4 md:border-l-0 md:px-8 md:py-7">
+          <div className="flex items-center gap-3">
+            <CandidateAvatar src={NORMAN_PHOTO} alt="Mark Norman" tone="norman" />
+            <p className="text-primary text-[10px] font-semibold tracking-[0.24em] uppercase">
+              Mark Norman
+            </p>
+          </div>
+          <p className="text-foreground/90 mt-3 text-base leading-relaxed md:text-[17px]">
+            {row.norman}
+          </p>
+        </div>
+
+        <div className="border-l-brown bg-surface-alt/25 md:border-t-brown border-l-4 px-6 py-6 md:border-t-4 md:border-l-0 md:px-8 md:py-7">
+          <div className="flex items-center gap-3">
+            <CandidateAvatar src={CARPENTER_PHOTO} alt="Tammy Carpenter" tone="carpenter" />
+            <p className="text-brown dark:text-sand text-[10px] font-semibold tracking-[0.24em] uppercase">
+              Tammy Carpenter
+            </p>
+          </div>
+          <p className="text-foreground/90 mt-3 text-base leading-relaxed md:text-[17px]">
+            {row.carpenter}
+          </p>
+        </div>
+
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden -translate-x-1/2 items-center justify-center md:flex">
+          <span className="bg-surface border-border text-foreground/70 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.22em] uppercase shadow-sm">
+            vs
+          </span>
+        </div>
+      </div>
+    </article>
+  )
+
   return (
-    <section className="text-foreground relative isolate overflow-x-clip py-16 sm:py-20">
+    <section ref={scope} className="text-foreground relative isolate py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-12">
         <SplitText
           as="h2"
@@ -519,62 +650,35 @@ const ComparisonSection = () => {
           {...inView}
           className="text-foreground/70 mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed sm:text-lg"
         >
-          Eight issues. Two very different answers. Each card puts their positions
-          face-to-face — so the contrast is impossible to miss.
+          Eight issues. Two very different answers. Each card puts their positions face-to-face — so
+          the contrast is impossible to miss.
         </m.p>
 
-        <m.ol
-          variants={stagger}
-          {...inView}
-          className="mt-12 grid grid-cols-1 gap-4 lg:mt-16 lg:gap-5"
-        >
+        {/* Stack container:
+              — always a clean, spaced-out vertical list. Cards live in their
+                natural flex-column flow with generous gaps between them.
+              — md+: each card is `position: sticky` at a matched top offset,
+                so as the reader scrolls, each card sticks in turn and the next
+                one rises up to cover it. Later cards have a higher z-index so
+                they visually land on top when they arrive. The GSAP tweens
+                above add the receding depth to already-stuck cards.
+              — mobile: no sticky, no transforms — just a normal vertical list. */}
+        <div className="mt-12 flex flex-col gap-4 md:mt-14 md:gap-5 lg:mt-16 lg:gap-6">
           {comparison.map((row, i) => (
-            <m.li key={row.issue} variants={cardReveal}>
-              <article className="border-border bg-surface relative overflow-hidden rounded-2xl border shadow-[0_20px_60px_-40px_rgba(0,0,0,0.22)]">
-                {/* Ordinal + issue title strip */}
-                <div className="border-border bg-surface-alt/15 flex items-center gap-4 border-b px-6 py-4 md:px-8">
-                  <span className="text-foreground/50 font-mono text-[11px] tracking-[0.22em]">
-                    {String(i + 1).padStart(2, '0')} / {total}
-                  </span>
-                  <span className="bg-border h-3 w-px" />
-                  <h3 className="font-display text-foreground text-xl leading-tight font-medium tracking-tight sm:text-[22px] md:text-2xl">
-                    {row.issue}
-                  </h3>
-                </div>
-
-                {/* Face-off body */}
-                <div className="relative grid grid-cols-1 md:grid-cols-2">
-                  {/* Norman half — forest team accent (left bar on mobile, top bar on desktop) */}
-                  <div className="border-l-4 border-l-forest px-6 py-6 md:border-l-0 md:border-t-4 md:border-t-forest md:px-8 md:py-7">
-                    <p className="text-primary text-[10px] font-semibold tracking-[0.24em] uppercase">
-                      Mark Norman
-                    </p>
-                    <p className="text-foreground/90 mt-2 text-base leading-relaxed md:text-[17px]">
-                      {row.norman}
-                    </p>
-                  </div>
-
-                  {/* Carpenter half — brown team accent, subtle sand tint */}
-                  <div className="border-l-4 border-l-brown bg-surface-alt/25 px-6 py-6 md:border-l-0 md:border-t-4 md:border-t-brown md:px-8 md:py-7">
-                    <p className="text-brown dark:text-sand text-[10px] font-semibold tracking-[0.24em] uppercase">
-                      Tammy Carpenter
-                    </p>
-                    <p className="text-foreground/90 mt-2 text-base leading-relaxed md:text-[17px]">
-                      {row.carpenter}
-                    </p>
-                  </div>
-
-                  {/* Center VS badge — floats on the vertical seam, desktop only */}
-                  <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden -translate-x-1/2 items-center justify-center md:flex">
-                    <span className="bg-surface border-border text-foreground/70 rounded-full border px-2.5 py-1 text-[9px] font-semibold tracking-[0.22em] uppercase shadow-sm">
-                      vs
-                    </span>
-                  </div>
-                </div>
-              </article>
-            </m.li>
+            <div
+              key={row.issue}
+              data-stack-card
+              className="md:sticky md:top-24"
+              style={{
+                zIndex: i + 1,
+                transformOrigin: 'center top',
+                willChange: 'transform',
+              }}
+            >
+              <Card row={row} i={i} />
+            </div>
           ))}
-        </m.ol>
+        </div>
       </div>
     </section>
   )
@@ -657,11 +761,16 @@ const ProposalsSection = () => (
               <h3 className="font-display text-foreground group-hover:text-primary-fg mt-3 text-2xl leading-tight font-medium transition-colors duration-500">
                 {p.title}
               </h3>
-              <p className="text-foreground/80 group-hover:text-primary-fg/85 mt-3 text-[15px] leading-relaxed transition-colors duration-500">
+              {/* Body has a min-height at md+ so that when cards land in the
+                  same grid row (which stretches them to equal total height),
+                  the `<dl>` footer's `border-t` starts at the same y across
+                  every card. On mobile (single column) no min-height is
+                  needed — nothing to align to horizontally. */}
+              <p className="text-foreground/80 group-hover:text-primary-fg/85 mt-3 text-[15px] leading-relaxed transition-colors duration-500 md:min-h-[84px] lg:min-h-[108px]">
                 {p.body}
               </p>
               {p.promise && (
-                <dl className="border-border group-hover:border-primary-fg/25 mt-auto space-y-3 border-t pt-5 text-[15px] leading-relaxed transition-colors duration-500">
+                <dl className="border-border group-hover:border-primary-fg/25 mt-0 space-y-3 border-t pt-5 text-[15px] leading-relaxed transition-colors duration-500 md:min-h-[150px] lg:min-h-[180px]">
                   <div>
                     <dt className="text-primary group-hover:text-accent inline font-semibold transition-colors duration-500">
                       The promise:{' '}
@@ -789,7 +898,7 @@ const NormanCard = () => (
           His priorities:
         </p>
         <PriorityList items={normanPriorities} />
-        <p className="text-primary group-hover:text-accent mt-auto inline-flex items-center gap-2 pt-8 text-sm font-semibold tracking-wide transition-colors duration-500">
+        <p className="text-primary group-hover:text-accent mt-auto inline-flex items-center gap-2 pt-4 text-sm font-semibold tracking-wide transition-colors duration-500 sm:pt-6">
           See Norman&rsquo;s published positions
           <ArrowRight className="h-4 w-4" />
         </p>
@@ -1039,13 +1148,13 @@ const FinalCta = () => (
       <m.div
         variants={cardReveal}
         {...inView}
-        className="bg-primary text-primary-fg border-primary rounded-[28px] border px-6 py-14 text-center shadow-[0_40px_100px_-40px_rgba(0,0,0,0.35)] sm:px-10 sm:py-16 md:px-16 md:py-20 dark:shadow-[0_40px_100px_-40px_rgba(0,0,0,0.55)]"
+        className="bg-primary text-primary-fg border-primary rounded-[28px] border px-5 py-10 text-center shadow-[0_40px_100px_-40px_rgba(0,0,0,0.35)] sm:px-10 sm:py-16 md:px-16 md:py-20 dark:shadow-[0_40px_100px_-40px_rgba(0,0,0,0.55)]"
       >
         <SplitText
           as="h2"
           by="word"
           text="Know the Record. Make Your Choice."
-          className="font-display text-primary-fg mx-auto max-w-3xl text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-[56px]"
+          className="font-display text-primary-fg mx-auto max-w-3xl text-3xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-[56px]"
         />
         <m.p
           variants={fadeUp}
@@ -1058,7 +1167,7 @@ const FinalCta = () => (
           <Button
             onClick={scrollToForm}
             size="lg"
-            className="!bg-primary-fg !text-primary !border-primary-fg tracking-[0.14em] uppercase hover:!opacity-90"
+            className="!bg-primary-fg !text-primary !border-primary-fg !px-5 text-[12px] tracking-[0.08em] whitespace-nowrap uppercase hover:!opacity-90 sm:!px-6 sm:text-[15px] sm:tracking-[0.14em]"
             icon={<ArrowRight className="h-4 w-4" />}
           >
             Get the Free HD27 Voter Guide

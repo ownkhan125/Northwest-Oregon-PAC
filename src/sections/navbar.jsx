@@ -62,11 +62,11 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-        className="fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:px-5 sm:pt-5"
+        className="fixed inset-x-0 top-0 z-50 flex justify-center px-2 pt-3 sm:px-5 sm:pt-5"
       >
         <div
           className={cn(
-            'flex w-full max-w-7xl items-center justify-between gap-4 rounded-full border px-3 py-2 transition-all duration-500 sm:px-4',
+            'flex w-full max-w-7xl items-center justify-between gap-2 rounded-full border px-2 py-2 transition-all duration-500 sm:gap-4 sm:px-4',
             scrolled
               ? 'border-border bg-surface/85 shadow-[0_18px_50px_-30px_rgba(46,69,56,0.35)] backdrop-blur-xl'
               : 'border-border/60 bg-surface/50 backdrop-blur',
@@ -168,7 +168,7 @@ export default function Navbar() {
             </Button>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
             <ThemeToggle />
             <CartButton onClick={() => setOpen(false)} />
             <button

@@ -23,8 +23,10 @@ const pickWebhook = (source) => {
   if (source === HD28_SOURCE && process.env.GHL_HD28_WEBHOOK) {
     return { url: process.env.GHL_HD28_WEBHOOK, funnel: 'hd28' }
   }
-  if (source === CD1_SOURCE && process.env.GHL_HD01_WEBHOOK) {
-    return { url: process.env.GHL_HD01_WEBHOOK, funnel: 'cd1' }
+  // GHL_HD01_WEBHOOK is the legacy name for the same CD1 trigger.
+  const cd1Webhook = process.env.GHL_CD1_WEBHOOK || process.env.GHL_HD01_WEBHOOK
+  if (source === CD1_SOURCE && cd1Webhook) {
+    return { url: cd1Webhook, funnel: 'cd1' }
   }
   return { url: process.env.GHL_CONTACT_WEBHOOK || DEFAULT_WEBHOOK_URL, funnel: 'default' }
 }
