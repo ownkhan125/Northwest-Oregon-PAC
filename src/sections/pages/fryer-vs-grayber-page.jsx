@@ -438,9 +438,35 @@ const OneVoteSection = () => (
           <m.li
             key={s}
             variants={cardReveal}
-            className="border-border bg-surface text-foreground/90 flex items-start gap-3 rounded-2xl border px-5 py-4 text-[15px] leading-snug"
+            className={cn(
+              'group relative border-border bg-surface text-foreground/90 will-change-transform',
+              'flex items-start gap-3 overflow-hidden rounded-2xl border px-5 py-4 text-[15px] leading-snug',
+              'transition-[transform,border-color,box-shadow,background-color] duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
+              'hover:-translate-y-[1px] hover:border-primary/30 hover:bg-primary/[0.03]',
+              'hover:shadow-[0_2px_6px_-2px_rgba(0,0,0,0.08),0_16px_32px_-16px_rgba(0,0,0,0.22)]',
+              'dark:hover:bg-primary/[0.06]',
+              'dark:hover:shadow-[0_2px_6px_-2px_rgba(0,0,0,0.4),0_20px_40px_-20px_rgba(0,0,0,0.55)]',
+              'focus-within:-translate-y-[1px] focus-within:border-primary/30',
+            )}
           >
-            <span className="bg-primary/10 text-primary mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full">
+            {/* Left accent bar — draws down from the top on hover. */}
+            <span
+              aria-hidden
+              className={cn(
+                'pointer-events-none absolute top-3 bottom-3 left-0 w-[2px] origin-top rounded-r-full bg-primary/70',
+                'scale-y-0 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
+                'group-hover:scale-y-100 group-focus-within:scale-y-100',
+              )}
+            />
+            <span
+              className={cn(
+                'bg-primary/10 text-primary mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full',
+                'transition-[background-color,box-shadow] duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
+                'group-hover:bg-primary/20 group-focus-within:bg-primary/20',
+                'group-hover:shadow-[0_0_0_5px_rgba(46,69,56,0.10)] dark:group-hover:shadow-[0_0_0_5px_rgba(224,214,188,0.12)]',
+                'group-focus-within:shadow-[0_0_0_5px_rgba(46,69,56,0.10)] dark:group-focus-within:shadow-[0_0_0_5px_rgba(224,214,188,0.12)]',
+              )}
+            >
               <Check className="h-3 w-3" />
             </span>
             <span className="font-semibold">{s}</span>
@@ -704,8 +730,35 @@ const WhyFryerSection = () => (
     }}
     className="text-foreground relative isolate overflow-hidden bg-[#2a2a26] py-20 sm:py-24"
   >
-    <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:px-12">
-      <div className="lg:col-span-7">
+    {/* Fryer portrait as an atmospheric right-side visual (lg+ only).
+        Below lg the image is hidden so the stacked layout stays clean.
+        Layered gradients dissolve the portrait into the dark section bg
+        from the left, so it reads as an editorial treatment rather than
+        a plain photo panel. */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block xl:w-[55%]"
+    >
+      <Image
+        src="/images/funnels/oregon-house-district-28-comparison/randall-fryer-portrait.webp"
+        alt=""
+        fill
+        sizes="55vw"
+        quality={85}
+        className="object-cover object-[center_15%]"
+      />
+      {/* Left-to-right blend — image dissolves into the dark section bg */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#2a2a26] from-0% via-[#2a2a26]/85 via-30% to-transparent to-95%" />
+      {/* Top + bottom soft feather — hides any hard image edge */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#2a2a26]/60 via-transparent to-[#2a2a26]/80" />
+      {/* Subtle darken pass — keeps left-side text contrast strong */}
+      <div className="absolute inset-0 bg-[#2a2a26]/25" />
+      {/* Warm sand highlight radiating from the upper-right, adds depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(224,214,188,0.09),transparent_60%)]" />
+    </div>
+
+    <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
+      <div className="lg:max-w-[52%] xl:max-w-[54%]">
         <m.p
           variants={fadeUp}
           {...inView}
@@ -748,26 +801,26 @@ const WhyFryerSection = () => (
         >
           His standard for government is the same one working families use every day:
         </m.p>
-      </div>
 
-      <m.ul
-        variants={stagger}
-        {...inView}
-        className="border-border grid grid-cols-1 gap-3 rounded-3xl border bg-white/[0.04] p-6 sm:p-8 lg:col-span-5"
-      >
-        {fryerStandards.map((s) => (
-          <m.li
-            key={s}
-            variants={cardReveal}
-            className="text-foreground/90 flex items-start gap-3 text-[16px] leading-snug"
-          >
-            <span className="bg-primary/15 text-primary mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full">
-              <Check className="h-3.5 w-3.5" />
-            </span>
-            <span className="font-semibold">{s}</span>
-          </m.li>
-        ))}
-      </m.ul>
+        <m.ul
+          variants={stagger}
+          {...inView}
+          className="border-border mt-8 grid grid-cols-1 gap-3 rounded-3xl border bg-white/[0.04] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.5)] sm:p-8"
+        >
+          {fryerStandards.map((s) => (
+            <m.li
+              key={s}
+              variants={cardReveal}
+              className="text-foreground/90 flex items-start gap-3 text-[16px] leading-snug"
+            >
+              <span className="bg-primary/15 text-primary mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full">
+                <Check className="h-3.5 w-3.5" />
+              </span>
+              <span className="font-semibold">{s}</span>
+            </m.li>
+          ))}
+        </m.ul>
+      </div>
     </div>
   </section>
 )
@@ -813,9 +866,35 @@ const InsideGuideSection = () => (
           <m.li
             key={item}
             variants={cardReveal}
-            className="border-border bg-surface text-foreground/90 flex items-start gap-3 rounded-2xl border px-5 py-4 text-[15px] leading-snug"
+            className={cn(
+              'group relative border-border bg-surface text-foreground/90 will-change-transform',
+              'flex items-start gap-3 overflow-hidden rounded-2xl border px-5 py-4 text-[15px] leading-snug',
+              'transition-[transform,border-color,box-shadow,background-color] duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
+              'hover:-translate-y-[1px] hover:border-primary/30 hover:bg-primary/[0.03]',
+              'hover:shadow-[0_2px_6px_-2px_rgba(0,0,0,0.08),0_16px_32px_-16px_rgba(0,0,0,0.22)]',
+              'dark:hover:bg-primary/[0.06]',
+              'dark:hover:shadow-[0_2px_6px_-2px_rgba(0,0,0,0.4),0_20px_40px_-20px_rgba(0,0,0,0.55)]',
+              'focus-within:-translate-y-[1px] focus-within:border-primary/30',
+            )}
           >
-            <span className="bg-primary/10 text-primary mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full">
+            {/* Left accent bar — draws down from the top on hover. */}
+            <span
+              aria-hidden
+              className={cn(
+                'pointer-events-none absolute top-3 bottom-3 left-0 w-[2px] origin-top rounded-r-full bg-primary/70',
+                'scale-y-0 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
+                'group-hover:scale-y-100 group-focus-within:scale-y-100',
+              )}
+            />
+            <span
+              className={cn(
+                'bg-primary/10 text-primary mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full',
+                'transition-[background-color,box-shadow] duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
+                'group-hover:bg-primary/20 group-focus-within:bg-primary/20',
+                'group-hover:shadow-[0_0_0_5px_rgba(46,69,56,0.10)] dark:group-hover:shadow-[0_0_0_5px_rgba(224,214,188,0.12)]',
+                'group-focus-within:shadow-[0_0_0_5px_rgba(46,69,56,0.10)] dark:group-focus-within:shadow-[0_0_0_5px_rgba(224,214,188,0.12)]',
+              )}
+            >
               <Check className="h-3 w-3" />
             </span>
             <span>{item}</span>
