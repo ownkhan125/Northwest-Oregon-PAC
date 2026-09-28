@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CD-1 Voter Guide — Barbara Kahl vs. Suzanne Bonamici</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ---------- Design tokens (mirrors the site) ---------- */
+      :root {
+        --ink: #2a2a26;
+        --cream: #f6f2e8;
+        --sand: #e0d6bc;
+        --forest: #2e4538;
+        --sage: #5a7060;
+        --brown: #6b5a42;
+      }
+
+      @page { size: Letter; margin: 0; }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--ink);
+        color: var(--cream);
+        font-family: 'Inter', system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page {
+        position: relative;
+        width: 8.5in;
+        height: 11in;
+        overflow: hidden;
+        padding: 0.9in 0.85in 0.75in;
+        background: var(--ink);
+        page-break-after: always;
+        break-after: page;
+      }
+      .page:last-child { page-break-after: auto; }
+
+      /* ---------- Typography ---------- */
+      .display, h1, h2, h3, h4 {
+        font-family: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: var(--cream);
+      }
+      h1 { font-size: 44pt; line-height: 1.02; margin: 0; }
+      h2 { font-size: 26pt; line-height: 1.08; margin: 0 0 14pt; }
+      h3 { font-size: 15pt; line-height: 1.15; margin: 0 0 8pt; color: var(--sand); font-weight: 600; }
+      h4 { font-size: 11pt; letter-spacing: 0.24em; text-transform: uppercase; margin: 0 0 6pt; color: var(--sand); }
+      p  { font-size: 11pt; line-height: 1.55; margin: 0 0 10pt; color: rgba(246, 242, 232, 0.9); }
+      .lede { font-size: 12.5pt; line-height: 1.5; color: rgba(246, 242, 232, 0.95); }
+      .eyebrow {
+        font-size: 8.5pt; letter-spacing: 0.28em; text-transform: uppercase;
+        color: var(--sand); font-weight: 600;
+      }
+      .small { font-size: 9pt; color: rgba(246, 242, 232, 0.7); line-height: 1.5; }
+      .tiny  { font-size: 8pt;  color: rgba(246, 242, 232, 0.55); }
+
+      strong { color: var(--cream); font-weight: 600; }
+      em { font-style: italic; color: var(--sand); }
+      sup { color: var(--sand); font-size: 7pt; }
+      a { color: var(--sand); text-decoration-color: rgba(224, 214, 188, 0.5); }
+
+      /* ---------- Components ---------- */
+      .pill {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 5px 12px; border-radius: 999px;
+        border: 1px solid rgba(224, 214, 188, 0.4);
+        background: rgba(46, 69, 56, 0.6);
+        color: var(--sand);
+        font-size: 8.5pt; letter-spacing: 0.28em; text-transform: uppercase;
+      }
+      .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--sand); }
+      .accent-bar { display: none; }
+      .rule { display: none; }
+
+      .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      .card {
+        border: 1px solid rgba(224, 214, 188, 0.25);
+        background: rgba(46, 69, 56, 0.5);
+        border-radius: 14px;
+        padding: 18px 20px;
+      }
+      /* Bonamici cards use the brown palette so each side of every
+         head-to-head spread reads as a distinct lane at a glance. */
+      .card.card--bonamici {
+        border: 1px solid rgba(107, 90, 66, 0.55);
+        background: rgba(107, 90, 66, 0.42);
+      }
+      .card.card--bonamici .who { color: #d8c9a8; }
+      .card h3 { color: var(--cream); font-size: 14pt; margin-bottom: 4pt; }
+      .card .who { font-size: 9pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 10pt; }
+      .card p { font-size: 10.5pt; margin-bottom: 8pt; }
+      .card p:last-child { margin-bottom: 0; }
+
+      .list { padding: 0; margin: 8pt 0 0; list-style: none; }
+      .list li {
+        position: relative; padding-left: 18px; font-size: 10.5pt;
+        color: rgba(246, 242, 232, 0.9); margin-bottom: 5pt; line-height: 1.5;
+      }
+      .list li::before {
+        content: ''; position: absolute; left: 0; top: 8px;
+        width: 8px; height: 8px; border-radius: 999px;
+        border: 1.5px solid var(--sand); background: transparent;
+      }
+      /* Numbered list variant for the "priorities" enumeration */
+      ol.numbered { padding-left: 22px; margin: 8pt 0 0; }
+      ol.numbered li {
+        font-size: 10.5pt; color: rgba(246, 242, 232, 0.9);
+        margin-bottom: 5pt; line-height: 1.5;
+      }
+      ol.numbered li::marker { color: var(--sand); font-weight: 600; }
+
+      .quote {
+        border-left: 3px solid var(--sand);
+        padding: 10px 0 10px 16px;
+        margin: 14px 0;
+        color: var(--cream);
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 14pt;
+        line-height: 1.35;
+      }
+      .callout {
+        border: 1px solid rgba(224, 214, 188, 0.25);
+        background: rgba(224, 214, 188, 0.06);
+        border-radius: 14px;
+        padding: 16px 18px;
+        margin-top: 14px;
+      }
+      .callout .eyebrow { margin-bottom: 6px; }
+      .callout p { font-size: 11pt; color: var(--cream); margin: 0; }
+
+      /* Comparison table (page 9) — thin ledger grid */
+      .compare-table {
+        width: 100%; border-collapse: separate; border-spacing: 0;
+        margin-top: 14px; overflow: hidden; border-radius: 12px;
+        border: 1px solid rgba(224, 214, 188, 0.22);
+      }
+      .compare-table thead th {
+        text-align: left; font-size: 8.5pt; letter-spacing: 0.24em;
+        text-transform: uppercase; padding: 10px 14px;
+        color: var(--sand); font-weight: 600;
+        background: rgba(46, 69, 56, 0.55);
+        border-bottom: 1px solid rgba(224, 214, 188, 0.22);
+      }
+      .compare-table thead th:nth-child(3) {
+        background: rgba(107, 90, 66, 0.55); color: #d8c9a8;
+      }
+      .compare-table tbody td {
+        font-size: 10pt; line-height: 1.45; padding: 10px 14px;
+        color: rgba(246, 242, 232, 0.9); vertical-align: top;
+        border-top: 1px solid rgba(224, 214, 188, 0.14);
+      }
+      .compare-table tbody td:first-child {
+        font-family: 'Fraunces', Georgia, serif;
+        color: var(--sand); font-weight: 600; font-size: 10.5pt;
+        width: 22%;
+      }
+      .compare-table tbody td:nth-child(3) {
+        background: rgba(107, 90, 66, 0.14);
+      }
+
+      .footer {
+        position: absolute; left: 0.85in; right: 0.85in; bottom: 0.55in;
+        display: flex; flex-direction: column; gap: 5pt;
+        font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase;
+        color: rgba(246, 242, 232, 0.45);
+      }
+      .footer .footer-row { display: flex; justify-content: space-between; align-items: baseline; }
+      .footer .footer-legal {
+        text-align: center; font-size: 7pt; letter-spacing: 0.18em;
+        color: rgba(246, 242, 232, 0.4);
+      }
+      .footer .brand { font-weight: 600; letter-spacing: 0.18em; color: rgba(224, 214, 188, 0.7); }
+
+      /* ---------- Cover page ---------- */
+      .cover {
+        display: flex; flex-direction: column;
+        padding: 0.7in 0.75in 0.6in;
+        background:
+          radial-gradient(ellipse at 8% 15%, rgba(90, 112, 96, 0.18), transparent 55%),
+          radial-gradient(ellipse at 92% 85%, rgba(46, 69, 56, 0.55), transparent 55%),
+          var(--ink);
+      }
+      .cover .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+      .cover .stamp {
+        font-family: 'Fraunces', Georgia, serif; font-size: 10.5pt; letter-spacing: 0.22em;
+        text-transform: uppercase; color: var(--sand);
+      }
+      .cover-layout {
+        display: grid; grid-template-columns: 1.15fr 1fr;
+        gap: 32px; align-items: center;
+        margin-top: 28px;
+      }
+      .cover-copy h1 { font-size: 42pt; line-height: 0.98; margin: 0 0 10pt; }
+      .cover-copy .cover-sub {
+        font-family: 'Fraunces', Georgia, serif; font-size: 15pt; line-height: 1.3;
+        color: rgba(246, 242, 232, 0.92);
+      }
+      .cover-copy .cover-vs {
+        font-family: 'Fraunces', Georgia, serif; font-size: 20pt; line-height: 1.15;
+        color: var(--cream); font-weight: 600; margin: 12px 0 10px;
+      }
+      .cover-copy .issues {
+        font-size: 9.5pt; letter-spacing: 0.16em; text-transform: uppercase;
+        color: rgba(224, 214, 188, 0.85); margin-top: 12px;
+      }
+      .cover-copy .neighborhoods {
+        font-size: 9pt; letter-spacing: 0.14em; text-transform: uppercase;
+        color: rgba(224, 214, 188, 0.7); margin-top: 8px;
+      }
+      .cover-copy .cover-date { font-size: 10pt; color: var(--sand); margin-top: 16px; font-weight: 600; }
+
+      .cover-portrait {
+        position: relative; width: 100%; aspect-ratio: 4/5;
+        border-radius: 20px; overflow: hidden;
+        border: 1px solid rgba(224, 214, 188, 0.3);
+        box-shadow: 0 30px 60px -30px rgba(0,0,0,0.6);
+      }
+      .cover-portrait img {
+        width: 100%; height: 100%; object-fit: cover;
+        object-position: center 20%;
+      }
+      .cover-portrait .portrait-tag {
+        position: absolute; left: 16px; bottom: 16px;
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 6px 12px; border-radius: 999px;
+        background: rgba(42, 42, 38, 0.72); backdrop-filter: blur(4px);
+        border: 1px solid rgba(224, 214, 188, 0.35);
+        font-size: 8pt; letter-spacing: 0.24em; text-transform: uppercase;
+        color: var(--sand); font-weight: 600;
+      }
+
+      .cover-footer { margin-top: auto; padding-top: 20px; }
+      .cover-cta {
+        display: inline-block; padding: 11px 22px; border-radius: 999px;
+        background: var(--sand); color: var(--ink);
+        font-size: 9.5pt; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;
+        font-family: 'Fraunces', Georgia, serif;
+      }
+      .cover-presented {
+        font-size: 9pt; letter-spacing: 0.22em; text-transform: uppercase;
+        color: rgba(224, 214, 188, 0.85); margin-top: 18px;
+      }
+      .cover-legal { font-size: 8pt; color: rgba(246, 242, 232, 0.5); margin-top: 6px; }
+
+      /* ---------- Compact modifier (page 2 fits a dense two-column spread) ---------- */
+      .page.compact { padding: 0.7in 0.75in 0.7in; }
+      .page.compact h2 { font-size: 22pt; line-height: 1.08; margin: 0 0 10pt; }
+      .page.compact .lede { font-size: 11.5pt; line-height: 1.5; }
+      .page.compact .grid-2 { gap: 16px; margin-top: 14px !important; }
+      .page.compact .card { padding: 14px 16px; border-radius: 12px; }
+      .page.compact .card h3 { font-size: 12.5pt; line-height: 1.2; margin-bottom: 4pt; }
+      .page.compact .card .who { font-size: 8.5pt; margin-bottom: 8pt; }
+      .page.compact .card p { font-size: 9.75pt; line-height: 1.45; margin-bottom: 7pt; }
+      .page.compact .quote { font-size: 12pt; line-height: 1.3; margin: 10px 0; padding: 6px 0 6px 12px; }
+      .page.compact .eyebrow { font-size: 8pt; }
+      .page.compact .list { margin-top: 6pt; }
+      .page.compact .list li { font-size: 9.75pt; line-height: 1.4; margin-bottom: 3pt; padding-left: 16px; }
+      .page.compact .list li::before { top: 6px; width: 7px; height: 7px; }
+      .page.compact ol.numbered li { font-size: 9.75pt; line-height: 1.4; margin-bottom: 3pt; }
+      .page.compact .callout { padding: 12px 14px; margin-top: 12px; border-radius: 12px; }
+      .page.compact .callout p { font-size: 10pt; line-height: 1.45; }
+      .page.compact .footer { bottom: 0.4in; left: 0.75in; right: 0.75in; }
+
+      /* Sources page — even tighter */
+      .page.compact ol.sources { padding-left: 18px; margin: 4pt 0 0; }
+      .page.compact ol.sources li { margin-bottom: 4pt; font-size: 8.75pt; line-height: 1.4; color: rgba(246, 242, 232, 0.78); }
+      .page.compact ol.sources li a { word-break: break-all; }
+      .page.compact p.tiny { font-size: 7.5pt; line-height: 1.4; margin-top: 8pt; }
+    </style>
+  </head>
+  <body>
+    <!-- ============================ COVER ============================ -->
+    <section class="page cover">
+      <div class="cover-top">
+        <div>
+          <div class="stamp">Northwest Oregon PAC</div>
+          <div class="stamp" style="opacity:.75">2026 Voter Guide</div>
+        </div>
+        <div class="pill"><span class="dot"></span>Free &bull; CD-1 &bull; 2026</div>
+      </div>
+
+      <div class="cover-layout">
+        <div class="cover-copy">
+          <div class="eyebrow" style="margin-bottom:14px;">Oregon&rsquo;s 1st Congressional District</div>
+          <h1>Fourteen<br />Years in<br />Washington.</h1>
+          <div class="cover-sub" style="margin-top:14px;">
+            One New Challenger.<br />Compare the Record.
+          </div>
+          <div class="cover-vs">Barbara Kahl <span style="color:var(--sand);">vs.</span> Suzanne Bonamici</div>
+          <div class="issues">
+            Economy &bull; Energy &bull; Immigration &bull; Schools &bull; Healthcare &bull; Federal Accountability
+          </div>
+          <div class="neighborhoods">
+            Beaverton &bull; Hillsboro &bull; West Portland &bull; Forest Grove &bull; Astoria &bull; Tillamook &bull; St. Helens
+          </div>
+          <div class="cover-date">General Election &bull; November 3, 2026</div>
+        </div>
+
+        <div class="cover-portrait">
+          <img src="cover-portrait.jpg" alt="Dr. Barbara Kahl" />
+          <span class="portrait-tag">The Challenger &bull; Dr. Barbara Kahl</span>
+        </div>
+      </div>
+
+      <div class="cover-footer">
+        <span class="cover-cta">Fourteen Years Creates a Record. Compare It.</span>
+        <div class="cover-presented">Presented by Northwest Oregon PAC</div>
+        <p class="cover-legal">
+          Paid for by Northwest Oregon PAC #25045. Not authorized by any candidate committee.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 2 — 14 YEARS CREATES A RECORD ============================ -->
+    <section class="page compact">
+      <h4>The Candidates</h4>
+      <h2>14 Years Creates a Record.</h2>
+
+      <div class="grid-2" style="margin-top:16px;">
+        <div class="card">
+          <div class="who">Barbara Kahl</div>
+          <h3>Veterinarian &bull; Former Intel Employee &bull; Fourth-Generation Oregonian</h3>
+          <p>
+            Barbara Kahl is a fourth-generation Oregonian who graduated from Hillsboro High School and
+            earned degrees in animal science and chemistry before becoming a veterinarian.<sup>[1]</sup>
+          </p>
+          <p>
+            She has spent nearly 20 years operating a mobile veterinary practice across the district
+            and previously worked at Intel.<sup>[1]</sup>
+          </p>
+          <p>
+            In 2022, Kahl was recruited to serve as chief veterinarian for American Samoa, where she
+            helped establish the territory&rsquo;s first animal-control unit and drafted its Veterinary
+            Practice Act.<sup>[1]</sup>
+          </p>
+          <div class="eyebrow" style="margin-top:10px;">Her stated priorities</div>
+          <ul class="list">
+            <li>Economic growth</li>
+            <li>Timber and ports</li>
+            <li>Less regulatory burden</li>
+            <li>School choice</li>
+            <li>Education funding that follows the student</li>
+            <li>Lower healthcare costs</li>
+            <li>Federal accountability</li>
+            <li>Term limits<sup>[1]</sup></li>
+          </ul>
+        </div>
+
+        <div class="card card--bonamici">
+          <div class="who">Suzanne Bonamici</div>
+          <h3>Member of Congress Since 2012</h3>
+          <p>
+            Suzanne Bonamici entered Congress through a 2012 special election and serves on the House
+            Education and Workforce Committee and House Science, Space and Technology Committee.
+          </p>
+          <div class="eyebrow" style="margin-top:8px;">Her recent political and congressional record</div>
+          <ul class="list">
+            <li>Calls for less ICE funding<sup>[3]</sup></li>
+            <li>Greater federal education funding<sup>[3]</sup></li>
+            <li>Nay votes on the Laken Riley Act in 2024 and 2025</li>
+            <li>A Nay vote on H.Con.Res.9, a 2023 resolution &ldquo;denouncing the horrors of socialism&rdquo;</li>
+            <li>Climate-focused policy<sup>[3]</sup></li>
+            <li>Immigration legislation and opposition to additional ICE detention capacity in Oregon<sup>[3][5]</sup></li>
+            <li>Water-power and energy research legislation<sup>[4]</sup></li>
+            <li>2026 Oregon Working Families Party endorsement/cross-nomination<sup>[2]</sup></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="eyebrow">The question is not whether she has experience</div>
+        <p>It&rsquo;s what that record shows after fourteen years.</p>
+      </div>
+
+      <div class="footer">
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>CD-1 Voter Guide &bull; Page 2</span>
+        </div>
+        <span class="footer-legal">Paid for by Northwest Oregon PAC #25045</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 3 — CD-1 MAKES THINGS ============================ -->
+    <section class="page">
+      <h4>Economy &amp; Jobs</h4>
+      <h2>CD-1 Makes Things.</h2>
+
+      <p class="lede">
+        Semiconductors in Washington County. Freight through the Columbia. Timber from Northwest
+        Oregon. Tourism and fishing on the coast. Small businesses throughout the district.
+      </p>
+      <p>
+        Federal decisions on permitting, energy, land use, workforce policy, and regulation can
+        affect the businesses operating here.
+      </p>
+
+      <div class="grid-2" style="margin-top:14px;">
+        <div class="card">
+          <div class="who">Barbara Kahl</div>
+          <p>Barbara Kahl&rsquo;s economic argument starts with production.</p>
+          <div class="eyebrow" style="margin-top:8px;">Her stated priorities include</div>
+          <ul class="list">
+            <li><strong>Timber supply.</strong></li>
+            <li><strong>Strong Columbia and coastal ports.</strong></li>
+            <li><strong>Less red tape on small businesses.</strong></li>
+            <li><strong>Workforce investment connected to real jobs.</strong></li>
+            <li><strong>Lower regulatory costs for builders and employers.</strong><sup>[1]</sup></li>
+          </ul>
+          <p style="margin-top:10pt;">
+            Her experience includes both Intel and navigating federal and state veterinary
+            regulation.<sup>[1]</sup>
+          </p>
+          <div class="quote">Make it easier to build, grow, ship and hire.</div>
+        </div>
+
+        <div class="card card--bonamici">
+          <div class="who">Suzanne Bonamici</div>
+          <p>
+            Bonamici&rsquo;s economic agenda emphasizes STEAM education, expanded federal government
+            investment, climate-related infrastructure and other federal programs.<sup>[3]</sup>
+          </p>
+          <p>
+            She has spent fourteen years representing a district containing one of Oregon&rsquo;s
+            most important manufacturing and technology corridors.<sup>[2]</sup>
+          </p>
+          <div class="quote">After 14 years, her record is everywhere to analyse where she stands.</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>CD-1 Voter Guide &bull; Page 3</span>
+        </div>
+        <span class="footer-legal">Paid for by Northwest Oregon PAC #25045</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 4 — CD-1 NEEDS POWER ============================ -->
+    <section class="page">
+      <h4>Energy</h4>
+      <h2>CD-1 Needs Power.</h2>
+      <h3 style="color:var(--cream); font-size:16pt; margin: -6pt 0 14pt;">Who Pays for the Next Megawatt?</h3>
+
+      <p class="lede">
+        Homes need electricity. Intel and other manufacturers need reliable electricity. And rapidly
+        expanding data centers and AI infrastructure can create significant additional electricity
+        demand.
+      </p>
+
+      <div class="grid-2" style="margin-top:14px;">
+        <div class="card card--bonamici">
+          <div class="who">Suzanne Bonamici</div>
+          <p>
+            In January 2026, Bonamici introduced H.R. 7129, the Water Power Research and Development
+            Reauthorization Act, with Rep. Nick Begich.<sup>[4]</sup>
+          </p>
+          <p>
+            The legislation addresses hydropower, marine energy and pumped-storage research,
+            including integration with large electrical loads such as data centers.<sup>[4]</sup>
+          </p>
+          <div class="eyebrow" style="margin-top:10px;">Her 2025 voting record also includes Nay votes on</div>
+          <ul class="list">
+            <li>H.R. 3632 &mdash; Power Plant Reliability</li>
+            <li>H.R. 3628 &mdash; State Planning for Reliability and Affordability</li>
+            <li>H.R. 1949 &mdash; Unlocking Domestic LNG</li>
+            <li>H.R. 1047 &mdash; GRID Power</li>
+            <li>H.R. 3015 &mdash; National Coal Council<sup>[5]</sup></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="who">Barbara Kahl</div>
+          <p>
+            Kahl argues that large-scale data-center demand should not leave households and
+            manufacturers carrying disproportionate grid costs.
+          </p>
+          <p>
+            She has called for greater scrutiny of where regional energy is routed and how large-load
+            growth affects existing users.<sup>[1]</sup>
+          </p>
+          <div class="eyebrow" style="margin-top:10px;">Her point is &ldquo;audit first&rdquo;</div>
+          <ul class="list">
+            <li>Where is the power going?</li>
+            <li>Who is creating the new demand?</li>
+            <li>Who is paying for the infrastructure?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="eyebrow">The takeaway</div>
+        <p>The energy record clearly needs a closer look.</p>
+      </div>
+
+      <div class="footer">
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>CD-1 Voter Guide &bull; Page 4</span>
+        </div>
+        <span class="footer-legal">Paid for by Northwest Oregon PAC #25045</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 5 — IMMIGRATION ============================ -->
+    <section class="page">
+      <h4>Immigration</h4>
+      <h2>Immigration: Examine the Votes.</h2>
+
+      <div class="grid-2" style="margin-top:6px;">
+        <div class="card card--bonamici">
+          <div class="who">Suzanne Bonamici</div>
+          <p>Bonamici&rsquo;s own 2026 campaign published the headline:</p>
+          <div class="quote">&ldquo;No more ICE funding.&rdquo;<sup>[3]</sup></div>
+          <p>Another campaign message states:</p>
+          <div class="quote">&ldquo;Schools need more funding. ICE needs less.&rdquo;<sup>[3]</sup></div>
+          <div class="eyebrow" style="margin-top:10px;">Her congressional record also includes</div>
+          <ul class="list">
+            <li><strong>2024</strong> &mdash; Laken Riley Act (H.R. 7511): <strong>NAY</strong></li>
+            <li><strong>2025</strong> &mdash; Laken Riley Act (H.R. 29): <strong>NAY</strong></li>
+            <li><strong>2025</strong> &mdash; Senate Laken Riley Act (S.5): <strong>NAY</strong></li>
+          </ul>
+          <p style="margin-top:10pt;">
+            The final 2025 legislation passed the House 263&ndash;156. Bonamici was among the 156
+            members voting Nay.
+          </p>
+          <p>
+            Her record also includes opposition to additional ICE detention capacity in
+            Oregon<sup>[3]</sup> and votes against other immigration-enforcement or Homeland Security
+            measures documented in the guide&rsquo;s sources.
+          </p>
+          <p>
+            In January 2026, Bonamici also called for President Trump&rsquo;s impeachment and
+            criticized his administration&rsquo;s immigration enforcement.<sup>[7]</sup>
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="who">Barbara Kahl</div>
+          <p>
+            Kahl&rsquo;s published approach emphasizes border enforcement, spending constraints and
+            limits on government benefits for people who do not qualify.
+          </p>
+          <div class="quote" style="margin-top:16px;">Two different approaches to immigration and enforcement.</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>CD-1 Voter Guide &bull; Page 5</span>
+        </div>
+        <span class="footer-legal">Paid for by Northwest Oregon PAC #25045</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 6 — SCHOOLS ============================ -->
+    <section class="page">
+      <h4>Schools</h4>
+      <h2>Fund the Student or Fund the System?</h2>
+
+      <p class="lede">Oregon&rsquo;s education outcomes remain a major concern.</p>
+
+      <div class="grid-2" style="margin-top:14px;">
+        <div class="card">
+          <div class="who">Barbara Kahl</div>
+          <div class="eyebrow" style="margin-bottom:6px;">Kahl supports</div>
+          <ul class="list">
+            <li>Phonics</li>
+            <li>Teacher freedom</li>
+            <li>Vocational pathways</li>
+            <li>School choice</li>
+            <li>Funding that follows the student<sup>[1]</sup></li>
+          </ul>
+          <p style="margin-top:10pt;">
+            Her education argument is focused on student outcomes and giving families more control
+            over where education dollars go.
+          </p>
+        </div>
+
+        <div class="card card--bonamici">
+          <div class="who">Suzanne Bonamici</div>
+          <p>
+            Bonamici serves on the House Education and Workforce Committee and is Ranking Member of
+            its Early Childhood, Elementary, and Secondary Education Subcommittee.
+          </p>
+          <p>
+            She advocates greater federal government education spending and federal involvement in
+            education policy.
+          </p>
+          <p>Her campaign has also paired education funding with immigration-enforcement spending:</p>
+          <div class="quote">&ldquo;Schools need more funding. ICE needs less.&rdquo;</div>
+          <p>
+            Bonamici has made education a major focus of her congressional work. Voters can compare
+            that record with Oregon&rsquo;s current education outcomes.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="eyebrow">The policy questions</div>
+        <ul class="list" style="margin-top:2pt;">
+          <li>How much responsibility should Washington have for education?</li>
+          <li>Should additional federal spending be the priority, or should funding follow students and families?</li>
+          <li>What outcomes should accompany additional government spending?</li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>CD-1 Voter Guide &bull; Page 6</span>
+        </div>
+        <span class="footer-legal">Paid for by Northwest Oregon PAC #25045</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 7 — HEALTHCARE ============================ -->
+    <section class="page">
+      <h4>Healthcare</h4>
+      <h2>Healthcare: Who Deals With the Price?</h2>
+
+      <p class="lede">
+        Barbara Kahl is a veterinarian and has spent nearly two decades operating a clinical
+        practice.<sup>[1]</sup> Her healthcare argument starts with a basic problem:
+      </p>
+      <div class="quote">Expanding coverage does not automatically make the underlying care less expensive.</div>
+
+      <div class="grid-2" style="margin-top:14px;">
+        <div class="card">
+          <div class="who">Barbara Kahl</div>
+          <div class="eyebrow" style="margin-bottom:6px;">Kahl emphasizes</div>
+          <ul class="list">
+            <li>Hospital costs</li>
+            <li>Drug prices</li>
+            <li>Keeping independent practices viable</li>
+            <li>Examining costs before creating new taxes</li>
+            <li>Scrutinizing the financing behind government healthcare proposals<sup>[1]</sup></li>
+          </ul>
+          <div class="quote" style="margin-top:12px;">Fix the price before moving the bill.</div>
+        </div>
+
+        <div class="card card--bonamici">
+          <div class="who">Suzanne Bonamici</div>
+          <p>
+            Bonamici frames healthcare as a moral and access issue and supports a larger public role
+            in healthcare coverage.<sup>[3]</sup>
+          </p>
+          <p>
+            Her campaign has argued against increasing healthcare costs to finance tax reductions for
+            wealthy Americans.<sup>[3]</sup>
+          </p>
+          <div class="quote" style="margin-top:12px;">Coverage and cost are not the same question.</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="eyebrow">The question voters can examine</div>
+        <p>CD-1 voters can examine which problem each candidate proposes to address first.</p>
+      </div>
+
+      <div class="footer">
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>CD-1 Voter Guide &bull; Page 7</span>
+        </div>
+        <span class="footer-legal">Paid for by Northwest Oregon PAC #25045</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 8 — WHAT HAS BONAMICI DONE ============================ -->
+    <section class="page">
+      <h4>The Incumbent Record</h4>
+      <h2>What Has Bonamici Done<br />With the Seat?</h2>
+
+      <p class="lede">
+        Bonamici originally entered Congress in 2012 after a career that included consumer-protection
+        law and service in the Oregon Legislature.<sup>[2]</sup>
+      </p>
+      <p>Fourteen years later, her public record includes:</p>
+
+      <div class="card card--bonamici" style="margin-top:12px;">
+        <div class="who">Suzanne Bonamici &bull; Public Record</div>
+        <ul class="list">
+          <li>&ldquo;No more ICE funding.&rdquo;<sup>[3]</sup></li>
+          <li>&ldquo;Schools need more funding. ICE needs less.&rdquo;<sup>[3]</sup></li>
+          <li>Calls for President Trump&rsquo;s impeachment.<sup>[7]</sup></li>
+          <li>Working Families Party cross-nomination.<sup>[2]</sup></li>
+          <li>A 99.66 ProgressivePunch rating for 2025&ndash;26.<sup>[6]</sup></li>
+          <li>100% on ProgressivePunch&rsquo;s &ldquo;crucial votes.&rdquo;<sup>[6]</sup></li>
+          <li>Voted Nay on the Laken Riley Act.</li>
+          <li>Voted Nay on H.R. 9576, the National Fraud Enforcement Division Act of 2026, on September 16, 2026.</li>
+          <li>Voted Nay on H.Con.Res.9, the 2023 House resolution &ldquo;denouncing the horrors of socialism.&rdquo;</li>
+          <li>2026 Oregon Working Families Party endorsement/cross-nomination.</li>
+        </ul>
+      </div>
+
+      <p style="margin-top:14pt;">
+        Those are measurable elements of the incumbent&rsquo;s current political record.
+      </p>
+
+      <div class="callout">
+        <div class="eyebrow">The choice</div>
+        <p>Voters can decide whether that record still matches CD-1.</p>
+      </div>
+
+      <div class="footer">
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>CD-1 Voter Guide &bull; Page 8</span>
+        </div>
+        <span class="footer-legal">Paid for by Northwest Oregon PAC #25045</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 9 — THE DIFFERENCE IS VERY CLEAR ============================ -->
+    <section class="page">
+      <h4>Side-by-Side</h4>
+      <h2>The Difference Is Very Clear.</h2>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Issue</th>
+            <th>Barbara Kahl</th>
+            <th>Suzanne Bonamici</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Economy</td>
+            <td>Production + ports + timber + fewer regulatory barriers</td>
+            <td>Federal government investment + climate-related infrastructure</td>
+          </tr>
+          <tr>
+            <td>Energy</td>
+            <td>Reliability + audits + cost allocation</td>
+            <td>Federal energy research + climate-focused policy</td>
+          </tr>
+          <tr>
+            <td>Immigration</td>
+            <td>Border enforcement</td>
+            <td>Less ICE funding + voted Nay on Laken Riley Act</td>
+          </tr>
+          <tr>
+            <td>Schools</td>
+            <td>Choice + funding follows student</td>
+            <td>Greater federal government education spending</td>
+          </tr>
+          <tr>
+            <td>Healthcare</td>
+            <td>Lower underlying prices</td>
+            <td>Greater federal government role in coverage</td>
+          </tr>
+          <tr>
+            <td>Federal Role</td>
+            <td>Less regulation + accountability</td>
+            <td>Broader federal government programs/investment</td>
+          </tr>
+          <tr>
+            <td>Political Record</td>
+            <td>Challenger</td>
+            <td>Member of Congress since 2012</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="color:var(--cream); font-size:16pt; margin: 20px 0 8pt;">Fourteen Years Makes the Comparison Possible.</h3>
+      <p>Kahl doesn&rsquo;t have a congressional voting record.</p>
+      <p>Bonamici does.</p>
+      <p>
+        That means voters can examine what Bonamici has voted for, what she has opposed, what she
+        says today, and how those priorities compare with Kahl&rsquo;s stated alternative.
+      </p>
+
+      <div class="footer">
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>CD-1 Voter Guide &bull; Page 9</span>
+        </div>
+        <span class="footer-legal">Paid for by Northwest Oregon PAC #25045</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 10 — FOURTEEN YEARS IS LONG ENOUGH ============================ -->
+    <section class="page compact">
+      <h4>The Choice</h4>
+      <h2>Fourteen Years Is Long Enough<br />to Have a Record.</h2>
+
+      <div class="grid-2" style="margin-top:14px;">
+        <div class="card">
+          <div class="who">Barbara Kahl</div>
+          <ul class="list">
+            <li>Veterinarian.</li>
+            <li>Former Intel employee.</li>
+            <li>Fourth-generation Oregonian.</li>
+            <li>Former chief veterinarian for American Samoa.</li>
+          </ul>
+          <div class="eyebrow" style="margin-top:12px;">Her priorities</div>
+          <ol class="numbered">
+            <li><strong>Production</strong></li>
+            <li><strong>Ports</strong></li>
+            <li><strong>Timber</strong></li>
+            <li><strong>Reliable energy</strong></li>
+            <li><strong>School choice</strong></li>
+            <li><strong>Healthcare affordability</strong></li>
+            <li><strong>Federal accountability</strong><sup>[1]</sup></li>
+          </ol>
+        </div>
+
+        <div class="card card--bonamici">
+          <div class="who">Suzanne Bonamici</div>
+          <ul class="list">
+            <li>Member of Congress since 2012</li>
+            <li>House Education and Workforce Committee member</li>
+          </ul>
+          <div class="eyebrow" style="margin-top:12px;">Her recent record includes</div>
+          <ol class="numbered">
+            <li>&ldquo;No more ICE funding&rdquo; campaign message</li>
+            <li>Voted Nay on the Laken Riley Act</li>
+            <li>Voted Nay on H.R. 9576, the National Fraud Enforcement Division Act of 2026</li>
+            <li>Voted Nay on H.Con.Res.9, &ldquo;Denouncing the horrors of socialism&rdquo;</li>
+            <li>Supports increased federal government education spending</li>
+            <li>Oregon Working Families Party&rsquo;s 2026 CD-1 candidate/endorsee</li>
+            <li>Climate and federal energy initiatives</li>
+            <li>Alignment with progressive voting blocs<sup>[2][3][4][5]</sup></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:16px;">
+        <div class="eyebrow">Then decide</div>
+        <p style="font-family:'Fraunces', Georgia, serif; font-size: 13pt; line-height: 1.35;">
+          Read it. Compare it. Decide whether it still represents CD-1.
+        </p>
+      </div>
+
+      <p class="small" style="margin-top:14px;">
+        Learn more about Barbara Kahl at
+        <a href="https://www.drkahlforcongress.com/">drkahlforcongress.com</a>.
+      </p>
+
+      <div class="footer">
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>CD-1 Voter Guide &bull; Page 10</span>
+        </div>
+        <span class="footer-legal">Paid for by Northwest Oregon PAC #25045</span>
+      </div>
+    </section>
+
+    <!-- ============================ PAGE 11 — SOURCES & REFERENCES ============================ -->
+    <section class="page compact">
+      <h4>Sources &amp; References</h4>
+      <h2>The Cited Record.</h2>
+
+      <ol class="sources">
+        <li>
+          <strong>Dr. Barbara Kahl for Congress</strong> &mdash; Campaign Platform and Priorities.
+          <a href="https://www.drkahlforcongress.com/">https://www.drkahlforcongress.com/</a>,
+          drkahloregon.com
+        </li>
+        <li>
+          <strong>Candidate/biographical and election records</strong> &mdash; Ballotpedia; Bonamici
+          congressional/campaign materials; 2026 election records.
+          <a href="https://ballotpedia.org/Suzanne_Bonamici">https://ballotpedia.org/Suzanne_Bonamici</a>
+        </li>
+        <li>
+          <strong>Suzanne Bonamici campaign website and latest-updates archive</strong> &mdash;
+          including ICE, education/ICE and climate statements.
+        </li>
+        <li>
+          <strong>Congress.gov</strong> &mdash;
+          <a href="https://www.congress.gov/119/crec/2026/01/16/172/12/CREC-2026-01-16.pdf">https://www.congress.gov/119/crec/2026/01/16/172/12/CREC-2026-01-16.pdf</a>
+          &mdash; H.R. 7129, Water Power Research and Development Reauthorization Act.
+        </li>
+        <li>
+          <strong>Vote Smart</strong> &mdash; 2025&ndash;26 roll-call records, including the energy,
+          immigration and appropriations votes identified in the research.
+        </li>
+        <li>
+          <strong>ProgressivePunch</strong> &mdash; 2025&ndash;26 House scores.
+          <a href="https://progressivepunch.org/scores.htm?house=house&order=down&party=D&sort=rating&topic=&">https://progressivepunch.org/scores.htm?house=house&amp;order=down&amp;party=D&amp;sort=rating&amp;topic=&amp;</a>
+        </li>
+        <li>
+          <strong>Rep. Suzanne Bonamici congressional office</strong> &mdash; January 21, 2026 statement.
+        </li>
+      </ol>
+
+      <div class="callout" style="margin-top:16px;">
+        <div class="eyebrow">Information &amp; Sources Disclaimer</div>
+        <p style="font-size:9.5pt; line-height:1.5; color: rgba(246, 242, 232, 0.85);">
+          Candidate positions, statements, voting records, policy information, and other factual
+          claims in this guide are based on publicly available information and cited sources reviewed
+          as of <strong>September 21, 2026</strong>. Candidate positions, campaign materials,
+          websites, voting records, and policy proposals may be updated or changed after publication.
+          Readers are encouraged to review the cited sources and current candidate materials for the
+          most recent information.
+        </p>
+      </div>
+
+      <p class="tiny" style="margin-top:14px;">
+        Paid for by Northwest Oregon PAC #25045. Not authorized by any candidate committee.
+      </p>
+
+      <div class="footer">
+        <div class="footer-row">
+          <span class="brand">Northwest Oregon PAC</span>
+          <span>CD-1 Voter Guide &bull; Page 11</span>
+        </div>
+        <span class="footer-legal">Paid for by Northwest Oregon PAC #25045</span>
+      </div>
+    </section>
+  </body>
+</html>
