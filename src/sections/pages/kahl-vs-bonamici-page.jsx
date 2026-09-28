@@ -42,7 +42,14 @@ const VIEW_PARAMS = {
 }
 
 const KAHL_URL = 'https://www.drkahlforcongress.com/'
-const KAHL_PHOTO = '/images/funnels/cd1/barbara-kahl.png'
+// Hero portrait card — tall 4:5 head-and-shoulders shot fits the framed
+// portrait treatment. Atmospheric right-side visual on the Questions section
+// uses the wider landscape shot so the foliage background can dissolve into
+// the dark section bg through the layered gradients.
+const KAHL_PHOTO_HERO =
+  '/images/funnels/barbara-kahl-vs-suzanne-bonamici/Barbara.jpg'
+const KAHL_PHOTO_ATMOSPHERIC =
+  '/images/funnels/barbara-kahl-vs-suzanne-bonamici/Barbara%20July%202026-39.jpg'
 
 export const CD1_PAID_FOR =
   'Paid for by Northwest Oregon PAC #25045. Not authorized by any candidate committee.'
@@ -294,7 +301,14 @@ const GuideForm = () => {
 /* ------------------------------------------------------------------
    1. HERO — the "14" mark
 ------------------------------------------------------------------ */
-const heroIssues = ['Jobs', 'Energy', 'Immigration', 'Schools', 'Healthcare', 'Federal Accountability']
+const heroIssues = [
+  'Jobs',
+  'Energy',
+  'Immigration',
+  'Schools',
+  'Healthcare',
+  'Federal Accountability',
+]
 
 const Hero = () => {
   const scope = useScrollReveal(() => {
@@ -328,7 +342,7 @@ const Hero = () => {
         data-hero-mark
         className="pointer-events-none absolute -top-4 right-0 -z-10 select-none sm:top-8 md:top-4 md:right-[-4vw] lg:right-0"
       >
-        <span className="font-display text-primary/[0.06] block text-[46vw] leading-none font-medium sm:text-[34vw] md:text-[26vw] lg:text-[22vw] dark:text-primary/[0.10]">
+        <span className="font-display text-primary/[0.06] dark:text-primary/[0.10] block text-[46vw] leading-none font-medium sm:text-[34vw] md:text-[26vw] lg:text-[22vw]">
           14
         </span>
       </div>
@@ -365,7 +379,7 @@ const Hero = () => {
             transition={{ delay: 0.9, duration: 0.6 }}
             className="text-foreground/85 mt-8 max-w-2xl text-base leading-relaxed sm:text-lg"
           >
-            <strong>Suzanne Bonamici</strong> has represented Oregon&rsquo;s 1st Congressional
+            <strong>Suzanne Bonamici </strong> has represented Oregon&rsquo;s 1st Congressional
             District since 2012.
           </m.p>
 
@@ -426,13 +440,13 @@ const Hero = () => {
         >
           <figure className="border-border relative mx-auto aspect-[4/5] w-full max-w-[400px] overflow-hidden rounded-[24px] border shadow-[0_40px_100px_-40px_rgba(0,0,0,0.35)] dark:shadow-[0_40px_100px_-40px_rgba(0,0,0,0.7)]">
             <Image
-              src={KAHL_PHOTO}
+              src={KAHL_PHOTO_HERO}
               alt="Dr. Barbara Kahl, candidate for Oregon’s 1st Congressional District"
               fill
               priority
               sizes="(min-width: 1024px) 400px, (min-width: 640px) 60vw, 90vw"
               quality={90}
-              className="object-cover object-center"
+              className="object-cover object-[center_20%]"
             />
             <figcaption className="from-ink/85 absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent p-5 pt-16">
               <p className="text-sand text-[10px] font-semibold tracking-[0.22em] uppercase">
@@ -471,18 +485,22 @@ const RollCall = ({ yea, nay, className }) => {
   return (
     <div ref={scope} className={cn('w-full', className)}>
       <div className="flex items-center justify-between text-[10px] font-semibold tracking-[0.22em] uppercase">
-        <span className="text-primary">Yea {yea}</span>
-        <span className="text-brown dark:text-sand">Nay {nay}</span>
+        <span className="text-primary transition-colors duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)] group-hover:text-primary-fg group-focus-within:text-primary-fg">
+          Yea {yea}
+        </span>
+        <span className="text-brown dark:text-sand transition-colors duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)] group-hover:text-primary-fg/80 group-focus-within:text-primary-fg/80">
+          Nay {nay}
+        </span>
       </div>
-      <div className="border-border mt-2 flex h-2 w-full overflow-hidden rounded-full border">
+      <div className="border-border mt-2 flex h-2 w-full overflow-hidden rounded-full border transition-colors duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)] group-hover:border-primary-fg/30 group-focus-within:border-primary-fg/30">
         <span
           data-rc-bar
-          className="bg-primary block h-full"
+          className="bg-primary block h-full transition-colors duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)] group-hover:bg-primary-fg group-focus-within:bg-primary-fg"
           style={{ width: `${yeaPct}%` }}
         />
         <span
           data-rc-bar
-          className="bg-brown dark:bg-sand block h-full flex-1"
+          className="bg-brown dark:bg-sand block h-full flex-1 transition-colors duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)] group-hover:bg-primary-fg/40 group-focus-within:bg-primary-fg/40"
         />
       </div>
     </div>
@@ -502,10 +520,7 @@ const LookAtTheRecordSection = () => {
   })
 
   return (
-    <section
-      ref={scope}
-      className="text-foreground relative isolate py-16 sm:py-20"
-    >
+    <section ref={scope} className="text-foreground relative isolate py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-12">
         <div data-record-block>
           <p className="text-primary text-[11px] font-semibold tracking-[0.28em] uppercase">
@@ -724,7 +739,22 @@ const DifferencesSection = () => {
       }}
       className="text-foreground relative isolate overflow-hidden bg-[#2a2a26] py-20 sm:py-24"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
+      {/* Diagonal lines pattern — mirrors the global .lines-bg so this
+          forced-dark section stays visually consistent with the rest of
+          the site (whose sections are transparent and reveal the global
+          lines pattern). */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="absolute -inset-[15%] motion-safe:animate-[lines-drift_45s_linear_infinite]"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(115deg, rgba(224,214,188,0.09) 0, rgba(224,214,188,0.09) 1px, transparent 1px, transparent 16px)',
+            willChange: 'transform',
+          }}
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-primary text-[11px] font-semibold tracking-[0.28em] uppercase">
             The Difference
@@ -749,7 +779,7 @@ const DifferencesSection = () => {
           </div>
         </div>
 
-        <ul className="mx-auto mt-4 max-w-5xl divide-y divide-[rgba(224,214,188,0.15)]">
+        <ul className="mx-auto mt-4 max-w-5xl divide-y divide-[rgba(224,214,188,0.15)] border-t border-[rgba(224,214,188,0.15)]">
           {differences.map((row) => (
             <li
               key={row.issue}
@@ -765,7 +795,7 @@ const DifferencesSection = () => {
               <span
                 aria-hidden
                 className={cn(
-                  'pointer-events-none absolute top-5 bottom-5 -left-4 hidden w-[2px] origin-top rounded-full bg-primary md:block',
+                  'bg-primary pointer-events-none absolute top-5 bottom-5 -left-4 hidden w-[2px] origin-top rounded-full md:block',
                   'scale-y-0 opacity-0 [will-change:transform,opacity]',
                   'transition-[opacity,transform] duration-[600ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]',
                   'group-hover/row:scale-y-100 group-hover/row:opacity-100',
@@ -778,7 +808,7 @@ const DifferencesSection = () => {
               <span
                 aria-hidden
                 className={cn(
-                  'pointer-events-none absolute inset-x-0 -bottom-px h-px origin-left bg-gradient-to-r from-primary via-primary/60 to-transparent',
+                  'from-primary via-primary/60 pointer-events-none absolute inset-x-0 -bottom-px h-px origin-left bg-gradient-to-r to-transparent',
                   'scale-x-0 [will-change:transform]',
                   'transition-transform duration-[750ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]',
                   'group-hover/row:scale-x-100',
@@ -897,31 +927,50 @@ const ThreeVotesSection = () => {
             <li
               key={v.kicker}
               data-vote-card
-              className="border-border bg-surface flex h-full flex-col rounded-2xl border p-6 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.24)] sm:p-7 dark:shadow-[0_18px_50px_-30px_rgba(0,0,0,0.55)]"
+              className={cn(
+                'group border-border bg-surface flex h-full flex-col rounded-2xl border p-6 sm:p-7',
+                'shadow-[0_18px_50px_-30px_rgba(0,0,0,0.24)] dark:shadow-[0_18px_50px_-30px_rgba(0,0,0,0.55)]',
+                'transition-[background-color,border-color,box-shadow,color] duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
+                // Color-invert on hover — reverts smoothly on hover-out via
+                // the shared transition above. Both the palette flip and the
+                // deeper shadow use the same easing so they land together.
+                'hover:bg-primary hover:text-primary-fg hover:border-primary',
+                'focus-within:bg-primary focus-within:text-primary-fg focus-within:border-primary',
+                'hover:shadow-[0_28px_60px_-24px_rgba(46,69,56,0.55)]',
+                'dark:hover:shadow-[0_28px_60px_-24px_rgba(0,0,0,0.7)]',
+              )}
             >
               <div className="flex items-baseline justify-between">
-                <span className="text-primary font-mono text-xs tracking-[0.16em]">
+                <span className="text-primary font-mono text-xs tracking-[0.16em] transition-colors duration-500 group-hover:text-primary-fg group-focus-within:text-primary-fg">
                   {String(i + 1).padStart(2, '0')} / 03
                 </span>
-                <span className="text-foreground/60 font-mono text-[11px] tracking-[0.14em] uppercase">
+                <span className="text-foreground/60 font-mono text-[11px] tracking-[0.14em] uppercase transition-colors duration-500 group-hover:text-primary-fg/70 group-focus-within:text-primary-fg/70">
                   {v.dates}
                 </span>
               </div>
-              <p className="text-foreground/60 mt-4 text-[10px] font-semibold tracking-[0.22em] uppercase">
+              <p className="text-foreground/60 mt-4 text-[10px] font-semibold tracking-[0.22em] uppercase transition-colors duration-500 group-hover:text-primary-fg/70 group-focus-within:text-primary-fg/70">
                 Vote
               </p>
-              <h3 className="font-display text-foreground mt-2 text-xl leading-tight sm:text-2xl">
+              <h3 className="font-display text-foreground mt-2 text-xl leading-tight transition-colors duration-500 group-hover:text-primary-fg group-focus-within:text-primary-fg sm:text-2xl">
                 {v.kicker}
               </h3>
-              <p className="text-foreground/85 mt-4 text-[15px] leading-relaxed">{v.body}</p>
+              {/* Body flex-grows to fill the available space, so the roll-call
+                  block and the Bonamici-Nay pill below always anchor at the
+                  same y across every card — the tallest-body card sets the
+                  row height (via grid stretch), shorter-body cards get extra
+                  whitespace below their body text instead of pulling the
+                  footer up. */}
+              <p className="text-foreground/85 mt-4 flex-1 text-[15px] leading-relaxed transition-colors duration-500 group-hover:text-primary-fg/90 group-focus-within:text-primary-fg/90">
+                {v.body}
+              </p>
               <div className="mt-6">
-                <p className="text-foreground/60 text-[10px] font-semibold tracking-[0.22em] uppercase">
+                <p className="text-foreground/60 text-[10px] font-semibold tracking-[0.22em] uppercase transition-colors duration-500 group-hover:text-primary-fg/70 group-focus-within:text-primary-fg/70">
                   {v.note}
                 </p>
                 <RollCall yea={v.yea} nay={v.nay} className="mt-3" />
               </div>
               <div className="mt-6 flex items-center gap-2">
-                <span className="border-brown/60 bg-brown/10 text-brown dark:border-sand/50 dark:bg-sand/10 dark:text-sand inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold tracking-[0.24em] uppercase">
+                <span className="border-brown/60 bg-brown/10 text-brown dark:border-sand/50 dark:bg-sand/10 dark:text-sand inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold tracking-[0.24em] uppercase transition-colors duration-500 group-hover:border-primary-fg/50 group-hover:bg-primary-fg/10 group-hover:text-primary-fg group-focus-within:border-primary-fg/50 group-focus-within:bg-primary-fg/10 group-focus-within:text-primary-fg">
                   Bonamici Nay
                 </span>
               </div>
@@ -955,7 +1004,10 @@ const PowerSection = () => {
     <section ref={scope} className="text-foreground relative isolate py-16 sm:py-20">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-10 px-5 sm:px-8 md:grid-cols-12 md:gap-14 lg:px-12">
         <div className="md:col-span-5">
-          <p data-power-el className="text-primary text-[11px] font-semibold tracking-[0.28em] uppercase">
+          <p
+            data-power-el
+            className="text-primary text-[11px] font-semibold tracking-[0.28em] uppercase"
+          >
             Energy
           </p>
           <SplitText
@@ -966,7 +1018,10 @@ const PowerSection = () => {
           />
         </div>
         <div className="md:col-span-7">
-          <p data-power-el className="font-display text-foreground text-2xl leading-snug sm:text-3xl">
+          <p
+            data-power-el
+            className="font-display text-foreground text-2xl leading-snug sm:text-3xl"
+          >
             Homes need it. Semiconductor manufacturing needs it. And data centers increasingly need
             it.
           </p>
@@ -1029,12 +1084,12 @@ const QuestionsSection = () => {
         className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block xl:w-[55%]"
       >
         <Image
-          src={KAHL_PHOTO}
+          src={KAHL_PHOTO_ATMOSPHERIC}
           alt=""
           fill
           sizes="55vw"
           quality={85}
-          className="object-cover object-[center_18%]"
+          className="object-cover object-[center_30%]"
         />
         {/* Left-to-right blend — image dissolves into the dark section bg */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#2a2a26] from-0% via-[#2a2a26]/85 via-30% to-transparent to-95%" />
@@ -1119,10 +1174,7 @@ const EducationSection = () => {
               government education funding.
             </p>
           </div>
-          <div
-            data-edu-col
-            className="border-primary rounded-2xl border-l-[3px] py-2 pl-6 sm:pl-8"
-          >
+          <div data-edu-col className="border-primary rounded-2xl border-l-[3px] py-2 pl-6 sm:pl-8">
             <p className="text-primary text-[10px] font-semibold tracking-[0.22em] uppercase">
               Barbara Kahl
             </p>
@@ -1198,14 +1250,14 @@ const InsideTheGuideSection = () => {
               <span
                 aria-hidden
                 className={cn(
-                  'pointer-events-none absolute inset-0 origin-left bg-gradient-to-r from-primary/[0.06] via-primary/[0.02] to-transparent',
+                  'from-primary/[0.06] via-primary/[0.02] pointer-events-none absolute inset-0 origin-left bg-gradient-to-r to-transparent',
                   'scale-x-0 opacity-0 transition-[opacity,transform] duration-700 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
                   'group-hover/guide:scale-x-100 group-hover/guide:opacity-100',
                 )}
               />
               <span
                 className={cn(
-                  'relative bg-primary/10 text-primary mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full',
+                  'bg-primary/10 text-primary relative mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full',
                   'transition-[background-color,box-shadow,transform] duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]',
                   'group-hover/guide:bg-primary/25 group-hover/guide:scale-110',
                   'group-hover/guide:shadow-[0_0_0_5px_rgba(46,69,56,0.12)] dark:group-hover/guide:shadow-[0_0_0_5px_rgba(224,214,188,0.14)]',
@@ -1270,7 +1322,7 @@ const FinalCta = () => (
       >
         <span
           aria-hidden
-          className="font-display text-primary-fg/[0.08] pointer-events-none absolute -top-6 -right-4 select-none text-[26vw] leading-none font-medium sm:text-[20vw] md:text-[16vw]"
+          className="font-display text-primary-fg/[0.08] pointer-events-none absolute -top-6 -right-4 text-[26vw] leading-none font-medium select-none sm:text-[20vw] md:text-[16vw]"
         >
           14
         </span>
@@ -1313,7 +1365,10 @@ const FinalCta = () => (
           </Button>
         </div>
         <p className="relative mt-6 text-[13px]">
-          <a href="/privacy-policy" className="text-primary-fg/80 underline-offset-2 hover:underline">
+          <a
+            href="/privacy-policy"
+            className="text-primary-fg/80 underline-offset-2 hover:underline"
+          >
             Privacy Policy
           </a>
           <span className="text-primary-fg/40 mx-2">|</span>
@@ -1342,9 +1397,9 @@ export const KahlLegalStrip = () => (
         <span className="font-semibold">Information &amp; Sources Disclaimer:</span> Candidate
         positions, statements, voting records, policy information, and other factual claims on this
         page are based on publicly available information and cited sources reviewed as of{' '}
-        <strong>September 21, 2026</strong>. Candidate positions, campaign materials, websites,
-        and policy proposals may change. Please review linked sources and current candidate
-        materials for the latest information.
+        <strong>September 21, 2026</strong>. Candidate positions, campaign materials, websites, and
+        policy proposals may change. Please review linked sources and current candidate materials
+        for the latest information.
       </p>
       <p className="text-foreground/70 text-[11px] font-semibold">{CD1_PAID_FOR}</p>
     </div>
