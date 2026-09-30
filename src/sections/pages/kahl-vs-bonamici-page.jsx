@@ -9,7 +9,7 @@
    with the challenger and incumbent framed as two contrasting columns of
    evidence rather than portrait cards.
 
-   Copy is verbatim from "Dr.barbara kahl funnel.pdf" (PART 1). */
+   Copy is verbatim from "LM_FUNNEL - BARBARA VS SUZANNE.pdf" (FUNNEL section). */
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
@@ -303,10 +303,10 @@ const GuideForm = () => {
 ------------------------------------------------------------------ */
 const heroIssues = [
   'Jobs',
+  'Education',
+  'Fentanyl',
+  'Forestry',
   'Energy',
-  'Immigration',
-  'Schools',
-  'Healthcare',
   'Federal Accountability',
 ]
 
@@ -464,7 +464,7 @@ const Hero = () => {
 }
 
 /* ------------------------------------------------------------------
-   2. LOOK AT THE RECORD — Immigration + Laken Riley vote card
+   2. THE CONGRESSIONAL RECORD — Fentanyl & Mental Health + HALT Fentanyl vote card
 ------------------------------------------------------------------ */
 
 // Roll-call bar for a single vote. Renders two segments (Yea / Nay) that
@@ -524,33 +524,20 @@ const LookAtTheRecordSection = () => {
       <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-12">
         <div data-record-block>
           <p className="text-primary text-[11px] font-semibold tracking-[0.28em] uppercase">
-            Immigration
+            Fentanyl &amp; Mental Health
           </p>
           <SplitText
             as="h2"
             by="word"
-            text="Look at the record."
+            text="What does the congressional record show?"
             className="font-display text-foreground mt-3 text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-[52px]"
           />
         </div>
 
-        {/* Bonamici direct-quote card */}
+        {/* HALT Fentanyl Act vote card */}
         <div
           data-record-block
-          className="border-primary bg-surface-alt/25 relative mt-10 rounded-2xl border-l-4 p-6 sm:p-8"
-        >
-          <p className="text-foreground/70 text-[11px] font-semibold tracking-[0.24em] uppercase">
-            Bonamici&rsquo;s Campaign Says
-          </p>
-          <p className="font-display text-foreground mt-2 text-2xl leading-snug italic sm:text-3xl">
-            &ldquo;No more ICE funding.&rdquo;
-          </p>
-        </div>
-
-        {/* Laken Riley Act vote card */}
-        <div
-          data-record-block
-          className="border-border bg-surface relative mt-6 overflow-hidden rounded-2xl border p-6 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.28)] sm:p-8 dark:shadow-[0_18px_50px_-30px_rgba(0,0,0,0.6)]"
+          className="border-border bg-surface relative mt-10 overflow-hidden rounded-2xl border p-6 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.28)] sm:p-8 dark:shadow-[0_18px_50px_-30px_rgba(0,0,0,0.6)]"
         >
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
@@ -558,7 +545,7 @@ const LookAtTheRecordSection = () => {
                 The Congressional Record
               </p>
               <p className="font-display text-foreground mt-2 text-xl leading-tight sm:text-2xl">
-                Laken Riley Act — final 2025 House vote
+                HALT Fentanyl Act — H.R. 27, February 6, 2025
               </p>
             </div>
             <span className="border-brown bg-brown/10 text-brown dark:border-sand dark:bg-sand/10 dark:text-sand inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[11px] font-semibold tracking-[0.24em] uppercase">
@@ -568,10 +555,10 @@ const LookAtTheRecordSection = () => {
               Bonamici voted Nay
             </span>
           </div>
-          <RollCall yea={263} nay={156} className="mt-6" />
+          <RollCall yea={312} nay={108} className="mt-6" />
           <p className="text-foreground/80 mt-5 text-[15px] leading-relaxed sm:text-base">
-            Her congressional record includes Nay votes on the Laken Riley Act in both 2024 and
-            2025. The final 2025 House vote passed 263–156. Bonamici voted Nay.
+            Suzanne Bonamici voted Nay on H.R. 27, the HALT Fentanyl Act, on February 6, 2025. The
+            House passed H.R. 27 by 312–108.
           </p>
         </div>
 
@@ -584,13 +571,13 @@ const LookAtTheRecordSection = () => {
             Barbara Kahl&rsquo;s Position
           </p>
           <p className="text-foreground/85 mt-2 text-[15px] leading-relaxed sm:text-base">
-            Barbara Kahl&rsquo;s published position emphasizes border enforcement, spending
-            constraints and stricter eligibility for government benefits.
+            Barbara Kahl&rsquo;s stated approach emphasizes keeping fentanyl off Oregon streets and
+            strengthening mental-health networks.
           </p>
         </div>
 
         <div data-record-block className="mt-10">
-          <CtaButton>See the Complete Immigration Record</CtaButton>
+          <CtaButton>See the Fentanyl &amp; Mental Health Comparison</CtaButton>
         </div>
       </div>
     </section>
@@ -602,13 +589,14 @@ const LookAtTheRecordSection = () => {
 ------------------------------------------------------------------ */
 const kahlPriorities = [
   'Economic growth',
-  'Fewer costs and less red tape for small businesses',
-  'Federal accountability',
-  'School choice and teacher freedom',
+  'Academics and skilled trades',
+  'Addressing fentanyl and strengthening mental-health networks',
+  'Responsible timber harvesting',
+  'Strong ports',
   'Lower healthcare costs',
-  'Responsible forest management',
-  'Housing permitting reform',
-  'Protecting Oregon’s ports and maritime economy',
+  'Federal accountability',
+  'Identifying fraud and returning savings to taxpayers',
+  'Term limits',
 ]
 
 const KahlPrioritiesSection = () => {
@@ -668,9 +656,24 @@ const KahlPrioritiesSection = () => {
 ------------------------------------------------------------------ */
 const differences = [
   {
-    issue: 'Economy',
-    kahl: 'Production + lower barriers',
-    bonamici: 'Federal government investment + climate policy',
+    issue: 'Education',
+    kahl: 'Academics + skilled trades',
+    bonamici: 'Federal education investment + STEAM',
+  },
+  {
+    issue: 'Fentanyl',
+    kahl: 'Keep fentanyl off streets + mental-health networks',
+    bonamici: 'Nay on HALT Fentanyl Act',
+  },
+  {
+    issue: 'Forestry',
+    kahl: 'Harvest timber responsibly',
+    bonamici: 'Nay on Fix Our Forests Act + O&C plan delay',
+  },
+  {
+    issue: 'Fraud & Accountability',
+    kahl: 'Claw back fraud + return savings to taxpayers',
+    bonamici: 'Nay vote on H.R. 9576 National Fraud Enforcement Division',
   },
   {
     issue: 'Energy',
@@ -678,24 +681,9 @@ const differences = [
     bonamici: 'Federal energy/climate policy',
   },
   {
-    issue: 'Immigration',
-    kahl: 'Border enforcement',
-    bonamici: 'Less ICE funding + Nay on Laken Riley Act',
-  },
-  {
-    issue: 'Schools',
-    kahl: 'Choice + money follows student',
-    bonamici: 'Greater federal government education spending',
-  },
-  {
     issue: 'Healthcare',
     kahl: 'Lower prices first',
     bonamici: 'Greater federal government role in coverage',
-  },
-  {
-    issue: 'Federal Role',
-    kahl: 'Accountability + less red tape',
-    bonamici: 'Broader federal government programs/investment',
   },
 ]
 
@@ -867,32 +855,24 @@ const DifferencesSection = () => {
 }
 
 /* ------------------------------------------------------------------
-   5. THREE RECENT VOTES — a deck of ledger cards
+   5. TWO CONGRESSIONAL VOTES — a deck of ledger cards
 ------------------------------------------------------------------ */
 const votes = [
   {
-    kicker: 'Laken Riley Act',
-    dates: '2024 & 2025',
-    body: 'Bonamici voted Nay on the legislation in 2024 and again when Congress considered the Laken Riley Act in 2025.',
-    yea: 263,
-    nay: 156,
-    note: 'Final 2025 House vote',
+    kicker: 'HALT Fentanyl Act',
+    dates: 'February 6, 2025',
+    body: 'Bonamici voted Nay on H.R. 27, the HALT Fentanyl Act, on February 6, 2025. The legislation addressed the scheduling of fentanyl-related substances under the Controlled Substances Act and passed the House 312–108.',
+    yea: 312,
+    nay: 108,
+    note: 'House passed 312–108',
   },
   {
-    kicker: 'National Fraud Enforcement Division Act',
-    dates: 'September 16, 2026',
-    body: 'Bonamici voted Nay on H.R. 9576, the National Fraud Enforcement Division Act of 2026. The legislation would establish the National Fraud Enforcement Division within the Department of Justice.',
-    yea: 352,
-    nay: 72,
-    note: 'House passed 352–72',
-  },
-  {
-    kicker: '“Denouncing the Horrors of Socialism”',
-    dates: '2023',
-    body: 'The House considered H.Con.Res.9 under that title. Bonamici voted Nay.',
-    yea: 328,
-    nay: 86,
-    note: 'House passed 328–86',
+    kicker: 'Fix Our Forests Act',
+    dates: 'January 23, 2025',
+    body: 'Bonamici voted Nay on H.R. 471, the Fix Our Forests Act, on January 23, 2025. The legislation passed the House 279–141.',
+    yea: 279,
+    nay: 141,
+    note: 'House passed 279–141',
   },
 ]
 
@@ -912,17 +892,17 @@ const ThreeVotesSection = () => {
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-3xl">
           <p className="text-primary text-[11px] font-semibold tracking-[0.28em] uppercase">
-            The Record — Three Recent Votes
+            The Record — Two Congressional Votes
           </p>
           <SplitText
             as="h2"
             by="word"
-            text="Three recent votes in the record."
+            text="Two congressional votes to examine."
             className="font-display text-foreground mt-3 text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-[48px]"
           />
         </div>
 
-        <ol className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
+        <ol className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-6">
           {votes.map((v, i) => (
             <li
               key={v.kicker}
@@ -942,7 +922,7 @@ const ThreeVotesSection = () => {
             >
               <div className="flex items-baseline justify-between">
                 <span className="text-primary font-mono text-xs tracking-[0.16em] transition-colors duration-500 group-hover:text-primary-fg group-focus-within:text-primary-fg">
-                  {String(i + 1).padStart(2, '0')} / 03
+                  {String(i + 1).padStart(2, '0')} / 02
                 </span>
                 <span className="text-foreground/60 font-mono text-[11px] tracking-[0.14em] uppercase transition-colors duration-500 group-hover:text-primary-fg/70 group-focus-within:text-primary-fg/70">
                   {v.dates}
@@ -1036,20 +1016,24 @@ const PowerSection = () => {
 }
 
 /* ------------------------------------------------------------------
-   7. THREE QUESTIONS BARBARA KAHL IS ASKING
+   7. FOUR QUESTIONS IN THE CD-1 RACE
 ------------------------------------------------------------------ */
 const questions = [
   {
-    tag: 'Your Jobs',
-    q: 'Does Washington make it easier or difficult to build, manufacture, ship, and hire?',
+    tag: 'Your Education',
+    q: 'Should federal education policy emphasize additional federal investment, or greater school choice and pathways into skilled trades?',
   },
   {
-    tag: 'Your Power Bill',
-    q: 'Who pays when data centers, factories, and households compete for limited grid capacity?',
+    tag: 'Fentanyl & Mental Health',
+    q: 'How should federal policy balance enforcement, scheduling, treatment, prevention and mental-health services?',
   },
   {
-    tag: 'Your Federal Representative',
-    q: 'Does the incumbent’s current record reflect the priorities of the district she has represented since 2012?',
+    tag: 'Oregon Forests',
+    q: 'What approach should Washington take toward timber harvesting and management of federal forests?',
+  },
+  {
+    tag: 'Your Tax Dollars',
+    q: 'How should Washington identify fraud, recover misspent money and account for federal spending?',
   },
 ]
 
@@ -1106,10 +1090,10 @@ const QuestionsSection = () => {
           <SplitText
             as="h2"
             by="word"
-            text="Three questions Barbara Kahl is asking."
+            text="Four questions in the CD-1 race."
             className="font-display text-foreground mx-auto max-w-4xl text-center text-3xl leading-[1.1] font-medium tracking-tight sm:text-4xl md:text-[42px] lg:mx-0 lg:text-left"
           />
-          <ol className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8 lg:grid-cols-1 lg:gap-5">
+          <ol className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-1 lg:gap-5">
             {questions.map((it, i) => (
               <li
                 key={it.tag}
@@ -1152,12 +1136,12 @@ const EducationSection = () => {
     <section ref={scope} className="text-foreground relative isolate py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-12">
         <p className="text-primary text-[11px] font-semibold tracking-[0.28em] uppercase">
-          Education
+          Education &amp; Workforce
         </p>
         <SplitText
           as="h2"
           by="word"
-          text="Spending and outcomes."
+          text="Academics, arts and skilled trades."
           className="font-display text-foreground mt-3 text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl md:text-[48px]"
         />
 
@@ -1170,8 +1154,8 @@ const EducationSection = () => {
               Suzanne Bonamici
             </p>
             <p className="text-foreground/85 mt-3 text-[15px] leading-relaxed sm:text-base">
-              Serves on the House Education and Workforce Committee and advocates increased federal
-              government education funding.
+              Bonamici serves on the House Education and Workforce Committee and emphasizes federal
+              education investment and STEAM education.
             </p>
           </div>
           <div data-edu-col className="border-primary rounded-2xl border-l-[3px] py-2 pl-6 sm:pl-8">
@@ -1179,8 +1163,8 @@ const EducationSection = () => {
               Barbara Kahl
             </p>
             <p className="text-foreground/85 mt-3 text-[15px] leading-relaxed sm:text-base">
-              Proposes school choice, teacher freedom, vocational pathways and funding that follows
-              students.
+              Kahl emphasizes academics, teacher freedom, vocational pathways, school choice and
+              funding that follows students.
             </p>
           </div>
         </div>
@@ -1189,8 +1173,8 @@ const EducationSection = () => {
           data-edu-col
           className="font-display text-foreground mt-10 max-w-3xl text-2xl leading-snug sm:text-3xl"
         >
-          The guide compares what each candidate proposes for the federal government&rsquo;s role in
-          education.
+          The guide compares their approaches to academics, arts, college preparation, skilled
+          trades and the federal role in education.
         </p>
       </div>
     </section>
@@ -1203,10 +1187,11 @@ const EducationSection = () => {
 const guideItems = [
   'Bonamici’s fourteen-year congressional record',
   'Kahl’s background and priorities',
-  'Jobs and manufacturing',
+  'Academics and skilled trades',
+  'Fentanyl and mental-health policy',
+  'Timber and federal forest policy',
+  'Fraud and taxpayer accountability',
   'Energy and data centers',
-  'Border enforcement and ICE',
-  'Schools and federal education funding',
   'Healthcare costs',
   'Federal accountability',
 ]
@@ -1339,8 +1324,8 @@ const FinalCta = () => (
           viewport={{ once: true, margin: '-10% 0px' }}
           className="text-primary-fg/85 relative mx-auto mt-6 max-w-2xl text-base leading-relaxed sm:text-lg"
         >
-          Barbara Kahl is asking voters to compare that record with a different approach to jobs,
-          energy, schools, healthcare, and federal accountability.
+          Barbara Kahl and Suzanne Bonamici present different approaches to education, fentanyl
+          policy, forestry, energy, healthcare and federal accountability.
         </m.p>
         <m.p
           variants={fadeUp}
@@ -1349,7 +1334,7 @@ const FinalCta = () => (
           viewport={{ once: true, margin: '-10% 0px' }}
           className="font-display text-primary-fg relative mt-6 text-2xl leading-snug sm:text-3xl"
         >
-          You have the record. Compare the record and priorities. Decide for yourself.
+          Review the record. Compare their stated priorities. Decide for yourself.
         </m.p>
         <p className="text-primary-fg/70 relative mt-6 text-xs tracking-[0.22em] uppercase">
           General Election • November 3, 2026
@@ -1397,7 +1382,7 @@ export const KahlLegalStrip = () => (
         <span className="font-semibold">Information &amp; Sources Disclaimer:</span> Candidate
         positions, statements, voting records, policy information, and other factual claims on this
         page are based on publicly available information and cited sources reviewed as of{' '}
-        <strong>September 21, 2026</strong>. Candidate positions, campaign materials, websites, and
+        <strong>September 29, 2026</strong>. Candidate positions, campaign materials, websites, and
         policy proposals may change. Please review linked sources and current candidate materials
         for the latest information.
       </p>
