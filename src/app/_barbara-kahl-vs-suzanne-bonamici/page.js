@@ -3,7 +3,7 @@ import KahlVsBonamiciPage from '@/sections/pages/kahl-vs-bonamici-page'
 export const metadata = {
   title: 'Barbara Kahl vs Suzanne Bonamici — 2026 Voter Guide | Northwest Oregon PAC',
   description:
-    'Fourteen years creates a record. See where challenger Dr. Barbara Kahl and incumbent Rep. Suzanne Bonamici differ on jobs, energy, immigration, schools, healthcare, and federal accountability. Free 5-minute voter guide.',
+    'Fourteen years creates a record. See where challenger Dr. Barbara Kahl and incumbent Rep. Suzanne Bonamici . Free 5-minute voter guide.',
   alternates: { canonical: '/barbara-kahl-vs-suzanne-bonamici' },
   openGraph: {
     title: 'Barbara Kahl vs Suzanne Bonamici — 2026 Voter Guide',
