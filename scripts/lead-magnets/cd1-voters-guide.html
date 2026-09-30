@@ -208,13 +208,37 @@
       }
       .cover-copy .issues {
         font-size: 9.5pt; letter-spacing: 0.16em; text-transform: uppercase;
-        color: rgba(224, 214, 188, 0.85); margin-top: 12px;
+        color: rgba(224, 214, 188, 0.85); margin-top: 14px;
+      }
+      /* Editorial election-date band — reads as a formal single-line election
+         announcement: hairline top rule, uppercase tracked label, thin flex
+         accent rule between, serif date value. Both label and value stay on
+         one line regardless of column width. */
+      .cover-copy .cover-date {
+        display: flex; flex-wrap: nowrap; align-items: baseline; gap: 10px;
+        margin-top: 18px; padding-top: 12px;
+        border-top: 1px solid rgba(224, 214, 188, 0.28);
+      }
+      .cover-copy .cover-date-label {
+        flex: 0 0 auto; white-space: nowrap;
+        font-size: 8pt; letter-spacing: 0.22em; text-transform: uppercase;
+        color: var(--sand); font-weight: 600;
+      }
+      .cover-copy .cover-date-sep {
+        flex: 1 1 auto; min-width: 12px; height: 1px;
+        background: rgba(224, 214, 188, 0.35);
+        transform: translateY(-3px);
+      }
+      .cover-copy .cover-date-value {
+        flex: 0 0 auto; white-space: nowrap;
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 12pt; font-weight: 600; letter-spacing: 0.01em;
+        color: var(--cream);
       }
       .cover-copy .neighborhoods {
-        font-size: 9pt; letter-spacing: 0.14em; text-transform: uppercase;
-        color: rgba(224, 214, 188, 0.7); margin-top: 8px;
+        font-size: 8.5pt; letter-spacing: 0.22em; text-transform: uppercase;
+        color: rgba(224, 214, 188, 0.55); margin-top: 10px; line-height: 1.55;
       }
-      .cover-copy .cover-date { font-size: 10pt; color: var(--sand); margin-top: 16px; font-weight: 600; }
 
       .cover-portrait {
         position: relative; width: 100%; aspect-ratio: 4/5;
@@ -297,10 +321,14 @@
           <div class="issues">
             Economy &bull; Energy &bull; Fentanyl &bull; Schools &bull; Forestry &bull; Federal Accountability
           </div>
+          <div class="cover-date">
+            <span class="cover-date-label">General Election</span>
+            <span class="cover-date-sep" aria-hidden="true"></span>
+            <span class="cover-date-value">November 3, 2026</span>
+          </div>
           <div class="neighborhoods">
             Beaverton &bull; Hillsboro &bull; West Portland &bull; Forest Grove &bull; Astoria &bull; Tillamook &bull; St. Helens
           </div>
-          <div class="cover-date">General Election &bull; November 3, 2026</div>
         </div>
 
         <div class="cover-portrait">

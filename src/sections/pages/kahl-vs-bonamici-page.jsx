@@ -41,7 +41,6 @@ const VIEW_PARAMS = {
   content_name: 'cd1_voter_guide',
 }
 
-const KAHL_URL = 'https://www.drkahlforcongress.com/'
 // Hero portrait card — tall 4:5 head-and-shoulders shot fits the framed
 // portrait treatment. Atmospheric right-side visual on the Questions section
 // uses the wider landscape shot so the foliage background can dissolve into
@@ -379,8 +378,7 @@ const Hero = () => {
             transition={{ delay: 0.9, duration: 0.6 }}
             className="text-foreground/85 mt-8 max-w-2xl text-base leading-relaxed sm:text-lg"
           >
-            <strong>Suzanne Bonamici </strong> has represented Oregon&rsquo;s 1st Congressional
-            District since 2012.
+            Suzanne Bonamici has represented Oregon&rsquo;s 1st Congressional District since 2012.
           </m.p>
 
           <m.p
@@ -390,15 +388,7 @@ const Hero = () => {
             className="text-foreground/85 mt-3 max-w-2xl text-base leading-relaxed sm:text-lg"
           >
             Now veterinarian, former Intel employee, and fourth-generation Oregonian{' '}
-            <a
-              href={KAHL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary underline-offset-2 hover:underline"
-            >
-              Barbara Kahl
-            </a>{' '}
-            is challenging that record with a different approach to:
+            <strong>Barbara Kahl</strong> is challenging that record with a different approach to:
           </m.p>
 
           <div className="mt-6 flex flex-wrap gap-2 sm:gap-2.5">
@@ -957,6 +947,18 @@ const ThreeVotesSection = () => {
             </li>
           ))}
         </ol>
+
+        {/* O&C Forestry Plan — companion note to the two ledger cards above.
+            Rendered as plain inline text (no card container) so it reads as
+            a supporting record entry rather than a third vote. */}
+        <div data-vote-card className="mx-auto mt-10 max-w-3xl">
+          <h3 className="font-display text-foreground text-xl leading-tight sm:text-2xl">
+            O&amp;C Forestry Plan
+          </h3>
+          <p className="text-foreground/85 mt-3 text-[15px] leading-relaxed sm:text-base">
+            Bonamici voted to Delay <strong>the O&amp;C Forestry Plan</strong>.
+          </p>
+        </div>
 
         <div className="mt-12 flex justify-center">
           <CtaButton>Get the Guide for the Sourced Congressional Record</CtaButton>
